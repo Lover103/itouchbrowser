@@ -6,7 +6,14 @@ Future Versions	??/??/2008	Pete Wilson
   * modify grouping when sorting
   * convert binary plists to text and back
   * edit plists
+
+v1.60.13 7/7/2008 =sugi=
+  * 不明なファイルも表示ボタンでテキスト表示可能にする。
   
+v1.60.12 7/5/2008 =sugi=
+  * 日本語対応の拡張
+  * バックアップファイルの保存ディレクトリをメニューから変更可能にする
+
 v1.60.10 6/28/2008 =sugi=
   * 日本語対応
   * 処理を最適化し高速化

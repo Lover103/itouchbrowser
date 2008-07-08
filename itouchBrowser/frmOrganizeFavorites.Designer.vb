@@ -38,89 +38,57 @@ Partial Class frmOrganizeFavorites
         '
         'Panel1
         '
-        Me.Panel1.AccessibleDescription = Nothing
-        Me.Panel1.AccessibleName = Nothing
         resources.ApplyResources(Me.Panel1, "Panel1")
-        Me.Panel1.BackgroundImage = Nothing
         Me.Panel1.Controls.Add(Me.btnOK)
         Me.Panel1.Controls.Add(Me.btnCancel)
         Me.Panel1.Controls.Add(Me.btnDelete)
         Me.Panel1.Controls.Add(Me.btnEdit)
-        Me.Panel1.Controls.Add(Me.btnDown)
-        Me.Panel1.Controls.Add(Me.btnUp)
-        Me.Panel1.Font = Nothing
         Me.Panel1.Name = "Panel1"
         '
         'btnOK
         '
-        Me.btnOK.AccessibleDescription = Nothing
-        Me.btnOK.AccessibleName = Nothing
         resources.ApplyResources(Me.btnOK, "btnOK")
-        Me.btnOK.BackgroundImage = Nothing
         Me.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK
-        Me.btnOK.Font = Nothing
         Me.btnOK.Name = "btnOK"
         Me.btnOK.UseVisualStyleBackColor = True
         '
         'btnCancel
         '
-        Me.btnCancel.AccessibleDescription = Nothing
-        Me.btnCancel.AccessibleName = Nothing
         resources.ApplyResources(Me.btnCancel, "btnCancel")
-        Me.btnCancel.BackgroundImage = Nothing
         Me.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.btnCancel.Font = Nothing
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.UseVisualStyleBackColor = True
         '
         'btnDelete
         '
-        Me.btnDelete.AccessibleDescription = Nothing
-        Me.btnDelete.AccessibleName = Nothing
         resources.ApplyResources(Me.btnDelete, "btnDelete")
-        Me.btnDelete.BackgroundImage = Nothing
-        Me.btnDelete.Font = Nothing
         Me.btnDelete.Name = "btnDelete"
         Me.btnDelete.UseVisualStyleBackColor = True
         '
         'btnEdit
         '
-        Me.btnEdit.AccessibleDescription = Nothing
-        Me.btnEdit.AccessibleName = Nothing
         resources.ApplyResources(Me.btnEdit, "btnEdit")
-        Me.btnEdit.BackgroundImage = Nothing
-        Me.btnEdit.Font = Nothing
         Me.btnEdit.Name = "btnEdit"
         Me.btnEdit.UseVisualStyleBackColor = True
         '
         'btnDown
         '
-        Me.btnDown.AccessibleDescription = Nothing
-        Me.btnDown.AccessibleName = Nothing
         resources.ApplyResources(Me.btnDown, "btnDown")
-        Me.btnDown.BackgroundImage = Nothing
         Me.btnDown.ForeColor = System.Drawing.Color.DarkBlue
         Me.btnDown.Name = "btnDown"
         Me.btnDown.UseVisualStyleBackColor = True
         '
         'btnUp
         '
-        Me.btnUp.AccessibleDescription = Nothing
-        Me.btnUp.AccessibleName = Nothing
         resources.ApplyResources(Me.btnUp, "btnUp")
-        Me.btnUp.BackgroundImage = Nothing
         Me.btnUp.ForeColor = System.Drawing.Color.DarkBlue
         Me.btnUp.Name = "btnUp"
         Me.btnUp.UseVisualStyleBackColor = True
         '
         'lstFavs
         '
-        Me.lstFavs.AccessibleDescription = Nothing
-        Me.lstFavs.AccessibleName = Nothing
         resources.ApplyResources(Me.lstFavs, "lstFavs")
-        Me.lstFavs.BackgroundImage = Nothing
         Me.lstFavs.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2})
-        Me.lstFavs.Font = Nothing
         Me.lstFavs.FullRowSelect = True
         Me.lstFavs.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable
         Me.lstFavs.HideSelection = False
@@ -142,17 +110,14 @@ Partial Class frmOrganizeFavorites
         'frmOrganizeFavorites
         '
         Me.AcceptButton = Me.btnOK
-        Me.AccessibleDescription = Nothing
-        Me.AccessibleName = Nothing
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackgroundImage = Nothing
         Me.CancelButton = Me.btnCancel
         Me.ControlBox = False
         Me.Controls.Add(Me.lstFavs)
         Me.Controls.Add(Me.Panel1)
-        Me.Font = Nothing
-        Me.Icon = Nothing
+        Me.Controls.Add(Me.btnUp)
+        Me.Controls.Add(Me.btnDown)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmOrganizeFavorites"

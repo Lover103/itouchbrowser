@@ -56,7 +56,7 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Setup|AnyCPU' ">
     <DefineTrace>true</DefineTrace>
-    <OutputPath>bin\Setup\</OutputPath>
+    <OutputPath>bin\Release\</OutputPath>
     <DocumentationFile>itouchBrowser.xml</DocumentationFile>
     <Optimize>true</Optimize>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
@@ -90,6 +90,12 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ApplicationEvents.vb" />
+    <Compile Include="BackupDirDialog.Designer.vb">
+      <DependentUpon>BackupDirDialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="BackupDirDialog.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmAddFavorite.Designer.vb">
       <DependentUpon>frmAddFavorite.vb</DependentUpon>
     </Compile>
@@ -144,9 +150,25 @@
       <SubType>Designer</SubType>
       <DependentUpon>AboutBox1.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="BackupDirDialog.ja-JP.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>BackupDirDialog.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BackupDirDialog.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>BackupDirDialog.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAddFavorite.ja-JP.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmAddFavorite.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmAddFavorite.resx">
       <SubType>Designer</SubType>
       <DependentUpon>frmAddFavorite.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCustomizeOptions.ja-JP.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmCustomizeOptions.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmCustomizeOptions.resx">
       <SubType>Designer</SubType>

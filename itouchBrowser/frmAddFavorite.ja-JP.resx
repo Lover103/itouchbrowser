@@ -117,78 +117,35 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="btnOK.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="btnOK.Location" type="System.Drawing.Point, System.Drawing">
-    <value>194, 8</value>
+  <data name="Label1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
   </data>
-  <data name="btnCancel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
+  <data name="Label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 12</value>
   </data>
-  <data name="btnCancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>275, 8</value>
+  <data name="Label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>73, 15</value>
+  </data>
+  <data name="Label1.Text" xml:space="preserve">
+    <value>お気に入り名:</value>
+  </data>
+  <data name="Label2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="Label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 35</value>
+  </data>
+  <data name="Label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>29, 15</value>
+  </data>
+  <data name="Label2.Text" xml:space="preserve">
+    <value>パス:</value>
   </data>
   <data name="btnCancel.Text" xml:space="preserve">
     <value>キャンセル</value>
   </data>
-  <data name="btnDelete.Location" type="System.Drawing.Point, System.Drawing">
-    <value>93, 8</value>
-  </data>
-  <data name="btnDelete.Text" xml:space="preserve">
-    <value>削除</value>
-  </data>
-  <data name="btnEdit.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 8</value>
-  </data>
-  <data name="btnEdit.Text" xml:space="preserve">
-    <value>編集...</value>
-  </data>
-  <data name="Panel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 165</value>
-  </data>
-  <data name="Panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>368, 39</value>
-  </data>
-  <data name="btnDown.Font" type="System.Drawing.Font, System.Drawing">
-    <value>ＭＳ ゴシック, 14.25pt, style=Bold</value>
-  </data>
-  <data name="btnDown.Location" type="System.Drawing.Point, System.Drawing">
-    <value>333, 56</value>
-  </data>
-  <data name="btnDown.Size" type="System.Drawing.Size, System.Drawing">
-    <value>31, 29</value>
-  </data>
-  <data name="btnDown.Text" xml:space="preserve">
-    <value>↓</value>
-  </data>
-  <data name="btnUp.Font" type="System.Drawing.Font, System.Drawing">
-    <value>ＭＳ ゴシック, 14.25pt, style=Bold</value>
-  </data>
-  <data name="btnUp.Location" type="System.Drawing.Point, System.Drawing">
-    <value>333, 21</value>
-  </data>
-  <data name="btnUp.Size" type="System.Drawing.Size, System.Drawing">
-    <value>31, 29</value>
-  </data>
-  <data name="btnUp.Text" xml:space="preserve">
-    <value>↑</value>
-  </data>
-  <data name="ColumnHeader1.Text" xml:space="preserve">
-    <value>名前</value>
-  </data>
-  <data name="ColumnHeader2.Text" xml:space="preserve">
-    <value>パス</value>
-  </data>
-  <data name="lstFavs.Size" type="System.Drawing.Size, System.Drawing">
-    <value>326, 159</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>368, 204</value>
-  </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>お気に入りの編集</value>
+    <value>お気に入りの追加</value>
   </data>
 </root>

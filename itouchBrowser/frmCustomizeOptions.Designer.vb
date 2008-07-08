@@ -22,6 +22,7 @@ Partial Class frmCustomizeOptions
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmCustomizeOptions))
         Me.grpImages = New System.Windows.Forms.GroupBox
         Me.btnSliders = New System.Windows.Forms.Button
         Me.chkHiMask = New System.Windows.Forms.CheckBox
@@ -59,6 +60,10 @@ Partial Class frmCustomizeOptions
         '
         'grpImages
         '
+        Me.grpImages.AccessibleDescription = Nothing
+        Me.grpImages.AccessibleName = Nothing
+        resources.ApplyResources(Me.grpImages, "grpImages")
+        Me.grpImages.BackgroundImage = Nothing
         Me.grpImages.Controls.Add(Me.btnSliders)
         Me.grpImages.Controls.Add(Me.chkHiMask)
         Me.grpImages.Controls.Add(Me.chkPowerSlider)
@@ -74,313 +79,316 @@ Partial Class frmCustomizeOptions
         Me.grpImages.Controls.Add(Me.cbCarriers)
         Me.grpImages.Controls.Add(Me.chkCarrier)
         Me.grpImages.Controls.Add(Me.chkDock)
-        Me.grpImages.Dock = System.Windows.Forms.DockStyle.Left
-        Me.grpImages.Location = New System.Drawing.Point(0, 41)
+        Me.grpImages.Font = Nothing
         Me.grpImages.Name = "grpImages"
-        Me.grpImages.Size = New System.Drawing.Size(260, 317)
-        Me.grpImages.TabIndex = 1
         Me.grpImages.TabStop = False
-        Me.grpImages.Text = "Images"
         '
         'btnSliders
         '
-        Me.btnSliders.Location = New System.Drawing.Point(179, 222)
+        Me.btnSliders.AccessibleDescription = Nothing
+        Me.btnSliders.AccessibleName = Nothing
+        resources.ApplyResources(Me.btnSliders, "btnSliders")
+        Me.btnSliders.BackgroundImage = Nothing
+        Me.btnSliders.Font = Nothing
         Me.btnSliders.Name = "btnSliders"
-        Me.btnSliders.Size = New System.Drawing.Size(75, 23)
-        Me.btnSliders.TabIndex = 10
-        Me.btnSliders.Text = "Sliders"
         Me.btnSliders.UseVisualStyleBackColor = True
         '
         'chkHiMask
         '
-        Me.chkHiMask.AutoSize = True
-        Me.chkHiMask.Location = New System.Drawing.Point(12, 295)
+        Me.chkHiMask.AccessibleDescription = Nothing
+        Me.chkHiMask.AccessibleName = Nothing
+        resources.ApplyResources(Me.chkHiMask, "chkHiMask")
+        Me.chkHiMask.BackgroundImage = Nothing
+        Me.chkHiMask.Font = Nothing
         Me.chkHiMask.Name = "chkHiMask"
-        Me.chkHiMask.Size = New System.Drawing.Size(125, 17)
-        Me.chkHiMask.TabIndex = 14
-        Me.chkHiMask.Text = "Slider Highlight Mask"
         Me.chkHiMask.UseVisualStyleBackColor = True
         '
         'chkPowerSlider
         '
-        Me.chkPowerSlider.AutoSize = True
-        Me.chkPowerSlider.Location = New System.Drawing.Point(12, 249)
+        Me.chkPowerSlider.AccessibleDescription = Nothing
+        Me.chkPowerSlider.AccessibleName = Nothing
+        resources.ApplyResources(Me.chkPowerSlider, "chkPowerSlider")
+        Me.chkPowerSlider.BackgroundImage = Nothing
+        Me.chkPowerSlider.Font = Nothing
         Me.chkPowerSlider.Name = "chkPowerSlider"
-        Me.chkPowerSlider.Size = New System.Drawing.Size(85, 17)
-        Me.chkPowerSlider.TabIndex = 12
-        Me.chkPowerSlider.Text = "Power Slider"
         Me.chkPowerSlider.UseVisualStyleBackColor = True
         '
         'chkCallSlider
         '
-        Me.chkCallSlider.AutoSize = True
-        Me.chkCallSlider.Location = New System.Drawing.Point(12, 272)
+        Me.chkCallSlider.AccessibleDescription = Nothing
+        Me.chkCallSlider.AccessibleName = Nothing
+        resources.ApplyResources(Me.chkCallSlider, "chkCallSlider")
+        Me.chkCallSlider.BackgroundImage = Nothing
+        Me.chkCallSlider.Font = Nothing
         Me.chkCallSlider.Name = "chkCallSlider"
-        Me.chkCallSlider.Size = New System.Drawing.Size(72, 17)
-        Me.chkCallSlider.TabIndex = 13
-        Me.chkCallSlider.Text = "Call Slider"
         Me.chkCallSlider.UseVisualStyleBackColor = True
         '
         'chkMainSlider
         '
-        Me.chkMainSlider.AutoSize = True
-        Me.chkMainSlider.Location = New System.Drawing.Point(12, 226)
+        Me.chkMainSlider.AccessibleDescription = Nothing
+        Me.chkMainSlider.AccessibleName = Nothing
+        resources.ApplyResources(Me.chkMainSlider, "chkMainSlider")
+        Me.chkMainSlider.BackgroundImage = Nothing
+        Me.chkMainSlider.Font = Nothing
         Me.chkMainSlider.Name = "chkMainSlider"
-        Me.chkMainSlider.Size = New System.Drawing.Size(78, 17)
-        Me.chkMainSlider.TabIndex = 11
-        Me.chkMainSlider.Text = "Main Slider"
         Me.chkMainSlider.UseVisualStyleBackColor = True
         '
         'chkBars
         '
-        Me.chkBars.AutoSize = True
-        Me.chkBars.Location = New System.Drawing.Point(12, 65)
+        Me.chkBars.AccessibleDescription = Nothing
+        Me.chkBars.AccessibleName = Nothing
+        resources.ApplyResources(Me.chkBars, "chkBars")
+        Me.chkBars.BackgroundImage = Nothing
+        Me.chkBars.Font = Nothing
         Me.chkBars.Name = "chkBars"
-        Me.chkBars.Size = New System.Drawing.Size(84, 17)
-        Me.chkBars.TabIndex = 3
-        Me.chkBars.Text = "Bars Images"
         Me.chkBars.UseVisualStyleBackColor = True
         '
         'chkKeypad
         '
-        Me.chkKeypad.AutoSize = True
-        Me.chkKeypad.Location = New System.Drawing.Point(12, 203)
+        Me.chkKeypad.AccessibleDescription = Nothing
+        Me.chkKeypad.AccessibleName = Nothing
+        resources.ApplyResources(Me.chkKeypad, "chkKeypad")
+        Me.chkKeypad.BackgroundImage = Nothing
+        Me.chkKeypad.Font = Nothing
         Me.chkKeypad.Name = "chkKeypad"
-        Me.chkKeypad.Size = New System.Drawing.Size(92, 17)
-        Me.chkKeypad.TabIndex = 9
-        Me.chkKeypad.Text = "Dialer Keypad"
         Me.chkKeypad.UseVisualStyleBackColor = True
         '
         'chkBalloons
         '
-        Me.chkBalloons.AutoSize = True
-        Me.chkBalloons.Location = New System.Drawing.Point(12, 180)
+        Me.chkBalloons.AccessibleDescription = Nothing
+        Me.chkBalloons.AccessibleName = Nothing
+        resources.ApplyResources(Me.chkBalloons, "chkBalloons")
+        Me.chkBalloons.BackgroundImage = Nothing
+        Me.chkBalloons.Font = Nothing
         Me.chkBalloons.Name = "chkBalloons"
-        Me.chkBalloons.Size = New System.Drawing.Size(91, 17)
-        Me.chkBalloons.TabIndex = 8
-        Me.chkBalloons.Text = "Chat Balloons"
         Me.chkBalloons.UseVisualStyleBackColor = True
         '
         'chkSound
         '
-        Me.chkSound.AutoSize = True
-        Me.chkSound.Location = New System.Drawing.Point(12, 157)
+        Me.chkSound.AccessibleDescription = Nothing
+        Me.chkSound.AccessibleName = Nothing
+        resources.ApplyResources(Me.chkSound, "chkSound")
+        Me.chkSound.BackgroundImage = Nothing
+        Me.chkSound.Font = Nothing
         Me.chkSound.Name = "chkSound"
-        Me.chkSound.Size = New System.Drawing.Size(94, 17)
-        Me.chkSound.TabIndex = 7
-        Me.chkSound.Text = "Sound Images"
         Me.chkSound.UseVisualStyleBackColor = True
         '
         'chkBattery
         '
-        Me.chkBattery.AutoSize = True
-        Me.chkBattery.Location = New System.Drawing.Point(12, 134)
+        Me.chkBattery.AccessibleDescription = Nothing
+        Me.chkBattery.AccessibleName = Nothing
+        resources.ApplyResources(Me.chkBattery, "chkBattery")
+        Me.chkBattery.BackgroundImage = Nothing
+        Me.chkBattery.Font = Nothing
         Me.chkBattery.Name = "chkBattery"
-        Me.chkBattery.Size = New System.Drawing.Size(96, 17)
-        Me.chkBattery.TabIndex = 6
-        Me.chkBattery.Text = "Battery Images"
         Me.chkBattery.UseVisualStyleBackColor = True
         '
         'chkBadge
         '
-        Me.chkBadge.AutoSize = True
-        Me.chkBadge.Location = New System.Drawing.Point(12, 111)
+        Me.chkBadge.AccessibleDescription = Nothing
+        Me.chkBadge.AccessibleName = Nothing
+        resources.ApplyResources(Me.chkBadge, "chkBadge")
+        Me.chkBadge.BackgroundImage = Nothing
+        Me.chkBadge.Font = Nothing
         Me.chkBadge.Name = "chkBadge"
-        Me.chkBadge.Size = New System.Drawing.Size(89, 17)
-        Me.chkBadge.TabIndex = 5
-        Me.chkBadge.Text = "Badge Image"
         Me.chkBadge.UseVisualStyleBackColor = True
         '
         'chkWiFi
         '
-        Me.chkWiFi.AutoSize = True
-        Me.chkWiFi.Location = New System.Drawing.Point(12, 88)
+        Me.chkWiFi.AccessibleDescription = Nothing
+        Me.chkWiFi.AccessibleName = Nothing
+        resources.ApplyResources(Me.chkWiFi, "chkWiFi")
+        Me.chkWiFi.BackgroundImage = Nothing
+        Me.chkWiFi.Font = Nothing
         Me.chkWiFi.Name = "chkWiFi"
-        Me.chkWiFi.Size = New System.Drawing.Size(84, 17)
-        Me.chkWiFi.TabIndex = 4
-        Me.chkWiFi.Text = "WiFi Images"
         Me.chkWiFi.UseVisualStyleBackColor = True
         '
         'cbCarriers
         '
-        Me.cbCarriers.Enabled = False
+        Me.cbCarriers.AccessibleDescription = Nothing
+        Me.cbCarriers.AccessibleName = Nothing
+        resources.ApplyResources(Me.cbCarriers, "cbCarriers")
+        Me.cbCarriers.BackgroundImage = Nothing
+        Me.cbCarriers.Font = Nothing
         Me.cbCarriers.FormattingEnabled = True
-        Me.cbCarriers.Items.AddRange(New Object() {"ATT", "CINGULAR", "TMOBILE", "VODAFONE"})
-        Me.cbCarriers.Location = New System.Drawing.Point(111, 38)
+        Me.cbCarriers.Items.AddRange(New Object() {resources.GetString("cbCarriers.Items"), resources.GetString("cbCarriers.Items1"), resources.GetString("cbCarriers.Items2"), resources.GetString("cbCarriers.Items3")})
         Me.cbCarriers.Name = "cbCarriers"
-        Me.cbCarriers.Size = New System.Drawing.Size(121, 21)
-        Me.cbCarriers.TabIndex = 2
-        Me.cbCarriers.Text = "ATT"
         '
         'chkCarrier
         '
-        Me.chkCarrier.AutoSize = True
-        Me.chkCarrier.Location = New System.Drawing.Point(12, 42)
+        Me.chkCarrier.AccessibleDescription = Nothing
+        Me.chkCarrier.AccessibleName = Nothing
+        resources.ApplyResources(Me.chkCarrier, "chkCarrier")
+        Me.chkCarrier.BackgroundImage = Nothing
+        Me.chkCarrier.Font = Nothing
         Me.chkCarrier.Name = "chkCarrier"
-        Me.chkCarrier.Size = New System.Drawing.Size(93, 17)
-        Me.chkCarrier.TabIndex = 1
-        Me.chkCarrier.Text = "Carrier Images"
         Me.chkCarrier.UseVisualStyleBackColor = True
         '
         'chkDock
         '
-        Me.chkDock.AutoSize = True
-        Me.chkDock.Location = New System.Drawing.Point(12, 19)
+        Me.chkDock.AccessibleDescription = Nothing
+        Me.chkDock.AccessibleName = Nothing
+        resources.ApplyResources(Me.chkDock, "chkDock")
+        Me.chkDock.BackgroundImage = Nothing
+        Me.chkDock.Font = Nothing
         Me.chkDock.Name = "chkDock"
-        Me.chkDock.Size = New System.Drawing.Size(113, 17)
-        Me.chkDock.TabIndex = 0
-        Me.chkDock.Text = "Dock Background"
         Me.chkDock.UseVisualStyleBackColor = True
         '
         'grpSounds
         '
+        Me.grpSounds.AccessibleDescription = Nothing
+        Me.grpSounds.AccessibleName = Nothing
+        resources.ApplyResources(Me.grpSounds, "grpSounds")
+        Me.grpSounds.BackgroundImage = Nothing
         Me.grpSounds.Controls.Add(Me.btnSounds)
         Me.grpSounds.Controls.Add(Me.cbSounds)
-        Me.grpSounds.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.grpSounds.Location = New System.Drawing.Point(260, 41)
+        Me.grpSounds.Font = Nothing
         Me.grpSounds.Name = "grpSounds"
-        Me.grpSounds.Size = New System.Drawing.Size(250, 317)
-        Me.grpSounds.TabIndex = 2
         Me.grpSounds.TabStop = False
-        Me.grpSounds.Text = "Sounds"
         '
         'btnSounds
         '
-        Me.btnSounds.Location = New System.Drawing.Point(169, 12)
+        Me.btnSounds.AccessibleDescription = Nothing
+        Me.btnSounds.AccessibleName = Nothing
+        resources.ApplyResources(Me.btnSounds, "btnSounds")
+        Me.btnSounds.BackgroundImage = Nothing
+        Me.btnSounds.Font = Nothing
         Me.btnSounds.Name = "btnSounds"
-        Me.btnSounds.Size = New System.Drawing.Size(75, 23)
-        Me.btnSounds.TabIndex = 0
-        Me.btnSounds.Text = "Sounds"
         Me.btnSounds.UseVisualStyleBackColor = True
         '
         'cbSounds
         '
+        Me.cbSounds.AccessibleDescription = Nothing
+        Me.cbSounds.AccessibleName = Nothing
+        resources.ApplyResources(Me.cbSounds, "cbSounds")
         Me.cbSounds.BackColor = System.Drawing.SystemColors.Control
+        Me.cbSounds.BackgroundImage = Nothing
         Me.cbSounds.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.cbSounds.CheckOnClick = True
-        Me.cbSounds.Dock = System.Windows.Forms.DockStyle.Left
+        Me.cbSounds.Font = Nothing
         Me.cbSounds.FormattingEnabled = True
-        Me.cbSounds.Items.AddRange(New Object() {"Line 1", "Line 2"})
-        Me.cbSounds.Location = New System.Drawing.Point(3, 16)
+        Me.cbSounds.Items.AddRange(New Object() {resources.GetString("cbSounds.Items"), resources.GetString("cbSounds.Items1")})
         Me.cbSounds.Name = "cbSounds"
-        Me.cbSounds.Size = New System.Drawing.Size(160, 285)
-        Me.cbSounds.TabIndex = 1
         '
         'grpButtons
         '
+        Me.grpButtons.AccessibleDescription = Nothing
+        Me.grpButtons.AccessibleName = Nothing
+        resources.ApplyResources(Me.grpButtons, "grpButtons")
+        Me.grpButtons.BackgroundImage = Nothing
         Me.grpButtons.Controls.Add(Me.btnClearAll)
         Me.grpButtons.Controls.Add(Me.btnSelectAll)
         Me.grpButtons.Controls.Add(Me.btnCancel)
         Me.grpButtons.Controls.Add(Me.btnOK)
-        Me.grpButtons.Dock = System.Windows.Forms.DockStyle.Right
-        Me.grpButtons.Location = New System.Drawing.Point(510, 0)
+        Me.grpButtons.Font = Nothing
         Me.grpButtons.Name = "grpButtons"
-        Me.grpButtons.Size = New System.Drawing.Size(100, 358)
-        Me.grpButtons.TabIndex = 3
         Me.grpButtons.TabStop = False
         '
         'btnClearAll
         '
-        Me.btnClearAll.Location = New System.Drawing.Point(13, 127)
+        Me.btnClearAll.AccessibleDescription = Nothing
+        Me.btnClearAll.AccessibleName = Nothing
+        resources.ApplyResources(Me.btnClearAll, "btnClearAll")
+        Me.btnClearAll.BackgroundImage = Nothing
+        Me.btnClearAll.Font = Nothing
         Me.btnClearAll.Name = "btnClearAll"
-        Me.btnClearAll.Size = New System.Drawing.Size(75, 23)
-        Me.btnClearAll.TabIndex = 1
-        Me.btnClearAll.Text = "Clear All"
         Me.btnClearAll.UseVisualStyleBackColor = True
         '
         'btnSelectAll
         '
-        Me.btnSelectAll.Location = New System.Drawing.Point(13, 98)
+        Me.btnSelectAll.AccessibleDescription = Nothing
+        Me.btnSelectAll.AccessibleName = Nothing
+        resources.ApplyResources(Me.btnSelectAll, "btnSelectAll")
+        Me.btnSelectAll.BackgroundImage = Nothing
+        Me.btnSelectAll.Font = Nothing
         Me.btnSelectAll.Name = "btnSelectAll"
-        Me.btnSelectAll.Size = New System.Drawing.Size(75, 23)
-        Me.btnSelectAll.TabIndex = 0
-        Me.btnSelectAll.Text = "Select All"
         Me.btnSelectAll.UseVisualStyleBackColor = True
         '
         'btnCancel
         '
+        Me.btnCancel.AccessibleDescription = Nothing
+        Me.btnCancel.AccessibleName = Nothing
+        resources.ApplyResources(Me.btnCancel, "btnCancel")
+        Me.btnCancel.BackgroundImage = Nothing
         Me.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.btnCancel.Location = New System.Drawing.Point(13, 41)
+        Me.btnCancel.Font = Nothing
         Me.btnCancel.Name = "btnCancel"
-        Me.btnCancel.Size = New System.Drawing.Size(75, 23)
-        Me.btnCancel.TabIndex = 3
-        Me.btnCancel.Text = "Cancel"
         Me.btnCancel.UseVisualStyleBackColor = True
         '
         'btnOK
         '
+        Me.btnOK.AccessibleDescription = Nothing
+        Me.btnOK.AccessibleName = Nothing
+        resources.ApplyResources(Me.btnOK, "btnOK")
+        Me.btnOK.BackgroundImage = Nothing
         Me.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK
-        Me.btnOK.Enabled = False
-        Me.btnOK.Location = New System.Drawing.Point(13, 12)
+        Me.btnOK.Font = Nothing
         Me.btnOK.Name = "btnOK"
-        Me.btnOK.Size = New System.Drawing.Size(75, 23)
-        Me.btnOK.TabIndex = 2
-        Me.btnOK.Text = "OK"
         Me.btnOK.UseVisualStyleBackColor = True
         '
         'grpTheme
         '
+        Me.grpTheme.AccessibleDescription = Nothing
+        Me.grpTheme.AccessibleName = Nothing
+        resources.ApplyResources(Me.grpTheme, "grpTheme")
+        Me.grpTheme.BackgroundImage = Nothing
         Me.grpTheme.Controls.Add(Me.txtCategory)
         Me.grpTheme.Controls.Add(Me.Label2)
         Me.grpTheme.Controls.Add(Me.txtThemeName)
         Me.grpTheme.Controls.Add(Me.Label1)
-        Me.grpTheme.Dock = System.Windows.Forms.DockStyle.Top
-        Me.grpTheme.Location = New System.Drawing.Point(0, 0)
+        Me.grpTheme.Font = Nothing
         Me.grpTheme.Name = "grpTheme"
-        Me.grpTheme.Size = New System.Drawing.Size(510, 41)
-        Me.grpTheme.TabIndex = 0
         Me.grpTheme.TabStop = False
-        Me.grpTheme.Text = "Theme Identification"
         '
         'txtCategory
         '
-        Me.txtCategory.Location = New System.Drawing.Point(79, 14)
+        Me.txtCategory.AccessibleDescription = Nothing
+        Me.txtCategory.AccessibleName = Nothing
+        resources.ApplyResources(Me.txtCategory, "txtCategory")
+        Me.txtCategory.BackgroundImage = Nothing
+        Me.txtCategory.Font = Nothing
         Me.txtCategory.Name = "txtCategory"
-        Me.txtCategory.Size = New System.Drawing.Size(144, 20)
-        Me.txtCategory.TabIndex = 0
         '
         'Label2
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(6, 15)
+        Me.Label2.AccessibleDescription = Nothing
+        Me.Label2.AccessibleName = Nothing
+        resources.ApplyResources(Me.Label2, "Label2")
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(67, 15)
-        Me.Label2.TabIndex = 2
-        Me.Label2.Text = "Category:"
         '
         'txtThemeName
         '
-        Me.txtThemeName.Location = New System.Drawing.Point(292, 12)
+        Me.txtThemeName.AccessibleDescription = Nothing
+        Me.txtThemeName.AccessibleName = Nothing
+        resources.ApplyResources(Me.txtThemeName, "txtThemeName")
+        Me.txtThemeName.BackgroundImage = Nothing
+        Me.txtThemeName.Font = Nothing
         Me.txtThemeName.Name = "txtThemeName"
-        Me.txtThemeName.Size = New System.Drawing.Size(212, 20)
-        Me.txtThemeName.TabIndex = 1
         '
         'Label1
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(237, 15)
+        Me.Label1.AccessibleDescription = Nothing
+        Me.Label1.AccessibleName = Nothing
+        resources.ApplyResources(Me.Label1, "Label1")
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(49, 15)
-        Me.Label1.TabIndex = 0
-        Me.Label1.Text = "Name:"
         '
         'frmCustomizeOptions
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AccessibleDescription = Nothing
+        Me.AccessibleName = Nothing
+        resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(610, 358)
+        Me.BackgroundImage = Nothing
         Me.ControlBox = False
         Me.Controls.Add(Me.grpSounds)
         Me.Controls.Add(Me.grpImages)
         Me.Controls.Add(Me.grpTheme)
         Me.Controls.Add(Me.grpButtons)
+        Me.Font = Nothing
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.Icon = Nothing
         Me.Name = "frmCustomizeOptions"
         Me.ShowInTaskbar = False
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
-        Me.Text = "Customize Options"
         Me.grpImages.ResumeLayout(False)
         Me.grpImages.PerformLayout()
         Me.grpSounds.ResumeLayout(False)

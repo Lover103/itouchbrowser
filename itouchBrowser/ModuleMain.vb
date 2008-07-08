@@ -3,6 +3,7 @@ Option Strict On
 
 Imports System.IO
 Imports System.Drawing.Imaging
+Imports System.Text
 Imports Manzana
 Imports SCW_iPhonePNG
 
@@ -10,6 +11,7 @@ Module ModuleMain
 
     Friend Const STRING_ROOT As String = "[root]"
     Friend Const MAX_PROG_DEPTH As Integer = 1
+    Friend Const BACKUP_DIRECTORY As String = "touchBrowser"
     Friend FILE_TEMPORARY_VIEWER As String = "iPhone.temp"
 
     Friend objMain As frmMain
@@ -20,7 +22,8 @@ Module ModuleMain
     Friend ProgressBars(MAX_PROG_DEPTH) As ToolStripProgressBar
     Friend ProgressValue(MAX_PROG_DEPTH) As Integer
     Friend escapeFlg As Boolean = False
-    Friend BackupPath As String = ""
+    Friend bNowConnected As Boolean = False
+    Friend bConnectionChanged As Boolean = False
 
     ' import some functions
     Public Enum MessageBeepType
@@ -53,13 +56,13 @@ Module ModuleMain
         ProgressDepth += 1
         If ProgressDepth <= MAX_PROG_DEPTH Then
             If ProgressDepth = 0 Then ' first bar - turn all on
-                For j1 As Integer = 0 To MAX_PROG_DEPTH
+                For j1 As Integer = MAX_PROG_DEPTH To 0 Step -1
                     With ProgressBars(j1)
                         .Visible = True
                         .Value = 0
                     End With
                 Next
-                objMain.TSDDBtnCancel.Visible = True
+                objMain.BtnCancel.Visible = True
                 escapeFlg = False
             End If
             ProgressBars(ProgressDepth).Maximum = iMax + 1
@@ -70,20 +73,20 @@ Module ModuleMain
     End Function
 
     Friend Sub EndStatus()
-        If ProgressDepth <= MAX_PROG_DEPTH AndAlso ProgressDepth > -1 Then
-            If ProgressDepth = 0 Then
-                objMain.Timer1.Enabled = False
-            End If
-            ProgressBars(ProgressDepth).Value = 0
-
-            If ProgressDepth = 0 Then ' first bar - turn all off
-                For j1 As Integer = 0 To MAX_PROG_DEPTH
-                    ProgressBars(j1).Visible = False
-                Next
-                objMain.TSDDBtnCancel.Visible = False
-            End If
-        End If
         If ProgressDepth >= 0 Then
+            If ProgressDepth <= MAX_PROG_DEPTH Then
+                If ProgressDepth = 0 Then
+                    objMain.Timer1.Enabled = False
+                End If
+                ProgressBars(ProgressDepth).Value = 0
+
+                If ProgressDepth = 0 Then ' first bar - turn all off
+                    For j1 As Integer = 0 To MAX_PROG_DEPTH
+                        ProgressBars(j1).Visible = False
+                    Next
+                    objMain.BtnCancel.Visible = False
+                End If
+            End If
             ProgressDepth -= 1
         End If
         objMain.tlbStatusStrip.Refresh()
@@ -91,8 +94,12 @@ Module ModuleMain
 
     Friend Function IncrementStatus() As Boolean
         If ProgressDepth <= MAX_PROG_DEPTH Then
-            ProgressValue(ProgressDepth) += 1
-            Application.DoEvents()
+            Try
+                ProgressValue(ProgressDepth) += 1
+                Application.DoEvents()
+            Catch
+                escapeFlg = True
+            End Try
         End If
         Return escapeFlg
     End Function
@@ -108,32 +115,34 @@ Module ModuleMain
         Return sTemp
     End Function
 
-    Friend Function CopyFromPhone(ByVal sourceOnPhone As String, ByVal destinationOnComputer As String) As Boolean
+    Friend Function CopyFromPhone(ByVal sourceOnPhone As String, ByVal destinationOnComputer As String) As Integer
         Dim sBuffer(8191) As Byte
         Dim iDataBytes As Integer
         Dim iPhoneFileInterface As iPhoneFile
         Dim fileTemp As FileStream
-        Dim bReturn As Boolean = False
+        Dim bReturn As Integer = -1
 
         'remove our local file if it exists
         If File.Exists(destinationOnComputer) Then
             Try
                 My.Computer.FileSystem.DeleteFile(destinationOnComputer)
             Catch
-                Exit Function
+                Return bReturn
             End Try
         End If
 
         'make sure the source file exists
         If iPhoneInterface.Exists(sourceOnPhone) Then
-            Dim depth As Integer = startStatus(CInt(iPhoneInterface.FileSize(sourceOnPhone) / sBuffer.Length)) 'show our progress bar
+            Dim depth As Integer = StartStatus(CInt(iPhoneInterface.FileSize(sourceOnPhone) / sBuffer.Length)) 'show our progress bar
 
             'open a connection to the file and read it
             Try
+                iPhoneInterface.CurrentDirectory = "/"
                 iPhoneFileInterface = iPhoneFile.OpenRead(iPhoneInterface, sourceOnPhone)
 
             Catch ex As Exception
-                Exit Function
+                ResetiPhone()
+                Return bReturn
             End Try
 
             Try
@@ -143,14 +152,15 @@ Module ModuleMain
                 While iDataBytes > 0
                     fileTemp.Write(sBuffer, 0, iDataBytes)
                     iDataBytes = iPhoneFileInterface.Read(sBuffer, 0, sBuffer.Length)
-                    If incrementStatus() Then Exit While 'increment our progressbar
+                    If IncrementStatus() Then Exit While 'increment our progressbar
                 End While
-                endStatus() 'fill our progressbar
+                EndStatus() 'fill our progressbar
 
                 iPhoneFileInterface.Close()
+                iPhoneFileInterface.Dispose()
                 fileTemp.Close()
 
-                bReturn = True
+                bReturn = 0
 
             Catch exio As IOException
                 StatusWarning(exio.Message)
@@ -164,41 +174,41 @@ Module ModuleMain
             End Try
         End If
 
-        copyFromPhone = bReturn
+        Return bReturn
     End Function
 
-    Friend Function CopyFromPhoneMakePNG(ByVal sPhone As String, ByVal dComputer As String) As Boolean
-        Dim tmpOnPC As String = getTempFilename(sPhone)
-        Dim ans As Boolean = copyFromPhone(sPhone, tmpOnPC)
-        If ans Then
+    Friend Function CopyFromPhoneMakePNG(ByVal sPhone As String, ByVal dComputer As String) As Integer
+        Dim tmpOnPC As String = GetTempFilename(sPhone)
+        Dim ans As Integer = CopyFromPhone(sPhone, tmpOnPC)
+        If ans = 0 Then
             Try
                 Dim cvtImage As Image = iPhonePNG.ImageFromFile(tmpOnPC)
                 cvtImage.Save(dComputer, ImageFormat.Png)
             Catch
-                ans = copyFromPhone(sPhone, dComputer)
+                ans = CopyFromPhone(sPhone, dComputer)
             End Try
         End If
 
         Return ans
     End Function
 
-    Friend Function CopyFromPhonePNG(ByVal sPhone As String, ByVal dComputer As String) As Boolean
+    Friend Function CopyFromPhonePNG(ByVal sPhone As String, ByVal dComputer As String) As Integer
         If bConvertToPNG AndAlso sPhone.ToLower.EndsWith(".png") Then
-            Dim tmpOnPC As String = getTempFilename(sPhone)
-            Dim ans As Boolean = copyFromPhone(sPhone, tmpOnPC)
-            If ans Then
+            Dim tmpOnPC As String = GetTempFilename(sPhone)
+            Dim ans As Integer = CopyFromPhone(sPhone, tmpOnPC)
+            If ans = 0 Then
                 Try
                     Dim cvtImage As Image = iPhonePNG.ImageFromFile(tmpOnPC)
                     cvtImage.Save(dComputer, ImageFormat.Png)
                 Catch
-                    ans = copyFromPhone(sPhone, dComputer)
+                    ans = CopyFromPhone(sPhone, dComputer)
                 End Try
                 My.Computer.FileSystem.DeleteFile(tmpOnPC)
             End If
 
             Return ans
         Else
-            Return copyFromPhone(sPhone, dComputer)
+            Return CopyFromPhone(sPhone, dComputer)
         End If
     End Function
 
@@ -329,7 +339,7 @@ Module ModuleMain
         copyToPhoneAt = bReturn
     End Function
 
-    Friend Sub BackupFileFromPhone(ByVal sSourcePath As String, ByVal sSourceFile As String)
+    Friend Function BackupFileFromPhone(ByVal sSourcePath As String, ByVal sSourceFile As String) As Integer
         'copies a file from the phone and backs it up in the appropriate directory
         'grab the file then save it with an extra extension
         Dim sDestinationPath As String, sDestinationFile As String
@@ -340,7 +350,7 @@ Module ModuleMain
 
         Try
             sDestinationFile = FixPhoneFilename(sSourceFile)
-            sDestinationPath = BackupPath & sSourcePath.Replace("/", "\")
+            sDestinationPath = GetBackupPath(False) & sSourcePath.Replace("/", "\")
 
             'Create the directory if it does not already exist
             If Not Directory.Exists(sDestinationPath) Then
@@ -349,42 +359,63 @@ Module ModuleMain
                 ' make sure there isn't a file conflict - create a new backup dir if necessary
                 If File.Exists(sDestinationPath & sDestinationFile) Then
                     'SetBackupPath(aTime)
-                    sDestinationPath = BackupPath & sSourcePath.Replace("/", "\")
+                    sDestinationPath = GetBackupPath(False) & sSourcePath.Replace("/", "\")
                     Directory.CreateDirectory(sDestinationPath)
                 End If
             End If
 
             'copy file into the backup directory
-            copyFromPhone(sSourcePath & sSourceFile, sDestinationPath & sDestinationFile)
+            Dim rc As Integer = CopyFromPhone(sSourcePath & sSourceFile, sDestinationPath & sDestinationFile)
 
             StatusNormal("Backed up as '" & sDestinationFile & "'.")
 
+            Return rc
+
         Catch ex As Exception
             StatusWarning(ex.Message)
+            ResetiPhone()
+            Return -1
 
         End Try
 
-    End Sub
+    End Function
 
     'Private Sub backupFileFromPhone(ByVal sSourcePath As String, ByVal sSourceFile As String)
     '    backupFileFromPhoneAt(sSourcePath, sSourceFile)
     'End Sub
 
     Friend Sub BackupDirectory(ByVal sPath As String)
-        startStatus(iPhoneInterface.GetDirectories(sPath).Length)
+        StartStatus(iPhoneInterface.GetDirectories(sPath).Length)
         BackupDirectory(sPath, 0)
-        endStatus()
+        EndStatus()
     End Sub
 
-    Private Sub backupDirectory(ByVal sPath As String, ByVal depth As Integer)
-        For Each sFile As String In iPhoneInterface.GetFiles(sPath)
-            BackupFileFromPhone(sPath, sFile)
-        Next
-        For Each sDir As String In iPhoneInterface.GetDirectories(sPath)
-            BackupDirectory(sPath & "/" & sDir, depth + 1)
-            If depth = 0 AndAlso incrementStatus() Then Exit For
-        Next
-    End Sub
+    Private Function backupDirectory(ByVal sPath As String, ByVal depth As Integer) As Integer
+        Try
+            Dim rc As Integer = 0
+            Dim tmp As String() = iPhoneInterface.GetFiles(sPath)
+
+            For Each sFile As String In tmp
+                If BackupFileFromPhone(sPath, sFile) <> 0 Then
+                    ResetiPhone()
+                    Exit For
+                End If
+            Next
+            tmp = iPhoneInterface.GetDirectories(sPath)
+            For Each sDir As String In tmp
+                rc = backupDirectory(sPath & "/" & sDir, depth + 1)
+                If depth = 0 AndAlso IncrementStatus() Then Exit For
+                If rc <> 0 Then Exit For
+            Next
+
+            Return 0
+
+        Catch ex As Exception
+            StatusWarning(ex.Message & "[" & sPath & "]")
+            Return -1
+
+        End Try
+    End Function
 
     'Private Sub BackupDirectory(ByVal sPath As String)
     '    BackupDirectoryAt(sPath)
@@ -414,7 +445,7 @@ Module ModuleMain
             bReturn = True
         End If
 
-        delFromPhone = bReturn
+        DelFromPhone = bReturn
     End Function
 
     Private Sub needDir(ByVal aDir As String)
@@ -661,6 +692,58 @@ Module ModuleMain
         sTemp = FixPhoneFilename(sTemp)
 
         Return FILE_TEMPORARY_VIEWER & sTemp
+    End Function
+
+    Friend Sub ResetiPhone()
+        'iPhoneInterface = New iPhone
+        'bNowConnected = False
+        'objMain.iPhoneConnected_Details()
+        iPhoneInterface.CurrentDirectory = "/"
+        'iPhoneInterface.Is
+        EndStatus()
+    End Sub
+
+    Private backupSubPath As String = ""
+
+    Friend Sub setBackupPath(ByVal aTime As Date)
+        backupSubPath = BACKUP_DIRECTORY & "\BACKUPS" & Format(aTime, ".yyyyMMdd.HHmmss")
+    End Sub
+
+    Friend Function GetBackupPath(ByVal show As Boolean) As String
+        If show Then
+            Return Path.Combine(My.Settings.BackupPath, BACKUP_DIRECTORY)
+        Else
+            Return Path.Combine(My.Settings.BackupPath, backupSubPath)
+        End If
+    End Function
+
+    Friend Function convertcd(ByVal str As String) As String
+        Dim unicodeString As String = str
+
+        Return str
+
+        '' Create two different encodings.
+        'Dim ascii As System.Text.Encoding = Encoding.GetEncoding(437)
+        'Dim [unicode] As Encoding = Encoding.GetEncoding(932)
+
+        '' Convert the string into a byte[].
+        'Dim unicodeBytes As Byte() = [unicode].GetBytes(unicodeString)
+
+        '' Perform the conversion from one encoding to the other.
+        'Dim asciiBytes As Byte() = Encoding.Convert([unicode], ascii, unicodeBytes)
+
+        '' Convert the new byte[] into a char[] and then into a string.
+        '' This is a slightly different approach to converting to illustrate
+        '' the use of GetCharCount/GetChars.
+        'Dim asciiChars(ascii.GetCharCount(asciiBytes, 0, asciiBytes.Length)) As Char
+        'ascii.GetChars(asciiBytes, 0, asciiBytes.Length, asciiChars, 0)
+        'Dim asciiString As New String(asciiChars)
+
+        '' Display the strings created before and after the conversion.
+        'Console.WriteLine("Original string: {0}", unicodeString)
+        'Console.WriteLine("Ascii converted string: {0}", asciiString)
+
+        'Return asciiString
     End Function
 
 End Module
