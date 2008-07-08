@@ -117,4 +117,805 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="chkBars.Text" xml:space="preserve">
+    <value>Bars Images</value>
+  </data>
+  <data name="&gt;&gt;chkKeypad.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="chkCarrier.Text" xml:space="preserve">
+    <value>Carrier Images</value>
+  </data>
+  <data name="&gt;&gt;Label2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="chkWiFi.Size" type="System.Drawing.Size, System.Drawing">
+    <value>86, 16</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="chkSound.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkBattery.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;txtCategory.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="grpImages.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;txtCategory.Parent" xml:space="preserve">
+    <value>grpTheme</value>
+  </data>
+  <data name="&gt;&gt;grpTheme.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="cbCarriers.Items3" xml:space="preserve">
+    <value>VODAFONE</value>
+  </data>
+  <data name="&gt;&gt;grpButtons.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="cbCarriers.Items1" xml:space="preserve">
+    <value>CINGULAR</value>
+  </data>
+  <data name="chkBadge.Size" type="System.Drawing.Size, System.Drawing">
+    <value>90, 16</value>
+  </data>
+  <data name="&gt;&gt;chkBalloons.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="chkCallSlider.Text" xml:space="preserve">
+    <value>Call Slider</value>
+  </data>
+  <data name="grpButtons.Location" type="System.Drawing.Point, System.Drawing">
+    <value>510, 0</value>
+  </data>
+  <data name="&gt;&gt;btnOK.Name" xml:space="preserve">
+    <value>btnOK</value>
+  </data>
+  <data name="grpSounds.Location" type="System.Drawing.Point, System.Drawing">
+    <value>260, 38</value>
+  </data>
+  <data name="&gt;&gt;chkWiFi.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="chkBars.Size" type="System.Drawing.Size, System.Drawing">
+    <value>88, 16</value>
+  </data>
+  <data name="chkSound.Size" type="System.Drawing.Size, System.Drawing">
+    <value>95, 16</value>
+  </data>
+  <data name="grpSounds.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="chkWiFi.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 81</value>
+  </data>
+  <data name="&gt;&gt;grpButtons.Name" xml:space="preserve">
+    <value>grpButtons</value>
+  </data>
+  <data name="grpTheme.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="&gt;&gt;chkWiFi.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="btnSliders.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 21</value>
+  </data>
+  <data name="&gt;&gt;cbSounds.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckedListBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="btnClearAll.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 21</value>
+  </data>
+  <data name="&gt;&gt;txtThemeName.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;chkBattery.Parent" xml:space="preserve">
+    <value>grpImages</value>
+  </data>
+  <data name="&gt;&gt;grpTheme.Name" xml:space="preserve">
+    <value>grpTheme</value>
+  </data>
+  <data name="chkWiFi.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;btnSelectAll.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="grpSounds.Size" type="System.Drawing.Size, System.Drawing">
+    <value>250, 292</value>
+  </data>
+  <data name="&gt;&gt;chkMainSlider.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="btnSelectAll.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 21</value>
+  </data>
+  <data name="Label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>49, 15</value>
+  </data>
+  <data name="&gt;&gt;btnClearAll.Name" xml:space="preserve">
+    <value>btnClearAll</value>
+  </data>
+  <data name="&gt;&gt;chkPowerSlider.Parent" xml:space="preserve">
+    <value>grpImages</value>
+  </data>
+  <data name="chkDock.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;chkKeypad.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkCallSlider.Parent" xml:space="preserve">
+    <value>grpImages</value>
+  </data>
+  <data name="&gt;&gt;chkCallSlider.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="chkKeypad.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;chkHiMask.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="grpImages.Text" xml:space="preserve">
+    <value>Images</value>
+  </data>
+  <data name="txtCategory.Location" type="System.Drawing.Point, System.Drawing">
+    <value>79, 13</value>
+  </data>
+  <data name="&gt;&gt;btnSounds.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="chkBars.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 60</value>
+  </data>
+  <data name="chkHiMask.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="btnCancel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 21</value>
+  </data>
+  <data name="&gt;&gt;chkSound.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkBadge.Parent" xml:space="preserve">
+    <value>grpImages</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Customize Options</value>
+  </data>
+  <data name="&gt;&gt;chkKeypad.Name" xml:space="preserve">
+    <value>chkKeypad</value>
+  </data>
+  <data name="&gt;&gt;chkKeypad.Parent" xml:space="preserve">
+    <value>grpImages</value>
+  </data>
+  <data name="&gt;&gt;cbSounds.Name" xml:space="preserve">
+    <value>cbSounds</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>frmCustomizeOptions</value>
+  </data>
+  <data name="&gt;&gt;btnCancel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="chkCarrier.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="btnSliders.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="Label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 14</value>
+  </data>
+  <data name="grpTheme.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="chkCarrier.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 39</value>
+  </data>
+  <data name="&gt;&gt;btnSelectAll.Parent" xml:space="preserve">
+    <value>grpButtons</value>
+  </data>
+  <data name="chkMainSlider.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkBattery.Text" xml:space="preserve">
+    <value>Battery Images</value>
+  </data>
+  <data name="&gt;&gt;chkMainSlider.Name" xml:space="preserve">
+    <value>chkMainSlider</value>
+  </data>
+  <data name="txtCategory.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="cbSounds.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="btnSounds.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;chkSound.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="chkBalloons.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;Label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="btnClearAll.Text" xml:space="preserve">
+    <value>Clear All</value>
+  </data>
+  <data name="chkBadge.Text" xml:space="preserve">
+    <value>Badge Image</value>
+  </data>
+  <data name="Label1.Text" xml:space="preserve">
+    <value>Name:</value>
+  </data>
+  <data name="&gt;&gt;cbCarriers.Name" xml:space="preserve">
+    <value>cbCarriers</value>
+  </data>
+  <data name="chkCarrier.Size" type="System.Drawing.Size, System.Drawing">
+    <value>99, 16</value>
+  </data>
+  <data name="chkBalloons.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 16</value>
+  </data>
+  <data name="Label2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt, style=Bold</value>
+  </data>
+  <data name="btnOK.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="txtThemeName.Location" type="System.Drawing.Point, System.Drawing">
+    <value>292, 11</value>
+  </data>
+  <data name="grpImages.Size" type="System.Drawing.Size, System.Drawing">
+    <value>260, 292</value>
+  </data>
+  <data name="chkSound.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 145</value>
+  </data>
+  <data name="chkBadge.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;txtCategory.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;txtThemeName.Parent" xml:space="preserve">
+    <value>grpTheme</value>
+  </data>
+  <data name="&gt;&gt;grpTheme.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="chkKeypad.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 187</value>
+  </data>
+  <data name="&gt;&gt;chkPowerSlider.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Label2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;Label2.Name" xml:space="preserve">
+    <value>Label2</value>
+  </data>
+  <data name="grpButtons.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;grpImages.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="chkKeypad.Size" type="System.Drawing.Size, System.Drawing">
+    <value>95, 16</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="cbCarriers.Location" type="System.Drawing.Point, System.Drawing">
+    <value>111, 35</value>
+  </data>
+  <data name="chkKeypad.Text" xml:space="preserve">
+    <value>Dialer Keypad</value>
+  </data>
+  <data name="chkBalloons.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 166</value>
+  </data>
+  <data name="cbCarriers.Items2" xml:space="preserve">
+    <value>TMOBILE</value>
+  </data>
+  <data name="&gt;&gt;chkBattery.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="chkMainSlider.Size" type="System.Drawing.Size, System.Drawing">
+    <value>81, 16</value>
+  </data>
+  <data name="&gt;&gt;chkBars.Parent" xml:space="preserve">
+    <value>grpImages</value>
+  </data>
+  <data name="&gt;&gt;chkCarrier.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="btnSliders.Text" xml:space="preserve">
+    <value>Sliders</value>
+  </data>
+  <data name="btnSelectAll.Text" xml:space="preserve">
+    <value>Select All</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="cbSounds.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="&gt;&gt;chkDock.Name" xml:space="preserve">
+    <value>chkDock</value>
+  </data>
+  <data name="btnCancel.Text" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="chkSound.Text" xml:space="preserve">
+    <value>Sound Images</value>
+  </data>
+  <data name="&gt;&gt;Label1.Name" xml:space="preserve">
+    <value>Label1</value>
+  </data>
+  <data name="Label1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkBars.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;btnSelectAll.Name" xml:space="preserve">
+    <value>btnSelectAll</value>
+  </data>
+  <data name="&gt;&gt;btnClearAll.Parent" xml:space="preserve">
+    <value>grpButtons</value>
+  </data>
+  <data name="&gt;&gt;chkBalloons.Parent" xml:space="preserve">
+    <value>grpImages</value>
+  </data>
+  <data name="chkPowerSlider.Text" xml:space="preserve">
+    <value>Power Slider</value>
+  </data>
+  <data name="chkHiMask.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 272</value>
+  </data>
+  <data name="chkBalloons.Text" xml:space="preserve">
+    <value>Chat Balloons</value>
+  </data>
+  <data name="&gt;&gt;chkDock.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterParent</value>
+  </data>
+  <data name="chkDock.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 18</value>
+  </data>
+  <data name="&gt;&gt;chkBars.Name" xml:space="preserve">
+    <value>chkBars</value>
+  </data>
+  <data name="cbCarriers.Text" xml:space="preserve">
+    <value>ATT</value>
+  </data>
+  <data name="cbSounds.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 15</value>
+  </data>
+  <data name="txtCategory.Size" type="System.Drawing.Size, System.Drawing">
+    <value>144, 19</value>
+  </data>
+  <data name="chkPowerSlider.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;grpImages.Name" xml:space="preserve">
+    <value>grpImages</value>
+  </data>
+  <data name="&gt;&gt;btnCancel.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;cbCarriers.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Label2.Parent" xml:space="preserve">
+    <value>grpTheme</value>
+  </data>
+  <data name="btnSounds.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 21</value>
+  </data>
+  <data name="&gt;&gt;chkBars.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="cbSounds.Items" xml:space="preserve">
+    <value>Line 1</value>
+  </data>
+  <data name="grpSounds.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="&gt;&gt;chkCallSlider.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="chkMainSlider.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;grpImages.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;grpSounds.Name" xml:space="preserve">
+    <value>grpSounds</value>
+  </data>
+  <data name="&gt;&gt;cbCarriers.Parent" xml:space="preserve">
+    <value>grpImages</value>
+  </data>
+  <data name="chkDock.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="btnSounds.Location" type="System.Drawing.Point, System.Drawing">
+    <value>169, 11</value>
+  </data>
+  <data name="chkWiFi.Text" xml:space="preserve">
+    <value>WiFi Images</value>
+  </data>
+  <data name="&gt;&gt;grpSounds.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="chkBars.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;grpImages.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="chkHiMask.Text" xml:space="preserve">
+    <value>Slider Highlight Mask</value>
+  </data>
+  <data name="&gt;&gt;chkBadge.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;chkBattery.Name" xml:space="preserve">
+    <value>chkBattery</value>
+  </data>
+  <data name="btnClearAll.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 117</value>
+  </data>
+  <data name="&gt;&gt;chkBadge.Name" xml:space="preserve">
+    <value>chkBadge</value>
+  </data>
+  <data name="cbCarriers.Items" xml:space="preserve">
+    <value>ATT</value>
+  </data>
+  <data name="chkKeypad.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="txtThemeName.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="chkHiMask.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="btnOK.Text" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="&gt;&gt;btnClearAll.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;chkMainSlider.Parent" xml:space="preserve">
+    <value>grpImages</value>
+  </data>
+  <data name="&gt;&gt;chkWiFi.Parent" xml:space="preserve">
+    <value>grpImages</value>
+  </data>
+  <data name="&gt;&gt;chkPowerSlider.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;chkCarrier.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="cbCarriers.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;grpButtons.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="chkSound.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;btnCancel.Parent" xml:space="preserve">
+    <value>grpButtons</value>
+  </data>
+  <data name="chkWiFi.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;btnOK.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnClearAll.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 12</value>
+  </data>
+  <data name="btnSliders.Location" type="System.Drawing.Point, System.Drawing">
+    <value>179, 205</value>
+  </data>
+  <data name="&gt;&gt;chkBattery.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="chkPowerSlider.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;btnSounds.Name" xml:space="preserve">
+    <value>btnSounds</value>
+  </data>
+  <data name="&gt;&gt;chkWiFi.Name" xml:space="preserve">
+    <value>chkWiFi</value>
+  </data>
+  <data name="cbCarriers.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;btnOK.Parent" xml:space="preserve">
+    <value>grpButtons</value>
+  </data>
+  <data name="cbCarriers.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 20</value>
+  </data>
+  <data name="chkBadge.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 102</value>
+  </data>
+  <data name="&gt;&gt;btnSliders.Parent" xml:space="preserve">
+    <value>grpImages</value>
+  </data>
+  <data name="&gt;&gt;chkBalloons.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="chkBalloons.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;chkCarrier.Parent" xml:space="preserve">
+    <value>grpImages</value>
+  </data>
+  <data name="chkCarrier.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkBattery.Size" type="System.Drawing.Size, System.Drawing">
+    <value>102, 16</value>
+  </data>
+  <data name="txtThemeName.Size" type="System.Drawing.Size, System.Drawing">
+    <value>212, 19</value>
+  </data>
+  <data name="&gt;&gt;chkBadge.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnSliders.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;grpTheme.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnSounds.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grpSounds.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;chkDock.Parent" xml:space="preserve">
+    <value>grpImages</value>
+  </data>
+  <data name="&gt;&gt;grpButtons.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="grpTheme.Size" type="System.Drawing.Size, System.Drawing">
+    <value>510, 38</value>
+  </data>
+  <data name="grpTheme.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="grpButtons.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 330</value>
+  </data>
+  <data name="btnOK.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="chkBadge.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="chkCallSlider.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 251</value>
+  </data>
+  <data name="Label2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="Label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>237, 14</value>
+  </data>
+  <data name="&gt;&gt;chkCarrier.Name" xml:space="preserve">
+    <value>chkCarrier</value>
+  </data>
+  <data name="grpSounds.Text" xml:space="preserve">
+    <value>Sounds</value>
+  </data>
+  <data name="chkBattery.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="Label2.Text" xml:space="preserve">
+    <value>Category:</value>
+  </data>
+  <data name="chkCallSlider.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkDock.Size" type="System.Drawing.Size, System.Drawing">
+    <value>114, 16</value>
+  </data>
+  <data name="btnSounds.Text" xml:space="preserve">
+    <value>Sounds</value>
+  </data>
+  <data name="&gt;&gt;Label1.Parent" xml:space="preserve">
+    <value>grpTheme</value>
+  </data>
+  <data name="grpTheme.Text" xml:space="preserve">
+    <value>Theme Identification</value>
+  </data>
+  <data name="&gt;&gt;chkCallSlider.Name" xml:space="preserve">
+    <value>chkCallSlider</value>
+  </data>
+  <data name="&gt;&gt;txtCategory.Name" xml:space="preserve">
+    <value>txtCategory</value>
+  </data>
+  <data name="&gt;&gt;chkBalloons.Name" xml:space="preserve">
+    <value>chkBalloons</value>
+  </data>
+  <data name="cbSounds.Size" type="System.Drawing.Size, System.Drawing">
+    <value>160, 266</value>
+  </data>
+  <data name="&gt;&gt;Label1.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="btnClearAll.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;chkSound.Parent" xml:space="preserve">
+    <value>grpImages</value>
+  </data>
+  <data name="grpImages.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="&gt;&gt;cbSounds.Parent" xml:space="preserve">
+    <value>grpSounds</value>
+  </data>
+  <data name="&gt;&gt;cbCarriers.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;btnSounds.Parent" xml:space="preserve">
+    <value>grpSounds</value>
+  </data>
+  <data name="&gt;&gt;chkMainSlider.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnSliders.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grpSounds.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;cbSounds.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="grpImages.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 38</value>
+  </data>
+  <data name="grpButtons.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="chkHiMask.Size" type="System.Drawing.Size, System.Drawing">
+    <value>133, 16</value>
+  </data>
+  <data name="&gt;&gt;chkHiMask.Name" xml:space="preserve">
+    <value>chkHiMask</value>
+  </data>
+  <data name="chkCallSlider.Size" type="System.Drawing.Size, System.Drawing">
+    <value>77, 16</value>
+  </data>
+  <data name="chkMainSlider.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 209</value>
+  </data>
+  <data name="chkPowerSlider.Size" type="System.Drawing.Size, System.Drawing">
+    <value>88, 16</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>610, 330</value>
+  </data>
+  <data name="&gt;&gt;chkDock.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="chkMainSlider.Text" xml:space="preserve">
+    <value>Main Slider</value>
+  </data>
+  <data name="btnSelectAll.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 90</value>
+  </data>
+  <data name="&gt;&gt;btnSliders.Name" xml:space="preserve">
+    <value>btnSliders</value>
+  </data>
+  <data name="&gt;&gt;txtThemeName.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="chkPowerSlider.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 230</value>
+  </data>
+  <data name="chkCallSlider.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="btnOK.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 11</value>
+  </data>
+  <data name="btnSelectAll.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;chkBars.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;btnOK.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;chkHiMask.Parent" xml:space="preserve">
+    <value>grpImages</value>
+  </data>
+  <data name="Label1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt, style=Bold</value>
+  </data>
+  <data name="Label2.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="btnCancel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 38</value>
+  </data>
+  <data name="cbSounds.Items1" xml:space="preserve">
+    <value>Line 2</value>
+  </data>
+  <data name="&gt;&gt;chkSound.Name" xml:space="preserve">
+    <value>chkSound</value>
+  </data>
+  <data name="&gt;&gt;chkHiMask.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;chkPowerSlider.Name" xml:space="preserve">
+    <value>chkPowerSlider</value>
+  </data>
+  <data name="&gt;&gt;btnCancel.Name" xml:space="preserve">
+    <value>btnCancel</value>
+  </data>
+  <data name="&gt;&gt;txtThemeName.Name" xml:space="preserve">
+    <value>txtThemeName</value>
+  </data>
+  <data name="Label1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;btnSelectAll.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>67, 15</value>
+  </data>
+  <data name="btnOK.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 21</value>
+  </data>
+  <data name="btnCancel.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="chkBattery.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 124</value>
+  </data>
+  <data name="chkDock.Text" xml:space="preserve">
+    <value>Dock Background</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>Japanese (Japan)</value>
+  </metadata>
 </root>

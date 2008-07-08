@@ -2,6 +2,7 @@ Option Strict On
 
 Public Class frmOrganizeFavorites
     Public favNames As Specialized.StringCollection, favPaths As Specialized.StringCollection
+
     Public Sub New(ByVal someNames As Specialized.StringCollection, ByVal somePaths As Specialized.StringCollection)
         favNames = New Specialized.StringCollection
         favPaths = New Specialized.StringCollection
@@ -13,6 +14,7 @@ Public Class frmOrganizeFavorites
         Next
         InitializeComponent()
     End Sub
+
     Private Sub frmOrganizeFavorites_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         lstFavs.Items.Clear()
         For j1 As Integer = 0 To favNames.Count - 1
@@ -33,7 +35,7 @@ Public Class frmOrganizeFavorites
     End Sub
 
     Private Sub lstFavs_SizeChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lstFavs.SizeChanged
-        lstFavs.Columns(1).Width = lstFavs.Width - lstFavs.Columns(0).Width - 5
+        'lstFavs.Columns(1).Width = lstFavs.Width - lstFavs.Columns(0).Width - 5
     End Sub
 
     Private Sub lstFavs_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lstFavs.SelectedIndexChanged
@@ -93,4 +95,5 @@ Public Class frmOrganizeFavorites
             lstFavs.Items(selPos + 1).Selected = True
         End If
     End Sub
+
 End Class

@@ -19,13 +19,10 @@ Public Class frmMain
     Const IMAGE_FILE_DATABASE As Integer = 6
     'Const IMAGE_FILE_RINGTONE As Integer = 7
     Const IMAGE_FILE_WEBBROWS As Integer = 7
-    Const BACKUP_DIRECTORY As String = "BACKUPS"
 
     'Private backupPath As String = ""
 
     Private txtSerial As String
-    Private bNowConnected As Boolean = False
-    Private bConnectionChanged As Boolean = False
     Private bUpdateInProgress As Boolean = False
     Private bSupressFiles As Boolean = False
     Private wasQTpreview As Boolean = False
@@ -34,7 +31,7 @@ Public Class frmMain
     Private favNames As Specialized.StringCollection, favPaths As Specialized.StringCollection
     Private IsCollapsing As Boolean
     Private tildeDir As String
-    Private backupRoot As String = ""
+    'Private backupRoot As String = ""
 
     Private lstFilesSortOrder As SortOrder
     Private exitFlg As Boolean = False
@@ -233,6 +230,7 @@ Public Class frmMain
                     ' add the file size
                     'sbpath.Length = 0
                     'sbpath.Append(iPhonePath).Append("/").Append(sFile)
+                    sFile = convertcd(sFile)
                     lstTemp.SubItems.Add(fileSizeAsString(iPhonePath & "/" & sFile))
 
                     ' add the file type
@@ -257,9 +255,12 @@ Public Class frmMain
                 'grpFiles.Text = "Files on your iPhone in the '" & nodeiPhonePath(trvFolders.SelectedNode) & "' Directory"
                 grpFiles.Text = String.Format(My.Resources.String6, nodeiPhonePath(trvFolders.SelectedNode))
 
+            Catch e As IOException
+                MsgBox(e.ToString, MsgBoxStyle.Exclamation)
             Catch ex As Exception
-                MsgBox(ex.Message, MsgBoxStyle.Exclamation)
-
+                'MsgBox(ex.Message, MsgBoxStyle.Exclamation)
+                StatusWarning(ex.Message)
+                ResetiPhone()
             End Try
 
         End If
@@ -289,7 +290,7 @@ Public Class frmMain
                 'iReturn = IMAGE_FILE_RINGTONE
             Case "m4a", "m4p", "mp3", "aac"
                 iReturn = IMAGE_FILE_MUSIC
-            Case "mp4", "mov"
+            Case "mp4", "mov", "3gp"
                 iReturn = IMAGE_FILE_MOVIE
             Case "htm", "html", "plist", "thm", "xml"
                 iReturn = IMAGE_FILE_WEBBROWS
@@ -452,66 +453,69 @@ Public Class frmMain
 
         bSupressFiles = True 'so we don't load files until the end
 
-        ' drop trailing /
-        If sPathOnPhone.EndsWith("/") Then
-            sPathOnPhone = sPathOnPhone.Substring(0, sPathOnPhone.Length - 1)
-        End If
-        'first, lets try to find it without expanding
-        tn = trvFolders.Nodes.Find(sPathOnPhone, True)
-        If tn.Length = 0 Then ' we couldn't find it
-            startStatus(CountStr(sPathOnPhone, "/"))
-
-            'select the root first
-            tn = trvFolders.Nodes.Find("/", True)
-
-            'go through and load each node
-            iNode = 1
-            Do While sPathOnPhone.IndexOf("/", iNode) > -1
-                'pull out the full path to the next node
-                sTemp = sPathOnPhone.Substring(0, sPathOnPhone.IndexOf("/", iNode))
-                iNode = sPathOnPhone.IndexOf("/", iNode) + 1
-
-                tn = tn(0).Nodes.Find(sTemp, False)
-                If tn.Length > 0 Then
-                    refreshChildFolders(tn(0), False)
-                Else
-                    Exit Do
-                End If
-                If incrementStatus() Then Exit Do
-            Loop
-
-            'now it should definitely be available
-            bSupressFiles = False
+        Try
+            ' drop trailing /
+            If sPathOnPhone.EndsWith("/") Then
+                sPathOnPhone = sPathOnPhone.Substring(0, sPathOnPhone.Length - 1)
+            End If
+            'first, lets try to find it without expanding
             tn = trvFolders.Nodes.Find(sPathOnPhone, True)
-            If tn.Length > 0 Then
+            If tn.Length = 0 Then ' we couldn't find it
+                StartStatus(CountStr(sPathOnPhone, "/"))
+
+                Try
+                    'select the root first
+                    tn = trvFolders.Nodes.Find("/", True)
+
+                    'go through and load each node
+                    iNode = 1
+                    Do While sPathOnPhone.IndexOf("/", iNode) > -1
+                        'pull out the full path to the next node
+                        sTemp = sPathOnPhone.Substring(0, sPathOnPhone.IndexOf("/", iNode))
+                        iNode = sPathOnPhone.IndexOf("/", iNode) + 1
+
+                        tn = tn(0).Nodes.Find(sTemp, False)
+                        If tn.Length > 0 Then
+                            refreshChildFolders(tn(0), False)
+                        Else
+                            Exit Do
+                        End If
+                        If IncrementStatus() Then Exit Do
+                    Loop
+
+                    'now it should definitely be available
+                    bSupressFiles = False
+                    tn = trvFolders.Nodes.Find(sPathOnPhone, True)
+                    If tn.Length > 0 Then
+                        tn(0).EnsureVisible()
+                        trvFolders.SelectedNode = tn(0)
+                        trvFolders.Focus()
+                        bReturn = True
+                    Else
+                        'we couldn't find it
+                        bReturn = False
+
+                        ' update files display with our partial location
+                        loadFiles()
+                    End If
+                Finally
+                    EndStatus()
+                End Try
+            Else
+                'we found it first try
                 tn(0).EnsureVisible()
                 trvFolders.SelectedNode = tn(0)
                 trvFolders.Focus()
                 bReturn = True
-            Else
-                'we couldn't find it
-                bReturn = False
-
-                ' update files display with our partial location
-                loadFiles()
             End If
-            endStatus()
-        Else
-            'we found it first try
+        Finally
             bSupressFiles = False
-            tn(0).EnsureVisible()
-            trvFolders.SelectedNode = tn(0)
-            trvFolders.Focus()
-            bReturn = True
-        End If
+
+        End Try
 
         Return bReturn
     End Function
 
-    Private Sub setBackupPath(ByVal root As String, ByVal aTime As Date)
-        backupRoot = root
-        BackupPath = root & BACKUP_DIRECTORY & Format(aTime, ".yyyyMMdd.HHmmss")
-    End Sub
     'SYSTEM CREATED EVENTS
 
     Private Sub frmMain_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
@@ -529,12 +533,12 @@ Public Class frmMain
             tlbProgress0.Visible = False
             ProgressBars(1) = tlbProgressBar
             tlbProgressBar.Visible = False
-            TSDDBtnCancel.Visible = False
+            BtnCancel.Visible = False
             ProgressDepth = -1
 
             'APP_PATH = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\Cranium\iPhoneBrowser\"
             'APP_PATH = My.Settings.BackupPath & "\touchBrowser\"
-            SetBackupPath(My.Settings.BackupPath & "\touchBrowser\", DateTime.Now)
+            setBackupPath(DateTime.Now)
 
             FILE_TEMPORARY_VIEWER = Path.GetTempPath & FILE_TEMPORARY_VIEWER
 
@@ -698,7 +702,7 @@ Public Class frmMain
         txtFileDetails.Visible = True
     End Sub
 
-    Private Sub showPreview(ByVal sFile As String)
+    Private Sub showPreview(ByVal sFile As String, ByVal fromBtn As Boolean)
         Dim sr As StreamReader, picOK As Boolean
 
         StatusNormal("Loading file " & sFile)
@@ -706,7 +710,9 @@ Public Class frmMain
         Dim tmpOnPC As String = GetTempFilename(sFile)
         Dim imageIdx As Integer = lstFiles.SelectedItems(0).ImageIndex
 
-        If imageIdx = IMAGE_FILE_UNKNOWN OrElse CopyFromPhone(sFile, tmpOnPC) Then
+        'If imageIdx = IMAGE_FILE_UNKNOWN OrElse CopyFromPhone(sFile, tmpOnPC) = 0 Then
+        If CopyFromPhone(sFile, tmpOnPC) = 0 Then
+            'Dim lastpreview As Boolean = btnPreview.Enabled
             btnPreview.Enabled = False
 
             grpDetails.Text = "File details for '" & sFile & "'."
@@ -726,7 +732,16 @@ Public Class frmMain
                         txtFileDetails.Visible = True
 
                     Case IMAGE_FILE_UNKNOWN ', IMAGE_FILE_RINGTONE
-                        showFileDetails(sFile)
+                        If fromBtn = True Then
+                            sr = My.Computer.FileSystem.OpenTextFileReader(tmpOnPC)
+                            txtFileDetails.Text = sr.ReadToEnd().Replace(Chr(10), vbCrLf)
+                            sr.Close()
+
+                            txtFileDetails.Visible = True
+                        Else
+                            showFileDetails(sFile)
+                            btnPreview.Enabled = True
+                        End If
 
                     Case IMAGE_FILE_IMAGE
                         Try
@@ -781,7 +796,7 @@ Public Class frmMain
         End If
     End Sub
 
-    Private Sub doFileSelectedPreview(ByVal anySize As Boolean)
+    Private Sub doFileSelectedPreview(ByVal anySize As Boolean, ByVal fromBtn As Boolean)
         If lstFiles.SelectedItems.Count > 0 Then
             Dim sFile As String = getSelectedFilename()
 
@@ -796,7 +811,7 @@ Public Class frmMain
             Dim sSize As String = lstFiles.SelectedItems(0).SubItems(1).Text
             If (sSize.EndsWith("KB") AndAlso Val(sSize) < 1000) OrElse sSize.EndsWith("B") OrElse anySize Then
                 If sSize <> "0 B" Then
-                    showPreview(sFile)
+                    showPreview(sFile, fromBtn)
                 Else
                     showFileDetails(sFile)
                     StatusNormal("The file " & sFile & " is 0 bytes in length")
@@ -832,7 +847,7 @@ Public Class frmMain
         If bShowPreview AndAlso Not splFilesLock Then
             lstFiles.Cursor = Cursors.No
             splFilesLock = True
-            DoFileSelectedPreview(False)
+            doFileSelectedPreview(False, False)
             splFilesLock = False
             lstFiles.Cursor = Cursors.Default
             'lstFiles.Focus()
@@ -907,7 +922,8 @@ Public Class frmMain
                 loadFiles()
             End If
         Else
-            MsgBox("Only one file can be replaced at a time", MsgBoxStyle.Exclamation, "Selection error")
+            'Only one file can be replaced at a time
+            MsgBox(My.Resources.String24, MsgBoxStyle.Exclamation, "Selection error")
         End If
 
     End Sub
@@ -957,7 +973,7 @@ Public Class frmMain
     End Sub
 
     Private Sub ToolStripMenuItemViewBackups_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripMenuItemViewBackups.Click
-        Shell("explorer """ & backupRoot & """", AppWinStyle.NormalFocus)
+        Shell("explorer """ & GetBackupPath(True) & """", AppWinStyle.NormalFocus)
     End Sub
 
     Private Sub toolStripGoTo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) _
@@ -983,18 +999,21 @@ Public Class frmMain
             If Not selectSpecificPath(sPath) Then
                 If iPhoneInterface.IsJailbreak Then
                     If Not iPhoneInterface.Exists(sPath) Then
-                        If MsgBox("Do you want to create " & sPath & "?", MsgBoxStyle.YesNo, "Create Special Folder") = MsgBoxResult.Yes Then
+                        'Do you want to create " & sPath & "?"
+                        If MsgBox(String.Format(My.Resources.String27, sPath), MsgBoxStyle.YesNo, "Create Special Folder") = MsgBoxResult.Yes Then
                             If iPhoneInterface.CreateDirectory(sPath) Then
                                 If Not selectSpecificPath(sPath) Then
-                                    MsgBox("Error: The program could not find the path '" & sPath & "' on your iPhone.  Creation appeared to be successful", MsgBoxStyle.Critical)
+                                    'Error: The program could not find the path '" & sPath & "' on your iPhone.  Creation appeared to be successful
+                                    MsgBox(String.Format(My.Resources.String25, sPath), MsgBoxStyle.Critical)
                                 End If
                             Else
-                                MsgBox("Error: The program could not create the path '" & sPath & "' on your iPhone.  Have you successfully used jailbreak?", MsgBoxStyle.Critical)
+                                '"Error: The program could not create the path '" & sPath & "' on your iPhone.  Have you successfully used jailbreak?
+                                MsgBox(String.Format(My.Resources.String26, sPath), MsgBoxStyle.Critical)
                             End If
                         End If
                     End If
                 Else
-                    MsgBox("Error: The program could not find the path '" & sPath & "' on your iPhone.  Have you successfully used jailbreak?", MsgBoxStyle.Critical)
+                    MsgBox(String.Format(My.Resources.String26, sPath), MsgBoxStyle.Critical)
                 End If
             End If
         End If
@@ -1246,7 +1265,7 @@ Public Class frmMain
         ShowPreviewsToolStripMenuItem.Checked = bShowPreview
         btnPreview.Enabled = bShowPreview
         If bShowPreview Then
-            DoFileSelectedPreview(False)
+            doFileSelectedPreview(False, False)
         Else
             ClearPreview()
             prevSelectedFile = "" ' force preview next time
@@ -1318,7 +1337,7 @@ Public Class frmMain
     Private Sub btnPreview_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnPreview.Click
         lstFiles.Select()
         prevSelectedFile = "" ' force preview
-        DoFileSelectedPreview(True)
+        doFileSelectedPreview(True, True)
     End Sub
 
     Private Sub chkPreviewEnabled_Enter(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkPreviewEnabled.Enter
@@ -1436,8 +1455,12 @@ Public Class frmMain
 
     End Sub
 
-    Private Sub ToolStripDropDownButton1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TSDDBtnCancel.Click
+    Private Sub ToolStripDropDownButton1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) _
+            Handles BtnCancel.Click
         escapeFlg = True
+        BtnCancel.Visible = False
+        ProgressBars(0).Visible = False
+        ProgressBars(1).Visible = False
     End Sub
 
     Private Sub AboutToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AboutToolStripMenuItem.Click
@@ -1445,5 +1468,20 @@ Public Class frmMain
         dialog.ShowDialog()
     End Sub
 
+    Private Sub BackupDirectoryToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BackupDirectoryToolStripMenuItem.Click
+        Dim dialog As New BackupDirDialog
+        dialog.Show(Me)
+    End Sub
+
+    Private Sub menuRightClickFolders_VisibleChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles menuRightClickFolders.VisibleChanged
+        If menuRightClickFolders.Visible = True Then
+            Dim enable As Boolean = Not (trvFolders.SelectedNode.FullPath = "[root]")
+            menuRightSaveAs.Visible = enable
+            menuRightBackupFile.Visible = enable
+            cmdRenameFile.Visible = enable
+            menuRightReplaceFile.Visible = enable
+            menuRightDeleteFile.Visible = enable
+        End If
+    End Sub
 End Class
 

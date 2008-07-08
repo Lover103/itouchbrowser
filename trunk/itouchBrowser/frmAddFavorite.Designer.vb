@@ -22,6 +22,7 @@ Partial Class frmAddFavorite
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmAddFavorite))
         Me.Label1 = New System.Windows.Forms.Label
         Me.txtName = New System.Windows.Forms.TextBox
         Me.Label2 = New System.Windows.Forms.Label
@@ -32,65 +33,67 @@ Partial Class frmAddFavorite
         '
         'Label1
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(0, 14)
+        Me.Label1.AccessibleDescription = Nothing
+        Me.Label1.AccessibleName = Nothing
+        resources.ApplyResources(Me.Label1, "Label1")
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(114, 16)
-        Me.Label1.TabIndex = 0
-        Me.Label1.Text = "Favorite Name:"
         '
         'txtName
         '
-        Me.txtName.Location = New System.Drawing.Point(120, 11)
+        Me.txtName.AccessibleDescription = Nothing
+        Me.txtName.AccessibleName = Nothing
+        resources.ApplyResources(Me.txtName, "txtName")
+        Me.txtName.BackgroundImage = Nothing
+        Me.txtName.Font = Nothing
         Me.txtName.Name = "txtName"
-        Me.txtName.Size = New System.Drawing.Size(195, 19)
-        Me.txtName.TabIndex = 1
         '
         'Label2
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(0, 40)
+        Me.Label2.AccessibleDescription = Nothing
+        Me.Label2.AccessibleName = Nothing
+        resources.ApplyResources(Me.Label2, "Label2")
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(43, 16)
-        Me.Label2.TabIndex = 2
-        Me.Label2.Text = "Path:"
         '
         'txtPath
         '
-        Me.txtPath.Location = New System.Drawing.Point(120, 36)
+        Me.txtPath.AccessibleDescription = Nothing
+        Me.txtPath.AccessibleName = Nothing
+        resources.ApplyResources(Me.txtPath, "txtPath")
+        Me.txtPath.BackgroundImage = Nothing
+        Me.txtPath.Font = Nothing
         Me.txtPath.Name = "txtPath"
-        Me.txtPath.Size = New System.Drawing.Size(366, 19)
-        Me.txtPath.TabIndex = 3
         '
         'btnOK
         '
+        Me.btnOK.AccessibleDescription = Nothing
+        Me.btnOK.AccessibleName = Nothing
+        resources.ApplyResources(Me.btnOK, "btnOK")
+        Me.btnOK.BackgroundImage = Nothing
         Me.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK
-        Me.btnOK.Location = New System.Drawing.Point(499, 11)
+        Me.btnOK.Font = Nothing
         Me.btnOK.Name = "btnOK"
-        Me.btnOK.Size = New System.Drawing.Size(75, 21)
-        Me.btnOK.TabIndex = 3
-        Me.btnOK.Text = "OK"
         Me.btnOK.UseVisualStyleBackColor = True
         '
         'btnCancel
         '
+        Me.btnCancel.AccessibleDescription = Nothing
+        Me.btnCancel.AccessibleName = Nothing
+        resources.ApplyResources(Me.btnCancel, "btnCancel")
+        Me.btnCancel.BackgroundImage = Nothing
         Me.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.btnCancel.Location = New System.Drawing.Point(499, 34)
+        Me.btnCancel.Font = Nothing
         Me.btnCancel.Name = "btnCancel"
-        Me.btnCancel.Size = New System.Drawing.Size(75, 21)
-        Me.btnCancel.TabIndex = 5
-        Me.btnCancel.Text = "Cancel"
         Me.btnCancel.UseVisualStyleBackColor = True
         '
         'frmAddFavorite
         '
         Me.AcceptButton = Me.btnOK
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
+        Me.AccessibleDescription = Nothing
+        Me.AccessibleName = Nothing
+        resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackgroundImage = Nothing
         Me.CancelButton = Me.btnCancel
-        Me.ClientSize = New System.Drawing.Size(586, 77)
         Me.ControlBox = False
         Me.Controls.Add(Me.btnCancel)
         Me.Controls.Add(Me.btnOK)
@@ -98,14 +101,14 @@ Partial Class frmAddFavorite
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.txtName)
         Me.Controls.Add(Me.Label1)
+        Me.Font = Nothing
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.Icon = Nothing
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmAddFavorite"
         Me.ShowIcon = False
         Me.ShowInTaskbar = False
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
-        Me.Text = "Add Favorite"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
