@@ -165,6 +165,18 @@
   <data name="String23" xml:space="preserve">
     <value>The path '{0}' already exists.</value>
   </data>
+  <data name="String24" xml:space="preserve">
+    <value>Only one file can be replaced at a time</value>
+  </data>
+  <data name="String25" xml:space="preserve">
+    <value>Error: The program could not find the path '{0}' on your iPhone.  Creation appeared to be successful</value>
+  </data>
+  <data name="String26" xml:space="preserve">
+    <value>"Error: The program could not create the path '{0}' on your iPhone.  Have you successfully used jailbreak?</value>
+  </data>
+  <data name="String27" xml:space="preserve">
+    <value>Do you want to create {0}?</value>
+  </data>
   <data name="String3" xml:space="preserve">
     <value>iPhone is connected and jailbroken</value>
   </data>

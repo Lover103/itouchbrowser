@@ -205,6 +205,42 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Only one file can be replaced at a time に類似しているローカライズされた文字列を検索します。
+        '''</summary>
+        Friend ReadOnly Property String24() As String
+            Get
+                Return ResourceManager.GetString("String24", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Error: The program could not find the path &apos;{0}&apos; on your iPhone.  Creation appeared to be successful に類似しているローカライズされた文字列を検索します。
+        '''</summary>
+        Friend ReadOnly Property String25() As String
+            Get
+                Return ResourceManager.GetString("String25", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  &quot;Error: The program could not create the path &apos;{0}&apos; on your iPhone.  Have you successfully used jailbreak? に類似しているローカライズされた文字列を検索します。
+        '''</summary>
+        Friend ReadOnly Property String26() As String
+            Get
+                Return ResourceManager.GetString("String26", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Do you want to create {0}? に類似しているローカライズされた文字列を検索します。
+        '''</summary>
+        Friend ReadOnly Property String27() As String
+            Get
+                Return ResourceManager.GetString("String27", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  iPhone is connected and jailbroken に類似しているローカライズされた文字列を検索します。
         '''</summary>
         Friend ReadOnly Property String3() As String
