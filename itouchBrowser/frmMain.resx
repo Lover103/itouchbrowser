@@ -130,11 +130,14 @@
   <data name="tlbStatusStrip.Size" type="System.Drawing.Size, System.Drawing">
     <value>730, 22</value>
   </data>
+  <data name="&gt;&gt;cmdRenameFolder.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="toolStrip.Size" type="System.Drawing.Size, System.Drawing">
     <value>730, 25</value>
   </data>
-  <data name="&gt;&gt;menuRightClickFolders.Name" xml:space="preserve">
-    <value>menuRightClickFolders</value>
+  <data name="&gt;&gt;picFileDetails.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;mnuView.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripDropDownButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -166,18 +169,24 @@
   <data name="ISwitcherThemesToolStripMenuItem.Text" xml:space="preserve">
     <value>i&amp;Switcher Themes</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="qtPlugin.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="ToolStripMenuItemNewFolder.Text" xml:space="preserve">
+    <value>&amp;New Folder...</value>
   </data>
   <data name="&gt;&gt;menuRightDeleteFile.Name" xml:space="preserve">
     <value>menuRightDeleteFile</value>
   </data>
-  <data name="btnPreview.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 21</value>
+  <data name="grpFolders.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
   </data>
   <data name="toolStripGoTo16.Text" xml:space="preserve">
     <value>Stoc&amp;ks Icon and Images</value>
+  </data>
+  <data name="&gt;&gt;ToolStripSeparator7.Name" xml:space="preserve">
+    <value>ToolStripSeparator7</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="txtFileDetails.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+    <value>Both</value>
   </data>
   <data name="mnuView.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -197,13 +206,13 @@
   <data name="toolStripGoTo2.Size" type="System.Drawing.Size, System.Drawing">
     <value>233, 22</value>
   </data>
-  <data name="&gt;&gt;chkPreviewEnabled.Parent" xml:space="preserve">
-    <value>Panel1</value>
-  </data>
   <data name="&gt;&gt;toolStripGoTo3.Name" xml:space="preserve">
     <value>toolStripGoTo3</value>
   </data>
-  <data name="&gt;&gt;toolStripGoTo12.Type" xml:space="preserve">
+  <data name="&gt;&gt;CameraRollToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;AsCustomizeFoldersToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="menuRightBackupFile.Text" xml:space="preserve">
@@ -224,20 +233,30 @@
   <data name="&gt;&gt;ToolStripMenuItemCleanUp.Name" xml:space="preserve">
     <value>ToolStripMenuItemCleanUp</value>
   </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="ToolStripMenuItemCleanUp.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="&gt;&gt;trvFolders.Name" xml:space="preserve">
     <value>trvFolders</value>
   </data>
-  <data name="CameraRollToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>233, 22</value>
-  </data>
   <data name="&gt;&gt;ToolStripMenuItemFile.Name" xml:space="preserve">
     <value>ToolStripMenuItemFile</value>
   </data>
   <data name="&gt;&gt;qtPlugin.Type" xml:space="preserve">
     <value>AxQTOControlLib.AxQTControl, AxInterop.QTOControlLib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="folderBrowserDialog.Description" xml:space="preserve">
+    <value>Select the destination folder for saving</value>
+  </data>
+  <data name="&gt;&gt;btnPreview.Name" xml:space="preserve">
+    <value>btnPreview</value>
+  </data>
+  <data name="&gt;&gt;toolStripGoTo12.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripGoTo10.Name" xml:space="preserve">
     <value>toolStripGoTo10</value>
@@ -254,15 +273,17 @@
   <data name="&gt;&gt;ToolStripSeparator3.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ToolStripMenuItem6.Name" xml:space="preserve">
-    <value>ToolStripMenuItem6</value>
+  <data name="AsSummerboardFolderToolStripMenuItem.Text" xml:space="preserve">
+    <value>Save as Summerboard &amp;Folder</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="lstFiles.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
   <data name="tlbProgressBar.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 14</value>
+  </data>
+  <data name="&gt;&gt;ToolStripSeparator6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="mnuView.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
@@ -272,6 +293,9 @@
   </data>
   <data name="toolStrip.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
+  </data>
+  <data name="&gt;&gt;Timer1.Name" xml:space="preserve">
+    <value>Timer1</value>
   </data>
   <data name="&gt;&gt;AsSummerboardFolderToolStripMenuItem.Name" xml:space="preserve">
     <value>AsSummerboardFolderToolStripMenuItem</value>
@@ -304,20 +328,26 @@
   <data name="&gt;&gt;WebBrws.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>730, 551</value>
+  <data name="AboutToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;About</value>
   </data>
   <data name="toolStripGoTo4.Size" type="System.Drawing.Size, System.Drawing">
     <value>236, 22</value>
   </data>
-  <data name="&gt;&gt;imgFilesSmall.Name" xml:space="preserve">
-    <value>imgFilesSmall</value>
+  <data name="PCToIPhoneToolStripMenuItem.Text" xml:space="preserve">
+    <value>PC to iPhone</value>
+  </data>
+  <data name="cohAttribute.Width" type="System.Int32, mscorlib">
+    <value>20</value>
   </data>
   <data name="ToolStripMenuItem7.Size" type="System.Drawing.Size, System.Drawing">
     <value>174, 6</value>
   </data>
   <data name="ConfirmDeletionsToolStripMenuItem.Text" xml:space="preserve">
     <value>Confirm Deletions</value>
+  </data>
+  <data name="&gt;&gt;toolStripGoTo7.Name" xml:space="preserve">
+    <value>toolStripGoTo7</value>
   </data>
   <data name="ConvertBothToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -343,8 +373,11 @@
   <data name="grpDetails.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="txtFileDetails.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
-    <value>Both</value>
+  <data name="&gt;&gt;imgFilesSmall.Name" xml:space="preserve">
+    <value>imgFilesSmall</value>
+  </data>
+  <data name="tlbStatusStrip.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 529</value>
   </data>
   <data name="&gt;&gt;ShowPreviewsToolStripMenuItem.Name" xml:space="preserve">
     <value>ShowPreviewsToolStripMenuItem</value>
@@ -352,17 +385,11 @@
   <data name="tlbProgress0.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="toolStripGoTo19.Size" type="System.Drawing.Size, System.Drawing">
-    <value>233, 22</value>
-  </data>
-  <data name="&gt;&gt;menuRightClickFiles.Name" xml:space="preserve">
-    <value>menuRightClickFiles</value>
+  <data name="chkPreviewEnabled.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="&gt;&gt;WebBrws.Type" xml:space="preserve">
     <value>System.Windows.Forms.WebBrowser, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="toolStripGoTo12.Text" xml:space="preserve">
-    <value>Sa&amp;fari Icon and Images</value>
   </data>
   <data name="&gt;&gt;ToolStripMenuItemLoading.Name" xml:space="preserve">
     <value>ToolStripMenuItemLoading</value>
@@ -376,6 +403,9 @@
   <data name="&gt;&gt;IgnoreDSStoreToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="btnPreview.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 21</value>
+  </data>
   <data name="mnuGoTo.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
@@ -385,8 +415,8 @@
   <data name="&gt;&gt;ToolStripMenuItemNewFolder.Name" xml:space="preserve">
     <value>ToolStripMenuItemNewFolder</value>
   </data>
-  <data name="&gt;&gt;ToolStripSeparator6.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;ISwitcherThemesToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="toolStripGoTo5.Size" type="System.Drawing.Size, System.Drawing">
     <value>236, 22</value>
@@ -394,11 +424,17 @@
   <data name="toolStripGoTo3.Text" xml:space="preserve">
     <value>&amp;Springboard Images and Settings</value>
   </data>
-  <data name="trvFolders.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 15</value>
+  <data name="&gt;&gt;cohSize.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;qtPlugin.Parent" xml:space="preserve">
-    <value>grpDetails</value>
+  <data name="&gt;&gt;ToolStripMenuItem8.Name" xml:space="preserve">
+    <value>ToolStripMenuItem8</value>
+  </data>
+  <data name="&gt;&gt;DockSwapDocksToolStripMenuItem.Name" xml:space="preserve">
+    <value>DockSwapDocksToolStripMenuItem</value>
+  </data>
+  <data name="AsCustomizeFoldersToolStripMenuItem.Text" xml:space="preserve">
+    <value>Save as Customize &amp;Folder...</value>
   </data>
   <data name="menuSaveSummerboardTheme.Text" xml:space="preserve">
     <value>&amp;Summerboard</value>
@@ -406,14 +442,8 @@
   <data name="&gt;&gt;menuRightDeleteFile.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;splFiles.Panel2.Parent" xml:space="preserve">
-    <value>splFiles</value>
-  </data>
   <data name="&gt;&gt;WhiteToolStripMenuItem.Name" xml:space="preserve">
     <value>WhiteToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;WebBrws.Name" xml:space="preserve">
-    <value>WebBrws</value>
   </data>
   <data name="&gt;&gt;toolStrip.ZOrder" xml:space="preserve">
     <value>3</value>
@@ -442,9 +472,6 @@
   <data name="&gt;&gt;ToolStripMenuItem5.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="mnuStdApps.Text" xml:space="preserve">
-    <value>Standard &amp;Applications</value>
-  </data>
   <data name="WebBrws.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -463,11 +490,11 @@
   <data name="grpFolders.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="chkPreviewEnabled.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
+  <data name="&gt;&gt;btnPreview.Parent" xml:space="preserve">
+    <value>Panel1</value>
   </data>
-  <data name="&gt;&gt;cmdRenameFolder.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="ToolStripDropDownButton2.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
   </data>
   <data name="AsPXLPackageToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -481,8 +508,8 @@
   <data name="&gt;&gt;ToolStripMenuItemViewBackups.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="ConfirmDeletionsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>166, 22</value>
+  <data name="ToolStripMenuItemViewBackups.Text" xml:space="preserve">
+    <value>&amp;View Backup Files</value>
   </data>
   <data name="trvFolders.ImageIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -496,14 +523,20 @@
   <data name="mnuView.Text" xml:space="preserve">
     <value>&amp;View</value>
   </data>
-  <data name="BlackToolStripMenuItem.Text" xml:space="preserve">
-    <value>Black</value>
+  <data name="mnuGoTo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>86, 22</value>
+  </data>
+  <data name="picFileDetails.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="&gt;&gt;picFileDetails.Name" xml:space="preserve">
     <value>picFileDetails</value>
   </data>
   <data name="&gt;&gt;lstFiles.Parent" xml:space="preserve">
     <value>grpFiles</value>
+  </data>
+  <data name="&gt;&gt;tlbProgressBar.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripProgressBar, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;splFiles.Panel2.Name" xml:space="preserve">
     <value>splFiles.Panel2</value>
@@ -514,8 +547,8 @@
   <data name="&gt;&gt;imgFilesSmall.Type" xml:space="preserve">
     <value>System.Windows.Forms.ImageList, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;splMain.Panel1.Name" xml:space="preserve">
-    <value>splMain.Panel1</value>
+  <data name="tlbStatusLabel.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
   </data>
   <data name="&gt;&gt;splMain.Name" xml:space="preserve">
     <value>splMain</value>
@@ -523,11 +556,14 @@
   <data name="tlbStatusStrip.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="ToolStripMenuItemLoading.Size" type="System.Drawing.Size, System.Drawing">
-    <value>232, 22</value>
+  <data name="mnuThirdPartyApps.Text" xml:space="preserve">
+    <value>Third-&amp;Party Applications</value>
   </data>
   <data name="toolStripGoTo7.Size" type="System.Drawing.Size, System.Drawing">
     <value>236, 22</value>
+  </data>
+  <data name="&gt;&gt;IgnoreThumbsdbToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="GrayToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>102, 22</value>
@@ -538,11 +574,11 @@
   <data name="toolStripGoTo1.Size" type="System.Drawing.Size, System.Drawing">
     <value>233, 22</value>
   </data>
-  <data name="PCToIPhoneToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
   <data name="&gt;&gt;ToolStripMenuItemLoading.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ConvertBothToolStripMenuItem.Text" xml:space="preserve">
+    <value>Convert Both</value>
   </data>
   <data name="&gt;&gt;IPhoneToPCToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -553,8 +589,8 @@
   <data name="grpFolders.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="&gt;&gt;tlbProgressBar.Name" xml:space="preserve">
-    <value>tlbProgressBar</value>
+  <data name="BackupFolderToolStripMenuItem.Text" xml:space="preserve">
+    <value>Backup Folder</value>
   </data>
   <data name="&gt;&gt;toolStripGoTo9.Name" xml:space="preserve">
     <value>toolStripGoTo9</value>
@@ -591,950 +627,6 @@
   </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>300, 279</value>
-  </data>
-  <data name="grpDetails.Text" xml:space="preserve">
-    <value>File Details</value>
-  </data>
-  <data name="toolStripGoTo2.Text" xml:space="preserve">
-    <value>&amp;UI Sounds</value>
-  </data>
-  <data name="ToolStripMenuItem2.Text" xml:space="preserve">
-    <value>SummerBoard &amp;Themes</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItem2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItem8.Name" xml:space="preserve">
-    <value>ToolStripMenuItem8</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItem4.Name" xml:space="preserve">
-    <value>ToolStripMenuItem4</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItemExit.Name" xml:space="preserve">
-    <value>ToolStripMenuItemExit</value>
-  </data>
-  <data name="&gt;&gt;chkPreviewEnabled.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="toolStripGoTo19.Text" xml:space="preserve">
-    <value>&amp;Fonts</value>
-  </data>
-  <data name="toolStripGoTo11.Text" xml:space="preserve">
-    <value>&amp;SMS Icon and Images</value>
-  </data>
-  <data name="ToolStripSeparator8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>163, 6</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItemFile.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripDropDownButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;FrotzGamesToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="picFileDetails.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 45</value>
-  </data>
-  <data name="&gt;&gt;ToolStripDropDownButton1.Name" xml:space="preserve">
-    <value>ToolStripDropDownButton1</value>
-  </data>
-  <data name="trvFolders.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="&gt;&gt;toolStripGoTo8.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;WebBrws.Parent" xml:space="preserve">
-    <value>grpDetails</value>
-  </data>
-  <data name="&gt;&gt;menuRightClickFolders.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="toolStrip.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="&gt;&gt;InstallerPackageSourcesToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;grpFolders.Parent" xml:space="preserve">
-    <value>splMain.Panel1</value>
-  </data>
-  <data name="cohSize.Text" xml:space="preserve">
-    <value>Size</value>
-  </data>
-  <data name="&gt;&gt;ConfirmDeletionsToolStripMenuItem.Name" xml:space="preserve">
-    <value>ConfirmDeletionsToolStripMenuItem</value>
-  </data>
-  <data name="toolStripGoTo15.Text" xml:space="preserve">
-    <value>Se&amp;ttings Icon and Images</value>
-  </data>
-  <data name="WebBrws.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 45</value>
-  </data>
-  <data name="&gt;&gt;tlbStatusStrip.Name" xml:space="preserve">
-    <value>tlbStatusStrip</value>
-  </data>
-  <data name="ToolStripMenuItemFile.Text" xml:space="preserve">
-    <value>&amp;File</value>
-  </data>
-  <data name="splFiles.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="&gt;&gt;trvFolders.Parent" xml:space="preserve">
-    <value>grpFolders</value>
-  </data>
-  <data name="ToolStripMenuItemFile.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAgxJREFUOE+lkvtL
-        U2EYx+0PEbtpFwnBKPGKiJImGP0gYhIYs1E5GF5gIxkpA00JRSmMEF0ohMh+GaRWYlqabMVcNdS2QpaI
-        VqiDIYhk397vA6fXhCjyhYdzeM/5fp7vczkAdeL2cwho7v/wWzT1zcN+Pwhr51uY2/y41PQaF+wzKKiZ
-        QvaN58g0jyLd5KEUcQbg+84P/Cm2tncQjW3j68YWIqubCC3FcOJc478BAuGoZM6zvoRnakXEruEIjhc4
-        /g5gZop9c+voGAyLbQIfeBZxLL9BA1jzXvuGbWamuKh+GmmVbswE19A59FEBbmoAG7YbsLtm2mZmiml9
-        cvabNDwpz6YB7LYBoMXCumkJr7LOmnnHzBQ/9X2Bo2cOibm1GsBREbAQiYmw/8lnuCeWkVzcgnZlnw1j
-        3HV/wuNXK6i/9x5Hc6wawDlTXHbLJ+LZUBQPRyKwdQdxutwl1h+NLXHh5Ht1ewBHsiwawCW57HyDAfWR
-        dvl0uhZQ1eqX8aVc7EKLqrum651ATLf9OJx5XQM4KmY0xPzZ0hFAiQJnXB0WwME0E3IsL5B17ZlADqWb
-        NYDrOepdlcysmTWWOrxqbceRWtaLk0VO1XW72D5Vckd2gMBfq8zdpmUG62NJvKM4+XyziDk24xmfWoGE
-        s1c0gHPmbrPTpHNJKOCo2G1mZs20zcwUJ5yp1AB5+8/zEwgF5GMVDxh4AAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="&gt;&gt;OrganizeFavoritesToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="TTRToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>207, 22</value>
-  </data>
-  <data name="&gt;&gt;WeDictDictionariesToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;grpFolders.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;AsSummerboardFolderToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItemCleanUp.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="ToolStripMenuItemFile.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="cmdSmallIcons.Size" type="System.Drawing.Size, System.Drawing">
-    <value>137, 22</value>
-  </data>
-  <data name="&gt;&gt;ToolStripSeparator4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="imgFilesSmall.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
-    <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj0yLjAuMC4w
-        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
-        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAO
-        FQAAAk1TRnQBSQFMAgEBCAEAAQkBAAEEAQABEgEAARIBAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
-        AwABSAMAATYDAAEBAQABCAUAATABDxgAAYACAAGAAwACgAEAAYADAAGAAQABgAEAAoACAAPAAQABwAHc
-        AcABAAHwAcoBpgEAATMFAAEzAQABMwEAATMBAAIzAgADFgEAAxwBAAMiAQADKQEAA1UBAANNAQADQgEA
-        AzkBAAGAAXwB/wEAAlAB/wEAAZMBAAHWAQAB/wHsAcwBAAHGAdYB7wEAAdYC5wEAAZABqQGtAgAB/wEz
-        AwABZgMAAZkDAAHMAgABMwMAAjMCAAEzAWYCAAEzAZkCAAEzAcwCAAEzAf8CAAFmAwABZgEzAgACZgIA
-        AWYBmQIAAWYBzAIAAWYB/wIAAZkDAAGZATMCAAGZAWYCAAKZAgABmQHMAgABmQH/AgABzAMAAcwBMwIA
-        AcwBZgIAAcwBmQIAAswCAAHMAf8CAAH/AWYCAAH/AZkCAAH/AcwBAAEzAf8CAAH/AQABMwEAATMBAAFm
-        AQABMwEAAZkBAAEzAQABzAEAATMBAAH/AQAB/wEzAgADMwEAAjMBZgEAAjMBmQEAAjMBzAEAAjMB/wEA
-        ATMBZgIAATMBZgEzAQABMwJmAQABMwFmAZkBAAEzAWYBzAEAATMBZgH/AQABMwGZAgABMwGZATMBAAEz
-        AZkBZgEAATMCmQEAATMBmQHMAQABMwGZAf8BAAEzAcwCAAEzAcwBMwEAATMBzAFmAQABMwHMAZkBAAEz
-        AswBAAEzAcwB/wEAATMB/wEzAQABMwH/AWYBAAEzAf8BmQEAATMB/wHMAQABMwL/AQABZgMAAWYBAAEz
-        AQABZgEAAWYBAAFmAQABmQEAAWYBAAHMAQABZgEAAf8BAAFmATMCAAFmAjMBAAFmATMBZgEAAWYBMwGZ
-        AQABZgEzAcwBAAFmATMB/wEAAmYCAAJmATMBAANmAQACZgGZAQACZgHMAQABZgGZAgABZgGZATMBAAFm
-        AZkBZgEAAWYCmQEAAWYBmQHMAQABZgGZAf8BAAFmAcwCAAFmAcwBMwEAAWYBzAGZAQABZgLMAQABZgHM
-        Af8BAAFmAf8CAAFmAf8BMwEAAWYB/wGZAQABZgH/AcwBAAHMAQAB/wEAAf8BAAHMAQACmQIAAZkBMwGZ
-        AQABmQEAAZkBAAGZAQABzAEAAZkDAAGZAjMBAAGZAQABZgEAAZkBMwHMAQABmQEAAf8BAAGZAWYCAAGZ
-        AWYBMwEAAZkBMwFmAQABmQFmAZkBAAGZAWYBzAEAAZkBMwH/AQACmQEzAQACmQFmAQADmQEAApkBzAEA
-        ApkB/wEAAZkBzAIAAZkBzAEzAQABZgHMAWYBAAGZAcwBmQEAAZkCzAEAAZkBzAH/AQABmQH/AgABmQH/
-        ATMBAAGZAcwBZgEAAZkB/wGZAQABmQH/AcwBAAGZAv8BAAHMAwABmQEAATMBAAHMAQABZgEAAcwBAAGZ
-        AQABzAEAAcwBAAGZATMCAAHMAjMBAAHMATMBZgEAAcwBMwGZAQABzAEzAcwBAAHMATMB/wEAAcwBZgIA
-        AcwBZgEzAQABmQJmAQABzAFmAZkBAAHMAWYBzAEAAZkBZgH/AQABzAGZAgABzAGZATMBAAHMAZkBZgEA
-        AcwCmQEAAcwBmQHMAQABzAGZAf8BAALMAgACzAEzAQACzAFmAQACzAGZAQADzAEAAswB/wEAAcwB/wIA
-        AcwB/wEzAQABmQH/AWYBAAHMAf8BmQEAAcwB/wHMAQABzAL/AQABzAEAATMBAAH/AQABZgEAAf8BAAGZ
-        AQABzAEzAgAB/wIzAQAB/wEzAWYBAAH/ATMBmQEAAf8BMwHMAQAB/wEzAf8BAAH/AWYCAAH/AWYBMwEA
-        AcwCZgEAAf8BZgGZAQAB/wFmAcwBAAHMAWYB/wEAAf8BmQIAAf8BmQEzAQAB/wGZAWYBAAH/ApkBAAH/
-        AZkBzAEAAf8BmQH/AQAB/wHMAgAB/wHMATMBAAH/AcwBZgEAAf8BzAGZAQAB/wLMAQAB/wHMAf8BAAL/
-        ATMBAAHMAf8BZgEAAv8BmQEAAv8BzAEAAmYB/wEAAWYB/wFmAQABZgL/AQAB/wJmAQAB/wFmAf8BAAL/
-        AWYBAAEhAQABpQEAA18BAAN3AQADhgEAA5YBAAPLAQADsgEAA9cBAAPdAQAD4wEAA+oBAAPxAQAD+AEA
-        AfAB+wH/AQABpAKgAQADgAMAAf8CAAH/AwAC/wEAAf8DAAH/AQAB/wEAAv8CAAP//wD/AP8A/wD/ABcA
-        A6EDBAGFBKEOAAShBgABxAGMAusBbgFtAUoBEgFmAcQBoQ4AAqEBhgOuAYwBZgEEAqEBAAGhAQQBZgHs
-        AeoBQwFlAV8BBAGFBKELAAGhAacDhQKhAwABbQF0AXkBmQF5AVgBUgExAUsBEgGhDQABoQGnAe8C8AG8
-        AQcCtQGNAYYBhQEAAWYB7AK8Ae8B8AHvAewBEgFmAV8BBAGFBKEIAAGhAacCzwGGAQQCoQIAAXMBWAF6
-        AaABmgJZAjEBSgGhDQABpwG8AvIB8QHwAQcB7wHtArUBBAGFAQcB8AEHAfAB7wG8AfAC9AHyAewBFQFl
-        AV8BBAGFAaEFAAOhAacBhgEEAYUCzwEEAaECAAFzAVkBmgGgAZoCWQIxAUsCjAJmAoYBoQcAAacB8gL0
-        AfMB8QG1AfcB7QK1AYYBZgEHAu8B8QHvAfABvALzAe8B9wGSAe8B9wEUAWUBBAQAAaEBhQFfAQoCXwLP
-        AQQBpwHPAQQBoQEAAXMBWQF6AaABmgJZAjEBSwJ0AlIBSwHqAYYHAAGhAfAB9AH/AfMBvAG1As8CtQGh
-        AWYBBwHwAQcB8QHvAQcB8QHyAe8B7QLqAewB7wHyAQcBQwMAAaEBBAHsAe8BBwHvAewBEQGGAbUBBAHP
-        AYYBhQGhAXQBWQF6AaABmgJZAjEBSwGaAXoBWQEyATEBSwESBAAEoQGnBbUDzwGnAaEBZgEHAfABBwHy
-        Ae8BvAHxAbwB7wISARMBEgHsAbwB8QFmAwABhQHrAZID7wEHAfcBFQGGAc8BBAHPAQQBoQF0AXoBmgGg
-        AZoCWQIxAUsBmgF6AVkBOAIxARIDAAKhBIYBzwHTAdsCtQLPAYYCoQFmAQcB8AEHAfIB7wK8AQcB7AHq
-        ARQB6gEUARIB7wHwARICAAGhAWYB6wH3Ae8BBwG8Ae8BBwH3AREBtQEEAc8BhgGFAXQCegGgAZoBegFZ
-        AjEBSwGaAXoBWQEyAjEBEgIAAaEBxwKtAYsCrQG1AtQC2gHbAbQBhgEEAYUBZgG8AfABBwHyAe8BBwK8
-        AewBEwFsAawB6gFtAfcBvAETAgABhQETAesBEwGuARIBBwG8Ae8BBwHsAV8BpwGFAc8BhQF0AVkBegGg
-        AZoBWQE4AjEBSwGaAXoBWQEyAjEB6gIAAawDpgFIAaYBhgG1B9oBtAGGAWYBvAHxAbwB8wHvAfABBwG8
-        Ae8BbQETAYsB6gHrAe8BBwETAQABoQFfAhMCrgHPAa4CvALvAQoBtQGhAc8BoQF0AVkBegGgAZoBWQE4
-        AjEBSwGaAXoBWQEyAjEB6gEAAaEBxwGmAawBigEnAWsBrQG1AdoF2wLaAYYBZgG8AfEBvAH0Ae8CvAEH
-        AfIBbQHqARMCEgG8AQcBEwGhAWYB6gETARQD6wGuAesBvAHvAQcBQwGFAaECAAF0AXoBmgKgAZoBegFZ
-        AVIBSwGaAXoBWQEyAjEB6gEAAa0DrAEGAQIBSAK0CNsBhgFmAfAB8gG8AfQB7wEHAu8B8QG8A20B7wEH
-        Ae8BEwGhAa4B7AEVARMCkgHsAesBFALvAQcBEgGFAwABHAGaAaAEwwGgAXkBcwGaAXoBWQEyAjEB6gEA
-        AbMCrAEGAU4BcAHTAbUBugLbA9wD2wGGAW0B8AHvAbwB9AHsBO8B8QP0AfAC7wETAaEBtQG8ARUBFAIH
-        Ae0B6wEUAZIB9wEHARIBhQMAAewBHAeZAXkBmgF6AVkBMgIxAeoBAAG0AawBcAFPAVUB1AHTAQcB2wfc
-        AdsBogFmAfQB/wHzAZICbQGSAvcC6wHvAewB6gFtAewBFAGhAbwB/wHsARUB6gHvAe0CbQLsAe8BQwGh
-        AwABpwWuAewBdAF5AZoBoAGaAXoCWQFSAW0BAAHVAawBVQJWAZ0BugG8AdsB3ALhARkC4QHcAbQBBAGh
-        AQcB8AIHAbwBBwHvAfABvAHvApIBbQETARIBbQEUAQABhgHwAQcCFQETAhIBbQHrAuwBBAGhCQABpwF5
-        AXoBoALDAqABegF5AesBAAHHAXEBVgF4AZ4BCAG7AQcBuwEJAeED4gEZAdwBtAGFAQABoQGFAoYBrgH3
-        Ae8BvAHyAfEB9wLsApIBbQFmAQABoQGuAewBEgFDARUBEwESAeoCbQFmAqEJAAGnARwBmQUaAZkBHAGu
-        AgABtAGXAZgBwgEIAZgBvAIHAe8BtQG7AgkB3AG0AYUHAAGhAYUBBAGGAa4C7AGuAYYBhQGhAwACoQGF
-        AhUBFAETARIBZgKhCgABxAHPAe0BHAFzAewBcwLsAa4BpwMAAbQBmAGeAXgBVgFVAbMBrQHPBbUBrgGh
-        GQABoQJmAqEbAAHHAdUBugG0Aa0BoQYAAqcBoQMAAqEBhQEEBF8BBAGFAqEIAAKhA4UDBAGFAaEXAAGh
-        AYULBAGFAqECAAKhAYYBtQHxA/MB8gG1AYYBXwGFAqEFAAGhAYYBZgFtAesBhgGuAc8BrgFfAYUBoRYA
-        Ac8MCQGGAqEBAAKhAc8B8wH0AfEDvAHyAfQB8wGSAV8BhQGhAwACoQHqAfcB3QHzAa4CZgGGAc8BtQEK
-        AaECAAGFBgABXwYOA0MBCgIAAc8B8gUZAd0ECQHdAYYCoQEAAaEBtQH0AfMBtQKtAbQCrQG1AfMB9AEH
-        AV8CoQIAAaEB6wLdARkB3QGuAc8BtQHPAWYBzwFmAV8BoQEAAQ4BhQOhAQ8BDgQTAQ8BDgFtAw4B6gIA
-        Ac8B8gcZAd0CCQHdAYYCoQEAAc8B9AHzA60BtQH/AQkDrQHzAfQBrgEEAaEBAAGhAesF3QHPAt0B1gKu
-        AewBZgEEAQACDgFfAQ8BoQEVAUMEDgEPARUBbQEOARUCDgIAAc8B8wgZAd0BCQHdAYYCoQEAAd0B9AG0
-        A60BzwHdAc8DrQHPAfQB8gFmAYUBAAGGAbwF3QEJAt0B1gGuAYYC9wFfAaECDgFfARUBoQFtARMBEAMV
-        ARABFQFtAQ4BEAEOAW0CAAHPAfMKGQHdAYYCoQHPAfQBCQWtAbQFrQEJAfQBrgGFAQAB7QIZBN0B3gHd
-        AQkBtQHwAa4B9wHyAWYBhQEOAQ8BXwHqAaEB7AFtAUMDbQFDARUBbQEOARQBDgEVAgABzwHzChkB3QGG
-        AqEBCQH/AbQErQG0Af8BtAStAbQB9AEHAQQBoQG8AfMCGQHdAfQB3gG8AfID/wHPAbUB3QGuAQQBDgER
-        AQQBCgGhAewBbQEPAw4BbQEOAW0DDgEQAgABzwHzChkB3QGGAqEB8QH/AbQFrQL0Ba0B9AG8AQQBhgHy
-        AvMCGQH/AZIBZgHqAfEB9AHdArUB3QGuAV8BDgMAAaEBAAFfAQ4BFAEOAUECDgEPA+sBDgIAAc8B9AoZ
-        Ad0BhgKhARkB/wG0Ba0BtAH/AfMErQH0AfABBAGGBN0BGQH0AewBXwEEAbwB/wHdAc8CtQJmAwABBAEA
-        AaEBDgERAQQJFAIAAc8C9AkZAd0BhgKhAd0B/wG0Bq0BtAH/AQkDrQH/AbwBBAGGAQkD3QEZAf8B8AFt
-        AewB8wH0Ad0BrgLPAa4BBAMAAQQBAAGhARABhQEAAQQBEQQOAV8BBAGFAgABzwT0BxkB3QGGAqEBtQH/
-        AQkB1QGtAbUBCQHPAq0B/wHdAq0BCQH/AbUBhQGhAbUB3QHzA/8B9ALeAfQC3QGuAYYBzwGGAaEKAAEU
-        BQ4BhQFfAgABzwX0BhkB3QGGA6EB9AH/AtUBtQH/ARkBtAG8Af8BCQGtAbQB/wH0AYsBoQEAAa4F/wH0
-        AfMBGQPdAc8BZgGuAWYBoQoAAQoBQwEPARMBFAEPAV8DAAHPAf8F9AUZAd0BhgKhAQAB1gH/AfQB2wHV
-        AQkD/wHyAtUBGQH/AQkBhQGhAQABhgEHBP8B9AHzAhkE3QHrAaEMAAFfAQ8ChQEPAV8DAAHPAv8G9AMZ
-        Ad0BhgKhAQABpwEZAf8B9AEZAdwDCQLcARkB/wHzAYYCoQIAAYYB8AP/AfQC8wIZAt0B7QGGAaESAAGh
-        AgABzwP/BvQBCQHVAbQBhgKhAQABoQGnAd0D/wH0AhkB9AL/AfMBpwKhAwABoQGGAQcC/wL0AvMBGQHd
-        AewBhgGhFgAB5gX/BPQB3AHUAa0CoQMAAaEBxwHWAfMF/wH0AbUBpwKhBgABhgGuAQcB8QHzAfIBvAGS
-        AYYBoRgAAeYG/wP0AQkBrQOhBgABoQG1Ad0BGQHxAbUBpwwAAaEDhgGhGwAB5ggJAbsBrQUAAUIBTQE+
-        BwABPgMAASgDAAFIAwABNgMAAQEBAAEBBQABiAECFgAD/9kAAYABDwH/AcMB8AEBAf8B+AQAAYABAQH/
-        AcABcAEBAf8B8AQAAYABAAE/AcABMAEBAf8B8AYAAT4BAAEwAQABBwHwBgABPAEAARABAAEHAfAGAAE4
-        AwABBwGABgABOAMAAQcHAAEwAwABBgcAATADAAEGBwABIAMAAQQJAAEwAQABBAkAAXABAAEECQABcAEA
-        AQQJAAFwAQABBAcAASABAAF/AcABBAUAAYABAAEgAQABfwHAAQYFAAH+AQABOAEAAf8BwAEHBQAD/wGD
-        A/8BgQH4AwAB4AEBAf4BAAF/Av8FAAHAAQABfAEAAT8C/wUAAYABAAFwAQABNwHgAQMFAAGAAQABMAEA
-        ARABAAEDBQABgAEAASABAAEQAQABAwUAAYABAAEgAwABAwcAASADAAEDCwABAwkAAQcBQAEDCQABDgEA
-        AQMJAAEOAQgBAwkAAQ8B/AEDBwABIAEAAQ8B/AEDBQABgAEAASABAAEfAf4BAwUAAYABAAEwAQABHwH/
-        AfsFAAGAAQABcAEAAT8C/wEAAQEDAAHAAQAB/AEAA/8BAAEBAwAB+AEPAf8BBwP/AQABHwMACw==
-</value>
-  </data>
-  <data name="&gt;&gt;toolStripGoTo8.Name" xml:space="preserve">
-    <value>toolStripGoTo8</value>
-  </data>
-  <data name="CameraRollToolStripMenuItem.Text" xml:space="preserve">
-    <value>Camera Roll  (DCIM)</value>
-  </data>
-  <data name="cohFiletype.Text" xml:space="preserve">
-    <value>File Type</value>
-  </data>
-  <data name="&gt;&gt;WhiteToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItemDeleteFolder.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ConvertPNGsToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tlbStatusStrip.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;menuSaveSummerboardTheme.Name" xml:space="preserve">
-    <value>menuSaveSummerboardTheme</value>
-  </data>
-  <data name="ToolStripMenuItem4.Text" xml:space="preserve">
-    <value>&amp;Customize</value>
-  </data>
-  <data name="txtFileDetails.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;menuRightSaveAs.Name" xml:space="preserve">
-    <value>menuRightSaveAs</value>
-  </data>
-  <data name="IgnoreDSStoreToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>166, 22</value>
-  </data>
-  <data name="&gt;&gt;AsPXLPackageToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ToolStripSeparator5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="toolStripGoTo5.Text" xml:space="preserve">
-    <value>&amp;Maps Icon and Images</value>
-  </data>
-  <data name="IgnoreThumbsdbToolStripMenuItem.Text" xml:space="preserve">
-    <value>Ignore Thumbs.db</value>
-  </data>
-  <data name="&gt;&gt;splMain.Panel2.Parent" xml:space="preserve">
-    <value>splMain</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItemLargeIcons.Name" xml:space="preserve">
-    <value>ToolStripMenuItemLargeIcons</value>
-  </data>
-  <data name="&gt;&gt;toolStripGoTo4.Name" xml:space="preserve">
-    <value>toolStripGoTo4</value>
-  </data>
-  <data name="cmdShowGroups.Text" xml:space="preserve">
-    <value>Show &amp;Groups</value>
-  </data>
-  <data name="&gt;&gt;tlbStatusStrip.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;grpFolders.Name" xml:space="preserve">
-    <value>grpFolders</value>
-  </data>
-  <data name="chkPreviewEnabled.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="chkPreviewEnabled.Appearance" type="System.Windows.Forms.Appearance, System.Windows.Forms">
-    <value>Button</value>
-  </data>
-  <data name="&gt;&gt;splFiles.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;cohFilename.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="menuRightDeleteFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 22</value>
-  </data>
-  <data name="ToolStripSeparator5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>230, 6</value>
-  </data>
-  <data name="&gt;&gt;ShowPreviewsToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="menuRightClickFiles.Size" type="System.Drawing.Size, System.Drawing">
-    <value>145, 148</value>
-  </data>
-  <data name="&gt;&gt;txtFileDetails.Parent" xml:space="preserve">
-    <value>grpDetails</value>
-  </data>
-  <data name="&gt;&gt;toolStripGoTo7.Name" xml:space="preserve">
-    <value>toolStripGoTo7</value>
-  </data>
-  <data name="cmdGBAROMs.Text" xml:space="preserve">
-    <value>&amp;GBA ROMs</value>
-  </data>
-  <data name="&gt;&gt;toolStripGoTo20.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="chkPreviewEnabled.Text" xml:space="preserve">
-    <value>Auto Preview Enabled</value>
-  </data>
-  <data name="mnuFavorites.Text" xml:space="preserve">
-    <value>Favorites</value>
-  </data>
-  <data name="ToolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>175, 6</value>
-  </data>
-  <data name="&gt;&gt;picFileDetails.Parent" xml:space="preserve">
-    <value>grpDetails</value>
-  </data>
-  <data name="toolStripGoTo6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>236, 22</value>
-  </data>
-  <data name="&gt;&gt;ToolStripSeparator3.Name" xml:space="preserve">
-    <value>ToolStripSeparator3</value>
-  </data>
-  <data name="chkPreviewEnabled.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="ToolStripSeparator9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>155, 6</value>
-  </data>
-  <data name="IgnoreDSStoreToolStripMenuItem.Text" xml:space="preserve">
-    <value>Ignore .DS_Store</value>
-  </data>
-  <data name="ToolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>141, 6</value>
-  </data>
-  <data name="grpFiles.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="ToolStripMenuItemLargeIcons.Text" xml:space="preserve">
-    <value>&amp;Large Icons</value>
-  </data>
-  <data name="tlbProgressBar.AutoSize" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="ShowPreviewsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>166, 22</value>
-  </data>
-  <data name="&gt;&gt;txtFileDetails.Name" xml:space="preserve">
-    <value>txtFileDetails</value>
-  </data>
-  <data name="chkPreviewEnabled.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 0</value>
-  </data>
-  <data name="&gt;&gt;chkPreviewEnabled.Name" xml:space="preserve">
-    <value>chkPreviewEnabled</value>
-  </data>
-  <data name="ToolStripMenuItemViewBackups.Text" xml:space="preserve">
-    <value>&amp;View Backup Files</value>
-  </data>
-  <data name="splMain.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="&gt;&gt;cmdSmallIcons.Name" xml:space="preserve">
-    <value>cmdSmallIcons</value>
-  </data>
-  <data name="toolStripGoTo1.Text" xml:space="preserve">
-    <value>&amp;Ringtones</value>
-  </data>
-  <data name="DockSwapDocksToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>207, 22</value>
-  </data>
-  <data name="splMain.Panel1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="ToolStripSeparator7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>175, 6</value>
-  </data>
-  <data name="ToolStripMenuItemDeleteFolder.Text" xml:space="preserve">
-    <value>&amp;Delete Folder</value>
-  </data>
-  <data name="&gt;&gt;Timer1.Name" xml:space="preserve">
-    <value>Timer1</value>
-  </data>
-  <data name="&gt;&gt;toolStripGoTo5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="tlbStatusStrip.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 529</value>
-  </data>
-  <data name="&gt;&gt;ToolStripSeparator10.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tlbStatusStrip.Type" xml:space="preserve">
-    <value>System.Windows.Forms.StatusStrip, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="mnuGoTo.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;ToolStripSeparator8.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="lstFiles.Size" type="System.Drawing.Size, System.Drawing">
-    <value>470, 300</value>
-  </data>
-  <data name="grpFolders.Size" type="System.Drawing.Size, System.Drawing">
-    <value>238, 498</value>
-  </data>
-  <data name="&gt;&gt;ToolStripSeparator6.Name" xml:space="preserve">
-    <value>ToolStripSeparator6</value>
-  </data>
-  <data name="&gt;&gt;grpDetails.Name" xml:space="preserve">
-    <value>grpDetails</value>
-  </data>
-  <data name="txtFileDetails.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 45</value>
-  </data>
-  <data name="&gt;&gt;cmdSmallIcons.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="mnuThirdPartyApps.Size" type="System.Drawing.Size, System.Drawing">
-    <value>233, 22</value>
-  </data>
-  <data name="AboutToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;About</value>
-  </data>
-  <data name="mnuThirdPartyApps.Text" xml:space="preserve">
-    <value>Third-&amp;Party Applications</value>
-  </data>
-  <data name="ToolStripMenuItemExit.Text" xml:space="preserve">
-    <value>E&amp;xit</value>
-  </data>
-  <data name="&gt;&gt;toolStripGoTo2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="btnPreview.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="grpFiles.Size" type="System.Drawing.Size, System.Drawing">
-    <value>476, 331</value>
-  </data>
-  <data name="ToolStripDropDownButton2.Text" xml:space="preserve">
-    <value>&amp;Options</value>
-  </data>
-  <data name="&gt;&gt;ToolStripSeparator10.Name" xml:space="preserve">
-    <value>ToolStripSeparator10</value>
-  </data>
-  <data name="&gt;&gt;ToolStripSeparator9.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="mnuFavorites.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAgxJREFUOE+lkvtL
-        U2EYx+0PEbtpFwnBKPGKiJImGP0gYhIYs1E5GF5gIxkpA00JRSmMEF0ohMh+GaRWYlqabMVcNdS2QpaI
-        VqiDIYhk397vA6fXhCjyhYdzeM/5fp7vczkAdeL2cwho7v/wWzT1zcN+Pwhr51uY2/y41PQaF+wzKKiZ
-        QvaN58g0jyLd5KEUcQbg+84P/Cm2tncQjW3j68YWIqubCC3FcOJc478BAuGoZM6zvoRnakXEruEIjhc4
-        /g5gZop9c+voGAyLbQIfeBZxLL9BA1jzXvuGbWamuKh+GmmVbswE19A59FEBbmoAG7YbsLtm2mZmiml9
-        cvabNDwpz6YB7LYBoMXCumkJr7LOmnnHzBQ/9X2Bo2cOibm1GsBREbAQiYmw/8lnuCeWkVzcgnZlnw1j
-        3HV/wuNXK6i/9x5Hc6wawDlTXHbLJ+LZUBQPRyKwdQdxutwl1h+NLXHh5Ht1ewBHsiwawCW57HyDAfWR
-        dvl0uhZQ1eqX8aVc7EKLqrum651ATLf9OJx5XQM4KmY0xPzZ0hFAiQJnXB0WwME0E3IsL5B17ZlADqWb
-        NYDrOepdlcysmTWWOrxqbceRWtaLk0VO1XW72D5Vckd2gMBfq8zdpmUG62NJvKM4+XyziDk24xmfWoGE
-        s1c0gHPmbrPTpHNJKOCo2G1mZs20zcwUJ5yp1AB5+8/zEwgF5GMVDxh4AAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="&gt;&gt;toolStrip.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cohSize.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ToolStripSeparator7.Name" xml:space="preserve">
-    <value>ToolStripSeparator7</value>
-  </data>
-  <data name="&gt;&gt;menuRightSaveAs.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="tlbStatusLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>491, 17</value>
-  </data>
-  <data name="Panel1.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="AsCustomizeFoldersToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>209, 22</value>
-  </data>
-  <data name="picFileDetails.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
-    <value>CenterImage</value>
-  </data>
-  <data name="ToolStripDropDownButton1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>41, 22</value>
-  </data>
-  <data name="&gt;&gt;cmdShowGroups.Name" xml:space="preserve">
-    <value>cmdShowGroups</value>
-  </data>
-  <data name="ToolStripDropDownButton2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>57, 22</value>
-  </data>
-  <data name="&gt;&gt;AsPXLPackageToolStripMenuItem1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Panel1.Parent" xml:space="preserve">
-    <value>grpDetails</value>
-  </data>
-  <data name="grpFolders.Text" xml:space="preserve">
-    <value>Folders on your iPhone</value>
-  </data>
-  <data name="BtnCancel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 20</value>
-  </data>
-  <data name="&gt;&gt;folderBrowserDialog.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FolderBrowserDialog, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ToolStripDropDownButton2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripDropDownButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;fileOpenDialog.Name" xml:space="preserve">
-    <value>fileOpenDialog</value>
-  </data>
-  <data name="&gt;&gt;IgnoreThumbsdbToolStripMenuItem.Name" xml:space="preserve">
-    <value>IgnoreThumbsdbToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;toolStripGoTo5.Name" xml:space="preserve">
-    <value>toolStripGoTo5</value>
-  </data>
-  <data name="&gt;&gt;splMain.Panel2.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="toolStripGoTo18.Text" xml:space="preserve">
-    <value>&amp;YouTube Icon and Images</value>
-  </data>
-  <data name="&gt;&gt;picFileDetails.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="toolStripGoTo10.Text" xml:space="preserve">
-    <value>&amp;Phone Icon and Images</value>
-  </data>
-  <data name="tlbStatusLabel.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
-  </data>
-  <data name="&gt;&gt;menuRightBackupFile.Name" xml:space="preserve">
-    <value>menuRightBackupFile</value>
-  </data>
-  <data name="&gt;&gt;splFiles.Panel1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;menuRightRestoreFile.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="menuRightDeleteFile.Text" xml:space="preserve">
-    <value>&amp;Delete File</value>
-  </data>
-  <data name="&gt;&gt;mnuThirdPartyApps.Name" xml:space="preserve">
-    <value>mnuThirdPartyApps</value>
-  </data>
-  <data name="toolStripGoTo6.Text" xml:space="preserve">
-    <value>C&amp;alendar Icon and Images</value>
-  </data>
-  <data name="toolStripGoTo18.Size" type="System.Drawing.Size, System.Drawing">
-    <value>236, 22</value>
-  </data>
-  <data name="toolStripGoTo10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>236, 22</value>
-  </data>
-  <data name="menuRightSaveAs.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 22</value>
-  </data>
-  <data name="BackupDirectoryToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Backup directory...</value>
-  </data>
-  <data name="picFileDetails.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="OrganizeFavoritesToolStripMenuItem.Text" xml:space="preserve">
-    <value>Organize Favorites...</value>
-  </data>
-  <data name="ToolStripMenuItemDeleteFolder.Size" type="System.Drawing.Size, System.Drawing">
-    <value>158, 22</value>
-  </data>
-  <data name="&gt;&gt;PictureBackgroundToolStripMenuItem.Name" xml:space="preserve">
-    <value>PictureBackgroundToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;DockSwapDocksToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="ToolStripSeparator10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>155, 6</value>
-  </data>
-  <data name="toolStripGoTo14.Text" xml:space="preserve">
-    <value>C&amp;lock Icon and Images</value>
-  </data>
-  <data name="ToolStripMenuItemExit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>178, 22</value>
-  </data>
-  <data name="&gt;&gt;toolStripGoTo3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="toolStripGoTo12.Size" type="System.Drawing.Size, System.Drawing">
-    <value>236, 22</value>
-  </data>
-  <data name="NESROMSToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;NES ROMS</value>
-  </data>
-  <data name="&gt;&gt;TTRToolStripMenuItem.Name" xml:space="preserve">
-    <value>TTRToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;splFiles.Panel2.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="grpFiles.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="ToolStripMenuItem6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>207, 22</value>
-  </data>
-  <data name="&gt;&gt;imgFolders.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ImageList, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="toolStripGoTo14.Size" type="System.Drawing.Size, System.Drawing">
-    <value>236, 22</value>
-  </data>
-  <data name="AsPXLPackageToolStripMenuItem.Text" xml:space="preserve">
-    <value>Save as &amp;PXL Package</value>
-  </data>
-  <data name="&gt;&gt;toolStripGoTo1.Name" xml:space="preserve">
-    <value>toolStripGoTo1</value>
-  </data>
-  <data name="WebBrws.Size" type="System.Drawing.Size, System.Drawing">
-    <value>461, 112</value>
-  </data>
-  <data name="cmdRenameFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 22</value>
-  </data>
-  <data name="&gt;&gt;CameraRollToolStripMenuItem.Name" xml:space="preserve">
-    <value>CameraRollToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;qtPlugin.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItemViewBackups.Name" xml:space="preserve">
-    <value>ToolStripMenuItemViewBackups</value>
-  </data>
-  <data name="AsSummerboardFolderToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>214, 22</value>
-  </data>
-  <data name="picFileDetails.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="NESROMSToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>207, 22</value>
-  </data>
-  <data name="mnuGoTo.Text" xml:space="preserve">
-    <value>&amp;Goto Location</value>
-  </data>
-  <data name="WhiteToolStripMenuItem.Text" xml:space="preserve">
-    <value>White</value>
-  </data>
-  <data name="&gt;&gt;splFiles.Parent" xml:space="preserve">
-    <value>splMain.Panel2</value>
-  </data>
-  <data name="toolStripGoTo16.Size" type="System.Drawing.Size, System.Drawing">
-    <value>236, 22</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItem6.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="ToolStripDropDownButton1.Text" xml:space="preserve">
-    <value>&amp;Help</value>
-  </data>
-  <data name="ToolStripMenuItemCleanUp.Text" xml:space="preserve">
-    <value>&amp;Clean Up Backup Files</value>
-  </data>
-  <data name="&gt;&gt;AsPXLPackageToolStripMenuItem1.Name" xml:space="preserve">
-    <value>AsPXLPackageToolStripMenuItem1</value>
-  </data>
-  <data name="ISwitcherThemesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>207, 22</value>
-  </data>
-  <data name="&gt;&gt;Panel1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;BtnCancel.Name" xml:space="preserve">
-    <value>BtnCancel</value>
-  </data>
-  <data name="AsPXLPackageToolStripMenuItem1.Text" xml:space="preserve">
-    <value>Save as &amp;PXL Package...</value>
-  </data>
-  <data name="&gt;&gt;grpDetails.Parent" xml:space="preserve">
-    <value>splFiles.Panel2</value>
-  </data>
-  <data name="TTRToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;TTR</value>
-  </data>
-  <data name="qtPlugin.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;toolStripGoTo13.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="splFiles.Size" type="System.Drawing.Size, System.Drawing">
-    <value>476, 498</value>
-  </data>
-  <data name="grpDetails.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="cohSize.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lstFiles.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="ToolStripDropDownButton2.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="BtnCancel.AutoSize" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;chkPreviewEnabled.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="qtPlugin.Size" type="System.Drawing.Size, System.Drawing">
-    <value>474, 112</value>
-  </data>
-  <data name="cohSize.Width" type="System.Int32, mscorlib">
-    <value>75</value>
-  </data>
-  <data name="FrotzGamesToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Frotz Games</value>
-  </data>
-  <data name="&gt;&gt;GrayToolStripMenuItem.Name" xml:space="preserve">
-    <value>GrayToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;splFiles.Name" xml:space="preserve">
-    <value>splFiles</value>
-  </data>
-  <data name="&gt;&gt;splMain.Panel2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ISwitcherThemesToolStripMenuItem.Name" xml:space="preserve">
-    <value>ISwitcherThemesToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItemDetails.Name" xml:space="preserve">
-    <value>ToolStripMenuItemDetails</value>
-  </data>
-  <data name="mnuFavorites.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="&gt;&gt;ToolStripSeparator4.Name" xml:space="preserve">
-    <value>ToolStripSeparator4</value>
-  </data>
-  <data name="&gt;&gt;grpFiles.Name" xml:space="preserve">
-    <value>grpFiles</value>
-  </data>
-  <data name="ToolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>141, 6</value>
-  </data>
-  <data name="ToolStripMenuItem2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>233, 22</value>
-  </data>
-  <data name="toolStripGoTo9.Text" xml:space="preserve">
-    <value>&amp;Notes Icon and Images</value>
-  </data>
-  <data name="&gt;&gt;menuSaveSummerboardTheme.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;imgFilesLarge.Name" xml:space="preserve">
-    <value>imgFilesLarge</value>
-  </data>
-  <data name="mnuFavorites.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="BackupFolderToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>158, 22</value>
-  </data>
-  <data name="EBooksToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>207, 22</value>
-  </data>
-  <data name="&gt;&gt;mnuGoTo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripDropDownButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ConvertBothToolStripMenuItem.Name" xml:space="preserve">
-    <value>ConvertBothToolStripMenuItem</value>
-  </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>iPhoneBrowser</value>
-  </data>
-  <data name="&gt;&gt;AsCustomizeFoldersToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="tlbStatusLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="AsPXLPackageToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>209, 22</value>
-  </data>
-  <data name="txtFileDetails.Multiline" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;cohFiletype.Name" xml:space="preserve">
-    <value>cohFiletype</value>
-  </data>
-  <data name="Panel1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="&gt;&gt;ToolStripSeparator5.Name" xml:space="preserve">
-    <value>ToolStripSeparator5</value>
-  </data>
-  <data name="&gt;&gt;cohFiletype.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="splFiles.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;IgnoreDSStoreToolStripMenuItem.Name" xml:space="preserve">
-    <value>IgnoreDSStoreToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;toolStripGoTo19.Name" xml:space="preserve">
-    <value>toolStripGoTo19</value>
-  </data>
-  <data name="ToolStripMenuItemNewFolder.Size" type="System.Drawing.Size, System.Drawing">
-    <value>158, 22</value>
-  </data>
-  <data name="ToolStripSeparator6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>230, 6</value>
-  </data>
-  <data name="&gt;&gt;folderBrowserDialog.Name" xml:space="preserve">
-    <value>folderBrowserDialog</value>
-  </data>
-  <data name="&gt;&gt;NESROMSToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lstFiles.Name" xml:space="preserve">
-    <value>lstFiles</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItem7.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="lstFiles.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 28</value>
-  </data>
-  <data name="cohFilename.Text" xml:space="preserve">
-    <value>Filename</value>
-  </data>
-  <data name="&gt;&gt;cmdRenameFile.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;BackupFolderToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;menuRightRestoreFile.Name" xml:space="preserve">
-    <value>menuRightRestoreFile</value>
-  </data>
-  <data name="&gt;&gt;btnPreview.Name" xml:space="preserve">
-    <value>btnPreview</value>
-  </data>
-  <data name="&gt;&gt;ToolStripSeparator1.Name" xml:space="preserve">
-    <value>ToolStripSeparator1</value>
-  </data>
-  <data name="imgFolders.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
-    <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj0yLjAuMC4w
-        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
-        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAABi
-        CgAAAk1TRnQBSQFMAgEBBAEAAQkBAAEEAQABEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
-        AwABQAMAASADAAEBAQABCAYAAQgYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
-        AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
-        AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
-        AWYDAAGZAwABzAIAATMDAAIzAgABMwFmAgABMwGZAgABMwHMAgABMwH/AgABZgMAAWYBMwIAAmYCAAFm
-        AZkCAAFmAcwCAAFmAf8CAAGZAwABmQEzAgABmQFmAgACmQIAAZkBzAIAAZkB/wIAAcwDAAHMATMCAAHM
-        AWYCAAHMAZkCAALMAgABzAH/AgAB/wFmAgAB/wGZAgAB/wHMAQABMwH/AgAB/wEAATMBAAEzAQABZgEA
-        ATMBAAGZAQABMwEAAcwBAAEzAQAB/wEAAf8BMwIAAzMBAAIzAWYBAAIzAZkBAAIzAcwBAAIzAf8BAAEz
-        AWYCAAEzAWYBMwEAATMCZgEAATMBZgGZAQABMwFmAcwBAAEzAWYB/wEAATMBmQIAATMBmQEzAQABMwGZ
-        AWYBAAEzApkBAAEzAZkBzAEAATMBmQH/AQABMwHMAgABMwHMATMBAAEzAcwBZgEAATMBzAGZAQABMwLM
-        AQABMwHMAf8BAAEzAf8BMwEAATMB/wFmAQABMwH/AZkBAAEzAf8BzAEAATMC/wEAAWYDAAFmAQABMwEA
-        AWYBAAFmAQABZgEAAZkBAAFmAQABzAEAAWYBAAH/AQABZgEzAgABZgIzAQABZgEzAWYBAAFmATMBmQEA
-        AWYBMwHMAQABZgEzAf8BAAJmAgACZgEzAQADZgEAAmYBmQEAAmYBzAEAAWYBmQIAAWYBmQEzAQABZgGZ
-        AWYBAAFmApkBAAFmAZkBzAEAAWYBmQH/AQABZgHMAgABZgHMATMBAAFmAcwBmQEAAWYCzAEAAWYBzAH/
-        AQABZgH/AgABZgH/ATMBAAFmAf8BmQEAAWYB/wHMAQABzAEAAf8BAAH/AQABzAEAApkCAAGZATMBmQEA
-        AZkBAAGZAQABmQEAAcwBAAGZAwABmQIzAQABmQEAAWYBAAGZATMBzAEAAZkBAAH/AQABmQFmAgABmQFm
-        ATMBAAGZATMBZgEAAZkBZgGZAQABmQFmAcwBAAGZATMB/wEAApkBMwEAApkBZgEAA5kBAAKZAcwBAAKZ
-        Af8BAAGZAcwCAAGZAcwBMwEAAWYBzAFmAQABmQHMAZkBAAGZAswBAAGZAcwB/wEAAZkB/wIAAZkB/wEz
-        AQABmQHMAWYBAAGZAf8BmQEAAZkB/wHMAQABmQL/AQABzAMAAZkBAAEzAQABzAEAAWYBAAHMAQABmQEA
-        AcwBAAHMAQABmQEzAgABzAIzAQABzAEzAWYBAAHMATMBmQEAAcwBMwHMAQABzAEzAf8BAAHMAWYCAAHM
-        AWYBMwEAAZkCZgEAAcwBZgGZAQABzAFmAcwBAAGZAWYB/wEAAcwBmQIAAcwBmQEzAQABzAGZAWYBAAHM
-        ApkBAAHMAZkBzAEAAcwBmQH/AQACzAIAAswBMwEAAswBZgEAAswBmQEAA8wBAALMAf8BAAHMAf8CAAHM
-        Af8BMwEAAZkB/wFmAQABzAH/AZkBAAHMAf8BzAEAAcwC/wEAAcwBAAEzAQAB/wEAAWYBAAH/AQABmQEA
-        AcwBMwIAAf8CMwEAAf8BMwFmAQAB/wEzAZkBAAH/ATMBzAEAAf8BMwH/AQAB/wFmAgAB/wFmATMBAAHM
-        AmYBAAH/AWYBmQEAAf8BZgHMAQABzAFmAf8BAAH/AZkCAAH/AZkBMwEAAf8BmQFmAQAB/wKZAQAB/wGZ
-        AcwBAAH/AZkB/wEAAf8BzAIAAf8BzAEzAQAB/wHMAWYBAAH/AcwBmQEAAf8CzAEAAf8BzAH/AQAC/wEz
-        AQABzAH/AWYBAAL/AZkBAAL/AcwBAAJmAf8BAAFmAf8BZgEAAWYC/wEAAf8CZgEAAf8BZgH/AQAC/wFm
-        AQABIQEAAaUBAANfAQADdwEAA4YBAAOWAQADywEAA7IBAAPXAQAD3QEAA+MBAAPqAQAD8QEAA/gBAAHw
-        AfsB/wEAAaQCoAEAA4ADAAH/AgAB/wMAAv8BAAH/AwAB/wEAAf8BAAL/AgAD//8A/wD/AP8AJQAg/yAA
-        CP8BDwHvAfEV/wHsAesBbQHqARMBFQERAQ8HDgMACksEAAf/AZEBDwEOAu8B8gr/AREBbAL3AfIE/wHs
-        AZoBegFYBVIBUQFLASoCSwEPAgALUgFLAwAG/wKRAQ4BFATvCP8BAAGRAW0BDgTvAfAB/wHsAaACmgR6
-        AVkBUwJSATEBSwERAQACUgGgCXoBUgEqAgAE/wHzAfcBtQGRAQ4BEQEOBe8F/wEOAZEB9AEPAQ4G7wHs
-        ARoBoAKaA3oCWQFTAlIBKgFDAQACUgF6AaAIegFYASoCAAP/AQcDtQH3AeoCDgXvBP8BDgG1AvcBFAEA
-        AQ4E7wH/Ae0BwwKgApoDegJZAVMBUgExARQBAAJSAVgIoAGaAVkBKgIAAv8B8gS7AbUBuwEQAW0E7wT/
-        AQ4CuwG1AZEB7wEVBO8C/wHtAcMCoAKaBHoCWQFSATEBEgEAAVIBWAFSCaACeQEqAQAC/wMJA7sBtQEO
-        AewB7Qb/AQACCQG7AbwBuwHxARQBBwHvBP8BHAPDAaACmgR6AVkBUgExAeoBAAFSAXoBUgmgAXoBoAEq
-        AQAB/wEOAxkB8AIJAbsBAAHvAQ4G/wMZAfABCQEOAZIBDgG8AQAE/wEcA8MCoAKaBHoBWQFSAesBAAFS
-        AZoBUgF5Av8B9gX/AZoB/wEqAQAB/wEZA/QBGQHwAQkBuwEOAQcB7wX/AW0C9AIZAZEB6wEHAfIB8QFD
-        ARQD/wEcBcMCoAKaBHoB6wEAAVIBoAFYC1IBKgEAAf8B9AP/AhkBCQG7AW0BEwH/AQ4E/wEZAfQC/wEA
-        Ae8C/wHwARUBDgT/ChwE7QHsAQABUgagBf8BUgFLAgAB8QH0AQAC/wH0AQkB9AMOB/8BEAEVAfQBQwG6
-        AQkBQwEOARQF/wEcARoCwwGgAZoBHAGhCAABUgH/BKAB/wZSAwAB/wHvARABAAFtAZIBAAEOAREB8Qr/
-        AQkBuwEOCf8BpwUcAaEKAAFSBP8BUgkAA/8B8wFDG/8SAARSCgAg/yAAIP8BQgFNAT4HAAE+AwABKAMA
-        AUADAAEgAwABAQEAAQEGAAEBFgAD/4EABP8EAAT/BQABAQHAAQ8FAAEBAYABBwUAAQEBAAEDBQABAQEA
-        AQMFAAEBAQABAwUAAQEBAAEBBQABAQEAAQEFAAEBAQABAQUAAQEBAAEBBQABAQEAAQMFAAH/AQABBwQA
-        AQEB/wGBAf8EAAL/AcMB/wQABP8EAAs=
-</value>
-  </data>
-  <data name="ToolStripSeparator4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>230, 6</value>
-  </data>
-  <data name="&gt;&gt;tlbStatusLabel.Name" xml:space="preserve">
-    <value>tlbStatusLabel</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1714,98 +806,131 @@
         ////////////////////////
 </value>
   </data>
-  <data name="&gt;&gt;toolStripGoTo18.Name" xml:space="preserve">
-    <value>toolStripGoTo18</value>
+  <data name="grpDetails.Text" xml:space="preserve">
+    <value>File Details</value>
   </data>
-  <data name="&gt;&gt;BtnCancel.Type" xml:space="preserve">
+  <data name="toolStripGoTo2.Text" xml:space="preserve">
+    <value>&amp;UI Sounds</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="toolStripGoTo8.Text" xml:space="preserve">
+    <value>&amp;iPod Icon and Images</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem4.Name" xml:space="preserve">
+    <value>ToolStripMenuItem4</value>
+  </data>
+  <data name="&gt;&gt;chkPreviewEnabled.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="toolStripGoTo19.Text" xml:space="preserve">
+    <value>&amp;Fonts</value>
+  </data>
+  <data name="toolStripGoTo11.Text" xml:space="preserve">
+    <value>&amp;SMS Icon and Images</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItemFile.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripDropDownButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;menuRightReplaceFile.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;toolStripGoTo14.Type" xml:space="preserve">
+  <data name="picFileDetails.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 45</value>
+  </data>
+  <data name="&gt;&gt;ToolStripSeparator4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="trvFolders.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="&gt;&gt;toolStripGoTo8.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="grpFolders.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="&gt;&gt;WebBrws.Parent" xml:space="preserve">
+    <value>grpDetails</value>
   </data>
-  <data name="qtPlugin.Enabled" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="&gt;&gt;menuRightClickFolders.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="ToolStripMenuItemSaveFolderIn.Text" xml:space="preserve">
-    <value>Save Folder In...</value>
+  <data name="toolStrip.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
   </data>
-  <data name="&gt;&gt;CameraRollToolStripMenuItem.Type" xml:space="preserve">
+  <data name="&gt;&gt;InstallerPackageSourcesToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="WhiteToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>102, 22</value>
+  <data name="&gt;&gt;grpFolders.Parent" xml:space="preserve">
+    <value>splMain.Panel1</value>
   </data>
-  <data name="&gt;&gt;ToolStripMenuItemLargeIcons.Type" xml:space="preserve">
+  <data name="&gt;&gt;toolStripGoTo19.Name" xml:space="preserve">
+    <value>toolStripGoTo19</value>
+  </data>
+  <data name="toolStripGoTo3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>233, 22</value>
+  </data>
+  <data name="&gt;&gt;ToolStripSeparator9.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripGoTo19.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="ToolStripMenuItemLoading.Text" xml:space="preserve">
-    <value>Loading List of Backed Up Files...</value>
+  <data name="&gt;&gt;ConfirmDeletionsToolStripMenuItem.Name" xml:space="preserve">
+    <value>ConfirmDeletionsToolStripMenuItem</value>
   </data>
-  <data name="toolStrip.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+  <data name="toolStripGoTo15.Text" xml:space="preserve">
+    <value>Se&amp;ttings Icon and Images</value>
   </data>
-  <data name="&gt;&gt;mnuView.Name" xml:space="preserve">
-    <value>mnuView</value>
+  <data name="WebBrws.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 45</value>
   </data>
-  <data name="&gt;&gt;splMain.Panel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;tlbStatusStrip.Name" xml:space="preserve">
+    <value>tlbStatusStrip</value>
   </data>
-  <data name="trvFolders.Size" type="System.Drawing.Size, System.Drawing">
-    <value>232, 480</value>
+  <data name="ToolStripMenuItemFile.Text" xml:space="preserve">
+    <value>&amp;File</value>
   </data>
-  <data name="BtnCancel.Text" xml:space="preserve">
-    <value>Cancel</value>
+  <data name="splFiles.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
   </data>
-  <data name="&gt;&gt;GrayToolStripMenuItem.Type" xml:space="preserve">
+  <data name="&gt;&gt;ToolStripSeparator8.Name" xml:space="preserve">
+    <value>ToolStripSeparator8</value>
+  </data>
+  <data name="&gt;&gt;OrganizeFavoritesToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;toolStripGoTo9.Type" xml:space="preserve">
+  <data name="ToolStripMenuItemDeleteFolder.Size" type="System.Drawing.Size, System.Drawing">
+    <value>158, 22</value>
+  </data>
+  <data name="TTRToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>207, 22</value>
+  </data>
+  <data name="&gt;&gt;WeDictDictionariesToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;toolStripGoTo6.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="ToolStripMenuItem5.Text" xml:space="preserve">
-    <value>&amp;Customize Files</value>
-  </data>
-  <data name="tlbProgress0.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 14</value>
-  </data>
-  <data name="&gt;&gt;toolStripGoTo1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="menuSaveSummerboardTheme.Size" type="System.Drawing.Size, System.Drawing">
-    <value>178, 22</value>
-  </data>
-  <data name="splMain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>730, 504</value>
-  </data>
-  <data name="&gt;&gt;EBooksToolStripMenuItem.Name" xml:space="preserve">
-    <value>EBooksToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;mnuStdApps.Name" xml:space="preserve">
-    <value>mnuStdApps</value>
-  </data>
-  <data name="&gt;&gt;ToolStripMenuItemDetails.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;grpFiles.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;grpFolders.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="btnPreview.Text" xml:space="preserve">
-    <value>Preview</value>
+  <data name="&gt;&gt;cmdGBAROMs.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="btnPreview.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>730, 551</value>
   </data>
-  <data name="BackupDirectoryToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>166, 22</value>
+  <data name="&gt;&gt;AsSummerboardFolderToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItemCleanUp.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cohAttribute.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ToolStripMenuItemFile.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="cmdSmallIcons.Size" type="System.Drawing.Size, System.Drawing">
+    <value>137, 22</value>
   </data>
   <data name="mnuGoTo.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1822,26 +947,402 @@
         s1c0gHPmbrPTpHNJKOCo2G1mZs20zcwUJ5yp1AB5+8/zEwgF5GMVDxh4AAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="&gt;&gt;toolStripGoTo2.Name" xml:space="preserve">
-    <value>toolStripGoTo2</value>
+  <data name="imgFilesSmall.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj0yLjAuMC4w
+        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
+        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAO
+        FQAAAk1TRnQBSQFMAgEBCAEAAQkBAAEEAQABEgEAARIBAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        AwABSAMAATYDAAEBAQABCAUAATABDxgAAYACAAGAAwACgAEAAYADAAGAAQABgAEAAoACAAPAAQABwAHc
+        AcABAAHwAcoBpgEAATMFAAEzAQABMwEAATMBAAIzAgADFgEAAxwBAAMiAQADKQEAA1UBAANNAQADQgEA
+        AzkBAAGAAXwB/wEAAlAB/wEAAZMBAAHWAQAB/wHsAcwBAAHGAdYB7wEAAdYC5wEAAZABqQGtAgAB/wEz
+        AwABZgMAAZkDAAHMAgABMwMAAjMCAAEzAWYCAAEzAZkCAAEzAcwCAAEzAf8CAAFmAwABZgEzAgACZgIA
+        AWYBmQIAAWYBzAIAAWYB/wIAAZkDAAGZATMCAAGZAWYCAAKZAgABmQHMAgABmQH/AgABzAMAAcwBMwIA
+        AcwBZgIAAcwBmQIAAswCAAHMAf8CAAH/AWYCAAH/AZkCAAH/AcwBAAEzAf8CAAH/AQABMwEAATMBAAFm
+        AQABMwEAAZkBAAEzAQABzAEAATMBAAH/AQAB/wEzAgADMwEAAjMBZgEAAjMBmQEAAjMBzAEAAjMB/wEA
+        ATMBZgIAATMBZgEzAQABMwJmAQABMwFmAZkBAAEzAWYBzAEAATMBZgH/AQABMwGZAgABMwGZATMBAAEz
+        AZkBZgEAATMCmQEAATMBmQHMAQABMwGZAf8BAAEzAcwCAAEzAcwBMwEAATMBzAFmAQABMwHMAZkBAAEz
+        AswBAAEzAcwB/wEAATMB/wEzAQABMwH/AWYBAAEzAf8BmQEAATMB/wHMAQABMwL/AQABZgMAAWYBAAEz
+        AQABZgEAAWYBAAFmAQABmQEAAWYBAAHMAQABZgEAAf8BAAFmATMCAAFmAjMBAAFmATMBZgEAAWYBMwGZ
+        AQABZgEzAcwBAAFmATMB/wEAAmYCAAJmATMBAANmAQACZgGZAQACZgHMAQABZgGZAgABZgGZATMBAAFm
+        AZkBZgEAAWYCmQEAAWYBmQHMAQABZgGZAf8BAAFmAcwCAAFmAcwBMwEAAWYBzAGZAQABZgLMAQABZgHM
+        Af8BAAFmAf8CAAFmAf8BMwEAAWYB/wGZAQABZgH/AcwBAAHMAQAB/wEAAf8BAAHMAQACmQIAAZkBMwGZ
+        AQABmQEAAZkBAAGZAQABzAEAAZkDAAGZAjMBAAGZAQABZgEAAZkBMwHMAQABmQEAAf8BAAGZAWYCAAGZ
+        AWYBMwEAAZkBMwFmAQABmQFmAZkBAAGZAWYBzAEAAZkBMwH/AQACmQEzAQACmQFmAQADmQEAApkBzAEA
+        ApkB/wEAAZkBzAIAAZkBzAEzAQABZgHMAWYBAAGZAcwBmQEAAZkCzAEAAZkBzAH/AQABmQH/AgABmQH/
+        ATMBAAGZAcwBZgEAAZkB/wGZAQABmQH/AcwBAAGZAv8BAAHMAwABmQEAATMBAAHMAQABZgEAAcwBAAGZ
+        AQABzAEAAcwBAAGZATMCAAHMAjMBAAHMATMBZgEAAcwBMwGZAQABzAEzAcwBAAHMATMB/wEAAcwBZgIA
+        AcwBZgEzAQABmQJmAQABzAFmAZkBAAHMAWYBzAEAAZkBZgH/AQABzAGZAgABzAGZATMBAAHMAZkBZgEA
+        AcwCmQEAAcwBmQHMAQABzAGZAf8BAALMAgACzAEzAQACzAFmAQACzAGZAQADzAEAAswB/wEAAcwB/wIA
+        AcwB/wEzAQABmQH/AWYBAAHMAf8BmQEAAcwB/wHMAQABzAL/AQABzAEAATMBAAH/AQABZgEAAf8BAAGZ
+        AQABzAEzAgAB/wIzAQAB/wEzAWYBAAH/ATMBmQEAAf8BMwHMAQAB/wEzAf8BAAH/AWYCAAH/AWYBMwEA
+        AcwCZgEAAf8BZgGZAQAB/wFmAcwBAAHMAWYB/wEAAf8BmQIAAf8BmQEzAQAB/wGZAWYBAAH/ApkBAAH/
+        AZkBzAEAAf8BmQH/AQAB/wHMAgAB/wHMATMBAAH/AcwBZgEAAf8BzAGZAQAB/wLMAQAB/wHMAf8BAAL/
+        ATMBAAHMAf8BZgEAAv8BmQEAAv8BzAEAAmYB/wEAAWYB/wFmAQABZgL/AQAB/wJmAQAB/wFmAf8BAAL/
+        AWYBAAEhAQABpQEAA18BAAN3AQADhgEAA5YBAAPLAQADsgEAA9cBAAPdAQAD4wEAA+oBAAPxAQAD+AEA
+        AfAB+wH/AQABpAKgAQADgAMAAf8CAAH/AwAC/wEAAf8DAAH/AQAB/wEAAv8CAAP//wD/AP8A/wD/ABcA
+        A6EDBAGFBKEOAAShBgABxAGMAusBbgFtAUoBEgFmAcQBoQ4AAqEBhgOuAYwBZgEEAqEBAAGhAQQBZgHs
+        AeoBQwFlAV8BBAGFBKELAAGhAacDhQKhAwABbQF0AXkBmQF5AVgBUgExAUsBEgGhDQABoQGnAe8C8AG8
+        AQcCtQGNAYYBhQEAAWYB7AK8Ae8B8AHvAewBEgFmAV8BBAGFBKEIAAGhAacCzwGGAQQCoQIAAXMBWAF6
+        AaABmgJZAjEBSgGhDQABpwG8AvIB8QHwAQcB7wHtArUBBAGFAQcB8AEHAfAB7wG8AfAC9AHyAewBFQFl
+        AV8BBAGFAaEFAAOhAacBhgEEAYUCzwEEAaECAAFzAVkBmgGgAZoCWQIxAUsCjAJmAoYBoQcAAacB8gL0
+        AfMB8QG1AfcB7QK1AYYBZgEHAu8B8QHvAfABvALzAe8B9wGSAe8B9wEUAWUBBAQAAaEBhQFfAQoCXwLP
+        AQQBpwHPAQQBoQEAAXMBWQF6AaABmgJZAjEBSwJ0AlIBSwHqAYYHAAGhAfAB9AH/AfMBvAG1As8CtQGh
+        AWYBBwHwAQcB8QHvAQcB8QHyAe8B7QLqAewB7wHyAQcBQwMAAaEBBAHsAe8BBwHvAewBEQGGAbUBBAHP
+        AYYBhQGhAXQBWQF6AaABmgJZAjEBSwGaAXoBWQEyATEBSwESBAAEoQGnBbUDzwGnAaEBZgEHAfABBwHy
+        Ae8BvAHxAbwB7wISARMBEgHsAbwB8QFmAwABhQHrAZID7wEHAfcBFQGGAc8BBAHPAQQBoQF0AXoBmgGg
+        AZoCWQIxAUsBmgF6AVkBOAIxARIDAAKhBIYBzwHTAdsCtQLPAYYCoQFmAQcB8AEHAfIB7wK8AQcB7AHq
+        ARQB6gEUARIB7wHwARICAAGhAWYB6wH3Ae8BBwG8Ae8BBwH3AREBtQEEAc8BhgGFAXQCegGgAZoBegFZ
+        AjEBSwGaAXoBWQEyAjEBEgIAAaEBxwKtAYsCrQG1AtQC2gHbAbQBhgEEAYUBZgG8AfABBwHyAe8BBwK8
+        AewBEwFsAawB6gFtAfcBvAETAgABhQETAesBEwGuARIBBwG8Ae8BBwHsAV8BpwGFAc8BhQF0AVkBegGg
+        AZoBWQE4AjEBSwGaAXoBWQEyAjEB6gIAAawDpgFIAaYBhgG1B9oBtAGGAWYBvAHxAbwB8wHvAfABBwG8
+        Ae8BbQETAYsB6gHrAe8BBwETAQABoQFfAhMCrgHPAa4CvALvAQoBtQGhAc8BoQF0AVkBegGgAZoBWQE4
+        AjEBSwGaAXoBWQEyAjEB6gEAAaEBxwGmAawBigEnAWsBrQG1AdoF2wLaAYYBZgG8AfEBvAH0Ae8CvAEH
+        AfIBbQHqARMCEgG8AQcBEwGhAWYB6gETARQD6wGuAesBvAHvAQcBQwGFAaECAAF0AXoBmgKgAZoBegFZ
+        AVIBSwGaAXoBWQEyAjEB6gEAAa0DrAEGAQIBSAK0CNsBhgFmAfAB8gG8AfQB7wEHAu8B8QG8A20B7wEH
+        Ae8BEwGhAa4B7AEVARMCkgHsAesBFALvAQcBEgGFAwABHAGaAaAEwwGgAXkBcwGaAXoBWQEyAjEB6gEA
+        AbMCrAEGAU4BcAHTAbUBugLbA9wD2wGGAW0B8AHvAbwB9AHsBO8B8QP0AfAC7wETAaEBtQG8ARUBFAIH
+        Ae0B6wEUAZIB9wEHARIBhQMAAewBHAeZAXkBmgF6AVkBMgIxAeoBAAG0AawBcAFPAVUB1AHTAQcB2wfc
+        AdsBogFmAfQB/wHzAZICbQGSAvcC6wHvAewB6gFtAewBFAGhAbwB/wHsARUB6gHvAe0CbQLsAe8BQwGh
+        AwABpwWuAewBdAF5AZoBoAGaAXoCWQFSAW0BAAHVAawBVQJWAZ0BugG8AdsB3ALhARkC4QHcAbQBBAGh
+        AQcB8AIHAbwBBwHvAfABvAHvApIBbQETARIBbQEUAQABhgHwAQcCFQETAhIBbQHrAuwBBAGhCQABpwF5
+        AXoBoALDAqABegF5AesBAAHHAXEBVgF4AZ4BCAG7AQcBuwEJAeED4gEZAdwBtAGFAQABoQGFAoYBrgH3
+        Ae8BvAHyAfEB9wLsApIBbQFmAQABoQGuAewBEgFDARUBEwESAeoCbQFmAqEJAAGnARwBmQUaAZkBHAGu
+        AgABtAGXAZgBwgEIAZgBvAIHAe8BtQG7AgkB3AG0AYUHAAGhAYUBBAGGAa4C7AGuAYYBhQGhAwACoQGF
+        AhUBFAETARIBZgKhCgABxAHPAe0BHAFzAewBcwLsAa4BpwMAAbQBmAGeAXgBVgFVAbMBrQHPBbUBrgGh
+        GQABoQJmAqEbAAHHAdUBugG0Aa0BoQYAAqcBoQMAAqEBhQEEBF8BBAGFAqEIAAKhA4UDBAGFAaEXAAGh
+        AYULBAGFAqECAAKhAYYBtQHxA/MB8gG1AYYBXwGFAqEFAAGhAYYBZgFtAesBhgGuAc8BrgFfAYUBoRYA
+        Ac8MCQGGAqEBAAKhAc8B8wH0AfEDvAHyAfQB8wGSAV8BhQGhAwACoQHqAfcB3QHzAa4CZgGGAc8BtQEK
+        AaECAAGFBgABXwYOA0MBCgIAAc8B8gUZAd0ECQHdAYYCoQEAAaEBtQH0AfMBtQKtAbQCrQG1AfMB9AEH
+        AV8CoQIAAaEB6wLdARkB3QGuAc8BtQHPAWYBzwFmAV8BoQEAAQ4BhQOhAQ8BDgQTAQ8BDgFtAw4B6gIA
+        Ac8B8gcZAd0CCQHdAYYCoQEAAc8B9AHzA60BtQH/AQkDrQHzAfQBrgEEAaEBAAGhAesF3QHPAt0B1gKu
+        AewBZgEEAQACDgFfAQ8BoQEVAUMEDgEPARUBbQEOARUCDgIAAc8B8wgZAd0BCQHdAYYCoQEAAd0B9AG0
+        A60BzwHdAc8DrQHPAfQB8gFmAYUBAAGGAbwF3QEJAt0B1gGuAYYC9wFfAaECDgFfARUBoQFtARMBEAMV
+        ARABFQFtAQ4BEAEOAW0CAAHPAfMKGQHdAYYCoQHPAfQBCQWtAbQFrQEJAfQBrgGFAQAB7QIZBN0B3gHd
+        AQkBtQHwAa4B9wHyAWYBhQEOAQ8BXwHqAaEB7AFtAUMDbQFDARUBbQEOARQBDgEVAgABzwHzChkB3QGG
+        AqEBCQH/AbQErQG0Af8BtAStAbQB9AEHAQQBoQG8AfMCGQHdAfQB3gG8AfID/wHPAbUB3QGuAQQBDgER
+        AQQBCgGhAewBbQEPAw4BbQEOAW0DDgEQAgABzwHzChkB3QGGAqEB8QH/AbQFrQL0Ba0B9AG8AQQBhgHy
+        AvMCGQH/AZIBZgHqAfEB9AHdArUB3QGuAV8BDgMAAaEBAAFfAQ4BFAEOAUECDgEPA+sBDgIAAc8B9AoZ
+        Ad0BhgKhARkB/wG0Ba0BtAH/AfMErQH0AfABBAGGBN0BGQH0AewBXwEEAbwB/wHdAc8CtQJmAwABBAEA
+        AaEBDgERAQQJFAIAAc8C9AkZAd0BhgKhAd0B/wG0Bq0BtAH/AQkDrQH/AbwBBAGGAQkD3QEZAf8B8AFt
+        AewB8wH0Ad0BrgLPAa4BBAMAAQQBAAGhARABhQEAAQQBEQQOAV8BBAGFAgABzwT0BxkB3QGGAqEBtQH/
+        AQkB1QGtAbUBCQHPAq0B/wHdAq0BCQH/AbUBhQGhAbUB3QHzA/8B9ALeAfQC3QGuAYYBzwGGAaEKAAEU
+        BQ4BhQFfAgABzwX0BhkB3QGGA6EB9AH/AtUBtQH/ARkBtAG8Af8BCQGtAbQB/wH0AYsBoQEAAa4F/wH0
+        AfMBGQPdAc8BZgGuAWYBoQoAAQoBQwEPARMBFAEPAV8DAAHPAf8F9AUZAd0BhgKhAQAB1gH/AfQB2wHV
+        AQkD/wHyAtUBGQH/AQkBhQGhAQABhgEHBP8B9AHzAhkE3QHrAaEMAAFfAQ8ChQEPAV8DAAHPAv8G9AMZ
+        Ad0BhgKhAQABpwEZAf8B9AEZAdwDCQLcARkB/wHzAYYCoQIAAYYB8AP/AfQC8wIZAt0B7QGGAaESAAGh
+        AgABzwP/BvQBCQHVAbQBhgKhAQABoQGnAd0D/wH0AhkB9AL/AfMBpwKhAwABoQGGAQcC/wL0AvMBGQHd
+        AewBhgGhFgAB5gX/BPQB3AHUAa0CoQMAAaEBxwHWAfMF/wH0AbUBpwKhBgABhgGuAQcB8QHzAfIBvAGS
+        AYYBoRgAAeYG/wP0AQkBrQOhBgABoQG1Ad0BGQHxAbUBpwwAAaEDhgGhGwAB5ggJAbsBrQUAAUIBTQE+
+        BwABPgMAASgDAAFIAwABNgMAAQEBAAEBBQABiAECFgAD/9kAAYABDwH/AcMB8AEBAf8B+AQAAYABAQH/
+        AcABcAEBAf8B8AQAAYABAAE/AcABMAEBAf8B8AYAAT4BAAEwAQABBwHwBgABPAEAARABAAEHAfAGAAE4
+        AwABBwGABgABOAMAAQcHAAEwAwABBgcAATADAAEGBwABIAMAAQQJAAEwAQABBAkAAXABAAEECQABcAEA
+        AQQJAAFwAQABBAcAASABAAF/AcABBAUAAYABAAEgAQABfwHAAQYFAAH+AQABOAEAAf8BwAEHBQAD/wGD
+        A/8BgQH4AwAB4AEBAf4BAAF/Av8FAAHAAQABfAEAAT8C/wUAAYABAAFwAQABNwHgAQMFAAGAAQABMAEA
+        ARABAAEDBQABgAEAASABAAEQAQABAwUAAYABAAEgAwABAwcAASADAAEDCwABAwkAAQcBQAEDCQABDgEA
+        AQMJAAEOAQgBAwkAAQ8B/AEDBwABIAEAAQ8B/AEDBQABgAEAASABAAEfAf4BAwUAAYABAAEwAQABHwH/
+        AfsFAAGAAQABcAEAAT8C/wEAAQEDAAHAAQAB/AEAA/8BAAEBAwAB+AEPAf8BBwP/AQABHwMACw==
+</value>
   </data>
-  <data name="&gt;&gt;cohFilename.Name" xml:space="preserve">
-    <value>cohFilename</value>
+  <data name="&gt;&gt;toolStripGoTo8.Name" xml:space="preserve">
+    <value>toolStripGoTo8</value>
+  </data>
+  <data name="CameraRollToolStripMenuItem.Text" xml:space="preserve">
+    <value>Camera Roll  (DCIM)</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItemDeleteFolder.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tlbStatusStrip.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;menuSaveSummerboardTheme.Name" xml:space="preserve">
+    <value>menuSaveSummerboardTheme</value>
+  </data>
+  <data name="ToolStripMenuItem4.Text" xml:space="preserve">
+    <value>&amp;Customize</value>
+  </data>
+  <data name="txtFileDetails.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;menuRightSaveAs.Name" xml:space="preserve">
+    <value>menuRightSaveAs</value>
+  </data>
+  <data name="IgnoreDSStoreToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>166, 22</value>
+  </data>
+  <data name="&gt;&gt;AsPXLPackageToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ConfirmDeletionsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>166, 22</value>
   </data>
   <data name="splMain.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>5, 5, 5, 5</value>
   </data>
-  <data name="tlbStatusLabel.ToolTipText" xml:space="preserve">
-    <value>This section displays the current status.</value>
+  <data name="&gt;&gt;ToolStripSeparator5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="cohFilename.Width" type="System.Int32, mscorlib">
-    <value>260</value>
+  <data name="toolStripGoTo5.Text" xml:space="preserve">
+    <value>&amp;Maps Icon and Images</value>
   </data>
-  <data name="&gt;&gt;ToolStripSeparator8.Name" xml:space="preserve">
-    <value>ToolStripSeparator8</value>
+  <data name="IgnoreThumbsdbToolStripMenuItem.Text" xml:space="preserve">
+    <value>Ignore Thumbs.db</value>
   </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 12</value>
+  <data name="&gt;&gt;splMain.Panel2.Parent" xml:space="preserve">
+    <value>splMain</value>
+  </data>
+  <data name="&gt;&gt;qtPlugin.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;toolStripGoTo4.Name" xml:space="preserve">
+    <value>toolStripGoTo4</value>
+  </data>
+  <data name="&gt;&gt;tlbStatusStrip.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;grpFolders.Name" xml:space="preserve">
+    <value>grpFolders</value>
+  </data>
+  <data name="chkPreviewEnabled.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="chkPreviewEnabled.Appearance" type="System.Windows.Forms.Appearance, System.Windows.Forms">
+    <value>Button</value>
+  </data>
+  <data name="&gt;&gt;toolStripGoTo2.Name" xml:space="preserve">
+    <value>toolStripGoTo2</value>
+  </data>
+  <data name="&gt;&gt;cohFilename.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="menuRightDeleteFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>144, 22</value>
+  </data>
+  <data name="cmdGBAROMs.Size" type="System.Drawing.Size, System.Drawing">
+    <value>207, 22</value>
+  </data>
+  <data name="ToolStripDropDownButton1.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="ToolStripSeparator5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>230, 6</value>
+  </data>
+  <data name="&gt;&gt;BackupDirectoryToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripGoTo5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="menuRightRestoreFile.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;txtFileDetails.Parent" xml:space="preserve">
+    <value>grpDetails</value>
+  </data>
+  <data name="AddToFavoritesToolStripMenuItem.Text" xml:space="preserve">
+    <value>Add to Favorites...</value>
+  </data>
+  <data name="cmdGBAROMs.Text" xml:space="preserve">
+    <value>&amp;GBA ROMs</value>
+  </data>
+  <data name="&gt;&gt;toolStripGoTo20.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="chkPreviewEnabled.Text" xml:space="preserve">
+    <value>Auto Preview Enabled</value>
+  </data>
+  <data name="mnuFavorites.Text" xml:space="preserve">
+    <value>Favorites</value>
+  </data>
+  <data name="ToolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>175, 6</value>
+  </data>
+  <data name="&gt;&gt;picFileDetails.Parent" xml:space="preserve">
+    <value>grpDetails</value>
+  </data>
+  <data name="toolStripGoTo6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>236, 22</value>
+  </data>
+  <data name="&gt;&gt;ToolStripSeparator3.Name" xml:space="preserve">
+    <value>ToolStripSeparator3</value>
+  </data>
+  <data name="&gt;&gt;cmdSmallIcons.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="InstallerPackageSourcesToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Installer Package Sources</value>
+  </data>
+  <data name="&gt;&gt;Panel1.Name" xml:space="preserve">
+    <value>Panel1</value>
+  </data>
+  <data name="ToolStripSeparator9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>155, 6</value>
+  </data>
+  <data name="ToolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>141, 6</value>
+  </data>
+  <data name="grpFiles.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="ToolStripMenuItemLargeIcons.Text" xml:space="preserve">
+    <value>&amp;Large Icons</value>
+  </data>
+  <data name="tlbProgressBar.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;txtFileDetails.Name" xml:space="preserve">
+    <value>txtFileDetails</value>
+  </data>
+  <data name="&gt;&gt;toolStripGoTo15.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="chkPreviewEnabled.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 0</value>
+  </data>
+  <data name="&gt;&gt;chkPreviewEnabled.Name" xml:space="preserve">
+    <value>chkPreviewEnabled</value>
+  </data>
+  <data name="splMain.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="toolStripGoTo9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>236, 22</value>
+  </data>
+  <data name="toolStripGoTo1.Text" xml:space="preserve">
+    <value>&amp;Ringtones</value>
+  </data>
+  <data name="DockSwapDocksToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>207, 22</value>
+  </data>
+  <data name="ToolStripSeparator7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>175, 6</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItemDetails.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ToolStripMenuItemDeleteFolder.Text" xml:space="preserve">
+    <value>&amp;Delete Folder</value>
+  </data>
+  <data name="cohAttribute.Text" xml:space="preserve">
+    <value>Attribute</value>
+  </data>
+  <data name="&gt;&gt;WebBrws.Name" xml:space="preserve">
+    <value>WebBrws</value>
+  </data>
+  <data name="lstFiles.Size" type="System.Drawing.Size, System.Drawing">
+    <value>470, 300</value>
+  </data>
+  <data name="AsPXLPackageToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>214, 22</value>
+  </data>
+  <data name="&gt;&gt;ToolStripSeparator10.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;AboutToolStripMenuItem.Name" xml:space="preserve">
+    <value>AboutToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;tlbStatusStrip.Type" xml:space="preserve">
+    <value>System.Windows.Forms.StatusStrip, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tlbProgressBar.Name" xml:space="preserve">
+    <value>tlbProgressBar</value>
+  </data>
+  <data name="&gt;&gt;cohAttribute.Name" xml:space="preserve">
+    <value>cohAttribute</value>
+  </data>
+  <data name="&gt;&gt;ToolStripSeparator8.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;IPhoneToPCToolStripMenuItem.Name" xml:space="preserve">
+    <value>IPhoneToPCToolStripMenuItem</value>
+  </data>
+  <data name="grpFolders.Size" type="System.Drawing.Size, System.Drawing">
+    <value>238, 498</value>
+  </data>
+  <data name="&gt;&gt;ConvertBothToolStripMenuItem.Name" xml:space="preserve">
+    <value>ConvertBothToolStripMenuItem</value>
+  </data>
+  <data name="cohSize.Text" xml:space="preserve">
+    <value>Size</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItemDetails.Name" xml:space="preserve">
+    <value>ToolStripMenuItemDetails</value>
+  </data>
+  <data name="&gt;&gt;grpDetails.Name" xml:space="preserve">
+    <value>grpDetails</value>
+  </data>
+  <data name="txtFileDetails.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 45</value>
+  </data>
+  <data name="chkPreviewEnabled.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="mnuThirdPartyApps.Size" type="System.Drawing.Size, System.Drawing">
+    <value>233, 22</value>
+  </data>
+  <data name="ToolStripMenuItemExit.Text" xml:space="preserve">
+    <value>E&amp;xit</value>
+  </data>
+  <data name="&gt;&gt;toolStripGoTo2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem5.Name" xml:space="preserve">
+    <value>ToolStripMenuItem5</value>
+  </data>
+  <data name="btnPreview.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="grpFiles.Size" type="System.Drawing.Size, System.Drawing">
+    <value>476, 331</value>
+  </data>
+  <data name="ToolStripDropDownButton2.Text" xml:space="preserve">
+    <value>&amp;Options</value>
+  </data>
+  <data name="&gt;&gt;cmdGBAROMs.Name" xml:space="preserve">
+    <value>cmdGBAROMs</value>
+  </data>
+  <data name="&gt;&gt;ToolStripSeparator10.Name" xml:space="preserve">
+    <value>ToolStripSeparator10</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem6.Name" xml:space="preserve">
+    <value>ToolStripMenuItem6</value>
+  </data>
+  <data name="splMain.Panel2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="toolStripGoTo19.Size" type="System.Drawing.Size, System.Drawing">
+    <value>233, 22</value>
+  </data>
+  <data name="&gt;&gt;toolStripGoTo17.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="mnuFavorites.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAgxJREFUOE+lkvtL
+        U2EYx+0PEbtpFwnBKPGKiJImGP0gYhIYs1E5GF5gIxkpA00JRSmMEF0ohMh+GaRWYlqabMVcNdS2QpaI
+        VqiDIYhk397vA6fXhCjyhYdzeM/5fp7vczkAdeL2cwho7v/wWzT1zcN+Pwhr51uY2/y41PQaF+wzKKiZ
+        QvaN58g0jyLd5KEUcQbg+84P/Cm2tncQjW3j68YWIqubCC3FcOJc478BAuGoZM6zvoRnakXEruEIjhc4
+        /g5gZop9c+voGAyLbQIfeBZxLL9BA1jzXvuGbWamuKh+GmmVbswE19A59FEBbmoAG7YbsLtm2mZmiml9
+        cvabNDwpz6YB7LYBoMXCumkJr7LOmnnHzBQ/9X2Bo2cOibm1GsBREbAQiYmw/8lnuCeWkVzcgnZlnw1j
+        3HV/wuNXK6i/9x5Hc6wawDlTXHbLJ+LZUBQPRyKwdQdxutwl1h+NLXHh5Ht1ewBHsiwawCW57HyDAfWR
+        dvl0uhZQ1eqX8aVc7EKLqrum651ATLf9OJx5XQM4KmY0xPzZ0hFAiQJnXB0WwME0E3IsL5B17ZlADqWb
+        NYDrOepdlcysmTWWOrxqbceRWtaLk0VO1XW72D5Vckd2gMBfq8zdpmUG62NJvKM4+XyziDk24xmfWoGE
+        s1c0gHPmbrPTpHNJKOCo2G1mZs20zcwUJ5yp1AB5+8/zEwgF5GMVDxh4AAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="&gt;&gt;toolStrip.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;splMain.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitContainer, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkPreviewEnabled.Parent" xml:space="preserve">
+    <value>Panel1</value>
+  </data>
+  <data name="&gt;&gt;splFiles.Parent" xml:space="preserve">
+    <value>splMain.Panel2</value>
   </data>
   <data name="imgFilesLarge.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
@@ -2328,6 +1829,516 @@
         Cv8B/gYAAv8BgAQAAQ8C/wH+AwABAwr/Af4GAAP/AYACAAX/AfgBAAEDC/8B/gQAAQMC/ws=
 </value>
   </data>
+  <data name="&gt;&gt;menuRightSaveAs.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="tlbStatusLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>491, 17</value>
+  </data>
+  <data name="Panel1.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="picFileDetails.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
+    <value>CenterImage</value>
+  </data>
+  <data name="ToolStripDropDownButton1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>41, 22</value>
+  </data>
+  <data name="&gt;&gt;cmdShowGroups.Name" xml:space="preserve">
+    <value>cmdShowGroups</value>
+  </data>
+  <data name="&gt;&gt;PictureBackgroundToolStripMenuItem.Name" xml:space="preserve">
+    <value>PictureBackgroundToolStripMenuItem</value>
+  </data>
+  <data name="ToolStripDropDownButton2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>57, 22</value>
+  </data>
+  <data name="&gt;&gt;AsPXLPackageToolStripMenuItem1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Panel1.Parent" xml:space="preserve">
+    <value>grpDetails</value>
+  </data>
+  <data name="grpFolders.Text" xml:space="preserve">
+    <value>Folders on your iPhone</value>
+  </data>
+  <data name="&gt;&gt;ConvertBothToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="chkPreviewEnabled.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="BtnCancel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 20</value>
+  </data>
+  <data name="&gt;&gt;folderBrowserDialog.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FolderBrowserDialog, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ToolStripDropDownButton2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripDropDownButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="PCToIPhoneToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;IgnoreThumbsdbToolStripMenuItem.Name" xml:space="preserve">
+    <value>IgnoreThumbsdbToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;splMain.Panel2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="toolStripGoTo18.Text" xml:space="preserve">
+    <value>&amp;YouTube Icon and Images</value>
+  </data>
+  <data name="&gt;&gt;picFileDetails.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="toolStripGoTo10.Text" xml:space="preserve">
+    <value>&amp;Phone Icon and Images</value>
+  </data>
+  <data name="&gt;&gt;menuRightBackupFile.Name" xml:space="preserve">
+    <value>menuRightBackupFile</value>
+  </data>
+  <data name="&gt;&gt;splFiles.Panel1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;menuRightRestoreFile.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="menuRightDeleteFile.Text" xml:space="preserve">
+    <value>&amp;Delete File</value>
+  </data>
+  <data name="&gt;&gt;NESROMSToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ToolStripMenuItemLoading.Size" type="System.Drawing.Size, System.Drawing">
+    <value>232, 22</value>
+  </data>
+  <data name="toolStripGoTo6.Text" xml:space="preserve">
+    <value>C&amp;alendar Icon and Images</value>
+  </data>
+  <data name="toolStripGoTo18.Size" type="System.Drawing.Size, System.Drawing">
+    <value>236, 22</value>
+  </data>
+  <data name="toolStripGoTo10.Size" type="System.Drawing.Size, System.Drawing">
+    <value>236, 22</value>
+  </data>
+  <data name="menuRightSaveAs.Size" type="System.Drawing.Size, System.Drawing">
+    <value>144, 22</value>
+  </data>
+  <data name="BackupDirectoryToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Backup directory...</value>
+  </data>
+  <data name="picFileDetails.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="OrganizeFavoritesToolStripMenuItem.Text" xml:space="preserve">
+    <value>Organize Favorites...</value>
+  </data>
+  <data name="EBooksToolStripMenuItem.Text" xml:space="preserve">
+    <value>E&amp;Books</value>
+  </data>
+  <data name="&gt;&gt;ToolStripSeparator1.Name" xml:space="preserve">
+    <value>ToolStripSeparator1</value>
+  </data>
+  <data name="&gt;&gt;DockSwapDocksToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ToolStripSeparator10.Size" type="System.Drawing.Size, System.Drawing">
+    <value>155, 6</value>
+  </data>
+  <data name="&gt;&gt;cmdSmallIcons.Name" xml:space="preserve">
+    <value>cmdSmallIcons</value>
+  </data>
+  <data name="toolStripGoTo14.Text" xml:space="preserve">
+    <value>C&amp;lock Icon and Images</value>
+  </data>
+  <data name="ToolStripMenuItemExit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>178, 22</value>
+  </data>
+  <data name="&gt;&gt;toolStripGoTo3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="toolStripGoTo12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>236, 22</value>
+  </data>
+  <data name="NESROMSToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;NES ROMS</value>
+  </data>
+  <data name="&gt;&gt;tlbProgress0.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripProgressBar, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;splFiles.Panel2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="grpFiles.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="ToolStripMenuItem6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>207, 22</value>
+  </data>
+  <data name="&gt;&gt;mnuGoTo.Name" xml:space="preserve">
+    <value>mnuGoTo</value>
+  </data>
+  <data name="&gt;&gt;imgFolders.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ImageList, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="toolStripGoTo14.Size" type="System.Drawing.Size, System.Drawing">
+    <value>236, 22</value>
+  </data>
+  <data name="AsPXLPackageToolStripMenuItem.Text" xml:space="preserve">
+    <value>Save as &amp;PXL Package</value>
+  </data>
+  <data name="&gt;&gt;toolStripGoTo1.Name" xml:space="preserve">
+    <value>toolStripGoTo1</value>
+  </data>
+  <data name="WebBrws.Size" type="System.Drawing.Size, System.Drawing">
+    <value>461, 112</value>
+  </data>
+  <data name="cmdRenameFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>144, 22</value>
+  </data>
+  <data name="Panel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>256, 22</value>
+  </data>
+  <data name="&gt;&gt;CameraRollToolStripMenuItem.Name" xml:space="preserve">
+    <value>CameraRollToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItemViewBackups.Name" xml:space="preserve">
+    <value>ToolStripMenuItemViewBackups</value>
+  </data>
+  <data name="AsSummerboardFolderToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>214, 22</value>
+  </data>
+  <data name="&gt;&gt;splMain.Panel1.Name" xml:space="preserve">
+    <value>splMain.Panel1</value>
+  </data>
+  <data name="NESROMSToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>207, 22</value>
+  </data>
+  <data name="mnuGoTo.Text" xml:space="preserve">
+    <value>&amp;Goto Location</value>
+  </data>
+  <data name="WhiteToolStripMenuItem.Text" xml:space="preserve">
+    <value>White</value>
+  </data>
+  <data name="splMain.Size" type="System.Drawing.Size, System.Drawing">
+    <value>730, 504</value>
+  </data>
+  <data name="toolStripGoTo16.Size" type="System.Drawing.Size, System.Drawing">
+    <value>236, 22</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ToolStripDropDownButton1.Text" xml:space="preserve">
+    <value>&amp;Help</value>
+  </data>
+  <data name="&gt;&gt;ToolStripSeparator6.Name" xml:space="preserve">
+    <value>ToolStripSeparator6</value>
+  </data>
+  <data name="&gt;&gt;AsPXLPackageToolStripMenuItem1.Name" xml:space="preserve">
+    <value>AsPXLPackageToolStripMenuItem1</value>
+  </data>
+  <data name="ISwitcherThemesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>207, 22</value>
+  </data>
+  <data name="&gt;&gt;FrotzGamesToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;mnuThirdPartyApps.Name" xml:space="preserve">
+    <value>mnuThirdPartyApps</value>
+  </data>
+  <data name="&gt;&gt;fileOpenDialog.Name" xml:space="preserve">
+    <value>fileOpenDialog</value>
+  </data>
+  <data name="&gt;&gt;BtnCancel.Name" xml:space="preserve">
+    <value>BtnCancel</value>
+  </data>
+  <data name="AsPXLPackageToolStripMenuItem1.Text" xml:space="preserve">
+    <value>Save as &amp;PXL Package...</value>
+  </data>
+  <data name="&gt;&gt;grpDetails.Parent" xml:space="preserve">
+    <value>splFiles.Panel2</value>
+  </data>
+  <data name="&gt;&gt;toolStripGoTo13.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="splFiles.Size" type="System.Drawing.Size, System.Drawing">
+    <value>476, 498</value>
+  </data>
+  <data name="grpDetails.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="cohSize.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="cohFiletype.Text" xml:space="preserve">
+    <value>File Type</value>
+  </data>
+  <data name="&gt;&gt;lstFiles.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;WhiteToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="BtnCancel.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;chkPreviewEnabled.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItemLargeIcons.Name" xml:space="preserve">
+    <value>ToolStripMenuItemLargeIcons</value>
+  </data>
+  <data name="qtPlugin.Size" type="System.Drawing.Size, System.Drawing">
+    <value>474, 112</value>
+  </data>
+  <data name="cohSize.Width" type="System.Int32, mscorlib">
+    <value>75</value>
+  </data>
+  <data name="FrotzGamesToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Frotz Games</value>
+  </data>
+  <data name="toolStripGoTo13.Text" xml:space="preserve">
+    <value>Came&amp;ra/Photos Icons and Images</value>
+  </data>
+  <data name="&gt;&gt;splMain.Panel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ISwitcherThemesToolStripMenuItem.Name" xml:space="preserve">
+    <value>ISwitcherThemesToolStripMenuItem</value>
+  </data>
+  <data name="menuRightReplaceFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>144, 22</value>
+  </data>
+  <data name="&gt;&gt;ToolStripSeparator4.Name" xml:space="preserve">
+    <value>ToolStripSeparator4</value>
+  </data>
+  <data name="&gt;&gt;grpFiles.Name" xml:space="preserve">
+    <value>grpFiles</value>
+  </data>
+  <data name="ToolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>141, 6</value>
+  </data>
+  <data name="ToolStripMenuItem2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>233, 22</value>
+  </data>
+  <data name="toolStripGoTo9.Text" xml:space="preserve">
+    <value>&amp;Notes Icon and Images</value>
+  </data>
+  <data name="&gt;&gt;trvFolders.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TreeView, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;imgFilesLarge.Name" xml:space="preserve">
+    <value>imgFilesLarge</value>
+  </data>
+  <data name="&gt;&gt;ShowPreviewsToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="BackupFolderToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>158, 22</value>
+  </data>
+  <data name="EBooksToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>207, 22</value>
+  </data>
+  <data name="&gt;&gt;mnuGoTo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripDropDownButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ToolStripSeparator8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>163, 6</value>
+  </data>
+  <data name="tlbStatusLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="AsPXLPackageToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>209, 22</value>
+  </data>
+  <data name="&gt;&gt;IgnoreDSStoreToolStripMenuItem.Name" xml:space="preserve">
+    <value>IgnoreDSStoreToolStripMenuItem</value>
+  </data>
+  <data name="txtFileDetails.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="Panel1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="&gt;&gt;ToolStripSeparator5.Name" xml:space="preserve">
+    <value>ToolStripSeparator5</value>
+  </data>
+  <data name="&gt;&gt;cohFiletype.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="splFiles.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="Panel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>217, 22</value>
+  </data>
+  <data name="&gt;&gt;toolStripGoTo14.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ToolStripMenuItemNewFolder.Size" type="System.Drawing.Size, System.Drawing">
+    <value>158, 22</value>
+  </data>
+  <data name="picFileDetails.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="ToolStripSeparator6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>230, 6</value>
+  </data>
+  <data name="&gt;&gt;folderBrowserDialog.Name" xml:space="preserve">
+    <value>folderBrowserDialog</value>
+  </data>
+  <data name="menuRightClickFiles.Size" type="System.Drawing.Size, System.Drawing">
+    <value>145, 148</value>
+  </data>
+  <data name="&gt;&gt;lstFiles.Name" xml:space="preserve">
+    <value>lstFiles</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItem7.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="lstFiles.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 28</value>
+  </data>
+  <data name="cohFilename.Text" xml:space="preserve">
+    <value>Filename</value>
+  </data>
+  <data name="&gt;&gt;BackupFolderToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;menuRightRestoreFile.Name" xml:space="preserve">
+    <value>menuRightRestoreFile</value>
+  </data>
+  <data name="trvFolders.Size" type="System.Drawing.Size, System.Drawing">
+    <value>232, 480</value>
+  </data>
+  <data name="CameraRollToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>233, 22</value>
+  </data>
+  <data name="ToolStripSeparator4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>230, 6</value>
+  </data>
+  <data name="&gt;&gt;tlbStatusLabel.Name" xml:space="preserve">
+    <value>tlbStatusLabel</value>
+  </data>
+  <data name="ToolStripMenuItemCleanUp.Text" xml:space="preserve">
+    <value>&amp;Clean Up Backup Files</value>
+  </data>
+  <data name="&gt;&gt;toolStripGoTo18.Name" xml:space="preserve">
+    <value>toolStripGoTo18</value>
+  </data>
+  <data name="&gt;&gt;BtnCancel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripDropDownButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GrayToolStripMenuItem.Name" xml:space="preserve">
+    <value>GrayToolStripMenuItem</value>
+  </data>
+  <data name="tlbProgress0.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 14</value>
+  </data>
+  <data name="grpFolders.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="qtPlugin.Enabled" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="ToolStripMenuItemSaveFolderIn.Text" xml:space="preserve">
+    <value>Save Folder In...</value>
+  </data>
+  <data name="&gt;&gt;Panel1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="WhiteToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>102, 22</value>
+  </data>
+  <data name="&gt;&gt;ToolStripMenuItemLargeIcons.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ToolStripMenuItemLoading.Text" xml:space="preserve">
+    <value>Loading List of Backed Up Files...</value>
+  </data>
+  <data name="toolStrip.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;mnuView.Name" xml:space="preserve">
+    <value>mnuView</value>
+  </data>
+  <data name="&gt;&gt;splMain.Panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="BtnCancel.Text" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="&gt;&gt;GrayToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripGoTo9.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripGoTo6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ToolStripMenuItem5.Text" xml:space="preserve">
+    <value>&amp;Customize Files</value>
+  </data>
+  <data name="&gt;&gt;splFiles.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;toolStripGoTo1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="menuSaveSummerboardTheme.Size" type="System.Drawing.Size, System.Drawing">
+    <value>178, 22</value>
+  </data>
+  <data name="&gt;&gt;EBooksToolStripMenuItem.Name" xml:space="preserve">
+    <value>EBooksToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;splFiles.Panel1.Parent" xml:space="preserve">
+    <value>splFiles</value>
+  </data>
+  <data name="cohFilename.Width" type="System.Int32, mscorlib">
+    <value>260</value>
+  </data>
+  <data name="&gt;&gt;grpFiles.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="btnPreview.Text" xml:space="preserve">
+    <value>Preview</value>
+  </data>
+  <data name="btnPreview.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="BackupDirectoryToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>166, 22</value>
+  </data>
+  <data name="ToolStripMenuItem5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>207, 22</value>
+  </data>
+  <data name="mnuFavorites.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="&gt;&gt;cohFilename.Name" xml:space="preserve">
+    <value>cohFilename</value>
+  </data>
+  <data name="grpDetails.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="tlbStatusLabel.ToolTipText" xml:space="preserve">
+    <value>This section displays the current status.</value>
+  </data>
+  <data name="&gt;&gt;trvFolders.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="mnuFavorites.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 22</value>
+  </data>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 12</value>
+  </data>
+  <data name="toolStripGoTo8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>236, 22</value>
+  </data>
   <data name="IPhoneToPCToolStripMenuItem.Text" xml:space="preserve">
     <value>iPhone to PC</value>
   </data>
@@ -2337,8 +2348,8 @@
   <data name="&gt;&gt;ToolStripMenuItem7.Name" xml:space="preserve">
     <value>ToolStripMenuItem7</value>
   </data>
-  <data name="cmdGBAROMs.Size" type="System.Drawing.Size, System.Drawing">
-    <value>207, 22</value>
+  <data name="&gt;&gt;splFiles.Panel2.Parent" xml:space="preserve">
+    <value>splFiles</value>
   </data>
   <data name="&gt;&gt;ToolStripMenuItem4.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -2346,8 +2357,8 @@
   <data name="&gt;&gt;PCToIPhoneToolStripMenuItem.Name" xml:space="preserve">
     <value>PCToIPhoneToolStripMenuItem</value>
   </data>
-  <data name="&gt;&gt;tlbProgress0.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripProgressBar, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;tlbProgress0.Name" xml:space="preserve">
+    <value>tlbProgress0</value>
   </data>
   <data name="&gt;&gt;toolStripGoTo10.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -2355,8 +2366,8 @@
   <data name="&gt;&gt;menuRightBackupFile.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;btnPreview.Parent" xml:space="preserve">
-    <value>Panel1</value>
+  <data name="tlbProgress0.ToolTipText" xml:space="preserve">
+    <value>Progress 0</value>
   </data>
   <data name="&gt;&gt;ToolStripMenuItem2.Name" xml:space="preserve">
     <value>ToolStripMenuItem2</value>
@@ -2376,17 +2387,14 @@
   <data name="&gt;&gt;mnuThirdPartyApps.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ISwitcherThemesToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="picFileDetails.Size" type="System.Drawing.Size, System.Drawing">
-    <value>470, 115</value>
+  <data name="&gt;&gt;cohSize.Name" xml:space="preserve">
+    <value>cohSize</value>
   </data>
   <data name="&gt;&gt;toolStripGoTo15.Name" xml:space="preserve">
     <value>toolStripGoTo15</value>
   </data>
-  <data name="&gt;&gt;tlbProgressBar.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripProgressBar, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="ToolStripMenuItem2.Text" xml:space="preserve">
+    <value>SummerBoard &amp;Themes</value>
   </data>
   <data name="ConvertPNGsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>166, 22</value>
@@ -2394,14 +2402,8 @@
   <data name="cmdRenameFile.Text" xml:space="preserve">
     <value>Rename File...</value>
   </data>
-  <data name="AsPXLPackageToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>214, 22</value>
-  </data>
-  <data name="&gt;&gt;AboutToolStripMenuItem.Name" xml:space="preserve">
-    <value>AboutToolStripMenuItem</value>
-  </data>
-  <data name="tlbProgressBar.ToolTipText" xml:space="preserve">
-    <value>Progress 1</value>
+  <data name="menuRightSaveAs.Text" xml:space="preserve">
+    <value>Save &amp;As...</value>
   </data>
   <data name="toolStripGoTo17.Size" type="System.Drawing.Size, System.Drawing">
     <value>236, 22</value>
@@ -2409,29 +2411,78 @@
   <data name="&gt;&gt;ToolStripMenuItem8.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;cmdGBAROMs.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="imgFolders.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj0yLjAuMC4w
+        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
+        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAABi
+        CgAAAk1TRnQBSQFMAgEBBAEAAQkBAAEEAQABEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        AwABQAMAASADAAEBAQABCAYAAQgYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
+        AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
+        AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
+        AWYDAAGZAwABzAIAATMDAAIzAgABMwFmAgABMwGZAgABMwHMAgABMwH/AgABZgMAAWYBMwIAAmYCAAFm
+        AZkCAAFmAcwCAAFmAf8CAAGZAwABmQEzAgABmQFmAgACmQIAAZkBzAIAAZkB/wIAAcwDAAHMATMCAAHM
+        AWYCAAHMAZkCAALMAgABzAH/AgAB/wFmAgAB/wGZAgAB/wHMAQABMwH/AgAB/wEAATMBAAEzAQABZgEA
+        ATMBAAGZAQABMwEAAcwBAAEzAQAB/wEAAf8BMwIAAzMBAAIzAWYBAAIzAZkBAAIzAcwBAAIzAf8BAAEz
+        AWYCAAEzAWYBMwEAATMCZgEAATMBZgGZAQABMwFmAcwBAAEzAWYB/wEAATMBmQIAATMBmQEzAQABMwGZ
+        AWYBAAEzApkBAAEzAZkBzAEAATMBmQH/AQABMwHMAgABMwHMATMBAAEzAcwBZgEAATMBzAGZAQABMwLM
+        AQABMwHMAf8BAAEzAf8BMwEAATMB/wFmAQABMwH/AZkBAAEzAf8BzAEAATMC/wEAAWYDAAFmAQABMwEA
+        AWYBAAFmAQABZgEAAZkBAAFmAQABzAEAAWYBAAH/AQABZgEzAgABZgIzAQABZgEzAWYBAAFmATMBmQEA
+        AWYBMwHMAQABZgEzAf8BAAJmAgACZgEzAQADZgEAAmYBmQEAAmYBzAEAAWYBmQIAAWYBmQEzAQABZgGZ
+        AWYBAAFmApkBAAFmAZkBzAEAAWYBmQH/AQABZgHMAgABZgHMATMBAAFmAcwBmQEAAWYCzAEAAWYBzAH/
+        AQABZgH/AgABZgH/ATMBAAFmAf8BmQEAAWYB/wHMAQABzAEAAf8BAAH/AQABzAEAApkCAAGZATMBmQEA
+        AZkBAAGZAQABmQEAAcwBAAGZAwABmQIzAQABmQEAAWYBAAGZATMBzAEAAZkBAAH/AQABmQFmAgABmQFm
+        ATMBAAGZATMBZgEAAZkBZgGZAQABmQFmAcwBAAGZATMB/wEAApkBMwEAApkBZgEAA5kBAAKZAcwBAAKZ
+        Af8BAAGZAcwCAAGZAcwBMwEAAWYBzAFmAQABmQHMAZkBAAGZAswBAAGZAcwB/wEAAZkB/wIAAZkB/wEz
+        AQABmQHMAWYBAAGZAf8BmQEAAZkB/wHMAQABmQL/AQABzAMAAZkBAAEzAQABzAEAAWYBAAHMAQABmQEA
+        AcwBAAHMAQABmQEzAgABzAIzAQABzAEzAWYBAAHMATMBmQEAAcwBMwHMAQABzAEzAf8BAAHMAWYCAAHM
+        AWYBMwEAAZkCZgEAAcwBZgGZAQABzAFmAcwBAAGZAWYB/wEAAcwBmQIAAcwBmQEzAQABzAGZAWYBAAHM
+        ApkBAAHMAZkBzAEAAcwBmQH/AQACzAIAAswBMwEAAswBZgEAAswBmQEAA8wBAALMAf8BAAHMAf8CAAHM
+        Af8BMwEAAZkB/wFmAQABzAH/AZkBAAHMAf8BzAEAAcwC/wEAAcwBAAEzAQAB/wEAAWYBAAH/AQABmQEA
+        AcwBMwIAAf8CMwEAAf8BMwFmAQAB/wEzAZkBAAH/ATMBzAEAAf8BMwH/AQAB/wFmAgAB/wFmATMBAAHM
+        AmYBAAH/AWYBmQEAAf8BZgHMAQABzAFmAf8BAAH/AZkCAAH/AZkBMwEAAf8BmQFmAQAB/wKZAQAB/wGZ
+        AcwBAAH/AZkB/wEAAf8BzAIAAf8BzAEzAQAB/wHMAWYBAAH/AcwBmQEAAf8CzAEAAf8BzAH/AQAC/wEz
+        AQABzAH/AWYBAAL/AZkBAAL/AcwBAAJmAf8BAAFmAf8BZgEAAWYC/wEAAf8CZgEAAf8BZgH/AQAC/wFm
+        AQABIQEAAaUBAANfAQADdwEAA4YBAAOWAQADywEAA7IBAAPXAQAD3QEAA+MBAAPqAQAD8QEAA/gBAAHw
+        AfsB/wEAAaQCoAEAA4ADAAH/AgAB/wMAAv8BAAH/AwAB/wEAAf8BAAL/AgAD//8A/wD/AP8AJQAg/yAA
+        CP8BDwHvAfEV/wHsAesBbQHqARMBFQERAQ8HDgMACksEAAf/AZEBDwEOAu8B8gr/AREBbAL3AfIE/wHs
+        AZoBegFYBVIBUQFLASoCSwEPAgALUgFLAwAG/wKRAQ4BFATvCP8BAAGRAW0BDgTvAfAB/wHsAaACmgR6
+        AVkBUwJSATEBSwERAQACUgGgCXoBUgEqAgAE/wHzAfcBtQGRAQ4BEQEOBe8F/wEOAZEB9AEPAQ4G7wHs
+        ARoBoAKaA3oCWQFTAlIBKgFDAQACUgF6AaAIegFYASoCAAP/AQcDtQH3AeoCDgXvBP8BDgG1AvcBFAEA
+        AQ4E7wH/Ae0BwwKgApoDegJZAVMBUgExARQBAAJSAVgIoAGaAVkBKgIAAv8B8gS7AbUBuwEQAW0E7wT/
+        AQ4CuwG1AZEB7wEVBO8C/wHtAcMCoAKaBHoCWQFSATEBEgEAAVIBWAFSCaACeQEqAQAC/wMJA7sBtQEO
+        AewB7Qb/AQACCQG7AbwBuwHxARQBBwHvBP8BHAPDAaACmgR6AVkBUgExAeoBAAFSAXoBUgmgAXoBoAEq
+        AQAB/wEOAxkB8AIJAbsBAAHvAQ4G/wMZAfABCQEOAZIBDgG8AQAE/wEcA8MCoAKaBHoBWQFSAesBAAFS
+        AZoBUgF5Av8B9gX/AZoB/wEqAQAB/wEZA/QBGQHwAQkBuwEOAQcB7wX/AW0C9AIZAZEB6wEHAfIB8QFD
+        ARQD/wEcBcMCoAKaBHoB6wEAAVIBoAFYC1IBKgEAAf8B9AP/AhkBCQG7AW0BEwH/AQ4E/wEZAfQC/wEA
+        Ae8C/wHwARUBDgT/ChwE7QHsAQABUgagBf8BUgFLAgAB8QH0AQAC/wH0AQkB9AMOB/8BEAEVAfQBQwG6
+        AQkBQwEOARQF/wEcARoCwwGgAZoBHAGhCAABUgH/BKAB/wZSAwAB/wHvARABAAFtAZIBAAEOAREB8Qr/
+        AQkBuwEOCf8BpwUcAaEKAAFSBP8BUgkAA/8B8wFDG/8SAARSCgAg/yAAIP8BQgFNAT4HAAE+AwABKAMA
+        AUADAAEgAwABAQEAAQEGAAEBFgAD/4EABP8EAAT/BQABAQHAAQ8FAAEBAYABBwUAAQEBAAEDBQABAQEA
+        AQMFAAEBAQABAwUAAQEBAAEBBQABAQEAAQEFAAEBAQABAQUAAQEBAAEBBQABAQEAAQMFAAH/AQABBwQA
+        AQEB/wGBAf8EAAL/AcMB/wQABP8EAAs=
+</value>
   </data>
   <data name="&gt;&gt;Timer1.Type" xml:space="preserve">
     <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;TTRToolStripMenuItem.Name" xml:space="preserve">
+    <value>TTRToolStripMenuItem</value>
+  </data>
   <data name="&gt;&gt;splMain.Panel1.Parent" xml:space="preserve">
     <value>splMain</value>
   </data>
-  <data name="AsSummerboardFolderToolStripMenuItem.Text" xml:space="preserve">
-    <value>Save as Summerboard &amp;Folder</value>
+  <data name="mnuFavorites.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
-  <data name="picFileDetails.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="splMain.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="WebBrws.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
-  <data name="&gt;&gt;toolStripGoTo19.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;splFiles.Panel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tlbProgress0.Name" xml:space="preserve">
-    <value>tlbProgress0</value>
+  <data name="mnuGoTo.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="IPhoneToPCToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>138, 22</value>
@@ -2439,26 +2490,20 @@
   <data name="&gt;&gt;AboutToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="toolStripGoTo13.Text" xml:space="preserve">
-    <value>Came&amp;ra/Photos Icons and Images</value>
+  <data name="toolStripGoTo11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>236, 22</value>
   </data>
-  <data name="&gt;&gt;mnuGoTo.Name" xml:space="preserve">
-    <value>mnuGoTo</value>
-  </data>
-  <data name="EBooksToolStripMenuItem.Text" xml:space="preserve">
-    <value>E&amp;Books</value>
+  <data name="trvFolders.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 15</value>
   </data>
   <data name="&gt;&gt;toolStripGoTo16.Name" xml:space="preserve">
     <value>toolStripGoTo16</value>
   </data>
-  <data name="mnuFavorites.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 22</value>
-  </data>
   <data name="mnuStdApps.Size" type="System.Drawing.Size, System.Drawing">
     <value>233, 22</value>
   </data>
-  <data name="grpFolders.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
+  <data name="splMain.Panel1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
   </data>
   <data name="ToolStripMenuItemSaveFolderIn.Size" type="System.Drawing.Size, System.Drawing">
     <value>158, 22</value>
@@ -2466,35 +2511,26 @@
   <data name="&gt;&gt;splMain.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="splMain.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
   <data name="toolStripGoTo13.Size" type="System.Drawing.Size, System.Drawing">
     <value>236, 22</value>
   </data>
   <data name="InstallerPackageSourcesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>207, 22</value>
   </data>
-  <data name="folderBrowserDialog.Description" xml:space="preserve">
-    <value>Select the destination folder for saving</value>
-  </data>
-  <data name="splMain.Panel2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
+  <data name="TTRToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;TTR</value>
   </data>
   <data name="cohFiletype.Width" type="System.Int32, mscorlib">
     <value>140</value>
   </data>
-  <data name="ToolStripMenuItemNewFolder.Text" xml:space="preserve">
-    <value>&amp;New Folder...</value>
+  <data name="tlbStatusLabel.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
   </data>
-  <data name="menuRightReplaceFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 22</value>
+  <data name="mnuStdApps.Text" xml:space="preserve">
+    <value>Standard &amp;Applications</value>
   </data>
   <data name="toolStripGoTo15.Size" type="System.Drawing.Size, System.Drawing">
     <value>236, 22</value>
-  </data>
-  <data name="&gt;&gt;trvFolders.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TreeView, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripGoTo17.Name" xml:space="preserve">
     <value>toolStripGoTo17</value>
@@ -2514,41 +2550,32 @@
   <data name="&gt;&gt;BackupDirectoryToolStripMenuItem.Name" xml:space="preserve">
     <value>BackupDirectoryToolStripMenuItem</value>
   </data>
-  <data name="ToolStripMenuItem5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>207, 22</value>
-  </data>
   <data name="menuRightBackupFile.Size" type="System.Drawing.Size, System.Drawing">
     <value>144, 22</value>
+  </data>
+  <data name="&gt;&gt;menuRightClickFolders.Name" xml:space="preserve">
+    <value>menuRightClickFolders</value>
   </data>
   <data name="toolStripGoTo20.Text" xml:space="preserve">
     <value>iTunes Music</value>
   </data>
-  <data name="chkPreviewEnabled.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="cmdShowGroups.Text" xml:space="preserve">
+    <value>Show &amp;Groups</value>
   </data>
   <data name="&gt;&gt;mnuFavorites.Name" xml:space="preserve">
     <value>mnuFavorites</value>
   </data>
-  <data name="WebBrws.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
-  </data>
-  <data name="mnuView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>42, 22</value>
-  </data>
   <data name="btnPreview.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="tlbProgress0.ToolTipText" xml:space="preserve">
-    <value>Progress 0</value>
+  <data name="&gt;&gt;NESROMSToolStripMenuItem.Name" xml:space="preserve">
+    <value>NESROMSToolStripMenuItem</value>
   </data>
-  <data name="&gt;&gt;trvFolders.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="toolStripGoTo12.Text" xml:space="preserve">
+    <value>Sa&amp;fari Icon and Images</value>
   </data>
-  <data name="&gt;&gt;Panel1.Name" xml:space="preserve">
-    <value>Panel1</value>
-  </data>
-  <data name="AsCustomizeFoldersToolStripMenuItem.Text" xml:space="preserve">
-    <value>Save as Customize &amp;Folder...</value>
+  <data name="qtPlugin.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
   </data>
   <data name="ToolStripMenuItemCleanUp.Size" type="System.Drawing.Size, System.Drawing">
     <value>178, 22</value>
@@ -2559,29 +2586,26 @@
   <data name="picFileDetails.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
   </data>
-  <data name="&gt;&gt;BackupDirectoryToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="$this.Text" xml:space="preserve">
+    <value>iPhoneBrowser</value>
   </data>
-  <data name="grpDetails.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+  <data name="picFileDetails.Size" type="System.Drawing.Size, System.Drawing">
+    <value>470, 115</value>
   </data>
-  <data name="toolStripGoTo8.Text" xml:space="preserve">
-    <value>&amp;iPod Icon and Images</value>
+  <data name="&gt;&gt;ToolStripMenuItemExit.Name" xml:space="preserve">
+    <value>ToolStripMenuItemExit</value>
   </data>
-  <data name="&gt;&gt;ConvertBothToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;ToolStripDropDownButton1.Name" xml:space="preserve">
+    <value>ToolStripDropDownButton1</value>
   </data>
-  <data name="&gt;&gt;NESROMSToolStripMenuItem.Name" xml:space="preserve">
-    <value>NESROMSToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;DockSwapDocksToolStripMenuItem.Name" xml:space="preserve">
-    <value>DockSwapDocksToolStripMenuItem</value>
+  <data name="&gt;&gt;splFiles.Panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripGoTo7.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;cohSize.Name" xml:space="preserve">
-    <value>cohSize</value>
+  <data name="&gt;&gt;trvFolders.Parent" xml:space="preserve">
+    <value>grpFolders</value>
   </data>
   <data name="&gt;&gt;cmdRenameFolder.Name" xml:space="preserve">
     <value>cmdRenameFolder</value>
@@ -2589,8 +2613,8 @@
   <data name="&gt;&gt;BlackToolStripMenuItem.Name" xml:space="preserve">
     <value>BlackToolStripMenuItem</value>
   </data>
-  <data name="&gt;&gt;IPhoneToPCToolStripMenuItem.Name" xml:space="preserve">
-    <value>IPhoneToPCToolStripMenuItem</value>
+  <data name="&gt;&gt;cmdRenameFile.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="qtPlugin.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 45</value>
@@ -2598,20 +2622,17 @@
   <data name="&gt;&gt;toolStripGoTo11.Name" xml:space="preserve">
     <value>toolStripGoTo11</value>
   </data>
-  <data name="tlbStatusLabel.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
+  <data name="cmdSmallIcons.Text" xml:space="preserve">
+    <value>&amp;Small Icons</value>
   </data>
-  <data name="toolStripGoTo9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>236, 22</value>
+  <data name="menuRightRestoreFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>144, 22</value>
   </data>
   <data name="qtPlugin.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
-  <data name="&gt;&gt;IgnoreThumbsdbToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="AddToFavoritesToolStripMenuItem.Text" xml:space="preserve">
-    <value>Add to Favorites...</value>
+  <data name="&gt;&gt;splFiles.Name" xml:space="preserve">
+    <value>splFiles</value>
   </data>
   <data name="ToolStripMenuItem8.Size" type="System.Drawing.Size, System.Drawing">
     <value>134, 6</value>
@@ -2625,8 +2646,8 @@
   <data name="&gt;&gt;mnuFavorites.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripDropDownButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="cmdSmallIcons.Text" xml:space="preserve">
-    <value>&amp;Small Icons</value>
+  <data name="&gt;&gt;toolStripGoTo5.Name" xml:space="preserve">
+    <value>toolStripGoTo5</value>
   </data>
   <data name="&gt;&gt;AsCustomizeFoldersToolStripMenuItem.Name" xml:space="preserve">
     <value>AsCustomizeFoldersToolStripMenuItem</value>
@@ -2649,11 +2670,11 @@
   <data name="&gt;&gt;EBooksToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="PCToIPhoneToolStripMenuItem.Text" xml:space="preserve">
-    <value>PC to iPhone</value>
+  <data name="IgnoreDSStoreToolStripMenuItem.Text" xml:space="preserve">
+    <value>Ignore .DS_Store</value>
   </data>
-  <data name="&gt;&gt;toolStripGoTo15.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;mnuStdApps.Name" xml:space="preserve">
+    <value>mnuStdApps</value>
   </data>
   <data name="btnPreview.Location" type="System.Drawing.Point, System.Drawing">
     <value>136, 0</value>
@@ -2667,23 +2688,17 @@
   <data name="&gt;&gt;OrganizeFavoritesToolStripMenuItem.Name" xml:space="preserve">
     <value>OrganizeFavoritesToolStripMenuItem</value>
   </data>
-  <data name="toolStripGoTo11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>236, 22</value>
-  </data>
   <data name="IgnoreThumbsdbToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>166, 22</value>
   </data>
   <data name="&gt;&gt;mnuStdApps.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ToolStripMenuItem5.Name" xml:space="preserve">
-    <value>ToolStripMenuItem5</value>
+  <data name="mnuView.Size" type="System.Drawing.Size, System.Drawing">
+    <value>42, 22</value>
   </data>
-  <data name="Panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>217, 22</value>
-  </data>
-  <data name="cmdShowGroups.Size" type="System.Drawing.Size, System.Drawing">
-    <value>137, 22</value>
+  <data name="&gt;&gt;menuSaveSummerboardTheme.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;grpFiles.Parent" xml:space="preserve">
     <value>splFiles.Panel1</value>
@@ -2697,8 +2712,8 @@
   <data name="cmdRenameFolder.Size" type="System.Drawing.Size, System.Drawing">
     <value>158, 22</value>
   </data>
-  <data name="menuRightRestoreFile.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="ShowPreviewsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>166, 22</value>
   </data>
   <data name="menuRightRestoreFile.Text" xml:space="preserve">
     <value>&amp;Restore File</value>
@@ -2709,32 +2724,23 @@
   <data name="&gt;&gt;toolStripGoTo16.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="InstallerPackageSourcesToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Installer Package Sources</value>
-  </data>
   <data name="&gt;&gt;splMain.Panel1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="&gt;&gt;toolStripGoTo13.Name" xml:space="preserve">
     <value>toolStripGoTo13</value>
   </data>
-  <data name="ConvertBothToolStripMenuItem.Text" xml:space="preserve">
-    <value>Convert Both</value>
+  <data name="AsCustomizeFoldersToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>209, 22</value>
   </data>
   <data name="ToolStripMenuItemDetails.Text" xml:space="preserve">
     <value>&amp;Details</value>
   </data>
-  <data name="menuRightRestoreFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 22</value>
+  <data name="qtPlugin.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
-  <data name="&gt;&gt;btnPreview.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;picFileDetails.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="BackupFolderToolStripMenuItem.Text" xml:space="preserve">
-    <value>Backup Folder</value>
+  <data name="&gt;&gt;ConvertPNGsToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStrip.Parent" xml:space="preserve">
     <value>$this</value>
@@ -2748,8 +2754,8 @@
   <data name="&gt;&gt;toolStripGoTo4.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="toolStripGoTo3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>233, 22</value>
+  <data name="&gt;&gt;btnPreview.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="grpFiles.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -2757,23 +2763,17 @@
   <data name="&gt;&gt;PictureBackgroundToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;cmdGBAROMs.Name" xml:space="preserve">
-    <value>cmdGBAROMs</value>
+  <data name="&gt;&gt;cohFiletype.Name" xml:space="preserve">
+    <value>cohFiletype</value>
   </data>
   <data name="ToolStripMenuItemFile.Size" type="System.Drawing.Size, System.Drawing">
     <value>36, 22</value>
   </data>
-  <data name="toolStripGoTo8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>236, 22</value>
+  <data name="&gt;&gt;grpFiles.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;toolStripGoTo17.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;splMain.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SplitContainer, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;splFiles.Panel1.Parent" xml:space="preserve">
-    <value>splFiles</value>
+  <data name="&gt;&gt;menuRightClickFiles.Name" xml:space="preserve">
+    <value>menuRightClickFiles</value>
   </data>
   <data name="&gt;&gt;ToolStripMenuItemSaveFolderIn.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -2826,8 +2826,8 @@
   <data name="&gt;&gt;qtPlugin.Name" xml:space="preserve">
     <value>qtPlugin</value>
   </data>
-  <data name="mnuGoTo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>86, 22</value>
+  <data name="tlbProgressBar.ToolTipText" xml:space="preserve">
+    <value>Progress 1</value>
   </data>
   <data name="&gt;&gt;fileSaveDialog.Type" xml:space="preserve">
     <value>System.Windows.Forms.SaveFileDialog, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -2853,9 +2853,6 @@
   <data name="&gt;&gt;ToolStripMenuItemExit.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;grpFiles.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;PCToIPhoneToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -2868,20 +2865,35 @@
   <data name="&gt;&gt;ToolStripDropDownButton2.Name" xml:space="preserve">
     <value>ToolStripDropDownButton2</value>
   </data>
-  <data name="Panel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>256, 22</value>
+  <data name="BlackToolStripMenuItem.Text" xml:space="preserve">
+    <value>Black</value>
+  </data>
+  <data name="cmdShowGroups.Size" type="System.Drawing.Size, System.Drawing">
+    <value>137, 22</value>
   </data>
   <data name="ToolStripMenuItem6.Text" xml:space="preserve">
     <value>iFlashCards</value>
   </data>
-  <data name="menuRightSaveAs.Text" xml:space="preserve">
-    <value>Save &amp;As...</value>
+  <data name="&gt;&gt;qtPlugin.Parent" xml:space="preserve">
+    <value>grpDetails</value>
   </data>
   <data name="&gt;&gt;WeDictDictionariesToolStripMenuItem.Name" xml:space="preserve">
     <value>WeDictDictionariesToolStripMenuItem</value>
   </data>
-  <data name="ToolStripDropDownButton1.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
+  <data name="ToolStripMenuItemFile.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAgxJREFUOE+lkvtL
+        U2EYx+0PEbtpFwnBKPGKiJImGP0gYhIYs1E5GF5gIxkpA00JRSmMEF0ohMh+GaRWYlqabMVcNdS2QpaI
+        VqiDIYhk397vA6fXhCjyhYdzeM/5fp7vczkAdeL2cwho7v/wWzT1zcN+Pwhr51uY2/y41PQaF+wzKKiZ
+        QvaN58g0jyLd5KEUcQbg+84P/Cm2tncQjW3j68YWIqubCC3FcOJc478BAuGoZM6zvoRnakXEruEIjhc4
+        /g5gZop9c+voGAyLbQIfeBZxLL9BA1jzXvuGbWamuKh+GmmVbswE19A59FEBbmoAG7YbsLtm2mZmiml9
+        cvabNDwpz6YB7LYBoMXCumkJr7LOmnnHzBQ/9X2Bo2cOibm1GsBREbAQiYmw/8lnuCeWkVzcgnZlnw1j
+        3HV/wuNXK6i/9x5Hc6wawDlTXHbLJ+LZUBQPRyKwdQdxutwl1h+NLXHh5Ht1ewBHsiwawCW57HyDAfWR
+        dvl0uhZQ1eqX8aVc7EKLqrum651ATLf9OJx5XQM4KmY0xPzZ0hFAiQJnXB0WwME0E3IsL5B17ZlADqWb
+        NYDrOepdlcysmTWWOrxqbceRWtaLk0VO1XW72D5Vckd2gMBfq8zdpmUG62NJvKM4+XyziDk24xmfWoGE
+        s1c0gHPmbrPTpHNJKOCo2G1mZs20zcwUJ5yp1AB5+8/zEwgF5GMVDxh4AAAAAElFTkSuQmCC
+</value>
   </data>
   <data name="PCToIPhoneToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>138, 22</value>
@@ -2907,11 +2919,11 @@
   <metadata name="imgFilesSmall.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>255, 91</value>
   </metadata>
-  <metadata name="imgFolders.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>221, 17</value>
-  </metadata>
   <metadata name="imgFilesLarge.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>135, 91</value>
+  </metadata>
+  <metadata name="imgFolders.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>221, 17</value>
   </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

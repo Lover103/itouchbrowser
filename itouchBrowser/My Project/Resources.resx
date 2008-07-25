@@ -177,8 +177,32 @@
   <data name="String27" xml:space="preserve">
     <value>Do you want to create {0}?</value>
   </data>
+  <data name="String28" xml:space="preserve">
+    <value>Loading file </value>
+  </data>
+  <data name="String29" xml:space="preserve">
+    <value>File details for '{0}'.</value>
+  </data>
   <data name="String3" xml:space="preserve">
     <value>iPhone is connected and jailbroken</value>
+  </data>
+  <data name="String30" xml:space="preserve">
+    <value>The program was unable to copy {0} from the iPhone.  Sorry, try again!</value>
+  </data>
+  <data name="String31" xml:space="preserve">
+    <value>Size</value>
+  </data>
+  <data name="String32" xml:space="preserve">
+    <value>Black</value>
+  </data>
+  <data name="String33" xml:space="preserve">
+    <value>Gray</value>
+  </data>
+  <data name="String34" xml:space="preserve">
+    <value>White</value>
+  </data>
+  <data name="String35" xml:space="preserve">
+    <value>Path does not exist. A reboot this application may be necessity.</value>
   </data>
   <data name="String4" xml:space="preserve">
     <value>Refreshing folders for {0}...</value>

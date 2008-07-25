@@ -232,7 +232,8 @@ Public Class frmMain
                     'sbpath.Append(iPhonePath).Append("/").Append(sFile)
                     sFile = convertcd(sFile)
                     lstTemp.SubItems.Add(fileSizeAsString(iPhonePath & "/" & sFile))
-
+                    ' add the attribute         <<<<<<
+                    lstTemp.SubItems.Add("")
                     ' add the file type
                     lstTemp.SubItems.Add(getFiletype(lstTemp.ImageIndex))
 
@@ -245,10 +246,8 @@ Public Class frmMain
                     lstFiles.Items.Add(lstTemp)
 
                 Next
-                endStatus()
                 StatusNormal("")
 
-                lstFiles.EndUpdate()
                 exitFlg = True
 
                 'ClearPreview()
@@ -259,8 +258,16 @@ Public Class frmMain
                 MsgBox(e.ToString, MsgBoxStyle.Exclamation)
             Catch ex As Exception
                 'MsgBox(ex.Message, MsgBoxStyle.Exclamation)
-                StatusWarning(ex.Message)
-                ResetiPhone()
+                If ex.Message = "Path does not exist" Then
+                    StatusWarning(My.Resources.String35)
+                    ResetiPhone()
+                Else
+                    StatusWarning(ex.Message)
+                End If
+
+            Finally
+                EndStatus()
+                lstFiles.EndUpdate()
             End Try
 
         End If
@@ -280,7 +287,7 @@ Public Class frmMain
         Select Case sExt
             Case "png", "jpg", "jpeg", "gif"
                 iReturn = IMAGE_FILE_IMAGE
-            Case "strings", "conf", "txt", "script"
+            Case "strings", "conf", "txt", "script", "pl", "h", "awk", "tcl", "css"
                 iReturn = IMAGE_FILE_TEXT
             Case "db", "sqlite"
                 iReturn = IMAGE_FILE_DATABASE
@@ -290,9 +297,9 @@ Public Class frmMain
                 'iReturn = IMAGE_FILE_RINGTONE
             Case "m4a", "m4p", "mp3", "aac"
                 iReturn = IMAGE_FILE_MUSIC
-            Case "mp4", "mov", "3gp"
+            Case "mp4", "mov", "3gp", "tga"
                 iReturn = IMAGE_FILE_MOVIE
-            Case "htm", "html", "plist", "thm", "xml"
+            Case "htm", "html", "plist", "thm", "xml", "pdf"
                 iReturn = IMAGE_FILE_WEBBROWS
         End Select
 
@@ -413,7 +420,9 @@ Public Class frmMain
                 selectedNode.Tag = True
             End If
         Catch ex As Exception
-            StatusWarning(ex.Message)
+            '‚±‚±‚ÌƒGƒ‰[‚ÅÚ‘±‚ª’†’f‚³‚ê‚ÄŒp‘±‚Å‚«‚È‚­‚È‚éB
+            StatusWarning(My.Resources.String35)
+            'StatusWarning(ex.Message)
 
         Finally
             endStatus()
@@ -622,6 +631,27 @@ Public Class frmMain
     End Sub
 
     Private Sub ToolStripMenuItemExit_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripMenuItemExit.Click
+
+        If FILE_TEMPORARY_VIEWER.IndexOf("Local Settings\Temp\iPhone.temp", 20) > 0 Then
+            escapeFlg = True
+            Application.DoEvents()
+            'delete temp files
+            Try
+                For Each foundFile As String In My.Computer.FileSystem.GetFiles( _
+                    My.Computer.FileSystem.SpecialDirectories.Temp, _
+                    FileIO.SearchOption.SearchTopLevelOnly, "iPhone.temp.*")
+
+                    'My.Computer.FileSystem.DeleteFile(foundFile, _
+                    '    FileIO.UIOption.OnlyErrorDialogs, _
+                    '    FileIO.RecycleOption.DeletePermanently)
+                    File.Delete(foundFile)
+                Next
+
+            Catch ex As Exception
+                'NOP   ‰‰‘t’†‚È‚ç‚±‚±‚É—ˆ‚é
+            End Try
+        End If
+
         'time to go
         Me.Close()
     End Sub
@@ -681,7 +711,7 @@ Public Class frmMain
         'unlock the file so we can load another
         If wasQTpreview Then
             qtPlugin.FileName = "" 'to unlock it
-            My.Computer.FileSystem.DeleteFile(QTpreviewFile.Replace("localhost\", ""))
+            'sugi File.Delete(QTpreviewFile.Replace("localhost\", ""))
             wasQTpreview = False
         End If
     End Sub
@@ -698,101 +728,160 @@ Public Class frmMain
     End Sub
 
     Private Sub showFileDetails(ByVal sFile As String)
-        txtFileDetails.Text = "Filename: " & Path.GetFileName(sFile) & vbCrLf & "Size: " & fileSizeAsString(sFile)
+        Dim i As Integer = 1, bo As Boolean
+        iPhoneInterface.GetFileInfo(sFile, i, bo)
+        'Dim status As String = Convert.ToString(i, 2)
+        'Debug.WriteLine(status)
+
+        txtFileDetails.Text = "Filename: " & Path.GetFileName(sFile) & vbCrLf _
+                & "Size: " & fileSizeAsString(sFile) _
+                & ",   " & i.ToString() & " Byte"
         txtFileDetails.Visible = True
     End Sub
 
     Private Sub showPreview(ByVal sFile As String, ByVal fromBtn As Boolean)
         Dim sr As StreamReader, picOK As Boolean
 
-        StatusNormal("Loading file " & sFile)
+        StatusNormal(My.Resources.String28 & sFile)
 
         Dim tmpOnPC As String = GetTempFilename(sFile)
         Dim imageIdx As Integer = lstFiles.SelectedItems(0).ImageIndex
 
         'If imageIdx = IMAGE_FILE_UNKNOWN OrElse CopyFromPhone(sFile, tmpOnPC) = 0 Then
-        If CopyFromPhone(sFile, tmpOnPC) = 0 Then
-            'Dim lastpreview As Boolean = btnPreview.Enabled
-            btnPreview.Enabled = False
+        Dim copyRC As Integer = 0
 
-            grpDetails.Text = "File details for '" & sFile & "'."
-            txtFileDetails.Text = "<UNKNOWN FILE FORMAT>"
+        If Not fromBtn Then
+            copyRC = CopyQueueFromPhone(sFile, tmpOnPC)
+            'Dim dic As Dictionary(Of String, String) = iPhoneInterface.GetFileInfo(sFile)
+            'For Each item As KeyValuePair(Of String, String) In dic
+            '    Debug.WriteLine("")
+            'Next
+        End If
+        Select Case copyRC
+            Case 0
+                'Dim lastpreview As Boolean = btnPreview.Enabled
+                btnPreview.Enabled = False
 
-            StatusNormal("")
-            Try
-                'now we have a temporary file, lets try to read it
-                Select Case imageIdx
-                    Case IMAGE_FILE_TEXT, IMAGE_FILE_DATABASE
+                clearPreview()
 
-                        'clean up the temp file
-                        sr = My.Computer.FileSystem.OpenTextFileReader(tmpOnPC)
-                        txtFileDetails.Text = sr.ReadToEnd().Replace(Chr(10), vbCrLf)
-                        sr.Close()
+                'File details for '" & sFile & "'.
+                grpDetails.Text = String.Format(My.Resources.String29, sFile)
+                txtFileDetails.Text = "<UNKNOWN FILE FORMAT>"
 
-                        txtFileDetails.Visible = True
+                StatusNormal("")
+                Try
+                    'now we have a temporary file, lets try to read it
+                    Select Case imageIdx
+                        Case IMAGE_FILE_TEXT, IMAGE_FILE_DATABASE
 
-                    Case IMAGE_FILE_UNKNOWN ', IMAGE_FILE_RINGTONE
-                        If fromBtn = True Then
-                            sr = My.Computer.FileSystem.OpenTextFileReader(tmpOnPC)
-                            txtFileDetails.Text = sr.ReadToEnd().Replace(Chr(10), vbCrLf)
-                            sr.Close()
+                            showText(tmpOnPC)
 
-                            txtFileDetails.Visible = True
-                        Else
-                            showFileDetails(sFile)
-                            btnPreview.Enabled = True
-                        End If
+                        Case IMAGE_FILE_UNKNOWN ', IMAGE_FILE_RINGTONE
+                            If fromBtn = True Then
+                                showText(tmpOnPC)
+                                'sr = My.Computer.FileSystem.OpenTextFileReader(tmpOnPC)
+                                'txtFileDetails.Text = sr.ReadToEnd().Replace(Chr(10), vbCrLf)
+                                'sr.Close()
 
-                    Case IMAGE_FILE_IMAGE
-                        Try
-                            picOK = True
-                            picFileDetails.Image = iPhonePNG.ImageFromFile(tmpOnPC)
-                        Catch
-                            picOK = False
-                        End Try
-                        If picOK Then
-                            With picFileDetails
-                                If Not .Image Is Nothing Then
-                                    If .Image.Width > .Width OrElse .Image.Height > .Height Then
-                                        .SizeMode = PictureBoxSizeMode.Zoom
-                                    Else
-                                        .SizeMode = PictureBoxSizeMode.CenterImage
+                                'txtFileDetails.Visible = True
+                            Else
+                                showFileDetails(sFile)
+                                btnPreview.Enabled = True
+                            End If
+
+                        Case IMAGE_FILE_IMAGE
+                            Try
+                                picOK = True
+                                picFileDetails.Image = iPhonePNG.ImageFromFile(tmpOnPC)
+                            Catch
+                                picOK = False
+                            End Try
+                            If picOK Then
+                                With picFileDetails
+                                    If Not .Image Is Nothing Then
+                                        If .Image.Width > .Width OrElse .Image.Height > .Height Then
+                                            .SizeMode = PictureBoxSizeMode.Zoom
+                                        Else
+                                            .SizeMode = PictureBoxSizeMode.CenterImage
+                                        End If
                                     End If
-                                End If
-                                .Visible = True
-                                qtPlugin.Visible = False
-                                txtFileDetails.Visible = False
-                            End With
-                        End If
+                                    .Visible = True
+                                    qtPlugin.Visible = False
+                                    txtFileDetails.Visible = False
+                                End With
+                            End If
 
-                    Case IMAGE_FILE_AUDIO, IMAGE_FILE_MOVIE, IMAGE_FILE_MUSIC
-                        If escapeFlg = False Then
-                            QTpreviewFile = tmpOnPC
-                            qtPlugin.Sizing = QTOControlLib.QTSizingModeEnum.qtMovieFitsControlMaintainAspectRatio
-                            qtPlugin.FileName = QTpreviewFile
-                            qtPlugin.AutoPlay = CStr(True)
-                            qtPlugin.Visible = True
-                            wasQTpreview = True
-                        End If
+                        Case IMAGE_FILE_AUDIO, IMAGE_FILE_MOVIE, IMAGE_FILE_MUSIC
+                            If escapeFlg = False Then
+                                QTpreviewFile = tmpOnPC
+                                qtPlugin.QuickTimeInitialize()
+                                qtPlugin.Sizing = QTOControlLib.QTSizingModeEnum.qtMovieFitsControlMaintainAspectRatio
+                                qtPlugin.FileName = QTpreviewFile
+                                qtPlugin.AutoPlay = CStr(True)
+                                qtPlugin.Visible = True
+                                qtPlugin.Refresh()
+                                wasQTpreview = True
+                            End If
 
-                    Case IMAGE_FILE_WEBBROWS
-                        picFileDetails.Visible = False
-                        qtPlugin.Visible = False
-                        txtFileDetails.Visible = False
-                        WebBrws.ScriptErrorsSuppressed = False
-                        WebBrws.Navigate(New Uri("file:///" & tmpOnPC))
-                        WebBrws.Visible = True
-                        StatusNormal(WebBrws.StatusText)
+                        Case IMAGE_FILE_WEBBROWS
+                            'picFileDetails.Visible = False
+                            'qtPlugin.Visible = False
+                            'txtFileDetails.Visible = False
+                            Select Case tmpOnPC.Substring(tmpOnPC.LastIndexOf("."))
+                                Case ".pdf"
+                                    WebBrws.ScriptErrorsSuppressed = False
+                                    WebBrws.Navigate(New Uri("file:///" & tmpOnPC))
+                                    WebBrws.Visible = True
+                                    WebBrws.IsWebBrowserContextMenuEnabled = False
 
-                End Select
+                                Case Else
+                                    showText(tmpOnPC)
+                                    'WebBrws.ScriptErrorsSuppressed = False
+                                    'WebBrws.Navigate(New Uri("file:///" & tmpOnPC))
+                                    'WebBrws.Visible = True
 
-            Catch ex As Exception
-                StatusWarning(ex.Message)
-            End Try
+                                    'StatusNormal(WebBrws.StatusText)
+                            End Select
 
+                    End Select
+
+                Catch ex As Exception
+                    StatusWarning(ex.Message)
+                End Try
+
+            Case 1      ' Escape
+                'NOP
+            Case Else
+                'it didn't copy from the phone correctly
+                'The program was unable to copy " & sFile & " from the iPhone.  Sorry, try again!
+                StatusWarning(String.Format(My.Resources.String30, sFile))
+        End Select
+    End Sub
+
+    Private Sub showText(ByVal tmpfile As String)
+
+        Dim fn As String = tmpfile.ToLower
+
+        If fn.EndsWith(".htm") OrElse fn.EndsWith(".html") OrElse tmpfile.ToLower.EndsWith(".thm") Then
+            WebBrws.ScriptErrorsSuppressed = False
+            WebBrws.Navigate(New Uri("file:///" & tmpfile))
+            WebBrws.Visible = True
+            StatusNormal(WebBrws.StatusText)
         Else
-            'it didn't copy from the phone correctly
-            StatusWarning("The program was unable to copy " & sFile & " from the iPhone.  Sorry, try again!")
+            'clean up the temp file
+            Dim sr As StreamReader = My.Computer.FileSystem.OpenTextFileReader(tmpfile)
+            Dim str As String = sr.ReadToEnd().Replace(Chr(10), vbCrLf)
+            sr.Close()
+
+            If str.StartsWith("<?xml version=") Then
+                WebBrws.ScriptErrorsSuppressed = False
+                WebBrws.Navigate(New Uri("file:///" & tmpfile))
+                WebBrws.Visible = True
+                StatusNormal(WebBrws.StatusText)
+            Else
+                txtFileDetails.Text = str
+                txtFileDetails.Visible = True
+            End If
         End If
     End Sub
 
@@ -805,7 +894,7 @@ Public Class frmMain
             End If
             prevSelectedFile = sFile
 
-            clearPreview()
+            'clearPreview()
 
             ' only if it is less than a big file size
             Dim sSize As String = lstFiles.SelectedItems(0).SubItems(1).Text
@@ -852,7 +941,7 @@ Public Class frmMain
             lstFiles.Cursor = Cursors.Default
             'lstFiles.Focus()
         Else
-            ShowSelectedFileDetails()
+            showSelectedFileDetails()
         End If
     End Sub
 
@@ -917,7 +1006,7 @@ Public Class frmMain
                 'replace the selected file with the source one
                 sFileToPhone = getSelectedFilename()
                 'this function also makes a backup
-                copyToPhone(sSourceFilename, sFileToPhone, bConvertToiPhonePNG)
+                CopyToPhone(sSourceFilename, sFileToPhone, bConvertToiPhonePNG)
                 'refresh the list view
                 loadFiles()
             End If
@@ -1125,7 +1214,7 @@ Public Class frmMain
         Else
             lstFilesSortOrder = SortOrder.Descending
         End If
-        If lstFiles.Columns(e.Column).Text = "Size" Then
+        If lstFiles.Columns(e.Column).Text = My.Resources.String31 Then
             Me.lstFiles.ListViewItemSorter = New ListViewSizeComparer(e.Column, lstFilesSortOrder)
         Else
             Me.lstFiles.ListViewItemSorter = New ListViewStringComparer(e.Column, lstFilesSortOrder)
@@ -1154,17 +1243,17 @@ Public Class frmMain
         Dim s As ToolStripMenuItem = CType(sender, ToolStripMenuItem)
         If s.Checked Then
             Select Case s.Text
-                Case "Black"
+                Case My.Resources.String32      '"Black"
                     picFileDetails.BackColor = Color.Black
                     GrayToolStripMenuItem.Checked = False
                     WhiteToolStripMenuItem.Checked = False
 
-                Case "Gray"
+                Case My.Resources.String33      '"Gray"
                     picFileDetails.BackColor = Color.Gray
                     BlackToolStripMenuItem.Checked = False
                     WhiteToolStripMenuItem.Checked = False
 
-                Case "White"
+                Case My.Resources.String34      '"White"
                     picFileDetails.BackColor = Color.White
                     BlackToolStripMenuItem.Checked = False
                     GrayToolStripMenuItem.Checked = False
@@ -1267,7 +1356,7 @@ Public Class frmMain
         If bShowPreview Then
             doFileSelectedPreview(False, False)
         Else
-            ClearPreview()
+            clearPreview()
             prevSelectedFile = "" ' force preview next time
         End If
     End Sub
@@ -1290,7 +1379,7 @@ Public Class frmMain
             My.Settings.SaveFolderPath = dPath
             Dim sPath As String = getSelectedFolder()
             dPath &= "\" & Path.GetFileName(sPath)
-            DoSaveFolderIn(sPath, dPath)
+            doSaveFolderIn(sPath, dPath)
             Me.Cursor = Cursors.Arrow
         End If
     End Sub
@@ -1447,8 +1536,11 @@ Public Class frmMain
                     If lastval0 <> ProgressValue(0) Then
                         lastval0 = ProgressValue(0)
                         ProgressBars(0).Value = lastval0
+                        'tlbStatusStrip.Refresh()
+                        If lastval0 > 500 Then
+                            tlbStatusLabel.Text = lastval0.ToString() & "/" & .Maximum.ToString()
+                        End If
                     End If
-                    tlbStatusStrip.Refresh()
                 End If
             End With
         End If

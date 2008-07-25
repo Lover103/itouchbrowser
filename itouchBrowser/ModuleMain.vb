@@ -78,7 +78,11 @@ Module ModuleMain
                 If ProgressDepth = 0 Then
                     objMain.Timer1.Enabled = False
                 End If
-                ProgressBars(ProgressDepth).Value = 0
+                Try
+                    ProgressBars(ProgressDepth).Value = 0
+                Catch ex As Exception
+                    Exit Sub
+                End Try
 
                 If ProgressDepth = 0 Then ' first bar - turn all off
                     For j1 As Integer = 0 To MAX_PROG_DEPTH
@@ -167,6 +171,106 @@ Module ModuleMain
             Catch ex As Exception
                 StatusWarning(ex.Message)
             Finally
+                If depth = 0 Then
+                    objMain.lstFiles.Enabled = True
+                    objMain.lstFiles.Focus()
+                End If
+            End Try
+        Else
+            fileTemp = File.OpenWrite(destinationOnComputer)
+            fileTemp.Close()
+            bReturn = 0
+        End If
+
+        Return bReturn
+    End Function
+
+    Friend Sub addFilenameToTxt(ByVal name As String, ByVal destdir As String)
+        Dim wfs As StreamWriter = File.AppendText(destdir & "\list.txt")
+        Dim info As String = Now.ToShortDateString & " " & Now.ToShortTimeString & "," & name
+
+        Try
+            wfs.WriteLine(info)
+        Finally
+            wfs.Flush()
+            wfs.Close()
+        End Try
+
+    End Sub
+
+    Friend Function CopyQueueFromPhone(ByVal sourceOnPhone As String, ByRef destinationOnComputer As String) As Integer
+        Dim sBuffer(8191) As Byte
+        Dim iDataBytes As Integer
+        Dim iPhoneFileInterface As iPhoneFile
+        Dim fileTemp As FileStream
+        Dim bReturn As Integer = -1
+        Dim destname As String = destinationOnComputer
+        Dim i As Integer
+
+        For i = 1 To 5
+            'remove our local file if it exists
+            If File.Exists(destinationOnComputer) Then
+                Try
+                    File.Delete(destinationOnComputer)
+                    Exit For
+                Catch
+                    Dim ext As String = destname.Substring(destname.LastIndexOf("."))
+                    destinationOnComputer = destname.Substring(0, destname.Length - ext.Length) & "." & i.ToString() & ext
+                End Try
+            Else
+                Exit For
+            End If
+        Next
+        If i = 6 Then
+            Return bReturn
+        End If
+
+        'make sure the source file exists
+        If iPhoneInterface.Exists(sourceOnPhone) Then
+
+            'open a connection to the file and read it
+            Try
+                iPhoneInterface.CurrentDirectory = "/"
+                iPhoneFileInterface = iPhoneFile.OpenRead(iPhoneInterface, sourceOnPhone)
+
+            Catch ex As Exception
+                ResetiPhone()
+                Return bReturn
+            End Try
+
+            Dim depth As Integer = StartStatus(CInt(iPhoneInterface.FileSize(sourceOnPhone) / sBuffer.Length)) 'show our progress bar
+            Try
+                If depth = 0 Then objMain.lstFiles.Enabled = False
+                fileTemp = File.OpenWrite(destinationOnComputer)
+
+            Catch exio As IOException
+                EndStatus() 'fill our progressbar
+                StatusWarning(exio.Message)
+                Return bReturn
+            End Try
+
+            Try
+                iDataBytes = iPhoneFileInterface.Read(sBuffer, 0, sBuffer.Length)
+                While iDataBytes > 0
+                    fileTemp.Write(sBuffer, 0, iDataBytes)
+                    iDataBytes = iPhoneFileInterface.Read(sBuffer, 0, sBuffer.Length)
+                    If IncrementStatus() Then
+                        bReturn = 1
+                        Exit Try 'increment our progressbar
+                    End If
+                End While
+
+                bReturn = 0
+
+            Catch ex As Exception
+                StatusWarning(ex.Message)
+
+            Finally
+                iPhoneFileInterface.Close()
+                iPhoneFileInterface.Dispose()
+                fileTemp.Close()
+                EndStatus() 'fill our progressbar
+
                 If depth = 0 Then
                     objMain.lstFiles.Enabled = True
                     objMain.lstFiles.Focus()
@@ -366,10 +470,18 @@ Module ModuleMain
 
             'copy file into the backup directory
             Dim rc As Integer = CopyFromPhone(sSourcePath & sSourceFile, sDestinationPath & sDestinationFile)
-
+            If rc = 0 Then
+                addFilenameToTxt(sSourcePath & sSourceFile, GetBackupPath(False))
+            End If
             StatusNormal("Backed up as '" & sDestinationFile & "'.")
 
             Return rc
+
+        Catch ex As DirectoryNotFoundException
+            StatusWarning(ex.Message)
+            Dim dialog As New BackupDirDialog
+            dialog.Show(objMain)
+            Return -1
 
         Catch ex As Exception
             StatusWarning(ex.Message)
