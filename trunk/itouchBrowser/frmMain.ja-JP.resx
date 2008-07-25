@@ -171,10 +171,10 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="trvFolders.Size" type="System.Drawing.Size, System.Drawing">
-    <value>211, 480</value>
+    <value>201, 480</value>
   </data>
   <data name="grpFolders.Size" type="System.Drawing.Size, System.Drawing">
-    <value>217, 498</value>
+    <value>207, 498</value>
   </data>
   <data name="grpFolders.Text" xml:space="preserve">
     <value>touch のフォルダー</value>
@@ -185,47 +185,53 @@
   <data name="cohSize.Text" xml:space="preserve">
     <value>サイズ</value>
   </data>
+  <data name="cohAttribute.Text" xml:space="preserve">
+    <value>属性</value>
+  </data>
   <data name="cohFiletype.Text" xml:space="preserve">
     <value>ファイルタイプ</value>
   </data>
   <data name="menuRightSaveAs.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 22</value>
+    <value>211, 22</value>
   </data>
   <data name="menuRightSaveAs.Text" xml:space="preserve">
     <value>名前を指定して保存(&amp;A)...</value>
   </data>
   <data name="ToolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>197, 6</value>
+    <value>208, 6</value>
   </data>
   <data name="menuRightBackupFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 22</value>
+    <value>211, 22</value>
   </data>
   <data name="menuRightBackupFile.Text" xml:space="preserve">
     <value>ファイルバックアップ(&amp;B)</value>
   </data>
   <data name="menuRightRestoreFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 22</value>
+    <value>211, 22</value>
   </data>
   <data name="ToolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>197, 6</value>
+    <value>208, 6</value>
   </data>
   <data name="cmdRenameFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 22</value>
+    <value>211, 22</value>
   </data>
   <data name="cmdRenameFile.Text" xml:space="preserve">
-    <value>ファイルのリネーム...</value>
+    <value>ファイルのリネーム(&amp;R)...</value>
   </data>
   <data name="menuRightReplaceFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 22</value>
+    <value>211, 22</value>
+  </data>
+  <data name="menuRightReplaceFile.Text" xml:space="preserve">
+    <value>指定ファイルを書き込み(&amp;p)...</value>
   </data>
   <data name="menuRightDeleteFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 22</value>
+    <value>211, 22</value>
   </data>
   <data name="menuRightDeleteFile.Text" xml:space="preserve">
     <value>ファイル削除(&amp;D)</value>
   </data>
   <data name="menuRightClickFiles.Size" type="System.Drawing.Size, System.Drawing">
-    <value>201, 148</value>
+    <value>212, 148</value>
   </data>
   <data name="imgFilesLarge.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
@@ -713,7 +719,7 @@
 </value>
   </data>
   <data name="lstFiles.Size" type="System.Drawing.Size, System.Drawing">
-    <value>474, 300</value>
+    <value>484, 300</value>
   </data>
   <data name="imgFilesSmall.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
@@ -814,7 +820,7 @@
 </value>
   </data>
   <data name="grpFiles.Size" type="System.Drawing.Size, System.Drawing">
-    <value>480, 331</value>
+    <value>490, 331</value>
   </data>
   <data name="grpFiles.Text" xml:space="preserve">
     <value>touch のファイル一覧</value>
@@ -839,7 +845,7 @@
     <value>MiddleCenter</value>
   </data>
   <data name="Panel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>258, 22</value>
+    <value>268, 22</value>
   </data>
   <data name="Panel1.Size" type="System.Drawing.Size, System.Drawing">
     <value>219, 22</value>
@@ -848,10 +854,10 @@
     <value>ＭＳ ゴシック, 9pt</value>
   </data>
   <data name="txtFileDetails.Size" type="System.Drawing.Size, System.Drawing">
-    <value>468, 115</value>
+    <value>478, 115</value>
   </data>
   <data name="WebBrws.Size" type="System.Drawing.Size, System.Drawing">
-    <value>465, 112</value>
+    <value>475, 112</value>
   </data>
   <data name="qtPlugin.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 49</value>
@@ -866,25 +872,25 @@
 </value>
   </data>
   <data name="qtPlugin.Size" type="System.Drawing.Size, System.Drawing">
-    <value>465, 112</value>
+    <value>475, 112</value>
   </data>
   <data name="picFileDetails.Size" type="System.Drawing.Size, System.Drawing">
-    <value>471, 115</value>
+    <value>481, 115</value>
   </data>
   <data name="grpDetails.Size" type="System.Drawing.Size, System.Drawing">
-    <value>480, 163</value>
+    <value>490, 163</value>
   </data>
   <data name="grpDetails.Text" xml:space="preserve">
     <value>ファイルの詳細</value>
   </data>
   <data name="splFiles.Size" type="System.Drawing.Size, System.Drawing">
-    <value>480, 498</value>
+    <value>490, 498</value>
   </data>
   <data name="splMain.Size" type="System.Drawing.Size, System.Drawing">
     <value>713, 504</value>
   </data>
   <data name="splMain.SplitterDistance" type="System.Int32, mscorlib">
-    <value>223</value>
+    <value>213</value>
   </data>
   <data name="tlbStatusLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>474, 17</value>

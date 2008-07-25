@@ -41,6 +41,7 @@ Partial Class frmMain
         Me.lstFiles = New System.Windows.Forms.ListView
         Me.cohFilename = New System.Windows.Forms.ColumnHeader
         Me.cohSize = New System.Windows.Forms.ColumnHeader
+        Me.cohAttribute = New System.Windows.Forms.ColumnHeader
         Me.cohFiletype = New System.Windows.Forms.ColumnHeader
         Me.menuRightClickFiles = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.menuRightSaveAs = New System.Windows.Forms.ToolStripMenuItem
@@ -58,10 +59,10 @@ Partial Class frmMain
         Me.Panel1 = New System.Windows.Forms.Panel
         Me.btnPreview = New System.Windows.Forms.Button
         Me.chkPreviewEnabled = New System.Windows.Forms.CheckBox
-        Me.picFileDetails = New System.Windows.Forms.PictureBox
         Me.txtFileDetails = New System.Windows.Forms.TextBox
         Me.WebBrws = New System.Windows.Forms.WebBrowser
         Me.qtPlugin = New AxQTOControlLib.AxQTControl
+        Me.picFileDetails = New System.Windows.Forms.PictureBox
         Me.tlbStatusStrip = New System.Windows.Forms.StatusStrip
         Me.tlbStatusLabel = New System.Windows.Forms.ToolStripStatusLabel
         Me.BtnCancel = New System.Windows.Forms.ToolStripDropDownButton
@@ -169,8 +170,8 @@ Partial Class frmMain
         Me.menuRightClickFiles.SuspendLayout()
         Me.grpDetails.SuspendLayout()
         Me.Panel1.SuspendLayout()
-        CType(Me.picFileDetails, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.qtPlugin, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.picFileDetails, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tlbStatusStrip.SuspendLayout()
         Me.toolStrip.SuspendLayout()
         Me.menuRightClickFolders.SuspendLayout()
@@ -284,7 +285,7 @@ Partial Class frmMain
         Me.lstFiles.AllowColumnReorder = True
         Me.lstFiles.AllowDrop = True
         Me.lstFiles.BackgroundImage = Nothing
-        Me.lstFiles.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.cohFilename, Me.cohSize, Me.cohFiletype})
+        Me.lstFiles.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.cohFilename, Me.cohSize, Me.cohAttribute, Me.cohFiletype})
         Me.lstFiles.ContextMenuStrip = Me.menuRightClickFiles
         Me.lstFiles.Font = Nothing
         Me.lstFiles.LargeImageList = Me.imgFilesLarge
@@ -301,6 +302,10 @@ Partial Class frmMain
         'cohSize
         '
         resources.ApplyResources(Me.cohSize, "cohSize")
+        '
+        'cohAttribute
+        '
+        resources.ApplyResources(Me.cohAttribute, "cohAttribute")
         '
         'cohFiletype
         '
@@ -471,17 +476,6 @@ Partial Class frmMain
         Me.chkPreviewEnabled.TabStop = False
         Me.chkPreviewEnabled.UseVisualStyleBackColor = True
         '
-        'picFileDetails
-        '
-        Me.picFileDetails.AccessibleDescription = Nothing
-        Me.picFileDetails.AccessibleName = Nothing
-        resources.ApplyResources(Me.picFileDetails, "picFileDetails")
-        Me.picFileDetails.BackColor = System.Drawing.SystemColors.Control
-        Me.picFileDetails.BackgroundImage = Nothing
-        Me.picFileDetails.Font = Nothing
-        Me.picFileDetails.Name = "picFileDetails"
-        Me.picFileDetails.TabStop = False
-        '
         'txtFileDetails
         '
         Me.txtFileDetails.AccessibleDescription = Nothing
@@ -507,6 +501,17 @@ Partial Class frmMain
         Me.qtPlugin.Font = Nothing
         Me.qtPlugin.Name = "qtPlugin"
         Me.qtPlugin.OcxState = CType(resources.GetObject("qtPlugin.OcxState"), System.Windows.Forms.AxHost.State)
+        '
+        'picFileDetails
+        '
+        Me.picFileDetails.AccessibleDescription = Nothing
+        Me.picFileDetails.AccessibleName = Nothing
+        resources.ApplyResources(Me.picFileDetails, "picFileDetails")
+        Me.picFileDetails.BackColor = System.Drawing.SystemColors.Control
+        Me.picFileDetails.BackgroundImage = Nothing
+        Me.picFileDetails.Font = Nothing
+        Me.picFileDetails.Name = "picFileDetails"
+        Me.picFileDetails.TabStop = False
         '
         'tlbStatusStrip
         '
@@ -1443,8 +1448,8 @@ Partial Class frmMain
         Me.grpDetails.ResumeLayout(False)
         Me.grpDetails.PerformLayout()
         Me.Panel1.ResumeLayout(False)
-        CType(Me.picFileDetails, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.qtPlugin, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.picFileDetails, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tlbStatusStrip.ResumeLayout(False)
         Me.tlbStatusStrip.PerformLayout()
         Me.toolStrip.ResumeLayout(False)
@@ -1580,5 +1585,6 @@ Partial Class frmMain
     Friend WithEvents imgFilesSmall As System.Windows.Forms.ImageList
     Friend WithEvents ToolStripDropDownButton2 As System.Windows.Forms.ToolStripDropDownButton
     Friend WithEvents BackupDirectoryToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents cohAttribute As System.Windows.Forms.ColumnHeader
 
 End Class

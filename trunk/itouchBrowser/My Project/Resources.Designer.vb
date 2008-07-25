@@ -241,11 +241,83 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Loading file  に類似しているローカライズされた文字列を検索します。
+        '''</summary>
+        Friend ReadOnly Property String28() As String
+            Get
+                Return ResourceManager.GetString("String28", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  File details for &apos;{0}&apos;. に類似しているローカライズされた文字列を検索します。
+        '''</summary>
+        Friend ReadOnly Property String29() As String
+            Get
+                Return ResourceManager.GetString("String29", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  iPhone is connected and jailbroken に類似しているローカライズされた文字列を検索します。
         '''</summary>
         Friend ReadOnly Property String3() As String
             Get
                 Return ResourceManager.GetString("String3", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  The program was unable to copy {0} from the iPhone.  Sorry, try again! に類似しているローカライズされた文字列を検索します。
+        '''</summary>
+        Friend ReadOnly Property String30() As String
+            Get
+                Return ResourceManager.GetString("String30", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Size に類似しているローカライズされた文字列を検索します。
+        '''</summary>
+        Friend ReadOnly Property String31() As String
+            Get
+                Return ResourceManager.GetString("String31", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Black に類似しているローカライズされた文字列を検索します。
+        '''</summary>
+        Friend ReadOnly Property String32() As String
+            Get
+                Return ResourceManager.GetString("String32", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Gray に類似しているローカライズされた文字列を検索します。
+        '''</summary>
+        Friend ReadOnly Property String33() As String
+            Get
+                Return ResourceManager.GetString("String33", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  White に類似しているローカライズされた文字列を検索します。
+        '''</summary>
+        Friend ReadOnly Property String34() As String
+            Get
+                Return ResourceManager.GetString("String34", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Path does not exist. A reboot this application may be necessity. に類似しているローカライズされた文字列を検索します。
+        '''</summary>
+        Friend ReadOnly Property String35() As String
+            Get
+                Return ResourceManager.GetString("String35", resourceCulture)
             End Get
         End Property
         

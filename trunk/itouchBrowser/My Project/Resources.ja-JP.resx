@@ -177,8 +177,32 @@
   <data name="String27" xml:space="preserve">
     <value>{0} のパスを作成しますか？</value>
   </data>
+  <data name="String28" xml:space="preserve">
+    <value>ファイル読み込み中... </value>
+  </data>
+  <data name="String29" xml:space="preserve">
+    <value>'{0}' ファイルの詳細</value>
+  </data>
   <data name="String3" xml:space="preserve">
     <value>脱獄済みtouchが接続されました。</value>
+  </data>
+  <data name="String30" xml:space="preserve">
+    <value>iPod touchから {0} ファイルをコピーできません。再起動が必要かもしれません。</value>
+  </data>
+  <data name="String31" xml:space="preserve">
+    <value>サイズ</value>
+  </data>
+  <data name="String32" xml:space="preserve">
+    <value>黒</value>
+  </data>
+  <data name="String33" xml:space="preserve">
+    <value>グレイ</value>
+  </data>
+  <data name="String34" xml:space="preserve">
+    <value>白</value>
+  </data>
+  <data name="String35" xml:space="preserve">
+    <value>選択したファイルに異常があります。「パスが見つかりません」とドライバーが応答しました。 touch を再接続してください。</value>
   </data>
   <data name="String4" xml:space="preserve">
     <value>'{0}' フォルダーの再描画中です。...</value>
