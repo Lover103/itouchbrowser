@@ -322,11 +322,92 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Latest に類似しているローカライズされた文字列を検索します。
+        '''</summary>
+        Friend ReadOnly Property String36() As String
+            Get
+                Return ResourceManager.GetString("String36", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Same に類似しているローカライズされた文字列を検索します。
+        '''</summary>
+        Friend ReadOnly Property String37() As String
+            Get
+                Return ResourceManager.GetString("String37", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Different に類似しているローカライズされた文字列を検索します。
+        '''</summary>
+        Friend ReadOnly Property String38() As String
+            Get
+                Return ResourceManager.GetString("String38", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Completed successfully. に類似しているローカライズされた文字列を検索します。
+        '''</summary>
+        Friend ReadOnly Property String39() As String
+            Get
+                Return ResourceManager.GetString("String39", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Refreshing folders for {0}... に類似しているローカライズされた文字列を検索します。
         '''</summary>
         Friend ReadOnly Property String4() As String
             Get
                 Return ResourceManager.GetString("String4", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Comitted file count : に類似しているローカライズされた文字列を検索します。
+        '''</summary>
+        Friend ReadOnly Property String40() As String
+            Get
+                Return ResourceManager.GetString("String40", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  It became possible to manage a backup file. In order to manage a backup file, a database needs to be built. Does it reconstruct? に類似しているローカライズされた文字列を検索します。
+        '''</summary>
+        Friend ReadOnly Property String41() As String
+            Get
+                Return ResourceManager.GetString("String41", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  This function can be performed even from a menu. に類似しているローカライズされた文字列を検索します。
+        '''</summary>
+        Friend ReadOnly Property String42() As String
+            Get
+                Return ResourceManager.GetString("String42", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  msg に類似しているローカライズされた文字列を検索します。
+        '''</summary>
+        Friend ReadOnly Property String43() As String
+            Get
+                Return ResourceManager.GetString("String43", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Backup is compared and the file of the same contents is deleted. It may take several minutes, when there are many files. Please wait for a while. に類似しているローカライズされた文字列を検索します。
+        '''</summary>
+        Friend ReadOnly Property String44() As String
+            Get
+                Return ResourceManager.GetString("String44", resourceCulture)
             End Get
         End Property
         

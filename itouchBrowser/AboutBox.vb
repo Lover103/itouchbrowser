@@ -1,4 +1,24 @@
-﻿Public NotInheritable Class AboutBox1
+﻿Option Strict On
+Option Explicit On
+' =============================================================================
+' *
+' *  System      : itouchBrowser
+' *  Module name : AboutBox.vb
+' *  Description : About box form
+' *
+' *    %Z% %I% %W% %G% %U% [ %H% %T% ]
+' *    $Header:  $
+' *
+' *  (c) Copyright . 2008. All rights reserved.
+' *
+' *  Modification history :
+' *    Date        Level  Author        Description
+' *    ----------  -----  ------------  -----------------------------------
+' *    2008/07/29  1.00   Sugi          Initial release
+' *
+' =============================================================================
+
+Public NotInheritable Class AboutBox
 
     Private Sub AboutBox1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         ' フォームのタイトルを設定します。

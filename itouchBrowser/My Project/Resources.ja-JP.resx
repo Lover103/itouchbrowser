@@ -204,14 +204,41 @@
   <data name="String35" xml:space="preserve">
     <value>選択したファイルに異常があります。「パスが見つかりません」とドライバーが応答しました。 touch を再接続してください。</value>
   </data>
+  <data name="String36" xml:space="preserve">
+    <value>最新</value>
+  </data>
+  <data name="String37" xml:space="preserve">
+    <value>同上</value>
+  </data>
+  <data name="String38" xml:space="preserve">
+    <value>違う</value>
+  </data>
+  <data name="String39" xml:space="preserve">
+    <value>処理が正常に完了しました。</value>
+  </data>
   <data name="String4" xml:space="preserve">
     <value>'{0}' フォルダーの再描画中です。...</value>
+  </data>
+  <data name="String40" xml:space="preserve">
+    <value>確認済みファイル数 : </value>
+  </data>
+  <data name="String41" xml:space="preserve">
+    <value>バックアップファイルを管理することが可能になりました。バックアップファイルを管理するためにデータベースの構築が必要です。再構築を実施しますか？</value>
+  </data>
+  <data name="String42" xml:space="preserve">
+    <value>この機能は、メニューからでも実行できます。</value>
+  </data>
+  <data name="String43" xml:space="preserve">
+    <value>バックアップディレクトリに'{0}'が指定されていますが、アクセスできません。バックアップ先を変更しますか？</value>
+  </data>
+  <data name="String44" xml:space="preserve">
+    <value>バックアップを比較して同一内容のファイルを削除します。ファイルが多いと数分かかるかもしれません。しばらくお待ちください。</value>
   </data>
   <data name="String5" xml:space="preserve">
     <value>'{0}' ファイルの読み込み中...</value>
   </data>
   <data name="String6" xml:space="preserve">
-    <value>'{0}' ディレクトリのファイル</value>
+    <value>'{0}' フォルダーのファイル</value>
   </data>
   <data name="String7" xml:space="preserve">
     <value>この機能は、すべてのバックアップファイルを詳細に調べ、重複ファイルを削除し、ディスク使用量を節約します。</value>

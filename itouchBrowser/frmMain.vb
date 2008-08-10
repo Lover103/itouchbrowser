@@ -36,6 +36,7 @@ Public Class frmMain
     Private lstFilesSortOrder As SortOrder
     Private exitFlg As Boolean = False
     Private resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
+    Private mvarClickedMouseButton As MouseButtons = Windows.Forms.MouseButtons.None
 
     'CUSTOM  CREATED FUNCTIONS
 
@@ -193,7 +194,7 @@ Public Class frmMain
         End If
     End Function
 
-    Private Sub loadFiles()
+    Friend Sub LoadFiles()
         Dim sFiles() As String
         Dim iPhonePath As String
         Dim lstTemp As ListViewItem
@@ -233,7 +234,12 @@ Public Class frmMain
                     sFile = convertcd(sFile)
                     lstTemp.SubItems.Add(fileSizeAsString(iPhonePath & "/" & sFile))
                     ' add the attribute         <<<<<<
-                    lstTemp.SubItems.Add("")
+                    Dim row As Integer = ObjDb.Find(iPhonePath & "/" & sFile)
+                    If row = -1 Then
+                        lstTemp.SubItems.Add("")
+                    Else
+                        lstTemp.SubItems.Add(ObjDb.GetValue(row, 1))
+                    End If
                     ' add the file type
                     lstTemp.SubItems.Add(getFiletype(lstTemp.ImageIndex))
 
@@ -287,7 +293,7 @@ Public Class frmMain
         Select Case sExt
             Case "png", "jpg", "jpeg", "gif"
                 iReturn = IMAGE_FILE_IMAGE
-            Case "strings", "conf", "txt", "script", "pl", "h", "awk", "tcl", "css"
+            Case "strings", "conf", "txt", "script", "pl", "h", "awk", "tcl", "css", "m4", "c"
                 iReturn = IMAGE_FILE_TEXT
             Case "db", "sqlite"
                 iReturn = IMAGE_FILE_DATABASE
@@ -364,8 +370,10 @@ Public Class frmMain
     End Sub
 
     Friend Sub addFoldersBeneath()
-        Dim aNode As TreeNode = trvFolders.SelectedNode
-        addFolders(NodeiPhonePath(aNode), aNode)
+        If trvFolders IsNot Nothing Then
+            Dim aNode As TreeNode = trvFolders.SelectedNode
+            addFolders(NodeiPhonePath(aNode), aNode)
+        End If
     End Sub
 
     Private Sub addFoldersBeneath(ByVal aNode As TreeNode)
@@ -530,11 +538,10 @@ Public Class frmMain
     Private Sub frmMain_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
         Try
-            objMain = Me
             Dim pos As String = My.Settings.Position
             If pos.IndexOf(",") > 0 Then
                 Dim position As String() = pos.Split(","c)
-                Me.Location = New Point(CInt(position(0)), CInt(position(1)))
+                Me.SetDesktopLocation(CInt(position(0)), CInt(position(1)))
                 Me.Size = New Size(CInt(position(2)), CInt(position(3)))
             End If
 
@@ -571,8 +578,8 @@ Public Class frmMain
             bShowPreview = My.Settings.ShowPreviews
             bIgnoreThumbsFile = My.Settings.IgnoreThumbsFile
             bIgnoreDSStoreFile = My.Settings.IgnoreDSStoreFile
-            IPhoneToPCToolStripMenuItem.Checked = bConvertToPNG
-            PCToIPhoneToolStripMenuItem.Checked = bConvertToiPhonePNG
+            tsmIPhoneToPC.Checked = bConvertToPNG
+            tsmPCToIPhone.Checked = bConvertToiPhonePNG
             ShowPreviewsToolStripMenuItem.Checked = bShowPreview
             IgnoreThumbsdbToolStripMenuItem.Checked = bIgnoreThumbsFile
             IgnoreDSStoreToolStripMenuItem.Checked = bIgnoreDSStoreFile
@@ -585,6 +592,8 @@ Public Class frmMain
             If favPaths Is Nothing Then
                 favPaths = New Specialized.StringCollection()
             End If
+            picBusy.Dock = DockStyle.Fill
+            picDelete.Dock = DockStyle.Fill
 
             LoadFavoritesMenu()
 
@@ -740,7 +749,7 @@ Public Class frmMain
     End Sub
 
     Private Sub showPreview(ByVal sFile As String, ByVal fromBtn As Boolean)
-        Dim sr As StreamReader, picOK As Boolean
+        Dim picOK As Boolean
 
         StatusNormal(My.Resources.String28 & sFile)
 
@@ -885,12 +894,13 @@ Public Class frmMain
         End If
     End Sub
 
-    Private Sub doFileSelectedPreview(ByVal anySize As Boolean, ByVal fromBtn As Boolean)
+    Private Function doFileSelectedPreview(ByVal anySize As Boolean, ByVal fromBtn As Boolean) As String
+        Dim sFile As String = ""
         If lstFiles.SelectedItems.Count > 0 Then
-            Dim sFile As String = getSelectedFilename()
+            sFile = getSelectedFilename()
 
             If prevSelectedFile = sFile Then ' make sure we changed selections (handles multi-selecte better)
-                Exit Sub
+                Return sFile
             End If
             prevSelectedFile = sFile
 
@@ -913,7 +923,10 @@ Public Class frmMain
                 btnPreview.Enabled = True
             End If
         End If
-    End Sub
+
+        Return sFile
+
+    End Function
 
     Private Sub showSelectedFileDetails()
         If lstFiles.SelectedItems.Count > 0 Then
@@ -933,10 +946,22 @@ Public Class frmMain
     Private splFilesLock As Boolean = False
 
     Private Sub lstFiles_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lstFiles.SelectedIndexChanged
+        If mvarClickedMouseButton = Windows.Forms.MouseButtons.Right Then
+            Exit Sub
+        End If
         If bShowPreview AndAlso Not splFilesLock Then
             lstFiles.Cursor = Cursors.No
             splFilesLock = True
-            doFileSelectedPreview(False, False)
+            Dim sFile As String = doFileSelectedPreview(False, False)
+            'Dim iPhonePath As String = NodeiPhonePath(trvFolders.SelectedNode)
+
+            Dim row As Integer = ObjDb.Find(sFile)
+            If row > -1 Then
+                StatusNormal("Backuped date : " & ObjDb.GetValue(row, 0))  'ObjDb.DataSet.Tables(0).Rows(row).Item(0).ToString())
+            Else
+                StatusNormal("")
+            End If
+
             splFilesLock = False
             lstFiles.Cursor = Cursors.Default
             'lstFiles.Focus()
@@ -989,6 +1014,10 @@ Public Class frmMain
             For Each sItem As ListViewItem In lstFiles.SelectedItems
                 BackupFileFromPhone(sSourcePath, sItem.Text)
             Next
+            'backup data‚ÌÄŽæ“¾
+            ObjDb.ReSelect()
+            'Ä•`‰æ
+            loadFiles()
         End If
 
     End Sub
@@ -1047,17 +1076,35 @@ Public Class frmMain
 
     End Sub
 
-    Private Sub ToolStripMenuItemCleanUp_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripMenuItemCleanUp.Click
+    Private Sub tsmCleanUpBackupFiles_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) _
+        Handles tsmCleanUpBackupFiles.Click
+
         'this function goes through the backup files and cleans them, comparing them to others in the same folder with the same name
         Dim sMessage As String
 
         'sMessage = "This function goes through all of your backup files and attempts to remove the duplicates to save space." & vbCrLf & _
         '    "You really don't have to do this, it is better to have more backups then less...but press ok if you've got a lot of backups."
-        sMessage = My.Resources.String7 & vbCrLf & _
-            My.Resources.String8
+        sMessage = My.Resources.String7 & vbCrLf & My.Resources.String8 & vbCrLf
 
-        If MsgBox(sMessage, MsgBoxStyle.OkCancel, "Confirm cleanup") = MsgBoxResult.Ok Then
-            MsgBox("Function not implemented yet, sorry :)", MsgBoxStyle.OkOnly, "Whoops")
+        If MsgBox(sMessage, MsgBoxStyle.OkCancel Or MsgBoxStyle.Information, "Confirm cleanup") = MsgBoxResult.Ok Then
+            StatusNormal(My.Resources.String44)
+            Me.picDelete.Visible = True
+            Me.Cursor = Cursors.WaitCursor
+            Me.splFiles.Panel2Collapsed = True
+            Try
+                DbManager.PackDB(GetBackupPath(True))
+                Dim dg As frmBackupFiles = New frmBackupFiles
+                dg.Show(Me)
+                StatusNormal("")
+
+            Catch ex As Exception
+                StatusWarning(ex.Message)
+
+            Finally
+                Me.picDelete.Visible = False
+                Me.splFiles.Panel2Collapsed = False
+                Me.Cursor = Cursors.Default
+            End Try
         End If
     End Sub
 
@@ -1264,7 +1311,7 @@ Public Class frmMain
         End If
     End Sub
 
-    Private Sub menuSaveSummerboardTheme_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AsSummerboardFolderToolStripMenuItem.Click
+    Private Sub menuSaveSummerboardTheme_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tsmAsSummerboardFolder.Click
         Dim dFolder As String, sSaveAsFilename As String, sFileFromPhone As String
         Dim sPath As String, sFolders() As String
 
@@ -1324,7 +1371,7 @@ Public Class frmMain
         End If
     End Sub
 
-    Private Sub AsCustomizeFoldersToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AsCustomizeFoldersToolStripMenuItem.Click
+    Private Sub AsCustomizeFoldersToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tsmAsCustomizeFolders.Click
         Dim frmOptions As frmCustomizeOptions = New frmCustomizeOptions()
         If frmOptions.ShowDialog() = Windows.Forms.DialogResult.OK Then
             If frmOptions.HasChecked() Then
@@ -1341,12 +1388,12 @@ Public Class frmMain
         frmOptions.Dispose()
     End Sub
 
-    Private Sub IPhoneToPCToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles IPhoneToPCToolStripMenuItem.Click
-        bConvertToPNG = IPhoneToPCToolStripMenuItem.Checked
+    Private Sub IPhoneToPCToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tsmIPhoneToPC.Click
+        bConvertToPNG = tsmIPhoneToPC.Checked
     End Sub
 
-    Private Sub PCToIPhoneToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PCToIPhoneToolStripMenuItem.Click
-        bConvertToiPhonePNG = PCToIPhoneToolStripMenuItem.Checked
+    Private Sub PCToIPhoneToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tsmPCToIPhone.Click
+        bConvertToiPhonePNG = tsmPCToIPhone.Checked
     End Sub
 
     Private Sub PreviewChanged()
@@ -1556,7 +1603,7 @@ Public Class frmMain
     End Sub
 
     Private Sub AboutToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AboutToolStripMenuItem.Click
-        Dim dialog As AboutBox1 = New AboutBox1
+        Dim dialog As AboutBox = New AboutBox
         dialog.ShowDialog()
     End Sub
 
@@ -1575,5 +1622,89 @@ Public Class frmMain
             menuRightDeleteFile.Visible = enable
         End If
     End Sub
+
+    Private Sub tsmFileList_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tsmFileList.Click
+        Dim dg As frmBackupFiles = New frmBackupFiles
+
+        Me.Refresh()
+        dg.ShowDialog(Me)
+        dg.Dispose()
+
+    End Sub
+
+    Private Sub lstFiles_MouseDown(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles lstFiles.MouseDown
+        mvarClickedMouseButton = e.Button
+    End Sub
+
+    Private Delegate Sub refreshDBDelegate()
+    Private processingFlg As Boolean = False
+
+    Private Sub tsmRestructureDB_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) _
+        Handles tsmRestructureDB.Click
+
+        restructureDB()
+    End Sub
+
+    Public Sub restructureDB()
+        Me.Refresh()
+        Me.picBusy.Visible = True
+        Me.Cursor = Cursors.WaitCursor
+        Me.splFiles.Panel2Collapsed = True
+
+        Try
+            processingFlg = True
+
+            Dim td As New refreshDBDelegate(AddressOf refreshDB)
+            td.BeginInvoke(Nothing, Nothing) 'Runs on a worker thread from the pool
+
+            Thread.Sleep(800)
+            Do
+                Thread.Sleep(280)
+                StatusNormal(My.Resources.String40 & ObjDb.FileCount.ToString())
+                Application.DoEvents()
+            Loop While processingFlg = True
+            Me.picBusy.Visible = False
+            StatusNormal(My.Resources.String39)
+
+            Dim dg As New frmBackupFiles
+            dg.ShowDialog(Me)
+            dg.Dispose()
+            StatusNormal("")
+
+        Catch ex As Exception
+            StatusWarning(ex.Message)
+
+        Finally
+            Me.picBusy.Visible = False
+            Me.splFiles.Panel2Collapsed = False
+            Me.Cursor = Cursors.Default
+        End Try
+    End Sub
+
+    Private Sub refreshDB()
+        Try
+            Dim backupPath As String = GetBackupPath(True)
+            ObjDb.RefreshDB(backupPath & "list.txt", backupPath)
+        Finally
+            processingFlg = False
+        End Try
+    End Sub
+
+    'Menu > Help > HomePage
+    Private Sub tsmHomePage_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tsmHomePage.Click
+        Try
+            Me.Cursor = Cursors.WaitCursor
+            WebBrws.ScriptErrorsSuppressed = False
+            WebBrws.Navigate(New Uri(My.Settings.HomepageURL))
+            WebBrws.Visible = True
+            WebBrws.IsWebBrowserContextMenuEnabled = False
+
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Exclamation)
+        Finally
+            Me.Cursor = Cursors.Default
+        End Try
+    End Sub
+
 End Class
 

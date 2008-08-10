@@ -11,7 +11,7 @@ Module ModuleMain
 
     Friend Const STRING_ROOT As String = "[root]"
     Friend Const MAX_PROG_DEPTH As Integer = 1
-    Friend Const BACKUP_DIRECTORY As String = "touchBrowser"
+    Friend Const BACKUP_DIRECTORY As String = "touchBrowser\"
     Friend FILE_TEMPORARY_VIEWER As String = "iPhone.temp"
 
     Friend objMain As frmMain
@@ -40,6 +40,67 @@ Module ModuleMain
     <Runtime.InteropServices.DllImport("USER32.DLL", setlasterror:=True)> _
     Private Function MessageBeep(ByVal type As MessageBeepType) As Boolean
     End Function
+
+
+    <STAThread()> _
+    Public Sub Main()
+        Dim message As String
+
+        Try
+            Application.EnableVisualStyles()
+
+            Dim objSplash As New frmSplashScreen
+            objSplash.Show()
+            Application.DoEvents()
+
+            objMain = New frmMain
+            objMain.Cursor = Cursors.WaitCursor
+            objMain.Enabled = False
+            objMain.Show()
+
+            objSplash.Close()
+            objSplash.Dispose()
+
+            'Logon...
+            objMain.Refresh()
+
+            Dim sql As String = "SELECT * FROM list.txt ORDER BY tstp desc"
+            Dim sortKey As String = "FileName,tstp"
+
+            ObjDb = ModuleMain.GetBackupList(sql, sortKey)
+            If ObjDb Is Nothing Then
+                message = String.Format(My.Resources.String43, GetBackupPath(True))
+                If MsgBox(message, MsgBoxStyle.Exclamation Or MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
+                    Dim dialog As New BackupDirDialog
+                    dialog.ShowDialog(objMain)
+                    dialog.Dispose()
+                    ObjDb = ModuleMain.GetBackupList(sql, sortKey)
+                End If
+            End If
+
+            objMain.Enabled = True
+
+            If ObjDb Is Nothing Then
+                objMain.ToolStripMenuItemCleanUp.Enabled = False
+            ElseIf ObjDb.FileCount = 0 Then
+                message = My.Resources.String41 & vbCrLf & My.Resources.String42
+                If MsgBox(message, MsgBoxStyle.Information Or MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
+                    objMain.restructureDB()
+                End If
+            End If
+
+            objMain.Cursor = Cursors.Default
+
+            System.Windows.Forms.Application.Run(objMain)
+
+            Exit Sub
+
+        Catch ex As Exception
+            message = ex.Message
+            MsgBox(message, MsgBoxStyle.Critical)
+
+        End Try
+    End Sub
 
     Friend Sub StatusNormal(ByVal msg As String)
         objMain.tlbStatusLabel.Image = Nothing
@@ -109,7 +170,11 @@ Module ModuleMain
     End Function
 
     Friend Function NodeiPhonePath(ByVal aNode As TreeNode) As String
+        If aNode Is Nothing Then
+            Return ""
+        End If
         Dim sTemp As String = aNode.FullPath
+
         If sTemp <> STRING_ROOT Then
             sTemp = sTemp.Substring(STRING_ROOT.Length).Replace("\", "/")
         Else
@@ -150,11 +215,13 @@ Module ModuleMain
             End Try
 
             Try
+                Dim fsize As Integer = 0
                 If depth = 0 Then objMain.lstFiles.Enabled = False
                 fileTemp = File.OpenWrite(destinationOnComputer)
                 iDataBytes = iPhoneFileInterface.Read(sBuffer, 0, sBuffer.Length)
                 While iDataBytes > 0
                     fileTemp.Write(sBuffer, 0, iDataBytes)
+                    fsize += iDataBytes
                     iDataBytes = iPhoneFileInterface.Read(sBuffer, 0, sBuffer.Length)
                     If IncrementStatus() Then Exit While 'increment our progressbar
                 End While
@@ -164,7 +231,7 @@ Module ModuleMain
                 iPhoneFileInterface.Dispose()
                 fileTemp.Close()
 
-                bReturn = 0
+                bReturn = fsize
 
             Catch exio As IOException
                 StatusWarning(exio.Message)
@@ -184,19 +251,6 @@ Module ModuleMain
 
         Return bReturn
     End Function
-
-    Friend Sub addFilenameToTxt(ByVal name As String, ByVal destdir As String)
-        Dim wfs As StreamWriter = File.AppendText(destdir & "\list.txt")
-        Dim info As String = Now.ToShortDateString & " " & Now.ToShortTimeString & "," & name
-
-        Try
-            wfs.WriteLine(info)
-        Finally
-            wfs.Flush()
-            wfs.Close()
-        End Try
-
-    End Sub
 
     Friend Function CopyQueueFromPhone(ByVal sourceOnPhone As String, ByRef destinationOnComputer As String) As Integer
         Dim sBuffer(8191) As Byte
@@ -470,8 +524,8 @@ Module ModuleMain
 
             'copy file into the backup directory
             Dim rc As Integer = CopyFromPhone(sSourcePath & sSourceFile, sDestinationPath & sDestinationFile)
-            If rc = 0 Then
-                addFilenameToTxt(sSourcePath & sSourceFile, GetBackupPath(False))
+            If rc > -1 Then
+                ObjDb.AddFilenameToDB(GetBackupPath(True) & "\list.txt", Now, mvarBackupSubPath, sSourcePath & sSourceFile, rc)
             End If
             StatusNormal("Backed up as '" & sDestinationFile & "'.")
 
@@ -497,8 +551,13 @@ Module ModuleMain
     'End Sub
 
     Friend Sub BackupDirectory(ByVal sPath As String)
+        Dim rc As Integer
         StartStatus(iPhoneInterface.GetDirectories(sPath).Length)
-        BackupDirectory(sPath, 0)
+        rc = BackupDirectory(sPath, 0)
+        'reget of backup data
+        ObjDb.ReSelect()
+        'redraw file list
+        objMain.LoadFiles()
         EndStatus()
     End Sub
 
@@ -508,7 +567,7 @@ Module ModuleMain
             Dim tmp As String() = iPhoneInterface.GetFiles(sPath)
 
             For Each sFile As String In tmp
-                If BackupFileFromPhone(sPath, sFile) <> 0 Then
+                If BackupFileFromPhone(sPath, sFile) < 0 Then
                     ResetiPhone()
                     Exit For
                 End If
@@ -815,17 +874,18 @@ Module ModuleMain
         EndStatus()
     End Sub
 
-    Private backupSubPath As String = ""
+    Private mvarBackupSubPath As String = ""
 
     Friend Sub setBackupPath(ByVal aTime As Date)
-        backupSubPath = BACKUP_DIRECTORY & "\BACKUPS" & Format(aTime, ".yyyyMMdd.HHmmss")
+        'mvarBackupSubPath = BACKUP_DIRECTORY & "\BACKUPS" & Format(aTime, ".yyyyMMdd.HHmmss")
+        mvarBackupSubPath = "BACKUPS" & Format(aTime, ".yyyyMMdd.HHmmss")
     End Sub
 
-    Friend Function GetBackupPath(ByVal show As Boolean) As String
-        If show Then
+    Friend Function GetBackupPath(ByVal root As Boolean) As String
+        If root Then
             Return Path.Combine(My.Settings.BackupPath, BACKUP_DIRECTORY)
         Else
-            Return Path.Combine(My.Settings.BackupPath, backupSubPath)
+            Return Path.Combine(My.Settings.BackupPath, BACKUP_DIRECTORY & mvarBackupSubPath)
         End If
     End Function
 
@@ -856,6 +916,41 @@ Module ModuleMain
         'Console.WriteLine("Ascii converted string: {0}", asciiString)
 
         'Return asciiString
+    End Function
+
+    Friend ObjDb As DbManager
+
+    Friend Function GetBackupList(ByVal sql As String, ByVal key As String) As DbManager
+        Dim rc As Integer = 0
+        Dim oDb As New DbManager("Microsoft.Jet.OLEDB.4.0")
+        Dim dbSource As String = GetBackupPath(True)
+        oDb.Source = dbSource
+
+        If Not File.Exists(dbSource & "schema.ini") Then
+            Dim val As String
+            val = "[list.txt]" & vbCrLf _
+                & "ColNameHeader=False" & vbCrLf _
+                & "Format=CSVDelimited" & vbCrLf _
+                & "Col1=tstp Text" & vbCrLf _
+                & "Col2=BackupFolder Text" & vbCrLf _
+                & "Col3=FileName Text" & vbCrLf _
+                & "Col4=FileSize Long" & vbCrLf
+
+            rc = oDb.CreateSchema(dbSource, val)
+            If rc < 0 Then
+                Return Nothing
+            End If
+
+            If Not File.Exists(dbSource & "list.txt") Then
+                File.AppendAllText(dbSource & "list.txt", "")
+            End If
+        End If
+
+        'sql = "SELECT * FROM list.txt ORDER BY tstp desc"
+        oDb.SelectOLEDB(sql, key)
+        oDb.Sort = "FileName"    ', tstp desc"
+
+        Return oDb
     End Function
 
 End Module
