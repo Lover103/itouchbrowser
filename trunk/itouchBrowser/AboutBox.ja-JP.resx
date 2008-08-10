@@ -608,37 +608,37 @@
 </value>
   </data>
   <data name="LogoPictureBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>108, 243</value>
+    <value>135, 296</value>
   </data>
   <data name="LabelProductName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>120, 0</value>
+    <value>147, 0</value>
   </data>
   <data name="LabelProductName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 16</value>
+    <value>378, 16</value>
   </data>
   <data name="LabelVersion.Location" type="System.Drawing.Point, System.Drawing">
-    <value>120, 24</value>
+    <value>147, 30</value>
   </data>
   <data name="LabelVersion.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 16</value>
+    <value>378, 16</value>
   </data>
   <data name="LabelCopyright.Location" type="System.Drawing.Point, System.Drawing">
-    <value>120, 48</value>
+    <value>147, 60</value>
   </data>
   <data name="LabelCopyright.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 16</value>
+    <value>378, 16</value>
   </data>
   <data name="LabelCompanyName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>120, 72</value>
+    <value>147, 90</value>
   </data>
   <data name="LabelCompanyName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 16</value>
+    <value>378, 8</value>
   </data>
   <data name="TextBoxDescription.Location" type="System.Drawing.Point, System.Drawing">
-    <value>120, 99</value>
+    <value>147, 101</value>
   </data>
   <data name="TextBoxDescription.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 118</value>
+    <value>378, 167</value>
   </data>
   <data name="TextBoxDescription.Text" xml:space="preserve">
     <value>説明:
@@ -651,30 +651,31 @@
 ・処理速度の高速化
 ・安定した動作
 ・充実した再生環境
+・バックアップファイルの一覧確認、重複ファイルの削除
 
 バックアップ機能に関しては、USB経由でのファイルのタイムスタンプと属性（アクセス権限）が取得できません。
 よって、一般的なバックアップ機能としては、不十分な機能しかありません。
 ファイル転送機能としては、極限まで効率アップしていますので十分使えると思います。
 転送後WinSCPなどを使って権限設定を行ってください。
 
-2008/06/28    by =sugi=
+2008/08/10    by =sugi=
 </value>
   </data>
   <data name="OKButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>269, 223</value>
+    <value>450, 276</value>
   </data>
   <data name="OKButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
   </data>
   <data name="TableLayoutPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>347, 249</value>
+    <value>528, 302</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="$this.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>365, 265</value>
+    <value>546, 318</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>touchBrowser のバージョン情報</value>

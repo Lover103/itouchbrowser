@@ -7,10 +7,10 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{2184372E-AFEE-4E2E-8AA9-8FF6385E9875}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <StartupObject>iPhoneBrowser.itouchBrowser.My.MyApplication</StartupObject>
+    <StartupObject>Sub Main</StartupObject>
     <RootNamespace>iPhoneBrowser.itouchBrowser</RootNamespace>
     <AssemblyName>itouchBrowser</AssemblyName>
-    <MyType>WindowsForms</MyType>
+    <MyType>WindowsFormsWithCustomSubMain</MyType>
     <ManifestCertificateThumbprint>3B6A9B7BDDC8B690F46905E315ED5CFD599D2B50</ManifestCertificateThumbprint>
     <ManifestKeyFile>iPhoneBrowser_TemporaryKey.pfx</ManifestKeyFile>
     <GenerateManifests>false</GenerateManifests>
@@ -69,8 +69,10 @@
       <HintPath>..\..\..\Program Files\iPhoneBrowser\Manzana.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.XML" />
   </ItemGroup>
   <ItemGroup>
     <Import Include="AxQTOControlLib" />
@@ -83,10 +85,10 @@
     <Import Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AboutBox1.Designer.vb">
-      <DependentUpon>AboutBox1.vb</DependentUpon>
+    <Compile Include="AboutBox.Designer.vb">
+      <DependentUpon>AboutBox.vb</DependentUpon>
     </Compile>
-    <Compile Include="AboutBox1.vb">
+    <Compile Include="AboutBox.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ApplicationEvents.vb" />
@@ -96,10 +98,17 @@
     <Compile Include="BackupDirDialog.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="DbManager.vb" />
     <Compile Include="frmAddFavorite.Designer.vb">
       <DependentUpon>frmAddFavorite.vb</DependentUpon>
     </Compile>
     <Compile Include="frmAddFavorite.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBackupFiles.Designer.vb">
+      <DependentUpon>frmBackupFiles.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmBackupFiles.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmCustomizeOptions.Designer.vb">
@@ -121,6 +130,12 @@
     <Compile Include="frmOrganizeFavorites.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmSplashScreen.Designer.vb">
+      <DependentUpon>frmSplashScreen.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmSplashScreen.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ListViewSizeComparer.vb" />
     <Compile Include="ListViewStringComparer.vb" />
     <Compile Include="ModuleMain.vb" />
@@ -140,15 +155,16 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Settings.vb" />
+    <Compile Include="Util.vb" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="AboutBox1.ja-JP.resx">
+    <EmbeddedResource Include="AboutBox.ja-JP.resx">
       <SubType>Designer</SubType>
-      <DependentUpon>AboutBox1.vb</DependentUpon>
+      <DependentUpon>AboutBox.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AboutBox1.resx">
+    <EmbeddedResource Include="AboutBox.resx">
       <SubType>Designer</SubType>
-      <DependentUpon>AboutBox1.vb</DependentUpon>
+      <DependentUpon>AboutBox.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BackupDirDialog.ja-JP.resx">
       <SubType>Designer</SubType>
@@ -165,6 +181,14 @@
     <EmbeddedResource Include="frmAddFavorite.resx">
       <SubType>Designer</SubType>
       <DependentUpon>frmAddFavorite.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBackupFiles.ja-JP.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmBackupFiles.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBackupFiles.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmBackupFiles.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmCustomizeOptions.ja-JP.resx">
       <SubType>Designer</SubType>
@@ -189,6 +213,10 @@
     <EmbeddedResource Include="frmOrganizeFavorites.resx">
       <SubType>Designer</SubType>
       <DependentUpon>frmOrganizeFavorites.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSplashScreen.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmSplashScreen.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.ja-JP.resx">
       <SubType>Designer</SubType>

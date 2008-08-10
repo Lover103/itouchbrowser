@@ -231,6 +231,30 @@ Namespace My
                 Me("Position") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property PosBackupFile() As String
+            Get
+                Return CType(Me("PosBackupFile"),String)
+            End Get
+            Set
+                Me("PosBackupFile") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("http://itouchbrowser.googlecode.com/")>  _
+        Public Property HomepageURL() As String
+            Get
+                Return CType(Me("HomepageURL"),String)
+            End Get
+            Set
+                Me("HomepageURL") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

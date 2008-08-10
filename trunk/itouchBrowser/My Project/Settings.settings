@@ -47,5 +47,11 @@
     <Setting Name="Position" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="PosBackupFile" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="HomepageURL" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://itouchbrowser.googlecode.com/</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

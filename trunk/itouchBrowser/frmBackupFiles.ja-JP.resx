@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -117,140 +117,50 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="String1" xml:space="preserve">
-    <value>iPhone is connected, not jailbroken</value>
+  <data name="colFileName.HeaderText" xml:space="preserve">
+    <value>ファイル名</value>
   </data>
-  <data name="String10" xml:space="preserve">
-    <value>Copy Dock Image</value>
+  <data name="colBackupDate.HeaderText" xml:space="preserve">
+    <value>バックアップ日時</value>
   </data>
-  <data name="String11" xml:space="preserve">
-    <value>Copy Icon for</value>
+  <data name="colFSize.HeaderText" xml:space="preserve">
+    <value>サイズ</value>
   </data>
-  <data name="String12" xml:space="preserve">
-    <value>Copying '</value>
+  <data name="colFolderName.HeaderText" xml:space="preserve">
+    <value>バックアップ ディレクトリ</value>
   </data>
-  <data name="String13" xml:space="preserve">
-    <value>Backing up '</value>
+  <data name="colCnt.HeaderText" xml:space="preserve">
+    <value>数</value>
   </data>
-  <data name="String14" xml:space="preserve">
-    <value>iPhoneBrowser</value>
+  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="colCnt.Width" type="System.Int32, mscorlib">
+    <value>35</value>
   </data>
-  <data name="String15" xml:space="preserve">
-    <value>An error has occured during load.  Error text:</value>
+  <data name="TabPage1.Text" xml:space="preserve">
+    <value>全バックアップファイル</value>
   </data>
-  <data name="String16" xml:space="preserve">
-    <value>.  The program will now exit, sorry. Please report this online.</value>
+  <data name="TabPage2.Text" xml:space="preserve">
+    <value>重複ファイル</value>
   </data>
-  <data name="String17" xml:space="preserve">
-    <value>Are you sure you wish to delete the '{0}' file? (A backup copy will automatically be created)</value>
+  <data name="Column5.HeaderText" xml:space="preserve">
+    <value>差分</value>
   </data>
-  <data name="String18" xml:space="preserve">
-    <value>Select a file to replace {0} with ...</value>
+  <data name="Column1.HeaderText" xml:space="preserve">
+    <value>ファイル名</value>
   </data>
-  <data name="String19" xml:space="preserve">
-    <value>Are you sure you want to remove {0}?</value>
+  <data name="Column2.HeaderText" xml:space="preserve">
+    <value>バックアップ日時</value>
   </data>
-  <data name="String2" xml:space="preserve">
-    <value>iPhone is NOT connected, please check your connections!</value>
+  <data name="Column3.HeaderText" xml:space="preserve">
+    <value>サイズ</value>
   </data>
-  <data name="String20" xml:space="preserve">
-    <value>[For your safety, all contents will be backed up.]</value>
+  <data name="Column4.HeaderText" xml:space="preserve">
+    <value>バックアップ ディレクトリ</value>
   </data>
-  <data name="String21" xml:space="preserve">
-    <value>Please enter the name of the new folder you wish to create.  The new path of this folder will be:{0}&lt;new folder&gt;, and the name is case-sensitive!</value>
+  <data name="btnClose.Text" xml:space="preserve">
+    <value>閉じる</value>
   </data>
-  <data name="String22" xml:space="preserve">
-    <value>No spaces, slashes or other special characters are allowed in the folder name.</value>
-  </data>
-  <data name="String23" xml:space="preserve">
-    <value>The path '{0}' already exists.</value>
-  </data>
-  <data name="String24" xml:space="preserve">
-    <value>Only one file can be replaced at a time</value>
-  </data>
-  <data name="String25" xml:space="preserve">
-    <value>Error: The program could not find the path '{0}' on your iPhone.  Creation appeared to be successful</value>
-  </data>
-  <data name="String26" xml:space="preserve">
-    <value>"Error: The program could not create the path '{0}' on your iPhone.  Have you successfully used jailbreak?</value>
-  </data>
-  <data name="String27" xml:space="preserve">
-    <value>Do you want to create {0}?</value>
-  </data>
-  <data name="String28" xml:space="preserve">
-    <value>Loading file </value>
-  </data>
-  <data name="String29" xml:space="preserve">
-    <value>File details for '{0}'.</value>
-  </data>
-  <data name="String3" xml:space="preserve">
-    <value>iPhone is connected and jailbroken</value>
-  </data>
-  <data name="String30" xml:space="preserve">
-    <value>The program was unable to copy {0} from the iPhone.  Sorry, try again!</value>
-  </data>
-  <data name="String31" xml:space="preserve">
-    <value>Size</value>
-  </data>
-  <data name="String32" xml:space="preserve">
-    <value>Black</value>
-  </data>
-  <data name="String33" xml:space="preserve">
-    <value>Gray</value>
-  </data>
-  <data name="String34" xml:space="preserve">
-    <value>White</value>
-  </data>
-  <data name="String35" xml:space="preserve">
-    <value>Path does not exist. A reboot this application may be necessity.</value>
-  </data>
-  <data name="String36" xml:space="preserve">
-    <value>Latest</value>
-  </data>
-  <data name="String37" xml:space="preserve">
-    <value>Same</value>
-  </data>
-  <data name="String38" xml:space="preserve">
-    <value>Different</value>
-  </data>
-  <data name="String39" xml:space="preserve">
-    <value>Completed successfully.</value>
-  </data>
-  <data name="String4" xml:space="preserve">
-    <value>Refreshing folders for {0}...</value>
-  </data>
-  <data name="String40" xml:space="preserve">
-    <value>Comitted file count :</value>
-  </data>
-  <data name="String41" xml:space="preserve">
-    <value>It became possible to manage a backup file. In order to manage a backup file, a database needs to be built. Does it reconstruct?</value>
-  </data>
-  <data name="String42" xml:space="preserve">
-    <value>This function can be performed even from a menu.</value>
-  </data>
-  <data name="String43" xml:space="preserve">
-    <value>msg</value>
-  </data>
-  <data name="String44" xml:space="preserve">
-    <value>Backup is compared and the file of the same contents is deleted. It may take several minutes, when there are many files. Please wait for a while.</value>
-  </data>
-  <data name="String5" xml:space="preserve">
-    <value>Loading Files for {0}...</value>
-  </data>
-  <data name="String6" xml:space="preserve">
-    <value>Files on your iPhone in the '{0}' Directory</value>
-  </data>
-  <data name="String7" xml:space="preserve">
-    <value>This function goes through all of your backup files and attempts to remove the duplicates to save space.</value>
-  </data>
-  <data name="String8" xml:space="preserve">
-    <value>You really don't have to do this, it is better to have more backups then less...but press ok if you've got a lot of backups.</value>
-  </data>
-  <data name="String9" xml:space="preserve">
-    <value>Copy Wallpaper Image</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="warning" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\warning.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="$this.Text" xml:space="preserve">
+    <value>バックアップ ファイル</value>
   </data>
 </root>
