@@ -387,7 +387,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:SCW_iPhonePNG, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:SCW_iPhonePNG, Version=1.6.0.13, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_8C1EAB1A1171891E41500A8865E2FE8C"
@@ -469,7 +469,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:itouchBrowser.resources, Version=1.6.0.12, Culture=ja-JP, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:itouchBrowser.resources, Version=1.7.0.15, Culture=ja-JP, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_CBEACAFD7B5D41D39E504BA44FE00DFB"
@@ -624,14 +624,14 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:itouchBrowser"
-        "ProductCode" = "8:{C7845CBF-4E5B-4731-8CD5-8375BB3F2E23}"
-        "PackageCode" = "8:{539EF74D-FBFF-45F7-8EAD-D1B95FFD16F4}"
+        "ProductCode" = "8:{BE97F396-1CDA-491B-AC27-266DDAF35889}"
+        "PackageCode" = "8:{62A4570D-97EC-44C0-AC74-D45B5018CD8A}"
         "UpgradeCode" = "8:{6DF8F65F-1CD9-45F2-B007-22872A42E544}"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.6.4"
+        "ProductVersion" = "8:1.7.6"
         "Manufacturer" = "8:Cranium Consulting and Custom Software"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:http://code.google.com/p/itouchbrowser/"
