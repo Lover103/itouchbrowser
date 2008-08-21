@@ -1,7 +1,17 @@
+#The screenshot of duplication backup file list
+
 = Introduction =
 
-Screenshot of itouchBrowser v1.6.0.13.
+バックアップを繰り返すと多くの同一ファイルがPCのディスクに存在しますが、それらの*重複したファイルを見つける*ことが出来ます。
 
-http://itouchbrowser.googlecode.com/files/screenshot1_6_13.PNG
+同時にファイルが存在する*ディレクトリを表示する*ことが出来るので、物理的に見つけることも容易です。
 
-右下の枠で音楽、静止画、動画の再生ができます。
+まったく内容が同じファイルは、重複ファイルとして表示され、複数存在する同一ファイルを*自動的に削除*し、ひとつだけに減らすことが可能です。
+
+= Details =
+
+http://itouchbrowser.googlecode.com/files/screenshot1_7_15_FileDuplicationScreen.PNG
+
+上部で重複ファイルの数を表示し、下部で選択中の重複ファイルの詳細を表示します。
+
+「全バックアップファイル」タブでは、現在バックアップしている全ファイルを表示します。50万件程度なら表示できるでしょう。
