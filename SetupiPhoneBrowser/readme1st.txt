@@ -1,6 +1,6 @@
-itouchBrowser　　　　　　　　　　　　　　　　　　　　2008/06/29
+itouchBrowser　　　　　　　　　　　　　　　　　　　　2008/08/24
 
-バージョン：1.6.12
+バージョン：1.7.1
 対象OS：Windows XP 日本語または英語
 前提ソフトウエア：
 	Microsoft .NET Framework 2.0

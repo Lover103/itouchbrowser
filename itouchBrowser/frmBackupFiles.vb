@@ -74,6 +74,7 @@ Public Class frmBackupFiles
             Case 0
                 sql = "SELECT FileName, FileSize, tstp, BackupFolder " _
                     & "FROM list.txt " _
+                    & "WHERE BackupFolder<>'Error' " _
                     & "ORDER BY FileName, tstp DESC"
             Case 1
                 sql = "SELECT FileName, Max(FileSize) as FileSize, Max(tstp) as tstp, Max(BackupFolder) as BackupFolder, Count(FileName) as cnt " _

@@ -1240,18 +1240,40 @@
   <data name="grpFiles.Text" xml:space="preserve">
     <value>touch のファイル一覧</value>
   </data>
-  <data name="btnPreview.Location" type="System.Drawing.Point, System.Drawing">
-    <value>138, 0</value>
+  <data name="chkZoom.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAAlwSFlzAAALEwAA
+        CxMBAJqcGAAAAkNJREFUOE+d0l1IU2EYB/AZXSR0GV10bRclXWRdRB8kk5TIMV3iFgWC1FhgZbNlBNY2
+        KqEwzbkMwpVzKyoWeswuXNOWy8yZ8zPXyMlcbbbvj+NZ24x/74JC7BjSgQfOxfv+zv95zpMFgKN60LW+
+        KH9X0ez8At/1xb8tGqc3B4KRjRuysz/lbM1rquBtpzirPRmg941Nrm6nxrpMQwmj9SOMU07cowZwsUkP
+        geRaoPxM/YnMObbilElubGnWdL43DY7/8NEMPEwSzhiDUR8Nauor5JoeFB6vTR0S1eSwAiaLTaPr7Iu7
+        /RHQqTSiyTR8iynMBBfRPxeFzuqB5LoGBwTnlKxAy0Nq+qXFRi4lEU8tgU4vIcSk4QgyMDsjeGILoE77
+        GvtLq8OswHlFKywON5zRBPxMCqHvaXjiSUx+o9H3OQz9sBfKRyM4WCYl9/+eA0feqJ/VvfqAkQUaMyEG
+        jnACE6T/t/MxdE8H0DbghrSlB3uKq0ZZgau3O7R1dw2J3rkYzK44qRiMJDplD6LD6kW9YRLCmmaUV4hp
+        VuD0ZfWmo2Jl9NYzM56OB/B8IoTHpG/NOy9uUnZUKtrBLZdCrzrJ3kJGJb+ykFepWDylaMMVbT/56hhq
+        1C9wTKZCftlZ3JHzEbbXsyJ/loMgOy81GO5zRbKhfSXV8QJRLYRVja4jvMMy7u4dGGzNZUVYt+t3r8Li
+        3KzMO7+EJyDFivwTWD601ZA1ASTJuuVJuhvycEFc8GuoawJWJNlL0gyTKv0vYOUu/AQZkMf/XhecFgAA
+        AABJRU5ErkJggg==
+</value>
   </data>
-  <data name="btnPreview.Text" xml:space="preserve">
-    <value>表示</value>
+  <data name="chkZoom.Location" type="System.Drawing.Point, System.Drawing">
+    <value>225, 20</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="chkPreviewEnabled.AutoSize" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="chkZoom.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 22</value>
+  </data>
+  <data name="chkZoom.Text" xml:space="preserve">
+    <value>拡大</value>
+  </data>
+  <data name="lblMovieName.Size" type="System.Drawing.Size, System.Drawing">
+    <value>211, 26</value>
   </data>
   <data name="chkPreviewEnabled.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 0</value>
+    <value>291, 20</value>
+  </data>
+  <data name="chkPreviewEnabled.Size" type="System.Drawing.Size, System.Drawing">
+    <value>112, 22</value>
   </data>
   <data name="chkPreviewEnabled.Text" xml:space="preserve">
     <value>自動表示</value>
@@ -1259,14 +1281,26 @@
   <data name="chkPreviewEnabled.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleCenter</value>
   </data>
-  <data name="Panel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>268, 22</value>
+  <data name="btnPreview.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAAlwSFlzAAALEwAA
+        CxMBAJqcGAAAAfZJREFUOE+l099Lk1EYwPH6D/onoqsuoqwIbyIoEy2k5ZzphU1cxCQoVOhmN1qBmq2h
+        W1Kr1SJNeot3/XBWLjetBUUFi2lQQqibLLUonG5z33beWOz13UsXHXguzsN5Pufh4ZyNwIb/WgKQg5Os
+        D2k0wqD/HV7faxGd4lyxUJKiWG9dHXrBzvJGXUQB7gc+6gK9Xj8jE5E80rW+CwUYevpBF3DcfKIU56Mo
+        cOfxGw2QTi0zNjGG87qH9m47F+y9lFaaxTnVLJTNLTmsAlZWlpGHh3kWHCeW+MbXeAKvJGO2tlBvPbup
+        EFEAtxRSAYHxEP5AUMmlM/AzucbcYgaH+y6mBst5DdA/OKoC+tweZucTf4vj39NMzabwhSapqav7rAH6
+        bo+ogB5nPzPzC8rN8aVMrniV8FSSK/fCHKmu1gJi0oVLkn3I/gCxpdzNcylefUry6O0vmtts1NTWOu0d
+        Le35LpQZFALZbJYv09N09ji4NvCQB6EoLilMc6sNo+koA5fqkV2nsnlEA6ymMiz+SBKJRrnsdGI5aeV4
+        YxPHjFU4zuwjduMAay8b8Fw8LZBDKkB0ohcd57o4UbmD97YSZlx7WfAZabUc/vMoRFHJQfM/Y3+5AUvF
+        dp637aapbCumil1VRX+Y3s8T+VwXhtJtWyjbs9kg9r8B4LDiPoc3Lh8AAAAASUVORK5CYII=
+</value>
   </data>
-  <data name="Panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>219, 22</value>
+  <data name="btnPreview.Location" type="System.Drawing.Point, System.Drawing">
+    <value>409, 21</value>
   </data>
-  <data name="txtFileDetails.Font" type="System.Drawing.Font, System.Drawing">
-    <value>ＭＳ ゴシック, 9pt</value>
+  <data name="btnPreview.Text" xml:space="preserve">
+    <value>表示</value>
   </data>
   <data name="txtFileDetails.Size" type="System.Drawing.Size, System.Drawing">
     <value>478, 115</value>
@@ -1304,6 +1338,7 @@
   <data name="splMain.Size" type="System.Drawing.Size, System.Drawing">
     <value>713, 504</value>
   </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="splMain.SplitterDistance" type="System.Int32, mscorlib">
     <value>213</value>
   </data>
@@ -1823,6 +1858,9 @@
   </data>
   <data name="AboutToolStripMenuItem.Text" xml:space="preserve">
     <value>バージョン情報(&amp;A)</value>
+  </data>
+  <data name="tsmHomePage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>158, 22</value>
   </data>
   <data name="ToolStripDropDownButton1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

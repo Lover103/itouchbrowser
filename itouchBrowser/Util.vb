@@ -53,9 +53,10 @@ Option Strict On
             '    mLogger = ExeLogger.GetInstance()
             'End If
 
-            Dim msg As System.Text.StringBuilder = New System.Text.StringBuilder(Space(mInd))
-            msg.Append("+").Append(funcName).Append(".").Append(logMsg).Append(" - Start")
+            Dim msg As String = Space(mInd) _
+                & "+" & funcName & "." & logMsg & " - Start"
             'mLogger.WriteMessage(CommonClassLib.MsgLevel.AA_DEBUG, msg.ToString)
+            Debug.WriteLine(msg)
 
         Catch ex As Exception
             Trace.WriteLine(ex.ToString)
@@ -76,9 +77,11 @@ Option Strict On
             mInd = 0
             'mLogger.WriteMessage(MsgLevel.AA_DEBUG, "Missmatch indent!!")
         End If
-        Dim msg As System.Text.StringBuilder = New System.Text.StringBuilder(Space(mInd))
-        msg.Append("-").Append(funcName).Append(".").Append(logMsg).Append(" - End")
+        Dim msg As String = Space(mInd) _
+            & "-" & funcName & "." & logMsg & " - End"
         'mLogger.WriteMessage(CommonClassLib.MsgLevel.AA_DEBUG, msg.ToString)
+        Debug.WriteLine(msg)
+
         'End If
     End Sub
 
@@ -88,6 +91,7 @@ Option Strict On
     <DebuggerStepThrough()> Public Shared Sub Log(ByVal logMode As MsgLevel, ByVal logMsg As String)
         'If Not mLogger Is Nothing Then
         '   mLogger.WriteMessage(logMode, Space(mInd) & logMsg)
+        Debug.WriteLine(Space(mInd) & logMsg)
         'End If
     End Sub
 

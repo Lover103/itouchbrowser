@@ -128,307 +128,10 @@
   <data name="splMain.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>5, 5, 5, 5</value>
   </data>
-  <data name="&gt;&gt;trvFolders.Name" xml:space="preserve">
-    <value>trvFolders</value>
-  </data>
-  <data name="&gt;&gt;trvFolders.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TreeView, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;trvFolders.Parent" xml:space="preserve">
-    <value>grpFolders</value>
-  </data>
-  <data name="&gt;&gt;trvFolders.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="grpFolders.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="grpFolders.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
-  </data>
-  <data name="grpFolders.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="grpFolders.Size" type="System.Drawing.Size, System.Drawing">
-    <value>238, 498</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="grpFolders.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="grpFolders.Text" xml:space="preserve">
-    <value>Folders on your iPhone</value>
-  </data>
-  <data name="&gt;&gt;grpFolders.Name" xml:space="preserve">
-    <value>grpFolders</value>
-  </data>
-  <data name="&gt;&gt;grpFolders.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;grpFolders.Parent" xml:space="preserve">
-    <value>splMain.Panel1</value>
-  </data>
-  <data name="&gt;&gt;grpFolders.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="splMain.Panel1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="&gt;&gt;splMain.Panel1.Name" xml:space="preserve">
-    <value>splMain.Panel1</value>
-  </data>
-  <data name="&gt;&gt;splMain.Panel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;splMain.Panel1.Parent" xml:space="preserve">
-    <value>splMain</value>
-  </data>
-  <data name="&gt;&gt;splMain.Panel1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="splFiles.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="splFiles.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
-  </data>
-  <data name="splFiles.Orientation" type="System.Windows.Forms.Orientation, System.Windows.Forms">
-    <value>Horizontal</value>
-  </data>
-  <data name="&gt;&gt;picDelete.Name" xml:space="preserve">
-    <value>picDelete</value>
-  </data>
-  <data name="&gt;&gt;picDelete.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;picDelete.Parent" xml:space="preserve">
-    <value>grpFiles</value>
-  </data>
-  <data name="&gt;&gt;picDelete.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;picBusy.Name" xml:space="preserve">
-    <value>picBusy</value>
-  </data>
-  <data name="&gt;&gt;picBusy.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;picBusy.Parent" xml:space="preserve">
-    <value>grpFiles</value>
-  </data>
-  <data name="&gt;&gt;picBusy.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;lstFiles.Name" xml:space="preserve">
-    <value>lstFiles</value>
-  </data>
-  <data name="&gt;&gt;lstFiles.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ListView, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lstFiles.Parent" xml:space="preserve">
-    <value>grpFiles</value>
-  </data>
-  <data name="&gt;&gt;lstFiles.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="grpFiles.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="grpFiles.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="grpFiles.Size" type="System.Drawing.Size, System.Drawing">
-    <value>476, 331</value>
-  </data>
-  <data name="grpFiles.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="grpFiles.Text" xml:space="preserve">
-    <value>Files on your iPhone</value>
-  </data>
-  <data name="&gt;&gt;grpFiles.Name" xml:space="preserve">
-    <value>grpFiles</value>
-  </data>
-  <data name="&gt;&gt;grpFiles.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;grpFiles.Parent" xml:space="preserve">
-    <value>splFiles.Panel1</value>
-  </data>
-  <data name="&gt;&gt;grpFiles.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;splFiles.Panel1.Name" xml:space="preserve">
-    <value>splFiles.Panel1</value>
-  </data>
-  <data name="&gt;&gt;splFiles.Panel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;splFiles.Panel1.Parent" xml:space="preserve">
-    <value>splFiles</value>
-  </data>
-  <data name="&gt;&gt;splFiles.Panel1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;Panel1.Name" xml:space="preserve">
-    <value>Panel1</value>
-  </data>
-  <data name="&gt;&gt;Panel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Panel1.Parent" xml:space="preserve">
-    <value>grpDetails</value>
-  </data>
-  <data name="&gt;&gt;Panel1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;txtFileDetails.Name" xml:space="preserve">
-    <value>txtFileDetails</value>
-  </data>
-  <data name="&gt;&gt;txtFileDetails.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtFileDetails.Parent" xml:space="preserve">
-    <value>grpDetails</value>
-  </data>
-  <data name="&gt;&gt;txtFileDetails.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;WebBrws.Name" xml:space="preserve">
-    <value>WebBrws</value>
-  </data>
-  <data name="&gt;&gt;WebBrws.Type" xml:space="preserve">
-    <value>System.Windows.Forms.WebBrowser, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;WebBrws.Parent" xml:space="preserve">
-    <value>grpDetails</value>
-  </data>
-  <data name="&gt;&gt;WebBrws.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;qtPlugin.Name" xml:space="preserve">
-    <value>qtPlugin</value>
-  </data>
-  <data name="&gt;&gt;qtPlugin.Type" xml:space="preserve">
-    <value>AxQTOControlLib.AxQTControl, AxInterop.QTOControlLib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;qtPlugin.Parent" xml:space="preserve">
-    <value>grpDetails</value>
-  </data>
-  <data name="&gt;&gt;qtPlugin.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;picFileDetails.Name" xml:space="preserve">
-    <value>picFileDetails</value>
-  </data>
-  <data name="&gt;&gt;picFileDetails.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;picFileDetails.Parent" xml:space="preserve">
-    <value>grpDetails</value>
-  </data>
-  <data name="&gt;&gt;picFileDetails.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="grpDetails.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="grpDetails.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="grpDetails.Size" type="System.Drawing.Size, System.Drawing">
-    <value>476, 163</value>
-  </data>
-  <data name="grpDetails.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="grpDetails.Text" xml:space="preserve">
-    <value>File Details</value>
-  </data>
-  <data name="&gt;&gt;grpDetails.Name" xml:space="preserve">
-    <value>grpDetails</value>
-  </data>
-  <data name="&gt;&gt;grpDetails.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;grpDetails.Parent" xml:space="preserve">
-    <value>splFiles.Panel2</value>
-  </data>
-  <data name="&gt;&gt;grpDetails.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;splFiles.Panel2.Name" xml:space="preserve">
-    <value>splFiles.Panel2</value>
-  </data>
-  <data name="&gt;&gt;splFiles.Panel2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;splFiles.Panel2.Parent" xml:space="preserve">
-    <value>splFiles</value>
-  </data>
-  <data name="&gt;&gt;splFiles.Panel2.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="splFiles.Size" type="System.Drawing.Size, System.Drawing">
-    <value>476, 498</value>
-  </data>
-  <data name="splFiles.SplitterDistance" type="System.Int32, mscorlib">
-    <value>331</value>
-  </data>
-  <data name="splFiles.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;splFiles.Name" xml:space="preserve">
-    <value>splFiles</value>
-  </data>
-  <data name="&gt;&gt;splFiles.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SplitContainer, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;splFiles.Parent" xml:space="preserve">
-    <value>splMain.Panel2</value>
-  </data>
-  <data name="&gt;&gt;splFiles.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="splMain.Panel2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="&gt;&gt;splMain.Panel2.Name" xml:space="preserve">
-    <value>splMain.Panel2</value>
-  </data>
-  <data name="&gt;&gt;splMain.Panel2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;splMain.Panel2.Parent" xml:space="preserve">
-    <value>splMain</value>
-  </data>
-  <data name="&gt;&gt;splMain.Panel2.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="splMain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>730, 504</value>
-  </data>
-  <data name="splMain.SplitterDistance" type="System.Int32, mscorlib">
-    <value>244</value>
-  </data>
-  <data name="splMain.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;splMain.Name" xml:space="preserve">
-    <value>splMain</value>
-  </data>
-  <data name="&gt;&gt;splMain.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SplitContainer, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;splMain.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;splMain.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="trvFolders.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="trvFolders.ImageIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
@@ -494,7 +197,7 @@
     <value>1</value>
   </data>
   <data name="trvFolders.Size" type="System.Drawing.Size, System.Drawing">
-    <value>232, 480</value>
+    <value>230, 480</value>
   </data>
   <data name="trvFolders.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -510,6 +213,60 @@
   </data>
   <data name="&gt;&gt;trvFolders.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="grpFolders.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="grpFolders.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="grpFolders.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="grpFolders.Size" type="System.Drawing.Size, System.Drawing">
+    <value>236, 498</value>
+  </data>
+  <data name="grpFolders.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="grpFolders.Text" xml:space="preserve">
+    <value>Folders on your iPhone</value>
+  </data>
+  <data name="&gt;&gt;grpFolders.Name" xml:space="preserve">
+    <value>grpFolders</value>
+  </data>
+  <data name="&gt;&gt;grpFolders.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grpFolders.Parent" xml:space="preserve">
+    <value>splMain.Panel1</value>
+  </data>
+  <data name="&gt;&gt;grpFolders.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="splMain.Panel1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="&gt;&gt;splMain.Panel1.Name" xml:space="preserve">
+    <value>splMain.Panel1</value>
+  </data>
+  <data name="&gt;&gt;splMain.Panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;splMain.Panel1.Parent" xml:space="preserve">
+    <value>splMain</value>
+  </data>
+  <data name="&gt;&gt;splMain.Panel1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="splFiles.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="splFiles.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="splFiles.Orientation" type="System.Windows.Forms.Orientation, System.Windows.Forms">
+    <value>Horizontal</value>
   </data>
   <data name="picDelete.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1013,6 +770,57 @@
   <metadata name="menuRightClickFiles.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 54</value>
   </metadata>
+  <data name="menuRightSaveAs.Size" type="System.Drawing.Size, System.Drawing">
+    <value>144, 22</value>
+  </data>
+  <data name="menuRightSaveAs.Text" xml:space="preserve">
+    <value>Save &amp;As...</value>
+  </data>
+  <data name="ToolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>141, 6</value>
+  </data>
+  <data name="menuRightBackupFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>144, 22</value>
+  </data>
+  <data name="menuRightBackupFile.Text" xml:space="preserve">
+    <value>&amp;Backup File</value>
+  </data>
+  <data name="ToolStripMenuItemLoading.Size" type="System.Drawing.Size, System.Drawing">
+    <value>232, 22</value>
+  </data>
+  <data name="ToolStripMenuItemLoading.Text" xml:space="preserve">
+    <value>Loading List of Backed Up Files...</value>
+  </data>
+  <data name="menuRightRestoreFile.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="menuRightRestoreFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>144, 22</value>
+  </data>
+  <data name="menuRightRestoreFile.Text" xml:space="preserve">
+    <value>&amp;Restore File</value>
+  </data>
+  <data name="ToolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>141, 6</value>
+  </data>
+  <data name="cmdRenameFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>144, 22</value>
+  </data>
+  <data name="cmdRenameFile.Text" xml:space="preserve">
+    <value>Rename File...</value>
+  </data>
+  <data name="menuRightReplaceFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>144, 22</value>
+  </data>
+  <data name="menuRightReplaceFile.Text" xml:space="preserve">
+    <value>Re&amp;place File...</value>
+  </data>
+  <data name="menuRightDeleteFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>144, 22</value>
+  </data>
+  <data name="menuRightDeleteFile.Text" xml:space="preserve">
+    <value>&amp;Delete File</value>
+  </data>
   <data name="menuRightClickFiles.Size" type="System.Drawing.Size, System.Drawing">
     <value>145, 148</value>
   </data>
@@ -1023,7 +831,7 @@
     <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <metadata name="imgFilesLarge.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>135, 91</value>
+    <value>336, 13</value>
   </metadata>
   <data name="imgFilesLarge.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
@@ -1514,10 +1322,10 @@
     <value>3, 28</value>
   </data>
   <data name="lstFiles.Size" type="System.Drawing.Size, System.Drawing">
-    <value>470, 300</value>
+    <value>468, 300</value>
   </data>
   <metadata name="imgFilesSmall.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>255, 91</value>
+    <value>454, 15</value>
   </metadata>
   <data name="imgFilesSmall.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
@@ -1631,134 +1439,127 @@
   <data name="&gt;&gt;lstFiles.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="menuRightSaveAs.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 22</value>
+  <data name="grpFiles.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
   </data>
-  <data name="menuRightSaveAs.Text" xml:space="preserve">
-    <value>Save &amp;As...</value>
+  <data name="grpFiles.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
   </data>
-  <data name="ToolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>141, 6</value>
+  <data name="grpFiles.Size" type="System.Drawing.Size, System.Drawing">
+    <value>474, 331</value>
   </data>
-  <data name="menuRightBackupFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 22</value>
+  <data name="grpFiles.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
-  <data name="menuRightBackupFile.Text" xml:space="preserve">
-    <value>&amp;Backup File</value>
+  <data name="grpFiles.Text" xml:space="preserve">
+    <value>Files on your iPhone</value>
   </data>
-  <data name="menuRightRestoreFile.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="&gt;&gt;grpFiles.Name" xml:space="preserve">
+    <value>grpFiles</value>
   </data>
-  <data name="menuRightRestoreFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 22</value>
+  <data name="&gt;&gt;grpFiles.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="menuRightRestoreFile.Text" xml:space="preserve">
-    <value>&amp;Restore File</value>
+  <data name="&gt;&gt;grpFiles.Parent" xml:space="preserve">
+    <value>splFiles.Panel1</value>
   </data>
-  <data name="ToolStripMenuItemLoading.Size" type="System.Drawing.Size, System.Drawing">
-    <value>232, 22</value>
-  </data>
-  <data name="ToolStripMenuItemLoading.Text" xml:space="preserve">
-    <value>Loading List of Backed Up Files...</value>
-  </data>
-  <data name="ToolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>141, 6</value>
-  </data>
-  <data name="cmdRenameFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 22</value>
-  </data>
-  <data name="cmdRenameFile.Text" xml:space="preserve">
-    <value>Rename File...</value>
-  </data>
-  <data name="menuRightReplaceFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 22</value>
-  </data>
-  <data name="menuRightReplaceFile.Text" xml:space="preserve">
-    <value>Re&amp;place File...</value>
-  </data>
-  <data name="menuRightDeleteFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 22</value>
-  </data>
-  <data name="menuRightDeleteFile.Text" xml:space="preserve">
-    <value>&amp;Delete File</value>
-  </data>
-  <data name="Panel1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="&gt;&gt;btnPreview.Name" xml:space="preserve">
-    <value>btnPreview</value>
-  </data>
-  <data name="&gt;&gt;btnPreview.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnPreview.Parent" xml:space="preserve">
-    <value>Panel1</value>
-  </data>
-  <data name="&gt;&gt;btnPreview.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;grpFiles.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;chkPreviewEnabled.Name" xml:space="preserve">
-    <value>chkPreviewEnabled</value>
+  <data name="&gt;&gt;splFiles.Panel1.Name" xml:space="preserve">
+    <value>splFiles.Panel1</value>
   </data>
-  <data name="&gt;&gt;chkPreviewEnabled.Type" xml:space="preserve">
+  <data name="&gt;&gt;splFiles.Panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;splFiles.Panel1.Parent" xml:space="preserve">
+    <value>splFiles</value>
+  </data>
+  <data name="&gt;&gt;splFiles.Panel1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="chkZoom.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="chkZoom.Appearance" type="System.Windows.Forms.Appearance, System.Windows.Forms">
+    <value>Button</value>
+  </data>
+  <data name="chkZoom.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAAlwSFlzAAALEwAA
+        CxMBAJqcGAAAAkNJREFUOE+d0l1IU2EYB/AZXSR0GV10bRclXWRdRB8kk5TIMV3iFgWC1FhgZbNlBNY2
+        KqEwzbkMwpVzKyoWeswuXNOWy8yZ8zPXyMlcbbbvj+NZ24x/74JC7BjSgQfOxfv+zv95zpMFgKN60LW+
+        KH9X0ez8At/1xb8tGqc3B4KRjRuysz/lbM1rquBtpzirPRmg941Nrm6nxrpMQwmj9SOMU07cowZwsUkP
+        geRaoPxM/YnMObbilElubGnWdL43DY7/8NEMPEwSzhiDUR8Nauor5JoeFB6vTR0S1eSwAiaLTaPr7Iu7
+        /RHQqTSiyTR8iynMBBfRPxeFzuqB5LoGBwTnlKxAy0Nq+qXFRi4lEU8tgU4vIcSk4QgyMDsjeGILoE77
+        GvtLq8OswHlFKywON5zRBPxMCqHvaXjiSUx+o9H3OQz9sBfKRyM4WCYl9/+eA0feqJ/VvfqAkQUaMyEG
+        jnACE6T/t/MxdE8H0DbghrSlB3uKq0ZZgau3O7R1dw2J3rkYzK44qRiMJDplD6LD6kW9YRLCmmaUV4hp
+        VuD0ZfWmo2Jl9NYzM56OB/B8IoTHpG/NOy9uUnZUKtrBLZdCrzrJ3kJGJb+ykFepWDylaMMVbT/56hhq
+        1C9wTKZCftlZ3JHzEbbXsyJ/loMgOy81GO5zRbKhfSXV8QJRLYRVja4jvMMy7u4dGGzNZUVYt+t3r8Li
+        3KzMO7+EJyDFivwTWD601ZA1ASTJuuVJuhvycEFc8GuoawJWJNlL0gyTKv0vYOUu/AQZkMf/XhecFgAA
+        AABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="chkZoom.Location" type="System.Drawing.Point, System.Drawing">
+    <value>227, 20</value>
+  </data>
+  <data name="chkZoom.Size" type="System.Drawing.Size, System.Drawing">
+    <value>58, 22</value>
+  </data>
+  <data name="chkZoom.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="chkZoom.Text" xml:space="preserve">
+    <value>Zoom</value>
+  </data>
+  <data name="chkZoom.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="chkZoom.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
+    <value>ImageBeforeText</value>
+  </data>
+  <data name="&gt;&gt;chkZoom.Name" xml:space="preserve">
+    <value>chkZoom</value>
+  </data>
+  <data name="&gt;&gt;chkZoom.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;chkPreviewEnabled.Parent" xml:space="preserve">
-    <value>Panel1</value>
-  </data>
-  <data name="&gt;&gt;chkPreviewEnabled.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="Panel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>256, 22</value>
-  </data>
-  <data name="Panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>217, 22</value>
-  </data>
-  <data name="Panel1.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;Panel1.Name" xml:space="preserve">
-    <value>Panel1</value>
-  </data>
-  <data name="&gt;&gt;Panel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Panel1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;chkZoom.Parent" xml:space="preserve">
     <value>grpDetails</value>
   </data>
-  <data name="&gt;&gt;Panel1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;chkZoom.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="btnPreview.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
+  <data name="lblMovieName.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
   </data>
-  <data name="btnPreview.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="lblMovieName.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 20</value>
   </data>
-  <data name="btnPreview.Location" type="System.Drawing.Point, System.Drawing">
-    <value>136, 0</value>
+  <data name="lblMovieName.Size" type="System.Drawing.Size, System.Drawing">
+    <value>213, 26</value>
   </data>
-  <data name="btnPreview.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 21</value>
+  <data name="lblMovieName.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
   </data>
-  <data name="btnPreview.TabIndex" type="System.Int32, mscorlib">
+  <data name="lblMovieName.Text" xml:space="preserve">
+    <value>lblMovieName</value>
+  </data>
+  <data name="lblMovieName.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;lblMovieName.Name" xml:space="preserve">
+    <value>lblMovieName</value>
+  </data>
+  <data name="&gt;&gt;lblMovieName.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblMovieName.Parent" xml:space="preserve">
+    <value>grpDetails</value>
+  </data>
+  <data name="&gt;&gt;lblMovieName.ZOrder" xml:space="preserve">
     <value>1</value>
-  </data>
-  <data name="btnPreview.Text" xml:space="preserve">
-    <value>Preview</value>
-  </data>
-  <data name="&gt;&gt;btnPreview.Name" xml:space="preserve">
-    <value>btnPreview</value>
-  </data>
-  <data name="&gt;&gt;btnPreview.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnPreview.Parent" xml:space="preserve">
-    <value>Panel1</value>
-  </data>
-  <data name="&gt;&gt;btnPreview.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="chkPreviewEnabled.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -1766,23 +1567,20 @@
   <data name="chkPreviewEnabled.Appearance" type="System.Windows.Forms.Appearance, System.Windows.Forms">
     <value>Button</value>
   </data>
-  <data name="chkPreviewEnabled.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="chkPreviewEnabled.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="chkPreviewEnabled.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 0</value>
+    <value>291, 20</value>
   </data>
   <data name="chkPreviewEnabled.Size" type="System.Drawing.Size, System.Drawing">
-    <value>127, 22</value>
+    <value>96, 22</value>
   </data>
   <data name="chkPreviewEnabled.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="chkPreviewEnabled.Text" xml:space="preserve">
-    <value>Auto Preview Enabled</value>
+    <value>Auto Preview</value>
   </data>
   <data name="&gt;&gt;chkPreviewEnabled.Name" xml:space="preserve">
     <value>chkPreviewEnabled</value>
@@ -1791,10 +1589,61 @@
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;chkPreviewEnabled.Parent" xml:space="preserve">
-    <value>Panel1</value>
+    <value>grpDetails</value>
   </data>
   <data name="&gt;&gt;chkPreviewEnabled.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
+  </data>
+  <data name="btnPreview.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="btnPreview.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAAlwSFlzAAALEwAA
+        CxMBAJqcGAAAAfZJREFUOE+l099Lk1EYwPH6D/onoqsuoqwIbyIoEy2k5ZzphU1cxCQoVOhmN1qBmq2h
+        W1Kr1SJNeot3/XBWLjetBUUFi2lQQqibLLUonG5z33beWOz13UsXHXguzsN5Pufh4ZyNwIb/WgKQg5Os
+        D2k0wqD/HV7faxGd4lyxUJKiWG9dHXrBzvJGXUQB7gc+6gK9Xj8jE5E80rW+CwUYevpBF3DcfKIU56Mo
+        cOfxGw2QTi0zNjGG87qH9m47F+y9lFaaxTnVLJTNLTmsAlZWlpGHh3kWHCeW+MbXeAKvJGO2tlBvPbup
+        EFEAtxRSAYHxEP5AUMmlM/AzucbcYgaH+y6mBst5DdA/OKoC+tweZucTf4vj39NMzabwhSapqav7rAH6
+        bo+ogB5nPzPzC8rN8aVMrniV8FSSK/fCHKmu1gJi0oVLkn3I/gCxpdzNcylefUry6O0vmtts1NTWOu0d
+        Le35LpQZFALZbJYv09N09ji4NvCQB6EoLilMc6sNo+koA5fqkV2nsnlEA6ymMiz+SBKJRrnsdGI5aeV4
+        YxPHjFU4zuwjduMAay8b8Fw8LZBDKkB0ohcd57o4UbmD97YSZlx7WfAZabUc/vMoRFHJQfM/Y3+5AUvF
+        dp637aapbCumil1VRX+Y3s8T+VwXhtJtWyjbs9kg9r8B4LDiPoc3Lh8AAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="btnPreview.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopLeft</value>
+  </data>
+  <data name="btnPreview.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnPreview.Location" type="System.Drawing.Point, System.Drawing">
+    <value>393, 20</value>
+  </data>
+  <data name="btnPreview.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 21</value>
+  </data>
+  <data name="btnPreview.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="btnPreview.Text" xml:space="preserve">
+    <value>Preview</value>
+  </data>
+  <data name="btnPreview.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
+    <value>ImageBeforeText</value>
+  </data>
+  <data name="&gt;&gt;btnPreview.Name" xml:space="preserve">
+    <value>btnPreview</value>
+  </data>
+  <data name="&gt;&gt;btnPreview.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnPreview.Parent" xml:space="preserve">
+    <value>grpDetails</value>
+  </data>
+  <data name="&gt;&gt;btnPreview.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="txtFileDetails.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
@@ -1809,7 +1658,7 @@
     <value>Both</value>
   </data>
   <data name="txtFileDetails.Size" type="System.Drawing.Size, System.Drawing">
-    <value>470, 115</value>
+    <value>468, 115</value>
   </data>
   <data name="txtFileDetails.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1827,7 +1676,7 @@
     <value>grpDetails</value>
   </data>
   <data name="&gt;&gt;txtFileDetails.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>4</value>
   </data>
   <data name="WebBrws.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
@@ -1836,7 +1685,7 @@
     <value>6, 45</value>
   </data>
   <data name="WebBrws.Size" type="System.Drawing.Size, System.Drawing">
-    <value>461, 112</value>
+    <value>459, 112</value>
   </data>
   <data name="WebBrws.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -1854,7 +1703,7 @@
     <value>grpDetails</value>
   </data>
   <data name="&gt;&gt;WebBrws.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>5</value>
   </data>
   <data name="qtPlugin.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
@@ -1875,7 +1724,7 @@
 </value>
   </data>
   <data name="qtPlugin.Size" type="System.Drawing.Size, System.Drawing">
-    <value>474, 112</value>
+    <value>445, 112</value>
   </data>
   <data name="qtPlugin.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -1887,13 +1736,13 @@
     <value>qtPlugin</value>
   </data>
   <data name="&gt;&gt;qtPlugin.Type" xml:space="preserve">
-    <value>AxQTOControlLib.AxQTControl, AxInterop.QTOControlLib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>iPhoneBrowser.itouchBrowser.QtWrapper, itouchBrowser, Version=1.7.0.15, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;qtPlugin.Parent" xml:space="preserve">
     <value>grpDetails</value>
   </data>
   <data name="&gt;&gt;qtPlugin.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>6</value>
   </data>
   <data name="picFileDetails.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
@@ -1908,7 +1757,7 @@
     <value>3, 45</value>
   </data>
   <data name="picFileDetails.Size" type="System.Drawing.Size, System.Drawing">
-    <value>470, 115</value>
+    <value>468, 115</value>
   </data>
   <data name="picFileDetails.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
     <value>CenterImage</value>
@@ -1929,32 +1778,107 @@
     <value>grpDetails</value>
   </data>
   <data name="&gt;&gt;picFileDetails.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>7</value>
   </data>
-  <metadata name="tlbStatusStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>0, 529</value>
-  </metadata>
-  <data name="tlbStatusStrip.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 529</value>
+  <data name="grpDetails.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
   </data>
-  <data name="tlbStatusStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>730, 22</value>
+  <data name="grpDetails.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
   </data>
-  <data name="tlbStatusStrip.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+  <data name="grpDetails.Size" type="System.Drawing.Size, System.Drawing">
+    <value>474, 163</value>
   </data>
-  <data name="&gt;&gt;tlbStatusStrip.Name" xml:space="preserve">
-    <value>tlbStatusStrip</value>
+  <data name="grpDetails.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
-  <data name="&gt;&gt;tlbStatusStrip.Type" xml:space="preserve">
-    <value>System.Windows.Forms.StatusStrip, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="grpDetails.Text" xml:space="preserve">
+    <value>File Details</value>
   </data>
-  <data name="&gt;&gt;tlbStatusStrip.Parent" xml:space="preserve">
+  <data name="&gt;&gt;grpDetails.Name" xml:space="preserve">
+    <value>grpDetails</value>
+  </data>
+  <data name="&gt;&gt;grpDetails.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grpDetails.Parent" xml:space="preserve">
+    <value>splFiles.Panel2</value>
+  </data>
+  <data name="&gt;&gt;grpDetails.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;splFiles.Panel2.Name" xml:space="preserve">
+    <value>splFiles.Panel2</value>
+  </data>
+  <data name="&gt;&gt;splFiles.Panel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;splFiles.Panel2.Parent" xml:space="preserve">
+    <value>splFiles</value>
+  </data>
+  <data name="&gt;&gt;splFiles.Panel2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="splFiles.Size" type="System.Drawing.Size, System.Drawing">
+    <value>474, 498</value>
+  </data>
+  <data name="splFiles.SplitterDistance" type="System.Int32, mscorlib">
+    <value>331</value>
+  </data>
+  <data name="splFiles.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;splFiles.Name" xml:space="preserve">
+    <value>splFiles</value>
+  </data>
+  <data name="&gt;&gt;splFiles.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitContainer, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;splFiles.Parent" xml:space="preserve">
+    <value>splMain.Panel2</value>
+  </data>
+  <data name="&gt;&gt;splFiles.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="splMain.Panel2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="&gt;&gt;splMain.Panel2.Name" xml:space="preserve">
+    <value>splMain.Panel2</value>
+  </data>
+  <data name="&gt;&gt;splMain.Panel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;splMain.Panel2.Parent" xml:space="preserve">
+    <value>splMain</value>
+  </data>
+  <data name="&gt;&gt;splMain.Panel2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="splMain.Size" type="System.Drawing.Size, System.Drawing">
+    <value>726, 504</value>
+  </data>
+  <data name="splMain.SplitterDistance" type="System.Int32, mscorlib">
+    <value>242</value>
+  </data>
+  <data name="splMain.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;splMain.Name" xml:space="preserve">
+    <value>splMain</value>
+  </data>
+  <data name="&gt;&gt;splMain.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitContainer, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;splMain.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;tlbStatusStrip.ZOrder" xml:space="preserve">
-    <value>4</value>
+  <data name="&gt;&gt;splMain.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
+  <metadata name="tlbStatusStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>585, 15</value>
+  </metadata>
   <data name="tlbStatusLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -1962,7 +1886,7 @@
     <value>MiddleLeft</value>
   </data>
   <data name="tlbStatusLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>491, 17</value>
+    <value>487, 17</value>
   </data>
   <data name="tlbStatusLabel.Text" xml:space="preserve">
     <value>Please plug in your iPhone via USB.  If it is already plugged in, disconnect and reconnect it.</value>
@@ -2019,9 +1943,114 @@
   <data name="tlbProgressBar.ToolTipText" xml:space="preserve">
     <value>Progress 1</value>
   </data>
+  <data name="tlbStatusStrip.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 529</value>
+  </data>
+  <data name="tlbStatusStrip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>726, 22</value>
+  </data>
+  <data name="tlbStatusStrip.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;tlbStatusStrip.Name" xml:space="preserve">
+    <value>tlbStatusStrip</value>
+  </data>
+  <data name="&gt;&gt;tlbStatusStrip.Type" xml:space="preserve">
+    <value>System.Windows.Forms.StatusStrip, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tlbStatusStrip.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;tlbStatusStrip.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
   <metadata name="toolStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>0, 0</value>
+    <value>107, 18</value>
   </metadata>
+  <data name="tsmFileList.Size" type="System.Drawing.Size, System.Drawing">
+    <value>178, 22</value>
+  </data>
+  <data name="tsmFileList.Text" xml:space="preserve">
+    <value>File List</value>
+  </data>
+  <data name="tsmRestructureDB.Size" type="System.Drawing.Size, System.Drawing">
+    <value>178, 22</value>
+  </data>
+  <data name="tsmRestructureDB.Text" xml:space="preserve">
+    <value>Restructure DB</value>
+  </data>
+  <data name="tsmCleanUpBackupFiles.Size" type="System.Drawing.Size, System.Drawing">
+    <value>178, 22</value>
+  </data>
+  <data name="tsmCleanUpBackupFiles.Text" xml:space="preserve">
+    <value>&amp;Clean Up Backup Files</value>
+  </data>
+  <data name="ToolStripMenuItemCleanUp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>178, 22</value>
+  </data>
+  <data name="ToolStripMenuItemCleanUp.Text" xml:space="preserve">
+    <value>&amp;Clean Up Backup Files</value>
+  </data>
+  <data name="ToolStripMenuItemViewBackups.Size" type="System.Drawing.Size, System.Drawing">
+    <value>178, 22</value>
+  </data>
+  <data name="ToolStripMenuItemViewBackups.Text" xml:space="preserve">
+    <value>&amp;View Backup Files</value>
+  </data>
+  <data name="ToolStripSeparator7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>175, 6</value>
+  </data>
+  <data name="tsmAsSummerboardFolder.Size" type="System.Drawing.Size, System.Drawing">
+    <value>214, 22</value>
+  </data>
+  <data name="tsmAsSummerboardFolder.Text" xml:space="preserve">
+    <value>Save as Summerboard &amp;Folder</value>
+  </data>
+  <data name="tsmAsPXLPackage.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="tsmAsPXLPackage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>214, 22</value>
+  </data>
+  <data name="tsmAsPXLPackage.Text" xml:space="preserve">
+    <value>Save as &amp;PXL Package</value>
+  </data>
+  <data name="menuSaveSummerboardTheme.Size" type="System.Drawing.Size, System.Drawing">
+    <value>178, 22</value>
+  </data>
+  <data name="menuSaveSummerboardTheme.Text" xml:space="preserve">
+    <value>&amp;Summerboard</value>
+  </data>
+  <data name="tsmAsCustomizeFolders.Size" type="System.Drawing.Size, System.Drawing">
+    <value>209, 22</value>
+  </data>
+  <data name="tsmAsCustomizeFolders.Text" xml:space="preserve">
+    <value>Save as Customize &amp;Folder...</value>
+  </data>
+  <data name="AsPXLPackageToolStripMenuItem1.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="AsPXLPackageToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>209, 22</value>
+  </data>
+  <data name="AsPXLPackageToolStripMenuItem1.Text" xml:space="preserve">
+    <value>Save as &amp;PXL Package...</value>
+  </data>
+  <data name="ToolStripMenuItem4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>178, 22</value>
+  </data>
+  <data name="ToolStripMenuItem4.Text" xml:space="preserve">
+    <value>&amp;Customize</value>
+  </data>
+  <data name="ToolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>175, 6</value>
+  </data>
+  <data name="ToolStripMenuItemExit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>178, 22</value>
+  </data>
+  <data name="ToolStripMenuItemExit.Text" xml:space="preserve">
+    <value>E&amp;xit</value>
+  </data>
   <data name="ToolStripMenuItemFile.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -2045,252 +2074,6 @@
   </data>
   <data name="ToolStripMenuItemFile.Text" xml:space="preserve">
     <value>&amp;File</value>
-  </data>
-  <data name="mnuView.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAgxJREFUOE+lkvtL
-        U2EYx+0PEbtpFwnBKPGKiJImGP0gYhIYs1E5GF5gIxkpA00JRSmMEF0ohMh+GaRWYlqabMVcNdS2QpaI
-        VqiDIYhk397vA6fXhCjyhYdzeM/5fp7vczkAdeL2cwho7v/wWzT1zcN+Pwhr51uY2/y41PQaF+wzKKiZ
-        QvaN58g0jyLd5KEUcQbg+84P/Cm2tncQjW3j68YWIqubCC3FcOJc478BAuGoZM6zvoRnakXEruEIjhc4
-        /g5gZop9c+voGAyLbQIfeBZxLL9BA1jzXvuGbWamuKh+GmmVbswE19A59FEBbmoAG7YbsLtm2mZmiml9
-        cvabNDwpz6YB7LYBoMXCumkJr7LOmnnHzBQ/9X2Bo2cOibm1GsBREbAQiYmw/8lnuCeWkVzcgnZlnw1j
-        3HV/wuNXK6i/9x5Hc6wawDlTXHbLJ+LZUBQPRyKwdQdxutwl1h+NLXHh5Ht1ewBHsiwawCW57HyDAfWR
-        dvl0uhZQ1eqX8aVc7EKLqrum651ATLf9OJx5XQM4KmY0xPzZ0hFAiQJnXB0WwME0E3IsL5B17ZlADqWb
-        NYDrOepdlcysmTWWOrxqbceRWtaLk0VO1XW72D5Vckd2gMBfq8zdpmUG62NJvKM4+XyziDk24xmfWoGE
-        s1c0gHPmbrPTpHNJKOCo2G1mZs20zcwUJ5yp1AB5+8/zEwgF5GMVDxh4AAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="mnuView.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="mnuView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>42, 22</value>
-  </data>
-  <data name="mnuView.Text" xml:space="preserve">
-    <value>&amp;View</value>
-  </data>
-  <data name="mnuGoTo.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="mnuGoTo.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAgxJREFUOE+lkvtL
-        U2EYx+0PEbtpFwnBKPGKiJImGP0gYhIYs1E5GF5gIxkpA00JRSmMEF0ohMh+GaRWYlqabMVcNdS2QpaI
-        VqiDIYhk397vA6fXhCjyhYdzeM/5fp7vczkAdeL2cwho7v/wWzT1zcN+Pwhr51uY2/y41PQaF+wzKKiZ
-        QvaN58g0jyLd5KEUcQbg+84P/Cm2tncQjW3j68YWIqubCC3FcOJc478BAuGoZM6zvoRnakXEruEIjhc4
-        /g5gZop9c+voGAyLbQIfeBZxLL9BA1jzXvuGbWamuKh+GmmVbswE19A59FEBbmoAG7YbsLtm2mZmiml9
-        cvabNDwpz6YB7LYBoMXCumkJr7LOmnnHzBQ/9X2Bo2cOibm1GsBREbAQiYmw/8lnuCeWkVzcgnZlnw1j
-        3HV/wuNXK6i/9x5Hc6wawDlTXHbLJ+LZUBQPRyKwdQdxutwl1h+NLXHh5Ht1ewBHsiwawCW57HyDAfWR
-        dvl0uhZQ1eqX8aVc7EKLqrum651ATLf9OJx5XQM4KmY0xPzZ0hFAiQJnXB0WwME0E3IsL5B17ZlADqWb
-        NYDrOepdlcysmTWWOrxqbceRWtaLk0VO1XW72D5Vckd2gMBfq8zdpmUG62NJvKM4+XyziDk24xmfWoGE
-        s1c0gHPmbrPTpHNJKOCo2G1mZs20zcwUJ5yp1AB5+8/zEwgF5GMVDxh4AAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="mnuGoTo.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="mnuGoTo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>86, 22</value>
-  </data>
-  <data name="mnuGoTo.Text" xml:space="preserve">
-    <value>&amp;Goto Location</value>
-  </data>
-  <data name="mnuFavorites.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="mnuFavorites.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAgxJREFUOE+lkvtL
-        U2EYx+0PEbtpFwnBKPGKiJImGP0gYhIYs1E5GF5gIxkpA00JRSmMEF0ohMh+GaRWYlqabMVcNdS2QpaI
-        VqiDIYhk397vA6fXhCjyhYdzeM/5fp7vczkAdeL2cwho7v/wWzT1zcN+Pwhr51uY2/y41PQaF+wzKKiZ
-        QvaN58g0jyLd5KEUcQbg+84P/Cm2tncQjW3j68YWIqubCC3FcOJc478BAuGoZM6zvoRnakXEruEIjhc4
-        /g5gZop9c+voGAyLbQIfeBZxLL9BA1jzXvuGbWamuKh+GmmVbswE19A59FEBbmoAG7YbsLtm2mZmiml9
-        cvabNDwpz6YB7LYBoMXCumkJr7LOmnnHzBQ/9X2Bo2cOibm1GsBREbAQiYmw/8lnuCeWkVzcgnZlnw1j
-        3HV/wuNXK6i/9x5Hc6wawDlTXHbLJ+LZUBQPRyKwdQdxutwl1h+NLXHh5Ht1ewBHsiwawCW57HyDAfWR
-        dvl0uhZQ1eqX8aVc7EKLqrum651ATLf9OJx5XQM4KmY0xPzZ0hFAiQJnXB0WwME0E3IsL5B17ZlADqWb
-        NYDrOepdlcysmTWWOrxqbceRWtaLk0VO1XW72D5Vckd2gMBfq8zdpmUG62NJvKM4+XyziDk24xmfWoGE
-        s1c0gHPmbrPTpHNJKOCo2G1mZs20zcwUJ5yp1AB5+8/zEwgF5GMVDxh4AAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="mnuFavorites.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="mnuFavorites.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 22</value>
-  </data>
-  <data name="mnuFavorites.Text" xml:space="preserve">
-    <value>Favorites</value>
-  </data>
-  <data name="ToolStripDropDownButton2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAgxJREFUOE+lkvtL
-        U2EYx+0PEbtpFwnBKPGKiJImGP0gYhIYs1E5GF5gIxkpA00JRSmMEF0ohMh+GaRWYlqabMVcNdS2QpaI
-        VqiDIYhk397vA6fXhCjyhYdzeM/5fp7vczkAdeL2cwho7v/wWzT1zcN+Pwhr51uY2/y41PQaF+wzKKiZ
-        QvaN58g0jyLd5KEUcQbg+84P/Cm2tncQjW3j68YWIqubCC3FcOJc478BAuGoZM6zvoRnakXEruEIjhc4
-        /g5gZop9c+voGAyLbQIfeBZxLL9BA1jzXvuGbWamuKh+GmmVbswE19A59FEBbmoAG7YbsLtm2mZmiml9
-        cvabNDwpz6YB7LYBoMXCumkJr7LOmnnHzBQ/9X2Bo2cOibm1GsBREbAQiYmw/8lnuCeWkVzcgnZlnw1j
-        3HV/wuNXK6i/9x5Hc6wawDlTXHbLJ+LZUBQPRyKwdQdxutwl1h+NLXHh5Ht1ewBHsiwawCW57HyDAfWR
-        dvl0uhZQ1eqX8aVc7EKLqrum651ATLf9OJx5XQM4KmY0xPzZ0hFAiQJnXB0WwME0E3IsL5B17ZlADqWb
-        NYDrOepdlcysmTWWOrxqbceRWtaLk0VO1XW72D5Vckd2gMBfq8zdpmUG62NJvKM4+XyziDk24xmfWoGE
-        s1c0gHPmbrPTpHNJKOCo2G1mZs20zcwUJ5yp1AB5+8/zEwgF5GMVDxh4AAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="ToolStripDropDownButton2.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="ToolStripDropDownButton2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>57, 22</value>
-  </data>
-  <data name="ToolStripDropDownButton2.Text" xml:space="preserve">
-    <value>&amp;Options</value>
-  </data>
-  <data name="AboutToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
-  </data>
-  <data name="AboutToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;About</value>
-  </data>
-  <data name="tsmHomePage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
-  </data>
-  <data name="tsmHomePage.Text" xml:space="preserve">
-    <value>Home Page</value>
-  </data>
-  <data name="ToolStripDropDownButton1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAgxJREFUOE+lkvtL
-        U2EYx+0PEbtpFwnBKPGKiJImGP0gYhIYs1E5GF5gIxkpA00JRSmMEF0ohMh+GaRWYlqabMVcNdS2QpaI
-        VqiDIYhk397vA6fXhCjyhYdzeM/5fp7vczkAdeL2cwho7v/wWzT1zcN+Pwhr51uY2/y41PQaF+wzKKiZ
-        QvaN58g0jyLd5KEUcQbg+84P/Cm2tncQjW3j68YWIqubCC3FcOJc478BAuGoZM6zvoRnakXEruEIjhc4
-        /g5gZop9c+voGAyLbQIfeBZxLL9BA1jzXvuGbWamuKh+GmmVbswE19A59FEBbmoAG7YbsLtm2mZmiml9
-        cvabNDwpz6YB7LYBoMXCumkJr7LOmnnHzBQ/9X2Bo2cOibm1GsBREbAQiYmw/8lnuCeWkVzcgnZlnw1j
-        3HV/wuNXK6i/9x5Hc6wawDlTXHbLJ+LZUBQPRyKwdQdxutwl1h+NLXHh5Ht1ewBHsiwawCW57HyDAfWR
-        dvl0uhZQ1eqX8aVc7EKLqrum651ATLf9OJx5XQM4KmY0xPzZ0hFAiQJnXB0WwME0E3IsL5B17ZlADqWb
-        NYDrOepdlcysmTWWOrxqbceRWtaLk0VO1XW72D5Vckd2gMBfq8zdpmUG62NJvKM4+XyziDk24xmfWoGE
-        s1c0gHPmbrPTpHNJKOCo2G1mZs20zcwUJ5yp1AB5+8/zEwgF5GMVDxh4AAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="ToolStripDropDownButton1.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="ToolStripDropDownButton1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>41, 22</value>
-  </data>
-  <data name="ToolStripDropDownButton1.Text" xml:space="preserve">
-    <value>&amp;Help</value>
-  </data>
-  <data name="toolStrip.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="toolStrip.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="toolStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>730, 25</value>
-  </data>
-  <data name="toolStrip.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;toolStrip.Name" xml:space="preserve">
-    <value>toolStrip</value>
-  </data>
-  <data name="&gt;&gt;toolStrip.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStrip.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;toolStrip.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="ToolStripMenuItemCleanUp.Size" type="System.Drawing.Size, System.Drawing">
-    <value>178, 22</value>
-  </data>
-  <data name="ToolStripMenuItemCleanUp.Text" xml:space="preserve">
-    <value>&amp;Clean Up Backup Files</value>
-  </data>
-  <data name="tsmFileList.Size" type="System.Drawing.Size, System.Drawing">
-    <value>178, 22</value>
-  </data>
-  <data name="tsmFileList.Text" xml:space="preserve">
-    <value>File List</value>
-  </data>
-  <data name="tsmRestructureDB.Size" type="System.Drawing.Size, System.Drawing">
-    <value>178, 22</value>
-  </data>
-  <data name="tsmRestructureDB.Text" xml:space="preserve">
-    <value>Restructure DB</value>
-  </data>
-  <data name="tsmCleanUpBackupFiles.Size" type="System.Drawing.Size, System.Drawing">
-    <value>178, 22</value>
-  </data>
-  <data name="tsmCleanUpBackupFiles.Text" xml:space="preserve">
-    <value>&amp;Clean Up Backup Files</value>
-  </data>
-  <data name="ToolStripMenuItemViewBackups.Size" type="System.Drawing.Size, System.Drawing">
-    <value>178, 22</value>
-  </data>
-  <data name="ToolStripMenuItemViewBackups.Text" xml:space="preserve">
-    <value>&amp;View Backup Files</value>
-  </data>
-  <data name="ToolStripSeparator7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>175, 6</value>
-  </data>
-  <data name="menuSaveSummerboardTheme.Size" type="System.Drawing.Size, System.Drawing">
-    <value>178, 22</value>
-  </data>
-  <data name="menuSaveSummerboardTheme.Text" xml:space="preserve">
-    <value>&amp;Summerboard</value>
-  </data>
-  <data name="tsmAsSummerboardFolder.Size" type="System.Drawing.Size, System.Drawing">
-    <value>214, 22</value>
-  </data>
-  <data name="tsmAsSummerboardFolder.Text" xml:space="preserve">
-    <value>Save as Summerboard &amp;Folder</value>
-  </data>
-  <data name="tsmAsPXLPackage.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="tsmAsPXLPackage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>214, 22</value>
-  </data>
-  <data name="tsmAsPXLPackage.Text" xml:space="preserve">
-    <value>Save as &amp;PXL Package</value>
-  </data>
-  <data name="ToolStripMenuItem4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>178, 22</value>
-  </data>
-  <data name="ToolStripMenuItem4.Text" xml:space="preserve">
-    <value>&amp;Customize</value>
-  </data>
-  <data name="tsmAsCustomizeFolders.Size" type="System.Drawing.Size, System.Drawing">
-    <value>209, 22</value>
-  </data>
-  <data name="tsmAsCustomizeFolders.Text" xml:space="preserve">
-    <value>Save as Customize &amp;Folder...</value>
-  </data>
-  <data name="AsPXLPackageToolStripMenuItem1.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="AsPXLPackageToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>209, 22</value>
-  </data>
-  <data name="AsPXLPackageToolStripMenuItem1.Text" xml:space="preserve">
-    <value>Save as &amp;PXL Package...</value>
-  </data>
-  <data name="ToolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>175, 6</value>
-  </data>
-  <data name="ToolStripMenuItemExit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>178, 22</value>
-  </data>
-  <data name="ToolStripMenuItemExit.Text" xml:space="preserve">
-    <value>E&amp;xit</value>
   </data>
   <data name="ToolStripMenuItemDetails.Size" type="System.Drawing.Size, System.Drawing">
     <value>137, 22</value>
@@ -2318,6 +2101,30 @@
   </data>
   <data name="cmdShowGroups.Text" xml:space="preserve">
     <value>Show &amp;Groups</value>
+  </data>
+  <data name="mnuView.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAgxJREFUOE+lkvtL
+        U2EYx+0PEbtpFwnBKPGKiJImGP0gYhIYs1E5GF5gIxkpA00JRSmMEF0ohMh+GaRWYlqabMVcNdS2QpaI
+        VqiDIYhk397vA6fXhCjyhYdzeM/5fp7vczkAdeL2cwho7v/wWzT1zcN+Pwhr51uY2/y41PQaF+wzKKiZ
+        QvaN58g0jyLd5KEUcQbg+84P/Cm2tncQjW3j68YWIqubCC3FcOJc478BAuGoZM6zvoRnakXEruEIjhc4
+        /g5gZop9c+voGAyLbQIfeBZxLL9BA1jzXvuGbWamuKh+GmmVbswE19A59FEBbmoAG7YbsLtm2mZmiml9
+        cvabNDwpz6YB7LYBoMXCumkJr7LOmnnHzBQ/9X2Bo2cOibm1GsBREbAQiYmw/8lnuCeWkVzcgnZlnw1j
+        3HV/wuNXK6i/9x5Hc6wawDlTXHbLJ+LZUBQPRyKwdQdxutwl1h+NLXHh5Ht1ewBHsiwawCW57HyDAfWR
+        dvl0uhZQ1eqX8aVc7EKLqrum651ATLf9OJx5XQM4KmY0xPzZ0hFAiQJnXB0WwME0E3IsL5B17ZlADqWb
+        NYDrOepdlcysmTWWOrxqbceRWtaLk0VO1XW72D5Vckd2gMBfq8zdpmUG62NJvKM4+XyziDk24xmfWoGE
+        s1c0gHPmbrPTpHNJKOCo2G1mZs20zcwUJ5yp1AB5+8/zEwgF5GMVDxh4AAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="mnuView.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="mnuView.Size" type="System.Drawing.Size, System.Drawing">
+    <value>42, 22</value>
+  </data>
+  <data name="mnuView.Text" xml:space="preserve">
+    <value>&amp;View</value>
   </data>
   <data name="toolStripGoTo1.Size" type="System.Drawing.Size, System.Drawing">
     <value>233, 22</value>
@@ -2348,12 +2155,6 @@
   </data>
   <data name="ToolStripSeparator4.Size" type="System.Drawing.Size, System.Drawing">
     <value>230, 6</value>
-  </data>
-  <data name="mnuStdApps.Size" type="System.Drawing.Size, System.Drawing">
-    <value>233, 22</value>
-  </data>
-  <data name="mnuStdApps.Text" xml:space="preserve">
-    <value>Standard &amp;Applications</value>
   </data>
   <data name="toolStripGoTo20.Size" type="System.Drawing.Size, System.Drawing">
     <value>236, 22</value>
@@ -2451,11 +2252,11 @@
   <data name="toolStripGoTo18.Text" xml:space="preserve">
     <value>&amp;YouTube Icon and Images</value>
   </data>
-  <data name="mnuThirdPartyApps.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="mnuStdApps.Size" type="System.Drawing.Size, System.Drawing">
     <value>233, 22</value>
   </data>
-  <data name="mnuThirdPartyApps.Text" xml:space="preserve">
-    <value>Third-&amp;Party Applications</value>
+  <data name="mnuStdApps.Text" xml:space="preserve">
+    <value>Standard &amp;Applications</value>
   </data>
   <data name="ToolStripMenuItem5.Size" type="System.Drawing.Size, System.Drawing">
     <value>207, 22</value>
@@ -2523,6 +2324,12 @@
   <data name="WeDictDictionariesToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;weDict Dictionaries</value>
   </data>
+  <data name="mnuThirdPartyApps.Size" type="System.Drawing.Size, System.Drawing">
+    <value>233, 22</value>
+  </data>
+  <data name="mnuThirdPartyApps.Text" xml:space="preserve">
+    <value>Third-&amp;Party Applications</value>
+  </data>
   <data name="ToolStripSeparator6.Size" type="System.Drawing.Size, System.Drawing">
     <value>230, 6</value>
   </data>
@@ -2538,6 +2345,33 @@
   <data name="toolStripGoTo19.Text" xml:space="preserve">
     <value>&amp;Fonts</value>
   </data>
+  <data name="mnuGoTo.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="mnuGoTo.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAgxJREFUOE+lkvtL
+        U2EYx+0PEbtpFwnBKPGKiJImGP0gYhIYs1E5GF5gIxkpA00JRSmMEF0ohMh+GaRWYlqabMVcNdS2QpaI
+        VqiDIYhk397vA6fXhCjyhYdzeM/5fp7vczkAdeL2cwho7v/wWzT1zcN+Pwhr51uY2/y41PQaF+wzKKiZ
+        QvaN58g0jyLd5KEUcQbg+84P/Cm2tncQjW3j68YWIqubCC3FcOJc478BAuGoZM6zvoRnakXEruEIjhc4
+        /g5gZop9c+voGAyLbQIfeBZxLL9BA1jzXvuGbWamuKh+GmmVbswE19A59FEBbmoAG7YbsLtm2mZmiml9
+        cvabNDwpz6YB7LYBoMXCumkJr7LOmnnHzBQ/9X2Bo2cOibm1GsBREbAQiYmw/8lnuCeWkVzcgnZlnw1j
+        3HV/wuNXK6i/9x5Hc6wawDlTXHbLJ+LZUBQPRyKwdQdxutwl1h+NLXHh5Ht1ewBHsiwawCW57HyDAfWR
+        dvl0uhZQ1eqX8aVc7EKLqrum651ATLf9OJx5XQM4KmY0xPzZ0hFAiQJnXB0WwME0E3IsL5B17ZlADqWb
+        NYDrOepdlcysmTWWOrxqbceRWtaLk0VO1XW72D5Vckd2gMBfq8zdpmUG62NJvKM4+XyziDk24xmfWoGE
+        s1c0gHPmbrPTpHNJKOCo2G1mZs20zcwUJ5yp1AB5+8/zEwgF5GMVDxh4AAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="mnuGoTo.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="mnuGoTo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>86, 22</value>
+  </data>
+  <data name="mnuGoTo.Text" xml:space="preserve">
+    <value>&amp;Goto Location</value>
+  </data>
   <data name="AddToFavoritesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>177, 22</value>
   </data>
@@ -2552,6 +2386,33 @@
   </data>
   <data name="ToolStripMenuItem7.Size" type="System.Drawing.Size, System.Drawing">
     <value>174, 6</value>
+  </data>
+  <data name="mnuFavorites.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="mnuFavorites.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAgxJREFUOE+lkvtL
+        U2EYx+0PEbtpFwnBKPGKiJImGP0gYhIYs1E5GF5gIxkpA00JRSmMEF0ohMh+GaRWYlqabMVcNdS2QpaI
+        VqiDIYhk397vA6fXhCjyhYdzeM/5fp7vczkAdeL2cwho7v/wWzT1zcN+Pwhr51uY2/y41PQaF+wzKKiZ
+        QvaN58g0jyLd5KEUcQbg+84P/Cm2tncQjW3j68YWIqubCC3FcOJc478BAuGoZM6zvoRnakXEruEIjhc4
+        /g5gZop9c+voGAyLbQIfeBZxLL9BA1jzXvuGbWamuKh+GmmVbswE19A59FEBbmoAG7YbsLtm2mZmiml9
+        cvabNDwpz6YB7LYBoMXCumkJr7LOmnnHzBQ/9X2Bo2cOibm1GsBREbAQiYmw/8lnuCeWkVzcgnZlnw1j
+        3HV/wuNXK6i/9x5Hc6wawDlTXHbLJ+LZUBQPRyKwdQdxutwl1h+NLXHh5Ht1ewBHsiwawCW57HyDAfWR
+        dvl0uhZQ1eqX8aVc7EKLqrum651ATLf9OJx5XQM4KmY0xPzZ0hFAiQJnXB0WwME0E3IsL5B17ZlADqWb
+        NYDrOepdlcysmTWWOrxqbceRWtaLk0VO1XW72D5Vckd2gMBfq8zdpmUG62NJvKM4+XyziDk24xmfWoGE
+        s1c0gHPmbrPTpHNJKOCo2G1mZs20zcwUJ5yp1AB5+8/zEwgF5GMVDxh4AAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="mnuFavorites.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="mnuFavorites.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 22</value>
+  </data>
+  <data name="mnuFavorites.Text" xml:space="preserve">
+    <value>Favorites</value>
   </data>
   <data name="ConfirmDeletionsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>166, 22</value>
@@ -2570,12 +2431,6 @@
   </data>
   <data name="IgnoreDSStoreToolStripMenuItem.Text" xml:space="preserve">
     <value>Ignore .DS_Store</value>
-  </data>
-  <data name="ConvertPNGsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>166, 22</value>
-  </data>
-  <data name="ConvertPNGsToolStripMenuItem.Text" xml:space="preserve">
-    <value>Convert PNGs</value>
   </data>
   <data name="tsmIPhoneToPC.Size" type="System.Drawing.Size, System.Drawing">
     <value>138, 22</value>
@@ -2601,6 +2456,12 @@
   <data name="tsmConvertBoth.Text" xml:space="preserve">
     <value>Convert Both</value>
   </data>
+  <data name="ConvertPNGsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>166, 22</value>
+  </data>
+  <data name="ConvertPNGsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Convert PNGs</value>
+  </data>
   <data name="ToolStripSeparator8.Size" type="System.Drawing.Size, System.Drawing">
     <value>163, 6</value>
   </data>
@@ -2609,12 +2470,6 @@
   </data>
   <data name="ShowPreviewsToolStripMenuItem.Text" xml:space="preserve">
     <value>Show Previews</value>
-  </data>
-  <data name="PictureBackgroundToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>166, 22</value>
-  </data>
-  <data name="PictureBackgroundToolStripMenuItem.Text" xml:space="preserve">
-    <value>Picture Background</value>
   </data>
   <data name="BlackToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>102, 22</value>
@@ -2634,11 +2489,101 @@
   <data name="WhiteToolStripMenuItem.Text" xml:space="preserve">
     <value>White</value>
   </data>
+  <data name="PictureBackgroundToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>166, 22</value>
+  </data>
+  <data name="PictureBackgroundToolStripMenuItem.Text" xml:space="preserve">
+    <value>Picture Background</value>
+  </data>
   <data name="BackupDirectoryToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>166, 22</value>
   </data>
   <data name="BackupDirectoryToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Backup directory...</value>
+  </data>
+  <data name="ToolStripDropDownButton2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAgxJREFUOE+lkvtL
+        U2EYx+0PEbtpFwnBKPGKiJImGP0gYhIYs1E5GF5gIxkpA00JRSmMEF0ohMh+GaRWYlqabMVcNdS2QpaI
+        VqiDIYhk397vA6fXhCjyhYdzeM/5fp7vczkAdeL2cwho7v/wWzT1zcN+Pwhr51uY2/y41PQaF+wzKKiZ
+        QvaN58g0jyLd5KEUcQbg+84P/Cm2tncQjW3j68YWIqubCC3FcOJc478BAuGoZM6zvoRnakXEruEIjhc4
+        /g5gZop9c+voGAyLbQIfeBZxLL9BA1jzXvuGbWamuKh+GmmVbswE19A59FEBbmoAG7YbsLtm2mZmiml9
+        cvabNDwpz6YB7LYBoMXCumkJr7LOmnnHzBQ/9X2Bo2cOibm1GsBREbAQiYmw/8lnuCeWkVzcgnZlnw1j
+        3HV/wuNXK6i/9x5Hc6wawDlTXHbLJ+LZUBQPRyKwdQdxutwl1h+NLXHh5Ht1ewBHsiwawCW57HyDAfWR
+        dvl0uhZQ1eqX8aVc7EKLqrum651ATLf9OJx5XQM4KmY0xPzZ0hFAiQJnXB0WwME0E3IsL5B17ZlADqWb
+        NYDrOepdlcysmTWWOrxqbceRWtaLk0VO1XW72D5Vckd2gMBfq8zdpmUG62NJvKM4+XyziDk24xmfWoGE
+        s1c0gHPmbrPTpHNJKOCo2G1mZs20zcwUJ5yp1AB5+8/zEwgF5GMVDxh4AAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="ToolStripDropDownButton2.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="ToolStripDropDownButton2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>57, 22</value>
+  </data>
+  <data name="ToolStripDropDownButton2.Text" xml:space="preserve">
+    <value>&amp;Options</value>
+  </data>
+  <data name="AboutToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>128, 22</value>
+  </data>
+  <data name="AboutToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;About</value>
+  </data>
+  <data name="tsmHomePage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>128, 22</value>
+  </data>
+  <data name="tsmHomePage.Text" xml:space="preserve">
+    <value>Home Page</value>
+  </data>
+  <data name="ToolStripDropDownButton1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAgxJREFUOE+lkvtL
+        U2EYx+0PEbtpFwnBKPGKiJImGP0gYhIYs1E5GF5gIxkpA00JRSmMEF0ohMh+GaRWYlqabMVcNdS2QpaI
+        VqiDIYhk397vA6fXhCjyhYdzeM/5fp7vczkAdeL2cwho7v/wWzT1zcN+Pwhr51uY2/y41PQaF+wzKKiZ
+        QvaN58g0jyLd5KEUcQbg+84P/Cm2tncQjW3j68YWIqubCC3FcOJc478BAuGoZM6zvoRnakXEruEIjhc4
+        /g5gZop9c+voGAyLbQIfeBZxLL9BA1jzXvuGbWamuKh+GmmVbswE19A59FEBbmoAG7YbsLtm2mZmiml9
+        cvabNDwpz6YB7LYBoMXCumkJr7LOmnnHzBQ/9X2Bo2cOibm1GsBREbAQiYmw/8lnuCeWkVzcgnZlnw1j
+        3HV/wuNXK6i/9x5Hc6wawDlTXHbLJ+LZUBQPRyKwdQdxutwl1h+NLXHh5Ht1ewBHsiwawCW57HyDAfWR
+        dvl0uhZQ1eqX8aVc7EKLqrum651ATLf9OJx5XQM4KmY0xPzZ0hFAiQJnXB0WwME0E3IsL5B17ZlADqWb
+        NYDrOepdlcysmTWWOrxqbceRWtaLk0VO1XW72D5Vckd2gMBfq8zdpmUG62NJvKM4+XyziDk24xmfWoGE
+        s1c0gHPmbrPTpHNJKOCo2G1mZs20zcwUJ5yp1AB5+8/zEwgF5GMVDxh4AAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="ToolStripDropDownButton1.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="ToolStripDropDownButton1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>41, 22</value>
+  </data>
+  <data name="ToolStripDropDownButton1.Text" xml:space="preserve">
+    <value>&amp;Help</value>
+  </data>
+  <data name="toolStrip.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="toolStrip.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="toolStrip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>726, 25</value>
+  </data>
+  <data name="toolStrip.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;toolStrip.Name" xml:space="preserve">
+    <value>toolStrip</value>
+  </data>
+  <data name="&gt;&gt;toolStrip.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStrip.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;toolStrip.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <metadata name="fileSaveDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>167, 54</value>
@@ -2649,15 +2594,6 @@
   <metadata name="menuRightClickFolders.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>412, 54</value>
   </metadata>
-  <data name="menuRightClickFolders.Size" type="System.Drawing.Size, System.Drawing">
-    <value>159, 126</value>
-  </data>
-  <data name="&gt;&gt;menuRightClickFolders.Name" xml:space="preserve">
-    <value>menuRightClickFolders</value>
-  </data>
-  <data name="&gt;&gt;menuRightClickFolders.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="ToolStripMenuItemNewFolder.Size" type="System.Drawing.Size, System.Drawing">
     <value>158, 22</value>
   </data>
@@ -2694,6 +2630,15 @@
   <data name="ToolStripMenuItemDeleteFolder.Text" xml:space="preserve">
     <value>&amp;Delete Folder</value>
   </data>
+  <data name="menuRightClickFolders.Size" type="System.Drawing.Size, System.Drawing">
+    <value>159, 126</value>
+  </data>
+  <data name="&gt;&gt;menuRightClickFolders.Name" xml:space="preserve">
+    <value>menuRightClickFolders</value>
+  </data>
+  <data name="&gt;&gt;menuRightClickFolders.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <metadata name="folderBrowserDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>576, 54</value>
   </metadata>
@@ -2707,13 +2652,13 @@
     <value>True</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>75</value>
+    <value>58</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 12</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>730, 551</value>
+    <value>726, 551</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
