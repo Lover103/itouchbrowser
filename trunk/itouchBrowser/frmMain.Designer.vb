@@ -7,11 +7,11 @@ Partial Class frmMain
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         With My.Settings
             .ConfirmDeletions = ConfirmDeletionsToolStripMenuItem.Checked
-            .PCToiPhonePNG = bConvertToiPhonePNG
-            .iPhoneToPCPNG = bConvertToPNG
-            .ShowPreviews = bShowPreview
-            .IgnoreThumbsFile = bIgnoreThumbsFile
-            .IgnoreDSStoreFile = bIgnoreDSStoreFile
+            .PCToiPhonePNG = Config.bConvertToiPhonePNG
+            .iPhoneToPCPNG = Config.bConvertToPNG
+            .ShowPreviews = Config.bShowPreview
+            .IgnoreThumbsFile = Config.bIgnoreThumbsFile
+            .IgnoreDSStoreFile = Config.bIgnoreDSStoreFile
             .FavNames = favNames
             .FavPaths = favPaths
             .ShowGroups = cmdShowGroups.Checked
@@ -58,12 +58,13 @@ Partial Class frmMain
         Me.imgFilesLarge = New System.Windows.Forms.ImageList(Me.components)
         Me.imgFilesSmall = New System.Windows.Forms.ImageList(Me.components)
         Me.grpDetails = New System.Windows.Forms.GroupBox
-        Me.Panel1 = New System.Windows.Forms.Panel
-        Me.btnPreview = New System.Windows.Forms.Button
+        Me.chkZoom = New System.Windows.Forms.CheckBox
+        Me.lblMovieName = New System.Windows.Forms.Label
         Me.chkPreviewEnabled = New System.Windows.Forms.CheckBox
+        Me.btnPreview = New System.Windows.Forms.Button
         Me.txtFileDetails = New System.Windows.Forms.TextBox
         Me.WebBrws = New System.Windows.Forms.WebBrowser
-        Me.qtPlugin = New AxQTOControlLib.AxQTControl
+        Me.qtPlugin = New iPhoneBrowser.itouchBrowser.QtWrapper
         Me.picFileDetails = New System.Windows.Forms.PictureBox
         Me.tlbStatusStrip = New System.Windows.Forms.StatusStrip
         Me.tlbStatusLabel = New System.Windows.Forms.ToolStripStatusLabel
@@ -177,7 +178,6 @@ Partial Class frmMain
         CType(Me.picBusy, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.menuRightClickFiles.SuspendLayout()
         Me.grpDetails.SuspendLayout()
-        Me.Panel1.SuspendLayout()
         CType(Me.qtPlugin, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picFileDetails, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tlbStatusStrip.SuspendLayout()
@@ -373,7 +373,10 @@ Partial Class frmMain
         '
         'grpDetails
         '
-        Me.grpDetails.Controls.Add(Me.Panel1)
+        Me.grpDetails.Controls.Add(Me.chkZoom)
+        Me.grpDetails.Controls.Add(Me.lblMovieName)
+        Me.grpDetails.Controls.Add(Me.chkPreviewEnabled)
+        Me.grpDetails.Controls.Add(Me.btnPreview)
         Me.grpDetails.Controls.Add(Me.txtFileDetails)
         Me.grpDetails.Controls.Add(Me.WebBrws)
         Me.grpDetails.Controls.Add(Me.qtPlugin)
@@ -382,19 +385,17 @@ Partial Class frmMain
         Me.grpDetails.Name = "grpDetails"
         Me.grpDetails.TabStop = False
         '
-        'Panel1
+        'chkZoom
         '
-        resources.ApplyResources(Me.Panel1, "Panel1")
-        Me.Panel1.Controls.Add(Me.btnPreview)
-        Me.Panel1.Controls.Add(Me.chkPreviewEnabled)
-        Me.Panel1.Name = "Panel1"
+        resources.ApplyResources(Me.chkZoom, "chkZoom")
+        Me.chkZoom.Name = "chkZoom"
+        Me.chkZoom.TabStop = False
+        Me.chkZoom.UseVisualStyleBackColor = True
         '
-        'btnPreview
+        'lblMovieName
         '
-        resources.ApplyResources(Me.btnPreview, "btnPreview")
-        Me.btnPreview.Name = "btnPreview"
-        Me.btnPreview.TabStop = False
-        Me.btnPreview.UseVisualStyleBackColor = True
+        resources.ApplyResources(Me.lblMovieName, "lblMovieName")
+        Me.lblMovieName.Name = "lblMovieName"
         '
         'chkPreviewEnabled
         '
@@ -405,6 +406,13 @@ Partial Class frmMain
         Me.chkPreviewEnabled.Name = "chkPreviewEnabled"
         Me.chkPreviewEnabled.TabStop = False
         Me.chkPreviewEnabled.UseVisualStyleBackColor = True
+        '
+        'btnPreview
+        '
+        resources.ApplyResources(Me.btnPreview, "btnPreview")
+        Me.btnPreview.Name = "btnPreview"
+        Me.btnPreview.TabStop = False
+        Me.btnPreview.UseVisualStyleBackColor = True
         '
         'txtFileDetails
         '
@@ -1043,8 +1051,6 @@ Partial Class frmMain
         Me.menuRightClickFiles.ResumeLayout(False)
         Me.grpDetails.ResumeLayout(False)
         Me.grpDetails.PerformLayout()
-        Me.Panel1.ResumeLayout(False)
-        Me.Panel1.PerformLayout()
         CType(Me.qtPlugin, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.picFileDetails, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tlbStatusStrip.ResumeLayout(False)
@@ -1090,7 +1096,8 @@ Partial Class frmMain
     Friend WithEvents cohSize As System.Windows.Forms.ColumnHeader
     Friend WithEvents cohFiletype As System.Windows.Forms.ColumnHeader
     Friend WithEvents grpDetails As System.Windows.Forms.GroupBox
-    Friend WithEvents qtPlugin As AxQTOControlLib.AxQTControl
+    'Friend WithEvents qtPlugin As AxQTOControlLib.AxQTControl
+    Friend WithEvents qtPlugin As QtWrapper
     Friend WithEvents txtFileDetails As System.Windows.Forms.TextBox
     Friend WithEvents mnuGoTo As System.Windows.Forms.ToolStripDropDownButton
     Friend WithEvents toolStripGoTo1 As System.Windows.Forms.ToolStripMenuItem
@@ -1164,7 +1171,6 @@ Partial Class frmMain
     Friend WithEvents ToolStripMenuItem7 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents btnPreview As System.Windows.Forms.Button
     Friend WithEvents chkPreviewEnabled As System.Windows.Forms.CheckBox
-    Friend WithEvents Panel1 As System.Windows.Forms.Panel
     Friend WithEvents cmdSmallIcons As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem8 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents cmdShowGroups As System.Windows.Forms.ToolStripMenuItem
@@ -1189,5 +1195,7 @@ Partial Class frmMain
     Friend WithEvents tsmCleanUpBackupFiles As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents picDelete As System.Windows.Forms.PictureBox
     Friend WithEvents tsmHomePage As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents chkZoom As System.Windows.Forms.CheckBox
+    Friend WithEvents lblMovieName As System.Windows.Forms.Label
 
 End Class
