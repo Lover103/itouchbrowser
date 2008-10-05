@@ -23,14 +23,14 @@
 スタートメニュー -> すべてのプログラム -> itouchBrowser -> itouchBrowser
 で起動できます。
 
-使用方法：
+= 使用方法 =
 起動後、iPod touchをUSBで接続してください。touch内のフォルダーとファイルを表示します。
 メニュー＞オプション＞バックアップディレクトリを選択し、バックアップ先のディレクトリを指定してください。
 音楽ファイルや動画、アイコンファイルなどを選択すると、表示または演奏します。
 また、そのファイルを選択してメニューから機能を選択することにより、PCへの転送やPCからの書き込みが出来ます。
 
 = 取り扱い =
-New BSD License のiPhoneBrowser (http://code.google.com/p/iphonebrowser/)を改変して作成しています。
+New BSD License のiPhoneBrowser ( http://code.google.com/p/iphonebrowser/ )を改変して作成しています。
 ipodtouchBrowserもNew BSD Licenseとします。
 
 = Screen shot =
