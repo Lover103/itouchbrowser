@@ -1,11 +1,11 @@
 #labels Phase-Deploy
 #itouchBrowser 1.8.0　　　　　　　　　　　　　　　　　2008/10/05
 
-バージョン：1.8.0
-対象OS：Windows XP 日本語または英語
-前提ソフトウエア：
+ * バージョン：1.8.0
+ * 対象OS：Windows XP 日本語または英語
+ * 前提ソフトウエア：
 	Microsoft .NET Framework 2.0
-	iTunes 7 or *8*   http://www.apple.com/jp/itunes/download/
+	iTunes 7 or *8*  ( http://www.apple.com/jp/itunes/download/ )
 
 = 説明 =
  * 本アプリケーションは、iPhone又はiPod touch(jailbreak済み)のファイルシステムにUSB経由でアクセスし、PCとtouch間でファイルのコピー・追加・削除・再生などを実現するものです。
