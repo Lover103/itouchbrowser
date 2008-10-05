@@ -1,5 +1,5 @@
+#summary itouchBrowser 1.8.0　　　　　　2008/10/05
 #labels Phase-Deploy
-#itouchBrowser 1.8.0　　　　　　　　　　　　　　　　　2008/10/05
 
  * バージョン：1.8.0
  * 対象OS：Windows XP 日本語または英語
