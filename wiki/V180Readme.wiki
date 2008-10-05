@@ -18,6 +18,7 @@
 = 導入方法 =
 パッケージは、zip形式で圧縮されています。一般的な圧縮ツールやXPの機能でも展開できます。
 展開後、setup.exeをダブルクリックしてください。
+ * 旧バージョンを御使用の場合でも、そのまま上書き導入が可能です。
 
 = 起動方法 =
 スタートメニュー -> すべてのプログラム -> itouchBrowser -> itouchBrowser
@@ -34,5 +35,10 @@ New BSD License のiPhoneBrowser ( http://code.google.com/p/iphonebrowser/ )を�
 ipodtouchBrowserもNew BSD Licenseとします。
 
 = Screen shot =
- v1.6.0.13
+ * v1.6.0.13
 http://itouchbrowser.googlecode.com/files/screenshot1_6_13.PNG
+
+
+ * v1.7.0.15 バックアップファイル管理画面
+http://itouchbrowser.googlecode.com/files/screenshot1_7_15_FileDuplicationScreen.PNG
+ 重複ファイルの確認削除が可能です。
