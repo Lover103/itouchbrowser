@@ -267,6 +267,54 @@ Namespace My
                 Me("LastPath") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
+        Public Property BackupControl() As Boolean
+            Get
+                Return CType(Me("BackupControl"),Boolean)
+            End Get
+            Set
+                Me("BackupControl") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property DbPath() As String
+            Get
+                Return CType(Me("DbPath"),String)
+            End Get
+            Set
+                Me("DbPath") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
+        Public Property IgnoreCacheFile() As Boolean
+            Get
+                Return CType(Me("IgnoreCacheFile"),Boolean)
+            End Get
+            Set
+                Me("IgnoreCacheFile") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
+        Public Property ShowSongTitle() As Boolean
+            Get
+                Return CType(Me("ShowSongTitle"),Boolean)
+            End Get
+            Set
+                Me("ShowSongTitle") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

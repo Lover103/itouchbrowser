@@ -27,9 +27,13 @@ Partial Class BackupDirDialog
         Me.OK_Button = New System.Windows.Forms.Button
         Me.Cancel_Button = New System.Windows.Forms.Button
         Me.txtPath = New System.Windows.Forms.TextBox
-        Me.Button1 = New System.Windows.Forms.Button
-        Me.Label1 = New System.Windows.Forms.Label
+        Me.btnBackupPath = New System.Windows.Forms.Button
+        Me.lblBackupPath = New System.Windows.Forms.Label
         Me.FolderBrowserDialog1 = New System.Windows.Forms.FolderBrowserDialog
+        Me.txtDbPath = New System.Windows.Forms.TextBox
+        Me.btnDbPath = New System.Windows.Forms.Button
+        Me.lblDbPath = New System.Windows.Forms.Label
+        Me.ckbBackupControl = New System.Windows.Forms.CheckBox
         Me.TableLayoutPanel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -58,16 +62,40 @@ Partial Class BackupDirDialog
         Me.txtPath.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem
         Me.txtPath.Name = "txtPath"
         '
-        'Button1
+        'btnBackupPath
         '
-        resources.ApplyResources(Me.Button1, "Button1")
-        Me.Button1.Name = "Button1"
-        Me.Button1.UseVisualStyleBackColor = True
+        resources.ApplyResources(Me.btnBackupPath, "btnBackupPath")
+        Me.btnBackupPath.Name = "btnBackupPath"
+        Me.btnBackupPath.UseVisualStyleBackColor = True
         '
-        'Label1
+        'lblBackupPath
         '
-        resources.ApplyResources(Me.Label1, "Label1")
-        Me.Label1.Name = "Label1"
+        resources.ApplyResources(Me.lblBackupPath, "lblBackupPath")
+        Me.lblBackupPath.Name = "lblBackupPath"
+        '
+        'txtDbPath
+        '
+        resources.ApplyResources(Me.txtDbPath, "txtDbPath")
+        Me.txtDbPath.Name = "txtDbPath"
+        '
+        'btnDbPath
+        '
+        resources.ApplyResources(Me.btnDbPath, "btnDbPath")
+        Me.btnDbPath.Name = "btnDbPath"
+        Me.btnDbPath.UseVisualStyleBackColor = True
+        '
+        'lblDbPath
+        '
+        resources.ApplyResources(Me.lblDbPath, "lblDbPath")
+        Me.lblDbPath.Name = "lblDbPath"
+        '
+        'ckbBackupControl
+        '
+        resources.ApplyResources(Me.ckbBackupControl, "ckbBackupControl")
+        Me.ckbBackupControl.Checked = True
+        Me.ckbBackupControl.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.ckbBackupControl.Name = "ckbBackupControl"
+        Me.ckbBackupControl.UseVisualStyleBackColor = True
         '
         'BackupDirDialog
         '
@@ -75,10 +103,14 @@ Partial Class BackupDirDialog
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.Cancel_Button
-        Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.lblDbPath)
+        Me.Controls.Add(Me.btnDbPath)
+        Me.Controls.Add(Me.txtDbPath)
+        Me.Controls.Add(Me.lblBackupPath)
+        Me.Controls.Add(Me.btnBackupPath)
         Me.Controls.Add(Me.txtPath)
         Me.Controls.Add(Me.TableLayoutPanel1)
+        Me.Controls.Add(Me.ckbBackupControl)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.MaximizeBox = False
         Me.MinimizeBox = False
@@ -93,8 +125,12 @@ Partial Class BackupDirDialog
     Friend WithEvents OK_Button As System.Windows.Forms.Button
     Friend WithEvents Cancel_Button As System.Windows.Forms.Button
     Friend WithEvents txtPath As System.Windows.Forms.TextBox
-    Friend WithEvents Button1 As System.Windows.Forms.Button
-    Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents btnBackupPath As System.Windows.Forms.Button
+    Friend WithEvents lblBackupPath As System.Windows.Forms.Label
     Friend WithEvents FolderBrowserDialog1 As System.Windows.Forms.FolderBrowserDialog
+    Friend WithEvents txtDbPath As System.Windows.Forms.TextBox
+    Friend WithEvents btnDbPath As System.Windows.Forms.Button
+    Friend WithEvents lblDbPath As System.Windows.Forms.Label
+    Friend WithEvents ckbBackupControl As System.Windows.Forms.CheckBox
 
 End Class

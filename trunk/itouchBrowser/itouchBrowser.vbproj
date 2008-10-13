@@ -63,14 +63,24 @@
     <DebugType>pdbonly</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <Optimize>true</Optimize>
+    <DefineTrace>true</DefineTrace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Setup|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>bin\x86\Setup\</OutputPath>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Interop.QTOLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\sourcev1.2\iPhoneBrowser\bin\Debug\Interop.QTOLibrary.dll</HintPath>
-    </Reference>
-    <Reference Include="Manzana, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files\iPhoneBrowser\Manzana.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -178,6 +188,10 @@
       <SubType>Designer</SubType>
       <DependentUpon>BackupDirDialog.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="BackupDirDialog.ja.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>BackupDirDialog.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BackupDirDialog.resx">
       <SubType>Designer</SubType>
       <DependentUpon>BackupDirDialog.vb</DependentUpon>
@@ -266,7 +280,6 @@
     <None Include="Resources\StringResources.txt" />
     <Content Include="Resources\RingToneLarge.gif" />
     <Content Include="Resources\RingToneSmall.gif" />
-    <Content Include="what%27s new.txt" />
     <None Include="app.config" />
     <None Include="Resources\warning.ico" />
   </ItemGroup>
@@ -281,6 +294,10 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Manzana\Manzana.csproj">
+      <Project>{8C260F85-65AC-40A6-85BF-D89C49052F64}</Project>
+      <Name>Manzana</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SCW_iPhonePNG\SCW_iPhonePNG.csproj">
       <Project>{E85E88FC-5B38-424F-AA49-19CAF50F65F7}</Project>
       <Name>SCW_iPhonePNG</Name>

@@ -136,7 +136,7 @@
     <value>0</value>
   </data>
   <metadata name="imgFolders.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>221, 17</value>
+    <value>336, 17</value>
   </metadata>
   <data name="imgFolders.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
@@ -402,6 +402,9 @@
         YCiOZGmeaKqubOu+cCzPdG3feK7vfO//wKBwSCwaj8ikcslsOp/QqHRKrVqv2Kx2y+16v+CweEwum8/o
         tHrNbrvf8Lh8Tq/b7/i8fs/v+/+AgYKDhIWGh4iJiouMjY6PkJGSk5SVlpeYmTERADs=
 </value>
+  </data>
+  <data name="picDelete.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="picDelete.Location" type="System.Drawing.Point, System.Drawing">
     <value>291, 277</value>
@@ -710,6 +713,9 @@
         Ow==
 </value>
   </data>
+  <data name="picBusy.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="picBusy.Location" type="System.Drawing.Point, System.Drawing">
     <value>392, 277</value>
   </data>
@@ -768,19 +774,19 @@
     <value>140</value>
   </data>
   <metadata name="menuRightClickFiles.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 54</value>
+    <value>254, 54</value>
   </metadata>
   <data name="menuRightSaveAs.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 22</value>
+    <value>173, 22</value>
   </data>
   <data name="menuRightSaveAs.Text" xml:space="preserve">
     <value>Save &amp;As...</value>
   </data>
   <data name="ToolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>141, 6</value>
+    <value>170, 6</value>
   </data>
   <data name="menuRightBackupFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 22</value>
+    <value>173, 22</value>
   </data>
   <data name="menuRightBackupFile.Text" xml:space="preserve">
     <value>&amp;Backup File</value>
@@ -795,34 +801,43 @@
     <value>False</value>
   </data>
   <data name="menuRightRestoreFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 22</value>
+    <value>173, 22</value>
   </data>
   <data name="menuRightRestoreFile.Text" xml:space="preserve">
     <value>&amp;Restore File</value>
   </data>
+  <data name="menuRightDeleteBackupedFile.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="menuRightDeleteBackupedFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>173, 22</value>
+  </data>
+  <data name="menuRightDeleteBackupedFile.Text" xml:space="preserve">
+    <value>D&amp;elete Backuped File</value>
+  </data>
   <data name="ToolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>141, 6</value>
+    <value>170, 6</value>
   </data>
   <data name="cmdRenameFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 22</value>
+    <value>173, 22</value>
   </data>
   <data name="cmdRenameFile.Text" xml:space="preserve">
     <value>Rename File...</value>
   </data>
   <data name="menuRightReplaceFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 22</value>
+    <value>173, 22</value>
   </data>
   <data name="menuRightReplaceFile.Text" xml:space="preserve">
     <value>Re&amp;place File...</value>
   </data>
   <data name="menuRightDeleteFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 22</value>
+    <value>173, 22</value>
   </data>
   <data name="menuRightDeleteFile.Text" xml:space="preserve">
     <value>&amp;Delete File</value>
   </data>
   <data name="menuRightClickFiles.Size" type="System.Drawing.Size, System.Drawing">
-    <value>145, 148</value>
+    <value>174, 170</value>
   </data>
   <data name="&gt;&gt;menuRightClickFiles.Name" xml:space="preserve">
     <value>menuRightClickFiles</value>
@@ -831,7 +846,7 @@
     <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <metadata name="imgFilesLarge.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>336, 13</value>
+    <value>442, 17</value>
   </metadata>
   <data name="imgFilesLarge.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
@@ -1319,13 +1334,13 @@
 </value>
   </data>
   <data name="lstFiles.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 28</value>
+    <value>3, 25</value>
   </data>
   <data name="lstFiles.Size" type="System.Drawing.Size, System.Drawing">
-    <value>468, 300</value>
+    <value>468, 299</value>
   </data>
   <metadata name="imgFilesSmall.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>454, 15</value>
+    <value>17, 54</value>
   </metadata>
   <data name="imgFilesSmall.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
@@ -1446,7 +1461,7 @@
     <value>0, 0</value>
   </data>
   <data name="grpFiles.Size" type="System.Drawing.Size, System.Drawing">
-    <value>474, 331</value>
+    <value>474, 330</value>
   </data>
   <data name="grpFiles.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -1478,6 +1493,138 @@
   <data name="&gt;&gt;splFiles.Panel1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="pnlQt.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <metadata name="menuRightClickQt.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="tsmQtFullscreen.Size" type="System.Drawing.Size, System.Drawing">
+    <value>207, 22</value>
+  </data>
+  <data name="tsmQtFullscreen.Text" xml:space="preserve">
+    <value>Fullscreen</value>
+  </data>
+  <data name="tsmQtFullscreen.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="tsmQtExportDialog.Size" type="System.Drawing.Size, System.Drawing">
+    <value>207, 22</value>
+  </data>
+  <data name="tsmQtExportDialog.Text" xml:space="preserve">
+    <value>Export with Export dialog...</value>
+  </data>
+  <data name="tsmQtMovieInfo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>207, 22</value>
+  </data>
+  <data name="tsmQtMovieInfo.Text" xml:space="preserve">
+    <value>Movie info...</value>
+  </data>
+  <data name="tsmQuickTimeInfo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>207, 22</value>
+  </data>
+  <data name="tsmQuickTimeInfo.Text" xml:space="preserve">
+    <value>Quick Time info...</value>
+  </data>
+  <data name="menuRightClickQt.Size" type="System.Drawing.Size, System.Drawing">
+    <value>208, 92</value>
+  </data>
+  <data name="&gt;&gt;menuRightClickQt.Name" xml:space="preserve">
+    <value>menuRightClickQt</value>
+  </data>
+  <data name="&gt;&gt;menuRightClickQt.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="qtPlugin.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left</value>
+  </data>
+  <data name="qtPlugin.Enabled" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="qtPlugin.Location" type="System.Drawing.Point, System.Drawing">
+    <value>125, 0</value>
+  </data>
+  <data name="qtPlugin.OcxState" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj0yLjAuMC4w
+        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACFTeXN0
+        ZW0uV2luZG93cy5Gb3Jtcy5BeEhvc3QrU3RhdGUBAAAABERhdGEHAgIAAAAJAwAAAA8DAAAAVQAAAAIB
+        AAAAAQAAAAAAAAAAAAAAAEAAAAAACAAA/TAAAJMLAAATAA8AAIATAAAAAAADAAAAAAALAP//AwACAAAA
+        CAACAAAAAAAIAAIAAAAAAAgAAgAAAAAACw==
+</value>
+  </data>
+  <data name="qtPlugin.Size" type="System.Drawing.Size, System.Drawing">
+    <value>474, 112</value>
+  </data>
+  <data name="qtPlugin.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;qtPlugin.Name" xml:space="preserve">
+    <value>qtPlugin</value>
+  </data>
+  <data name="&gt;&gt;qtPlugin.Type" xml:space="preserve">
+    <value>iPhoneBrowser.itouchBrowser.QtWrapper, itouchBrowser, Version=1.8.0.17, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;qtPlugin.Parent" xml:space="preserve">
+    <value>pnlQt</value>
+  </data>
+  <data name="&gt;&gt;qtPlugin.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="lblMovieName.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left</value>
+  </data>
+  <data name="lblMovieName.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="lblMovieName.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 0</value>
+  </data>
+  <data name="lblMovieName.Size" type="System.Drawing.Size, System.Drawing">
+    <value>116, 110</value>
+  </data>
+  <data name="lblMovieName.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="lblMovieName.Text" xml:space="preserve">
+    <value>lblMovieName</value>
+  </data>
+  <data name="&gt;&gt;lblMovieName.Name" xml:space="preserve">
+    <value>lblMovieName</value>
+  </data>
+  <data name="&gt;&gt;lblMovieName.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblMovieName.Parent" xml:space="preserve">
+    <value>pnlQt</value>
+  </data>
+  <data name="&gt;&gt;lblMovieName.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="pnlQt.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 48</value>
+  </data>
+  <data name="pnlQt.Size" type="System.Drawing.Size, System.Drawing">
+    <value>462, 113</value>
+  </data>
+  <data name="pnlQt.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="pnlQt.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;pnlQt.Name" xml:space="preserve">
+    <value>pnlQt</value>
+  </data>
+  <data name="&gt;&gt;pnlQt.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pnlQt.Parent" xml:space="preserve">
+    <value>grpDetails</value>
+  </data>
+  <data name="&gt;&gt;pnlQt.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="chkZoom.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
@@ -1500,6 +1647,9 @@
         3KzMO7+EJyDFivwTWD601ZA1ASTJuuVJuhvycEFc8GuoawJWJNlL0gyTKv0vYOUu/AQZkMf/XhecFgAA
         AABJRU5ErkJggg==
 </value>
+  </data>
+  <data name="chkZoom.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="chkZoom.Location" type="System.Drawing.Point, System.Drawing">
     <value>227, 20</value>
@@ -1529,36 +1679,6 @@
     <value>grpDetails</value>
   </data>
   <data name="&gt;&gt;chkZoom.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="lblMovieName.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="lblMovieName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 20</value>
-  </data>
-  <data name="lblMovieName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>213, 26</value>
-  </data>
-  <data name="lblMovieName.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="lblMovieName.Text" xml:space="preserve">
-    <value>lblMovieName</value>
-  </data>
-  <data name="lblMovieName.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;lblMovieName.Name" xml:space="preserve">
-    <value>lblMovieName</value>
-  </data>
-  <data name="&gt;&gt;lblMovieName.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblMovieName.Parent" xml:space="preserve">
-    <value>grpDetails</value>
-  </data>
-  <data name="&gt;&gt;lblMovieName.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <data name="chkPreviewEnabled.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
@@ -1593,6 +1713,42 @@
   </data>
   <data name="&gt;&gt;chkPreviewEnabled.ZOrder" xml:space="preserve">
     <value>2</value>
+  </data>
+  <data name="qtBuff.Enabled" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="qtBuff.Location" type="System.Drawing.Point, System.Drawing">
+    <value>55, 18</value>
+  </data>
+  <data name="qtBuff.OcxState" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj0yLjAuMC4w
+        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACFTeXN0
+        ZW0uV2luZG93cy5Gb3Jtcy5BeEhvc3QrU3RhdGUBAAAABERhdGEHAgIAAAAJAwAAAA8DAAAAXwAAAAIB
+        AAAAAQAAAAAAAAAAAAAAAEoAAAAACAAAKBEAALACAAATAA8AAIATAAAAAAADAAEAAAALAP//AwAAAAAA
+        CAACAAAAAAAIAAIAAAAAAAgADAAAAEYAYQBsAHMAZQAAAAs=
+</value>
+  </data>
+  <data name="qtBuff.Size" type="System.Drawing.Size, System.Drawing">
+    <value>150, 26</value>
+  </data>
+  <data name="qtBuff.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="qtBuff.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;qtBuff.Name" xml:space="preserve">
+    <value>qtBuff</value>
+  </data>
+  <data name="&gt;&gt;qtBuff.Type" xml:space="preserve">
+    <value>iPhoneBrowser.itouchBrowser.QtWrapper, itouchBrowser, Version=1.8.0.17, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;qtBuff.Parent" xml:space="preserve">
+    <value>grpDetails</value>
+  </data>
+  <data name="&gt;&gt;qtBuff.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="btnPreview.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -1643,7 +1799,7 @@
     <value>grpDetails</value>
   </data>
   <data name="&gt;&gt;btnPreview.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="txtFileDetails.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
@@ -1658,7 +1814,7 @@
     <value>Both</value>
   </data>
   <data name="txtFileDetails.Size" type="System.Drawing.Size, System.Drawing">
-    <value>468, 115</value>
+    <value>468, 116</value>
   </data>
   <data name="txtFileDetails.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1676,7 +1832,7 @@
     <value>grpDetails</value>
   </data>
   <data name="&gt;&gt;txtFileDetails.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="WebBrws.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
@@ -1685,7 +1841,7 @@
     <value>6, 45</value>
   </data>
   <data name="WebBrws.Size" type="System.Drawing.Size, System.Drawing">
-    <value>459, 112</value>
+    <value>459, 113</value>
   </data>
   <data name="WebBrws.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -1703,45 +1859,6 @@
     <value>grpDetails</value>
   </data>
   <data name="&gt;&gt;WebBrws.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="qtPlugin.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
-  </data>
-  <data name="qtPlugin.Enabled" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="qtPlugin.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 45</value>
-  </data>
-  <data name="qtPlugin.OcxState" mimetype="application/x-microsoft.net.object.binary.base64">
-    <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj0yLjAuMC4w
-        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACFTeXN0
-        ZW0uV2luZG93cy5Gb3Jtcy5BeEhvc3QrU3RhdGUBAAAABERhdGEHAgIAAAAJAwAAAA8DAAAAVQAAAAIB
-        AAAAAQAAAAAAAAAAAAAAAEAAAAAACAAA/TAAAJMLAAATAA8AAIATAAAAAAADAAAAAAALAP//AwAEAAAA
-        CAACAAAAAAAIAAIAAAAAAAgAAgAAAAAACw==
-</value>
-  </data>
-  <data name="qtPlugin.Size" type="System.Drawing.Size, System.Drawing">
-    <value>445, 112</value>
-  </data>
-  <data name="qtPlugin.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="qtPlugin.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;qtPlugin.Name" xml:space="preserve">
-    <value>qtPlugin</value>
-  </data>
-  <data name="&gt;&gt;qtPlugin.Type" xml:space="preserve">
-    <value>iPhoneBrowser.itouchBrowser.QtWrapper, itouchBrowser, Version=1.7.0.15, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;qtPlugin.Parent" xml:space="preserve">
-    <value>grpDetails</value>
-  </data>
-  <data name="&gt;&gt;qtPlugin.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
   <data name="picFileDetails.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
@@ -1757,7 +1874,7 @@
     <value>3, 45</value>
   </data>
   <data name="picFileDetails.Size" type="System.Drawing.Size, System.Drawing">
-    <value>468, 115</value>
+    <value>468, 116</value>
   </data>
   <data name="picFileDetails.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
     <value>CenterImage</value>
@@ -1787,7 +1904,7 @@
     <value>0, 0</value>
   </data>
   <data name="grpDetails.Size" type="System.Drawing.Size, System.Drawing">
-    <value>474, 163</value>
+    <value>474, 164</value>
   </data>
   <data name="grpDetails.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1823,7 +1940,7 @@
     <value>474, 498</value>
   </data>
   <data name="splFiles.SplitterDistance" type="System.Int32, mscorlib">
-    <value>331</value>
+    <value>330</value>
   </data>
   <data name="splFiles.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1874,10 +1991,10 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;splMain.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <metadata name="tlbStatusStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>585, 15</value>
+    <value>0, 529</value>
   </metadata>
   <data name="tlbStatusLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -1962,11 +2079,14 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;tlbStatusStrip.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <metadata name="toolStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>107, 18</value>
+    <value>0, 0</value>
   </metadata>
+  <data name="toolStrip.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="tsmFileList.Size" type="System.Drawing.Size, System.Drawing">
     <value>178, 22</value>
   </data>
@@ -1985,10 +2105,10 @@
   <data name="tsmCleanUpBackupFiles.Text" xml:space="preserve">
     <value>&amp;Clean Up Backup Files</value>
   </data>
-  <data name="ToolStripMenuItemCleanUp.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tsmCleanUp.Size" type="System.Drawing.Size, System.Drawing">
     <value>178, 22</value>
   </data>
-  <data name="ToolStripMenuItemCleanUp.Text" xml:space="preserve">
+  <data name="tsmCleanUp.Text" xml:space="preserve">
     <value>&amp;Clean Up Backup Files</value>
   </data>
   <data name="ToolStripMenuItemViewBackups.Size" type="System.Drawing.Size, System.Drawing">
@@ -2051,7 +2171,7 @@
   <data name="ToolStripMenuItemExit.Text" xml:space="preserve">
     <value>E&amp;xit</value>
   </data>
-  <data name="ToolStripMenuItemFile.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="tsmFile.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAgxJREFUOE+lkvtL
@@ -2066,13 +2186,13 @@
         s1c0gHPmbrPTpHNJKOCo2G1mZs20zcwUJ5yp1AB5+8/zEwgF5GMVDxh4AAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="ToolStripMenuItemFile.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+  <data name="tsmFile.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
-  <data name="ToolStripMenuItemFile.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tsmFile.Size" type="System.Drawing.Size, System.Drawing">
     <value>36, 22</value>
   </data>
-  <data name="ToolStripMenuItemFile.Text" xml:space="preserve">
+  <data name="tsmFile.Text" xml:space="preserve">
     <value>&amp;File</value>
   </data>
   <data name="ToolStripMenuItemDetails.Size" type="System.Drawing.Size, System.Drawing">
@@ -2258,70 +2378,70 @@
   <data name="mnuStdApps.Text" xml:space="preserve">
     <value>Standard &amp;Applications</value>
   </data>
-  <data name="ToolStripMenuItem5.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tsmCustomizeFiles.Size" type="System.Drawing.Size, System.Drawing">
     <value>207, 22</value>
   </data>
-  <data name="ToolStripMenuItem5.Text" xml:space="preserve">
+  <data name="tsmCustomizeFiles.Text" xml:space="preserve">
     <value>&amp;Customize Files</value>
   </data>
-  <data name="DockSwapDocksToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tsmDockSwapDocks.Size" type="System.Drawing.Size, System.Drawing">
     <value>207, 22</value>
   </data>
-  <data name="DockSwapDocksToolStripMenuItem.Text" xml:space="preserve">
+  <data name="tsmDockSwapDocks.Text" xml:space="preserve">
     <value>&amp;DockSwap/Customize Docks</value>
   </data>
-  <data name="EBooksToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tsmEBooks.Size" type="System.Drawing.Size, System.Drawing">
     <value>207, 22</value>
   </data>
-  <data name="EBooksToolStripMenuItem.Text" xml:space="preserve">
+  <data name="tsmEBooks.Text" xml:space="preserve">
     <value>E&amp;Books</value>
   </data>
-  <data name="FrotzGamesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tsmFrotzGames.Size" type="System.Drawing.Size, System.Drawing">
     <value>207, 22</value>
   </data>
-  <data name="FrotzGamesToolStripMenuItem.Text" xml:space="preserve">
+  <data name="tsmFrotzGames.Text" xml:space="preserve">
     <value>&amp;Frotz Games</value>
   </data>
-  <data name="cmdGBAROMs.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tsmGBAROMs.Size" type="System.Drawing.Size, System.Drawing">
     <value>207, 22</value>
   </data>
-  <data name="cmdGBAROMs.Text" xml:space="preserve">
+  <data name="tsmGBAROMs.Text" xml:space="preserve">
     <value>&amp;GBA ROMs</value>
   </data>
-  <data name="ToolStripMenuItem6.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tsmIFlashCards.Size" type="System.Drawing.Size, System.Drawing">
     <value>207, 22</value>
   </data>
-  <data name="ToolStripMenuItem6.Text" xml:space="preserve">
+  <data name="tsmIFlashCards.Text" xml:space="preserve">
     <value>iFlashCards</value>
   </data>
-  <data name="InstallerPackageSourcesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tsmInstallerPackageSources.Size" type="System.Drawing.Size, System.Drawing">
     <value>207, 22</value>
   </data>
-  <data name="InstallerPackageSourcesToolStripMenuItem.Text" xml:space="preserve">
+  <data name="tsmInstallerPackageSources.Text" xml:space="preserve">
     <value>&amp;Installer Package Sources</value>
   </data>
-  <data name="ISwitcherThemesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tsmISwitcherThemes.Size" type="System.Drawing.Size, System.Drawing">
     <value>207, 22</value>
   </data>
-  <data name="ISwitcherThemesToolStripMenuItem.Text" xml:space="preserve">
+  <data name="tsmISwitcherThemes.Text" xml:space="preserve">
     <value>i&amp;Switcher Themes</value>
   </data>
-  <data name="NESROMSToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tsmNESROMS.Size" type="System.Drawing.Size, System.Drawing">
     <value>207, 22</value>
   </data>
-  <data name="NESROMSToolStripMenuItem.Text" xml:space="preserve">
+  <data name="tsmNESROMS.Text" xml:space="preserve">
     <value>&amp;NES ROMS</value>
   </data>
-  <data name="TTRToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tsmTTR.Size" type="System.Drawing.Size, System.Drawing">
     <value>207, 22</value>
   </data>
-  <data name="TTRToolStripMenuItem.Text" xml:space="preserve">
+  <data name="tsmTTR.Text" xml:space="preserve">
     <value>&amp;TTR</value>
   </data>
-  <data name="WeDictDictionariesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tsmWeDictDictionaries.Size" type="System.Drawing.Size, System.Drawing">
     <value>207, 22</value>
   </data>
-  <data name="WeDictDictionariesToolStripMenuItem.Text" xml:space="preserve">
+  <data name="tsmWeDictDictionaries.Text" xml:space="preserve">
     <value>&amp;weDict Dictionaries</value>
   </data>
   <data name="mnuThirdPartyApps.Size" type="System.Drawing.Size, System.Drawing">
@@ -2333,10 +2453,10 @@
   <data name="ToolStripSeparator6.Size" type="System.Drawing.Size, System.Drawing">
     <value>230, 6</value>
   </data>
-  <data name="CameraRollToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tsmCameraRoll.Size" type="System.Drawing.Size, System.Drawing">
     <value>233, 22</value>
   </data>
-  <data name="CameraRollToolStripMenuItem.Text" xml:space="preserve">
+  <data name="tsmCameraRoll.Text" xml:space="preserve">
     <value>Camera Roll  (DCIM)</value>
   </data>
   <data name="toolStripGoTo19.Size" type="System.Drawing.Size, System.Drawing">
@@ -2414,23 +2534,35 @@
   <data name="mnuFavorites.Text" xml:space="preserve">
     <value>Favorites</value>
   </data>
-  <data name="ConfirmDeletionsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tsmConfirmDeletions.Size" type="System.Drawing.Size, System.Drawing">
     <value>166, 22</value>
   </data>
-  <data name="ConfirmDeletionsToolStripMenuItem.Text" xml:space="preserve">
+  <data name="tsmConfirmDeletions.Text" xml:space="preserve">
     <value>Confirm Deletions</value>
   </data>
-  <data name="IgnoreThumbsdbToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tsmIgnoreThumbsdb.Size" type="System.Drawing.Size, System.Drawing">
     <value>166, 22</value>
   </data>
-  <data name="IgnoreThumbsdbToolStripMenuItem.Text" xml:space="preserve">
+  <data name="tsmIgnoreThumbsdb.Text" xml:space="preserve">
     <value>Ignore Thumbs.db</value>
   </data>
-  <data name="IgnoreDSStoreToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tsmIgnoreDSStore.Size" type="System.Drawing.Size, System.Drawing">
     <value>166, 22</value>
   </data>
-  <data name="IgnoreDSStoreToolStripMenuItem.Text" xml:space="preserve">
+  <data name="tsmIgnoreDSStore.Text" xml:space="preserve">
     <value>Ignore .DS_Store</value>
+  </data>
+  <data name="tsmIgnoreCacheFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>166, 22</value>
+  </data>
+  <data name="tsmIgnoreCacheFile.Text" xml:space="preserve">
+    <value>Ignore *.cache</value>
+  </data>
+  <data name="tsmBackupControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>166, 22</value>
+  </data>
+  <data name="tsmBackupControl.Text" xml:space="preserve">
+    <value>Backup Control</value>
   </data>
   <data name="tsmIPhoneToPC.Size" type="System.Drawing.Size, System.Drawing">
     <value>138, 22</value>
@@ -2456,19 +2588,25 @@
   <data name="tsmConvertBoth.Text" xml:space="preserve">
     <value>Convert Both</value>
   </data>
-  <data name="ConvertPNGsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tsmConvertPNGs.Size" type="System.Drawing.Size, System.Drawing">
     <value>166, 22</value>
   </data>
-  <data name="ConvertPNGsToolStripMenuItem.Text" xml:space="preserve">
+  <data name="tsmConvertPNGs.Text" xml:space="preserve">
     <value>Convert PNGs</value>
   </data>
   <data name="ToolStripSeparator8.Size" type="System.Drawing.Size, System.Drawing">
     <value>163, 6</value>
   </data>
-  <data name="ShowPreviewsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tsmDisplaySongTitle.Size" type="System.Drawing.Size, System.Drawing">
     <value>166, 22</value>
   </data>
-  <data name="ShowPreviewsToolStripMenuItem.Text" xml:space="preserve">
+  <data name="tsmDisplaySongTitle.Text" xml:space="preserve">
+    <value>Display Song Title</value>
+  </data>
+  <data name="tsmShowPreviews.Size" type="System.Drawing.Size, System.Drawing">
+    <value>166, 22</value>
+  </data>
+  <data name="tsmShowPreviews.Text" xml:space="preserve">
     <value>Show Previews</value>
   </data>
   <data name="BlackToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
@@ -2489,16 +2627,16 @@
   <data name="WhiteToolStripMenuItem.Text" xml:space="preserve">
     <value>White</value>
   </data>
-  <data name="PictureBackgroundToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tsmPictureBackground.Size" type="System.Drawing.Size, System.Drawing">
     <value>166, 22</value>
   </data>
-  <data name="PictureBackgroundToolStripMenuItem.Text" xml:space="preserve">
+  <data name="tsmPictureBackground.Text" xml:space="preserve">
     <value>Picture Background</value>
   </data>
-  <data name="BackupDirectoryToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tsmBackupDirectory.Size" type="System.Drawing.Size, System.Drawing">
     <value>166, 22</value>
   </data>
-  <data name="BackupDirectoryToolStripMenuItem.Text" xml:space="preserve">
+  <data name="tsmBackupDirectory.Text" xml:space="preserve">
     <value>&amp;Backup directory...</value>
   </data>
   <data name="ToolStripDropDownButton2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -2561,6 +2699,51 @@
   <data name="ToolStripDropDownButton1.Text" xml:space="preserve">
     <value>&amp;Help</value>
   </data>
+  <data name="ToolStripSeparator11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 25</value>
+  </data>
+  <data name="tslAddress.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="tslAddress.Size" type="System.Drawing.Size, System.Drawing">
+    <value>49, 22</value>
+  </data>
+  <data name="tslAddress.Text" xml:space="preserve">
+    <value> A&amp;ddress</value>
+  </data>
+  <data name="tstAddress.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="tstAddress.Size" type="System.Drawing.Size, System.Drawing">
+    <value>290, 25</value>
+  </data>
+  <data name="tsbAddress.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="tsbAddress.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAASdJREFUOE+tlI2x
+        hCAQg/dqsid6oqe1Jo4gwbCo55t5OAy/foQs8CnFi9lm/5H2fTdz94KUcirJU9ny1uoomWNbxyxZm0eO
+        EZY9F2YAUOcisWyL9sUbPB2LIx3AOqgwtB9hYQeAQekJ7IoGFECBoh9JlS02VJUTMG5TvWwze1L/opcD
+        iIHmWVCmgVqgfgaN4AmoiriduC2FWj6iO0r1kN48RZNRXaCi9FKh/vCm/qiQZ+kNaASpKiT0zx5u9ecp
+        OB0G4HQOp4DI+ZvOXe2/gmGRW4Xx7p7RvlHmVRnURYW84FEp20/KTKDDQ65ydwv06un5U9jkISddAuON
+        oGehXILCbf8sxTN6t3iIx5FPEN62CRrb/anifMxF9vq1158v7dvDfDcf/chfHZTlFqJngTAAAAAASUVO
+        RK5CYII=
+</value>
+  </data>
+  <data name="tsbAddress.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="tsbAddress.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="tsbAddress.Text" xml:space="preserve">
+    <value>ToolStripButton1</value>
+  </data>
+  <data name="tsbAddress.ToolTipText" xml:space="preserve">
+    <value>Go</value>
+  </data>
   <data name="toolStrip.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
@@ -2583,16 +2766,16 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;toolStrip.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <metadata name="fileSaveDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>167, 54</value>
+    <value>404, 54</value>
   </metadata>
   <metadata name="fileOpenDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>288, 54</value>
+    <value>17, 91</value>
   </metadata>
   <metadata name="menuRightClickFolders.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>412, 54</value>
+    <value>141, 91</value>
   </metadata>
   <data name="ToolStripMenuItemNewFolder.Size" type="System.Drawing.Size, System.Drawing">
     <value>158, 22</value>
@@ -2603,16 +2786,16 @@
   <data name="ToolStripSeparator9.Size" type="System.Drawing.Size, System.Drawing">
     <value>155, 6</value>
   </data>
-  <data name="BackupFolderToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tsmBackupFolder.Size" type="System.Drawing.Size, System.Drawing">
     <value>158, 22</value>
   </data>
-  <data name="BackupFolderToolStripMenuItem.Text" xml:space="preserve">
+  <data name="tsmBackupFolder.Text" xml:space="preserve">
     <value>Backup Folder</value>
   </data>
-  <data name="ToolStripMenuItemSaveFolderIn.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tsmSaveFolderIn.Size" type="System.Drawing.Size, System.Drawing">
     <value>158, 22</value>
   </data>
-  <data name="ToolStripMenuItemSaveFolderIn.Text" xml:space="preserve">
+  <data name="tsmSaveFolderIn.Text" xml:space="preserve">
     <value>Save Folder In...</value>
   </data>
   <data name="cmdRenameFolder.Size" type="System.Drawing.Size, System.Drawing">
@@ -2640,19 +2823,19 @@
     <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <metadata name="folderBrowserDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>576, 54</value>
+    <value>305, 91</value>
   </metadata>
   <data name="folderBrowserDialog.Description" xml:space="preserve">
     <value>Select the destination folder for saving</value>
   </data>
   <metadata name="Timer1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
+    <value>250, 17</value>
   </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>58</value>
+    <value>82</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 12</value>
@@ -2838,6 +3021,9 @@
         ////////////////////////
 </value>
   </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>300, 279</value>
   </data>
@@ -2904,6 +3090,12 @@
   <data name="&gt;&gt;ToolStripMenuItemLoading.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;menuRightDeleteBackupedFile.Name" xml:space="preserve">
+    <value>menuRightDeleteBackupedFile</value>
+  </data>
+  <data name="&gt;&gt;menuRightDeleteBackupedFile.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;ToolStripSeparator1.Name" xml:space="preserve">
     <value>ToolStripSeparator1</value>
   </data>
@@ -2940,6 +3132,30 @@
   <data name="&gt;&gt;imgFilesSmall.Type" xml:space="preserve">
     <value>System.Windows.Forms.ImageList, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;tsmQtFullscreen.Name" xml:space="preserve">
+    <value>tsmQtFullscreen</value>
+  </data>
+  <data name="&gt;&gt;tsmQtFullscreen.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tsmQtExportDialog.Name" xml:space="preserve">
+    <value>tsmQtExportDialog</value>
+  </data>
+  <data name="&gt;&gt;tsmQtExportDialog.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tsmQtMovieInfo.Name" xml:space="preserve">
+    <value>tsmQtMovieInfo</value>
+  </data>
+  <data name="&gt;&gt;tsmQtMovieInfo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tsmQuickTimeInfo.Name" xml:space="preserve">
+    <value>tsmQuickTimeInfo</value>
+  </data>
+  <data name="&gt;&gt;tsmQuickTimeInfo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;tlbStatusLabel.Name" xml:space="preserve">
     <value>tlbStatusLabel</value>
   </data>
@@ -2964,16 +3180,16 @@
   <data name="&gt;&gt;tlbProgressBar.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripProgressBar, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ToolStripMenuItemFile.Name" xml:space="preserve">
-    <value>ToolStripMenuItemFile</value>
+  <data name="&gt;&gt;tsmFile.Name" xml:space="preserve">
+    <value>tsmFile</value>
   </data>
-  <data name="&gt;&gt;ToolStripMenuItemFile.Type" xml:space="preserve">
+  <data name="&gt;&gt;tsmFile.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripDropDownButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ToolStripMenuItemCleanUp.Name" xml:space="preserve">
-    <value>ToolStripMenuItemCleanUp</value>
+  <data name="&gt;&gt;tsmCleanUp.Name" xml:space="preserve">
+    <value>tsmCleanUp</value>
   </data>
-  <data name="&gt;&gt;ToolStripMenuItemCleanUp.Type" xml:space="preserve">
+  <data name="&gt;&gt;tsmCleanUp.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tsmFileList.Name" xml:space="preserve">
@@ -3240,70 +3456,70 @@
   <data name="&gt;&gt;mnuThirdPartyApps.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ToolStripMenuItem5.Name" xml:space="preserve">
-    <value>ToolStripMenuItem5</value>
+  <data name="&gt;&gt;tsmCustomizeFiles.Name" xml:space="preserve">
+    <value>tsmCustomizeFiles</value>
   </data>
-  <data name="&gt;&gt;ToolStripMenuItem5.Type" xml:space="preserve">
+  <data name="&gt;&gt;tsmCustomizeFiles.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;DockSwapDocksToolStripMenuItem.Name" xml:space="preserve">
-    <value>DockSwapDocksToolStripMenuItem</value>
+  <data name="&gt;&gt;tsmDockSwapDocks.Name" xml:space="preserve">
+    <value>tsmDockSwapDocks</value>
   </data>
-  <data name="&gt;&gt;DockSwapDocksToolStripMenuItem.Type" xml:space="preserve">
+  <data name="&gt;&gt;tsmDockSwapDocks.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;EBooksToolStripMenuItem.Name" xml:space="preserve">
-    <value>EBooksToolStripMenuItem</value>
+  <data name="&gt;&gt;tsmEBooks.Name" xml:space="preserve">
+    <value>tsmEBooks</value>
   </data>
-  <data name="&gt;&gt;EBooksToolStripMenuItem.Type" xml:space="preserve">
+  <data name="&gt;&gt;tsmEBooks.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;FrotzGamesToolStripMenuItem.Name" xml:space="preserve">
-    <value>FrotzGamesToolStripMenuItem</value>
+  <data name="&gt;&gt;tsmFrotzGames.Name" xml:space="preserve">
+    <value>tsmFrotzGames</value>
   </data>
-  <data name="&gt;&gt;FrotzGamesToolStripMenuItem.Type" xml:space="preserve">
+  <data name="&gt;&gt;tsmFrotzGames.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;cmdGBAROMs.Name" xml:space="preserve">
-    <value>cmdGBAROMs</value>
+  <data name="&gt;&gt;tsmGBAROMs.Name" xml:space="preserve">
+    <value>tsmGBAROMs</value>
   </data>
-  <data name="&gt;&gt;cmdGBAROMs.Type" xml:space="preserve">
+  <data name="&gt;&gt;tsmGBAROMs.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ToolStripMenuItem6.Name" xml:space="preserve">
-    <value>ToolStripMenuItem6</value>
+  <data name="&gt;&gt;tsmIFlashCards.Name" xml:space="preserve">
+    <value>tsmIFlashCards</value>
   </data>
-  <data name="&gt;&gt;ToolStripMenuItem6.Type" xml:space="preserve">
+  <data name="&gt;&gt;tsmIFlashCards.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;InstallerPackageSourcesToolStripMenuItem.Name" xml:space="preserve">
-    <value>InstallerPackageSourcesToolStripMenuItem</value>
+  <data name="&gt;&gt;tsmInstallerPackageSources.Name" xml:space="preserve">
+    <value>tsmInstallerPackageSources</value>
   </data>
-  <data name="&gt;&gt;InstallerPackageSourcesToolStripMenuItem.Type" xml:space="preserve">
+  <data name="&gt;&gt;tsmInstallerPackageSources.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ISwitcherThemesToolStripMenuItem.Name" xml:space="preserve">
-    <value>ISwitcherThemesToolStripMenuItem</value>
+  <data name="&gt;&gt;tsmISwitcherThemes.Name" xml:space="preserve">
+    <value>tsmISwitcherThemes</value>
   </data>
-  <data name="&gt;&gt;ISwitcherThemesToolStripMenuItem.Type" xml:space="preserve">
+  <data name="&gt;&gt;tsmISwitcherThemes.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;NESROMSToolStripMenuItem.Name" xml:space="preserve">
-    <value>NESROMSToolStripMenuItem</value>
+  <data name="&gt;&gt;tsmNESROMS.Name" xml:space="preserve">
+    <value>tsmNESROMS</value>
   </data>
-  <data name="&gt;&gt;NESROMSToolStripMenuItem.Type" xml:space="preserve">
+  <data name="&gt;&gt;tsmNESROMS.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;TTRToolStripMenuItem.Name" xml:space="preserve">
-    <value>TTRToolStripMenuItem</value>
+  <data name="&gt;&gt;tsmTTR.Name" xml:space="preserve">
+    <value>tsmTTR</value>
   </data>
-  <data name="&gt;&gt;TTRToolStripMenuItem.Type" xml:space="preserve">
+  <data name="&gt;&gt;tsmTTR.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;WeDictDictionariesToolStripMenuItem.Name" xml:space="preserve">
-    <value>WeDictDictionariesToolStripMenuItem</value>
+  <data name="&gt;&gt;tsmWeDictDictionaries.Name" xml:space="preserve">
+    <value>tsmWeDictDictionaries</value>
   </data>
-  <data name="&gt;&gt;WeDictDictionariesToolStripMenuItem.Type" xml:space="preserve">
+  <data name="&gt;&gt;tsmWeDictDictionaries.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;ToolStripSeparator6.Name" xml:space="preserve">
@@ -3312,10 +3528,10 @@
   <data name="&gt;&gt;ToolStripSeparator6.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;CameraRollToolStripMenuItem.Name" xml:space="preserve">
-    <value>CameraRollToolStripMenuItem</value>
+  <data name="&gt;&gt;tsmCameraRoll.Name" xml:space="preserve">
+    <value>tsmCameraRoll</value>
   </data>
-  <data name="&gt;&gt;CameraRollToolStripMenuItem.Type" xml:space="preserve">
+  <data name="&gt;&gt;tsmCameraRoll.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripGoTo19.Name" xml:space="preserve">
@@ -3354,28 +3570,40 @@
   <data name="&gt;&gt;ToolStripDropDownButton2.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripDropDownButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ConfirmDeletionsToolStripMenuItem.Name" xml:space="preserve">
-    <value>ConfirmDeletionsToolStripMenuItem</value>
+  <data name="&gt;&gt;tsmConfirmDeletions.Name" xml:space="preserve">
+    <value>tsmConfirmDeletions</value>
   </data>
-  <data name="&gt;&gt;ConfirmDeletionsToolStripMenuItem.Type" xml:space="preserve">
+  <data name="&gt;&gt;tsmConfirmDeletions.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;IgnoreThumbsdbToolStripMenuItem.Name" xml:space="preserve">
-    <value>IgnoreThumbsdbToolStripMenuItem</value>
+  <data name="&gt;&gt;tsmIgnoreThumbsdb.Name" xml:space="preserve">
+    <value>tsmIgnoreThumbsdb</value>
   </data>
-  <data name="&gt;&gt;IgnoreThumbsdbToolStripMenuItem.Type" xml:space="preserve">
+  <data name="&gt;&gt;tsmIgnoreThumbsdb.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;IgnoreDSStoreToolStripMenuItem.Name" xml:space="preserve">
-    <value>IgnoreDSStoreToolStripMenuItem</value>
+  <data name="&gt;&gt;tsmIgnoreDSStore.Name" xml:space="preserve">
+    <value>tsmIgnoreDSStore</value>
   </data>
-  <data name="&gt;&gt;IgnoreDSStoreToolStripMenuItem.Type" xml:space="preserve">
+  <data name="&gt;&gt;tsmIgnoreDSStore.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ConvertPNGsToolStripMenuItem.Name" xml:space="preserve">
-    <value>ConvertPNGsToolStripMenuItem</value>
+  <data name="&gt;&gt;tsmIgnoreCacheFile.Name" xml:space="preserve">
+    <value>tsmIgnoreCacheFile</value>
   </data>
-  <data name="&gt;&gt;ConvertPNGsToolStripMenuItem.Type" xml:space="preserve">
+  <data name="&gt;&gt;tsmIgnoreCacheFile.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tsmBackupControl.Name" xml:space="preserve">
+    <value>tsmBackupControl</value>
+  </data>
+  <data name="&gt;&gt;tsmBackupControl.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tsmConvertPNGs.Name" xml:space="preserve">
+    <value>tsmConvertPNGs</value>
+  </data>
+  <data name="&gt;&gt;tsmConvertPNGs.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tsmIPhoneToPC.Name" xml:space="preserve">
@@ -3402,16 +3630,22 @@
   <data name="&gt;&gt;ToolStripSeparator8.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ShowPreviewsToolStripMenuItem.Name" xml:space="preserve">
-    <value>ShowPreviewsToolStripMenuItem</value>
+  <data name="&gt;&gt;tsmDisplaySongTitle.Name" xml:space="preserve">
+    <value>tsmDisplaySongTitle</value>
   </data>
-  <data name="&gt;&gt;ShowPreviewsToolStripMenuItem.Type" xml:space="preserve">
+  <data name="&gt;&gt;tsmDisplaySongTitle.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;PictureBackgroundToolStripMenuItem.Name" xml:space="preserve">
-    <value>PictureBackgroundToolStripMenuItem</value>
+  <data name="&gt;&gt;tsmShowPreviews.Name" xml:space="preserve">
+    <value>tsmShowPreviews</value>
   </data>
-  <data name="&gt;&gt;PictureBackgroundToolStripMenuItem.Type" xml:space="preserve">
+  <data name="&gt;&gt;tsmShowPreviews.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tsmPictureBackground.Name" xml:space="preserve">
+    <value>tsmPictureBackground</value>
+  </data>
+  <data name="&gt;&gt;tsmPictureBackground.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;BlackToolStripMenuItem.Name" xml:space="preserve">
@@ -3432,10 +3666,10 @@
   <data name="&gt;&gt;WhiteToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;BackupDirectoryToolStripMenuItem.Name" xml:space="preserve">
-    <value>BackupDirectoryToolStripMenuItem</value>
+  <data name="&gt;&gt;tsmBackupDirectory.Name" xml:space="preserve">
+    <value>tsmBackupDirectory</value>
   </data>
-  <data name="&gt;&gt;BackupDirectoryToolStripMenuItem.Type" xml:space="preserve">
+  <data name="&gt;&gt;tsmBackupDirectory.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;ToolStripDropDownButton1.Name" xml:space="preserve">
@@ -3455,6 +3689,30 @@
   </data>
   <data name="&gt;&gt;tsmHomePage.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ToolStripSeparator11.Name" xml:space="preserve">
+    <value>ToolStripSeparator11</value>
+  </data>
+  <data name="&gt;&gt;ToolStripSeparator11.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tslAddress.Name" xml:space="preserve">
+    <value>tslAddress</value>
+  </data>
+  <data name="&gt;&gt;tslAddress.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripLabel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tstAddress.Name" xml:space="preserve">
+    <value>tstAddress</value>
+  </data>
+  <data name="&gt;&gt;tstAddress.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripTextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tsbAddress.Name" xml:space="preserve">
+    <value>tsbAddress</value>
+  </data>
+  <data name="&gt;&gt;tsbAddress.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;fileSaveDialog.Name" xml:space="preserve">
     <value>fileSaveDialog</value>
@@ -3480,16 +3738,16 @@
   <data name="&gt;&gt;ToolStripSeparator9.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;BackupFolderToolStripMenuItem.Name" xml:space="preserve">
-    <value>BackupFolderToolStripMenuItem</value>
+  <data name="&gt;&gt;tsmBackupFolder.Name" xml:space="preserve">
+    <value>tsmBackupFolder</value>
   </data>
-  <data name="&gt;&gt;BackupFolderToolStripMenuItem.Type" xml:space="preserve">
+  <data name="&gt;&gt;tsmBackupFolder.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ToolStripMenuItemSaveFolderIn.Name" xml:space="preserve">
-    <value>ToolStripMenuItemSaveFolderIn</value>
+  <data name="&gt;&gt;tsmSaveFolderIn.Name" xml:space="preserve">
+    <value>tsmSaveFolderIn</value>
   </data>
-  <data name="&gt;&gt;ToolStripMenuItemSaveFolderIn.Type" xml:space="preserve">
+  <data name="&gt;&gt;tsmSaveFolderIn.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;cmdRenameFolder.Name" xml:space="preserve">

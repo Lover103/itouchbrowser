@@ -18,6 +18,7 @@ Option Strict On
 ' *
 ' =============================================================================
 Imports QTOLibrary
+Imports System.Runtime.InteropServices
 
 Public Class QtWrapper
     Inherits AxQTOControlLib.AxQTControl
@@ -65,6 +66,7 @@ Public Class QtWrapper
     Public Shadows Event VisibleChanged(ByVal visibled As Boolean)
     Public Event AnnotationUpdate(ByVal annotation As String)
     Public Event ShowStatusString(ByVal message As String)
+    Private mvarEventEnabled As Boolean = True
 
     Public Sub New()
         MyBase.New()
@@ -76,6 +78,15 @@ Public Class QtWrapper
 
         MyBase.Finalize()
     End Sub
+
+    Public Property EventEnabled() As Boolean
+        Get
+            Return mvarEventEnabled
+        End Get
+        Set(ByVal value As Boolean)
+            mvarEventEnabled = value
+        End Set
+    End Property
 
     Public Shadows Function QuickTimeInitialize() As Integer
         Dim rc As Integer
@@ -101,6 +112,26 @@ Public Class QtWrapper
         End Try
 
         Return rc
+
+    End Function
+
+    Public Function GetAnnotation(ByVal fname As String) As String
+        Dim rc As Boolean = True
+        Dim annot As String = ""
+
+        Try
+            removeMovieEventListeners(MyBase.Movie)
+            MyBase.FileName = fname
+            'MyBase.AutoPlay = CStr(True)
+            'MyBase.Visible = False
+            MyBase.Refresh()
+            annot = Me.GetAnnotation(MyBase.Movie)
+
+        Catch ex As Exception
+            rc = False
+        End Try
+
+        Return annot
 
     End Function
 
@@ -132,7 +163,8 @@ Public Class QtWrapper
             AndAlso e.statusCode = QTStatusCodesEnum.qtStatusMovieLoadFinalize Then
 
             Dim annot As String = getAnnotation(MyBase.Movie)
-            If annot <> "" Then
+            If annot <> "" AndAlso mvarEventEnabled Then
+
                 Dim listen As QTOLibrary.IQTEventListeners = MyBase.Movie.EventListeners
 
                 listen.RemoveAll()
@@ -164,6 +196,7 @@ Public Class QtWrapper
             End If
             RaiseEvent AnnotationUpdate(annot)
         End If
+
     End Sub
 
     Private Sub qtPlugin_VisibleChanged(ByVal sender As Object, ByVal e As System.EventArgs) _
@@ -177,19 +210,27 @@ Public Class QtWrapper
         Dim str As String = ""
 
         If qtMovie IsNot Nothing Then
-            Dim citems As QTOLibrary.CFObjects = qtMovie.Annotations.ChildItems
-            For i As Integer = 1 To citems.Count
-                Dim item As QTOLibrary.CFObject = citems(i)
-                Select Case item.Key.ToString
-                    Case "arts"
-                        str &= item.Value.ToString & ": "
-                    Case "albm"
-                        str &= item.Value.ToString & ": "
-                    Case "name"
-                        str &= item.Value.ToString & ": "
-                End Select
+            Try
+                'If qtMovie.Active Then
+                Dim citems As QTOLibrary.CFObjects = qtMovie.Annotations.ChildItems
+                For i As Integer = 1 To citems.Count
+                    Dim item As QTOLibrary.CFObject = citems(i)
+                    Select Case item.Key.ToString
+                        Case "arts"
+                            str &= item.Value.ToString & ": "
+                        Case "albm"
+                            str &= item.Value.ToString & ": "
+                        Case "name"
+                            str &= item.Value.ToString & ": "
+                    End Select
 
-            Next
+                Next
+                'End If
+
+            Catch ex As Exception
+                MsgBox(ex.Message, MsgBoxStyle.Exclamation)
+            End Try
+
         End If
 
         Return str
@@ -203,6 +244,41 @@ Public Class QtWrapper
             ' Remove all event listeners
             myMovie.EventListeners.RemoveAll()
         End If
+    End Sub
+
+    Public Sub ShowExportDialog()
+        If Me.Movie Is Nothing Then Return
+
+        ' Perform export with user configured settings.
+        ' If you want to allow the user to configure
+        ' everything (exporter type, file, options:
+        ' same as QuickTime Player Export) then use the following:
+
+        Try
+            Dim qt As QTOLibrary.QTQuickTime = Me.QuickTime
+
+            If qt.Exporters.Count = 0 Then
+                qt.Exporters.Add()
+            End If
+
+            Dim ex As QTOLibrary.QTExporter = qt.Exporters(1)
+
+            ' Set exporter data source - could also be a track
+            ex.SetDataSource(Me.Movie)
+            ' Display the export dialog
+            ex.ShowExportDialog()
+
+        Catch ex As COMException
+
+            If ex.ErrorCode <> -2147156096 Then    ' Ignore Cancel
+                MessageBox.Show("Error code: " & ex.ErrorCode.ToString("X"), "Export Error")
+            End If
+
+        Catch ex As Exception
+            MessageBox.Show(ex.ToString(), "Export Error")
+
+        End Try
+
     End Sub
 
 End Class
