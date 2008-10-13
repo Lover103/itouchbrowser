@@ -20,13 +20,18 @@ Module ModuleMain
     Friend ProgressBars(MAX_PROG_DEPTH) As ToolStripProgressBar
     Friend ProgressValue(MAX_PROG_DEPTH) As Integer
     Friend ProgressEscapeFlg As Boolean = False
+    Friend ProgressFullSize As Long = 0
+    Friend ProgressSize As Long = 0
 
     Public Structure structConfig
         Friend bShowPreview As Boolean
         Friend bIgnoreThumbsFile As Boolean
         Friend bIgnoreDSStoreFile As Boolean
+        Friend bIgnoreCacheFile As Boolean
         Friend bConvertToiPhonePNG As Boolean
         Friend bConvertToPNG As Boolean
+        Friend bBackupControled As Boolean
+        Friend bShowSongTitle As Boolean
     End Structure
 
     Friend Config As structConfig
@@ -63,18 +68,11 @@ Module ModuleMain
             objMain.Cursor = Cursors.WaitCursor
             objMain.Enabled = False
 
-            Dim sql As String = "SELECT * FROM list.txt ORDER BY tstp desc"
-            Dim sortKey As String = "FileName,tstp"
-
-            ObjDb = ModuleMain.GetBackupList(sql, sortKey)
-            If ObjDb Is Nothing Then
-                message = String.Format(My.Resources.String43, GetBackupPath(True))
-                If MsgBox(message, MsgBoxStyle.Exclamation Or MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
-                    Dim dialog As New BackupDirDialog
-                    dialog.ShowDialog(objMain)
-                    dialog.Dispose()
-                    ObjDb = ModuleMain.GetBackupList(sql, sortKey)
-                End If
+            If My.Settings.BackupControl Then
+                Config.bBackupControled = True
+                ObjDb = ModuleMain.GetBackupList()
+            Else
+                objMain.cohAttribute.Width = 0
             End If
 
             objMain.Show()
@@ -86,17 +84,30 @@ Module ModuleMain
             objMain.Enabled = True
 
             If ObjDb Is Nothing Then
-                objMain.ToolStripMenuItemCleanUp.Enabled = False
-            ElseIf ObjDb.FileCount = 0 Then
+                objMain.tsmCleanUp.Enabled = False
+            ElseIf ObjDb.FileCount <= 0 Then
                 message = My.Resources.String41 & vbCrLf & My.Resources.String42
                 If MsgBox(message, MsgBoxStyle.Information Or MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
-                    objMain.restructureDB()
+                    Dim dialog As New BackupDirDialog
+                    Dim rc As DialogResult = dialog.ShowDialog(objMain)
+                    dialog.Dispose()
+                    If rc = DialogResult.OK Then
+                        objMain.restructureDB()
+                    Else
+                        objMain.tsmBackupControl.Checked = False
+                    End If
+                Else
+                    objMain.tsmBackupControl.Checked = False
                 End If
             End If
 
             objMain.Cursor = Cursors.Default
 
             System.Windows.Forms.Application.Run(objMain)
+
+            If ObjDb IsNot Nothing Then
+                ObjDb.ExportDB()
+            End If
 
             Exit Sub
 
@@ -118,7 +129,12 @@ Module ModuleMain
         MessageBeep(MessageBeepType.Warning)
     End Sub
 
-    Friend Function StartStatus(ByVal iMax As Integer) As Integer
+    Friend Sub ResetStatus()
+        objMain.Timer1.Enabled = False
+        ProgressDepth = -1
+    End Sub
+
+    Friend Function StartStatus(ByVal iMax As Integer, ByVal fileSize As Long) As Integer
         ProgressDepth += 1
         If ProgressDepth <= MAX_PROG_DEPTH Then
             If ProgressDepth = 0 Then ' first bar - turn all on
@@ -133,6 +149,7 @@ Module ModuleMain
             End If
             ProgressBars(ProgressDepth).Maximum = iMax + 1
             ProgressValue(ProgressDepth) = 0
+            ProgressFullSize = fileSize
             objMain.Timer1.Enabled = True
         End If
         Return ProgressDepth
@@ -155,6 +172,7 @@ Module ModuleMain
                         ProgressBars(j1).Visible = False
                     Next
                     objMain.BtnCancel.Visible = False
+                    ProgressFullSize = 0
                 End If
             End If
             ProgressDepth -= 1
@@ -162,10 +180,11 @@ Module ModuleMain
         objMain.tlbStatusStrip.Refresh()
     End Sub
 
-    Friend Function IncrementStatus() As Boolean
+    Friend Function IncrementStatus(ByVal curVal As Long) As Boolean
         If ProgressDepth <= MAX_PROG_DEPTH Then
             Try
                 ProgressValue(ProgressDepth) += 1
+                ProgressSize = curVal
                 Application.DoEvents()
             Catch
                 'ProgressEscapeFlg = True
@@ -189,12 +208,28 @@ Module ModuleMain
         Return sTemp
     End Function
 
+    ''' <summary>
+    ''' File copy from iPhone
+    ''' </summary>
+    ''' <param name="sourceOnPhone"></param>
+    ''' <param name="destinationOnComputer"></param>
+    ''' <returns>
+    '''    integer >0 file size
+    '''            -1 Error
+    '''            -2 Escaped
+    ''' </returns>
+    ''' <remarks></remarks>
     Friend Function CopyFromPhone(ByVal sourceOnPhone As String, ByVal destinationOnComputer As String) As Long
-        Dim sBuffer(8191) As Byte
+        'Dim sBuffer(8191) As Byte
+        Dim sBuffer(32767) As Byte
         Dim iDataBytes As Integer
         Dim iPhoneFileInterface As iPhoneFile
         Dim fileTemp As FileStream
-        Dim bReturn As Long = -1
+        Dim bReturn As Long = -1    'Error
+
+        If Config.bIgnoreCacheFile AndAlso sourceOnPhone.EndsWith(".cache") Then
+            Return -2 'No copy. pretend copying was ok, but don't copy cache.
+        End If
 
         'remove our local file if it exists
         If File.Exists(destinationOnComputer) Then
@@ -207,7 +242,8 @@ Module ModuleMain
 
         'make sure the source file exists
         If iPhoneInterface.Exists(sourceOnPhone) Then
-            Dim depth As Integer = StartStatus(CInt(iPhoneInterface.FileSize(sourceOnPhone) / sBuffer.Length)) 'show our progress bar
+            Dim fSize As Long = iPhoneInterface.FileSize(sourceOnPhone)
+            Dim depth As Integer = StartStatus(CInt(fSize / sBuffer.Length), fSize) 'show our progress bar
 
             'open a connection to the file and read it
             Try
@@ -221,28 +257,36 @@ Module ModuleMain
             End Try
 
             Try
-                Dim fsize As Long = 0
+                Dim curSize As Long = 0
                 If depth = 0 Then objMain.lstFiles.Enabled = False
                 fileTemp = File.OpenWrite(destinationOnComputer)
                 iDataBytes = iPhoneFileInterface.Read(sBuffer, 0, sBuffer.Length)
                 While iDataBytes > 0
                     fileTemp.Write(sBuffer, 0, iDataBytes)
-                    fsize += iDataBytes
+                    curSize += iDataBytes
                     iDataBytes = iPhoneFileInterface.Read(sBuffer, 0, sBuffer.Length)
-                    If IncrementStatus() Then Exit While 'increment our progressbar
+                    If IncrementStatus(curSize) Then
+                        fSize = -2
+                        Exit While 'increment our progressbar
+                    End If
                 End While
                 EndStatus() 'fill our progressbar
 
                 iPhoneFileInterface.Close()
                 iPhoneFileInterface.Dispose()
                 fileTemp.Close()
+                If fsize = -2 Then
+                    File.Delete(destinationOnComputer)
+                End If
 
                 bReturn = fsize
 
             Catch exio As IOException
                 StatusWarning(exio.Message)
+                bReturn = -1
             Catch ex As Exception
                 StatusWarning(ex.Message)
+                bReturn = -1
             Finally
                 If depth = 0 Then
                     objMain.lstFiles.Enabled = True
@@ -259,7 +303,8 @@ Module ModuleMain
     End Function
 
     Friend Function CopyQueueFromPhone(ByVal sourceOnPhone As String, ByRef destinationOnComputer As String) As Integer
-        Dim sBuffer(8191) As Byte
+        'Dim sBuffer(8191) As Byte
+        Dim sBuffer(65535) As Byte
         Dim iDataBytes As Integer
         Dim iPhoneFileInterface As iPhoneFile
         Dim fileTemp As FileStream
@@ -298,7 +343,17 @@ Module ModuleMain
                 Return bReturn
             End Try
 
-            Dim depth As Integer = StartStatus(CInt(iPhoneInterface.FileSize(sourceOnPhone) / sBuffer.Length)) 'show our progress bar
+            'show our progress bar
+            Dim buffSize As Integer = sBuffer.Length
+            Dim fSize As Long = iPhoneInterface.FileSize(sourceOnPhone)
+            Dim cnt As Integer = CInt(fSize / buffSize)
+            If cnt > 100 Then
+                buffSize *= 2
+                cnt \= 2
+                ReDim sBuffer(buffSize - 1)
+            End If
+            Dim depth As Integer = StartStatus(cnt, fSize)
+
             Try
                 If depth = 0 Then objMain.lstFiles.Enabled = False
                 fileTemp = File.OpenWrite(destinationOnComputer)
@@ -310,14 +365,16 @@ Module ModuleMain
             End Try
 
             Try
-                iDataBytes = iPhoneFileInterface.Read(sBuffer, 0, sBuffer.Length)
+                Dim curSize As Long = 0
+                iDataBytes = iPhoneFileInterface.Read(sBuffer, 0, buffSize)
                 While iDataBytes > 0
+                    curSize += iDataBytes
                     fileTemp.Write(sBuffer, 0, iDataBytes)
-                    iDataBytes = iPhoneFileInterface.Read(sBuffer, 0, sBuffer.Length)
-                    If IncrementStatus() Then
+                    If IncrementStatus(curSize) Then
                         bReturn = 1
                         Exit Try 'increment our progressbar
                     End If
+                    iDataBytes = iPhoneFileInterface.Read(sBuffer, 0, buffSize)
                 End While
 
                 bReturn = 0
@@ -329,6 +386,7 @@ Module ModuleMain
                 iPhoneFileInterface.Close()
                 iPhoneFileInterface.Dispose()
                 fileTemp.Close()
+                fileTemp.Dispose()
                 EndStatus() 'fill our progressbar
 
                 If depth = 0 Then
@@ -408,22 +466,26 @@ Module ModuleMain
         Dim iPhoneFileInterface As iPhoneFile
         Dim sPath As String, sFile As String
         Dim fileTemp As FileStream
-        Dim sBuffer(8191) As Byte, iDataBytes As Integer
+        'Dim sBuffer(8191) As Byte
+        Dim sBuffer(32767) As Byte
+        Dim iDataBytes As Integer
 
-        If Config.bIgnoreThumbsFile AndAlso Path.GetFileName(sPC) = "Thumbs.db" Then
+        If Config.bIgnoreThumbsFile AndAlso sPC.EndsWith("\Thumbs.db") Then
             Return True ' pretend copying was ok, but don't copy thumbs
         End If
 
-        If Config.bIgnoreDSStoreFile AndAlso Path.GetFileName(sPC) = ".DS_Store" Then
+        If Config.bIgnoreDSStoreFile AndAlso sPC.EndsWith("\.DS_Store") Then
             Return True ' pretend copying was ok, but don't copy .DS_Store files
+        End If
+
+        If Config.bIgnoreCacheFile AndAlso sPC.EndsWith(".cache") Then
+            Return True ' pretend copying was ok, but don't copy *.cache files
         End If
 
         'see if the destination file exists
         If iPhoneInterface.Exists(dPhone) Then
             'it exists, back it up before overwriting
-            'sPath = Microsoft.VisualBasic.Left(dPhone, InStrRev(dPhone, "/"))
             sPath = dPhone.Substring(0, dPhone.LastIndexOf("/") + 1)
-            'sFile = Mid(dPhone, InStrRev(dPhone, "/") + 1)
             sFile = dPhone.Substring(dPhone.LastIndexOf("/") + 2)
             BackupFileFromPhone(sPath, sFile)
         End If
@@ -432,11 +494,26 @@ Module ModuleMain
         iPhoneFileInterface = iPhoneFile.OpenWrite(iPhoneInterface, dPhone)
         'open a connection locally for read
         fileTemp = File.OpenRead(sPC)
-        StartStatus(CInt(fileTemp.Length / sBuffer.Length)) 'show our progress bar
 
+        Dim buffSize As Integer = sBuffer.Length
+        Dim cnt As Integer = CInt(fileTemp.Length / buffSize)
+        If cnt > 100 Then
+            buffSize *= 2
+            cnt \= 2
+            If cnt > 500 Then
+                buffSize *= 2
+                cnt \= 2
+            End If
+            ReDim sBuffer(buffSize - 1)
+        End If
+
+        StartStatus(cnt, fileTemp.Length) 'show our progress bar
+
+        Dim curSize As Long = 0
         iDataBytes = fileTemp.Read(sBuffer, 0, sBuffer.Length)
         While iDataBytes > 0
-            If IncrementStatus() Then Exit While 'increment our progressbar
+            curSize += iDataBytes
+            If IncrementStatus(curSize) Then Exit While 'increment our progressbar
             iPhoneFileInterface.Write(sBuffer, 0, iDataBytes)
             iDataBytes = fileTemp.Read(sBuffer, 0, sBuffer.Length)
         End While
@@ -495,7 +572,7 @@ Module ModuleMain
             Next
 
             ' update TreeView
-            AddFoldersBeneath(objMain.trvFolders.SelectedNode)
+            ModuleMain.AddFoldersBeneath(objMain.trvFolders.SelectedNode)
 
             bReturn = True
         End If
@@ -531,11 +608,13 @@ Module ModuleMain
             End If
 
             'copy file into the backup directory
-            Dim len As Long = CopyFromPhone(sSourcePath & sSourceFile, sDestinationPath & sDestinationFile)
+            Dim len As Long = ModuleMain.CopyFromPhone(sSourcePath & sSourceFile, sDestinationPath & sDestinationFile)
             If len > -1 Then
-                ObjDb.AddFilenameToDB(GetBackupPath(True) & "\list.txt", Now, mvarBackupSubPath, sSourcePath & sSourceFile, len)
+                ObjDb.AddFilenameToDB(Now, mvarBackupSubPath, sSourcePath & sSourceFile, len)
+            ElseIf len = -1 Then    'error
+                ObjDb.AddFilenameToDB(Now, "Error", sSourcePath & sSourceFile, len)
             Else
-                ObjDb.AddFilenameToDB(GetBackupPath(True) & "\list.txt", Now, "Error", sSourcePath & sSourceFile, len)
+                'NOP Skip copy
             End If
             rc = 0
             'StatusNormal("Backed up as '" & sDestinationFile & "'.")
@@ -565,8 +644,7 @@ Module ModuleMain
         Dim rc As Integer
 
         rc = BackupDirectory(sPath, 0)
-        'reget of backup data
-        ObjDb.ReSelect()
+
         'redraw file list
         objMain.LoadFiles()
 
@@ -579,23 +657,22 @@ Module ModuleMain
             Dim rc As Integer = 0
             Dim tmp As String() = iPhoneInterface.GetFiles(sPath)
 
-            StartStatus(tmp.Length)
+            StartStatus(tmp.Length, 0)
             For Each sFile As String In tmp
                 If BackupFileFromPhone(sPath, sFile) < 0 Then
                     'ResetiPhone()
                     'Exit For
                     ProgressEscapeFlg = False
                 End If
-                If IncrementStatus() Then Exit For
-                'Application.DoEvents()
+                If IncrementStatus(0) Then Exit For
             Next
             EndStatus()
 
             tmp = iPhoneInterface.GetDirectories(sPath)
-            StartStatus(tmp.Length)
+            StartStatus(tmp.Length, 0)
             For Each sDir As String In tmp
                 rc = backupDirectory(sPath & "/" & sDir, depth + 1)
-                If IncrementStatus() AndAlso depth = 0 Then Exit For
+                If IncrementStatus(0) AndAlso depth = 0 Then Exit For
                 If rc <> 0 Then Exit For
             Next
             EndStatus()
@@ -905,15 +982,23 @@ Module ModuleMain
     End Sub
 
     Friend Function GetBackupPath(ByVal root As Boolean) As String
+        Dim dir As String
         If root Then
-            Return Path.Combine(My.Settings.BackupPath, BACKUP_DIRECTORY)
+            dir = My.Settings.BackupPath & "\" & BACKUP_DIRECTORY
         Else
-            Return Path.Combine(My.Settings.BackupPath, BACKUP_DIRECTORY & mvarBackupSubPath)
+            dir = My.Settings.BackupPath & "\" & BACKUP_DIRECTORY & mvarBackupSubPath
         End If
+
+        If dir.EndsWith("\") Then
+            dir = dir.Substring(0, dir.Length - 1)
+        End If
+
+        Return dir
+
     End Function
 
     Friend Sub AddFoldersBeneath(ByVal aNode As TreeNode)
-        AddFolders(NodeiPhonePath(aNode), aNode)
+        AddFolders(ModuleMain.NodeiPhonePath(aNode), aNode)
     End Sub
 
     ''' <summary>
@@ -943,7 +1028,7 @@ Module ModuleMain
 
             If sFolders.Length > 0 Then
                 Try
-                    StartStatus(sFolders.Length)
+                    StartStatus(sFolders.Length, 0)
 
                     For Each sFolder As String In sFolders
                         sbpath = sPath & "/" & sFolder
@@ -956,12 +1041,12 @@ Module ModuleMain
 
                         'now make the recursive call on this folder
                         If iDepth < 1 Then ' only load first tree level beneath
-                            AddFolders(sbpath, newNode, iDepth + 1)
+                            ModuleMain.AddFolders(sbpath, newNode, iDepth + 1)
                         Else
                             bSkip = True
                         End If
 
-                        If IncrementStatus() Then Exit For
+                        If IncrementStatus(0) Then Exit For
                     Next
 
                 Finally
@@ -1032,36 +1117,50 @@ Module ModuleMain
 
     Friend ObjDb As DbManager
 
-    Friend Function GetBackupList(ByVal sql As String, ByVal key As String) As DbManager
+    Friend Function GetDbInstance(ByVal sql As String, ByVal key As String) As DbManager
         Dim rc As Integer = 0
         Dim oDb As New DbManager("Microsoft.Jet.OLEDB.4.0")
-        Dim dbSource As String = GetBackupPath(True)
+        Dim dbSource As String = My.Settings.DbPath
+
+        If dbSource = "" Then
+            dbSource = ModuleMain.GetBackupPath(True)
+            My.Settings.DbPath = dbSource
+        End If
         oDb.Source = dbSource
 
-        If Not File.Exists(dbSource & "schema.ini") Then
-            Dim val As String
-            val = "[list.txt]" & vbCrLf _
-                & "ColNameHeader=False" & vbCrLf _
-                & "Format=CSVDelimited" & vbCrLf _
-                & "Col1=tstp Text" & vbCrLf _
-                & "Col2=BackupFolder Text" & vbCrLf _
-                & "Col3=FileName Text" & vbCrLf _
-                & "Col4=FileSize Long" & vbCrLf
-
-            rc = oDb.CreateSchema(dbSource, val)
-            If rc < 0 Then
-                Return Nothing
-            End If
-
-            If Not File.Exists(dbSource & "list.txt") Then
-                File.AppendAllText(dbSource & "list.txt", "")
-            End If
-        End If
-
         oDb.SelectOLEDB(sql, key)
-        oDb.Sort = "FileName"    ', tstp desc"
+        'oDb.Sort = "BackupFolder, FileName"    ', tstp desc"
 
         Return oDb
+
+    End Function
+
+    Friend Function GetBackupList() As DbManager
+        Dim message As String = ""
+        Dim sql As String = "SELECT * FROM list.txt ORDER BY FileName, tstp desc"
+        Dim sortKey As String = "FileName,tstp"
+        Dim oDb As DbManager = Nothing
+
+        Try
+            oDb = ModuleMain.GetDbInstance(sql, sortKey)
+            If oDb Is Nothing Then
+                message = String.Format(My.Resources.String43, My.Settings.DbPath)  'GetBackupPath(True))
+                If MsgBox(message, MsgBoxStyle.Exclamation Or MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
+                    Dim dialog As New BackupDirDialog
+                    dialog.ShowDialog(objMain)
+                    dialog.Dispose()
+                    oDb = ModuleMain.GetDbInstance(sql, sortKey)
+                End If
+            Else
+                oDb.DbFileName = "list.txt"
+            End If
+
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Exclamation)
+        End Try
+
+        Return oDb
+
     End Function
 
 End Module

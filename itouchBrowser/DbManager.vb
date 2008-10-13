@@ -34,6 +34,7 @@ Imports System.Data.SQLite
     Private mvarDataSet As DataSet
     Private mvarSource As String = ""
     Private mvarDbProvider As String = ""
+    Private mvarDbFileName As String = ""
     Private oConn As OleDbConnection
     Private oCommand As OleDbCommand
     Private oDataAdapter As OleDbDataAdapter = Nothing
@@ -41,6 +42,7 @@ Imports System.Data.SQLite
     Private mvarSort As String = ""
     Private mvarLastKeyName As String = ""
     Private mvarFileCount As Long = 0
+    Private mvarViewUpdated As Boolean = False
 
     Public Sub New(ByVal dbProvider As String)
         Util.TraceS(MODULE_NAME, "New")
@@ -143,6 +145,15 @@ Imports System.Data.SQLite
         End Get
     End Property
 
+    Public Property DbFileName() As String
+        Get
+            Return mvarDbFileName
+        End Get
+        Set(ByVal value As String)
+            mvarDbFileName = value
+        End Set
+    End Property
+
     Public Sub ReSelect()
 
         If oDataAdapter Is Nothing Then
@@ -155,23 +166,44 @@ Imports System.Data.SQLite
         End If
         oDataAdapter.Dispose()
         mvarDataSet.Dispose()
+
         SelectOLEDB(sql, mvarLastKeyName)
         If mvarView IsNot Nothing Then
             mvarView.Dispose()
             mvarView = Nothing
         End If
+        mvarViewUpdated = False
 
     End Sub
 
     Public Function SelectOLEDB(ByVal sql As String, Optional ByVal keyName As String = "") As DataSet
         Util.TraceS(MODULE_NAME, "SelectOLEDB: SQL = " & sql)
+        Dim rc As Integer
 
         Try
+            If Not File.Exists(mvarSource & "\schema.ini") Then
+                Dim val As String
+                val = "[list.txt]" & vbCrLf _
+                    & "ColNameHeader=False" & vbCrLf _
+                    & "Format=CSVDelimited" & vbCrLf _
+                    & "Col1=tstp Text" & vbCrLf _
+                    & "Col2=BackupFolder Text" & vbCrLf _
+                    & "Col3=FileName Text" & vbCrLf _
+                    & "Col4=FileSize Long" & vbCrLf
+
+                rc = Me.CreateSchema(mvarSource, val)
+                If rc < 0 Then
+                    Return Nothing
+                End If
+
+                If Not File.Exists(mvarSource & "\list.txt") Then
+                    File.AppendAllText(mvarSource & "\list.txt", "")
+                End If
+            End If
+
             'DB接続文字列の設定
             Dim builder As New System.Data.OleDb.OleDbConnectionStringBuilder
 
-            'builder.Add("Provider", "Microsoft.Jet.OLEDB.4.0")     'for Windows XP
-            'builder.Add("Provider", "Microsoft.ACE.OLEDB.12.0")    'for Office 2007 (vista)
             builder.Add("Provider", mvarDbProvider)
             builder.Add("Data Source", mvarSource)
             builder.Add("Extended Properties", "Text")
@@ -190,6 +222,8 @@ Imports System.Data.SQLite
                 oDataAdapter.SelectCommand = oCommand
                 mvarDataSet = New DataSet()
                 oDataAdapter.Fill(mvarDataSet)
+                mvarFileCount = mvarDataSet.Tables(0).Rows.Count
+
                 If keyName <> "" Then
                     If keyName.IndexOf(","c) > -1 Then
                         Dim keys() As String = keyName.Split(","c)
@@ -200,10 +234,10 @@ Imports System.Data.SQLite
                         mvarDataSet.Tables(0).PrimaryKey = New DataColumn() {mvarDataSet.Tables(0).Columns(keyName)}
                     End If
                 End If
+
             End Using
 
             mvarLastKeyName = keyName
-            mvarFileCount = mvarDataSet.Tables(0).Rows.Count
             If mvarFileCount = 0 Then
                 '本当に０かチェックする
                 Dim ds() As DirectoryInfo = (New DirectoryInfo(mvarSource)).GetDirectories()
@@ -230,6 +264,16 @@ Imports System.Data.SQLite
 
     End Function
 
+    Friend Function RemoveRow(ByVal subDir As String, ByVal key As String) As Integer
+
+        Dim row As Integer = Me.Find(subDir, key)
+        If row > -1 Then
+            mvarView.Delete(row)
+            mvarViewUpdated = True
+        End If
+
+    End Function
+
     Friend Function prepareOLEDB(ByVal sql As String) As OleDbDataAdapter
         Util.TraceS(MODULE_NAME, "prepareOLEDB")
 
@@ -237,8 +281,6 @@ Imports System.Data.SQLite
             'DB接続文字列の設定
             Dim builder As New System.Data.OleDb.OleDbConnectionStringBuilder
 
-            'builder.Add("Provider", "Microsoft.Jet.OLEDB.4.0")     'for Windows XP
-            'builder.Add("Provider", "Microsoft.ACE.OLEDB.12.0")    'for Office 2007 (vista)
             builder.Add("Provider", mvarDbProvider)
             builder.Add("Data Source", mvarSource)
             builder.Add("Extended Properties", "Text")
@@ -250,7 +292,6 @@ Imports System.Data.SQLite
 
             'Set SQL statement
             oCommand.CommandText = sql
-            '"SELECT a.code, name, tel, kana FROM syain.txt a, tel.txt b WHERE a.code = b.code ORDER BY a.code "
 
             'Get data
             oDataAdapter.SelectCommand = oCommand
@@ -260,7 +301,7 @@ Imports System.Data.SQLite
             MsgBox(ex.Message)
 
         Finally
-            Util.TraceS(MODULE_NAME, "prepareOLEDB")
+            Util.TraceE(MODULE_NAME, "prepareOLEDB")
         End Try
 
         Return oDataAdapter
@@ -279,19 +320,31 @@ Imports System.Data.SQLite
             .AllowDelete = update
             .AllowEdit = update
             .AllowNew = update
-            .RowStateFilter = DataViewRowState.Unchanged    ' DataViewRowState.ModifiedCurrent
+            .RowStateFilter = DataViewRowState.CurrentRows
             .Sort = mvarSort    '.Table.PrimaryKey(0).Caption
         End With
 
     End Function
 
-    Public Function Find(ByVal key As String) As Integer
+    Public Function Find(ByVal subDir As String, ByVal key As String) As Integer
+        Dim rc As Integer = 0
 
         If mvarView Is Nothing Then
-            setDataView(False)
+            setDataView(True)
         End If
 
-        Return mvarView.Find(key)
+        If subDir = "" Then
+            mvarView.Sort = "FileName"
+            rc = mvarView.Find(key)
+        Else
+            mvarView.Sort = "BackupFolder, FileName"
+            Dim k(1) As Object
+            k(0) = subDir
+            k(1) = key
+            rc = mvarView.Find(k)
+        End If
+
+        Return rc
 
     End Function
 
@@ -323,16 +376,17 @@ Imports System.Data.SQLite
         Dim view As DataView = Nothing
 
         Try
-            Dim ds As DataSet = Me.SelectOLEDB(sql)
-            view = New DataView
-            With view
-                .Table = ds.Tables(0)
-                .AllowDelete = updateFlg
-                .AllowEdit = updateFlg
-                .AllowNew = updateFlg
-                .RowStateFilter = DataViewRowState.Unchanged    ' DataViewRowState.ModifiedCurrent
-                .Sort = sortkey
-            End With
+            Using ds As DataSet = Me.SelectOLEDB(sql)
+                view = New DataView()
+                With view
+                    .Table = ds.Tables(0)
+                    .AllowDelete = updateFlg
+                    .AllowEdit = updateFlg
+                    .AllowNew = updateFlg
+                    .RowStateFilter = DataViewRowState.Unchanged    ' DataViewRowState.ModifiedCurrent
+                    .Sort = sortkey
+                End With
+            End Using
 
         Catch ex As Exception
             Util.Log(Util.MsgLevel.AA_ERROR, ex.ToString())
@@ -346,36 +400,123 @@ Imports System.Data.SQLite
 
     End Function
 
-    Friend Sub AddFilenameToDB(ByVal dbName As String, ByVal time As Date, ByVal bkupSubPath As String, ByVal name As String, ByVal size As Long)
-        Dim wfs As StreamWriter = File.AppendText(dbName)
-        Dim info As New System.Text.StringBuilder(time.ToShortDateString)
+    'Public Function CommitView() As Integer
+    '    Dim ds2 As DataSet = mvarDataSet.GetChanges()
+    '    Dim builder As New System.Data.OleDb.OleDbConnectionStringBuilder
 
-        info.Append(" ").Append(time.ToLongTimeString).Append(".") _
-            .Append(time.Millisecond.ToString.PadLeft(3, "0"c)) _
-            .Append(",""").Append(bkupSubPath) _
-            .Append(""",""").Append(name) _
-            .Append(""",").Append(size)
+    '    builder.Add("Provider", mvarDbProvider)
+    '    builder.Add("Data Source", mvarSource)
+    '    builder.Add("Extended Properties", "Text")
 
-        Try
-            wfs.WriteLine(info)
-        Finally
+    '    Using oConn As OleDbConnection = New OleDbConnection(builder.ConnectionString)
+    '        oCommand = New OleDbCommand( _
+    '            "DELETE FROM list.txt WHERE tstp='?' AND BackupFolder='?' AND FileName='?' AND FileSize=?", oConn)
+    '        oDataAdapter.DeleteCommand = oCommand
+    '        Dim para As OleDbParameter
+    '        para = oDataAdapter.DeleteCommand.Parameters.Add( _
+    '            "@tstp", OleDbType.Filetime, 0, "tstp")
+    '        para.SourceVersion = DataRowVersion.Original
+    '        para.IsNullable = True
+
+    '        para = oDataAdapter.DeleteCommand.Parameters.Add( _
+    '            "@BackupFolder", OleDbType.Variant, 0, "BackupFolder")
+    '        para.SourceVersion = DataRowVersion.Original
+    '        para.IsNullable = True
+
+    '        para = oDataAdapter.DeleteCommand.Parameters.Add( _
+    '            "@FileName", OleDbType.Variant, 0, "FileName")
+    '        para.SourceVersion = DataRowVersion.Original
+    '        para.IsNullable = True
+    '        oDataAdapter.DeleteCommand.Parameters.Add( _
+    '            "@FileSize", OleDbType.Integer, 0, "FileSize").SourceVersion = DataRowVersion.Original
+
+    '        oDataAdapter.Update(ds2)
+    '        mvarDataSet.Merge(ds2)
+    '        mvarDataSet.AcceptChanges()
+    '    End Using
+
+    'End Function
+
+    Friend Sub AddFilenameToDB(ByVal time As Date, ByVal bkupSubPath As String, ByVal name As String, ByVal size As Long)
+
+        mvarView.AllowEdit = True
+
+        Dim drv As DataRowView = mvarView.AddNew()
+        With drv.Row
+            'With mvarView(mvarView.Count - 1)
+            .BeginEdit()
+            .Item(0) = time
+            .Item(1) = bkupSubPath
+            .Item(2) = name
+            .Item(3) = size
+            .EndEdit()
+        End With
+        
+    End Sub
+
+    Friend Sub ExportDB()
+
+        If mvarViewUpdated = False Then
+            Exit Sub
+        End If
+
+        Dim time As Date
+        Dim bkupSubPath As String
+        Dim name As String
+        Dim size As String
+        Dim dat As String
+        Dim dbName As String = mvarSource & "\" & mvarDbFileName
+        Dim tmpName As String = mvarSource & "\" & "tmp.txt"    'mvarDbFileName
+        Dim i As Integer
+
+        If mvarView Is Nothing Then
+            setDataView(False)
+        End If
+        If File.Exists(tmpName) Then
+            File.Delete(tmpName)
+        End If
+
+        Using wfs As StreamWriter = File.AppendText(tmpName)
+
+            For i = 0 To mvarView.Count - 1
+                With mvarView.Item(i)
+                    time = CType(.Item(0), System.DateTime)
+                    bkupSubPath = .Item(1).ToString()
+                    name = .Item(2).ToString()
+                    size = .Item(3).ToString()
+
+                    dat = time.ToShortDateString & " " & time.ToLongTimeString & "." _
+                        & time.Millisecond.ToString.PadLeft(3, "0"c) _
+                        & ",""" & bkupSubPath & """,""" & name & """," & size
+
+                    wfs.WriteLine(dat)
+                End With
+            Next
+
             wfs.Flush()
             wfs.Close()
-        End Try
+        End Using
+
+        If File.Exists(dbName) Then
+            File.Delete(dbName)
+        End If
+
+        File.Move(tmpName, dbName)
 
     End Sub
 
-    Public Function RefreshDB(ByVal dbName As String, ByVal homedir As String) As Integer
+    Public Function RefreshDB(ByVal fileshomedir As String) As Integer
         Dim rc As Integer = -1
+        Dim dbName As String = mvarSource & "\" & mvarDbFileName
 
         Try
-            If Directory.Exists(homedir) Then
+            If Directory.Exists(fileshomedir) Then
                 Dim tmpFile As String = dbName & ".tmp"
                 If File.Exists(tmpFile) Then
                     File.Delete(tmpFile)
                 End If
 
-                Dim d As New DirectoryInfo(homedir)
+                Dim d As New DirectoryInfo(fileshomedir)
                 Dim ds() As DirectoryInfo = d.GetDirectories()
                 Dim wfs As StreamWriter = File.AppendText(tmpFile)
 
@@ -401,7 +542,7 @@ Imports System.Data.SQLite
                     End If
                     File.Move(tmpFile, dbName)
                     'Refresh the current database
-                    ReSelect()
+                    Me.ReSelect()
                 End If
             End If
 
@@ -509,27 +650,24 @@ Imports System.Data.SQLite
         Dim Sql As String = "SELECT FileName, FileSize, tstp, BackupFolder " _
             & "FROM list.txt " _
             & "ORDER BY FileName, tstp DESC"
-        Dim wkfile As String = dbPath & "listwk.txt"
+
+        ldb = GetDbInstance(Sql, "")
+        Dim wkfile As String = ldb.Source & "\listwk.txt"
 
         If File.Exists(wkfile) Then
             File.Delete(wkfile)
         End If
 
         Using wfs As StreamWriter = File.AppendText(wkfile)
-            ldb = GetBackupList(Sql, "")
             With ldb.DataSet.Tables(0)
                 For i = 0 To .Rows.Count - 1
                     fname = .Rows(i).Item(0).ToString
                     fsize = .Rows(i).Item(1).ToString
                     ftstp = .Rows(i).Item(2).ToString
                     folder = .Rows(i).Item(3).ToString
-                    If lastname = fname AndAlso Compare(ldb.Source & lastfolder & fname, ldb.Source & folder & fname) Then
-                        File.Delete(ldb.Source & folder & fname)
+                    If lastname = fname AndAlso Compare(dbPath & "\" & lastfolder & fname, dbPath & "\" & folder & fname) Then
+                        File.Delete(dbPath & "\" & folder & fname)
                     Else
-                        'Dim info As New System.Text.StringBuilder(ftstp)
-                        'info.Append(",""").Append(folder) _
-                        '     .Append(""",""").Append(fname) _
-                        '     .Append(""",").Append(fsize)
                         Dim info As String = ftstp & ",""" & folder _
                             & """,""" & fname & """," & fsize
                         wfs.WriteLine(info)
@@ -541,11 +679,14 @@ Imports System.Data.SQLite
             End With
         End Using
 
-        If File.Exists(dbPath & "list.txt.bak") Then
-            File.Delete(dbPath & "list.txt.bak")
+        If File.Exists(ldb.Source & "\list.txt.bak") Then
+            File.Delete(ldb.Source & "\list.txt.bak")
         End If
-        File.Move(dbPath & "list.txt", dbPath & "list.txt.bak")
-        File.Move(wkfile, dbPath & "list.txt")
+        File.Move(ldb.Source & "\list.txt", ldb.Source & "\list.txt.bak")
+        File.Move(wkfile, ldb.Source & "\list.txt")
+
+        ObjDb.Dispose()
+        ObjDb = Nothing
 
         '空のサブフォルダーを削除
         removeBlankFolders(dbPath, 0)
@@ -593,7 +734,7 @@ Imports System.Data.SQLite
             If Not Directory.Exists(path) Then
                 Directory.CreateDirectory(path)
             End If
-            Using sw As StreamWriter = File.AppendText(path & "schema.ini")
+            Using sw As StreamWriter = File.AppendText(path & "\schema.ini")
                 sw.Write(value)
             End Using
 

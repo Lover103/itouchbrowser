@@ -623,22 +623,22 @@
     <value>378, 16</value>
   </data>
   <data name="LabelCopyright.Location" type="System.Drawing.Point, System.Drawing">
-    <value>147, 60</value>
+    <value>147, 56</value>
   </data>
   <data name="LabelCopyright.Size" type="System.Drawing.Size, System.Drawing">
     <value>378, 16</value>
   </data>
   <data name="LabelCompanyName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>147, 90</value>
+    <value>147, 82</value>
   </data>
   <data name="LabelCompanyName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>378, 8</value>
+    <value>378, 5</value>
   </data>
   <data name="TextBoxDescription.Location" type="System.Drawing.Point, System.Drawing">
-    <value>147, 101</value>
+    <value>147, 90</value>
   </data>
   <data name="TextBoxDescription.Size" type="System.Drawing.Size, System.Drawing">
-    <value>378, 167</value>
+    <value>378, 177</value>
   </data>
   <data name="TextBoxDescription.Text" xml:space="preserve">
     <value>説明:
@@ -650,15 +650,17 @@
 ・日本語表示
 ・処理速度の高速化
 ・安定した動作
-・充実した再生環境
+・充実した再生環境(音楽、動画、sqldb、html、...）
 ・バックアップファイルの一覧確認、重複ファイルの削除
+・曲名、歌手名、アルバム名の表示
+・iTunes 8対応
 
 バックアップ機能に関しては、USB経由でのファイルのタイムスタンプと属性（アクセス権限）が取得できません。
 よって、一般的なバックアップ機能としては、不十分な機能しかありません。
 ファイル転送機能としては、極限まで効率アップしていますので十分使えると思います。
 転送後WinSCPなどを使って権限設定を行ってください。
 
-2008/08/10    by =sugi=
+2008/10/12    by =sugi=
 </value>
   </data>
   <data name="OKButton.Location" type="System.Drawing.Point, System.Drawing">

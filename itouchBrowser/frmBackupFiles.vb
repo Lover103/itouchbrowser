@@ -17,20 +17,27 @@ Option Explicit On
 ' *    2008/07/29  1.00   Sugi          Initial release
 ' *
 ' =============================================================================
+Imports System.IO
 
 Public Class frmBackupFiles
 
-    Private mvarBindingSourceNewList As BindingSource
-    Private mvarBindingSourceSubList As BindingSource
+    Private mvarBindingSourceNewList As BindingSource = Nothing
+    Private mvarBindingSourceSubList As BindingSource = Nothing
     Private mvarDb As DbManager
     Private mvarSubDB As DbManager
+    Private mvarDb1 As DbManager = ObjDb
+    Private mvarDb2 As DbManager
 
     Private Sub frmBackupFiles_Disposed(ByVal sender As Object, ByVal e As System.EventArgs) _
         Handles Me.Disposed
 
         My.Settings.PosBackupFile = Me.Left.ToString() & "," & Me.Top.ToString() & "," & Me.Width.ToString() & "," & Me.Height.ToString()
         My.Settings.Save()
+        ObjDb.ExportDB()
         mvarBindingSourceNewList.Dispose()
+        If mvarBindingSourceSubList IsNot Nothing Then
+            mvarBindingSourceSubList.Dispose()
+        End If
         mvarDb.Dispose()
     End Sub
 
@@ -72,19 +79,29 @@ Public Class frmBackupFiles
 
         Select Case selectedTabIndex
             Case 0
-                sql = "SELECT FileName, FileSize, tstp, BackupFolder " _
-                    & "FROM list.txt " _
-                    & "WHERE BackupFolder<>'Error' " _
-                    & "ORDER BY FileName, tstp DESC"
+                If mvarDb1 Is Nothing Then
+                    sql = "SELECT FileName, FileSize, tstp, BackupFolder " _
+                        & "FROM list.txt " _
+                        & "ORDER BY FileName, tstp DESC"
+                    mvarDb1 = ModuleMain.GetDbInstance(sql, "")
+                End If
+                filter = "BackupFolder <> 'Error'"
+                mvarDb = mvarDb1
+                ObjDb = mvarDb1
+                dgvBackupView.ContextMenuStrip = menuRightClickAllView
             Case 1
-                sql = "SELECT FileName, Max(FileSize) as FileSize, Max(tstp) as tstp, Max(BackupFolder) as BackupFolder, Count(FileName) as cnt " _
-                    & "FROM list.txt " _
-                    & "GROUP BY FileName " _
-                    & "ORDER BY FileName "
+                If mvarDb2 Is Nothing Then
+                    sql = "SELECT FileName, Max(FileSize) as FileSize, Max(tstp) as tstp, Max(BackupFolder) as BackupFolder, Count(FileName) as cnt " _
+                        & "FROM list.txt " _
+                        & "GROUP BY FileName " '_
+                    '& "ORDER BY FileName "
+                    mvarDb2 = ModuleMain.GetDbInstance(sql, "FileName")
+                End If
                 filter = "cnt > 1"
+                mvarDb = mvarDb2
+                dgvBackupView.ContextMenuStrip = Nothing
         End Select
 
-        mvarDb = GetBackupList(sql, "")
         mvarBindingSourceNewList = New BindingSource(mvarDb.DataSet, mvarDb.DataSet.Tables(0).TableName)
         mvarBindingSourceNewList.Filter = filter
 
@@ -122,7 +139,7 @@ Public Class frmBackupFiles
 
     End Sub
 
-    Private Sub SetDetailData(ByVal fileName As String)
+    Private Sub setDetailData(ByVal fileName As String)
         Dim sql As String = ""
         Dim filter As String = "FileName = '" & fileName.Replace("'", "''") & "'"
 
@@ -130,11 +147,7 @@ Public Class frmBackupFiles
 
         Try
             If mvarSubDB Is Nothing Then
-                sql = "SELECT FileName, FileSize, tstp, BackupFolder " _
-                            & "FROM list.txt " _
-                            & "ORDER BY FileName, tstp DESC"
-
-                mvarSubDB = GetBackupList(sql, "")
+                mvarSubDB = mvarDb1
                 mvarBindingSourceSubList = New BindingSource(mvarSubDB.DataSet, mvarSubDB.DataSet.Tables(0).TableName)
             End If
             mvarBindingSourceSubList.Filter = filter
@@ -190,7 +203,7 @@ Public Class frmBackupFiles
 
         If TabFileGroup.SelectedIndex = 1 AndAlso dgvBackupView.CurrentRow IsNot Nothing Then
             statFileName.Text = dgvBackupView.Rows(e.RowIndex).Cells(col).Value.ToString()
-            SetDetailData(statFileName.Text)
+            Me.SetDetailData(statFileName.Text)
         End If
     End Sub
 
@@ -209,8 +222,9 @@ Public Class frmBackupFiles
             If rowIndex = 0 Then
                 .Cells(0).Value = My.Resources.String36
             Else
-                Dim file1 As String = GetBackupPath(True) & .Cells(4).FormattedValue.ToString & .Cells(1).FormattedValue.ToString
-                Dim file2 As String = GetBackupPath(True) & dgvDetailView.Rows(rowIndex - 1).Cells(4).FormattedValue.ToString & dgvDetailView.Rows(rowIndex - 1).Cells(1).FormattedValue.ToString
+                Dim bakPath As String = GetBackupPath(True) & "\"
+                Dim file1 As String = bakPath & .Cells(4).FormattedValue.ToString & .Cells(1).FormattedValue.ToString
+                Dim file2 As String = bakPath & dgvDetailView.Rows(rowIndex - 1).Cells(4).FormattedValue.ToString & dgvDetailView.Rows(rowIndex - 1).Cells(1).FormattedValue.ToString
                 If DbManager.Compare(file1, file2) Then
                     .Cells(0).Value = My.Resources.String37
                 Else
@@ -238,4 +252,89 @@ Public Class frmBackupFiles
 
         Me.Close()
     End Sub
+
+    ' Delete file
+    Private Sub tsmDeleteFile1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) _
+        Handles tsmDeleteFile1.Click
+
+        Try
+            If TabFileGroup.TabIndex = 0 AndAlso dgvBackupView.SelectedRows.Count > 0 Then
+
+                For Each sItem As DataGridViewRow In dgvBackupView.SelectedRows
+                    Dim path As String = sItem.Cells(2).Value.ToString
+
+                    Try ' delete backuped file.
+                        Dim subDir As String = "\" & sItem.Cells(1).Value.ToString
+                        Dim fullPath As String = GetBackupPath(True) & subDir & path.Replace("/", "\")
+                        If File.Exists(fullPath) Then
+                            File.Delete(fullPath)
+                        End If
+                        ' delete from database
+                        ObjDb.RemoveRow(subDir.Substring(1), path)
+
+                    Catch ex As IOException
+                        StatusWarning(ex.Message)
+                    End Try
+                Next
+
+            End If
+
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Critical)
+        End Try
+
+    End Sub
+
+    Private Sub tsmDeleteFile2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) _
+        Handles tsmDeleteFile2.Click
+
+        Try
+            If dgvDetailView.SelectedRows.Count > 0 Then
+                'sSourcePath = getSelectedPath()
+
+                For Each sItem As DataGridViewRow In dgvDetailView.SelectedRows
+                    Dim path As String = sItem.Cells(3).Value.ToString
+
+                    Try ' delete backuped file.
+                        Dim subDir As String = "\" & sItem.Cells(2).Value.ToString
+                        Dim fullPath As String = GetBackupPath(True) & subDir & path.Replace("/", "\")
+                        If File.Exists(fullPath) Then
+                            File.Delete(fullPath)
+                        End If
+                        ' delete from database
+                        ObjDb.RemoveRow(subDir.Substring(1), path)
+
+                    Catch ex As IOException
+                        StatusWarning(ex.Message)
+                    End Try
+                Next
+                ' refresh view
+                statFileName.Text = dgvBackupView.SelectedRows(0).Cells(0).Value.ToString()
+                Me.setDetailData(statFileName.Text)
+
+            End If
+
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Critical)
+        End Try
+
+    End Sub
+
+    ' 右クリックで、行を移動する
+    Private Sub dgvDetailView_CellMouseDown(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellMouseEventArgs) _
+        Handles dgvDetailView.CellMouseDown
+
+        If e.Button = Windows.Forms.MouseButtons.Right Then
+            dgvDetailView.CurrentCell = dgvDetailView.Rows(e.RowIndex).Cells(0)
+        End If
+    End Sub
+
+    Private Sub dgvBackupView_CellMouseDown(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellMouseEventArgs) _
+        Handles dgvBackupView.CellMouseDown
+
+        If e.Button = Windows.Forms.MouseButtons.Right Then
+            dgvBackupView.CurrentCell = dgvBackupView.Rows(e.RowIndex).Cells(0)
+        End If
+    End Sub
+
 End Class

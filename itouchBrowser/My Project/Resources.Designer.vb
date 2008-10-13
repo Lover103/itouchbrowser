@@ -61,7 +61,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  iPhone is connected, not jailbroken に類似しているローカライズされた文字列を検索します。
+        '''  iPhone is connected, not jailbroken (no afc2 service found) に類似しているローカライズされた文字列を検索します。
         '''</summary>
         Friend ReadOnly Property String1() As String
             Get
@@ -187,7 +187,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  No spaces, slashes or other special characters are allowed in the folder name. に類似しているローカライズされた文字列を検索します。
+        '''  No slashes or other special characters are allowed in the folder name. に類似しているローカライズされた文字列を検索します。
         '''</summary>
         Friend ReadOnly Property String22() As String
             Get
@@ -394,7 +394,8 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  msg に類似しているローカライズされた文字列を検索します。
+        '''  Although the &apos;{0}&apos; is specified as a backup directory, it cannot access there.
+        '''Is a backup place changed? に類似しているローカライズされた文字列を検索します。
         '''</summary>
         Friend ReadOnly Property String43() As String
             Get
@@ -408,6 +409,42 @@ Namespace My.Resources
         Friend ReadOnly Property String44() As String
             Get
                 Return ResourceManager.GetString("String44", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Select the destination folder for saving に類似しているローカライズされた文字列を検索します。
+        '''</summary>
+        Friend ReadOnly Property String45() As String
+            Get
+                Return ResourceManager.GetString("String45", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  You didn&apos;t change the default name, I am pretty sure you don&apos;t want a &apos;NewFolder&apos; folder name... に類似しているローカライズされた文字列を検索します。
+        '''</summary>
+        Friend ReadOnly Property String46() As String
+            Get
+                Return ResourceManager.GetString("String46", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Can not use rename to move a folder に類似しているローカライズされた文字列を検索します。
+        '''</summary>
+        Friend ReadOnly Property String47() As String
+            Get
+                Return ResourceManager.GetString("String47", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Enter new folder name: に類似しているローカライズされた文字列を検索します。
+        '''</summary>
+        Friend ReadOnly Property String48() As String
+            Get
+                Return ResourceManager.GetString("String48", resourceCulture)
             End Get
         End Property
         

@@ -6,12 +6,14 @@ Partial Class frmMain
     '<System.Diagnostics.DebuggerNonUserCode()> _
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         With My.Settings
-            .ConfirmDeletions = ConfirmDeletionsToolStripMenuItem.Checked
+            .ConfirmDeletions = tsmConfirmDeletions.Checked
             .PCToiPhonePNG = Config.bConvertToiPhonePNG
             .iPhoneToPCPNG = Config.bConvertToPNG
             .ShowPreviews = Config.bShowPreview
             .IgnoreThumbsFile = Config.bIgnoreThumbsFile
             .IgnoreDSStoreFile = Config.bIgnoreDSStoreFile
+            .IgnoreCacheFile = Config.bIgnoreCacheFile
+            .ShowSongTitle = Config.bShowSongTitle
             .FavNames = favNames
             .FavPaths = favPaths
             .ShowGroups = cmdShowGroups.Checked
@@ -51,6 +53,7 @@ Partial Class frmMain
         Me.menuRightBackupFile = New System.Windows.Forms.ToolStripMenuItem
         Me.menuRightRestoreFile = New System.Windows.Forms.ToolStripMenuItem
         Me.ToolStripMenuItemLoading = New System.Windows.Forms.ToolStripMenuItem
+        Me.menuRightDeleteBackupedFile = New System.Windows.Forms.ToolStripMenuItem
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator
         Me.cmdRenameFile = New System.Windows.Forms.ToolStripMenuItem
         Me.menuRightReplaceFile = New System.Windows.Forms.ToolStripMenuItem
@@ -58,13 +61,18 @@ Partial Class frmMain
         Me.imgFilesLarge = New System.Windows.Forms.ImageList(Me.components)
         Me.imgFilesSmall = New System.Windows.Forms.ImageList(Me.components)
         Me.grpDetails = New System.Windows.Forms.GroupBox
-        Me.chkZoom = New System.Windows.Forms.CheckBox
+        Me.pnlQt = New System.Windows.Forms.Panel
+        Me.menuRightClickQt = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.tsmQtFullscreen = New System.Windows.Forms.ToolStripMenuItem
+        Me.tsmQtExportDialog = New System.Windows.Forms.ToolStripMenuItem
+        Me.tsmQtMovieInfo = New System.Windows.Forms.ToolStripMenuItem
+        Me.tsmQuickTimeInfo = New System.Windows.Forms.ToolStripMenuItem
         Me.lblMovieName = New System.Windows.Forms.Label
+        Me.chkZoom = New System.Windows.Forms.CheckBox
         Me.chkPreviewEnabled = New System.Windows.Forms.CheckBox
         Me.btnPreview = New System.Windows.Forms.Button
         Me.txtFileDetails = New System.Windows.Forms.TextBox
         Me.WebBrws = New System.Windows.Forms.WebBrowser
-        Me.qtPlugin = New iPhoneBrowser.itouchBrowser.QtWrapper
         Me.picFileDetails = New System.Windows.Forms.PictureBox
         Me.tlbStatusStrip = New System.Windows.Forms.StatusStrip
         Me.tlbStatusLabel = New System.Windows.Forms.ToolStripStatusLabel
@@ -72,8 +80,8 @@ Partial Class frmMain
         Me.tlbProgress0 = New System.Windows.Forms.ToolStripProgressBar
         Me.tlbProgressBar = New System.Windows.Forms.ToolStripProgressBar
         Me.toolStrip = New System.Windows.Forms.ToolStrip
-        Me.ToolStripMenuItemFile = New System.Windows.Forms.ToolStripDropDownButton
-        Me.ToolStripMenuItemCleanUp = New System.Windows.Forms.ToolStripMenuItem
+        Me.tsmFile = New System.Windows.Forms.ToolStripDropDownButton
+        Me.tsmCleanUp = New System.Windows.Forms.ToolStripMenuItem
         Me.tsmFileList = New System.Windows.Forms.ToolStripMenuItem
         Me.tsmRestructureDB = New System.Windows.Forms.ToolStripMenuItem
         Me.tsmCleanUpBackupFiles = New System.Windows.Forms.ToolStripMenuItem
@@ -118,54 +126,63 @@ Partial Class frmMain
         Me.toolStripGoTo17 = New System.Windows.Forms.ToolStripMenuItem
         Me.toolStripGoTo18 = New System.Windows.Forms.ToolStripMenuItem
         Me.mnuThirdPartyApps = New System.Windows.Forms.ToolStripMenuItem
-        Me.ToolStripMenuItem5 = New System.Windows.Forms.ToolStripMenuItem
-        Me.DockSwapDocksToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.EBooksToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.FrotzGamesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.cmdGBAROMs = New System.Windows.Forms.ToolStripMenuItem
-        Me.ToolStripMenuItem6 = New System.Windows.Forms.ToolStripMenuItem
-        Me.InstallerPackageSourcesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.ISwitcherThemesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.NESROMSToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.TTRToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.WeDictDictionariesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.tsmCustomizeFiles = New System.Windows.Forms.ToolStripMenuItem
+        Me.tsmDockSwapDocks = New System.Windows.Forms.ToolStripMenuItem
+        Me.tsmEBooks = New System.Windows.Forms.ToolStripMenuItem
+        Me.tsmFrotzGames = New System.Windows.Forms.ToolStripMenuItem
+        Me.tsmGBAROMs = New System.Windows.Forms.ToolStripMenuItem
+        Me.tsmIFlashCards = New System.Windows.Forms.ToolStripMenuItem
+        Me.tsmInstallerPackageSources = New System.Windows.Forms.ToolStripMenuItem
+        Me.tsmISwitcherThemes = New System.Windows.Forms.ToolStripMenuItem
+        Me.tsmNESROMS = New System.Windows.Forms.ToolStripMenuItem
+        Me.tsmTTR = New System.Windows.Forms.ToolStripMenuItem
+        Me.tsmWeDictDictionaries = New System.Windows.Forms.ToolStripMenuItem
         Me.ToolStripSeparator6 = New System.Windows.Forms.ToolStripSeparator
-        Me.CameraRollToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.tsmCameraRoll = New System.Windows.Forms.ToolStripMenuItem
         Me.toolStripGoTo19 = New System.Windows.Forms.ToolStripMenuItem
         Me.mnuFavorites = New System.Windows.Forms.ToolStripDropDownButton
         Me.AddToFavoritesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.OrganizeFavoritesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.ToolStripMenuItem7 = New System.Windows.Forms.ToolStripSeparator
         Me.ToolStripDropDownButton2 = New System.Windows.Forms.ToolStripDropDownButton
-        Me.ConfirmDeletionsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.IgnoreThumbsdbToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.IgnoreDSStoreToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.ConvertPNGsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.tsmConfirmDeletions = New System.Windows.Forms.ToolStripMenuItem
+        Me.tsmIgnoreThumbsdb = New System.Windows.Forms.ToolStripMenuItem
+        Me.tsmIgnoreDSStore = New System.Windows.Forms.ToolStripMenuItem
+        Me.tsmIgnoreCacheFile = New System.Windows.Forms.ToolStripMenuItem
+        Me.tsmBackupControl = New System.Windows.Forms.ToolStripMenuItem
+        Me.tsmConvertPNGs = New System.Windows.Forms.ToolStripMenuItem
         Me.tsmIPhoneToPC = New System.Windows.Forms.ToolStripMenuItem
         Me.tsmPCToIPhone = New System.Windows.Forms.ToolStripMenuItem
         Me.tsmConvertBoth = New System.Windows.Forms.ToolStripMenuItem
         Me.ToolStripSeparator8 = New System.Windows.Forms.ToolStripSeparator
-        Me.ShowPreviewsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.PictureBackgroundToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.tsmDisplaySongTitle = New System.Windows.Forms.ToolStripMenuItem
+        Me.tsmShowPreviews = New System.Windows.Forms.ToolStripMenuItem
+        Me.tsmPictureBackground = New System.Windows.Forms.ToolStripMenuItem
         Me.BlackToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.GrayToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.WhiteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.BackupDirectoryToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.tsmBackupDirectory = New System.Windows.Forms.ToolStripMenuItem
         Me.ToolStripDropDownButton1 = New System.Windows.Forms.ToolStripDropDownButton
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.tsmHomePage = New System.Windows.Forms.ToolStripMenuItem
+        Me.ToolStripSeparator11 = New System.Windows.Forms.ToolStripSeparator
+        Me.tslAddress = New System.Windows.Forms.ToolStripLabel
+        Me.tstAddress = New System.Windows.Forms.ToolStripTextBox
+        Me.tsbAddress = New System.Windows.Forms.ToolStripButton
         Me.fileSaveDialog = New System.Windows.Forms.SaveFileDialog
         Me.fileOpenDialog = New System.Windows.Forms.OpenFileDialog
         Me.menuRightClickFolders = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.ToolStripMenuItemNewFolder = New System.Windows.Forms.ToolStripMenuItem
         Me.ToolStripSeparator9 = New System.Windows.Forms.ToolStripSeparator
-        Me.BackupFolderToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.ToolStripMenuItemSaveFolderIn = New System.Windows.Forms.ToolStripMenuItem
+        Me.tsmBackupFolder = New System.Windows.Forms.ToolStripMenuItem
+        Me.tsmSaveFolderIn = New System.Windows.Forms.ToolStripMenuItem
         Me.cmdRenameFolder = New System.Windows.Forms.ToolStripMenuItem
         Me.ToolStripSeparator10 = New System.Windows.Forms.ToolStripSeparator
         Me.ToolStripMenuItemDeleteFolder = New System.Windows.Forms.ToolStripMenuItem
         Me.folderBrowserDialog = New System.Windows.Forms.FolderBrowserDialog
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.qtPlugin = New iPhoneBrowser.itouchBrowser.QtWrapper
+        Me.qtBuff = New iPhoneBrowser.itouchBrowser.QtWrapper
         Me.splMain.Panel1.SuspendLayout()
         Me.splMain.Panel2.SuspendLayout()
         Me.splMain.SuspendLayout()
@@ -178,11 +195,14 @@ Partial Class frmMain
         CType(Me.picBusy, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.menuRightClickFiles.SuspendLayout()
         Me.grpDetails.SuspendLayout()
-        CType(Me.qtPlugin, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.pnlQt.SuspendLayout()
+        Me.menuRightClickQt.SuspendLayout()
         CType(Me.picFileDetails, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tlbStatusStrip.SuspendLayout()
         Me.toolStrip.SuspendLayout()
         Me.menuRightClickFolders.SuspendLayout()
+        CType(Me.qtPlugin, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.qtBuff, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'splMain
@@ -295,7 +315,7 @@ Partial Class frmMain
         '
         'menuRightClickFiles
         '
-        Me.menuRightClickFiles.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.menuRightSaveAs, Me.ToolStripSeparator2, Me.menuRightBackupFile, Me.menuRightRestoreFile, Me.ToolStripSeparator1, Me.cmdRenameFile, Me.menuRightReplaceFile, Me.menuRightDeleteFile})
+        Me.menuRightClickFiles.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.menuRightSaveAs, Me.ToolStripSeparator2, Me.menuRightBackupFile, Me.menuRightRestoreFile, Me.menuRightDeleteBackupedFile, Me.ToolStripSeparator1, Me.cmdRenameFile, Me.menuRightReplaceFile, Me.menuRightDeleteFile})
         Me.menuRightClickFiles.Name = "menuRightClickFiles"
         resources.ApplyResources(Me.menuRightClickFiles, "menuRightClickFiles")
         '
@@ -324,6 +344,11 @@ Partial Class frmMain
         '
         Me.ToolStripMenuItemLoading.Name = "ToolStripMenuItemLoading"
         resources.ApplyResources(Me.ToolStripMenuItemLoading, "ToolStripMenuItemLoading")
+        '
+        'menuRightDeleteBackupedFile
+        '
+        resources.ApplyResources(Me.menuRightDeleteBackupedFile, "menuRightDeleteBackupedFile")
+        Me.menuRightDeleteBackupedFile.Name = "menuRightDeleteBackupedFile"
         '
         'ToolStripSeparator1
         '
@@ -373,17 +398,58 @@ Partial Class frmMain
         '
         'grpDetails
         '
+        Me.grpDetails.Controls.Add(Me.pnlQt)
         Me.grpDetails.Controls.Add(Me.chkZoom)
-        Me.grpDetails.Controls.Add(Me.lblMovieName)
         Me.grpDetails.Controls.Add(Me.chkPreviewEnabled)
+        Me.grpDetails.Controls.Add(Me.qtBuff)
         Me.grpDetails.Controls.Add(Me.btnPreview)
         Me.grpDetails.Controls.Add(Me.txtFileDetails)
         Me.grpDetails.Controls.Add(Me.WebBrws)
-        Me.grpDetails.Controls.Add(Me.qtPlugin)
         Me.grpDetails.Controls.Add(Me.picFileDetails)
         resources.ApplyResources(Me.grpDetails, "grpDetails")
         Me.grpDetails.Name = "grpDetails"
         Me.grpDetails.TabStop = False
+        '
+        'pnlQt
+        '
+        resources.ApplyResources(Me.pnlQt, "pnlQt")
+        Me.pnlQt.ContextMenuStrip = Me.menuRightClickQt
+        Me.pnlQt.Controls.Add(Me.qtPlugin)
+        Me.pnlQt.Controls.Add(Me.lblMovieName)
+        Me.pnlQt.Name = "pnlQt"
+        '
+        'menuRightClickQt
+        '
+        Me.menuRightClickQt.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmQtFullscreen, Me.tsmQtExportDialog, Me.tsmQtMovieInfo, Me.tsmQuickTimeInfo})
+        Me.menuRightClickQt.Name = "menuRightClickQt"
+        resources.ApplyResources(Me.menuRightClickQt, "menuRightClickQt")
+        '
+        'tsmQtFullscreen
+        '
+        Me.tsmQtFullscreen.CheckOnClick = True
+        Me.tsmQtFullscreen.Name = "tsmQtFullscreen"
+        resources.ApplyResources(Me.tsmQtFullscreen, "tsmQtFullscreen")
+        '
+        'tsmQtExportDialog
+        '
+        Me.tsmQtExportDialog.Name = "tsmQtExportDialog"
+        resources.ApplyResources(Me.tsmQtExportDialog, "tsmQtExportDialog")
+        '
+        'tsmQtMovieInfo
+        '
+        Me.tsmQtMovieInfo.Name = "tsmQtMovieInfo"
+        resources.ApplyResources(Me.tsmQtMovieInfo, "tsmQtMovieInfo")
+        '
+        'tsmQuickTimeInfo
+        '
+        Me.tsmQuickTimeInfo.Name = "tsmQuickTimeInfo"
+        resources.ApplyResources(Me.tsmQuickTimeInfo, "tsmQuickTimeInfo")
+        '
+        'lblMovieName
+        '
+        resources.ApplyResources(Me.lblMovieName, "lblMovieName")
+        Me.lblMovieName.ContextMenuStrip = Me.menuRightClickQt
+        Me.lblMovieName.Name = "lblMovieName"
         '
         'chkZoom
         '
@@ -391,11 +457,6 @@ Partial Class frmMain
         Me.chkZoom.Name = "chkZoom"
         Me.chkZoom.TabStop = False
         Me.chkZoom.UseVisualStyleBackColor = True
-        '
-        'lblMovieName
-        '
-        resources.ApplyResources(Me.lblMovieName, "lblMovieName")
-        Me.lblMovieName.Name = "lblMovieName"
         '
         'chkPreviewEnabled
         '
@@ -425,12 +486,6 @@ Partial Class frmMain
         resources.ApplyResources(Me.WebBrws, "WebBrws")
         Me.WebBrws.MinimumSize = New System.Drawing.Size(20, 20)
         Me.WebBrws.Name = "WebBrws"
-        '
-        'qtPlugin
-        '
-        resources.ApplyResources(Me.qtPlugin, "qtPlugin")
-        Me.qtPlugin.Name = "qtPlugin"
-        Me.qtPlugin.OcxState = CType(resources.GetObject("qtPlugin.OcxState"), System.Windows.Forms.AxHost.State)
         '
         'picFileDetails
         '
@@ -484,23 +539,23 @@ Partial Class frmMain
         '
         'toolStrip
         '
-        Me.toolStrip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
-        Me.toolStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItemFile, Me.mnuView, Me.mnuGoTo, Me.mnuFavorites, Me.ToolStripDropDownButton2, Me.ToolStripDropDownButton1})
         resources.ApplyResources(Me.toolStrip, "toolStrip")
+        Me.toolStrip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
+        Me.toolStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmFile, Me.mnuView, Me.mnuGoTo, Me.mnuFavorites, Me.ToolStripDropDownButton2, Me.ToolStripDropDownButton1, Me.ToolStripSeparator11, Me.tslAddress, Me.tstAddress, Me.tsbAddress})
         Me.toolStrip.Name = "toolStrip"
         '
-        'ToolStripMenuItemFile
+        'tsmFile
         '
-        Me.ToolStripMenuItemFile.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
-        Me.ToolStripMenuItemFile.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItemCleanUp, Me.ToolStripMenuItemViewBackups, Me.ToolStripSeparator7, Me.menuSaveSummerboardTheme, Me.ToolStripMenuItem4, Me.ToolStripSeparator3, Me.ToolStripMenuItemExit})
-        resources.ApplyResources(Me.ToolStripMenuItemFile, "ToolStripMenuItemFile")
-        Me.ToolStripMenuItemFile.Name = "ToolStripMenuItemFile"
+        Me.tsmFile.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
+        Me.tsmFile.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmCleanUp, Me.ToolStripMenuItemViewBackups, Me.ToolStripSeparator7, Me.menuSaveSummerboardTheme, Me.ToolStripMenuItem4, Me.ToolStripSeparator3, Me.ToolStripMenuItemExit})
+        resources.ApplyResources(Me.tsmFile, "tsmFile")
+        Me.tsmFile.Name = "tsmFile"
         '
-        'ToolStripMenuItemCleanUp
+        'tsmCleanUp
         '
-        Me.ToolStripMenuItemCleanUp.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmFileList, Me.tsmRestructureDB, Me.tsmCleanUpBackupFiles})
-        Me.ToolStripMenuItemCleanUp.Name = "ToolStripMenuItemCleanUp"
-        resources.ApplyResources(Me.ToolStripMenuItemCleanUp, "ToolStripMenuItemCleanUp")
+        Me.tsmCleanUp.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmFileList, Me.tsmRestructureDB, Me.tsmCleanUpBackupFiles})
+        Me.tsmCleanUp.Name = "tsmCleanUp"
+        resources.ApplyResources(Me.tsmCleanUp, "tsmCleanUp")
         '
         'tsmFileList
         '
@@ -608,7 +663,7 @@ Partial Class frmMain
         'mnuGoTo
         '
         Me.mnuGoTo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
-        Me.mnuGoTo.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.toolStripGoTo1, Me.toolStripGoTo2, Me.ToolStripSeparator5, Me.toolStripGoTo3, Me.ToolStripMenuItem2, Me.ToolStripSeparator4, Me.mnuStdApps, Me.mnuThirdPartyApps, Me.ToolStripSeparator6, Me.CameraRollToolStripMenuItem, Me.toolStripGoTo19})
+        Me.mnuGoTo.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.toolStripGoTo1, Me.toolStripGoTo2, Me.ToolStripSeparator5, Me.toolStripGoTo3, Me.ToolStripMenuItem2, Me.ToolStripSeparator4, Me.mnuStdApps, Me.mnuThirdPartyApps, Me.ToolStripSeparator6, Me.tsmCameraRoll, Me.toolStripGoTo19})
         resources.ApplyResources(Me.mnuGoTo, "mnuGoTo")
         Me.mnuGoTo.Name = "mnuGoTo"
         Me.mnuGoTo.Tag = "ar"
@@ -640,7 +695,7 @@ Partial Class frmMain
         '
         Me.ToolStripMenuItem2.Name = "ToolStripMenuItem2"
         resources.ApplyResources(Me.ToolStripMenuItem2, "ToolStripMenuItem2")
-        Me.ToolStripMenuItem2.Tag = "/var/root/Library/Summerboard/Themes"
+        Me.ToolStripMenuItem2.Tag = "/var/mobile/Library/Summerboard/Themes"
         '
         'ToolStripSeparator4
         '
@@ -751,86 +806,86 @@ Partial Class frmMain
         '
         'mnuThirdPartyApps
         '
-        Me.mnuThirdPartyApps.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem5, Me.DockSwapDocksToolStripMenuItem, Me.EBooksToolStripMenuItem, Me.FrotzGamesToolStripMenuItem, Me.cmdGBAROMs, Me.ToolStripMenuItem6, Me.InstallerPackageSourcesToolStripMenuItem, Me.ISwitcherThemesToolStripMenuItem, Me.NESROMSToolStripMenuItem, Me.TTRToolStripMenuItem, Me.WeDictDictionariesToolStripMenuItem})
+        Me.mnuThirdPartyApps.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmCustomizeFiles, Me.tsmDockSwapDocks, Me.tsmEBooks, Me.tsmFrotzGames, Me.tsmGBAROMs, Me.tsmIFlashCards, Me.tsmInstallerPackageSources, Me.tsmISwitcherThemes, Me.tsmNESROMS, Me.tsmTTR, Me.tsmWeDictDictionaries})
         Me.mnuThirdPartyApps.Name = "mnuThirdPartyApps"
         resources.ApplyResources(Me.mnuThirdPartyApps, "mnuThirdPartyApps")
         '
-        'ToolStripMenuItem5
+        'tsmCustomizeFiles
         '
-        Me.ToolStripMenuItem5.Name = "ToolStripMenuItem5"
-        resources.ApplyResources(Me.ToolStripMenuItem5, "ToolStripMenuItem5")
-        Me.ToolStripMenuItem5.Tag = "/var/root/Library/Customize"
+        Me.tsmCustomizeFiles.Name = "tsmCustomizeFiles"
+        resources.ApplyResources(Me.tsmCustomizeFiles, "tsmCustomizeFiles")
+        Me.tsmCustomizeFiles.Tag = "/var/mobile/Library/Customize"
         '
-        'DockSwapDocksToolStripMenuItem
+        'tsmDockSwapDocks
         '
-        Me.DockSwapDocksToolStripMenuItem.Name = "DockSwapDocksToolStripMenuItem"
-        resources.ApplyResources(Me.DockSwapDocksToolStripMenuItem, "DockSwapDocksToolStripMenuItem")
-        Me.DockSwapDocksToolStripMenuItem.Tag = "/var/root/Library/DockSwap"
+        Me.tsmDockSwapDocks.Name = "tsmDockSwapDocks"
+        resources.ApplyResources(Me.tsmDockSwapDocks, "tsmDockSwapDocks")
+        Me.tsmDockSwapDocks.Tag = "/var/mobile/Library/DockSwap"
         '
-        'EBooksToolStripMenuItem
+        'tsmEBooks
         '
-        Me.EBooksToolStripMenuItem.Name = "EBooksToolStripMenuItem"
-        resources.ApplyResources(Me.EBooksToolStripMenuItem, "EBooksToolStripMenuItem")
-        Me.EBooksToolStripMenuItem.Tag = "/var/root/Media/EBooks"
+        Me.tsmEBooks.Name = "tsmEBooks"
+        resources.ApplyResources(Me.tsmEBooks, "tsmEBooks")
+        Me.tsmEBooks.Tag = "/var/mobile/Media/EBooks"
         '
-        'FrotzGamesToolStripMenuItem
+        'tsmFrotzGames
         '
-        Me.FrotzGamesToolStripMenuItem.Name = "FrotzGamesToolStripMenuItem"
-        resources.ApplyResources(Me.FrotzGamesToolStripMenuItem, "FrotzGamesToolStripMenuItem")
-        Me.FrotzGamesToolStripMenuItem.Tag = "/var/root/Media/Frotz/Games"
+        Me.tsmFrotzGames.Name = "tsmFrotzGames"
+        resources.ApplyResources(Me.tsmFrotzGames, "tsmFrotzGames")
+        Me.tsmFrotzGames.Tag = "/var/mobile/Media/Frotz/Games"
         '
-        'cmdGBAROMs
+        'tsmGBAROMs
         '
-        Me.cmdGBAROMs.Name = "cmdGBAROMs"
-        resources.ApplyResources(Me.cmdGBAROMs, "cmdGBAROMs")
-        Me.cmdGBAROMs.Tag = "/var/root/Media/ROMs/GBA"
+        Me.tsmGBAROMs.Name = "tsmGBAROMs"
+        resources.ApplyResources(Me.tsmGBAROMs, "tsmGBAROMs")
+        Me.tsmGBAROMs.Tag = "/var/mobile/Media/ROMs/GBA"
         '
-        'ToolStripMenuItem6
+        'tsmIFlashCards
         '
-        Me.ToolStripMenuItem6.Name = "ToolStripMenuItem6"
-        resources.ApplyResources(Me.ToolStripMenuItem6, "ToolStripMenuItem6")
-        Me.ToolStripMenuItem6.Tag = "/var/root/Library/iFlashCards"
+        Me.tsmIFlashCards.Name = "tsmIFlashCards"
+        resources.ApplyResources(Me.tsmIFlashCards, "tsmIFlashCards")
+        Me.tsmIFlashCards.Tag = "/var/mobile/Library/iFlashCards"
         '
-        'InstallerPackageSourcesToolStripMenuItem
+        'tsmInstallerPackageSources
         '
-        Me.InstallerPackageSourcesToolStripMenuItem.Name = "InstallerPackageSourcesToolStripMenuItem"
-        resources.ApplyResources(Me.InstallerPackageSourcesToolStripMenuItem, "InstallerPackageSourcesToolStripMenuItem")
-        Me.InstallerPackageSourcesToolStripMenuItem.Tag = "/var/root/Library/Installer"
+        Me.tsmInstallerPackageSources.Name = "tsmInstallerPackageSources"
+        resources.ApplyResources(Me.tsmInstallerPackageSources, "tsmInstallerPackageSources")
+        Me.tsmInstallerPackageSources.Tag = "/var/mobile/Library/Installer"
         '
-        'ISwitcherThemesToolStripMenuItem
+        'tsmISwitcherThemes
         '
-        Me.ISwitcherThemesToolStripMenuItem.Name = "ISwitcherThemesToolStripMenuItem"
-        resources.ApplyResources(Me.ISwitcherThemesToolStripMenuItem, "ISwitcherThemesToolStripMenuItem")
-        Me.ISwitcherThemesToolStripMenuItem.Tag = "/var/root/Media/Themes"
+        Me.tsmISwitcherThemes.Name = "tsmISwitcherThemes"
+        resources.ApplyResources(Me.tsmISwitcherThemes, "tsmISwitcherThemes")
+        Me.tsmISwitcherThemes.Tag = "/var/mobile/Media/Themes"
         '
-        'NESROMSToolStripMenuItem
+        'tsmNESROMS
         '
-        Me.NESROMSToolStripMenuItem.Name = "NESROMSToolStripMenuItem"
-        resources.ApplyResources(Me.NESROMSToolStripMenuItem, "NESROMSToolStripMenuItem")
-        Me.NESROMSToolStripMenuItem.Tag = "/var/root/Media/ROMs/NES"
+        Me.tsmNESROMS.Name = "tsmNESROMS"
+        resources.ApplyResources(Me.tsmNESROMS, "tsmNESROMS")
+        Me.tsmNESROMS.Tag = "/var/mobile/Media/ROMs/NES"
         '
-        'TTRToolStripMenuItem
+        'tsmTTR
         '
-        Me.TTRToolStripMenuItem.Name = "TTRToolStripMenuItem"
-        resources.ApplyResources(Me.TTRToolStripMenuItem, "TTRToolStripMenuItem")
-        Me.TTRToolStripMenuItem.Tag = "/var/root/Media/TTR"
+        Me.tsmTTR.Name = "tsmTTR"
+        resources.ApplyResources(Me.tsmTTR, "tsmTTR")
+        Me.tsmTTR.Tag = "/var/mobile/Media/TTR"
         '
-        'WeDictDictionariesToolStripMenuItem
+        'tsmWeDictDictionaries
         '
-        Me.WeDictDictionariesToolStripMenuItem.Name = "WeDictDictionariesToolStripMenuItem"
-        resources.ApplyResources(Me.WeDictDictionariesToolStripMenuItem, "WeDictDictionariesToolStripMenuItem")
-        Me.WeDictDictionariesToolStripMenuItem.Tag = "/var/root/Libary/weDict"
+        Me.tsmWeDictDictionaries.Name = "tsmWeDictDictionaries"
+        resources.ApplyResources(Me.tsmWeDictDictionaries, "tsmWeDictDictionaries")
+        Me.tsmWeDictDictionaries.Tag = "/var/mobile/Libary/weDict"
         '
         'ToolStripSeparator6
         '
         Me.ToolStripSeparator6.Name = "ToolStripSeparator6"
         resources.ApplyResources(Me.ToolStripSeparator6, "ToolStripSeparator6")
         '
-        'CameraRollToolStripMenuItem
+        'tsmCameraRoll
         '
-        Me.CameraRollToolStripMenuItem.Name = "CameraRollToolStripMenuItem"
-        resources.ApplyResources(Me.CameraRollToolStripMenuItem, "CameraRollToolStripMenuItem")
-        Me.CameraRollToolStripMenuItem.Tag = "/var/root/Media/DCIM"
+        Me.tsmCameraRoll.Name = "tsmCameraRoll"
+        resources.ApplyResources(Me.tsmCameraRoll, "tsmCameraRoll")
+        Me.tsmCameraRoll.Tag = "/var/root/Media/DCIM"
         '
         'toolStripGoTo19
         '
@@ -863,39 +918,55 @@ Partial Class frmMain
         'ToolStripDropDownButton2
         '
         Me.ToolStripDropDownButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
-        Me.ToolStripDropDownButton2.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ConfirmDeletionsToolStripMenuItem, Me.IgnoreThumbsdbToolStripMenuItem, Me.IgnoreDSStoreToolStripMenuItem, Me.ConvertPNGsToolStripMenuItem, Me.ToolStripSeparator8, Me.ShowPreviewsToolStripMenuItem, Me.PictureBackgroundToolStripMenuItem, Me.BackupDirectoryToolStripMenuItem})
+        Me.ToolStripDropDownButton2.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmConfirmDeletions, Me.tsmIgnoreThumbsdb, Me.tsmIgnoreDSStore, Me.tsmIgnoreCacheFile, Me.tsmBackupControl, Me.tsmConvertPNGs, Me.ToolStripSeparator8, Me.tsmDisplaySongTitle, Me.tsmShowPreviews, Me.tsmPictureBackground, Me.tsmBackupDirectory})
         resources.ApplyResources(Me.ToolStripDropDownButton2, "ToolStripDropDownButton2")
         Me.ToolStripDropDownButton2.Name = "ToolStripDropDownButton2"
         '
-        'ConfirmDeletionsToolStripMenuItem
+        'tsmConfirmDeletions
         '
-        Me.ConfirmDeletionsToolStripMenuItem.Checked = True
-        Me.ConfirmDeletionsToolStripMenuItem.CheckOnClick = True
-        Me.ConfirmDeletionsToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.ConfirmDeletionsToolStripMenuItem.Name = "ConfirmDeletionsToolStripMenuItem"
-        resources.ApplyResources(Me.ConfirmDeletionsToolStripMenuItem, "ConfirmDeletionsToolStripMenuItem")
+        Me.tsmConfirmDeletions.Checked = True
+        Me.tsmConfirmDeletions.CheckOnClick = True
+        Me.tsmConfirmDeletions.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.tsmConfirmDeletions.Name = "tsmConfirmDeletions"
+        resources.ApplyResources(Me.tsmConfirmDeletions, "tsmConfirmDeletions")
         '
-        'IgnoreThumbsdbToolStripMenuItem
+        'tsmIgnoreThumbsdb
         '
-        Me.IgnoreThumbsdbToolStripMenuItem.Checked = True
-        Me.IgnoreThumbsdbToolStripMenuItem.CheckOnClick = True
-        Me.IgnoreThumbsdbToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.IgnoreThumbsdbToolStripMenuItem.Name = "IgnoreThumbsdbToolStripMenuItem"
-        resources.ApplyResources(Me.IgnoreThumbsdbToolStripMenuItem, "IgnoreThumbsdbToolStripMenuItem")
+        Me.tsmIgnoreThumbsdb.Checked = True
+        Me.tsmIgnoreThumbsdb.CheckOnClick = True
+        Me.tsmIgnoreThumbsdb.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.tsmIgnoreThumbsdb.Name = "tsmIgnoreThumbsdb"
+        resources.ApplyResources(Me.tsmIgnoreThumbsdb, "tsmIgnoreThumbsdb")
         '
-        'IgnoreDSStoreToolStripMenuItem
+        'tsmIgnoreDSStore
         '
-        Me.IgnoreDSStoreToolStripMenuItem.Checked = True
-        Me.IgnoreDSStoreToolStripMenuItem.CheckOnClick = True
-        Me.IgnoreDSStoreToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.IgnoreDSStoreToolStripMenuItem.Name = "IgnoreDSStoreToolStripMenuItem"
-        resources.ApplyResources(Me.IgnoreDSStoreToolStripMenuItem, "IgnoreDSStoreToolStripMenuItem")
+        Me.tsmIgnoreDSStore.Checked = True
+        Me.tsmIgnoreDSStore.CheckOnClick = True
+        Me.tsmIgnoreDSStore.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.tsmIgnoreDSStore.Name = "tsmIgnoreDSStore"
+        resources.ApplyResources(Me.tsmIgnoreDSStore, "tsmIgnoreDSStore")
         '
-        'ConvertPNGsToolStripMenuItem
+        'tsmIgnoreCacheFile
         '
-        Me.ConvertPNGsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmIPhoneToPC, Me.tsmPCToIPhone, Me.tsmConvertBoth})
-        Me.ConvertPNGsToolStripMenuItem.Name = "ConvertPNGsToolStripMenuItem"
-        resources.ApplyResources(Me.ConvertPNGsToolStripMenuItem, "ConvertPNGsToolStripMenuItem")
+        Me.tsmIgnoreCacheFile.Checked = True
+        Me.tsmIgnoreCacheFile.CheckOnClick = True
+        Me.tsmIgnoreCacheFile.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.tsmIgnoreCacheFile.Name = "tsmIgnoreCacheFile"
+        resources.ApplyResources(Me.tsmIgnoreCacheFile, "tsmIgnoreCacheFile")
+        '
+        'tsmBackupControl
+        '
+        Me.tsmBackupControl.Checked = True
+        Me.tsmBackupControl.CheckOnClick = True
+        Me.tsmBackupControl.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.tsmBackupControl.Name = "tsmBackupControl"
+        resources.ApplyResources(Me.tsmBackupControl, "tsmBackupControl")
+        '
+        'tsmConvertPNGs
+        '
+        Me.tsmConvertPNGs.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmIPhoneToPC, Me.tsmPCToIPhone, Me.tsmConvertBoth})
+        Me.tsmConvertPNGs.Name = "tsmConvertPNGs"
+        resources.ApplyResources(Me.tsmConvertPNGs, "tsmConvertPNGs")
         '
         'tsmIPhoneToPC
         '
@@ -921,19 +992,27 @@ Partial Class frmMain
         Me.ToolStripSeparator8.Name = "ToolStripSeparator8"
         resources.ApplyResources(Me.ToolStripSeparator8, "ToolStripSeparator8")
         '
-        'ShowPreviewsToolStripMenuItem
+        'tsmDisplaySongTitle
         '
-        Me.ShowPreviewsToolStripMenuItem.Checked = True
-        Me.ShowPreviewsToolStripMenuItem.CheckOnClick = True
-        Me.ShowPreviewsToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.ShowPreviewsToolStripMenuItem.Name = "ShowPreviewsToolStripMenuItem"
-        resources.ApplyResources(Me.ShowPreviewsToolStripMenuItem, "ShowPreviewsToolStripMenuItem")
+        Me.tsmDisplaySongTitle.Checked = True
+        Me.tsmDisplaySongTitle.CheckOnClick = True
+        Me.tsmDisplaySongTitle.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.tsmDisplaySongTitle.Name = "tsmDisplaySongTitle"
+        resources.ApplyResources(Me.tsmDisplaySongTitle, "tsmDisplaySongTitle")
         '
-        'PictureBackgroundToolStripMenuItem
+        'tsmShowPreviews
         '
-        Me.PictureBackgroundToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BlackToolStripMenuItem, Me.GrayToolStripMenuItem, Me.WhiteToolStripMenuItem})
-        Me.PictureBackgroundToolStripMenuItem.Name = "PictureBackgroundToolStripMenuItem"
-        resources.ApplyResources(Me.PictureBackgroundToolStripMenuItem, "PictureBackgroundToolStripMenuItem")
+        Me.tsmShowPreviews.Checked = True
+        Me.tsmShowPreviews.CheckOnClick = True
+        Me.tsmShowPreviews.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.tsmShowPreviews.Name = "tsmShowPreviews"
+        resources.ApplyResources(Me.tsmShowPreviews, "tsmShowPreviews")
+        '
+        'tsmPictureBackground
+        '
+        Me.tsmPictureBackground.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BlackToolStripMenuItem, Me.GrayToolStripMenuItem, Me.WhiteToolStripMenuItem})
+        Me.tsmPictureBackground.Name = "tsmPictureBackground"
+        resources.ApplyResources(Me.tsmPictureBackground, "tsmPictureBackground")
         '
         'BlackToolStripMenuItem
         '
@@ -953,10 +1032,10 @@ Partial Class frmMain
         Me.WhiteToolStripMenuItem.Name = "WhiteToolStripMenuItem"
         resources.ApplyResources(Me.WhiteToolStripMenuItem, "WhiteToolStripMenuItem")
         '
-        'BackupDirectoryToolStripMenuItem
+        'tsmBackupDirectory
         '
-        Me.BackupDirectoryToolStripMenuItem.Name = "BackupDirectoryToolStripMenuItem"
-        resources.ApplyResources(Me.BackupDirectoryToolStripMenuItem, "BackupDirectoryToolStripMenuItem")
+        Me.tsmBackupDirectory.Name = "tsmBackupDirectory"
+        resources.ApplyResources(Me.tsmBackupDirectory, "tsmBackupDirectory")
         '
         'ToolStripDropDownButton1
         '
@@ -975,13 +1054,34 @@ Partial Class frmMain
         Me.tsmHomePage.Name = "tsmHomePage"
         resources.ApplyResources(Me.tsmHomePage, "tsmHomePage")
         '
+        'ToolStripSeparator11
+        '
+        Me.ToolStripSeparator11.Name = "ToolStripSeparator11"
+        resources.ApplyResources(Me.ToolStripSeparator11, "ToolStripSeparator11")
+        '
+        'tslAddress
+        '
+        resources.ApplyResources(Me.tslAddress, "tslAddress")
+        Me.tslAddress.Name = "tslAddress"
+        '
+        'tstAddress
+        '
+        resources.ApplyResources(Me.tstAddress, "tstAddress")
+        Me.tstAddress.Name = "tstAddress"
+        '
+        'tsbAddress
+        '
+        Me.tsbAddress.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        resources.ApplyResources(Me.tsbAddress, "tsbAddress")
+        Me.tsbAddress.Name = "tsbAddress"
+        '
         'fileSaveDialog
         '
         Me.fileSaveDialog.AddExtension = False
         '
         'menuRightClickFolders
         '
-        Me.menuRightClickFolders.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItemNewFolder, Me.ToolStripSeparator9, Me.BackupFolderToolStripMenuItem, Me.ToolStripMenuItemSaveFolderIn, Me.cmdRenameFolder, Me.ToolStripSeparator10, Me.ToolStripMenuItemDeleteFolder})
+        Me.menuRightClickFolders.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItemNewFolder, Me.ToolStripSeparator9, Me.tsmBackupFolder, Me.tsmSaveFolderIn, Me.cmdRenameFolder, Me.ToolStripSeparator10, Me.ToolStripMenuItemDeleteFolder})
         Me.menuRightClickFolders.Name = "menuRightClickFolders"
         resources.ApplyResources(Me.menuRightClickFolders, "menuRightClickFolders")
         '
@@ -995,15 +1095,15 @@ Partial Class frmMain
         Me.ToolStripSeparator9.Name = "ToolStripSeparator9"
         resources.ApplyResources(Me.ToolStripSeparator9, "ToolStripSeparator9")
         '
-        'BackupFolderToolStripMenuItem
+        'tsmBackupFolder
         '
-        Me.BackupFolderToolStripMenuItem.Name = "BackupFolderToolStripMenuItem"
-        resources.ApplyResources(Me.BackupFolderToolStripMenuItem, "BackupFolderToolStripMenuItem")
+        Me.tsmBackupFolder.Name = "tsmBackupFolder"
+        resources.ApplyResources(Me.tsmBackupFolder, "tsmBackupFolder")
         '
-        'ToolStripMenuItemSaveFolderIn
+        'tsmSaveFolderIn
         '
-        Me.ToolStripMenuItemSaveFolderIn.Name = "ToolStripMenuItemSaveFolderIn"
-        resources.ApplyResources(Me.ToolStripMenuItemSaveFolderIn, "ToolStripMenuItemSaveFolderIn")
+        Me.tsmSaveFolderIn.Name = "tsmSaveFolderIn"
+        resources.ApplyResources(Me.tsmSaveFolderIn, "tsmSaveFolderIn")
         '
         'cmdRenameFolder
         '
@@ -1029,6 +1129,22 @@ Partial Class frmMain
         '
         Me.Timer1.Interval = 350
         '
+        'qtPlugin
+        '
+        resources.ApplyResources(Me.qtPlugin, "qtPlugin")
+        Me.qtPlugin.ContextMenuStrip = Me.menuRightClickQt
+        Me.qtPlugin.EventEnabled = True
+        Me.qtPlugin.Name = "qtPlugin"
+        Me.qtPlugin.OcxState = CType(resources.GetObject("qtPlugin.OcxState"), System.Windows.Forms.AxHost.State)
+        '
+        'qtBuff
+        '
+        resources.ApplyResources(Me.qtBuff, "qtBuff")
+        Me.qtBuff.EventEnabled = True
+        Me.qtBuff.MaximumSize = New System.Drawing.Size(150, 50)
+        Me.qtBuff.Name = "qtBuff"
+        Me.qtBuff.OcxState = CType(resources.GetObject("qtBuff.OcxState"), System.Windows.Forms.AxHost.State)
+        '
         'frmMain
         '
         resources.ApplyResources(Me, "$this")
@@ -1051,13 +1167,16 @@ Partial Class frmMain
         Me.menuRightClickFiles.ResumeLayout(False)
         Me.grpDetails.ResumeLayout(False)
         Me.grpDetails.PerformLayout()
-        CType(Me.qtPlugin, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlQt.ResumeLayout(False)
+        Me.menuRightClickQt.ResumeLayout(False)
         CType(Me.picFileDetails, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tlbStatusStrip.ResumeLayout(False)
         Me.tlbStatusStrip.PerformLayout()
         Me.toolStrip.ResumeLayout(False)
         Me.toolStrip.PerformLayout()
         Me.menuRightClickFolders.ResumeLayout(False)
+        CType(Me.qtPlugin, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.qtBuff, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1067,7 +1186,7 @@ Partial Class frmMain
     Friend WithEvents tlbProgressBar As System.Windows.Forms.ToolStripProgressBar
     Friend WithEvents imgFolders As System.Windows.Forms.ImageList
     Friend WithEvents toolStrip As System.Windows.Forms.ToolStrip
-    Friend WithEvents ToolStripMenuItemFile As System.Windows.Forms.ToolStripDropDownButton
+    Friend WithEvents tsmFile As System.Windows.Forms.ToolStripDropDownButton
     Friend WithEvents ToolStripMenuItemExit As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents mnuView As System.Windows.Forms.ToolStripDropDownButton
     Friend WithEvents ToolStripMenuItemDetails As System.Windows.Forms.ToolStripMenuItem
@@ -1082,7 +1201,7 @@ Partial Class frmMain
     Friend WithEvents menuRightReplaceFile As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents fileOpenDialog As System.Windows.Forms.OpenFileDialog
     Friend WithEvents menuRightDeleteFile As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents ToolStripMenuItemCleanUp As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents tsmCleanUp As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripMenuItemLoading As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripMenuItemViewBackups As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripSeparator3 As System.Windows.Forms.ToolStripSeparator
@@ -1097,7 +1216,7 @@ Partial Class frmMain
     Friend WithEvents cohFiletype As System.Windows.Forms.ColumnHeader
     Friend WithEvents grpDetails As System.Windows.Forms.GroupBox
     'Friend WithEvents qtPlugin As AxQTOControlLib.AxQTControl
-    Friend WithEvents qtPlugin As QtWrapper
+    Friend WithEvents qtBuff As QtWrapper
     Friend WithEvents txtFileDetails As System.Windows.Forms.TextBox
     Friend WithEvents mnuGoTo As System.Windows.Forms.ToolStripDropDownButton
     Friend WithEvents toolStripGoTo1 As System.Windows.Forms.ToolStripMenuItem
@@ -1128,18 +1247,18 @@ Partial Class frmMain
     Friend WithEvents toolStripGoTo17 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents toolStripGoTo18 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents mnuThirdPartyApps As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents DockSwapDocksToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents EBooksToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents FrotzGamesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents ISwitcherThemesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents NESROMSToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents TTRToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents InstallerPackageSourcesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents ConfirmDeletionsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents WeDictDictionariesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents ConvertPNGsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents tsmDockSwapDocks As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents tsmEBooks As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents tsmFrotzGames As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents tsmISwitcherThemes As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents tsmNESROMS As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents tsmTTR As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents tsmInstallerPackageSources As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents tsmConfirmDeletions As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents tsmWeDictDictionaries As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents tsmConvertPNGs As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents folderBrowserDialog As System.Windows.Forms.FolderBrowserDialog
-    Friend WithEvents PictureBackgroundToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents tsmPictureBackground As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents BlackToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents GrayToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents WhiteToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
@@ -1150,19 +1269,19 @@ Partial Class frmMain
     Friend WithEvents ToolStripMenuItem4 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents tsmAsCustomizeFolders As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents AsPXLPackageToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents ToolStripMenuItem5 As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents ToolStripMenuItem6 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents tsmCustomizeFiles As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents tsmIFlashCards As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents tsmIPhoneToPC As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents tsmPCToIPhone As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents tsmConvertBoth As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripSeparator8 As System.Windows.Forms.ToolStripSeparator
-    Friend WithEvents ShowPreviewsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents ToolStripMenuItemSaveFolderIn As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents tsmShowPreviews As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents tsmSaveFolderIn As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripSeparator9 As System.Windows.Forms.ToolStripSeparator
-    Friend WithEvents BackupFolderToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents tsmBackupFolder As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripSeparator10 As System.Windows.Forms.ToolStripSeparator
-    Friend WithEvents IgnoreThumbsdbToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents IgnoreDSStoreToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents tsmIgnoreThumbsdb As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents tsmIgnoreDSStore As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents cmdRenameFolder As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents cmdRenameFile As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents mnuFavorites As System.Windows.Forms.ToolStripDropDownButton
@@ -1174,8 +1293,8 @@ Partial Class frmMain
     Friend WithEvents cmdSmallIcons As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem8 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents cmdShowGroups As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents cmdGBAROMs As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents CameraRollToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents tsmGBAROMs As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents tsmCameraRoll As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents tlbProgress0 As System.Windows.Forms.ToolStripProgressBar
     Friend WithEvents picFileDetails As System.Windows.Forms.PictureBox
     Friend WithEvents Timer1 As System.Windows.Forms.Timer
@@ -1187,7 +1306,7 @@ Partial Class frmMain
     Friend WithEvents imgFilesLarge As System.Windows.Forms.ImageList
     Friend WithEvents imgFilesSmall As System.Windows.Forms.ImageList
     Friend WithEvents ToolStripDropDownButton2 As System.Windows.Forms.ToolStripDropDownButton
-    Friend WithEvents BackupDirectoryToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents tsmBackupDirectory As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents cohAttribute As System.Windows.Forms.ColumnHeader
     Friend WithEvents tsmFileList As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents tsmRestructureDB As System.Windows.Forms.ToolStripMenuItem
@@ -1197,5 +1316,20 @@ Partial Class frmMain
     Friend WithEvents tsmHomePage As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents chkZoom As System.Windows.Forms.CheckBox
     Friend WithEvents lblMovieName As System.Windows.Forms.Label
+    Friend WithEvents tsmBackupControl As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents tsmIgnoreCacheFile As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents tsmDisplaySongTitle As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents menuRightDeleteBackupedFile As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ToolStripSeparator11 As System.Windows.Forms.ToolStripSeparator
+    Friend WithEvents tslAddress As System.Windows.Forms.ToolStripLabel
+    Friend WithEvents tstAddress As System.Windows.Forms.ToolStripTextBox
+    Friend WithEvents tsbAddress As System.Windows.Forms.ToolStripButton
+    Friend WithEvents menuRightClickQt As System.Windows.Forms.ContextMenuStrip
+    Friend WithEvents tsmQtFullscreen As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents tsmQtExportDialog As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents tsmQtMovieInfo As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents pnlQt As System.Windows.Forms.Panel
+    Friend WithEvents tsmQuickTimeInfo As System.Windows.Forms.ToolStripMenuItem
+    Protected Friend WithEvents qtPlugin As iPhoneBrowser.itouchBrowser.QtWrapper
 
 End Class

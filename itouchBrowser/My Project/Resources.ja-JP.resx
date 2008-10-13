@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="String1" xml:space="preserve">
-    <value>未脱獄touchが接続されました。</value>
+    <value>未脱獄のtouchが接続されました。 (afc2 サービスが見つかりません)</value>
   </data>
   <data name="String10" xml:space="preserve">
     <value>ドックイメージのコピー</value>
@@ -160,7 +160,7 @@
     <value>新規作成するフォルダの名前を入力してください。新しいフォルダのパスは、{0}&lt;new folder&gt;になります。大文字と小文字を区別するので注意してください。</value>
   </data>
   <data name="String22" xml:space="preserve">
-    <value>空き容量が足りないか、スラッシュなどの特殊記号をフォルダ名に使用しました。</value>
+    <value>スラッシュなどの特殊記号をフォルダ名に使用しました。</value>
   </data>
   <data name="String23" xml:space="preserve">
     <value>'{0}' のパスは、既に存在しています。</value>
@@ -172,7 +172,7 @@
     <value>エラー: パスの作成は成功したはずですが、あなたのtouch/iPhoneには、'{0}' のパスが見つかりません。</value>
   </data>
   <data name="String26" xml:space="preserve">
-    <value>エラー: この touch/iPhone には、'{0}' のパスが見つかりません。 脱獄済みですか。</value>
+    <value>エラー: この touch/iPhone には、'{0}' のパスが見つかりません。 </value>
   </data>
   <data name="String27" xml:space="preserve">
     <value>{0} のパスを作成しますか？</value>
@@ -233,6 +233,18 @@
   </data>
   <data name="String44" xml:space="preserve">
     <value>バックアップを比較して同一内容のファイルを削除します。ファイルが多いと数分かかるかもしれません。しばらくお待ちください。</value>
+  </data>
+  <data name="String45" xml:space="preserve">
+    <value>サマーボードフォルダーのバックアップ先を選択してください。</value>
+  </data>
+  <data name="String46" xml:space="preserve">
+    <value>フォルダーの名前が変わっていません。必要なフォルダーは、'NewFolder' ではないと思います。。。</value>
+  </data>
+  <data name="String47" xml:space="preserve">
+    <value>ファイル名の変更で、フォルダを移動することは出来ません。</value>
+  </data>
+  <data name="String48" xml:space="preserve">
+    <value>新しいフォルダ名の入力：</value>
   </data>
   <data name="String5" xml:space="preserve">
     <value>'{0}' ファイルの読み込み中...</value>

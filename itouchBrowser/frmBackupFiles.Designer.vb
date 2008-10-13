@@ -22,6 +22,7 @@ Partial Class frmBackupFiles
     'コード エディタを使って変更しないでください。
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmBackupFiles))
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
@@ -33,72 +34,61 @@ Partial Class frmBackupFiles
         Me.colFSize = New System.Windows.Forms.DataGridViewTextBoxColumn
         Me.colFolderName = New System.Windows.Forms.DataGridViewTextBoxColumn
         Me.colCnt = New System.Windows.Forms.DataGridViewTextBoxColumn
+        Me.menuRightClickAllView = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.tsmDeleteFile1 = New System.Windows.Forms.ToolStripMenuItem
         Me.TabFileGroup = New System.Windows.Forms.TabControl
         Me.TabPage1 = New System.Windows.Forms.TabPage
         Me.TabPage2 = New System.Windows.Forms.TabPage
         Me.dgvDetailView = New System.Windows.Forms.DataGridView
+        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn
+        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn
+        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn
+        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn
+        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn
+        Me.menuRightClickDetail = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.tsmDeleteFile2 = New System.Windows.Forms.ToolStripMenuItem
         Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel
         Me.btnClose = New System.Windows.Forms.Button
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip
         Me.statFileCount = New System.Windows.Forms.ToolStripStatusLabel
         Me.statFileName = New System.Windows.Forms.ToolStripStatusLabel
         Me.statDummy = New System.Windows.Forms.ToolStripStatusLabel
-        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn
         Me.SplitContainer1.Panel1.SuspendLayout()
         Me.SplitContainer1.Panel2.SuspendLayout()
         Me.SplitContainer1.SuspendLayout()
         CType(Me.dgvBackupView, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.menuRightClickAllView.SuspendLayout()
         Me.TabFileGroup.SuspendLayout()
         CType(Me.dgvDetailView, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.menuRightClickDetail.SuspendLayout()
         Me.FlowLayoutPanel1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'SplitContainer1
         '
-        Me.SplitContainer1.AccessibleDescription = Nothing
-        Me.SplitContainer1.AccessibleName = Nothing
         resources.ApplyResources(Me.SplitContainer1, "SplitContainer1")
-        Me.SplitContainer1.BackgroundImage = Nothing
         Me.SplitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel2
-        Me.SplitContainer1.Font = Nothing
         Me.SplitContainer1.Name = "SplitContainer1"
         '
         'SplitContainer1.Panel1
         '
-        Me.SplitContainer1.Panel1.AccessibleDescription = Nothing
-        Me.SplitContainer1.Panel1.AccessibleName = Nothing
-        resources.ApplyResources(Me.SplitContainer1.Panel1, "SplitContainer1.Panel1")
-        Me.SplitContainer1.Panel1.BackgroundImage = Nothing
         Me.SplitContainer1.Panel1.Controls.Add(Me.dgvBackupView)
         Me.SplitContainer1.Panel1.Controls.Add(Me.TabFileGroup)
-        Me.SplitContainer1.Panel1.Font = Nothing
         '
         'SplitContainer1.Panel2
         '
-        Me.SplitContainer1.Panel2.AccessibleDescription = Nothing
-        Me.SplitContainer1.Panel2.AccessibleName = Nothing
-        resources.ApplyResources(Me.SplitContainer1.Panel2, "SplitContainer1.Panel2")
-        Me.SplitContainer1.Panel2.BackgroundImage = Nothing
         Me.SplitContainer1.Panel2.Controls.Add(Me.dgvDetailView)
-        Me.SplitContainer1.Panel2.Font = Nothing
         '
         'dgvBackupView
         '
-        Me.dgvBackupView.AccessibleDescription = Nothing
-        Me.dgvBackupView.AccessibleName = Nothing
         Me.dgvBackupView.AllowUserToAddRows = False
         Me.dgvBackupView.AllowUserToDeleteRows = False
-        resources.ApplyResources(Me.dgvBackupView, "dgvBackupView")
         Me.dgvBackupView.BackgroundColor = System.Drawing.SystemColors.Window
-        Me.dgvBackupView.BackgroundImage = Nothing
         Me.dgvBackupView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvBackupView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.colFileName, Me.colBackupDate, Me.colFSize, Me.colFolderName, Me.colCnt})
-        Me.dgvBackupView.Font = Nothing
+        Me.dgvBackupView.ContextMenuStrip = Me.menuRightClickAllView
+        resources.ApplyResources(Me.dgvBackupView, "dgvBackupView")
         Me.dgvBackupView.Name = "dgvBackupView"
         Me.dgvBackupView.ReadOnly = True
         Me.dgvBackupView.RowTemplate.Height = 21
@@ -149,113 +139,50 @@ Partial Class frmBackupFiles
         Me.colCnt.Name = "colCnt"
         Me.colCnt.ReadOnly = True
         '
+        'menuRightClickAllView
+        '
+        Me.menuRightClickAllView.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmDeleteFile1})
+        Me.menuRightClickAllView.Name = "menuRightClickAllView"
+        resources.ApplyResources(Me.menuRightClickAllView, "menuRightClickAllView")
+        '
+        'tsmDeleteFile1
+        '
+        Me.tsmDeleteFile1.Name = "tsmDeleteFile1"
+        resources.ApplyResources(Me.tsmDeleteFile1, "tsmDeleteFile1")
+        '
         'TabFileGroup
         '
-        Me.TabFileGroup.AccessibleDescription = Nothing
-        Me.TabFileGroup.AccessibleName = Nothing
-        resources.ApplyResources(Me.TabFileGroup, "TabFileGroup")
-        Me.TabFileGroup.BackgroundImage = Nothing
         Me.TabFileGroup.Controls.Add(Me.TabPage1)
         Me.TabFileGroup.Controls.Add(Me.TabPage2)
-        Me.TabFileGroup.Font = Nothing
+        resources.ApplyResources(Me.TabFileGroup, "TabFileGroup")
         Me.TabFileGroup.Name = "TabFileGroup"
         Me.TabFileGroup.SelectedIndex = 0
         '
         'TabPage1
         '
-        Me.TabPage1.AccessibleDescription = Nothing
-        Me.TabPage1.AccessibleName = Nothing
         resources.ApplyResources(Me.TabPage1, "TabPage1")
-        Me.TabPage1.BackgroundImage = Nothing
-        Me.TabPage1.Font = Nothing
         Me.TabPage1.Name = "TabPage1"
         Me.TabPage1.UseVisualStyleBackColor = True
         '
         'TabPage2
         '
-        Me.TabPage2.AccessibleDescription = Nothing
-        Me.TabPage2.AccessibleName = Nothing
         resources.ApplyResources(Me.TabPage2, "TabPage2")
-        Me.TabPage2.BackgroundImage = Nothing
-        Me.TabPage2.Font = Nothing
         Me.TabPage2.Name = "TabPage2"
         Me.TabPage2.UseVisualStyleBackColor = True
         '
         'dgvDetailView
         '
-        Me.dgvDetailView.AccessibleDescription = Nothing
-        Me.dgvDetailView.AccessibleName = Nothing
         Me.dgvDetailView.AllowUserToAddRows = False
         Me.dgvDetailView.AllowUserToDeleteRows = False
-        resources.ApplyResources(Me.dgvDetailView, "dgvDetailView")
         Me.dgvDetailView.BackgroundColor = System.Drawing.SystemColors.Window
-        Me.dgvDetailView.BackgroundImage = Nothing
         Me.dgvDetailView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvDetailView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column5, Me.Column1, Me.Column2, Me.Column3, Me.Column4})
-        Me.dgvDetailView.Font = Nothing
+        Me.dgvDetailView.ContextMenuStrip = Me.menuRightClickDetail
+        resources.ApplyResources(Me.dgvDetailView, "dgvDetailView")
         Me.dgvDetailView.Name = "dgvDetailView"
         Me.dgvDetailView.ReadOnly = True
         Me.dgvDetailView.RowTemplate.Height = 21
-        '
-        'FlowLayoutPanel1
-        '
-        Me.FlowLayoutPanel1.AccessibleDescription = Nothing
-        Me.FlowLayoutPanel1.AccessibleName = Nothing
-        resources.ApplyResources(Me.FlowLayoutPanel1, "FlowLayoutPanel1")
-        Me.FlowLayoutPanel1.BackgroundImage = Nothing
-        Me.FlowLayoutPanel1.Controls.Add(Me.btnClose)
-        Me.FlowLayoutPanel1.Font = Nothing
-        Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
-        '
-        'btnClose
-        '
-        Me.btnClose.AccessibleDescription = Nothing
-        Me.btnClose.AccessibleName = Nothing
-        resources.ApplyResources(Me.btnClose, "btnClose")
-        Me.btnClose.BackgroundImage = Nothing
-        Me.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.btnClose.Font = Nothing
-        Me.btnClose.Name = "btnClose"
-        Me.btnClose.UseVisualStyleBackColor = True
-        '
-        'StatusStrip1
-        '
-        Me.StatusStrip1.AccessibleDescription = Nothing
-        Me.StatusStrip1.AccessibleName = Nothing
-        resources.ApplyResources(Me.StatusStrip1, "StatusStrip1")
-        Me.StatusStrip1.BackgroundImage = Nothing
-        Me.StatusStrip1.Font = Nothing
-        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.statFileCount, Me.statFileName, Me.statDummy})
-        Me.StatusStrip1.Name = "StatusStrip1"
-        '
-        'statFileCount
-        '
-        Me.statFileCount.AccessibleDescription = Nothing
-        Me.statFileCount.AccessibleName = Nothing
-        resources.ApplyResources(Me.statFileCount, "statFileCount")
-        Me.statFileCount.BackgroundImage = Nothing
-        Me.statFileCount.BorderSides = CType((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) _
-                    Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) _
-                    Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom), System.Windows.Forms.ToolStripStatusLabelBorderSides)
-        Me.statFileCount.BorderStyle = System.Windows.Forms.Border3DStyle.Sunken
-        Me.statFileCount.Name = "statFileCount"
-        '
-        'statFileName
-        '
-        Me.statFileName.AccessibleDescription = Nothing
-        Me.statFileName.AccessibleName = Nothing
-        resources.ApplyResources(Me.statFileName, "statFileName")
-        Me.statFileName.BackgroundImage = Nothing
-        Me.statFileName.Name = "statFileName"
-        Me.statFileName.Spring = True
-        '
-        'statDummy
-        '
-        Me.statDummy.AccessibleDescription = Nothing
-        Me.statDummy.AccessibleName = Nothing
-        resources.ApplyResources(Me.statDummy, "statDummy")
-        Me.statDummy.BackgroundImage = Nothing
-        Me.statDummy.Name = "statDummy"
+        Me.dgvDetailView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         '
         'Column5
         '
@@ -300,26 +227,73 @@ Partial Class frmBackupFiles
         Me.Column4.ReadOnly = True
         Me.Column4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
         '
+        'menuRightClickDetail
+        '
+        Me.menuRightClickDetail.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmDeleteFile2})
+        Me.menuRightClickDetail.Name = "menuRightClickDetail"
+        resources.ApplyResources(Me.menuRightClickDetail, "menuRightClickDetail")
+        '
+        'tsmDeleteFile2
+        '
+        Me.tsmDeleteFile2.Name = "tsmDeleteFile2"
+        resources.ApplyResources(Me.tsmDeleteFile2, "tsmDeleteFile2")
+        '
+        'FlowLayoutPanel1
+        '
+        resources.ApplyResources(Me.FlowLayoutPanel1, "FlowLayoutPanel1")
+        Me.FlowLayoutPanel1.Controls.Add(Me.btnClose)
+        Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
+        '
+        'btnClose
+        '
+        Me.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        resources.ApplyResources(Me.btnClose, "btnClose")
+        Me.btnClose.Name = "btnClose"
+        Me.btnClose.UseVisualStyleBackColor = True
+        '
+        'StatusStrip1
+        '
+        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.statFileCount, Me.statFileName, Me.statDummy})
+        resources.ApplyResources(Me.StatusStrip1, "StatusStrip1")
+        Me.StatusStrip1.Name = "StatusStrip1"
+        '
+        'statFileCount
+        '
+        resources.ApplyResources(Me.statFileCount, "statFileCount")
+        Me.statFileCount.BorderSides = CType((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) _
+                    Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) _
+                    Or System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom), System.Windows.Forms.ToolStripStatusLabelBorderSides)
+        Me.statFileCount.BorderStyle = System.Windows.Forms.Border3DStyle.Sunken
+        Me.statFileCount.Name = "statFileCount"
+        '
+        'statFileName
+        '
+        resources.ApplyResources(Me.statFileName, "statFileName")
+        Me.statFileName.Name = "statFileName"
+        Me.statFileName.Spring = True
+        '
+        'statDummy
+        '
+        resources.ApplyResources(Me.statDummy, "statDummy")
+        Me.statDummy.Name = "statDummy"
+        '
         'frmBackupFiles
         '
-        Me.AccessibleDescription = Nothing
-        Me.AccessibleName = Nothing
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackgroundImage = Nothing
         Me.CancelButton = Me.btnClose
         Me.Controls.Add(Me.SplitContainer1)
         Me.Controls.Add(Me.FlowLayoutPanel1)
         Me.Controls.Add(Me.StatusStrip1)
-        Me.Font = Nothing
-        Me.Icon = Nothing
         Me.Name = "frmBackupFiles"
         Me.SplitContainer1.Panel1.ResumeLayout(False)
         Me.SplitContainer1.Panel2.ResumeLayout(False)
         Me.SplitContainer1.ResumeLayout(False)
         CType(Me.dgvBackupView, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.menuRightClickAllView.ResumeLayout(False)
         Me.TabFileGroup.ResumeLayout(False)
         CType(Me.dgvDetailView, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.menuRightClickDetail.ResumeLayout(False)
         Me.FlowLayoutPanel1.ResumeLayout(False)
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()
@@ -349,4 +323,8 @@ Partial Class frmBackupFiles
     Friend WithEvents Column2 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column3 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column4 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents menuRightClickDetail As System.Windows.Forms.ContextMenuStrip
+    Friend WithEvents tsmDeleteFile2 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents menuRightClickAllView As System.Windows.Forms.ContextMenuStrip
+    Friend WithEvents tsmDeleteFile1 As System.Windows.Forms.ToolStripMenuItem
 End Class

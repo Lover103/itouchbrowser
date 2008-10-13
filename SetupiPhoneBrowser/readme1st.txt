@@ -1,14 +1,19 @@
-itouchBrowser　　　　　　　　　　　　　　　　　　　　2008/08/24
+itouchBrowser　　　　　　　　　　　　　　　　　　　　2008/10/05
 
-バージョン：1.7.1
+バージョン：1.8.0
 対象OS：Windows XP 日本語または英語
 前提ソフトウエア：
 	Microsoft .NET Framework 2.0
-	iTunes 7   http://www.apple.com/jp/itunes/download/
+	iTunes 7 or 8   http://www.apple.com/jp/itunes/download/
 
 説明：
-本アプリケーションは、iPod touch(jailbreak済み)のファイルシステムにUSB経由でアクセスし、
+本アプリケーションは、iPhone又はiPod touch(jailbreak済み)のファイルシステムにUSB経由でアクセスし、
 PCとtouch間でファイルのコピー・追加・削除・再生などを実現するものです。
+音楽ファイルの曲名を容易に参照できます。
+動画ファイルの取り込みも可能です。
+バックアップした大量のファイルを容易に管理できます。
+iTunes 7と8の両方で同様に使用できます。
+iPod touch 2Gでの稼動も確認済みです。
 
 導入方法：
 パッケージは、zip形式で圧縮されています。一般的な圧縮ツールやXPの機能でも展開できます。

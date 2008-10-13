@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="String1" xml:space="preserve">
-    <value>iPhone is connected, not jailbroken</value>
+    <value>iPhone is connected, not jailbroken (no afc2 service found)</value>
   </data>
   <data name="String10" xml:space="preserve">
     <value>Copy Dock Image</value>
@@ -160,7 +160,7 @@
     <value>Please enter the name of the new folder you wish to create.  The new path of this folder will be:{0}&lt;new folder&gt;, and the name is case-sensitive!</value>
   </data>
   <data name="String22" xml:space="preserve">
-    <value>No spaces, slashes or other special characters are allowed in the folder name.</value>
+    <value>No slashes or other special characters are allowed in the folder name.</value>
   </data>
   <data name="String23" xml:space="preserve">
     <value>The path '{0}' already exists.</value>
@@ -229,10 +229,23 @@
     <value>This function can be performed even from a menu.</value>
   </data>
   <data name="String43" xml:space="preserve">
-    <value>msg</value>
+    <value>Although the '{0}' is specified as a backup directory, it cannot access there.
+Is a backup place changed?</value>
   </data>
   <data name="String44" xml:space="preserve">
     <value>Backup is compared and the file of the same contents is deleted. It may take several minutes, when there are many files. Please wait for a while.</value>
+  </data>
+  <data name="String45" xml:space="preserve">
+    <value>Select the destination folder for saving</value>
+  </data>
+  <data name="String46" xml:space="preserve">
+    <value>You didn't change the default name, I am pretty sure you don't want a 'NewFolder' folder name...</value>
+  </data>
+  <data name="String47" xml:space="preserve">
+    <value>Can not use rename to move a folder</value>
+  </data>
+  <data name="String48" xml:space="preserve">
+    <value>Enter new folder name:</value>
   </data>
   <data name="String5" xml:space="preserve">
     <value>Loading Files for {0}...</value>
