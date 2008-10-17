@@ -42,3 +42,6 @@ http://itouchbrowser.googlecode.com/files/screenshot1_6_13.PNG
  * v1.7.0.15 バックアップファイル管理画面
 http://itouchbrowser.googlecode.com/files/screenshot1_7_15_FileDuplicationScreen.PNG
  重複ファイルの確認削除が可能です。
+
+ * v1.8.0.18
+http://itouchbrowser.googlecode.com/files/itouchBrowser18018.PNG
