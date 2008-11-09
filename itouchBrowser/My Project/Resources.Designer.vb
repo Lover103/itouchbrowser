@@ -449,6 +449,15 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Backup Dir. に類似しているローカライズされた文字列を検索します。
+        '''</summary>
+        Friend ReadOnly Property String49() As String
+            Get
+                Return ResourceManager.GetString("String49", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Loading Files for {0}... に類似しているローカライズされた文字列を検索します。
         '''</summary>
         Friend ReadOnly Property String5() As String
@@ -458,11 +467,110 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Song Name に類似しているローカライズされた文字列を検索します。
+        '''</summary>
+        Friend ReadOnly Property String50() As String
+            Get
+                Return ResourceManager.GetString("String50", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Album に類似しているローカライズされた文字列を検索します。
+        '''</summary>
+        Friend ReadOnly Property String51() As String
+            Get
+                Return ResourceManager.GetString("String51", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Track Number に類似しているローカライズされた文字列を検索します。
+        '''</summary>
+        Friend ReadOnly Property String52() As String
+            Get
+                Return ResourceManager.GetString("String52", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Genre に類似しているローカライズされた文字列を検索します。
+        '''</summary>
+        Friend ReadOnly Property String53() As String
+            Get
+                Return ResourceManager.GetString("String53", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Type に類似しているローカライズされた文字列を検索します。
+        '''</summary>
+        Friend ReadOnly Property String54() As String
+            Get
+                Return ResourceManager.GetString("String54", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Comment に類似しているローカライズされた文字列を検索します。
+        '''</summary>
+        Friend ReadOnly Property String55() As String
+            Get
+                Return ResourceManager.GetString("String55", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  My Music に類似しているローカライズされた文字列を検索します。
+        '''</summary>
+        Friend ReadOnly Property String56() As String
+            Get
+                Return ResourceManager.GetString("String56", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Desctop に類似しているローカライズされた文字列を検索します。
+        '''</summary>
+        Friend ReadOnly Property String57() As String
+            Get
+                Return ResourceManager.GetString("String57", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  My Computer に類似しているローカライズされた文字列を検索します。
+        '''</summary>
+        Friend ReadOnly Property String58() As String
+            Get
+                Return ResourceManager.GetString("String58", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  My Documents に類似しているローカライズされた文字列を検索します。
+        '''</summary>
+        Friend ReadOnly Property String59() As String
+            Get
+                Return ResourceManager.GetString("String59", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Files on your iPhone in the &apos;{0}&apos; Directory に類似しているローカライズされた文字列を検索します。
         '''</summary>
         Friend ReadOnly Property String6() As String
             Get
                 Return ResourceManager.GetString("String6", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Please choose the directory to write out. に類似しているローカライズされた文字列を検索します。
+        '''</summary>
+        Friend ReadOnly Property String60() As String
+            Get
+                Return ResourceManager.GetString("String60", resourceCulture)
             End Get
         End Property
         

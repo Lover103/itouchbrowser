@@ -246,11 +246,47 @@
   <data name="String48" xml:space="preserve">
     <value>新しいフォルダ名の入力：</value>
   </data>
+  <data name="String49" xml:space="preserve">
+    <value>バックアップ先 ディレクトリ</value>
+  </data>
   <data name="String5" xml:space="preserve">
     <value>'{0}' ファイルの読み込み中...</value>
   </data>
+  <data name="String50" xml:space="preserve">
+    <value>曲名</value>
+  </data>
+  <data name="String51" xml:space="preserve">
+    <value>アルバム名</value>
+  </data>
+  <data name="String52" xml:space="preserve">
+    <value>トラック番号</value>
+  </data>
+  <data name="String53" xml:space="preserve">
+    <value>ジャンル</value>
+  </data>
+  <data name="String54" xml:space="preserve">
+    <value>タイプ</value>
+  </data>
+  <data name="String55" xml:space="preserve">
+    <value>コメント</value>
+  </data>
+  <data name="String56" xml:space="preserve">
+    <value>マイミュージック</value>
+  </data>
+  <data name="String57" xml:space="preserve">
+    <value>デスクトップ</value>
+  </data>
+  <data name="String58" xml:space="preserve">
+    <value>マイコンピュータ</value>
+  </data>
+  <data name="String59" xml:space="preserve">
+    <value>マイドキュメント</value>
+  </data>
   <data name="String6" xml:space="preserve">
     <value>'{0}' フォルダーのファイル</value>
+  </data>
+  <data name="String60" xml:space="preserve">
+    <value>書き出し先のディレクトリを選択してください。</value>
   </data>
   <data name="String7" xml:space="preserve">
     <value>この機能は、すべてのバックアップファイルを詳細に調べ、重複ファイルを削除し、ディスク使用量を節約します。</value>

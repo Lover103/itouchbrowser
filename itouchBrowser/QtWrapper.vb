@@ -63,6 +63,27 @@ Public Class QtWrapper
         qtMovieLoadStateComplete = 100000
     End Enum
 
+    Public Enum QTAnnotationsEnum
+        qtAnnotationAlbum = 1634493037
+        qtAnnotationArtist = 1634890867
+        qtAnnotationArtwork = 1634890871
+        qtAnnotationAuthor = 1635087464
+        qtAnnotationComments = 1668115828
+        qtAnnotationComposer = 1668246896
+        qtAnnotationCopyright = 1668313716
+        qtAnnotationDescription = 1684370275
+        qtAnnotationDirector = 1685352306
+        qtAnnotationGenre = 1734700658
+        qtAnnotationInformation = 1768842863
+        qtAnnotationFullName = 1851878757
+        qtAnnotationOriginalFormat = 1869769062
+        qtAnnotationOriginalSource = 1869769075
+        qtAnnotationPerformers = 1885696614
+        qtAnnotationProducer = 1886547812
+        qtAnnotationSoftware = 1936680564
+        qtAnnotationWriter = 2003989618
+    End Enum
+
     Public Shadows Event VisibleChanged(ByVal visibled As Boolean)
     Public Event AnnotationUpdate(ByVal annotation As String)
     Public Event ShowStatusString(ByVal message As String)
@@ -73,10 +94,12 @@ Public Class QtWrapper
     End Sub
 
     Protected Overrides Sub Finalize()
-        MyBase.FileName = ""
-        MyBase.QuickTimeTerminate()
-
-        MyBase.Finalize()
+        Try
+            'MyBase.FileName = ""
+            MyBase.QuickTimeTerminate()
+        Finally
+            MyBase.Finalize()
+        End Try
     End Sub
 
     Public Property EventEnabled() As Boolean
@@ -206,8 +229,8 @@ Public Class QtWrapper
 
     End Sub
 
-    Private Function getAnnotation(ByVal qtMovie As QTOLibrary.IQTMovie) As String
-        Dim str As String = ""
+    Private Function getAnnotation(ByVal qtMovie As QTOLibrary.QTMovie) As String
+        Dim str As New System.Text.StringBuilder()
 
         If qtMovie IsNot Nothing Then
             Try
@@ -217,15 +240,77 @@ Public Class QtWrapper
                     Dim item As QTOLibrary.CFObject = citems(i)
                     Select Case item.Key.ToString
                         Case "arts"
-                            str &= item.Value.ToString & ": "
+                            str.Append(item.Value.ToString).Append(": ")
                         Case "albm"
-                            str &= item.Value.ToString & ": "
+                            str.Append(item.Value.ToString).Append(": ")
                         Case "name"
-                            str &= item.Value.ToString & ": "
+                            str.Append(item.Value.ToString).Append(": ")
                     End Select
-
                 Next
                 'End If
+                str.Append(vbCrLf).Append(vbCrLf)
+
+                Dim annoStr As String = ""
+
+                ' Display some popular movie annotations
+                'annoStr = Me.getMovieAnnotation(QTAnnotationsEnum.qtAnnotationFullName, qtMovie)
+                'If annoStr IsNot Nothing Then
+                '    str.Append(annoStr).Append(vbCrLf)
+                'End If
+
+                ' copyright
+                annoStr = Me.getMovieAnnotation(QTAnnotationsEnum.qtAnnotationCopyright, qtMovie)
+                If annoStr IsNot Nothing Then
+                    str.Append(annoStr).Append(vbCrLf)
+                End If
+
+                ' author
+                annoStr = Me.getMovieAnnotation(QTAnnotationsEnum.qtAnnotationAuthor, qtMovie)
+                If annoStr IsNot Nothing Then
+                    str.Append(annoStr).Append(vbCrLf)
+                End If
+
+                ' comments
+                annoStr = Me.getMovieAnnotation(QTAnnotationsEnum.qtAnnotationComments, qtMovie)
+                If annoStr IsNot Nothing Then
+                    str.Append(annoStr).Append(vbCrLf)
+                End If
+
+                ' description
+                annoStr = Me.getMovieAnnotation(QTAnnotationsEnum.qtAnnotationDescription, qtMovie)
+                If annoStr IsNot Nothing Then
+                    str.Append(annoStr).Append(vbCrLf)
+                End If
+
+                ' Display movie characteristics
+
+                ' width, height
+                If qtMovie.Width > 0 Then
+                    str.Append("Size: ").Append(qtMovie.Width.ToString()).Append(" x ").Append(qtMovie.Height.ToString()).Append(vbCrLf)
+                End If
+
+                ' duration
+                str.Append("Duration: ").Append(qtMovie.Duration.ToString()).Append(vbCrLf)
+
+                Dim tracks As QTTracks = qtMovie.Tracks
+                Dim trackEnum As IEnumerator = tracks.GetEnumerator()
+
+                ' display movie track information
+                Do While (trackEnum.MoveNext() = True)
+
+                    Dim currTrackObj As QTTrack = CType(trackEnum.Current, QTTrack)
+
+                    ' track display name                    track format
+                    str.Append(currTrackObj.DisplayName).Append(": ").Append(currTrackObj.Format())
+
+                    If currTrackObj.Height > 0 Then
+                        ' track width/height
+                        str.Append(", ").Append(currTrackObj.Width.ToString()).Append(" x ").Append( _
+                          currTrackObj.Height.ToString())
+                    End If
+
+                    str.Append(vbCrLf)
+                Loop
 
             Catch ex As Exception
                 MsgBox(ex.Message, MsgBoxStyle.Exclamation)
@@ -233,7 +318,26 @@ Public Class QtWrapper
 
         End If
 
-        Return str
+        Return str.ToString()
+
+    End Function
+
+    ' Get the specified annotation from the movie
+    Private Function getMovieAnnotation(ByVal inAnnoID As Integer, ByVal inMovie As QTMovie) As String
+        Dim anno As String = ""
+
+        If inMovie IsNot Nothing Then
+            Try
+                ' get movie annotation
+                anno = inMovie.Annotation(inAnnoID)
+
+            Catch
+                ' an error here means movie does not contain
+                ' the desired annotation
+            End Try
+        End If
+
+        Return anno
 
     End Function
 

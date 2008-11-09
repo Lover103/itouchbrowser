@@ -802,6 +802,7 @@ Many are improved and many processings are rewritten.
  * Enhancement of a display function (Music, Movie, Sqldb, html, etc.)
  * An abnormal end is cut down
  * The list check of a backup file, and deletion of a duplication file 
+ * Show the artist, album and song title
 
 
 </value>

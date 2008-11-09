@@ -66,6 +66,8 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <PlatformTarget>x86</PlatformTarget>
     <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -97,6 +99,8 @@
     <Import Include="System.Collections.Generic" />
     <Import Include="System.Drawing" />
     <Import Include="System.Diagnostics" />
+    <Import Include="System.IPod" />
+    <Import Include="System.IPod.Music" />
     <Import Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
@@ -151,6 +155,7 @@
     <Compile Include="frmSplashScreen.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="iTunesManager.vb" />
     <Compile Include="ListViewSizeComparer.vb" />
     <Compile Include="ListViewStringComparer.vb" />
     <Compile Include="ModuleMain.vb" />
@@ -271,15 +276,21 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
+    <None Include="Resources\Audio.bmp" />
+    <None Include="Resources\camera.bmp" />
     <Content Include="Resources\cancel.gif" />
+    <None Include="Resources\cdmusic.ico" />
+    <None Include="Resources\cdmusic.bmp" />
     <Content Include="Resources\Folder.ico" />
     <Content Include="Resources\folderopen.ico" />
+    <None Include="Resources\help.bmp" />
     <Content Include="Resources\internetconnection.ico" />
     <Content Include="Resources\iPhoneBrowser.ico" />
     <BaseApplicationManifest Include="My Project\app.manifest" />
     <None Include="Resources\StringResources.txt" />
     <Content Include="Resources\RingToneLarge.gif" />
     <Content Include="Resources\RingToneSmall.gif" />
+    <None Include="Resources\Zoom.bmp" />
     <None Include="app.config" />
     <None Include="Resources\warning.ico" />
   </ItemGroup>
@@ -301,6 +312,11 @@
     <ProjectReference Include="..\SCW_iPhonePNG\SCW_iPhonePNG.csproj">
       <Project>{E85E88FC-5B38-424F-AA49-19CAF50F65F7}</Project>
       <Name>SCW_iPhonePNG</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\System\IPod\System.IPod.csproj">
+      <Project>{754F63F5-C1E9-4496-ABE2-4FB9A30DFAF2}</Project>
+      <Name>System.IPod</Name>
+      <Private>True</Private>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />

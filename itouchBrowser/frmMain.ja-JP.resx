@@ -117,6 +117,44 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="grpFolders.Size" type="System.Drawing.Size, System.Drawing">
+    <value>229, 396</value>
+  </data>
+  <data name="grpFolders.Text" xml:space="preserve">
+    <value>touch のフォルダー</value>
+  </data>
+  <data name="grpFiles.Size" type="System.Drawing.Size, System.Drawing">
+    <value>509, 225</value>
+  </data>
+  <data name="grpFiles.Text" xml:space="preserve">
+    <value>touch のファイル一覧</value>
+  </data>
+  <data name="grpDetails.Size" type="System.Drawing.Size, System.Drawing">
+    <value>509, 167</value>
+  </data>
+  <data name="grpDetails.Text" xml:space="preserve">
+    <value>ファイルの詳細</value>
+  </data>
+  <data name="splFiles.Size" type="System.Drawing.Size, System.Drawing">
+    <value>509, 396</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="splFiles.SplitterDistance" type="System.Int32, mscorlib">
+    <value>225</value>
+  </data>
+  <data name="splMain.Size" type="System.Drawing.Size, System.Drawing">
+    <value>754, 402</value>
+  </data>
+  <data name="splMain.SplitterDistance" type="System.Int32, mscorlib">
+    <value>235</value>
+  </data>
+  <data name="tabFolder.Size" type="System.Drawing.Size, System.Drawing">
+    <value>223, 378</value>
+  </data>
+  <data name="TabPage1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>215, 353</value>
+  </data>
   <data name="imgFolders.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj0yLjAuMC4w
@@ -169,15 +207,26 @@
         AQEB/wGBAf8EAAL/AcMB/wQABP8EAAs=
 </value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="trvFolders.Size" type="System.Drawing.Size, System.Drawing">
-    <value>213, 480</value>
+    <value>209, 347</value>
   </data>
-  <data name="grpFolders.Size" type="System.Drawing.Size, System.Drawing">
-    <value>219, 498</value>
+  <data name="TabPage2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>215, 353</value>
   </data>
-  <data name="grpFolders.Text" xml:space="preserve">
-    <value>touch のフォルダー</value>
+  <data name="cmbOutputDir.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 329</value>
+  </data>
+  <data name="cmbOutputDir.Size" type="System.Drawing.Size, System.Drawing">
+    <value>136, 20</value>
+  </data>
+  <data name="btnExport.Location" type="System.Drawing.Point, System.Drawing">
+    <value>145, 327</value>
+  </data>
+  <data name="btnExport.Text" xml:space="preserve">
+    <value>吸出し</value>
+  </data>
+  <data name="trvITunes.Size" type="System.Drawing.Size, System.Drawing">
+    <value>209, 318</value>
   </data>
   <data name="picDelete.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -605,54 +654,6 @@
   </data>
   <data name="cohFiletype.Text" xml:space="preserve">
     <value>ファイルタイプ</value>
-  </data>
-  <data name="menuRightSaveAs.Size" type="System.Drawing.Size, System.Drawing">
-    <value>211, 22</value>
-  </data>
-  <data name="menuRightSaveAs.Text" xml:space="preserve">
-    <value>名前を指定して保存(&amp;A)...</value>
-  </data>
-  <data name="ToolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>208, 6</value>
-  </data>
-  <data name="menuRightBackupFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>211, 22</value>
-  </data>
-  <data name="menuRightBackupFile.Text" xml:space="preserve">
-    <value>ファイル バックアップ(&amp;B)</value>
-  </data>
-  <data name="menuRightRestoreFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>211, 22</value>
-  </data>
-  <data name="menuRightRestoreFile.Text" xml:space="preserve">
-    <value>ファイル リストア(&amp;R)</value>
-  </data>
-  <data name="menuRightDeleteBackupedFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>211, 22</value>
-  </data>
-  <data name="menuRightDeleteBackupedFile.Text" xml:space="preserve">
-    <value>バックアップファイルの削除(&amp;e)</value>
-  </data>
-  <data name="ToolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>208, 6</value>
-  </data>
-  <data name="cmdRenameFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>211, 22</value>
-  </data>
-  <data name="cmdRenameFile.Text" xml:space="preserve">
-    <value>ファイルのリネーム(&amp;R)...</value>
-  </data>
-  <data name="menuRightReplaceFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>211, 22</value>
-  </data>
-  <data name="menuRightReplaceFile.Text" xml:space="preserve">
-    <value>指定ファイルを書き込み(&amp;p)...</value>
-  </data>
-  <data name="menuRightDeleteFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>211, 22</value>
-  </data>
-  <data name="menuRightDeleteFile.Text" xml:space="preserve">
-    <value>ファイル削除(&amp;D)</value>
   </data>
   <data name="menuRightClickFiles.Size" type="System.Drawing.Size, System.Drawing">
     <value>212, 170</value>
@@ -1143,7 +1144,7 @@
 </value>
   </data>
   <data name="lstFiles.Size" type="System.Drawing.Size, System.Drawing">
-    <value>513, 302</value>
+    <value>503, 197</value>
   </data>
   <data name="imgFilesSmall.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
@@ -1243,11 +1244,74 @@
         A/8BAAEPAwAL
 </value>
   </data>
-  <data name="grpFiles.Size" type="System.Drawing.Size, System.Drawing">
-    <value>519, 330</value>
+  <data name="menuRightSaveAs.Size" type="System.Drawing.Size, System.Drawing">
+    <value>211, 22</value>
   </data>
-  <data name="grpFiles.Text" xml:space="preserve">
-    <value>touch のファイル一覧</value>
+  <data name="menuRightSaveAs.Text" xml:space="preserve">
+    <value>名前を指定して保存(&amp;A)...</value>
+  </data>
+  <data name="ToolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>208, 6</value>
+  </data>
+  <data name="menuRightBackupFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>211, 22</value>
+  </data>
+  <data name="menuRightBackupFile.Text" xml:space="preserve">
+    <value>ファイル バックアップ(&amp;B)</value>
+  </data>
+  <data name="menuRightRestoreFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>211, 22</value>
+  </data>
+  <data name="menuRightRestoreFile.Text" xml:space="preserve">
+    <value>ファイル リストア(&amp;R)</value>
+  </data>
+  <data name="menuRightDeleteBackupedFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>211, 22</value>
+  </data>
+  <data name="menuRightDeleteBackupedFile.Text" xml:space="preserve">
+    <value>バックアップファイルの削除(&amp;e)</value>
+  </data>
+  <data name="ToolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>208, 6</value>
+  </data>
+  <data name="cmdRenameFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>211, 22</value>
+  </data>
+  <data name="cmdRenameFile.Text" xml:space="preserve">
+    <value>ファイルのリネーム(&amp;R)...</value>
+  </data>
+  <data name="menuRightReplaceFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>211, 22</value>
+  </data>
+  <data name="menuRightReplaceFile.Text" xml:space="preserve">
+    <value>指定ファイルを書き込み(&amp;p)...</value>
+  </data>
+  <data name="menuRightDeleteFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>211, 22</value>
+  </data>
+  <data name="menuRightDeleteFile.Text" xml:space="preserve">
+    <value>ファイル削除(&amp;D)</value>
+  </data>
+  <data name="menuRightClickQt.Size" type="System.Drawing.Size, System.Drawing">
+    <value>230, 92</value>
+  </data>
+  <data name="txtMovieName.Size" type="System.Drawing.Size, System.Drawing">
+    <value>140, 112</value>
+  </data>
+  <data name="qtPlugin.OcxState" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj0yLjAuMC4w
+        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACFTeXN0
+        ZW0uV2luZG93cy5Gb3Jtcy5BeEhvc3QrU3RhdGUBAAAABERhdGEHAgIAAAAJAwAAAA8DAAAAVQAAAAIB
+        AAAAAQAAAAAAAAAAAAAAAEAAAAAACAAA/TAAAJMLAAATAA8AAIATAAAAAAADAAAAAAALAP//AwAEAAAA
+        CAACAAAAAAAIAAIAAAAAAAgAAgAAAAAACw==
+</value>
+  </data>
+  <data name="qtPlugin.Size" type="System.Drawing.Size, System.Drawing">
+    <value>474, 115</value>
+  </data>
+  <data name="pnlQt.Size" type="System.Drawing.Size, System.Drawing">
+    <value>497, 116</value>
   </data>
   <data name="tsmQtFullscreen.Size" type="System.Drawing.Size, System.Drawing">
     <value>229, 22</value>
@@ -1273,27 +1337,6 @@
   <data name="tsmQuickTimeInfo.Text" xml:space="preserve">
     <value>Quick Time 情報...</value>
   </data>
-  <data name="menuRightClickQt.Size" type="System.Drawing.Size, System.Drawing">
-    <value>230, 92</value>
-  </data>
-  <data name="qtPlugin.Location" type="System.Drawing.Point, System.Drawing">
-    <value>140, 0</value>
-  </data>
-  <data name="qtPlugin.OcxState" mimetype="application/x-microsoft.net.object.binary.base64">
-    <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj0yLjAuMC4w
-        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACFTeXN0
-        ZW0uV2luZG93cy5Gb3Jtcy5BeEhvc3QrU3RhdGUBAAAABERhdGEHAgIAAAAJAwAAAA8DAAAAVQAAAAIB
-        AAAAAQAAAAAAAAAAAAAAAEAAAAAACAAA/TAAAJMLAAATAA8AAIATAAAAAAADAAAAAAALAP//AwAEAAAA
-        CAACAAAAAAAIAAIAAAAAAAgAAgAAAAAACw==
-</value>
-  </data>
-  <data name="lblMovieName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>131, 110</value>
-  </data>
-  <data name="pnlQt.Size" type="System.Drawing.Size, System.Drawing">
-    <value>507, 113</value>
-  </data>
   <data name="chkZoom.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -1312,7 +1355,7 @@
 </value>
   </data>
   <data name="chkZoom.Location" type="System.Drawing.Point, System.Drawing">
-    <value>254, 20</value>
+    <value>244, 20</value>
   </data>
   <data name="chkZoom.Size" type="System.Drawing.Size, System.Drawing">
     <value>60, 22</value>
@@ -1321,7 +1364,7 @@
     <value>拡大</value>
   </data>
   <data name="chkPreviewEnabled.Location" type="System.Drawing.Point, System.Drawing">
-    <value>320, 20</value>
+    <value>310, 20</value>
   </data>
   <data name="chkPreviewEnabled.Size" type="System.Drawing.Size, System.Drawing">
     <value>112, 22</value>
@@ -1360,43 +1403,33 @@
 </value>
   </data>
   <data name="btnPreview.Location" type="System.Drawing.Point, System.Drawing">
-    <value>438, 21</value>
+    <value>428, 21</value>
   </data>
   <data name="btnPreview.Text" xml:space="preserve">
     <value>表示</value>
   </data>
   <data name="txtFileDetails.Size" type="System.Drawing.Size, System.Drawing">
-    <value>507, 116</value>
+    <value>497, 119</value>
   </data>
   <data name="WebBrws.Size" type="System.Drawing.Size, System.Drawing">
-    <value>504, 113</value>
+    <value>494, 116</value>
   </data>
   <data name="picFileDetails.Size" type="System.Drawing.Size, System.Drawing">
-    <value>510, 116</value>
+    <value>500, 119</value>
   </data>
-  <data name="grpDetails.Size" type="System.Drawing.Size, System.Drawing">
-    <value>519, 164</value>
+  <data name="tlbStatusStrip.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 427</value>
   </data>
-  <data name="grpDetails.Text" xml:space="preserve">
-    <value>ファイルの詳細</value>
+  <data name="tlbStatusStrip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>754, 22</value>
   </data>
-  <data name="splFiles.Size" type="System.Drawing.Size, System.Drawing">
-    <value>519, 498</value>
+  <data name="tslStatusLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>536, 17</value>
   </data>
-  <data name="splMain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>754, 504</value>
+  <data name="tslStatusLabel.Text" xml:space="preserve">
+    <value>iPod又はiPhoneをUSBで接続してください。既に接続中ならば、一旦切断して再接続してください。</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="splMain.SplitterDistance" type="System.Int32, mscorlib">
-    <value>225</value>
-  </data>
-  <data name="tlbStatusLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>515, 17</value>
-  </data>
-  <data name="tlbStatusLabel.Text" xml:space="preserve">
-    <value>touchをUSBで接続してください。既に接続中ならば、一旦切断して再接続してください。</value>
-  </data>
-  <data name="BtnCancel.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnCancel.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAYAAADEtGw7AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAjtJREFUSEu1lU0v
@@ -1412,77 +1445,8 @@
         x+Hx6u1XxSZimxK07VeU/B3hNd4Hkd2wICP0iPkAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="BtnCancel.ToolTipText" xml:space="preserve">
-    <value>キャンセル</value>
-  </data>
-  <data name="tlbStatusStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>754, 22</value>
-  </data>
-  <data name="tsmFileList.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 22</value>
-  </data>
-  <data name="tsmFileList.Text" xml:space="preserve">
-    <value>ファイルリスト表示...</value>
-  </data>
-  <data name="tsmRestructureDB.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 22</value>
-  </data>
-  <data name="tsmRestructureDB.Text" xml:space="preserve">
-    <value>データベースの再構成</value>
-  </data>
-  <data name="tsmCleanUpBackupFiles.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 22</value>
-  </data>
-  <data name="tsmCleanUpBackupFiles.Text" xml:space="preserve">
-    <value>重複ファイルの削除</value>
-  </data>
-  <data name="tsmCleanUp.Size" type="System.Drawing.Size, System.Drawing">
-    <value>207, 22</value>
-  </data>
-  <data name="tsmCleanUp.Text" xml:space="preserve">
-    <value>バックアップファイルの管理(&amp;C)</value>
-  </data>
-  <data name="ToolStripMenuItemViewBackups.Size" type="System.Drawing.Size, System.Drawing">
-    <value>207, 22</value>
-  </data>
-  <data name="ToolStripMenuItemViewBackups.Text" xml:space="preserve">
-    <value>バックアップファイルの表示(&amp;V)</value>
-  </data>
-  <data name="ToolStripSeparator7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>204, 6</value>
-  </data>
-  <data name="tsmAsSummerboardFolder.Size" type="System.Drawing.Size, System.Drawing">
-    <value>248, 22</value>
-  </data>
-  <data name="tsmAsSummerboardFolder.Text" xml:space="preserve">
-    <value>Summerboard フォルダーの保存(&amp;F)...</value>
-  </data>
-  <data name="tsmAsPXLPackage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>248, 22</value>
-  </data>
-  <data name="menuSaveSummerboardTheme.Size" type="System.Drawing.Size, System.Drawing">
-    <value>207, 22</value>
-  </data>
-  <data name="tsmAsCustomizeFolders.Size" type="System.Drawing.Size, System.Drawing">
-    <value>231, 22</value>
-  </data>
-  <data name="tsmAsCustomizeFolders.Text" xml:space="preserve">
-    <value>Customize フォルダーの保存(&amp;F)...</value>
-  </data>
-  <data name="AsPXLPackageToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>231, 22</value>
-  </data>
-  <data name="ToolStripMenuItem4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>207, 22</value>
-  </data>
-  <data name="ToolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>204, 6</value>
-  </data>
-  <data name="ToolStripMenuItemExit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>207, 22</value>
-  </data>
-  <data name="ToolStripMenuItemExit.Text" xml:space="preserve">
-    <value>終了(x)</value>
+  <data name="toolStrip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>754, 25</value>
   </data>
   <data name="tsmFile.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1505,32 +1469,71 @@
   <data name="tsmFile.Text" xml:space="preserve">
     <value>ファイル(&amp;F)</value>
   </data>
-  <data name="ToolStripMenuItemDetails.Size" type="System.Drawing.Size, System.Drawing">
-    <value>151, 22</value>
+  <data name="tsmCleanUp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>207, 22</value>
   </data>
-  <data name="ToolStripMenuItemDetails.Text" xml:space="preserve">
-    <value>詳細(&amp;D)</value>
+  <data name="tsmCleanUp.Text" xml:space="preserve">
+    <value>バックアップファイルの管理(&amp;C)</value>
   </data>
-  <data name="ToolStripMenuItemLargeIcons.Size" type="System.Drawing.Size, System.Drawing">
-    <value>151, 22</value>
+  <data name="tsmFileList.Size" type="System.Drawing.Size, System.Drawing">
+    <value>177, 22</value>
   </data>
-  <data name="ToolStripMenuItemLargeIcons.Text" xml:space="preserve">
-    <value>アイコン(&amp;L)</value>
+  <data name="tsmFileList.Text" xml:space="preserve">
+    <value>ファイルリスト表示...</value>
   </data>
-  <data name="cmdSmallIcons.Size" type="System.Drawing.Size, System.Drawing">
-    <value>151, 22</value>
+  <data name="tsmRestructureDB.Size" type="System.Drawing.Size, System.Drawing">
+    <value>177, 22</value>
   </data>
-  <data name="cmdSmallIcons.Text" xml:space="preserve">
-    <value>一覧(&amp;S)</value>
+  <data name="tsmRestructureDB.Text" xml:space="preserve">
+    <value>データベースの再構成</value>
   </data>
-  <data name="ToolStripMenuItem8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>148, 6</value>
+  <data name="tsmCleanUpBackupFiles.Size" type="System.Drawing.Size, System.Drawing">
+    <value>177, 22</value>
   </data>
-  <data name="cmdShowGroups.Size" type="System.Drawing.Size, System.Drawing">
-    <value>151, 22</value>
+  <data name="tsmCleanUpBackupFiles.Text" xml:space="preserve">
+    <value>重複ファイルの削除</value>
   </data>
-  <data name="cmdShowGroups.Text" xml:space="preserve">
-    <value>グループ表示(&amp;G)</value>
+  <data name="ToolStripMenuItemViewBackups.Size" type="System.Drawing.Size, System.Drawing">
+    <value>207, 22</value>
+  </data>
+  <data name="ToolStripMenuItemViewBackups.Text" xml:space="preserve">
+    <value>バックアップファイルの表示(&amp;V)</value>
+  </data>
+  <data name="ToolStripSeparator7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>204, 6</value>
+  </data>
+  <data name="menuSaveSummerboardTheme.Size" type="System.Drawing.Size, System.Drawing">
+    <value>207, 22</value>
+  </data>
+  <data name="tsmAsSummerboardFolder.Size" type="System.Drawing.Size, System.Drawing">
+    <value>248, 22</value>
+  </data>
+  <data name="tsmAsSummerboardFolder.Text" xml:space="preserve">
+    <value>Summerboard フォルダーの保存(&amp;F)...</value>
+  </data>
+  <data name="tsmAsPXLPackage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>248, 22</value>
+  </data>
+  <data name="ToolStripMenuItem4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>207, 22</value>
+  </data>
+  <data name="tsmAsCustomizeFolders.Size" type="System.Drawing.Size, System.Drawing">
+    <value>231, 22</value>
+  </data>
+  <data name="tsmAsCustomizeFolders.Text" xml:space="preserve">
+    <value>Customize フォルダーの保存(&amp;F)...</value>
+  </data>
+  <data name="AsPXLPackageToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>231, 22</value>
+  </data>
+  <data name="ToolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>204, 6</value>
+  </data>
+  <data name="ToolStripMenuItemExit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>207, 22</value>
+  </data>
+  <data name="ToolStripMenuItemExit.Text" xml:space="preserve">
+    <value>終了(x)</value>
   </data>
   <data name="mnuView.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1552,6 +1555,42 @@
   </data>
   <data name="mnuView.Text" xml:space="preserve">
     <value>表示(V)</value>
+  </data>
+  <data name="tsmViewDetails.Text" xml:space="preserve">
+    <value>詳細(&amp;D)</value>
+  </data>
+  <data name="tsmViewLargeIcons.Text" xml:space="preserve">
+    <value>アイコン(&amp;L)</value>
+  </data>
+  <data name="tsmViewSmallIcons.Text" xml:space="preserve">
+    <value>一覧(&amp;S)</value>
+  </data>
+  <data name="tsmViewTile.Text" xml:space="preserve">
+    <value>タイル(&amp;T)</value>
+  </data>
+  <data name="cmdShowGroups.Text" xml:space="preserve">
+    <value>グループ表示(&amp;G)</value>
+  </data>
+  <data name="mnuGoTo.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAgxJREFUOE+lkvtL
+        U2EYx+0PEbtpFwnBKPGKiJImGP0gYhIYs1E5GF5gIxkpA00JRSmMEF0ohMh+GaRWYlqabMVcNdS2QpaI
+        VqiDIYhk397vA6fXhCjyhYdzeM/5fp7vczkAdeL2cwho7v/wWzT1zcN+Pwhr51uY2/y41PQaF+wzKKiZ
+        QvaN58g0jyLd5KEUcQbg+84P/Cm2tncQjW3j68YWIqubCC3FcOJc478BAuGoZM6zvoRnakXEruEIjhc4
+        /g5gZop9c+voGAyLbQIfeBZxLL9BA1jzXvuGbWamuKh+GmmVbswE19A59FEBbmoAG7YbsLtm2mZmiml9
+        cvabNDwpz6YB7LYBoMXCumkJr7LOmnnHzBQ/9X2Bo2cOibm1GsBREbAQiYmw/8lnuCeWkVzcgnZlnw1j
+        3HV/wuNXK6i/9x5Hc6wawDlTXHbLJ+LZUBQPRyKwdQdxutwl1h+NLXHh5Ht1ewBHsiwawCW57HyDAfWR
+        dvl0uhZQ1eqX8aVc7EKLqrum651ATLf9OJx5XQM4KmY0xPzZ0hFAiQJnXB0WwME0E3IsL5B17ZlADqWb
+        NYDrOepdlcysmTWWOrxqbceRWtaLk0VO1XW72D5Vckd2gMBfq8zdpmUG62NJvKM4+XyziDk24xmfWoGE
+        s1c0gHPmbrPTpHNJKOCo2G1mZs20zcwUJ5yp1AB5+8/zEwgF5GMVDxh4AAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="mnuGoTo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>59, 22</value>
+  </data>
+  <data name="mnuGoTo.Text" xml:space="preserve">
+    <value>移動(G)</value>
   </data>
   <data name="toolStripGoTo1.Size" type="System.Drawing.Size, System.Drawing">
     <value>218, 22</value>
@@ -1583,7 +1622,13 @@
   <data name="ToolStripSeparator4.Size" type="System.Drawing.Size, System.Drawing">
     <value>215, 6</value>
   </data>
-  <data name="toolStripGoTo20.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="mnuStdApps.Size" type="System.Drawing.Size, System.Drawing">
+    <value>218, 22</value>
+  </data>
+  <data name="mnuStdApps.Text" xml:space="preserve">
+    <value>標準アプリケーション</value>
+  </data>
+  <data name="tsmITunesMusic.Size" type="System.Drawing.Size, System.Drawing">
     <value>220, 22</value>
   </data>
   <data name="toolStripGoTo4.Size" type="System.Drawing.Size, System.Drawing">
@@ -1682,12 +1727,6 @@
   <data name="toolStripGoTo18.Text" xml:space="preserve">
     <value>&amp;YouTube アイコンとイメージ</value>
   </data>
-  <data name="mnuStdApps.Size" type="System.Drawing.Size, System.Drawing">
-    <value>218, 22</value>
-  </data>
-  <data name="mnuStdApps.Text" xml:space="preserve">
-    <value>標準アプリケーション</value>
-  </data>
   <data name="mnuThirdPartyApps.Size" type="System.Drawing.Size, System.Drawing">
     <value>218, 22</value>
   </data>
@@ -1709,42 +1748,6 @@
   <data name="toolStripGoTo19.Text" xml:space="preserve">
     <value>フォント(&amp;F)</value>
   </data>
-  <data name="mnuGoTo.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAgxJREFUOE+lkvtL
-        U2EYx+0PEbtpFwnBKPGKiJImGP0gYhIYs1E5GF5gIxkpA00JRSmMEF0ohMh+GaRWYlqabMVcNdS2QpaI
-        VqiDIYhk397vA6fXhCjyhYdzeM/5fp7vczkAdeL2cwho7v/wWzT1zcN+Pwhr51uY2/y41PQaF+wzKKiZ
-        QvaN58g0jyLd5KEUcQbg+84P/Cm2tncQjW3j68YWIqubCC3FcOJc478BAuGoZM6zvoRnakXEruEIjhc4
-        /g5gZop9c+voGAyLbQIfeBZxLL9BA1jzXvuGbWamuKh+GmmVbswE19A59FEBbmoAG7YbsLtm2mZmiml9
-        cvabNDwpz6YB7LYBoMXCumkJr7LOmnnHzBQ/9X2Bo2cOibm1GsBREbAQiYmw/8lnuCeWkVzcgnZlnw1j
-        3HV/wuNXK6i/9x5Hc6wawDlTXHbLJ+LZUBQPRyKwdQdxutwl1h+NLXHh5Ht1ewBHsiwawCW57HyDAfWR
-        dvl0uhZQ1eqX8aVc7EKLqrum651ATLf9OJx5XQM4KmY0xPzZ0hFAiQJnXB0WwME0E3IsL5B17ZlADqWb
-        NYDrOepdlcysmTWWOrxqbceRWtaLk0VO1XW72D5Vckd2gMBfq8zdpmUG62NJvKM4+XyziDk24xmfWoGE
-        s1c0gHPmbrPTpHNJKOCo2G1mZs20zcwUJ5yp1AB5+8/zEwgF5GMVDxh4AAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="mnuGoTo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>59, 22</value>
-  </data>
-  <data name="mnuGoTo.Text" xml:space="preserve">
-    <value>移動(G)</value>
-  </data>
-  <data name="AddToFavoritesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>171, 22</value>
-  </data>
-  <data name="AddToFavoritesToolStripMenuItem.Text" xml:space="preserve">
-    <value>お気に入りの追加...</value>
-  </data>
-  <data name="OrganizeFavoritesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>171, 22</value>
-  </data>
-  <data name="OrganizeFavoritesToolStripMenuItem.Text" xml:space="preserve">
-    <value>お気に入りの編集...</value>
-  </data>
-  <data name="ToolStripMenuItem7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 6</value>
-  </data>
   <data name="mnuFavorites.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -1765,6 +1768,42 @@
   </data>
   <data name="mnuFavorites.Text" xml:space="preserve">
     <value>お気に入り</value>
+  </data>
+  <data name="AddToFavoritesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>171, 22</value>
+  </data>
+  <data name="AddToFavoritesToolStripMenuItem.Text" xml:space="preserve">
+    <value>お気に入りの追加...</value>
+  </data>
+  <data name="OrganizeFavoritesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>171, 22</value>
+  </data>
+  <data name="OrganizeFavoritesToolStripMenuItem.Text" xml:space="preserve">
+    <value>お気に入りの編集...</value>
+  </data>
+  <data name="ToolStripMenuItem7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>168, 6</value>
+  </data>
+  <data name="ToolStripDropDownButton2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAgxJREFUOE+lkvtL
+        U2EYx+0PEbtpFwnBKPGKiJImGP0gYhIYs1E5GF5gIxkpA00JRSmMEF0ohMh+GaRWYlqabMVcNdS2QpaI
+        VqiDIYhk397vA6fXhCjyhYdzeM/5fp7vczkAdeL2cwho7v/wWzT1zcN+Pwhr51uY2/y41PQaF+wzKKiZ
+        QvaN58g0jyLd5KEUcQbg+84P/Cm2tncQjW3j68YWIqubCC3FcOJc478BAuGoZM6zvoRnakXEruEIjhc4
+        /g5gZop9c+voGAyLbQIfeBZxLL9BA1jzXvuGbWamuKh+GmmVbswE19A59FEBbmoAG7YbsLtm2mZmiml9
+        cvabNDwpz6YB7LYBoMXCumkJr7LOmnnHzBQ/9X2Bo2cOibm1GsBREbAQiYmw/8lnuCeWkVzcgnZlnw1j
+        3HV/wuNXK6i/9x5Hc6wawDlTXHbLJ+LZUBQPRyKwdQdxutwl1h+NLXHh5Ht1ewBHsiwawCW57HyDAfWR
+        dvl0uhZQ1eqX8aVc7EKLqrum651ATLf9OJx5XQM4KmY0xPzZ0hFAiQJnXB0WwME0E3IsL5B17ZlADqWb
+        NYDrOepdlcysmTWWOrxqbceRWtaLk0VO1XW72D5Vckd2gMBfq8zdpmUG62NJvKM4+XyziDk24xmfWoGE
+        s1c0gHPmbrPTpHNJKOCo2G1mZs20zcwUJ5yp1AB5+8/zEwgF5GMVDxh4AAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="ToolStripDropDownButton2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>79, 22</value>
+  </data>
+  <data name="ToolStripDropDownButton2.Text" xml:space="preserve">
+    <value>オプション(&amp;O)</value>
   </data>
   <data name="tsmConfirmDeletions.Size" type="System.Drawing.Size, System.Drawing">
     <value>200, 22</value>
@@ -1796,6 +1835,12 @@
   <data name="tsmBackupControl.Text" xml:space="preserve">
     <value>バックアップ管理機能</value>
   </data>
+  <data name="tsmConvertPNGs.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 22</value>
+  </data>
+  <data name="tsmConvertPNGs.Text" xml:space="preserve">
+    <value>PNGファイルの変換</value>
+  </data>
   <data name="tsmIPhoneToPC.Text" xml:space="preserve">
     <value>touch から PC</value>
   </data>
@@ -1804,12 +1849,6 @@
   </data>
   <data name="tsmConvertBoth.Text" xml:space="preserve">
     <value>双方向</value>
-  </data>
-  <data name="tsmConvertPNGs.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 22</value>
-  </data>
-  <data name="tsmConvertPNGs.Text" xml:space="preserve">
-    <value>PNGファイルの変換</value>
   </data>
   <data name="ToolStripSeparator8.Size" type="System.Drawing.Size, System.Drawing">
     <value>197, 6</value>
@@ -1825,6 +1864,12 @@
   </data>
   <data name="tsmShowPreviews.Text" xml:space="preserve">
     <value>ファイル自動表示</value>
+  </data>
+  <data name="tsmPictureBackground.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 22</value>
+  </data>
+  <data name="tsmPictureBackground.Text" xml:space="preserve">
+    <value>画像の背景色</value>
   </data>
   <data name="BlackToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>101, 22</value>
@@ -1844,50 +1889,11 @@
   <data name="WhiteToolStripMenuItem.Text" xml:space="preserve">
     <value>白</value>
   </data>
-  <data name="tsmPictureBackground.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 22</value>
-  </data>
-  <data name="tsmPictureBackground.Text" xml:space="preserve">
-    <value>画像の背景色</value>
-  </data>
   <data name="tsmBackupDirectory.Size" type="System.Drawing.Size, System.Drawing">
     <value>200, 22</value>
   </data>
   <data name="tsmBackupDirectory.Text" xml:space="preserve">
     <value>バックアップディレクトリ(&amp;B)...</value>
-  </data>
-  <data name="ToolStripDropDownButton2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAgxJREFUOE+lkvtL
-        U2EYx+0PEbtpFwnBKPGKiJImGP0gYhIYs1E5GF5gIxkpA00JRSmMEF0ohMh+GaRWYlqabMVcNdS2QpaI
-        VqiDIYhk397vA6fXhCjyhYdzeM/5fp7vczkAdeL2cwho7v/wWzT1zcN+Pwhr51uY2/y41PQaF+wzKKiZ
-        QvaN58g0jyLd5KEUcQbg+84P/Cm2tncQjW3j68YWIqubCC3FcOJc478BAuGoZM6zvoRnakXEruEIjhc4
-        /g5gZop9c+voGAyLbQIfeBZxLL9BA1jzXvuGbWamuKh+GmmVbswE19A59FEBbmoAG7YbsLtm2mZmiml9
-        cvabNDwpz6YB7LYBoMXCumkJr7LOmnnHzBQ/9X2Bo2cOibm1GsBREbAQiYmw/8lnuCeWkVzcgnZlnw1j
-        3HV/wuNXK6i/9x5Hc6wawDlTXHbLJ+LZUBQPRyKwdQdxutwl1h+NLXHh5Ht1ewBHsiwawCW57HyDAfWR
-        dvl0uhZQ1eqX8aVc7EKLqrum651ATLf9OJx5XQM4KmY0xPzZ0hFAiQJnXB0WwME0E3IsL5B17ZlADqWb
-        NYDrOepdlcysmTWWOrxqbceRWtaLk0VO1XW72D5Vckd2gMBfq8zdpmUG62NJvKM4+XyziDk24xmfWoGE
-        s1c0gHPmbrPTpHNJKOCo2G1mZs20zcwUJ5yp1AB5+8/zEwgF5GMVDxh4AAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="ToolStripDropDownButton2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>79, 22</value>
-  </data>
-  <data name="ToolStripDropDownButton2.Text" xml:space="preserve">
-    <value>オプション(&amp;O)</value>
-  </data>
-  <data name="AboutToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>158, 22</value>
-  </data>
-  <data name="AboutToolStripMenuItem.Text" xml:space="preserve">
-    <value>バージョン情報(&amp;A)</value>
-  </data>
-  <data name="tsmHomePage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>158, 22</value>
-  </data>
-  <data name="tsmHomePage.Text" xml:space="preserve">
-    <value>ホームページ</value>
   </data>
   <data name="ToolStripDropDownButton1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1910,6 +1916,18 @@
   <data name="ToolStripDropDownButton1.Text" xml:space="preserve">
     <value>ヘルプ(&amp;H)</value>
   </data>
+  <data name="AboutToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>158, 22</value>
+  </data>
+  <data name="AboutToolStripMenuItem.Text" xml:space="preserve">
+    <value>バージョン情報(&amp;A)</value>
+  </data>
+  <data name="tsmHomePage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>158, 22</value>
+  </data>
+  <data name="tsmHomePage.Text" xml:space="preserve">
+    <value>ホームページ</value>
+  </data>
   <data name="tslAddress.Size" type="System.Drawing.Size, System.Drawing">
     <value>61, 22</value>
   </data>
@@ -1931,8 +1949,11 @@
         RK5CYII=
 </value>
   </data>
-  <data name="toolStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>754, 25</value>
+  <data name="tsbAddress.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 20</value>
+  </data>
+  <data name="menuRightClickFolders.Size" type="System.Drawing.Size, System.Drawing">
+    <value>198, 126</value>
   </data>
   <data name="ToolStripMenuItemNewFolder.Size" type="System.Drawing.Size, System.Drawing">
     <value>197, 22</value>
@@ -1970,11 +1991,8 @@
   <data name="ToolStripMenuItemDeleteFolder.Text" xml:space="preserve">
     <value>フォルダーの削除(&amp;D)</value>
   </data>
-  <data name="menuRightClickFolders.Size" type="System.Drawing.Size, System.Drawing">
-    <value>198, 126</value>
-  </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>754, 551</value>
+    <value>754, 449</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2153,10 +2171,6 @@
         +AAAD///////////////////////////////////////////////////////////////////////////
         ////////////////////////
 </value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>touchBrowser</value>

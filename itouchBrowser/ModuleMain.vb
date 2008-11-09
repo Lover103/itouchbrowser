@@ -119,13 +119,13 @@ Module ModuleMain
     End Sub
 
     Friend Sub StatusNormal(ByVal msg As String)
-        objMain.tlbStatusLabel.Image = Nothing
-        objMain.tlbStatusLabel.Text = msg
+        objMain.tslStatusLabel.Image = Nothing
+        objMain.tslStatusLabel.Text = msg
     End Sub
 
     Friend Sub StatusWarning(ByVal msg As String)
-        objMain.tlbStatusLabel.Image = My.Resources.warning
-        objMain.tlbStatusLabel.Text = msg
+        objMain.tslStatusLabel.Image = My.Resources.warning
+        objMain.tslStatusLabel.Text = msg
         MessageBeep(MessageBeepType.Warning)
     End Sub
 
@@ -144,7 +144,9 @@ Module ModuleMain
                         .Value = 0
                     End With
                 Next
-                objMain.BtnCancel.Visible = True
+                objMain.btnCancel.Visible = True
+                objMain.tslProgress.Text = ""
+                objMain.tslProgress.Visible = True
                 ProgressEscapeFlg = False
             End If
             ProgressBars(ProgressDepth).Maximum = iMax + 1
@@ -171,7 +173,8 @@ Module ModuleMain
                     For j1 As Integer = 0 To MAX_PROG_DEPTH
                         ProgressBars(j1).Visible = False
                     Next
-                    objMain.BtnCancel.Visible = False
+                    objMain.btnCancel.Visible = False
+                    objMain.tslProgress.Visible = False
                     ProgressFullSize = 0
                 End If
             End If
@@ -220,7 +223,6 @@ Module ModuleMain
     ''' </returns>
     ''' <remarks></remarks>
     Friend Function CopyFromPhone(ByVal sourceOnPhone As String, ByVal destinationOnComputer As String) As Long
-        'Dim sBuffer(8191) As Byte
         Dim sBuffer(32767) As Byte
         Dim iDataBytes As Integer
         Dim iPhoneFileInterface As iPhoneFile
@@ -270,7 +272,6 @@ Module ModuleMain
                         Exit While 'increment our progressbar
                     End If
                 End While
-                EndStatus() 'fill our progressbar
 
                 iPhoneFileInterface.Close()
                 iPhoneFileInterface.Dispose()
@@ -288,6 +289,7 @@ Module ModuleMain
                 StatusWarning(ex.Message)
                 bReturn = -1
             Finally
+                EndStatus() 'fill our progressbar
                 If depth = 0 Then
                     objMain.lstFiles.Enabled = True
                     objMain.lstFiles.Focus()
@@ -718,7 +720,7 @@ Module ModuleMain
 
     End Function
 
-    Private Sub needDir(ByVal aDir As String)
+    Friend Sub needDir(ByVal aDir As String)
         If Not Directory.Exists(aDir) Then
             Directory.CreateDirectory(aDir)
         End If
@@ -998,7 +1000,7 @@ Module ModuleMain
     End Function
 
     Friend Sub AddFoldersBeneath(ByVal aNode As TreeNode)
-        AddFolders(ModuleMain.NodeiPhonePath(aNode), aNode)
+        AddFolders(ModuleMain.NodeiPhonePath(aNode), aNode, 0)
     End Sub
 
     ''' <summary>
@@ -1008,7 +1010,7 @@ Module ModuleMain
     ''' <param name="selectedNode"></param>
     ''' <param name="iDepth"></param>
     ''' <remarks></remarks>
-    Friend Sub AddFolders(ByVal sPath As String, ByVal selectedNode As TreeNode, Optional ByVal iDepth As Integer = 0)
+    Friend Sub AddFolders(ByVal sPath As String, ByVal selectedNode As TreeNode, ByVal iDepth As Integer)
         'This function is recursive to add one level of folders to the tree view
         ' you give it one folder and will drill down and add one level of folders
         Dim sFolders() As String
@@ -1028,7 +1030,7 @@ Module ModuleMain
 
             If sFolders.Length > 0 Then
                 Try
-                    StartStatus(sFolders.Length, 0)
+                    'StartStatus(sFolders.Length, 0)
 
                     For Each sFolder As String In sFolders
                         sbpath = sPath & "/" & sFolder
@@ -1040,17 +1042,20 @@ Module ModuleMain
                         selectedNode.Nodes.Add(newNode)
 
                         'now make the recursive call on this folder
-                        If iDepth < 1 Then ' only load first tree level beneath
+                        If iDepth = -2 Then
+                            bSkip = True
+                        ElseIf iDepth < 1 Then ' only load first tree level beneath
                             ModuleMain.AddFolders(sbpath, newNode, iDepth + 1)
                         Else
                             bSkip = True
+                            Exit For        '// <==
                         End If
 
-                        If IncrementStatus(0) Then Exit For
+                        'If IncrementStatus(0) Then Exit For
                     Next
 
                 Finally
-                    EndStatus()
+                    'EndStatus()
                 End Try
             End If
 
@@ -1070,10 +1075,70 @@ Module ModuleMain
 
     End Sub
 
-    Friend Function convertcd(ByVal str As String) As String
-        Dim unicodeString As String = str
+    Friend Sub Add1stFolder(ByVal sPath As String, ByVal selectedNode As TreeNode)
+        'This function is recursive to add one level of folders to the tree view
+        ' you give it one folder and will drill down and add one level of folders
+        Dim sFolder As String
+        Dim newNode As TreeNode
+        Dim sbpath As String
 
-        Return str
+        If sPath = "/" Then ' handle root special case
+            sPath = ""
+        End If
+
+        Try
+            'get the data from the phone
+            sFolder = iPhoneInterface.GetDirectory(sPath)
+
+            selectedNode.Nodes.Clear() ' remove any existing nodes
+
+            If sFolder <> "" Then
+                sbpath = sPath & "/" & sFolder
+                'create the new node
+                newNode = New TreeNode(sFolder)
+                newNode.Name = sbpath
+                'newNode.ContextMenuStrip = objMain.menuRightClickFolders
+
+                selectedNode.Nodes.Add(newNode)
+            End If
+
+            selectedNode.Tag = False
+
+        Catch ex As Exception
+            'Ç±Ç±ÇÃÉGÉâÅ[Ç≈ê⁄ë±Ç™íÜífÇ≥ÇÍÇƒåpë±Ç≈Ç´Ç»Ç≠Ç»ÇÈÅB
+            StatusWarning(My.Resources.String35)
+        End Try
+
+    End Sub
+
+    Friend Function convertcd(ByVal str As String) As String
+        'Dim unicodeBytes As Byte() = str
+
+        'Return str.Normalize()
+        Dim byteArray As Byte()
+        'Code Page 932 = Shift_JISÇ‡Ç«Ç´
+        'Code Page 65001 = UTF-8
+        byteArray = Encoding.GetEncoding(932).GetBytes(str)
+        'byteArray = Encoding.ASCII.GetBytes(str)
+
+        ' Get different encodings.
+        'Dim u7 As Encoding = Encoding.UTF7
+        Dim u8 As Encoding = Encoding.UTF8
+        'Dim u81 As Encoding = Encoding.GetEncoding(65001)
+        'Dim u16LE As Encoding = Encoding.Unicode
+        'Dim u16BE As Encoding = Encoding.BigEndianUnicode
+        'Dim u32 As Encoding = Encoding.UTF32
+
+        ' Encode the entire array, and print out the counts and the resulting bytes.
+        'str = PrintCountsAndBytes(myChars, u7)
+        'str = PrintCountsAndBytes(myChars, u8)
+        'str = PrintCountsAndBytes(myChars, u16LE)
+        'str = PrintCountsAndBytes(myChars, u16BE)
+        'str = PrintCountsAndBytes(myChars, u32)
+
+        ' Encode the array of chars.
+        str = u8.GetString(byteArray)
+        'Console.WriteLine(str)
 
         '' Create two different encodings.
         'Dim ascii As System.Text.Encoding = Encoding.GetEncoding(437)
@@ -1096,8 +1161,59 @@ Module ModuleMain
         'Console.WriteLine("Original string: {0}", unicodeString)
         'Console.WriteLine("Ascii converted string: {0}", asciiString)
 
-        'Return asciiString
+        Return str  'asciiString
     End Function
+
+    Friend Function convertcd(ByVal bstr As Byte()) As String
+        ' Get different encodings.
+        Dim u8 As Encoding = Encoding.UTF8
+        ' Encode the array of chars.
+        Dim str As String = u8.GetString(bstr)
+        Dim p As Integer = str.IndexOf(Chr(0))
+        str = str.Substring(0, p)
+
+        Return str  'asciiString
+    End Function
+
+    Public Function PrintCountsAndBytes(ByVal chars() As Char, ByVal enc As Encoding) As String
+
+        ' Display the name of the encoding used.
+        Console.Write("{0,-30} :", enc.ToString())
+
+        ' Display the exact byte count.
+        Dim iBC As Integer = enc.GetByteCount(chars)
+        Console.Write(" {0,-3}", iBC)
+
+        ' Display the maximum byte count.
+        Dim iMBC As Integer = enc.GetMaxByteCount(chars.Length)
+        Console.Write(" {0,-3} :", iMBC)
+
+        ' Encode the array of chars.
+        Dim bytes As Byte() = enc.GetBytes(chars)
+
+        ' Display all the encoded bytes.
+        PrintHexBytes(bytes)
+
+        Return enc.GetString(bytes)
+
+        'Return bytes.ToString
+
+    End Function 'PrintCountsAndBytes
+
+    Public Sub PrintHexBytes(ByVal bytes() As Byte)
+
+        If bytes Is Nothing OrElse bytes.Length = 0 Then
+            Console.WriteLine("<none>")
+        Else
+            Dim i As Integer
+            For i = 0 To bytes.Length - 1
+                Console.Write("{0:X2} ", bytes(i))
+            Next i
+            Console.WriteLine()
+        End If
+
+    End Sub 'PrintHexBytes 
+
 
     Friend Function fileSizeAsInteger(ByVal size As String) As Integer
         Dim rVal As Integer = 0
