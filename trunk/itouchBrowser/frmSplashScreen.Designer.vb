@@ -130,6 +130,7 @@ Partial Class frmSplashScreen
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmSplashScreen"
+        Me.Opacity = 0.7
         Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.MainLayoutPanel.ResumeLayout(False)

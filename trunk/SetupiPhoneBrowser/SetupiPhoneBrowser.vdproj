@@ -27,6 +27,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_1D6D598C5200D2736AA984D9C34EA5A8"
+        "OwnerKey" = "8:_C4DED4A8B72C42AE9732E65EF7EDD0A9"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_42AD1D2B0A3245E19C928733AF22CE9D"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -87,14 +93,14 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_CBEACAFD7B5D41D39E504BA44FE00DFB"
-        "OwnerKey" = "8:_UNDEFINED"
+        "MsmKey" = "8:_DEC0E3EC32BE773D21223D772E83ECB1"
+        "OwnerKey" = "8:_9519CE353612FA7E89F59CEF16AB3D9B"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_DEC0E3EC32BE773D21223D772E83ECB1"
-        "OwnerKey" = "8:_9519CE353612FA7E89F59CEF16AB3D9B"
+        "MsmKey" = "8:_E3CB1248FFEC427A82F997AF69E82C16"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -112,19 +118,25 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_CBEACAFD7B5D41D39E504BA44FE00DFB"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_C4DED4A8B72C42AE9732E65EF7EDD0A9"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_E3CB1248FFEC427A82F997AF69E82C16"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_49FB8F6DA24A12212DAAA6020119B7B3"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_1D6D598C5200D2736AA984D9C34EA5A8"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -319,6 +331,37 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_1D6D598C5200D2736AA984D9C34EA5A8"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:System.IPod, Version=1.0.0.1, Culture=neutral, PublicKeyToken=650d91782f71d69c, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_1D6D598C5200D2736AA984D9C34EA5A8"
+                    {
+                    "Name" = "8:System.IPod.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:System.IPod.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_9AC704E1AFFA41E8A14681C5E720476C"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_42AD1D2B0A3245E19C928733AF22CE9D"
             {
             "SourcePath" = "8:License.txt"
@@ -483,37 +526,6 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_CBEACAFD7B5D41D39E504BA44FE00DFB"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:itouchBrowser.resources, Version=1.8.0.17, Culture=ja-JP, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_CBEACAFD7B5D41D39E504BA44FE00DFB"
-                    {
-                    "Name" = "8:itouchBrowser.resources.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:..\\itouchBrowser\\bin\\Release\\ja-JP\\itouchBrowser.resources.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_4162F5B7980B4E0E9177270989844E7E"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_DEC0E3EC32BE773D21223D772E83ECB1"
             {
             "SourcePath" = "8:QTOControl.dll"
@@ -534,11 +546,42 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_E3CB1248FFEC427A82F997AF69E82C16"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:itouchBrowser.resources, Version=1.8.1.19, Culture=ja-JP, processorArchitecture=x86"
+                "ScatterAssemblies"
+                {
+                    "_E3CB1248FFEC427A82F997AF69E82C16"
+                    {
+                    "Name" = "8:itouchBrowser.resources.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:..\\itouchBrowser\\bin\\x86\\Release\\ja-JP\\itouchBrowser.resources.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_4162F5B7980B4E0E9177270989844E7E"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_EAEB4AF12EF0C43955F78F2ED782E17E"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Manzana, Version=1.1.0.0, Culture=neutral, processorArchitecture=x86"
+            "AssemblyAsmDisplayName" = "8:Manzana, Version=1.1.1.0, Culture=neutral, processorArchitecture=x86"
                 "ScatterAssemblies"
                 {
                     "_EAEB4AF12EF0C43955F78F2ED782E17E"
@@ -684,14 +727,14 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:itouchBrowser"
-        "ProductCode" = "8:{F76D1B01-30BB-42AB-908C-3E104444C91F}"
-        "PackageCode" = "8:{F2D0BF57-C731-43DD-A4EB-585180D15D9B}"
+        "ProductCode" = "8:{0737BE7B-5B88-4723-B607-DB3A9F28163D}"
+        "PackageCode" = "8:{47604964-5990-4F3F-ADCA-A909D92A56E3}"
         "UpgradeCode" = "8:{6DF8F65F-1CD9-45F2-B007-22872A42E544}"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.7.9"
+        "ProductVersion" = "8:1.8.2"
         "Manufacturer" = "8:Cranium Consulting and Custom Software"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:http://code.google.com/p/itouchbrowser/"

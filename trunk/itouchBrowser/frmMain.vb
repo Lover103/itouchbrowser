@@ -41,6 +41,10 @@ Public Class frmMain
     Private mvarClickedMouseButton As MouseButtons = Windows.Forms.MouseButtons.None
     Private mvarLnError As Boolean = False
     Private mvarCurrAnnotation As String = ""
+    Private mvarItunesMan As New iTunesManager
+    Private iTunesPath As String = ""
+    Private iTunesRoot As String = ""
+    Private mvarItunes As Data.DataTable = Nothing
 
     'CUSTOM  CREATED FUNCTIONS
 
@@ -131,6 +135,7 @@ Public Class frmMain
             If mvarLnError Then
                 mvarLnError = False
             ElseIf bNowConnected Then
+                Me.Opacity = 75
                 'the phone was just recognized as connected
                 Me.refreshFolders()
                 trvFolders.Focus()
@@ -138,25 +143,176 @@ Public Class frmMain
                 If iPhoneInterface.IsJailbreak Then
                     'StatusNormal("iPhone is connected and jailbroken")
                     StatusNormal(My.Resources.String3)
+                    iTunesPath = "/var/mobile/Media/iTunes_Control/iTunes/iTunesDB"
                     If iPhoneInterface.Exists("/var/root/Media/DCIM") Then
                         tildeDir = "/var/root"
+                        iTunesPath = "/var/root/Media/iTunes_Control/iTunes/iTunesDB"
                     End If
                 Else
                     'StatusWarning("iPhone is connected, not jailbroken")
                     StatusWarning(My.Resources.String1)
+                    iTunesPath = "/iTunes_Control/iTunes/iTunesDB"
                 End If
+                iTunesRoot = iTunesPath.Substring(0, iTunesPath.IndexOf("/iTunes_Control/"))
+
+                CopyFromPhonePNG(iTunesPath, My.Settings.DbPath & "\iTunesDB")
+
+                Me.getArtists(My.Settings.DbPath, "All")
+
+                'Dim arts As String() = mvarItunesMan.GetArtists(My.Settings.DbPath)
+
+                'trvITunes.BeginUpdate()
+                'trvITunes.Nodes.Clear()
+                'Dim tn As TreeNode = trvITunes.Nodes.Add("All")
+                'For i As Integer = 0 To arts.Length - 1
+                '    tn.Nodes.Add(arts(i))
+                'Next
+                'tn.ExpandAll()
+                'trvITunes.EndUpdate()
+                'btnExport.Enabled = False
+
+                'mvarItunes = mvarItunesMan.GetRecSet()
+
                 'Set last path
                 If My.Settings.LastPath <> "" Then
                     openPath(My.Settings.LastPath)
                 End If
+
             Else
                 'StatusWarning("iPhone is NOT connected, please check your connections!")
                 StatusWarning(My.Resources.String2)
 
+                trvITunes.Nodes.Clear()
                 My.Settings.LastPath = ModuleMain.NodeiPhonePath(trvFolders.SelectedNode)
+                mvarItunesMan.Dispose()
             End If
 
         End If
+    End Sub
+
+    Private Function getArtists(ByVal dir As String, ByVal label As String) As Boolean
+        Dim arts As String() = mvarItunesMan.GetArtists(dir)
+
+        trvITunes.BeginUpdate()
+        Try
+            trvITunes.Nodes.Clear()
+            Dim tn As TreeNode = trvITunes.Nodes.Add(label)
+            For i As Integer = 0 To arts.Length - 1
+                tn.Nodes.Add(arts(i))
+            Next
+            tn.ExpandAll()
+            btnExport.Enabled = False
+
+            mvarItunes = mvarItunesMan.GetRecSet()
+
+        Finally
+            trvITunes.EndUpdate()
+        End Try
+
+    End Function
+
+    Private Sub frmMain_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) _
+        Handles MyBase.Load
+
+        Try
+            Dim pos As String = My.Settings.Position
+            If pos.IndexOf(",") > 0 Then
+                Dim position As String() = pos.Split(","c)
+                Me.SetDesktopLocation(CInt(position(0)), CInt(position(1)))
+                Me.Size = New Size(CInt(position(2)), CInt(position(3)))
+            End If
+
+            ProgressBars(0) = tlbProgress0
+            tlbProgress0.Visible = False
+            ProgressBars(1) = tlbProgressBar
+            tlbProgressBar.Visible = False
+            btnCancel.Visible = False
+            tslProgress.Visible = False
+            ResetStatus()   'ProgressDepth = -1
+
+            'APP_PATH = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\Cranium\iPhoneBrowser\"
+            'APP_PATH = My.Settings.BackupPath & "\touchBrowser\"
+            setBackupPath(DateTime.Now)
+
+            FILE_TEMPORARY_VIEWER = Path.GetTempPath & FILE_TEMPORARY_VIEWER
+
+            Me.Text = My.Resources.String14 & " (v" & Application.ProductVersion & ")"
+
+            ' initialize the file list groups
+            For j1 As Integer = 0 To 7
+                Dim lvg As ListViewGroup = New ListViewGroup(Me.getFiletype(j1))
+                lstFiles.Groups.Add(lvg)
+            Next
+
+            ' load up the user settings
+            If My.Settings.CallUpgrade Then
+                My.Settings.Upgrade()
+                My.Settings.CallUpgrade = False
+                My.Settings.Save()
+            End If
+            tsmConfirmDeletions.Checked = My.Settings.ConfirmDeletions
+            Config.bConvertToiPhonePNG = My.Settings.PCToiPhonePNG
+            Config.bConvertToPNG = My.Settings.iPhoneToPCPNG
+            Config.bShowPreview = My.Settings.ShowPreviews
+            Config.bIgnoreThumbsFile = My.Settings.IgnoreThumbsFile
+            Config.bIgnoreDSStoreFile = My.Settings.IgnoreDSStoreFile
+            Config.bIgnoreCacheFile = My.Settings.IgnoreCacheFile
+            Config.bBackupControled = My.Settings.BackupControl
+            Config.bShowSongTitle = My.Settings.ShowSongTitle
+            tsmIPhoneToPC.Checked = Config.bConvertToPNG
+            tsmPCToIPhone.Checked = Config.bConvertToiPhonePNG
+            tsmShowPreviews.Checked = Config.bShowPreview
+            tsmIgnoreThumbsdb.Checked = Config.bIgnoreThumbsFile
+            tsmIgnoreDSStore.Checked = Config.bIgnoreDSStoreFile
+            tsmIgnoreCacheFile.Checked = Config.bIgnoreCacheFile
+            tsmBackupControl.Checked = Config.bBackupControled
+            tsmDisplaySongTitle.Checked = Config.bShowSongTitle
+            cmdShowGroups.Checked = My.Settings.ShowGroups
+            favNames = My.Settings.FavNames
+            If favNames Is Nothing Then
+                favNames = New Specialized.StringCollection()
+            End If
+            favPaths = My.Settings.FavPaths
+            If favPaths Is Nothing Then
+                favPaths = New Specialized.StringCollection()
+            End If
+            picBusy.Dock = DockStyle.Fill
+            picDelete.Dock = DockStyle.Fill
+            qtPlugin.QuickTimeInitialize()
+            qtBuff.QuickTimeInitialize()
+            qtBuff.AutoPlay = "False"
+            qtBuff.EventEnabled = False
+
+            LoadFavoritesMenu()
+
+            ' setup the tooltips
+            menuSetTooltips(mnuGoTo)
+            menuSetTooltips(mnuStdApps)
+            menuSetTooltips(mnuThirdPartyApps)
+
+            cmbOutputDir.Items.Clear()
+            cmbOutputDir.Items.Add(My.Resources.String56)
+            cmbOutputDir.Items.Add(My.Resources.String57)
+            cmbOutputDir.Items.Add(My.Resources.String58)
+            cmbOutputDir.Items.Add(My.Resources.String59)
+            cmbOutputDir.Text = My.Settings.ExportDir
+
+            tildeDir = "/var/mobile"
+
+            iPhoneInterface = New iPhone( _
+                    AddressOf iPhoneConnected_EventHandler, _
+                    AddressOf iPhoneDisconnected_EventHandler)
+
+            'setup the event handlers
+            'AddHandler iPhoneInterface.Connect, AddressOf iPhoneConnected_EventHandler
+            'AddHandler iPhoneInterface.Disconnect, AddressOf iPhoneDisconnected_EventHandler
+
+        Catch ex As Exception
+            MsgBox(My.Resources.String15 & ex.Message & My.Resources.String16, MsgBoxStyle.Critical, "Error!")
+            Me.Close()
+
+        End Try
+
     End Sub
 
     Private Sub refreshChildFolders(ByVal forceRefresh As Boolean)
@@ -183,7 +339,12 @@ Public Class frmMain
             StatusNormal(String.Format(My.Resources.String4, rootNode.Name))
             StartStatus(rootNode.Nodes.Count, 0)
 
+            sWorkingPath = ModuleMain.NodeiPhonePath(rootNode)
+            ModuleMain.AddFolders(sWorkingPath, rootNode, -2)
+
             Try
+                StartStatus(rootNode.Nodes.Count, 0)
+
                 For Each tmpNode In rootNode.Nodes
                     If IncrementStatus(0) Then Exit For
 
@@ -193,7 +354,7 @@ Public Class frmMain
                     'now add it (only if it is not the root)
                     If sWorkingPath <> "/" Then
                         Try
-                            ModuleMain.AddFolders(sWorkingPath, tmpNode, 1)
+                            ModuleMain.Add1stFolder(sWorkingPath, tmpNode)
                         Catch
                             Try
                                 'rootNode.Nodes(iTemp).Remove()
@@ -205,6 +366,7 @@ Public Class frmMain
                     End If
                 Next
 
+                EndStatus()
                 StatusNormal("")
                 If ProgressEscapeFlg = False Then
                     rootNode.Tag = True
@@ -235,6 +397,18 @@ Public Class frmMain
         End If
     End Function
 
+    Private Function fileSizeAsString(ByVal size As Long) As String
+        Dim iFileSize As Long = size
+        'make it look pretty
+        If iFileSize > 10240000 Then
+            Return String.Format("{0:0.##} MB", iFileSize / 1024000)
+        ElseIf iFileSize > 10240 Then
+            Return String.Format("{0:0.##} KB", iFileSize / 1024)
+        Else
+            Return String.Format("{0} B", iFileSize)
+        End If
+    End Function
+
     Structure SongTitleStruct
         Dim index As Integer
         Dim fileName As String
@@ -242,7 +416,7 @@ Public Class frmMain
     End Structure
 
     Friend Sub LoadFiles()
-        Dim sFiles() As String
+        Dim bFiles As List(Of iPhone.strFileInfo)
         Dim iPhonePath As String
         Dim lstTemp As ListViewItem
         Dim row As Integer
@@ -255,32 +429,31 @@ Public Class frmMain
                 'first clear out any files that may be there
                 mvarInProCount += 1
 
-                lstFiles.BeginUpdate()
-                lstFiles.Items.Clear()
-                lstFiles.ListViewItemSorter = Nothing
-                lstFilesSortOrder = SortOrder.None
-
                 iPhonePath = ModuleMain.NodeiPhonePath(trvFolders.SelectedNode)
                 tstAddress.Text = iPhonePath
                 'StatusNormal("Loading Files for " & iPhonePath & "...")
                 StatusNormal(String.Format(My.Resources.String5, iPhonePath))
                 'now get the files from the iphone
-                sFiles = iPhoneInterface.GetFiles(iPhonePath)
+                bFiles = iPhoneInterface.GetFiles(iPhonePath, 0)
 
                 'now go one by one and add it
-                'StartStatus(sFiles.Length)
-                Dim songTitles(sFiles.Length) As SongTitleStruct
+                Dim songTitles(bFiles.Count) As SongTitleStruct
                 Dim songCnt As Integer = 0
                 Dim listRow As Integer = 0
+                Dim sFileExt As String = ""
+
+                lstFiles.BeginUpdate()
+                lstFiles.Items.Clear()
+                lstFiles.ListViewItemSorter = Nothing
+                lstFilesSortOrder = SortOrder.None
 
                 Try
-                    For Each sFile As String In sFiles
-                        'If IncrementStatus() Then Exit For
-
-                        sFile = convertcd(sFile)
+                    'For Each sFile As String In sFiles
+                    For listRow = 0 To bFiles.Count - 1
+                        Dim strFileInfo As iPhone.strFileInfo = bFiles(listRow)
+                        Dim sFile As String = convertcd(strFileInfo.name)
                         Dim iPhoneFile As String = iPhonePath & "/" & sFile
                         Dim subDirName As String = ""
-                        Dim holderName As String = ""
 
                         If ObjDb IsNot Nothing Then
                             row = ObjDb.Find("", iPhoneFile)
@@ -291,27 +464,38 @@ Public Class frmMain
                             row = -1
                         End If
 
-                        If Config.bShowSongTitle AndAlso _
-                            (sFile.EndsWith(".m4a") _
-                            OrElse sFile.EndsWith(".mp3") _
-                            OrElse sFile.EndsWith(".m4p")) Then
-
-                            ' display song title
-                            songTitles(songCnt).index = listRow
-                            songTitles(songCnt).fileName = sFile
-                            songTitles(songCnt).subDir = subDirName
-                            'songTitle = getSongTitle(sFile, iPhonePath, subDirName)
-                            songCnt += 1
+                        sFileExt = sFile
+                        Dim ext As String = ""
+                        If sFile.LastIndexOf(".") > -1 Then
+                            ext = sFile.Substring(sFile.LastIndexOf("."))
                         End If
 
-                        lstTemp = New ListViewItem(sFile)
+                        If Config.bShowSongTitle AndAlso _
+                            (ext = ".m4a" _
+                            OrElse ext = ".mp3" _
+                            OrElse ext = ".m4p" _
+                            OrElse ext = ".mp4") Then
+
+                            ' display song title
+                            Dim tune As String = mvarItunesMan.Select(iPhoneFile)
+                            If tune.Length > 0 Then
+                                sFileExt &= tune
+                            ElseIf ext <> ".mp4" Then
+                                songTitles(songCnt).index = listRow
+                                songTitles(songCnt).fileName = sFile
+                                songTitles(songCnt).subDir = subDirName
+                                songCnt += 1
+                            End If
+                        End If
+
+                        lstTemp = New ListViewItem(sFileExt)
                         lstTemp.ImageIndex = getImageIndexForFile(sFile)
                         If lstFiles.ShowGroups Then
                             lstTemp.Group = lstFiles.Groups(lstTemp.ImageIndex)
                         End If
 
                         ' add the file size
-                        lstTemp.SubItems.Add(fileSizeAsString(iPhoneFile))
+                        lstTemp.SubItems.Add(Me.fileSizeAsString(strFileInfo.size))
 
                         ' add the backup directory
                         If row = -1 Then
@@ -327,18 +511,11 @@ Public Class frmMain
                         ' add the file type
                         lstTemp.SubItems.Add(getFiletype(lstTemp.ImageIndex))
 
-                        '‚±‚±‚Å’†’f‚·‚é
-                        'If mvarInProCount > 1 Then
-                        'Exit For
-                        'End If
-
                         'finally add it to the view
                         lstFiles.Items.Add(lstTemp)
-                        listRow += 1
 
                     Next
                     StatusNormal("")
-                    'EndStatus()
 
                 Finally
                     lstFiles.EndUpdate()
@@ -352,10 +529,9 @@ Public Class frmMain
                 Dim songTitle As String = ""
                 lstFiles.Tag = iPhonePath
 
-                'If mvarInProCount < 2 Then
                 StartStatus(songCnt, 0)
                 For row = 0 To songCnt - 1
-                    If mvarInProCount > 1 Then Exit For
+                    'If mvarInProCount > 1 Then Exit For
                     songTitle = Me.getSongTitle(songTitles(row).fileName, iPhonePath, songTitles(row).subDir)
                     lstFiles.Items(songTitles(row).index).Text &= songTitle
                     lstFiles.Refresh()
@@ -366,7 +542,6 @@ Public Class frmMain
                     End If
                 Next
                 EndStatus()
-                'End If
 
                 'ClearPreview()
                 'grpFiles.Text = "Files on your iPhone in the '" & nodeiPhonePath(trvFolders.SelectedNode) & "' Directory"
@@ -461,11 +636,14 @@ Public Class frmMain
                 'iReturn = IMAGE_FILE_RINGTONE
             Case "m4a", "m4p", "mp3", "aac"
                 iReturn = IMAGE_FILE_MUSIC
-            Case "mp4", "mov", "3gp", "tga"
+            Case "mp4", "mov", "3gp", "tga", "m4v"
                 iReturn = IMAGE_FILE_MOVIE
             Case "htm", "html", "plist", "thm", "xml", "pdf"
                 iReturn = IMAGE_FILE_WEBBROWS
         End Select
+        'If sFilename.EndsWith("iTunesDB") Then
+        '    iReturn = IMAGE_FILE_DATABASE
+        'End If
 
         Return iReturn
     End Function
@@ -514,7 +692,7 @@ Public Class frmMain
         trvFolders.Nodes.Add(rootNode)
         IncrementStatus(0)
 
-        ModuleMain.AddFolders("", rootNode)
+        ModuleMain.AddFolders("", rootNode, 0)
         IncrementStatus(0)
 
         rootNode.Expand()
@@ -532,7 +710,11 @@ Public Class frmMain
     End Function
 
     Private Function getSelectedFolder() As String
-        Return trvFolders.SelectedNode.FullPath.Substring(STRING_ROOT.Length)
+        If tabFolder.SelectedIndex = 0 Then
+            Return trvFolders.SelectedNode.FullPath.Substring(STRING_ROOT.Length)
+        Else
+            Return grpFiles.Text
+        End If
     End Function
 
     Private Function getSelectedPath() As String
@@ -570,7 +752,7 @@ Public Class frmMain
 
         Try
             ' drop trailing /
-            If sPathOnPhone.EndsWith("/") Then
+            If sPathOnPhone.EndsWith("/") AndAlso sPathOnPhone.Length > 1 Then
                 sPathOnPhone = sPathOnPhone.Substring(0, sPathOnPhone.Length - 1)
             End If
             'first, lets try to find it without expanding
@@ -642,126 +824,38 @@ Public Class frmMain
 
     'SYSTEM CREATED EVENTS
 
-    Private Sub frmMain_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) _
-        Handles MyBase.Load
-
-        Try
-            Dim pos As String = My.Settings.Position
-            If pos.IndexOf(",") > 0 Then
-                Dim position As String() = pos.Split(","c)
-                Me.SetDesktopLocation(CInt(position(0)), CInt(position(1)))
-                Me.Size = New Size(CInt(position(2)), CInt(position(3)))
-            End If
-
-            ProgressBars(0) = tlbProgress0
-            tlbProgress0.Visible = False
-            ProgressBars(1) = tlbProgressBar
-            tlbProgressBar.Visible = False
-            BtnCancel.Visible = False
-            ResetStatus()   'ProgressDepth = -1
-
-            'APP_PATH = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\Cranium\iPhoneBrowser\"
-            'APP_PATH = My.Settings.BackupPath & "\touchBrowser\"
-            setBackupPath(DateTime.Now)
-
-            FILE_TEMPORARY_VIEWER = Path.GetTempPath & FILE_TEMPORARY_VIEWER
-
-            Me.Text = My.Resources.String14 & " (v" & Application.ProductVersion & ")"
-
-            ' initialize the file list groups
-            For j1 As Integer = 0 To 7
-                Dim lvg As ListViewGroup = New ListViewGroup(Me.getFiletype(j1))
-                lstFiles.Groups.Add(lvg)
-            Next
-
-            ' load up the user settings
-            If My.Settings.CallUpgrade Then
-                My.Settings.Upgrade()
-                My.Settings.CallUpgrade = False
-                My.Settings.Save()
-            End If
-            tsmConfirmDeletions.Checked = My.Settings.ConfirmDeletions
-            Config.bConvertToiPhonePNG = My.Settings.PCToiPhonePNG
-            Config.bConvertToPNG = My.Settings.iPhoneToPCPNG
-            Config.bShowPreview = My.Settings.ShowPreviews
-            Config.bIgnoreThumbsFile = My.Settings.IgnoreThumbsFile
-            Config.bIgnoreDSStoreFile = My.Settings.IgnoreDSStoreFile
-            Config.bIgnoreCacheFile = My.Settings.IgnoreCacheFile
-            Config.bBackupControled = My.Settings.BackupControl
-            Config.bShowSongTitle = My.Settings.ShowSongTitle
-            tsmIPhoneToPC.Checked = Config.bConvertToPNG
-            tsmPCToIPhone.Checked = Config.bConvertToiPhonePNG
-            tsmShowPreviews.Checked = Config.bShowPreview
-            tsmIgnoreThumbsdb.Checked = Config.bIgnoreThumbsFile
-            tsmIgnoreDSStore.Checked = Config.bIgnoreDSStoreFile
-            tsmIgnoreCacheFile.Checked = Config.bIgnoreCacheFile
-            tsmBackupControl.Checked = Config.bBackupControled
-            tsmDisplaySongTitle.Checked = Config.bShowSongTitle
-            cmdShowGroups.Checked = My.Settings.ShowGroups
-            favNames = My.Settings.FavNames
-            If favNames Is Nothing Then
-                favNames = New Specialized.StringCollection()
-            End If
-            favPaths = My.Settings.FavPaths
-            If favPaths Is Nothing Then
-                favPaths = New Specialized.StringCollection()
-            End If
-            picBusy.Dock = DockStyle.Fill
-            picDelete.Dock = DockStyle.Fill
-            qtPlugin.QuickTimeInitialize()
-            qtBuff.QuickTimeInitialize()
-            qtBuff.AutoPlay = "False"
-            qtBuff.EventEnabled = False
-
-            LoadFavoritesMenu()
-
-            ' setup the tooltips
-            menuSetTooltips(mnuGoTo)
-            menuSetTooltips(mnuStdApps)
-            menuSetTooltips(mnuThirdPartyApps)
-
-            tildeDir = "/var/mobile"
-
-            iPhoneInterface = New iPhone( _
-                    AddressOf iPhoneConnected_EventHandler, _
-                    AddressOf iPhoneDisconnected_EventHandler)
-
-            'setup the event handlers
-            'AddHandler iPhoneInterface.Connect, AddressOf iPhoneConnected_EventHandler
-            'AddHandler iPhoneInterface.Disconnect, AddressOf iPhoneDisconnected_EventHandler
-
-        Catch ex As Exception
-            MsgBox(My.Resources.String15 & ex.Message & My.Resources.String16, MsgBoxStyle.Critical, "Error!")
-            Me.Close()
-
-        End Try
-
-    End Sub
-
     Private Sub SetViewChecks()
-        ToolStripMenuItemLargeIcons.Checked = (lstFiles.View = View.LargeIcon)
-        ToolStripMenuItemDetails.Checked = (lstFiles.View = View.Details)
-        cmdSmallIcons.Checked = (lstFiles.View = View.SmallIcon)
+        tsmViewLargeIcons.Checked = (lstFiles.View = View.LargeIcon)
+        tsmViewDetails.Checked = (lstFiles.View = View.Details)
+        tsmViewSmallIcons.Checked = (lstFiles.View = View.SmallIcon)
+        tsmViewTile.Checked = (lstFiles.View = View.Tile)
     End Sub
 
     Private Sub ToolStripMenuItemLargeIcons_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) _
-        Handles ToolStripMenuItemLargeIcons.Click
+        Handles tsmViewLargeIcons.Click
 
         lstFiles.View = View.LargeIcon
         SetViewChecks()
     End Sub
 
     Private Sub ToolStripMenuItemDetails_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) _
-        Handles ToolStripMenuItemDetails.Click
+        Handles tsmViewDetails.Click
 
         lstFiles.View = View.Details
         SetViewChecks()
     End Sub
 
     Private Sub cmdSmallIcons_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) _
-        Handles cmdSmallIcons.Click
+        Handles tsmViewSmallIcons.Click
 
         lstFiles.View = View.SmallIcon
+        SetViewChecks()
+    End Sub
+
+    Private Sub ListToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) _
+        Handles tsmViewTile.Click
+
+        lstFiles.View = View.Tile
         SetViewChecks()
     End Sub
 
@@ -814,16 +908,19 @@ Public Class frmMain
         Handles trvFolders.AfterSelect
 
         Dim selNode As TreeNode = e.Node
+        Me.UseWaitCursor = True
 
-        If Not IsCollapsing AndAlso (Not selNode.IsExpanded()) Then
-            trvFolders.SelectedNode.Expand()
-        End If
         If selNode.Level > 0 AndAlso CBool(selNode.Tag) = False Then
             'AddFoldersBeneath(selNode)
             'Folder‚Ì“WŠJ‚ÅƒLƒƒƒ“ƒZƒ‹‚µ‚½‚Æ‚«
             AddFolders(ModuleMain.NodeiPhonePath(selNode), selNode, 1)
         End If
+        If Not IsCollapsing AndAlso (Not selNode.IsExpanded()) Then
+            trvFolders.SelectedNode.Expand()
+        End If
         Me.LoadFiles()
+
+        Me.UseWaitCursor = False
     End Sub
 
     Private Sub lstFiles_DragDrop(ByVal sender As Object, ByVal e As System.Windows.Forms.DragEventArgs) _
@@ -901,7 +998,9 @@ Public Class frmMain
         Dim copyRC As Integer = 0
 
         If Not fromBtn Then
-            If backupDir = "" OrElse fsize < 1000000 Then
+            If bNowConnected = False Then
+                tmpOnPC = sFile.Replace("/", "\")
+            ElseIf backupDir = "" OrElse fsize < 1000000 OrElse tabFolder.SelectedIndex = 1 Then
                 copyRC = ModuleMain.CopyQueueFromPhone(sFile, tmpOnPC)
                 'Dim dic As Dictionary(Of String, String) = iPhoneInterface.GetFileInfo(sFile)
                 'For Each item As KeyValuePair(Of String, String) In dic
@@ -1098,6 +1197,8 @@ Public Class frmMain
         If mvarClickedMouseButton = Windows.Forms.MouseButtons.Right Then
             Exit Sub
         End If
+
+        Me.Cursor = Cursors.WaitCursor
         If Config.bShowPreview AndAlso Not splFilesLock Then
             lstFiles.Cursor = Cursors.No
             splFilesLock = True
@@ -1121,6 +1222,7 @@ Public Class frmMain
         Else
             showSelectedFileDetails()
         End If
+        Me.Cursor = Cursors.Default
     End Sub
 
     Private Sub menuRightSaveAs_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) _
@@ -1133,7 +1235,12 @@ Public Class frmMain
             Dim sItem As ListViewItem = lstFiles.SelectedItems(0)
             'show them the save dialog
             fileSaveDialog.Title = "Save " & sItem.Text & " as ..."
-            fileSaveDialog.FileName = FixPhoneFilename(sItem.Text)
+            If tabFolder.SelectedIndex = 0 Then
+                fileSaveDialog.FileName = FixPhoneFilename(sItem.Text)
+            Else
+                Dim ext As String = sItem.Text.Substring(sItem.Text.LastIndexOf("."))
+                fileSaveDialog.FileName = FixPhoneFilename(sItem.SubItems(2).Text.Replace(" ", "_") & ext)
+            End If
             If fileSaveDialog.ShowDialog() = Windows.Forms.DialogResult.OK Then
                 sSaveAsFilename = fileSaveDialog.FileName
                 sFileFromPhone = sFolder & sItem.Text
@@ -1171,7 +1278,7 @@ Public Class frmMain
                 BackupFileFromPhone(sSourcePath, sItem.Text)
             Next
             ' redraw list
-            LoadFiles()
+            Me.LoadFiles()
         End If
 
     End Sub
@@ -1317,7 +1424,7 @@ Public Class frmMain
         toolStripGoTo7.Click, toolStripGoTo6.Click, toolStripGoTo5.Click, toolStripGoTo4.Click, _
         toolStripGoTo18.Click, toolStripGoTo17.Click, toolStripGoTo16.Click, toolStripGoTo15.Click, _
         toolStripGoTo14.Click, toolStripGoTo13.Click, toolStripGoTo12.Click, toolStripGoTo11.Click, _
-        toolStripGoTo10.Click, ToolStripMenuItem2.Click, toolStripGoTo20.Click, tsmTTR.Click, _
+        toolStripGoTo10.Click, ToolStripMenuItem2.Click, tsmITunesMusic.Click, tsmTTR.Click, _
         tsmNESROMS.Click, tsmISwitcherThemes.Click, tsmInstallerPackageSources.Click, _
         tsmFrotzGames.Click, tsmEBooks.Click, tsmDockSwapDocks.Click, _
         tsmCustomizeFiles.Click, tsmIFlashCards.Click, tsmGBAROMs.Click, tsmCameraRoll.Click
@@ -1887,10 +1994,10 @@ Public Class frmMain
                             lastval0 = ProgressValue(0)
                             ProgressBars(0).Value = lastval0
                             'tlbStatusStrip.Refresh()
-                            If ProgressFullSize > 0 Then
-                                tlbStatusLabel.Text = CInt(ProgressSize / 1024).ToString() & " of " & CInt(ProgressFullSize / 1024).ToString() & " KByte "
+                            If ProgressFullSize > 1024 Then
+                                tslProgress.Text = CInt(ProgressSize / 1024).ToString() & " of " & CInt(ProgressFullSize / 1024).ToString() & " KByte "
                             ElseIf lastval0 > 100 Then
-                                tlbStatusLabel.Text = lastval0.ToString() & "/" & .Maximum.ToString()
+                                tslProgress.Text = lastval0.ToString() & "/" & .Maximum.ToString()
                             End If
                         End If
                     End If
@@ -1904,11 +2011,12 @@ Public Class frmMain
     End Sub
 
     Private Sub ToolStripDropDownButton1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) _
-        Handles BtnCancel.Click
+        Handles btnCancel.Click
 
         Try
             ProgressEscapeFlg = True
-            BtnCancel.Visible = False
+            btnCancel.Visible = False
+            tslProgress.Visible = False
             ProgressBars(0).Visible = False
             ProgressBars(1).Visible = False
             ResetStatus()       'ProgressDepth = -1
@@ -2046,6 +2154,7 @@ Public Class frmMain
             WebBrws.Visible = True
             WebBrws.IsWebBrowserContextMenuEnabled = False
             txtFileDetails.Visible = False
+            pnlQt.Visible = False
 
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Exclamation)
@@ -2072,7 +2181,7 @@ Public Class frmMain
     Private Sub qtPlugin_AnnotationUpdate(ByVal annotation As String) _
         Handles qtPlugin.AnnotationUpdate
 
-        lblMovieName.Text = annotation
+        txtMovieName.Text = annotation
 
     End Sub
 
@@ -2096,7 +2205,7 @@ Public Class frmMain
         Handles qtPlugin.VisibleChanged
 
         chkZoom.Visible = visibled
-        lblMovieName.Visible = visibled
+        txtMovieName.Visible = visibled
     End Sub
 
     Private Sub WebBrws_StatusTextChanged(ByVal sender As Object, ByVal e As System.EventArgs) _
@@ -2174,6 +2283,266 @@ Public Class frmMain
         If e.KeyCode = 13 Then
             openPath(tstAddress.Text)
         End If
+    End Sub
+
+    Private Sub trvITunes_AfterCheck(ByVal sender As Object, ByVal e As System.Windows.Forms.TreeViewEventArgs) _
+        Handles trvITunes.AfterCheck
+
+        If TreeNode.ReferenceEquals(e.Node, trvITunes.Nodes(0)) Then
+            Dim checked As Boolean = e.Node.Checked
+            For Each node As TreeNode In trvITunes.Nodes(0).Nodes
+                node.Checked = checked
+            Next
+        End If
+
+        If e.Node.Checked Then
+            btnExport.Enabled = True
+            cmbOutputDir.Enabled = True
+        Else
+            Dim checked As Boolean = False
+            For Each node As TreeNode In trvITunes.Nodes(0).Nodes
+                If node.Checked Then
+                    checked = True
+                    Exit For
+                End If
+            Next
+            btnExport.Enabled = checked
+            cmbOutputDir.Enabled = checked
+        End If
+
+    End Sub
+
+    Private Sub trvITunes_AfterSelect(ByVal sender As Object, ByVal e As System.Windows.Forms.TreeViewEventArgs) _
+        Handles trvITunes.AfterSelect
+
+        Dim lstTemp As ListViewItem
+        Dim selNode As TreeNode = e.Node
+        Dim listRow As Integer = 0
+        Dim files As IPod.Music.TrackItem() = mvarItunesMan.GetSongs(selNode.Text)
+
+        Try
+            lstFiles.BeginUpdate()
+            lstFiles.Items.Clear()
+            For listRow = 0 To files.Length - 1
+                Dim item As IPod.Music.TrackItem = files(listRow)
+                lstTemp = New ListViewItem(item.Location.Replace("\", "/"))
+                lstTemp.ImageIndex = getImageIndexForFile(item.Location)
+                With lstTemp.SubItems
+                    .Add(Me.fileSizeAsString(item.FileSize))
+                    .Add(item.Title)
+                    .Add(getFiletype(lstTemp.ImageIndex))
+                    .Add(item.Album)
+                    .Add(item.TrackNumber.ToString)
+                    .Add(item.Genre)
+                    .Add(item.FileType)
+                    .Add(item.Commnet)
+                End With
+                lstFiles.Items.Add(lstTemp)
+            Next
+
+            StatusNormal(files.Length.ToString & " files found")
+            Dim ind As Integer = iTunesPath.IndexOf("/iTunes_Control/")
+            If ind = -1 Then
+                ind = iTunesPath.IndexOf("\iPod_Control\")
+                If ind > -1 Then
+                    grpFiles.Text = iTunesPath.Substring(0, ind)
+                End If
+            Else
+                grpFiles.Text = iTunesRoot
+            End If
+
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        Finally
+            lstFiles.EndUpdate()
+        End Try
+
+    End Sub
+
+    Private Sub tabFolder_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) _
+        Handles tabFolder.SelectedIndexChanged
+
+        With Me.lstFiles
+            .SuspendLayout()
+            Select Case tabFolder.SelectedIndex
+                Case 0
+                    .Columns(2).Text = My.Resources.String49
+                    .Columns(3).Width = 110
+                    .Columns.RemoveByKey("TrackNumber")
+                    .Columns.RemoveByKey("Album")
+                    .Columns.RemoveByKey("Genre")
+                    .Columns.RemoveByKey("Type")
+                    .Columns.RemoveByKey("Comment")
+
+                Case 1
+                    .Columns(2).Text = My.Resources.String50
+                    .Columns(3).Width = 0
+                    .Columns.Add("Album", My.Resources.String51, 150)
+                    .Columns.Add("TrackNumber", My.Resources.String52, 70, HorizontalAlignment.Right, "")
+                    .Columns.Add("Genre", My.Resources.String53, 60)
+                    .Columns.Add("Type", My.Resources.String54, 120)
+                    .Columns.Add("Comment", My.Resources.String55, 160)
+
+                    If bNowConnected = False AndAlso trvITunes.Nodes.Count = 0 Then
+                        iTunesRoot = ITunesDb.GetIPodRoot()
+
+                        If iTunesRoot <> "" Then
+                            Dim dr As New DriveInfo(iTunesRoot)
+                            Me.getArtists(iTunesRoot & "iPod_Control\iTunes", dr.VolumeLabel)
+                            iTunesPath = iTunesRoot & "iPod_Control\iTunes"
+                        Else
+                            Me.btnExport.Enabled = False
+                            Me.cmbOutputDir.Enabled = False
+                        End If
+                    End If
+
+            End Select
+            .Items.Clear()
+            .ResumeLayout()
+        End With
+    End Sub
+
+    'Private Sub btnClear_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    '    For Each node As TreeNode In trvITunes.Nodes
+    '        node.Checked = False
+    '    Next
+    'End Sub
+
+    'Private Sub btnCheck_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    '    For Each node As TreeNode In trvITunes.Nodes
+    '        node.Checked = True
+    '    Next
+    'End Sub
+
+    Private Sub btnExport_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnExport.Click
+        Dim sRootPath As String = ""
+        Dim escaped As Boolean = False
+        Dim dr As DialogResult
+        Dim rc As Long
+
+        Dim fb As New FolderBrowserDialog
+        fb.Description = My.Resources.String60
+        Select Case cmbOutputDir.Text
+            Case My.Resources.String56
+                fb.RootFolder = Environment.SpecialFolder.MyMusic
+            Case My.Resources.String57
+                fb.RootFolder = Environment.SpecialFolder.DesktopDirectory
+            Case My.Resources.String58
+                fb.RootFolder = Environment.SpecialFolder.MyComputer
+            Case My.Resources.String59
+                fb.RootFolder = Environment.SpecialFolder.MyDocuments
+            Case Else
+                fb.SelectedPath = cmbOutputDir.Text
+        End Select
+        dr = fb.ShowDialog()
+        If dr = Windows.Forms.DialogResult.OK Then
+            sRootPath = fb.SelectedPath
+            My.Settings.ExportDir = cmbOutputDir.Text
+        Else
+            Exit Sub
+        End If
+
+        Try
+            If trvITunes.Nodes.Count = 0 Then Exit Sub
+
+            Dim sSourcePath As String = iTunesRoot & "/"
+            For Each node As TreeNode In trvITunes.Nodes(0).Nodes
+                If node.Checked Then
+                    StatusNormal(node.Text)
+                    Dim listRow As Integer = 0
+                    Dim files As IPod.Music.TrackItem() = mvarItunesMan.GetSongs(node.Text)
+
+                    Dim sDestinationPath As String = sRootPath & "\" & node.Text & "\"
+                    ModuleMain.needDir(sDestinationPath)
+                    StartStatus(files.Length, files.Length)
+                    Try
+                        For listRow = 0 To files.Length - 1
+                            Dim item As IPod.Music.TrackItem = files(listRow)
+                            StatusNormal(item.Artist & " - " & item.Album & " - " & item.Title)
+
+                            Dim sSourceFile As String = item.Location.Replace("\", "/")
+                            Dim ext As String = sSourceFile.Substring(sSourceFile.LastIndexOf("."))
+                            Dim subPath As String = sDestinationPath & item.Album.Replace("/", "_") & "\"
+                            Dim destFileName As String = subPath & item.TrackNumber.ToString("00.") _
+                                        & FixPhoneFilename(item.Title.Replace(" ", "_")) & ext
+
+                            ModuleMain.needDir(subPath)
+                            If bNowConnected Then
+                                rc = ModuleMain.CopyFromPhone(sSourcePath & sSourceFile, _
+                                        destFileName)
+                            Else
+                                File.Copy((iTunesRoot & sSourceFile).Replace("/", "\"), destFileName, True)
+                            End If
+
+                            If rc = -2 Then
+                                escaped = True
+                                Exit Try
+                            End If
+                            If IncrementStatus(listRow) Then
+                                escaped = True
+                                Exit Try 'increment our progressbar
+                            End If
+                        Next
+                    Finally
+                        EndStatus()
+                        StatusNormal("")
+                    End Try
+                    If escaped Then
+                        Exit For
+                    End If
+                End If
+            Next
+
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Exclamation)
+
+        End Try
+
+    End Sub
+
+    Private Const WM_DEVICECHANGE As Integer = &H219
+    Private Const DBT_DEVNODES_CHANGED As Integer = &H7
+    Private Const DBT_DEVICEARRIVAL As Integer = &H8000
+    Private Const DBT_DEVICEREMOVECOMPLETE As Integer = &H8004
+
+    Protected Overrides Sub WndProc(ByRef m As System.Windows.Forms.Message)
+        If m.Msg = WM_DEVICECHANGE AndAlso bNowConnected = False Then
+            Debug.WriteLine(String.Format("Msg=0x{0:X}:WParam=0x{1:X}", m.Msg, m.WParam.ToInt32()))
+            Select Case m.WParam.ToInt32()
+                Case DBT_DEVNODES_CHANGED
+                    Debug.WriteLine("any devnode changed occur")
+                    iTunesRoot = ITunesDb.GetIPodRoot()
+                    If iTunesRoot = "" Then
+                        trvITunes.Nodes.Clear()
+                        Me.btnExport.Enabled = False
+                        Me.cmbOutputDir.Enabled = False
+                    End If
+                Case DBT_DEVICEARRIVAL
+                    Debug.WriteLine("system detected a new device")
+                    iTunesRoot = ITunesDb.GetIPodRoot()
+
+                    If iTunesRoot <> "" Then
+                        tabFolder.SelectedIndex = 1
+                        Dim dr As New DriveInfo(iTunesRoot)
+                        Me.getArtists(iTunesRoot & "iPod_Control\iTunes", dr.VolumeLabel)
+                        iTunesPath = iTunesRoot & "iPod_Control\iTunes"
+                    Else
+                        Me.btnExport.Enabled = False
+                        Me.cmbOutputDir.Enabled = False
+                    End If
+                Case DBT_DEVICEREMOVECOMPLETE
+                    Debug.WriteLine("device is gone")
+                    iTunesRoot = ITunesDb.GetIPodRoot()
+                    If iTunesRoot = "" Then
+                        trvITunes.Nodes.Clear()
+                        Me.btnExport.Enabled = False
+                        Me.cmbOutputDir.Enabled = False
+                    End If
+                Case Else
+                    Debug.WriteLine("other")
+            End Select
+        End If
+        MyBase.WndProc(m)
     End Sub
 
 End Class

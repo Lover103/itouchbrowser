@@ -247,11 +247,47 @@ Is a backup place changed?</value>
   <data name="String48" xml:space="preserve">
     <value>Enter new folder name:</value>
   </data>
+  <data name="String49" xml:space="preserve">
+    <value>Backup Dir.</value>
+  </data>
   <data name="String5" xml:space="preserve">
     <value>Loading Files for {0}...</value>
   </data>
+  <data name="String50" xml:space="preserve">
+    <value>Song Name</value>
+  </data>
+  <data name="String51" xml:space="preserve">
+    <value>Album</value>
+  </data>
+  <data name="String52" xml:space="preserve">
+    <value>Track Number</value>
+  </data>
+  <data name="String53" xml:space="preserve">
+    <value>Genre</value>
+  </data>
+  <data name="String54" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="String55" xml:space="preserve">
+    <value>Comment</value>
+  </data>
+  <data name="String56" xml:space="preserve">
+    <value>My Music</value>
+  </data>
+  <data name="String57" xml:space="preserve">
+    <value>Desctop</value>
+  </data>
+  <data name="String58" xml:space="preserve">
+    <value>My Computer</value>
+  </data>
+  <data name="String59" xml:space="preserve">
+    <value>My Documents</value>
+  </data>
   <data name="String6" xml:space="preserve">
     <value>Files on your iPhone in the '{0}' Directory</value>
+  </data>
+  <data name="String60" xml:space="preserve">
+    <value>Please choose the directory to write out.</value>
   </data>
   <data name="String7" xml:space="preserve">
     <value>This function goes through all of your backup files and attempts to remove the duplicates to save space.</value>

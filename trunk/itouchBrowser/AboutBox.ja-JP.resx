@@ -660,7 +660,7 @@
 ファイル転送機能としては、極限まで効率アップしていますので十分使えると思います。
 転送後WinSCPなどを使って権限設定を行ってください。
 
-2008/10/12    by =sugi=
+2008/11/01    by =sugi=
 </value>
   </data>
   <data name="OKButton.Location" type="System.Drawing.Point, System.Drawing">
