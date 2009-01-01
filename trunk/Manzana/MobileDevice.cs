@@ -66,23 +66,49 @@ namespace Manzana
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential, CharSet=CharSet.Ansi, Pack=1)]
 	public struct AMDevice {
-		[MarshalAs(UnmanagedType.ByValArray, SizeConst=16)]
-		internal byte[]		unknown0;		/* 0 - zero */
-		internal uint		device_id;		/* 16 */
-		internal uint		product_id;		/* 20 - set to AMD_IPHONE_PRODUCT_ID */
-		/// <summary>Write Me</summary>
-		public string		serial;			/* 24 - set to AMD_IPHONE_SERIAL */
-		internal uint		unknown1;		/* 28 */
-		[MarshalAs(UnmanagedType.ByValArray, SizeConst=4)]
-		internal byte[]		unknown2;		/* 32 */
-		internal uint		lockdown_conn;	/* 36 */
-		[MarshalAs(UnmanagedType.ByValArray, SizeConst=8)]
-		internal byte[]		unknown3;		/* 40 */
-		[MarshalAs(UnmanagedType.ByValArray, SizeConst=6*16+1)]
-		internal byte[]		unknown4;		/* 48  + in iTunes 8.0, by iFunbox.dev */
-		[MarshalAs(UnmanagedType.ByValArray, SizeConst=8)]
-		internal byte[]		unknown5;		/* 97  + in iTunes 8.0, by iFunbox.dev */
-	}
+        //[MarshalAs(UnmanagedType.ByValArray, SizeConst=16)]
+        //internal byte[]		unknown0;		/* 0 - zero */
+        //internal uint		device_id;		/* 16 */
+        //internal uint		product_id;		/* 20 - set to AMD_IPHONE_PRODUCT_ID */
+        ///// <summary>Write Me</summary>
+        //public string		serial;			/* 24 - set to AMD_IPHONE_SERIAL */
+        //internal uint		unknown1;		/* 28 */
+        //[MarshalAs(UnmanagedType.ByValArray, SizeConst=4)]
+        //internal byte[]		unknown2;		/* 32 */
+        //internal uint		lockdown_conn;	/* 36 */
+        //[MarshalAs(UnmanagedType.ByValArray, SizeConst=8)]
+        //internal byte[]		unknown3;		/* 40 */
+        //[MarshalAs(UnmanagedType.ByValArray, SizeConst=6*16+1)]
+        //internal byte[]		unknown4;		/* 48  + in iTunes 8.0, by iFunbox.dev */
+        //[MarshalAs(UnmanagedType.ByValArray, SizeConst=8)]
+        //internal byte[]		unknown5;		/* 97  + in iTunes 8.0, by iFunbox.dev */
+
+        /// <summary>Write Me</summary>
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 16)]
+        public byte[] unknown0;		/* 0 - zero */
+        /// <summary>Device ID</summary>
+        public uint device_id;		/* 16 */
+        /// <summary>Product ID</summary>
+        public uint product_id;		/* 20 - set to AMD_IPHONE_PRODUCT_ID */
+        /// <summary>Serial number</summary>
+        public string serial;			/* 24 - set to AMD_IPHONE_SERIAL */
+        /// <summary>Write Me</summary>
+        public uint unknown1;		/* 28 */
+        /// <summary>Write Me</summary>
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 4)]
+        public byte[] unknown2;		/* 32 */
+        /// <summary>Write Me</summary>
+        public uint lockdown_conn;	/* 36 */
+        /// <summary>Write Me</summary>
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 8)]
+        public byte[] unknown3;		/* 40 */
+        /// <summary>Write Me</summary>
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 6 * 16 + 1)]
+        public byte[] unknown4;		/* 48  + in iTunes 8.0, by iFunbox.dev */
+        /// <summary>Write Me</summary>
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 8)]
+        public byte[] unknown5;		/* 97  + in iTunes 8.0, by iFunbox.dev */
+    }
 
 	[StructLayout(LayoutKind.Sequential, CharSet=CharSet.Ansi, Pack=1)]
 	internal struct AMDeviceNotification {
@@ -195,24 +221,26 @@ namespace Manzana
 		[DllImport(DLLPath, CallingConvention=CallingConvention.Cdecl)]
 		public extern static int AMRestoreModeDeviceCreate(uint unknown0, int connection_id, uint unknown1);
 
-		[DllImport(DLLPath, CallingConvention=CallingConvention.Cdecl)]
-		public extern static int AFCDirectoryOpen(IntPtr conn, string path, ref IntPtr dir);
+		//[DllImport(DLLPath, CallingConvention=CallingConvention.Cdecl)]
+		//public extern static int AFCDirectoryOpen(IntPtr conn, string path, ref IntPtr dir);
+        [DllImport(DLLPath, CallingConvention = CallingConvention.Cdecl)]
+        public extern static int AFCDirectoryOpen(IntPtr conn, byte[] path, ref IntPtr dir);
 
-		public static int AFCDirectoryRead(IntPtr conn, IntPtr dir, ref string buffer) {
-			IntPtr ptr;
-			int ret;
+        //public static int AFCDirectoryRead(IntPtr conn, IntPtr dir, ref string buffer) {
+        //    IntPtr ptr;
+        //    int ret;
 
-			ptr = IntPtr.Zero;
-			ret = AFCDirectoryRead(conn, dir, ref ptr);
-			if ((ret == 0) && (ptr != IntPtr.Zero)) {
-				buffer = Marshal.PtrToStringAnsi(ptr);
-            }
-            else
-            {
-				buffer = null;
-			}
-			return ret;
-		}
+        //    ptr = IntPtr.Zero;
+        //    ret = AFCDirectoryRead(conn, dir, ref ptr);
+        //    if ((ret == 0) && (ptr != IntPtr.Zero)) {
+        //        buffer = Marshal.PtrToStringAnsi(ptr);
+        //    }
+        //    else
+        //    {
+        //        buffer = null;
+        //    }
+        //    return ret;
+        //}
         public static int AFCDirectoryRead(IntPtr conn, IntPtr dir, ref Byte[] buffer)
         {
             IntPtr ptr;
@@ -305,22 +333,32 @@ namespace Manzana
 		[DllImport(DLLPath, EntryPoint="AMDeviceCopyValue", CallingConvention=CallingConvention.Cdecl)]
 		public extern static IntPtr AMDeviceCopyValue_Int(ref AMDevice device, uint unknown, byte[] cfstring);
 
-		[DllImport(DLLPath, CallingConvention=CallingConvention.Cdecl)]
-		public extern static int AFCGetFileInfo(IntPtr conn, IntPtr path, ref IntPtr buffer, ref uint length);
+		//[DllImport(DLLPath, CallingConvention=CallingConvention.Cdecl)]
+		//public extern static int AFCGetFileInfo(IntPtr conn, IntPtr path, ref IntPtr buffer, ref uint length);
+        //[DllImport(DLLPath, CallingConvention = CallingConvention.Cdecl)]
+        //public extern static int AFCGetFileInfo(IntPtr conn, string path, ref IntPtr buffer, ref uint length);
         [DllImport(DLLPath, CallingConvention = CallingConvention.Cdecl)]
-        public extern static int AFCGetFileInfo(IntPtr conn, string path, ref IntPtr buffer, ref uint length);
+        public extern static int AFCGetFileInfo(IntPtr conn, byte[] path, ref IntPtr buffer, ref uint length);
 
+        //[DllImport(DLLPath, CallingConvention = CallingConvention.Cdecl)]
+        //public extern static int AFCFileInfoOpen(IntPtr conn, string path, ref IntPtr buffer, out uint length);
         [DllImport(DLLPath, CallingConvention = CallingConvention.Cdecl)]
-        public extern static int AFCFileInfoOpen(IntPtr conn, string path, ref IntPtr buffer, out uint length);
+        public extern static int AFCFileInfoOpen(IntPtr conn, byte[] path, ref IntPtr buffer, out uint length);
 
+        //[DllImport(DLLPath, CallingConvention = CallingConvention.Cdecl)]
+		//public extern static int AFCRemovePath(IntPtr conn, string path);
         [DllImport(DLLPath, CallingConvention = CallingConvention.Cdecl)]
-		public extern static int AFCRemovePath(IntPtr conn, string path);
+        public extern static int AFCRemovePath(IntPtr conn, byte[] path);
 
-		[DllImport(DLLPath, CallingConvention=CallingConvention.Cdecl)]
-		public extern static int AFCRenamePath(IntPtr conn, string old_path, string new_path);
+		//[DllImport(DLLPath, CallingConvention=CallingConvention.Cdecl)]
+		//public extern static int AFCRenamePath(IntPtr conn, string old_path, string new_path);
+        [DllImport(DLLPath, CallingConvention = CallingConvention.Cdecl)]
+        public extern static int AFCRenamePath(IntPtr conn, byte[] old_path, byte[] new_path);
 
-		[DllImport(DLLPath, CallingConvention=CallingConvention.Cdecl)]
-		public extern static int AFCFileRefOpen(IntPtr conn, string path, int mode, int unknown, out Int64 handle);
+		//[DllImport(DLLPath, CallingConvention=CallingConvention.Cdecl)]
+		//public extern static int AFCFileRefOpen(IntPtr conn, string path, int mode, int unknown, out Int64 handle);
+        [DllImport(DLLPath, CallingConvention = CallingConvention.Cdecl)]
+        public extern static int AFCFileRefOpen(IntPtr conn, byte[] path, int mode, int unknown, out Int64 handle);
 
 		[DllImport(DLLPath, CallingConvention=CallingConvention.Cdecl)]
 		public extern static int AFCFileRefClose(IntPtr conn, Int64 handle);
@@ -346,7 +384,8 @@ namespace Manzana
 		public extern static int AFCFileRefSetFileSize(IntPtr conn, Int64 handle, uint size);
 
 		[DllImport(DLLPath, CallingConvention=CallingConvention.Cdecl)]
-		public extern static int AFCDirectoryCreate(IntPtr conn, string path);
+		//public extern static int AFCDirectoryCreate(IntPtr conn, IntPtr path);
+        public extern static int AFCDirectoryCreate(IntPtr conn, byte[] path);
 
 
 		internal static byte[] StringToCFString(string value) {

@@ -327,6 +327,18 @@ Namespace My
                 Me("ExportDir") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
+        Public Property LastJailbroken() As Boolean
+            Get
+                Return CType(Me("LastJailbroken"),Boolean)
+            End Get
+            Set
+                Me("LastJailbroken") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

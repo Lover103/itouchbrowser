@@ -1,7 +1,8 @@
 Option Strict On
+Option Explicit On
 
 ' Implements the manual sorting of items by columns.
-Class ListViewStringComparer
+Public Class ListViewIntComparer
     Implements IComparer
 
     Private col As Integer
@@ -25,7 +26,9 @@ Class ListViewStringComparer
         Dim res As Integer = 0
 
         Try
-            res = String.Compare(CType(x, ListViewItem).SubItems(col).Text, CType(y, ListViewItem).SubItems(col).Text)
+            Dim col1 As String = CType(x, ListViewItem).SubItems(col).Text
+            Dim col2 As String = CType(y, ListViewItem).SubItems(col).Text
+            res = CInt(col1) - CInt(col2)
             If sortOrder = Windows.Forms.SortOrder.Ascending Then
                 Return res
             Else
@@ -37,4 +40,3 @@ Class ListViewStringComparer
     End Function
 
 End Class
-

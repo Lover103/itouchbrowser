@@ -13,7 +13,7 @@
     <MyType>WindowsFormsWithCustomSubMain</MyType>
     <ManifestCertificateThumbprint>3B6A9B7BDDC8B690F46905E315ED5CFD599D2B50</ManifestCertificateThumbprint>
     <ManifestKeyFile>iPhoneBrowser_TemporaryKey.pfx</ManifestKeyFile>
-    <GenerateManifests>false</GenerateManifests>
+    <GenerateManifests>true</GenerateManifests>
     <SignManifests>false</SignManifests>
     <IsWebBootstrapper>true</IsWebBootstrapper>
     <ApplicationIcon>Resources\iPhoneBrowser.ico</ApplicationIcon>
@@ -156,6 +156,7 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="iTunesManager.vb" />
+    <Compile Include="ListViewIntComparer.vb" />
     <Compile Include="ListViewSizeComparer.vb" />
     <Compile Include="ListViewStringComparer.vb" />
     <Compile Include="ModuleMain.vb" />
@@ -173,6 +174,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="PlayPanel.Designer.vb">
+      <DependentUpon>PlayPanel.vb</DependentUpon>
+    </Compile>
+    <Compile Include="PlayPanel.vb">
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="QtWrapper.vb">
       <SubType>Component</SubType>
@@ -254,6 +261,10 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="PlayPanel.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>PlayPanel.vb</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="iPhoneBrowser_TemporaryKey.pfx" />
@@ -276,20 +287,20 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
-    <None Include="Resources\Audio.bmp" />
-    <None Include="Resources\camera.bmp" />
+    <None Include="Resources\AudioCD.png" />
+    <None Include="Resources\AudioFile.png" />
+    <None Include="Resources\Camera.png" />
     <Content Include="Resources\cancel.gif" />
-    <None Include="Resources\cdmusic.ico" />
-    <None Include="Resources\cdmusic.bmp" />
     <Content Include="Resources\Folder.ico" />
     <Content Include="Resources\folderopen.ico" />
-    <None Include="Resources\help.bmp" />
-    <Content Include="Resources\internetconnection.ico" />
+    <None Include="Resources\help.png" />
     <Content Include="Resources\iPhoneBrowser.ico" />
     <BaseApplicationManifest Include="My Project\app.manifest" />
     <None Include="Resources\StringResources.txt" />
+    <None Include="Resources\Network_Internet.png" />
     <Content Include="Resources\RingToneLarge.gif" />
     <Content Include="Resources\RingToneSmall.gif" />
+    <None Include="Resources\VideoCamera.png" />
     <None Include="Resources\Zoom.bmp" />
     <None Include="app.config" />
     <None Include="Resources\warning.ico" />

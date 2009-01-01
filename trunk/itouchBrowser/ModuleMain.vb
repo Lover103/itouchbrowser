@@ -4,6 +4,7 @@ Option Strict On
 Imports System.IO
 Imports System.Drawing.Imaging
 Imports System.Text
+Imports System.Threading
 Imports Manzana
 Imports SCW_iPhonePNG
 
@@ -62,26 +63,31 @@ Module ModuleMain
 
             Dim objSplash As New frmSplashScreen
             objSplash.Show()
+            objSplash.SetProgressMessage("Initializing...")
             Application.DoEvents()
 
-            objMain = New frmMain
+            objMain = New frmMain(objSplash.lblMessage)
             objMain.Cursor = Cursors.WaitCursor
-            objMain.Enabled = False
+            'objMain.Enabled = False
 
             If My.Settings.BackupControl Then
+                objSplash.SetProgressMessage("Reading of a backup list...")
                 Config.bBackupControled = True
-                ObjDb = ModuleMain.GetBackupList()
+                Dim dbThread As New Thread(New ThreadStart(AddressOf ModuleMain.dbInitialize))
+                dbThread.Start()
             Else
                 objMain.cohAttribute.Width = 0
             End If
 
+            objSplash.SetProgressMessage("Show the window...")
             objMain.Show()
+
+            'Logon...
+            'objMain.Refresh()
+            objMain.Enabled = True
 
             objSplash.Close()
             objSplash.Dispose()
-            'Logon...
-            objMain.Refresh()
-            objMain.Enabled = True
 
             If ObjDb Is Nothing Then
                 objMain.tsmCleanUp.Enabled = False
@@ -118,6 +124,10 @@ Module ModuleMain
         End Try
     End Sub
 
+    Private Sub dbInitialize()
+        ObjDb = ModuleMain.GetBackupList()
+    End Sub
+
     Friend Sub StatusNormal(ByVal msg As String)
         objMain.tslStatusLabel.Image = Nothing
         objMain.tslStatusLabel.Text = msg
@@ -151,9 +161,10 @@ Module ModuleMain
             End If
             ProgressBars(ProgressDepth).Maximum = iMax + 1
             ProgressValue(ProgressDepth) = 0
-            ProgressFullSize = fileSize
             objMain.Timer1.Enabled = True
         End If
+        ProgressFullSize = fileSize
+
         Return ProgressDepth
     End Function
 
@@ -188,11 +199,14 @@ Module ModuleMain
             Try
                 ProgressValue(ProgressDepth) += 1
                 ProgressSize = curVal
-                Application.DoEvents()
             Catch
                 'ProgressEscapeFlg = True
             End Try
+        Else
+            ProgressSize = curVal
         End If
+        Application.DoEvents()
+
         Return ProgressEscapeFlg
     End Function
 
@@ -245,7 +259,6 @@ Module ModuleMain
         'make sure the source file exists
         If iPhoneInterface.Exists(sourceOnPhone) Then
             Dim fSize As Long = iPhoneInterface.FileSize(sourceOnPhone)
-            Dim depth As Integer = StartStatus(CInt(fSize / sBuffer.Length), fSize) 'show our progress bar
 
             'open a connection to the file and read it
             Try
@@ -257,6 +270,20 @@ Module ModuleMain
                 EndStatus() 'fill our progressbar
                 Return bReturn
             End Try
+
+            Dim buffSize As Integer = sBuffer.Length
+            Dim cnt As Integer = CInt(fSize / buffSize)
+            If cnt > 100 Then
+                buffSize *= 2
+                cnt \= 2
+                If cnt > 500 Then
+                    buffSize *= 2
+                    cnt \= 2
+                End If
+                ReDim sBuffer(buffSize - 1)
+            End If
+
+            Dim depth As Integer = StartStatus(cnt, fSize) 'show our progress bar
 
             Try
                 Dim curSize As Long = 0
@@ -276,11 +303,11 @@ Module ModuleMain
                 iPhoneFileInterface.Close()
                 iPhoneFileInterface.Dispose()
                 fileTemp.Close()
-                If fsize = -2 Then
+                If fSize = -2 Then
                     File.Delete(destinationOnComputer)
                 End If
 
-                bReturn = fsize
+                bReturn = fSize
 
             Catch exio As IOException
                 StatusWarning(exio.Message)
@@ -611,12 +638,14 @@ Module ModuleMain
 
             'copy file into the backup directory
             Dim len As Long = ModuleMain.CopyFromPhone(sSourcePath & sSourceFile, sDestinationPath & sDestinationFile)
-            If len > -1 Then
-                ObjDb.AddFilenameToDB(Now, mvarBackupSubPath, sSourcePath & sSourceFile, len)
-            ElseIf len = -1 Then    'error
-                ObjDb.AddFilenameToDB(Now, "Error", sSourcePath & sSourceFile, len)
-            Else
-                'NOP Skip copy
+            If ObjDb IsNot Nothing Then
+                If len > -1 Then
+                    ObjDb.AddFilenameToDB(Now, mvarBackupSubPath, sSourcePath & sSourceFile, len)
+                ElseIf len = -1 Then    'error
+                    ObjDb.AddFilenameToDB(Now, "Error", sSourcePath & sSourceFile, len)
+                Else
+                    'NOP Skip copy (escaped)
+                End If
             End If
             rc = 0
             'StatusNormal("Backed up as '" & sDestinationFile & "'.")
@@ -658,6 +687,7 @@ Module ModuleMain
         Try
             Dim rc As Integer = 0
             Dim tmp As String() = iPhoneInterface.GetFiles(sPath)
+            Dim canceled As Boolean = False
 
             StartStatus(tmp.Length, 0)
             For Each sFile As String In tmp
@@ -666,7 +696,10 @@ Module ModuleMain
                     'Exit For
                     ProgressEscapeFlg = False
                 End If
-                If IncrementStatus(0) Then Exit For
+                If IncrementStatus(0) Then
+                    canceled = True
+                End If
+                Exit For
             Next
             EndStatus()
 
@@ -679,7 +712,11 @@ Module ModuleMain
             Next
             EndStatus()
 
-            Return 0
+            If canceled Then
+                Return -2
+            Else
+                Return rc
+            End If
 
         Catch ex As Exception
             StatusWarning(ex.Message & "[" & sPath & "]")
@@ -707,9 +744,9 @@ Module ModuleMain
 
         'make sure the source file exists
         If iPhoneInterface.Exists(sourceOnPhone) Then
-            sPath = PhoneGetDirectoryName(sourceOnPhone)
+            sPath = ModuleMain.PhoneGetDirectoryName(sourceOnPhone)
             sFile = Path.GetFileName(sourceOnPhone)
-            BackupFileFromPhone(sPath, sFile)
+            ModuleMain.BackupFileFromPhone(sPath, sFile)
 
             iPhoneInterface.DeleteFile(sourceOnPhone)
 

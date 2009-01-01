@@ -36,6 +36,14 @@ Public Class iTunesManager
         mvarItDb = New Music.ITunesDb
     End Sub
 
+    Friend Sub Clear()
+        mvarItDb.Clear()
+        If mvarItunes IsNot Nothing Then
+            mvarItunes.Clear()
+            mvarItunes = Nothing
+        End If
+    End Sub
+
     Friend Function GetArtists(ByVal dbPath As String) As String()
         Try
             If mvarItDb.Loaded = False Then
