@@ -33,66 +33,43 @@ Partial Class frmAddFavorite
         '
         'Label1
         '
-        Me.Label1.AccessibleDescription = Nothing
-        Me.Label1.AccessibleName = Nothing
         resources.ApplyResources(Me.Label1, "Label1")
         Me.Label1.Name = "Label1"
         '
         'txtName
         '
-        Me.txtName.AccessibleDescription = Nothing
-        Me.txtName.AccessibleName = Nothing
         resources.ApplyResources(Me.txtName, "txtName")
-        Me.txtName.BackgroundImage = Nothing
-        Me.txtName.Font = Nothing
         Me.txtName.Name = "txtName"
         '
         'Label2
         '
-        Me.Label2.AccessibleDescription = Nothing
-        Me.Label2.AccessibleName = Nothing
         resources.ApplyResources(Me.Label2, "Label2")
         Me.Label2.Name = "Label2"
         '
         'txtPath
         '
-        Me.txtPath.AccessibleDescription = Nothing
-        Me.txtPath.AccessibleName = Nothing
         resources.ApplyResources(Me.txtPath, "txtPath")
-        Me.txtPath.BackgroundImage = Nothing
-        Me.txtPath.Font = Nothing
         Me.txtPath.Name = "txtPath"
         '
         'btnOK
         '
-        Me.btnOK.AccessibleDescription = Nothing
-        Me.btnOK.AccessibleName = Nothing
-        resources.ApplyResources(Me.btnOK, "btnOK")
-        Me.btnOK.BackgroundImage = Nothing
         Me.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK
-        Me.btnOK.Font = Nothing
+        resources.ApplyResources(Me.btnOK, "btnOK")
         Me.btnOK.Name = "btnOK"
         Me.btnOK.UseVisualStyleBackColor = True
         '
         'btnCancel
         '
-        Me.btnCancel.AccessibleDescription = Nothing
-        Me.btnCancel.AccessibleName = Nothing
-        resources.ApplyResources(Me.btnCancel, "btnCancel")
-        Me.btnCancel.BackgroundImage = Nothing
         Me.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.btnCancel.Font = Nothing
+        resources.ApplyResources(Me.btnCancel, "btnCancel")
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.UseVisualStyleBackColor = True
         '
         'frmAddFavorite
         '
         Me.AcceptButton = Me.btnOK
-        Me.AccessibleDescription = Nothing
-        Me.AccessibleName = Nothing
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackgroundImage = Nothing
         Me.CancelButton = Me.btnCancel
         Me.ControlBox = False
         Me.Controls.Add(Me.btnCancel)
@@ -101,9 +78,7 @@ Partial Class frmAddFavorite
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.txtName)
         Me.Controls.Add(Me.Label1)
-        Me.Font = Nothing
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
-        Me.Icon = Nothing
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmAddFavorite"

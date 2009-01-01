@@ -286,48 +286,48 @@ namespace Manzana
             public Boolean isDir;
         }
 
-		/// <summary>
-		/// Returns the names of files in a specified directory
-		/// </summary>
-		/// <param name="path">The directory from which to retrieve the files.</param>
-		/// <returns>A <c>String</c> array of file names in the specified directory. Names are relative to the provided directory</returns>
-		public string[] GetFiles(string path) {
-			IntPtr		hAFCDir;
-			string		buffer;
-            List<string>   paths;
-			string		full_path;
+		//// <summary>
+		//// Returns the names of files in a specified directory
+		//// </summary>
+		//// <param name="path">The directory from which to retrieve the files.</param>
+		//// <returns>A <c>String</c> array of file names in the specified directory. Names are relative to the provided directory</returns>
+        //public string[] GetFiles(string path) {
+        //    IntPtr		hAFCDir;
+        //    string		buffer;
+        //    List<string>   paths;
+        //    string		full_path;
 
-			if (!connected) {
-				throw new Exception("Not connected to phone");
-			}
+        //    if (!connected) {
+        //        throw new Exception("Not connected to phone");
+        //    }
 
-			hAFCDir = new IntPtr();
-			full_path = FullPath(current_directory, path);
+        //    hAFCDir = new IntPtr();
+        //    full_path = FullPath(current_directory, path);
 
-			if (MobileDevice.AFCDirectoryOpen(hAFC, full_path, ref hAFCDir) != 0) {
-				throw new Exception("Path does not exist");
-			}
+        //    if (MobileDevice.AFCDirectoryOpen(hAFC, string2bytes(full_path), ref hAFCDir) != 0) {
+        //        throw new Exception("Path does not exist");
+        //    }
 
-			buffer = null;
-			paths = new List<string>();
-			MobileDevice.AFCDirectoryRead(hAFC, hAFCDir, ref buffer);
+        //    buffer = null;
+        //    paths = new List<string>();
+        //    MobileDevice.AFCDirectoryRead(hAFC, hAFCDir, ref buffer);
 
-			while (buffer!=null) {
-				if (!IsDirectory(FullPath(full_path, buffer))) {
-					paths.Add(buffer);
-				}
-				MobileDevice.AFCDirectoryRead(hAFC, hAFCDir, ref buffer);
-			}
-			MobileDevice.AFCDirectoryClose(hAFC, hAFCDir);
-			return paths.ToArray();
-        }
+        //    while (buffer!=null) {
+        //        if (!IsDirectory(FullPath(full_path, buffer))) {
+        //            paths.Add(buffer);
+        //        }
+        //        MobileDevice.AFCDirectoryRead(hAFC, hAFCDir, ref buffer);
+        //    }
+        //    MobileDevice.AFCDirectoryClose(hAFC, hAFCDir);
+        //    return paths.ToArray();
+        //}
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="path"></param>
-        /// <param name="dummy"></param>
         /// <returns></returns>
-        public List<strFileInfo> GetFiles(string path, int dummy)
+        public List<strFileInfo> GetFilesInfo(string path)
         {
             IntPtr hAFCDir;
             //string			buffer;
@@ -345,7 +345,7 @@ namespace Manzana
             hAFCDir = new IntPtr();
             full_path = FullPath(current_directory, path);
 
-            if (MobileDevice.AFCDirectoryOpen(hAFC, full_path, ref hAFCDir) != 0)
+            if (MobileDevice.AFCDirectoryOpen(hAFC, string2bytes(full_path), ref hAFCDir) != 0)
             {
                 throw new Exception("Path does not exist");
             }
@@ -382,42 +382,50 @@ namespace Manzana
             //return (string[])paths.ToArray(typeof(string));
             return paths;
         }
+        /// <summary>
+        /// Returns the names of files in a specified directory
+        /// </summary>
+        /// <param name="path">The directory from which to retrieve the files.</param>
+        /// <returns>A <c>String</c> array of file names in the specified directory. Names are relative to the provided directory</returns>
+        public string[] GetFiles(string path)
+        {
+            IntPtr hAFCDir;
+            byte[] bbuffer;
+            string buffer;
+            List<string> paths;
+            string full_path;
 
-        //public byte[][] GetFiles(string path)
-        //{
-        //    IntPtr hAFCDir;
-        //    string buffer;
-        //    ArrayList paths;
-        //    string full_path;
+            if (!connected)
+            {
+                throw new Exception("Not connected to phone");
+            }
 
-        //    if (!connected)
-        //    {
-        //        throw new Exception("Not connected to phone");
-        //    }
+            hAFCDir = new IntPtr();
+            full_path = FullPath(current_directory, path);
 
-        //    hAFCDir = new IntPtr();
-        //    full_path = FullPath(current_directory, path);
+            if (MobileDevice.AFCDirectoryOpen(hAFC, string2bytes(full_path), ref hAFCDir) != 0)
+            {
+                throw new Exception("Path does not exist");
+            }
 
-        //    if (MobileDevice.AFCDirectoryOpen(hAFC, full_path, ref hAFCDir) != 0)
-        //    {
-        //        throw new Exception("Path does not exist");
-        //    }
+            bbuffer = null;
+            paths = new List<string>();
+            MobileDevice.AFCDirectoryRead(hAFC, hAFCDir, ref bbuffer);
+            buffer = byte2string(bbuffer);
 
-        //    buffer = null;
-        //    paths = new ArrayList();
-        //    MobileDevice.AFCDirectoryRead(hAFC, hAFCDir, ref buffer);
-
-        //    while (buffer != null)
-        //    {
-        //        if (!IsDirectory(FullPath(full_path, buffer)))
-        //        {
-        //            paths.Add(buffer.Normalize());
-        //        }
-        //        MobileDevice.AFCDirectoryRead(hAFC, hAFCDir, ref buffer);
-        //    }
-        //    MobileDevice.AFCDirectoryClose(hAFC, hAFCDir);
-        //    return (string[])paths.ToArray(typeof(string));
-        //}
+            while (bbuffer != null)
+            {
+                if (!IsDirectory(FullPath(full_path, buffer)))
+                {
+                    paths.Add(buffer.Normalize());
+                }
+                MobileDevice.AFCDirectoryRead(hAFC, hAFCDir, ref bbuffer);
+                if (bbuffer == null) break;
+                buffer = byte2string(bbuffer);
+            }
+            MobileDevice.AFCDirectoryClose(hAFC, hAFCDir);
+            return paths.ToArray();
+        }
 
         /// <summary>
         /// Returns the FileInfo dictionary
@@ -435,7 +443,7 @@ namespace Manzana
 
             data = IntPtr.Zero;
 
-            ret = MobileDevice.AFCFileInfoOpen(hAFC, path, ref data, out data_size);
+            ret = MobileDevice.AFCFileInfoOpen(hAFC, string2bytes(path), ref data, out data_size);
             if (ret != 0) {
                 return null;
             }
@@ -463,86 +471,95 @@ namespace Manzana
         /// <param name="len">file name.</param>
         /// <param name="size">Returns the size of the specified file or directory</param>
 		/// <param name="directory">Returns <c>true</c> if the given path describes a directory, false if it is a file.</param>
-		public void GetFileInfo(string path, byte[] fname, int len, out long size, out bool directory) {
-			IntPtr	data;
-			IntPtr	current_data;
-			uint	data_size = 0;
-			uint	offset;
-			int     blocks = 0;
-			string	name;
-			string	value;
-            int		ret;
-			bool    SLink = false;
-            int     i;
+        public void GetFileInfo(string path, byte[] fname, int len, out long size, out bool directory)
+        {
+            IntPtr data;
+            IntPtr current_data;
+            uint data_size = 0;
+            uint offset;
+            int blocks = 0;
+            string name;
+            string value;
+            int ret;
+            bool SLink = false;
+            //int i;
 
-			data = IntPtr.Zero;
+            data = IntPtr.Zero;
 
-            Byte[] p = System.Text.Encoding.GetEncoding(0).GetBytes(path);
-            IntPtr hPath = Marshal.AllocHGlobal(p.Length + len + 1);
+            //Byte[] p = System.Text.Encoding.GetEncoding(0).GetBytes(path);
+            //IntPtr hPath = Marshal.AllocHGlobal(p.Length + len + 1);
 
-            Marshal.Copy(p, 0, hPath, p.Length);
-            for (i = 0; i < len; i++)
-            {
-                Marshal.WriteByte(hPath, (p.Length + i) * Marshal.SizeOf(typeof(Byte)), fname[i]);
-                if (fname[i] == 0) break;
-            }
-            
-			size = 0;
-			directory = false;
-			ret = MobileDevice.AFCGetFileInfo(hAFC, hPath, ref data, ref data_size);
-            if (ret != 0)
-            {
-                path = Marshal.PtrToStringAnsi(hPath, p.Length + i);
-                ret = MobileDevice.AFCGetFileInfo(hAFC, path, ref data, ref data_size);
+            //Marshal.Copy(p, 0, hPath, p.Length);
+            //for (i = 0; i < len; i++)
+            //{
+            //    Marshal.WriteByte(hPath, (p.Length + i) * Marshal.SizeOf(typeof(Byte)), fname[i]);
+            //    if (fname[i] == 0) break;
+            //}
+
+            size = 0;
+            directory = false;
+            //ret = MobileDevice.AFCGetFileInfo(hAFC, hPath, ref data, ref data_size);
+            //ret = MobileDevice.AFCGetFileInfo(hAFC, p, ref data, ref data_size);
+            //if (ret != 0)
+            //{
+                //path = Marshal.PtrToStringAnsi(hPath, p.Length + i);
+                ret = MobileDevice.AFCGetFileInfo(hAFC, string2bytes(path + byte2string(fname)), ref data, ref data_size);
                 if (ret != 0)
                 {
                     // Free the unmanaged memory.
-                    Marshal.FreeHGlobal(hPath);
+                    //Marshal.FreeHGlobal(hPath);
                     return;
                 }
-			}
+            //}
             // Free the unmanaged memory.
-            Marshal.FreeHGlobal(hPath);
+            //Marshal.FreeHGlobal(hPath);
 
-			offset = 0;
-			while (offset < data_size) {
-				current_data = new IntPtr(data.ToInt32() + offset);
-				name = Marshal.PtrToStringAnsi(current_data);
-				offset += (uint)name.Length + 1;
+            offset = 0;
+            while (offset < data_size)
+            {
+                current_data = new IntPtr(data.ToInt32() + offset);
+                name = Marshal.PtrToStringAnsi(current_data);
+                offset += (uint)name.Length + 1;
 
-				current_data = new IntPtr(data.ToInt32() + offset);
-				value = Marshal.PtrToStringAnsi(current_data);
-				offset += (uint)value.Length + 1;
-				switch(name) {
-					case "st_size": 
-                        size = System.Int64.Parse(value); 
+                current_data = new IntPtr(data.ToInt32() + offset);
+                value = Marshal.PtrToStringAnsi(current_data);
+                offset += (uint)value.Length + 1;
+                switch (name)
+                {
+                    case "st_size":
+                        size = System.Int64.Parse(value);
                         break;
-					case "st_blocks":
-						try {
-							blocks = Int32.Parse(value);
-						}
-						catch {
-							blocks = 0;
-						}
-						break;
+                    case "st_blocks":
+                        try
+                        {
+                            blocks = Int32.Parse(value);
+                        }
+                        catch
+                        {
+                            blocks = 0;
+                        }
+                        break;
                     case "st_ifmt":
-						switch (value) {
-							case "S_IFDIR": directory = true; break;
-							case "S_IFLNK": SLink = true; break;
-						}
-						break;
+                        switch (value)
+                        {
+                            case "S_IFDIR": directory = true; break;
+                            case "S_IFLNK": SLink = true; break;
+                        }
+                        break;
                     default:
                         SLink = false;
                         break;
-				}
-			}
-			if (SLink) { // test for symbolic directory link
-				IntPtr hAFCDir = new IntPtr();
+                }
+            }
+            if (SLink)
+            { // test for symbolic directory link
+                IntPtr hAFCDir = new IntPtr();
 
-				if (directory = (MobileDevice.AFCDirectoryOpen(hAFC, path, ref hAFCDir) == 0))
-					MobileDevice.AFCDirectoryClose(hAFC, hAFCDir);
-			}
-		}
+                if (directory = (MobileDevice.AFCDirectoryOpen(hAFC, string2bytes(path), ref hAFCDir) == 0))
+                    MobileDevice.AFCDirectoryClose(hAFC, hAFCDir);
+            }
+        }
+
         /// <summary>
         /// 
         /// </summary>
@@ -565,7 +582,7 @@ namespace Manzana
 
             size = 0;
             directory = false;
-            ret = MobileDevice.AFCGetFileInfo(hAFC, path, ref data, ref data_size);
+            ret = MobileDevice.AFCGetFileInfo(hAFC, string2bytes(path), ref data, ref data_size);
             if (ret != 0)
             {
                 return;
@@ -610,7 +627,7 @@ namespace Manzana
             { // test for symbolic directory link
                 IntPtr hAFCDir = new IntPtr();
 
-                if (directory = (MobileDevice.AFCDirectoryOpen(hAFC, path, ref hAFCDir) == 0))
+                if (directory = (MobileDevice.AFCDirectoryOpen(hAFC, string2bytes(path), ref hAFCDir) == 0))
                     MobileDevice.AFCDirectoryClose(hAFC, hAFCDir);
             }
         }
@@ -653,7 +670,8 @@ namespace Manzana
 			string full_path;
 
 			full_path = FullPath(current_directory, path);
-			if (MobileDevice.AFCDirectoryCreate(hAFC, full_path) != 0) {
+            if (MobileDevice.AFCDirectoryCreate(hAFC, string2bytes(full_path)) != 0)
+            {
 				return false;
 			}
 
@@ -667,7 +685,8 @@ namespace Manzana
 		/// <returns>An array of type <c>String</c> containing the names of subdirectories in <c>path</c>.</returns>
 		public string[] GetDirectories(string path) {
 			IntPtr      hAFCDir;
-			string      buffer;
+			byte[]      bbuffer;
+            string      buffer;
 			List<string>   paths;
 			string      full_path;
 
@@ -678,20 +697,23 @@ namespace Manzana
 			hAFCDir = new IntPtr();
 			full_path = FullPath(current_directory, path);
 
-			if (MobileDevice.AFCDirectoryOpen(hAFC, full_path, ref hAFCDir) != 0) {
+			if (MobileDevice.AFCDirectoryOpen(hAFC, string2bytes(full_path), ref hAFCDir) != 0) {
 				throw new Exception("Path does not exist");
 			}
 
-			buffer = null;
+			bbuffer = null;
 			paths = new List<string>();
-			MobileDevice.AFCDirectoryRead(hAFC, hAFCDir, ref buffer);
+			MobileDevice.AFCDirectoryRead(hAFC, hAFCDir, ref bbuffer);
+            buffer = byte2string(bbuffer);
 
-			while (buffer!=null) {
+			while (bbuffer!=null) {
 				if ((buffer != ".") && (buffer != "..") && IsDirectory(FullPath(full_path, buffer))) {
 					paths.Add(buffer);
 				}
-				MobileDevice.AFCDirectoryRead(hAFC, hAFCDir, ref buffer);
-			}
+				MobileDevice.AFCDirectoryRead(hAFC, hAFCDir, ref bbuffer);
+                if (bbuffer == null) break;
+                buffer = byte2string(bbuffer);
+            }
 			MobileDevice.AFCDirectoryClose(hAFC, hAFCDir);
 			return paths.ToArray();
 		}
@@ -704,6 +726,7 @@ namespace Manzana
         public string GetDirectory(string path)
         {
             IntPtr hAFCDir;
+            byte[] bbuffer;
             string buffer;
             string dirpath;
             string full_path;
@@ -717,24 +740,27 @@ namespace Manzana
             hAFCDir = new IntPtr();
             full_path = FullPath(current_directory, path);
 
-            if (MobileDevice.AFCDirectoryOpen(hAFC, full_path, ref hAFCDir) != 0)
+            if (MobileDevice.AFCDirectoryOpen(hAFC, string2bytes(full_path), ref hAFCDir) != 0)
             {
                 throw new Exception("Path does not exist");
             }
 
-            buffer = null;
+            bbuffer = null;
             dirpath = "";
-            MobileDevice.AFCDirectoryRead(hAFC, hAFCDir, ref buffer);
+            MobileDevice.AFCDirectoryRead(hAFC, hAFCDir, ref bbuffer);
+            buffer = byte2string(bbuffer);
 
-            while (buffer != null)
+            while (bbuffer != null)
             {
                 if ((buffer != ".") && (buffer != "..") && IsDirectory(FullPath(full_path, buffer)))
                 {
                     dirpath = buffer;
                     break;
                 }
-                MobileDevice.AFCDirectoryRead(hAFC, hAFCDir, ref buffer);
+                MobileDevice.AFCDirectoryRead(hAFC, hAFCDir, ref bbuffer);
                 if (cnt++ > 20) break;
+                if (bbuffer == null) break;
+                buffer = byte2string(bbuffer);
             }
             MobileDevice.AFCDirectoryClose(hAFC, hAFCDir);
             return dirpath;
@@ -747,7 +773,7 @@ namespace Manzana
 		/// <param name="destName">The path to the new location for <c>sourceName</c>.</param>
 		///	<remarks>Files cannot be moved across filesystem boundaries.</remarks>
 		public bool Rename(string sourceName, string destName) {
-			return MobileDevice.AFCRenamePath(hAFC, FullPath(current_directory, sourceName), FullPath(current_directory, destName)) == 0;
+			return MobileDevice.AFCRenamePath(hAFC, string2bytes(FullPath(current_directory, sourceName)), string2bytes(FullPath(current_directory, destName))) == 0;
 		}
 
 		/// <summary>
@@ -780,7 +806,7 @@ namespace Manzana
 			data = IntPtr.Zero;
 
 			//if (MobileDevice.AFCGetFileInfo(hAFC, path, ref data, out data_size) != 0) {
-			if (MobileDevice.AFCGetFileInfo(hAFC, path, ref data, ref data_size) != 0) {
+			if (MobileDevice.AFCGetFileInfo(hAFC, string2bytes(path), ref data, ref data_size) != 0) {
 				return false;
 			}
 
@@ -824,7 +850,7 @@ namespace Manzana
 
 			full_path = FullPath(current_directory, path);
 			if (IsDirectory(full_path)) {
-				MobileDevice.AFCRemovePath(hAFC, full_path);
+				MobileDevice.AFCRemovePath(hAFC, string2bytes(full_path));
 			}
 		}
 
@@ -857,7 +883,7 @@ namespace Manzana
 
 			full_path = FullPath(current_directory, path);
 			if (Exists(full_path)) {
-				MobileDevice.AFCRemovePath(hAFC, full_path);
+				MobileDevice.AFCRemovePath(hAFC, string2bytes(full_path));
 			}
 		}
 
@@ -882,11 +908,30 @@ namespace Manzana
 			}
 			current_directory = new_path;
 		}
-		#endregion	// Filesystem
+
+        internal static byte[] string2bytes(string str)
+        {
+            byte[] byteArray = Encoding.UTF8.GetBytes(str);
+            return byteArray;
+        }
+
+        internal static string byte2string(byte[] bstr)
+        {
+            // Encode the array of chars.
+            string str = Encoding.UTF8.GetString(bstr);
+            int p = str.IndexOf('\0');
+            str = str.Substring(0, p);
+
+            return str;  //asciiString
+        }
+        #endregion	// Filesystem
 
 		#region Private Methods
 		private bool ConnectToPhone() {
-			if (MobileDevice.AMDeviceConnect(ref iPhoneHandle) == 1) {
+            wasAFC2 = false;        //add 2008/12/26
+            
+            if (MobileDevice.AMDeviceConnect(ref iPhoneHandle) == 1)
+            {
 				//int connid;
 
 				throw new Exception("Phone in recovery mode, support not yet implemented");
@@ -907,7 +952,8 @@ namespace Manzana
 			}
 
             if (MobileDevice.AMDeviceStartService(ref iPhoneHandle, MobileDevice.StringToCFString("com.apple.afc2"), ref hAFC, IntPtr.Zero) != 0) {
-                if (MobileDevice.AMDeviceStartService(ref iPhoneHandle, MobileDevice.StringToCFString("com.apple.afc"), ref hAFC, IntPtr.Zero) != 0) {
+                if (MobileDevice.AMDeviceStartService(ref iPhoneHandle, MobileDevice.StringToCFString("com.apple.afc"), ref hAFC, IntPtr.Zero) != 0)
+                {
                     return false;
                 }
             }
@@ -1006,6 +1052,7 @@ namespace Manzana
 
 			return "/" + String.Join("/", result_parts, 0, target_index);
 		}
-		#endregion	// Private Methods
+
+        #endregion	// Private Methods
 	}
 }

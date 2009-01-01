@@ -139,8 +139,9 @@ Public Class frmBackupFiles
 
     End Sub
 
-    Private Sub setDetailData(ByVal fileName As String)
+    Private Function setDetailData(ByVal fileName As String) As Integer
         Dim sql As String = ""
+        Dim count As Integer = 0
         Dim filter As String = "FileName = '" & fileName.Replace("'", "''") & "'"
 
         Me.Cursor = Cursors.WaitCursor
@@ -156,19 +157,21 @@ Public Class frmBackupFiles
                 .SuspendLayout()
                 .DataSource = mvarBindingSourceSubList
                 For row As Integer = 0 To mvarBindingSourceSubList.Count - 1
-                    setStatus(row)
+                    Me.setStatus(row)
                 Next
                 .ResumeLayout()
             End With
+            count = mvarBindingSourceSubList.Count
 
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Exclamation)
-
         Finally
             Me.Cursor = Cursors.Default
-
         End Try
-    End Sub
+
+        Return count
+
+    End Function
 
     Private Sub DataGridView1_CellFormatting(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellFormattingEventArgs) _
         Handles dgvBackupView.CellFormatting
@@ -203,7 +206,8 @@ Public Class frmBackupFiles
 
         If TabFileGroup.SelectedIndex = 1 AndAlso dgvBackupView.CurrentRow IsNot Nothing Then
             statFileName.Text = dgvBackupView.Rows(e.RowIndex).Cells(col).Value.ToString()
-            Me.SetDetailData(statFileName.Text)
+            Dim cnt As Integer = Me.setDetailData(statFileName.Text)
+            dgvBackupView.Rows(e.RowIndex).Cells(4).Value = cnt
         End If
     End Sub
 
@@ -223,8 +227,8 @@ Public Class frmBackupFiles
                 .Cells(0).Value = My.Resources.String36
             Else
                 Dim bakPath As String = GetBackupPath(True) & "\"
-                Dim file1 As String = bakPath & .Cells(4).FormattedValue.ToString & .Cells(1).FormattedValue.ToString
-                Dim file2 As String = bakPath & dgvDetailView.Rows(rowIndex - 1).Cells(4).FormattedValue.ToString & dgvDetailView.Rows(rowIndex - 1).Cells(1).FormattedValue.ToString
+                Dim file1 As String = bakPath & .Cells(2).FormattedValue.ToString & .Cells(3).FormattedValue.ToString
+                Dim file2 As String = bakPath & dgvDetailView.Rows(rowIndex - 1).Cells(2).FormattedValue.ToString & dgvDetailView.Rows(rowIndex - 1).Cells(3).FormattedValue.ToString
                 If DbManager.Compare(file1, file2) Then
                     .Cells(0).Value = My.Resources.String37
                 Else

@@ -45,17 +45,28 @@ Public Class frmMain
     Private iTunesPath As String = ""
     Private iTunesRoot As String = ""
     Private mvarItunes As Data.DataTable = Nothing
+    Private mvarSplashMsg As Label
 
     'CUSTOM  CREATED FUNCTIONS
 
     Private Delegate Sub NoParmDel()
 
-    Public Sub DelayedConnectionChange()
+    Public Sub New(ByVal splashMsg As Label)
+
+        ' この呼び出しは、Windows フォーム デザイナで必要です。
+        InitializeComponent()
+
+        ' InitializeComponent() 呼び出しの後で初期化を追加します。
+        mvarSplashMsg = splashMsg
+
+    End Sub
+
+    Private Sub delayedConnectionChange()
         Try
             EndStatus()
             bNowConnected = Not bNowConnected
             bConnectionChanged = True
-            connectionChange()
+            Me.connectionChange()
 
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Exclamation)
@@ -73,7 +84,7 @@ Public Class frmMain
     End Sub
 
     Private Sub frmMain_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
-        qtPlugin.Dispose()
+        pnlQt.Dispose()
         qtBuff.Dispose()
     End Sub
 
@@ -83,7 +94,7 @@ Public Class frmMain
             If Me.InvokeRequired Then
                 Me.Invoke(New NoParmDel(AddressOf DelayedConnectionChange))
             Else
-                DelayedConnectionChange()
+                Me.delayedConnectionChange()
             End If
         End If
     End Sub
@@ -94,7 +105,7 @@ Public Class frmMain
             If Me.InvokeRequired Then
                 Me.Invoke(New NoParmDel(AddressOf DelayedConnectionChange))
             Else
-                DelayedConnectionChange()
+                Me.delayedConnectionChange()
             End If
         End If
     End Sub
@@ -118,6 +129,7 @@ Public Class frmMain
     End Sub
 
     Private Sub connectionChange()
+
         If bConnectionChanged Then
             bConnectionChanged = False
 
@@ -131,6 +143,7 @@ Public Class frmMain
             tslAddress.Enabled = bNowConnected
             tstAddress.Enabled = bNowConnected
             tsbAddress.Enabled = bNowConnected
+            setJailbreakMenuVisibled()
 
             If mvarLnError Then
                 mvarLnError = False
@@ -141,7 +154,7 @@ Public Class frmMain
                 trvFolders.Focus()
 
                 If iPhoneInterface.IsJailbreak Then
-                    'StatusNormal("iPhone is connected and jailbroken")
+                    ' "iPhone is connected and jailbroken"
                     StatusNormal(My.Resources.String3)
                     iTunesPath = "/var/mobile/Media/iTunes_Control/iTunes/iTunesDB"
                     If iPhoneInterface.Exists("/var/root/Media/DCIM") Then
@@ -149,45 +162,47 @@ Public Class frmMain
                         iTunesPath = "/var/root/Media/iTunes_Control/iTunes/iTunesDB"
                     End If
                 Else
-                    'StatusWarning("iPhone is connected, not jailbroken")
+                    ' "iPhone is connected, not jailbroken"
                     StatusWarning(My.Resources.String1)
                     iTunesPath = "/iTunes_Control/iTunes/iTunesDB"
                 End If
                 iTunesRoot = iTunesPath.Substring(0, iTunesPath.IndexOf("/iTunes_Control/"))
 
-                CopyFromPhonePNG(iTunesPath, My.Settings.DbPath & "\iTunesDB")
-
-                Me.getArtists(My.Settings.DbPath, "All")
-
-                'Dim arts As String() = mvarItunesMan.GetArtists(My.Settings.DbPath)
-
-                'trvITunes.BeginUpdate()
-                'trvITunes.Nodes.Clear()
-                'Dim tn As TreeNode = trvITunes.Nodes.Add("All")
-                'For i As Integer = 0 To arts.Length - 1
-                '    tn.Nodes.Add(arts(i))
-                'Next
-                'tn.ExpandAll()
-                'trvITunes.EndUpdate()
-                'btnExport.Enabled = False
-
-                'mvarItunes = mvarItunesMan.GetRecSet()
-
-                'Set last path
-                If My.Settings.LastPath <> "" Then
-                    openPath(My.Settings.LastPath)
+                If CopyFromPhonePNG(iTunesPath, My.Settings.DbPath & "\iTunesDB") <> 0 Then
+                    Me.getArtists(My.Settings.DbPath, "All")
                 End If
 
+                'Set last path
+                If My.Settings.LastPath <> "" _
+                    AndAlso My.Settings.LastJailbroken = iPhoneInterface.IsJailbreak Then
+                    Me.openPath(My.Settings.LastPath)
+                End If
+                My.Settings.LastJailbroken = iPhoneInterface.IsJailbreak
+
+                setAMDeviceData()
+    
             Else
-                'StatusWarning("iPhone is NOT connected, please check your connections!")
+                ' "iPhone is NOT connected, please check your connections!"
                 StatusWarning(My.Resources.String2)
 
                 trvITunes.Nodes.Clear()
+                rtbAMDevice.Clear()
                 My.Settings.LastPath = ModuleMain.NodeiPhonePath(trvFolders.SelectedNode)
-                mvarItunesMan.Dispose()
+                mvarItunesMan.Clear()
+                'mvarItunesMan.Dispose()
             End If
 
         End If
+    End Sub
+
+    Private Sub setJailbreakMenuVisibled()
+        Dim visibled As Boolean = iPhoneInterface.IsJailbreak
+
+        mnuGoTo.Visible = visibled
+        menuSaveSummerboardTheme.Visible = visibled
+        ToolStripMenuItem4.Visible = visibled
+        ToolStripSeparator7.Visible = visibled
+
     End Sub
 
     Private Function getArtists(ByVal dir As String, ByVal label As String) As Boolean
@@ -222,6 +237,8 @@ Public Class frmMain
                 Me.Size = New Size(CInt(position(2)), CInt(position(3)))
             End If
 
+            Me.Text = My.Resources.String14 & " (v" & Application.ProductVersion & ")"
+
             ProgressBars(0) = tlbProgress0
             tlbProgress0.Visible = False
             ProgressBars(1) = tlbProgressBar
@@ -230,21 +247,25 @@ Public Class frmMain
             tslProgress.Visible = False
             ResetStatus()   'ProgressDepth = -1
 
+            Me.Show()
+            Application.DoEvents()
+
             'APP_PATH = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\Cranium\iPhoneBrowser\"
             'APP_PATH = My.Settings.BackupPath & "\touchBrowser\"
             setBackupPath(DateTime.Now)
 
             FILE_TEMPORARY_VIEWER = Path.GetTempPath & FILE_TEMPORARY_VIEWER
 
-            Me.Text = My.Resources.String14 & " (v" & Application.ProductVersion & ")"
-
             ' initialize the file list groups
+            mvarSplashMsg.Text = "Initialize the file list groups."
             For j1 As Integer = 0 To 7
                 Dim lvg As ListViewGroup = New ListViewGroup(Me.getFiletype(j1))
                 lstFiles.Groups.Add(lvg)
             Next
 
+
             ' load up the user settings
+            mvarSplashMsg.Text = "Load up the user settings."
             If My.Settings.CallUpgrade Then
                 My.Settings.Upgrade()
                 My.Settings.CallUpgrade = False
@@ -278,14 +299,15 @@ Public Class frmMain
             End If
             picBusy.Dock = DockStyle.Fill
             picDelete.Dock = DockStyle.Fill
-            qtPlugin.QuickTimeInitialize()
-            qtBuff.QuickTimeInitialize()
-            qtBuff.AutoPlay = "False"
-            qtBuff.EventEnabled = False
+
+            mvarSplashMsg.Text = "Initialize the QuickTime object."
+            Dim qtThread As New Thread(New ThreadStart(AddressOf Me.qtInitialize))
+            qtThread.Start()
 
             LoadFavoritesMenu()
 
             ' setup the tooltips
+            mvarSplashMsg.Text = "Setup the tooltips."
             menuSetTooltips(mnuGoTo)
             menuSetTooltips(mnuStdApps)
             menuSetTooltips(mnuThirdPartyApps)
@@ -313,6 +335,13 @@ Public Class frmMain
 
         End Try
 
+    End Sub
+
+    Private Sub qtInitialize()
+        pnlQt.QuickTimeInitialize()
+        qtBuff.QuickTimeInitialize()
+        qtBuff.AutoPlay = "False"
+        qtBuff.EventEnabled = False
     End Sub
 
     Private Sub refreshChildFolders(ByVal forceRefresh As Boolean)
@@ -434,7 +463,7 @@ Public Class frmMain
                 'StatusNormal("Loading Files for " & iPhonePath & "...")
                 StatusNormal(String.Format(My.Resources.String5, iPhonePath))
                 'now get the files from the iphone
-                bFiles = iPhoneInterface.GetFiles(iPhonePath, 0)
+                bFiles = iPhoneInterface.GetFilesInfo(iPhonePath)
 
                 'now go one by one and add it
                 Dim songTitles(bFiles.Count) As SongTitleStruct
@@ -706,7 +735,15 @@ Public Class frmMain
 
     Private Function getSelectedFilename() As String
         'returns the currently selected filename
-        Return getSelectedPath() & lstFiles.SelectedItems(0).Text
+        Dim fn As String = lstFiles.SelectedItems(0).Text
+        Dim inx As Integer = fn.IndexOf("(")
+
+        If inx > -1 Then
+            fn = fn.Substring(0, inx)
+        End If
+
+        Return getSelectedPath() & fn
+
     End Function
 
     Private Function getSelectedFolder() As String
@@ -955,7 +992,9 @@ Public Class frmMain
     Private Sub unlockQT()
         'unlock the file so we can load another
         If wasQTpreview Then
-            qtPlugin.FileName = "" 'to unlock it
+
+            pnlQt.PauseMovie()
+            pnlQt.FileName = "" 'to unlock it
             'sugi File.Delete(QTpreviewFile.Replace("localhost\", ""))
             'qtPlugin.Close()
             wasQTpreview = False
@@ -963,14 +1002,17 @@ Public Class frmMain
     End Sub
 
     Private Sub clearPreview()
-        'unlockQT()
+        unlockQT()
 
         picFileDetails.Visible = False
         txtFileDetails.Visible = False
         pnlQt.Visible = False
         WebBrws.Visible = False
+        WebBrws.DocumentText = "   Processing..."
+        tabViewType.Visible = False
 
         btnPreview.Enabled = True
+
     End Sub
 
     Private Sub showFileDetails(ByVal sFile As String)
@@ -1017,7 +1059,7 @@ Public Class frmMain
                 'Dim lastpreview As Boolean = btnPreview.Enabled
                 btnPreview.Enabled = False
 
-                clearPreview()
+                Me.clearPreview()
 
                 'File details for '" & sFile & "'.
                 grpDetails.Text = String.Format(My.Resources.String29, sFile)
@@ -1067,10 +1109,23 @@ Public Class frmMain
                                 End With
                             End If
 
-                        Case IMAGE_FILE_AUDIO, IMAGE_FILE_MOVIE, IMAGE_FILE_MUSIC
+                        Case IMAGE_FILE_AUDIO, IMAGE_FILE_MOVIE
                             If ProgressEscapeFlg = False Then
-                                wasQTpreview = qtPlugin.Play(tmpOnPC)
+                                pnlQt.LyricVisible = False
+                                wasQTpreview = pnlQt.Play(tmpOnPC, "")
                                 pnlQt.Visible = True
+                            End If
+
+                        Case IMAGE_FILE_MUSIC
+                            If ProgressEscapeFlg = False Then
+                                Dim comment As String = ""
+                                If lstFiles.SelectedItems(0).SubItems.Count > 6 Then
+                                    comment = lstFiles.SelectedItems(0).SubItems(8).Text
+                                End If
+                                wasQTpreview = pnlQt.Play(tmpOnPC, comment)
+                                pnlQt.Visible = True
+                                tabViewType.SelectedIndex = 0
+                                tabViewType.Visible = True
                             End If
 
                         Case IMAGE_FILE_WEBBROWS
@@ -1156,9 +1211,9 @@ Public Class frmMain
             Dim sSize As String = lstFiles.SelectedItems(0).SubItems(1).Text
             'If (sSize.EndsWith("KB") AndAlso Val(sSize) < 1000) OrElse sSize.EndsWith("B") OrElse anySize Then
             If sSize <> "0 B" Then
-                showPreview(sFile, fromBtn, fileSizeAsInteger(sSize))
+                Me.showPreview(sFile, fromBtn, fileSizeAsInteger(sSize))
             Else
-                showFileDetails(sFile)
+                Me.showFileDetails(sFile)
                 StatusNormal("The file " & sFile & " is 0 bytes in length")
                 btnPreview.Enabled = False
             End If
@@ -1189,6 +1244,32 @@ Public Class frmMain
         End If
     End Sub
 
+    Private Sub pnlQt_VisibleChanged(ByVal sender As Object, ByVal e As System.EventArgs) _
+        Handles pnlQt.VisibleChanged
+
+        'Dim i As Integer
+        Try
+            'If pnlQt.Visible Then
+            '    For i = menuRightClickQt.Items.Count - 1 To 1 Step -1
+            '        tsmFile.DropDownItems(menuRightClickQt.Items(i).Text).Visible = True
+            '    Next
+            'Else
+            '    For i = 0 To menuRightClickQt.Items.Count - 1
+            '        tsmFile.DropDownItems(menuRightClickQt.Items(i).Text).Visible = False
+            '    Next
+            'End If
+            Dim vi As Boolean = pnlQt.Visible
+            Me.tssSeparator.Visible = vi
+            Me.tsmQtExportDialog1.Visible = vi
+            Me.tsmQtMovieInfo1.Visible = vi
+            Me.tsmQtInfo.Visible = vi
+
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Exclamation)
+        End Try
+
+    End Sub
+
     Private splFilesLock As Boolean = False
 
     Private Sub lstFiles_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) _
@@ -1198,31 +1279,39 @@ Public Class frmMain
             Exit Sub
         End If
 
-        Me.Cursor = Cursors.WaitCursor
-        If Config.bShowPreview AndAlso Not splFilesLock Then
-            lstFiles.Cursor = Cursors.No
-            splFilesLock = True
-            Dim sFile As String = doFileSelectedPreview(False, False)
+        Try
+            Me.Cursor = Cursors.WaitCursor
 
-            Dim row As Integer
-            If ObjDb IsNot Nothing Then
-                row = ObjDb.Find("", sFile)
+            If Config.bShowPreview AndAlso Not splFilesLock Then
+                lstFiles.Cursor = Cursors.No
+                splFilesLock = True
+                Dim sFile As String = Me.doFileSelectedPreview(False, False)
+
+                Dim row As Integer
+                If ObjDb IsNot Nothing Then
+                    row = ObjDb.Find("", sFile)
+                Else
+                    row = -1
+                End If
+                If row > -1 Then
+                    StatusNormal("Backuped date : " & ObjDb.GetValue(row, 0))  'ObjDb.DataSet.Tables(0).Rows(row).Item(0).ToString())
+                Else
+                    'StatusNormal("")
+                End If
+
+                splFilesLock = False
+                lstFiles.Cursor = Cursors.Default
+                'lstFiles.Focus()
             Else
-                row = -1
-            End If
-            If row > -1 Then
-                StatusNormal("Backuped date : " & ObjDb.GetValue(row, 0))  'ObjDb.DataSet.Tables(0).Rows(row).Item(0).ToString())
-            Else
-                'StatusNormal("")
+                Me.showSelectedFileDetails()
             End If
 
-            splFilesLock = False
-            lstFiles.Cursor = Cursors.Default
-            'lstFiles.Focus()
-        Else
-            showSelectedFileDetails()
-        End If
-        Me.Cursor = Cursors.Default
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Exclamation)
+        Finally
+            Me.Cursor = Cursors.Default
+        End Try
+
     End Sub
 
     Private Sub menuRightSaveAs_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) _
@@ -1275,7 +1364,7 @@ Public Class frmMain
             sSourcePath = getSelectedPath()
 
             For Each sItem As ListViewItem In lstFiles.SelectedItems
-                BackupFileFromPhone(sSourcePath, sItem.Text)
+                ModuleMain.BackupFileFromPhone(sSourcePath, sItem.Text)
             Next
             ' redraw list
             Me.LoadFiles()
@@ -1349,27 +1438,32 @@ Public Class frmMain
         Dim sFolder As String, sDeleteFilename As String, okDel As Boolean
 
         If lstFiles.SelectedItems.Count > 0 Then
-            sFolder = getSelectedPath()
-            For Each sItem As ListViewItem In lstFiles.SelectedItems
-                sDeleteFilename = sFolder & sItem.Text
-                okDel = True
-                If tsmConfirmDeletions.Checked Then
-                    'Make them confirm it
-                    Dim ans As MsgBoxResult
-                    ans = MsgBox(String.Format(My.Resources.String17, sDeleteFilename), MsgBoxStyle.YesNoCancel, "Delete file?")
-                    If ans = MsgBoxResult.No Then
-                        okDel = False
-                    ElseIf ans = MsgBoxResult.Cancel Then
-                        Exit For
+            Try
+                sFolder = getSelectedPath()
+                For Each sItem As ListViewItem In lstFiles.SelectedItems
+                    sDeleteFilename = sFolder & sItem.Text
+                    okDel = True
+                    If tsmConfirmDeletions.Checked Then
+                        'Make them confirm it
+                        Dim ans As MsgBoxResult
+                        ans = MsgBox(String.Format(My.Resources.String17, sDeleteFilename), MsgBoxStyle.YesNoCancel, "Delete file?")
+                        If ans = MsgBoxResult.No Then
+                            okDel = False
+                        ElseIf ans = MsgBoxResult.Cancel Then
+                            Exit For
+                        End If
                     End If
-                End If
-                If okDel Then
-                    ModuleMain.DelFromPhone(sDeleteFilename)
-                End If
-            Next
+                    If okDel Then
+                        ModuleMain.DelFromPhone(sDeleteFilename)
+                    End If
+                Next
 
-            'refresh the list view
-            LoadFiles()
+                'refresh the list view
+                LoadFiles()
+
+            Catch ex As Exception
+                MsgBox(ex.ToString, MsgBoxStyle.Exclamation)
+            End Try
         End If
 
     End Sub
@@ -1540,23 +1634,34 @@ Public Class frmMain
             End If
         End If
 
-        BackupDirectory(sPath)
-        iPhoneInterface.DeleteDirectory(sPath, True)
+        Try
+            Me.Cursor = Cursors.WaitCursor
 
-        findNode = trvFolders.Nodes.Find(sPath, True)
-        If findNode.Length = 0 Then
-            'could not find it for some reason, refresh the whole thing
-            Me.refreshFolders()
-        Else
-            ' select the parent path
-            Dim sNewFolder As String = sPath.Substring(0, sPath.LastIndexOf("/"))
-            If sNewFolder = "" Then
-                sNewFolder = "/"
+            If ModuleMain.BackupDirectory(sPath) = 0 Then
+                iPhoneInterface.DeleteDirectory(sPath, True)
+
+                findNode = trvFolders.Nodes.Find(sPath, True)
+                If findNode.Length = 0 Then
+                    'could not find it for some reason, refresh the whole thing
+                    Me.refreshFolders()
+                Else
+                    ' select the parent path
+                    Dim sNewFolder As String = sPath.Substring(0, sPath.LastIndexOf("/"))
+                    If sNewFolder = "" Then
+                        sNewFolder = "/"
+                    End If
+                    trvFolders.Nodes.Remove(findNode(0)) ' delete the selected node
+
+                    Me.selectSpecificPath(sNewFolder)
+                End If
             End If
-            trvFolders.Nodes.Remove(findNode(0)) ' delete the selected node
 
-            Me.selectSpecificPath(sNewFolder)
-        End If
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Exclamation)
+        Finally
+            Me.Cursor = Cursors.Default
+        End Try
+
     End Sub
 
     Private Sub picFileDetails_Resize(ByVal sender As System.Object, ByVal e As System.EventArgs)
@@ -1577,21 +1682,29 @@ Public Class frmMain
         ' Set the ListViewItemSorter property to a new ListViewItemComparer 
         ' object. Setting this property immediately sorts the 
         ' ListView using the ListViewItemComparer object.
+        Try
+            ' turn off grouping when sorting
+            If cmdShowGroups.Checked AndAlso tabFolder.SelectedIndex = 0 Then
+                cmdShowGroups_Click(sender, e)
+            End If
+            If lstFilesSortOrder = SortOrder.None OrElse lstFilesSortOrder = SortOrder.Descending Then
+                lstFilesSortOrder = SortOrder.Ascending
+            Else
+                lstFilesSortOrder = SortOrder.Descending
+            End If
+            Select Case lstFiles.Columns(e.Column).Text
+                Case My.Resources.String31      'Size
+                    Me.lstFiles.ListViewItemSorter = New ListViewSizeComparer(e.Column, lstFilesSortOrder)
+                Case My.Resources.String52      'Track Number
+                    Me.lstFiles.ListViewItemSorter = New ListViewIntComparer(e.Column, lstFilesSortOrder)
+                Case Else
+                    Me.lstFiles.ListViewItemSorter = New ListViewStringComparer(e.Column, lstFilesSortOrder)
+            End Select
 
-        ' turn off grouping when sorting
-        If cmdShowGroups.Checked Then
-            cmdShowGroups_Click(sender, e)
-        End If
-        If lstFilesSortOrder = SortOrder.None OrElse lstFilesSortOrder = SortOrder.Descending Then
-            lstFilesSortOrder = SortOrder.Ascending
-        Else
-            lstFilesSortOrder = SortOrder.Descending
-        End If
-        If lstFiles.Columns(e.Column).Text = My.Resources.String31 Then
-            Me.lstFiles.ListViewItemSorter = New ListViewSizeComparer(e.Column, lstFilesSortOrder)
-        Else
-            Me.lstFiles.ListViewItemSorter = New ListViewStringComparer(e.Column, lstFilesSortOrder)
-        End If
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Exclamation)
+        End Try
+
     End Sub
 
     ''' <summary>
@@ -1785,11 +1898,11 @@ Public Class frmMain
         Config.bBackupControled = tsmBackupControl.Checked
         tsmCleanUp.Enabled = tsmBackupControl.Checked
 
-        If Config.bBackupControled Then
-            cohAttribute.Width = 150
-        Else
-            cohAttribute.Width = 0
-        End If
+        'If Config.bBackupControled OrElse tabFolder.SelectedIndex = 0 Then
+        '    cohAttribute.Width = 150
+        'Else
+        '    cohAttribute.Width = 0
+        'End If
 
     End Sub
 
@@ -1990,18 +2103,22 @@ Public Class frmMain
                     If ProgressValue(ProgressDepth) < .Maximum Then
                         '.PerformStep()
                         .Value = ProgressValue(ProgressDepth)
-                        If lastval0 <> ProgressValue(0) Then
-                            lastval0 = ProgressValue(0)
-                            ProgressBars(0).Value = lastval0
-                            'tlbStatusStrip.Refresh()
-                            If ProgressFullSize > 1024 Then
-                                tslProgress.Text = CInt(ProgressSize / 1024).ToString() & " of " & CInt(ProgressFullSize / 1024).ToString() & " KByte "
-                            ElseIf lastval0 > 100 Then
-                                tslProgress.Text = lastval0.ToString() & "/" & .Maximum.ToString()
-                            End If
+                        'If lastval0 <> ProgressValue(0) Then
+                        lastval0 = ProgressValue(0)
+                        ProgressBars(0).Value = lastval0
+                        'tlbStatusStrip.Refresh()
+                        If ProgressFullSize > 1024 Then
+                            tslProgress.Text = CInt(ProgressSize / 1024).ToString() & " of " & CInt(ProgressFullSize / 1024).ToString() & " KByte "
+                        ElseIf lastval0 > 100 Then
+                            tslProgress.Text = lastval0.ToString() & "/" & .Maximum.ToString()
                         End If
+                        'End If
                     End If
                 End With
+            Else
+                If ProgressFullSize > 1024 Then
+                    tslProgress.Text = CInt(ProgressSize / 1024).ToString() & " of " & CInt(ProgressFullSize / 1024).ToString() & " KByte "
+                End If
             End If
 
         Catch ex As Exception
@@ -2010,7 +2127,7 @@ Public Class frmMain
 
     End Sub
 
-    Private Sub ToolStripDropDownButton1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) _
+    Private Sub btnCancel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) _
         Handles btnCancel.Click
 
         Try
@@ -2174,39 +2291,42 @@ Public Class frmMain
             checked = False
         End If
 
+        pnlQt.SuspendLayout()
         splFiles.Panel1Collapsed = checked
         splMain.Panel1Collapsed = checked
-    End Sub
-
-    Private Sub qtPlugin_AnnotationUpdate(ByVal annotation As String) _
-        Handles qtPlugin.AnnotationUpdate
-
-        txtMovieName.Text = annotation
+        pnlQt.ResumeLayout()
 
     End Sub
 
-    Private Sub qtPlugin_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) _
-        Handles qtPlugin.LostFocus
+    'Private Sub qtPlugin_AnnotationUpdate(ByVal annotation As String) _
+    '    Handles qtPlugin.AnnotationUpdate
+
+    '    txtMovieName.Text = annotation
+
+    'End Sub
+
+    Private Sub qtPlugin_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs)
+
 
         tsmQtFullscreen.Checked = False
-        qtPlugin.FullScreen = False
+        pnlQt.QT.FullScreen = False
         'qtPlugin.BorderStyle = QTOControlLib.BorderStylesEnum.bsPlain
 
-        qtPlugin.Visible = False
+        'qtPlugin.Visible = False
     End Sub
 
-    Private Sub qtPlugin_ShowStatusString(ByVal message As String) _
-        Handles qtPlugin.ShowStatusString
+    Private Sub qtPlugin_ShowStatusString(ByVal message As String)
+
 
         StatusNormal(message)
     End Sub
 
-    Private Sub qtPlugin_VisibleChanged(ByVal visibled As Boolean) _
-        Handles qtPlugin.VisibleChanged
+    'Private Sub qtPlugin_VisibleChanged(ByVal visibled As Boolean) _
+    '    Handles qtPlugin.VisibleChanged
 
-        chkZoom.Visible = visibled
-        txtMovieName.Visible = visibled
-    End Sub
+    '    chkZoom.Visible = visibled
+    '    txtMovieName.Visible = visibled
+    'End Sub
 
     Private Sub WebBrws_StatusTextChanged(ByVal sender As Object, ByVal e As System.EventArgs) _
         Handles WebBrws.StatusTextChanged
@@ -2240,43 +2360,21 @@ Public Class frmMain
         mvarCurrAnnotation = annotation
     End Sub
 
-    Private Sub tsmQtMovieInfo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) _
-        Handles tsmQtMovieInfo.Click
-
-        qtPlugin.ShowPropertyPages()
-    End Sub
-
     Private Sub tsmQtFullscreen_CheckedChanged(ByVal sender As Object, ByVal e As System.EventArgs) _
         Handles tsmQtFullscreen.CheckedChanged
 
-        qtPlugin.FullScreen = tsmQtFullscreen.Checked
-    End Sub
-
-    Private Sub tsmQtExportDialog_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) _
-        Handles tsmQtExportDialog.Click
-
-        qtPlugin.ShowExportDialog()
-    End Sub
-
-    Private Sub pnlQt_Resize(ByVal sender As Object, ByVal e As System.EventArgs) _
-        Handles pnlQt.Resize
-
-        If pnlQt.Visible AndAlso pnlQt.Width > qtPlugin.Left Then
-            qtPlugin.Width = pnlQt.Width - qtPlugin.Left
-        End If
-    End Sub
-
-    Private Sub QuickTimeInfoToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) _
-        Handles tsmQuickTimeInfo.Click
-
-        qtPlugin.ShowAboutBox()
+        pnlQt.QT.FullScreen = tsmQtFullscreen.Checked
     End Sub
 
     Private Sub tsbAddress_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) _
         Handles tsbAddress.Click
 
         Dim sPath As String = tstAddress.Text
-        openPath(sPath)
+        If sPath.StartsWith("http://") Then
+            Process.Start(sPath)
+        Else
+            openPath(sPath)
+        End If
     End Sub
 
     Private Sub tstAddress_KeyUp(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles tstAddress.KeyUp
@@ -2362,26 +2460,40 @@ Public Class frmMain
     Private Sub tabFolder_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) _
         Handles tabFolder.SelectedIndexChanged
 
+        Static lastAttributeWidth As Integer = 150
+
         With Me.lstFiles
             .SuspendLayout()
+            If Config.bBackupControled OrElse tabFolder.SelectedIndex = 1 Then
+                cohAttribute.Width = lastAttributeWidth
+            Else
+                'Hide attribute column
+                If cohAttribute.Width > 0 Then
+                    lastAttributeWidth = cohAttribute.Width
+                End If
+                cohAttribute.Width = 0
+            End If
+
             Select Case tabFolder.SelectedIndex
                 Case 0
-                    .Columns(2).Text = My.Resources.String49
+                    .Columns(2).Text = My.Resources.String49    'Backup path
                     .Columns(3).Width = 110
-                    .Columns.RemoveByKey("TrackNumber")
                     .Columns.RemoveByKey("Album")
+                    .Columns.RemoveByKey("TrackNumber")
                     .Columns.RemoveByKey("Genre")
                     .Columns.RemoveByKey("Type")
                     .Columns.RemoveByKey("Comment")
 
                 Case 1
-                    .Columns(2).Text = My.Resources.String50
+                    .Columns(2).Text = My.Resources.String50    'Song name
                     .Columns(3).Width = 0
-                    .Columns.Add("Album", My.Resources.String51, 150)
-                    .Columns.Add("TrackNumber", My.Resources.String52, 70, HorizontalAlignment.Right, "")
-                    .Columns.Add("Genre", My.Resources.String53, 60)
-                    .Columns.Add("Type", My.Resources.String54, 120)
-                    .Columns.Add("Comment", My.Resources.String55, 160)
+                    If .Columns.Count = 4 Then
+                        .Columns.Add("Album", My.Resources.String51, 150)
+                        .Columns.Add("TrackNumber", My.Resources.String52, 70, HorizontalAlignment.Right, "")
+                        .Columns.Add("Genre", My.Resources.String53, 60)
+                        .Columns.Add("Type", My.Resources.String54, 120)
+                        .Columns.Add("Comment", My.Resources.String55, 160)
+                    End If
 
                     If bNowConnected = False AndAlso trvITunes.Nodes.Count = 0 Then
                         iTunesRoot = ITunesDb.GetIPodRoot()
@@ -2397,8 +2509,8 @@ Public Class frmMain
                     End If
 
             End Select
-            .Items.Clear()
-            .ResumeLayout()
+                .Items.Clear()
+                .ResumeLayout()
         End With
     End Sub
 
@@ -2505,7 +2617,9 @@ Public Class frmMain
     Private Const DBT_DEVICEARRIVAL As Integer = &H8000
     Private Const DBT_DEVICEREMOVECOMPLETE As Integer = &H8004
 
+    <DebuggerStepThrough()> _
     Protected Overrides Sub WndProc(ByRef m As System.Windows.Forms.Message)
+
         If m.Msg = WM_DEVICECHANGE AndAlso bNowConnected = False Then
             Debug.WriteLine(String.Format("Msg=0x{0:X}:WParam=0x{1:X}", m.Msg, m.WParam.ToInt32()))
             Select Case m.WParam.ToInt32()
@@ -2543,6 +2657,127 @@ Public Class frmMain
             End Select
         End If
         MyBase.WndProc(m)
+    End Sub
+
+    Private Sub tsmQtExportDialog_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) _
+        Handles tsmQtExportDialog.Click, tsmQtExportDialog1.Click
+
+        Me.Enabled = False
+        Try
+            pnlQt.ShowExportDialog()
+        Finally
+            Me.Enabled = True
+        End Try
+
+    End Sub
+
+    Private Sub tsmQtMovieInfo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) _
+        Handles tsmQtMovieInfo.Click, tsmQtMovieInfo1.Click
+
+        pnlQt.QT.ShowPropertyPages()
+    End Sub
+
+    Private Sub QuickTimeInfoToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) _
+        Handles tsmQuickTimeInfo.Click, tsmQtInfo.Click
+
+        pnlQt.QT.ShowAboutBox()
+    End Sub
+
+    Private Sub tabViewType_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles tabViewType.SelectedIndexChanged
+        Static lastChecked As Boolean = False
+
+        If tabViewType.SelectedIndex = 0 Then
+            pnlQt.Visible = True
+            WebBrws.Visible = False
+            chkZoom.Checked = lastChecked
+        Else
+            WebBrws.ScriptErrorsSuppressed = False
+            pnlQt.Visible = False
+            Dim address As String = "http://ws.audioscrobbler.com/2.0/artist/" & pnlQt.ArtistName & "/info.xml"
+            address = "http://www.lastfm.jp/music/" & pnlQt.ArtistName
+            Try
+                tstAddress.Text = address
+                WebBrws.Navigate(New Uri(address))
+                lastChecked = chkZoom.Checked
+                chkZoom.Checked = True
+            Catch ex As System.UriFormatException
+                Return
+            End Try
+            WebBrws.Visible = True
+        End If
+    End Sub
+
+    Private Sub setAMDeviceData()
+        Dim dat As New System.Text.StringBuilder()
+        Dim i As Integer
+
+        Dim st As String = iPhoneInterface.ActivationState
+
+        With iPhoneInterface.Device
+            rtbAMDevice.Text = ""
+            rtbAMDevice.SelectionColor = Color.Blue
+            rtbAMDevice.AppendText("Activation State: " & st & vbCrLf)
+            'dat.Append("Device ID: ").Append(.device_id).Append(vbCrLf)
+
+            rtbAMDevice.SelectionColor = Color.Blue
+            rtbAMDevice.AppendText("Device ID: ")
+            rtbAMDevice.SelectionColor = Color.Black
+            rtbAMDevice.AppendText(.device_id.ToString & vbCrLf)
+            'dat.Append("Product ID: ").Append(.product_id).Append(vbCrLf)
+
+            rtbAMDevice.SelectionColor = Color.Blue
+            rtbAMDevice.AppendText("Product ID: ")
+            rtbAMDevice.SelectionColor = Color.Black
+            rtbAMDevice.AppendText(.product_id.ToString & vbCrLf)
+            'dat.Append("Serial: ").Append(iPhoneInterface.Device.serial).Append(vbCrLf)
+
+            rtbAMDevice.SelectionColor = Color.Blue
+            rtbAMDevice.AppendText("Serial: ")
+            rtbAMDevice.SelectionColor = Color.Black
+            rtbAMDevice.AppendText(.serial & vbCrLf)
+
+            rtbAMDevice.SelectionColor = Color.Blue
+            rtbAMDevice.AppendText("unknown1: ")
+            rtbAMDevice.SelectionColor = Color.Black
+            rtbAMDevice.AppendText(.unknown1 & vbCrLf)
+
+            rtbAMDevice.SelectionColor = Color.Blue
+            rtbAMDevice.AppendText("unknown2: ")
+            rtbAMDevice.SelectionColor = Color.Black
+            For i = 0 To .unknown2.Length - 1
+                dat.Append(.unknown2(i)).Append(" ")
+            Next
+            dat.Append(vbCrLf)
+            rtbAMDevice.AppendText(dat.ToString)
+
+            rtbAMDevice.SelectionColor = Color.Blue
+            rtbAMDevice.AppendText("lockdown_conn: ")
+            rtbAMDevice.SelectionColor = Color.Black
+            rtbAMDevice.AppendText(.lockdown_conn & vbCrLf)
+
+            rtbAMDevice.SelectionColor = Color.Blue
+            rtbAMDevice.AppendText("unknown3: " & vbCrLf)
+            rtbAMDevice.SelectionColor = Color.Black
+
+            dat.Length = 0
+            For i = 0 To .unknown3.Length - 1
+                dat.Append(" [").Append(i).Append("] ").Append(Conversion.Hex(.unknown3(i))).Append("H ").Append(.unknown3(i)).Append(" ").Append(vbCrLf)  '.Append(Chr(.unknown2(i))).Append(vbCrLf)
+            Next
+            dat.Append("unknown4: ").Append(vbCrLf)
+            For i = 0 To .unknown4.Length - 1
+                dat.Append(" [").Append(i).Append("] ").Append(Conversion.Hex(.unknown4(i))).Append("H ").Append(.unknown4(i)).Append(" ").Append(vbCrLf)  '.Append(Chr(.unknown4(i))).Append(vbCrLf)
+            Next
+            dat.Append("unknown5: ").Append(vbCrLf)
+            For i = 0 To .unknown5.Length - 1
+                dat.Append(" [").Append(i).Append("] ").Append(Conversion.Hex(.unknown5(i))).Append("H ").Append(.unknown5(i)).Append(" ").Append(vbCrLf)  '.Append(Chr(.unknown2(i))).Append(vbCrLf)
+            Next
+        End With
+
+        rtbAMDevice.AppendText(dat.ToString)
+    End Sub
+
+    Private Sub rtbAMDevice_DoubleClick(ByVal sender As Object, ByVal e As System.EventArgs) Handles rtbAMDevice.DoubleClick
+        setAMDeviceData()
     End Sub
 
 End Class

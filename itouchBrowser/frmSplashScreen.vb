@@ -1,20 +1,15 @@
 ﻿Public NotInheritable Class frmSplashScreen
 
-    'TODO: このフォームは、プロジェクト デザイナ ([プロジェクト] メニューの下の [プロパティ]) の [アプリケーション] タブを使用して、
-    '  アプリケーションのスプラッシュ スクリーンとして簡単に設定することができます
-
+    Friend Sub SetProgressMessage(ByVal msg As String)
+        Me.lblMessage.Text = msg
+    End Sub
 
     Private Sub frmSplashScreen_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        'アプリケーションのアセンブリ情報に従って、ランタイムにダイアログ テキストを設定します。  
 
-        'TODO: [プロジェクト] メニューの下にある [プロジェクト プロパティ] ダイアログの [アプリケーション] ペインで、アプリケーションのアセンブリ情報を 
-        '  カスタマイズします
-
-        'アプリケーション タイトル
+        'Application title
         If My.Application.Info.Title <> "" Then
             ApplicationTitle.Text = My.Application.Info.Title
         Else
-            'アプリケーション タイトルがない場合は、拡張子なしのアプリケーション名を使用します
             ApplicationTitle.Text = System.IO.Path.GetFileNameWithoutExtension(My.Application.Info.AssemblyName)
         End If
 
@@ -27,8 +22,12 @@
                 My.Application.Info.Version.Build, _
                 My.Application.Info.Version.Revision)
 
-        '著作権情報
+        'Copyright information
         Copyright.Text = My.Application.Info.Copyright
+    End Sub
+
+    Private Sub lblMessage_TextChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles lblMessage.TextChanged
+        Me.lblMessage.Refresh()
     End Sub
 
 End Class

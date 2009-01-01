@@ -550,7 +550,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:itouchBrowser.resources, Version=1.8.1.19, Culture=ja-JP, processorArchitecture=x86"
+            "AssemblyAsmDisplayName" = "8:itouchBrowser.resources, Version=1.8.1.22, Culture=ja-JP, processorArchitecture=x86"
                 "ScatterAssemblies"
                 {
                     "_E3CB1248FFEC427A82F997AF69E82C16"
@@ -581,7 +581,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Manzana, Version=1.1.1.0, Culture=neutral, processorArchitecture=x86"
+            "AssemblyAsmDisplayName" = "8:Manzana, Version=1.1.2.2, Culture=neutral, processorArchitecture=x86"
                 "ScatterAssemblies"
                 {
                     "_EAEB4AF12EF0C43955F78F2ED782E17E"
@@ -727,14 +727,14 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:itouchBrowser"
-        "ProductCode" = "8:{0737BE7B-5B88-4723-B607-DB3A9F28163D}"
-        "PackageCode" = "8:{47604964-5990-4F3F-ADCA-A909D92A56E3}"
+        "ProductCode" = "8:{7DFFBBA6-FEF7-4CEA-A29B-F74C58EB297A}"
+        "PackageCode" = "8:{570A2AF2-C6B1-4DC9-AD46-4E7F03879DFE}"
         "UpgradeCode" = "8:{6DF8F65F-1CD9-45F2-B007-22872A42E544}"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.8.2"
+        "ProductVersion" = "8:1.8.5"
         "Manufacturer" = "8:Cranium Consulting and Custom Software"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:http://code.google.com/p/itouchbrowser/"
@@ -1276,7 +1276,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_C4DED4A8B72C42AE9732E65EF7EDD0A9"
             {
-            "SourcePath" = "8:..\\itouchBrowser\\obj\\x86\\Release\\itouchBrowser.exe"
+            "SourcePath" = "8:..\\itouchBrowser\\obj\\x86\\Debug\\itouchBrowser.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_254997F48F3C4AB3A9D32B0C40755247"

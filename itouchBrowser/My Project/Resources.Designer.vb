@@ -60,6 +60,41 @@ Namespace My.Resources
             End Set
         End Property
         
+        Friend ReadOnly Property AudioCD() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("AudioCD", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        Friend ReadOnly Property AudioFile() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("AudioFile", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        Friend ReadOnly Property Camera() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("Camera", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        Friend ReadOnly Property help() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("help", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        Friend ReadOnly Property Network_Internet() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("Network_Internet", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
         '''<summary>
         '''  iPhone is connected, not jailbroken (no afc2 service found) に類似しているローカライズされた文字列を検索します。
         '''</summary>
@@ -106,7 +141,7 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  iPhoneBrowser に類似しているローカライズされた文字列を検索します。
+        '''  itouchBrowser に類似しているローカライズされた文字列を検索します。
         '''</summary>
         Friend ReadOnly Property String14() As String
             Get
@@ -598,6 +633,13 @@ Namespace My.Resources
         Friend ReadOnly Property String9() As String
             Get
                 Return ResourceManager.GetString("String9", resourceCulture)
+            End Get
+        End Property
+        
+        Friend ReadOnly Property VideoCamera() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("VideoCamera", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
         
