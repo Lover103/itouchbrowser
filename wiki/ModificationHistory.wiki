@@ -1,4 +1,4 @@
-#Modification History 変更履歴
+#summary Modification History 変更履歴
 
 
 v1.81.25 ?/?/2009 =sugi=
