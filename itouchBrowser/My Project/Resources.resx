@@ -155,7 +155,10 @@
     <value>An error has occured during load.  Error text:</value>
   </data>
   <data name="String16" xml:space="preserve">
-    <value>.  The program will now exit, sorry. Please report this online.</value>
+    <value>.
+
+Service of iTunes may not have started. Please check being installed correctly. 
+The program will now exit, sorry. Please report this online.</value>
   </data>
   <data name="String17" xml:space="preserve">
     <value>Are you sure you wish to delete the '{0}' file? (A backup copy will automatically be created)</value>

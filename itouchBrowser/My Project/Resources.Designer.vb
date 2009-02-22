@@ -159,7 +159,10 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  .  The program will now exit, sorry. Please report this online. に類似しているローカライズされた文字列を検索します。
+        '''  .
+        '''
+        '''Service of iTunes may not have started. Please check being installed correctly. 
+        '''The program will now exit, sorry. Please report this online. に類似しているローカライズされた文字列を検索します。
         '''</summary>
         Friend ReadOnly Property String16() As String
             Get

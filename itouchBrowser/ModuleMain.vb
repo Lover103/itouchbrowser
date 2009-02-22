@@ -11,6 +11,7 @@ Imports SCW_iPhonePNG
 Module ModuleMain
 
     Friend Const STRING_ROOT As String = "[root]"
+    Friend Const STRING_APPL As String = "[Applications]"
     Friend Const MAX_PROG_DEPTH As Integer = 1
     Friend Const BACKUP_DIRECTORY As String = "touchBrowser\"
     Friend FILE_TEMPORARY_VIEWER As String = "iPhone.temp"
@@ -109,7 +110,9 @@ Module ModuleMain
 
             objMain.Cursor = Cursors.Default
 
-            System.Windows.Forms.Application.Run(objMain)
+            If iPhoneInterface IsNot Nothing Then
+                System.Windows.Forms.Application.Run(objMain)
+            End If
 
             If ObjDb IsNot Nothing Then
                 ObjDb.ExportDB()
@@ -122,6 +125,7 @@ Module ModuleMain
             MsgBox(message, MsgBoxStyle.Critical)
 
         End Try
+
     End Sub
 
     Private Sub dbInitialize()
@@ -686,12 +690,12 @@ Module ModuleMain
     Private Function backupDirectory(ByVal sPath As String, ByVal depth As Integer) As Integer
         Try
             Dim rc As Integer = 0
-            Dim tmp As String() = iPhoneInterface.GetFiles(sPath)
+            Dim tmp As iPhone.strDir() = iPhoneInterface.GetFiles(sPath)
             Dim canceled As Boolean = False
 
             StartStatus(tmp.Length, 0)
-            For Each sFile As String In tmp
-                If BackupFileFromPhone(sPath, sFile) < 0 Then
+            For Each sFile As iPhone.strDir In tmp
+                If BackupFileFromPhone(sPath, sFile.Dir) < 0 Then
                     'ResetiPhone()
                     'Exit For
                     ProgressEscapeFlg = False
@@ -703,12 +707,14 @@ Module ModuleMain
             Next
             EndStatus()
 
-            tmp = iPhoneInterface.GetDirectories(sPath)
+            Dim tmp2 As iPhone.strDir() = iPhoneInterface.GetDirectories(sPath)
             StartStatus(tmp.Length, 0)
-            For Each sDir As String In tmp
-                rc = backupDirectory(sPath & "/" & sDir, depth + 1)
-                If IncrementStatus(0) AndAlso depth = 0 Then Exit For
-                If rc <> 0 Then Exit For
+            For Each sDir As iPhone.strDir In tmp2
+                If sDir.IsSLink = False Then
+                    rc = backupDirectory(sPath & "/" & sDir.Dir, depth + 1)
+                    If IncrementStatus(0) AndAlso depth = 0 Then Exit For
+                    If rc <> 0 Then Exit For
+                End If
             Next
             EndStatus()
 
@@ -768,15 +774,15 @@ Module ModuleMain
         dPath = dPath & "\"
 
         ' save the files
-        Dim phFiles() As String = iPhoneInterface.GetFiles(sPath)
+        Dim phFiles() As iPhone.strDir = iPhoneInterface.GetFiles(sPath)
         sPath = sPath & "/"
-        For Each phF As String In phFiles
-            CopyFromPhone(sPath & phF, dPath & FixPhoneFilename(Path.GetFileName(phF)))
+        For Each phF As iPhone.strDir In phFiles
+            CopyFromPhone(sPath & phF.Dir, dPath & FixPhoneFilename(Path.GetFileName(phF.Dir)))
         Next
 
-        Dim phDirs() As String = iPhoneInterface.GetDirectories(sPath)
-        For Each phD As String In phDirs
-            doSaveFolderIn(sPath & phD, dPath & phD)
+        Dim phDirs() As iPhone.strDir = iPhoneInterface.GetDirectories(sPath)
+        For Each phD As iPhone.strDir In phDirs
+            doSaveFolderIn(sPath & phD.dir, dPath & phD.dir)
         Next
     End Sub
 
@@ -1037,7 +1043,12 @@ Module ModuleMain
     End Function
 
     Friend Sub AddFoldersBeneath(ByVal aNode As TreeNode)
-        AddFolders(ModuleMain.NodeiPhonePath(aNode), aNode, 0)
+
+        aNode.Nodes.Clear()
+        aNode.Nodes.Add(New TreeNode("dummy"))
+        aNode.Tag = False
+        aNode.Checked = False
+
     End Sub
 
     ''' <summary>
@@ -1047,19 +1058,20 @@ Module ModuleMain
     ''' <param name="selectedNode"></param>
     ''' <param name="iDepth"></param>
     ''' <remarks></remarks>
-    Friend Sub AddFolders(ByVal sPath As String, ByVal selectedNode As TreeNode, ByVal iDepth As Integer)
+    Friend Sub AddFolders(ByVal selectedNode As TreeNode, ByVal iDepth As Integer)
         'This function is recursive to add one level of folders to the tree view
         ' you give it one folder and will drill down and add one level of folders
-        Dim sFolders() As String
+        Dim sFolders() As iPhone.strDir
         Dim newNode As TreeNode
         Dim sbpath As String
         Dim bSkip As Boolean = False
 
-        If sPath = "/" Then ' handle root special case
-            sPath = ""
-        End If
-
         Try
+            Dim sPath As String = ModuleMain.NodeiPhonePath(selectedNode)
+            If sPath = "/" Then ' handle root special case
+                sPath = ""
+            End If
+
             'get the data from the phone
             sFolders = iPhoneInterface.GetDirectories(sPath)
 
@@ -1067,36 +1079,42 @@ Module ModuleMain
 
             If sFolders.Length > 0 Then
                 Try
-                    'StartStatus(sFolders.Length, 0)
+                    StartStatus(sFolders.Length, 0)
 
-                    For Each sFolder As String In sFolders
-                        sbpath = sPath & "/" & sFolder
+                    For Each strFolder As iPhone.strDir In sFolders
+                        sbpath = sPath & "/" & strFolder.Dir
                         'create the new node
-                        newNode = New TreeNode(sFolder)
+                        newNode = New TreeNode(strFolder.Dir)
                         newNode.Name = sbpath
                         newNode.ContextMenuStrip = objMain.menuRightClickFolders
+                        If strFolder.IsSLink Then
+                            newNode.ForeColor = Color.Blue
+                        End If
 
-                        selectedNode.Nodes.Add(newNode)
+                        If strFolder.IsDir Then
+                            selectedNode.Nodes.Add(newNode)
+                        End If
 
                         'now make the recursive call on this folder
                         If iDepth = -2 Then
                             bSkip = True
                         ElseIf iDepth < 1 Then ' only load first tree level beneath
-                            ModuleMain.AddFolders(sbpath, newNode, iDepth + 1)
+                            'ModuleMain.AddFolders(sbpath, newNode, iDepth + 1)
+                            ModuleMain.Add1stFolder(sbpath, newNode)
                         Else
-                            bSkip = True
-                            Exit For        '// <==
+                            'bSkip = True
+                            'Exit For        '// <==
                         End If
 
-                        'If IncrementStatus(0) Then Exit For
+                        If IncrementStatus(0) Then Exit For
                     Next
 
                 Finally
-                    'EndStatus()
+                    EndStatus()
                 End Try
             End If
 
-            If ProgressEscapeFlg OrElse bSkip Then
+            If bSkip Then
                 selectedNode.Tag = False
             Else
                 selectedNode.Tag = True
@@ -1104,9 +1122,7 @@ Module ModuleMain
             Application.DoEvents()
 
         Catch ex As Exception
-            '‚±‚±‚ÌƒGƒ‰[‚ÅÚ‘±‚ª’†’f‚³‚ê‚ÄŒp‘±‚Å‚«‚È‚­‚È‚éB
             StatusWarning(My.Resources.String35)
-            'StatusWarning(ex.Message)
 
         End Try
 
@@ -1125,7 +1141,7 @@ Module ModuleMain
 
         Try
             'get the data from the phone
-            sFolder = iPhoneInterface.GetDirectory(sPath)
+            sFolder = iPhoneInterface.Get1stDirectory(sPath)
 
             selectedNode.Nodes.Clear() ' remove any existing nodes
 

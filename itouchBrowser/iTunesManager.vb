@@ -36,6 +36,12 @@ Public Class iTunesManager
         mvarItDb = New Music.ITunesDb
     End Sub
 
+    Public ReadOnly Property Loaded() As Boolean
+        Get
+            Return mvarItDb.Loaded
+        End Get
+    End Property
+
     Friend Sub Clear()
         mvarItDb.Clear()
         If mvarItunes IsNot Nothing Then
@@ -77,6 +83,9 @@ Public Class iTunesManager
         Dim songs As Music.TrackItem() = Nothing
         Try
             songs = mvarItDb.GetAllSongs(artist)
+            If songs.Length = 0 Then
+                songs = mvarItDb.GetSongs(artist)
+            End If
 
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Critical)

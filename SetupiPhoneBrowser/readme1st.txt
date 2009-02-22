@@ -67,5 +67,5 @@ New BSD License ‚ÌiPhoneBrowser (http://code.google.com/p/iphonebrowser/)‚ğ‰ü•Ï‚
 ipodtouchBrowser‚àNew BSD License‚Æ‚µ‚Ü‚·B
 
 ìÒ‚Ö‚Ì˜A—æF
-http://code.google.com/p/itouchbrowser/
+http://code.google.com/p/itouchbrowser/		ÅVî•ñ‚à‚±‚¿‚ç‚Å‚·B
 ekj98521@gmail.com  =sugi=

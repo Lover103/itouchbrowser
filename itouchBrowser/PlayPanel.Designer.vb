@@ -28,6 +28,7 @@ Partial Class PlayPanel
         Me.picArtistImage = New System.Windows.Forms.PictureBox
         Me.spcLeft = New System.Windows.Forms.SplitContainer
         Me.splBase = New System.Windows.Forms.SplitContainer
+        Me.Splitter1 = New System.Windows.Forms.Splitter
         Me.qtPlugin = New iPhoneBrowser.itouchBrowser.QtWrapper
         CType(Me.picArtistImage, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.spcLeft.Panel1.SuspendLayout()
@@ -53,16 +54,14 @@ Partial Class PlayPanel
         '
         'txtLyric
         '
-        Me.txtLyric.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtLyric.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtLyric.Location = New System.Drawing.Point(0, 20)
+        Me.txtLyric.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.txtLyric.Location = New System.Drawing.Point(0, 26)
         Me.txtLyric.Multiline = True
         Me.txtLyric.Name = "txtLyric"
         Me.txtLyric.ReadOnly = True
         Me.txtLyric.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.txtLyric.Size = New System.Drawing.Size(380, 210)
+        Me.txtLyric.Size = New System.Drawing.Size(381, 204)
         Me.txtLyric.TabIndex = 12
         '
         'picArtistImage
@@ -110,11 +109,22 @@ Partial Class PlayPanel
         '
         'splBase.Panel2
         '
+        Me.splBase.Panel2.Controls.Add(Me.Splitter1)
         Me.splBase.Panel2.Controls.Add(Me.qtPlugin)
         Me.splBase.Panel2.Controls.Add(Me.txtLyric)
         Me.splBase.Size = New System.Drawing.Size(535, 230)
         Me.splBase.SplitterDistance = 150
         Me.splBase.TabIndex = 15
+        '
+        'Splitter1
+        '
+        Me.Splitter1.Cursor = System.Windows.Forms.Cursors.HSplit
+        Me.Splitter1.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.Splitter1.Location = New System.Drawing.Point(0, 22)
+        Me.Splitter1.Name = "Splitter1"
+        Me.Splitter1.Size = New System.Drawing.Size(381, 4)
+        Me.Splitter1.TabIndex = 13
+        Me.Splitter1.TabStop = False
         '
         'qtPlugin
         '
@@ -152,5 +162,6 @@ Partial Class PlayPanel
     Friend WithEvents spcLeft As System.Windows.Forms.SplitContainer
     Friend WithEvents splBase As System.Windows.Forms.SplitContainer
     Protected Friend WithEvents txtLyric As System.Windows.Forms.TextBox
+    Friend WithEvents Splitter1 As System.Windows.Forms.Splitter
 
 End Class
