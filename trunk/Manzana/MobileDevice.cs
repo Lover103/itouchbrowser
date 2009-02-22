@@ -65,7 +65,8 @@ namespace Manzana
 	/// Structure describing the iPhone
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential, CharSet=CharSet.Ansi, Pack=1)]
-	public struct AMDevice {
+    public struct AMDevice
+    {
         //[MarshalAs(UnmanagedType.ByValArray, SizeConst=16)]
         //internal byte[]		unknown0;		/* 0 - zero */
         //internal uint		device_id;		/* 16 */

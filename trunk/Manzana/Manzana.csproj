@@ -7,8 +7,8 @@
     <ProjectGuid>{8C260F85-65AC-40A6-85BF-D89C49052F64}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Manzana</RootNamespace>
-    <AssemblyName>Manzana</AssemblyName>
+    <RootNamespace>itouchBrowser.Manzana</RootNamespace>
+    <AssemblyName>itouchBrowser.Manzana</AssemblyName>
     <SignManifests>false</SignManifests>
     <ManifestCertificateThumbprint>BE9747EAB7AA175E4B39ADFC2CF977A232EADD6B</ManifestCertificateThumbprint>
     <ManifestKeyFile>iPhone.Net_TemporaryKey.pfx</ManifestKeyFile>
@@ -26,7 +26,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Debug\Manzana.xml</DocumentationFile>
+    <DocumentationFile>bin\Debug\itouchBrowser.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -40,7 +40,7 @@
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>bin\x86\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <DocumentationFile>bin\x86\Debug\Manzana.xml</DocumentationFile>
+    <DocumentationFile>bin\x86\Debug\itouchBrowser.xml</DocumentationFile>
     <DebugType>full</DebugType>
     <PlatformTarget>x86</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>

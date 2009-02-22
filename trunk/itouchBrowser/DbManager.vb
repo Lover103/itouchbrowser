@@ -769,11 +769,44 @@ Imports System.Data.SQLite
                     Dim j As Integer = 0
                     Using reader As SQLiteDataReader = cmd.ExecuteReader
                         Do While reader.Read()
+                            'write header
+                            If j = 0 Then
+                                For i As Integer = 0 To reader.FieldCount - 1
+                                    Select Case reader.Item(i).GetType().Name
+                                        Case "Byte[]"
+                                            info.Append(reader.GetName(i)).Append("[").Append(DirectCast(reader.Item(i), Byte()).Length).Append("], ")
+                                        Case Else
+                                            info.Append(reader.GetName(i)).Append(", ")
+                                    End Select
+                                Next
+                                info.AppendLine()
+                            End If
+                            'write data
                             For i As Integer = 0 To reader.FieldCount - 1
-                                info.Append(reader.GetName(i)).Append(" = '").Append(reader.Item(i)).Append("' , ")
+                                Select Case reader.Item(i).GetType().Name
+                                    Case "Byte[]"
+                                        info.Append("[")
+                                        For k As Integer = 0 To DirectCast(reader.Item(i), Byte()).Length - 1
+                                            info.AppendFormat("{0:X}, ", DirectCast(reader.Item(i), Byte())(k))
+                                            If k > 100 Then
+                                                info.Append(" ...")
+                                                Exit For
+                                            End If
+                                        Next
+                                        info.Append("], ")
+                                    Case Else
+                                        If reader.Item(i).ToString.IndexOf(",") > -1 Then
+                                            info.Append("""").Append(reader.Item(i)).Append(""", ")
+                                        Else
+                                            info.Append(reader.Item(i)).Append(", ")
+                                        End If
+                                End Select
                             Next
                             info.AppendLine()
-                            If j > 100 Then Exit Do
+                            If j > 500 Then
+                                info.AppendLine(" ... (Over 500 records)")
+                                Exit Do
+                            End If
                             j += 1
                         Loop
                     End Using
@@ -785,4 +818,5 @@ Imports System.Data.SQLite
         Return info.ToString
 
     End Function
+
 End Class

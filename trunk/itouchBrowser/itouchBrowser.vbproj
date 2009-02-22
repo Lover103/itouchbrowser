@@ -136,6 +136,12 @@
     <Compile Include="frmCustomizeOptions.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmFolderProperty.Designer.vb">
+      <DependentUpon>frmFolderProperty.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmFolderProperty.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmMain.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -231,6 +237,14 @@
     <EmbeddedResource Include="frmCustomizeOptions.resx">
       <SubType>Designer</SubType>
       <DependentUpon>frmCustomizeOptions.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFolderProperty.ja-JP.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmFolderProperty.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFolderProperty.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmFolderProperty.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.ja-JP.resx">
       <SubType>Designer</SubType>

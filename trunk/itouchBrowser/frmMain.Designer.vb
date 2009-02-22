@@ -37,13 +37,17 @@ Partial Class frmMain
         Me.splMain = New System.Windows.Forms.SplitContainer
         Me.grpFolders = New System.Windows.Forms.GroupBox
         Me.tabFolder = New System.Windows.Forms.TabControl
-        Me.TabPage1 = New System.Windows.Forms.TabPage
+        Me.ftabFolder = New System.Windows.Forms.TabPage
         Me.trvFolders = New System.Windows.Forms.TreeView
         Me.imgFolders = New System.Windows.Forms.ImageList(Me.components)
-        Me.TabPage2 = New System.Windows.Forms.TabPage
+        Me.ftabiTunes = New System.Windows.Forms.TabPage
         Me.cmbOutputDir = New System.Windows.Forms.ComboBox
         Me.btnExport = New System.Windows.Forms.Button
         Me.trvITunes = New System.Windows.Forms.TreeView
+        Me.ftabApp = New System.Windows.Forms.TabPage
+        Me.trvApps = New System.Windows.Forms.TreeView
+        Me.ftabAMDevice = New System.Windows.Forms.TabPage
+        Me.rtbAMDevice = New System.Windows.Forms.RichTextBox
         Me.splFiles = New System.Windows.Forms.SplitContainer
         Me.grpFiles = New System.Windows.Forms.GroupBox
         Me.picDelete = New System.Windows.Forms.PictureBox
@@ -64,6 +68,7 @@ Partial Class frmMain
         Me.cmdRenameFile = New System.Windows.Forms.ToolStripMenuItem
         Me.menuRightReplaceFile = New System.Windows.Forms.ToolStripMenuItem
         Me.menuRightDeleteFile = New System.Windows.Forms.ToolStripMenuItem
+        Me.menuDeleteFileWithoutSaving = New System.Windows.Forms.ToolStripMenuItem
         Me.imgFilesLargeNew = New System.Windows.Forms.ImageList(Me.components)
         Me.imgFilesSmallNew = New System.Windows.Forms.ImageList(Me.components)
         Me.qtBuff = New iPhoneBrowser.itouchBrowser.QtWrapper
@@ -194,18 +199,21 @@ Partial Class frmMain
         Me.tsmSaveFolderIn = New System.Windows.Forms.ToolStripMenuItem
         Me.cmdRenameFolder = New System.Windows.Forms.ToolStripMenuItem
         Me.ToolStripSeparator10 = New System.Windows.Forms.ToolStripSeparator
-        Me.ToolStripMenuItemDeleteFolder = New System.Windows.Forms.ToolStripMenuItem
+        Me.menuDeleteFolder = New System.Windows.Forms.ToolStripMenuItem
+        Me.menuDeleteFolderWithoutSaving = New System.Windows.Forms.ToolStripMenuItem
+        Me.ToolStripSeparator12 = New System.Windows.Forms.ToolStripSeparator
+        Me.menuProperty = New System.Windows.Forms.ToolStripMenuItem
         Me.folderBrowserDialog = New System.Windows.Forms.FolderBrowserDialog
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.TabPage5 = New System.Windows.Forms.TabPage
-        Me.rtbAMDevice = New System.Windows.Forms.RichTextBox
         Me.splMain.Panel1.SuspendLayout()
         Me.splMain.Panel2.SuspendLayout()
         Me.splMain.SuspendLayout()
         Me.grpFolders.SuspendLayout()
         Me.tabFolder.SuspendLayout()
-        Me.TabPage1.SuspendLayout()
-        Me.TabPage2.SuspendLayout()
+        Me.ftabFolder.SuspendLayout()
+        Me.ftabiTunes.SuspendLayout()
+        Me.ftabApp.SuspendLayout()
+        Me.ftabAMDevice.SuspendLayout()
         Me.splFiles.Panel1.SuspendLayout()
         Me.splFiles.Panel2.SuspendLayout()
         Me.splFiles.SuspendLayout()
@@ -221,7 +229,6 @@ Partial Class frmMain
         Me.tlbStatusStrip.SuspendLayout()
         Me.toolStrip.SuspendLayout()
         Me.menuRightClickFolders.SuspendLayout()
-        Me.TabPage5.SuspendLayout()
         Me.SuspendLayout()
         '
         'splMain
@@ -250,19 +257,20 @@ Partial Class frmMain
         '
         'tabFolder
         '
-        Me.tabFolder.Controls.Add(Me.TabPage1)
-        Me.tabFolder.Controls.Add(Me.TabPage2)
-        Me.tabFolder.Controls.Add(Me.TabPage5)
+        Me.tabFolder.Controls.Add(Me.ftabFolder)
+        Me.tabFolder.Controls.Add(Me.ftabiTunes)
+        Me.tabFolder.Controls.Add(Me.ftabApp)
+        Me.tabFolder.Controls.Add(Me.ftabAMDevice)
         resources.ApplyResources(Me.tabFolder, "tabFolder")
         Me.tabFolder.Name = "tabFolder"
         Me.tabFolder.SelectedIndex = 0
         '
-        'TabPage1
+        'ftabFolder
         '
-        Me.TabPage1.Controls.Add(Me.trvFolders)
-        resources.ApplyResources(Me.TabPage1, "TabPage1")
-        Me.TabPage1.Name = "TabPage1"
-        Me.TabPage1.UseVisualStyleBackColor = True
+        Me.ftabFolder.Controls.Add(Me.trvFolders)
+        resources.ApplyResources(Me.ftabFolder, "ftabFolder")
+        Me.ftabFolder.Name = "ftabFolder"
+        Me.ftabFolder.UseVisualStyleBackColor = True
         '
         'trvFolders
         '
@@ -282,14 +290,14 @@ Partial Class frmMain
         Me.imgFolders.Images.SetKeyName(2, "folder_closed.gif")
         Me.imgFolders.Images.SetKeyName(3, "folder_open.gif")
         '
-        'TabPage2
+        'ftabiTunes
         '
-        Me.TabPage2.Controls.Add(Me.cmbOutputDir)
-        Me.TabPage2.Controls.Add(Me.btnExport)
-        Me.TabPage2.Controls.Add(Me.trvITunes)
-        resources.ApplyResources(Me.TabPage2, "TabPage2")
-        Me.TabPage2.Name = "TabPage2"
-        Me.TabPage2.UseVisualStyleBackColor = True
+        Me.ftabiTunes.Controls.Add(Me.cmbOutputDir)
+        Me.ftabiTunes.Controls.Add(Me.btnExport)
+        Me.ftabiTunes.Controls.Add(Me.trvITunes)
+        resources.ApplyResources(Me.ftabiTunes, "ftabiTunes")
+        Me.ftabiTunes.Name = "ftabiTunes"
+        Me.ftabiTunes.UseVisualStyleBackColor = True
         '
         'cmbOutputDir
         '
@@ -310,6 +318,36 @@ Partial Class frmMain
         Me.trvITunes.CheckBoxes = True
         Me.trvITunes.HideSelection = False
         Me.trvITunes.Name = "trvITunes"
+        Me.trvITunes.ShowRootLines = False
+        '
+        'ftabApp
+        '
+        Me.ftabApp.Controls.Add(Me.trvApps)
+        resources.ApplyResources(Me.ftabApp, "ftabApp")
+        Me.ftabApp.Name = "ftabApp"
+        Me.ftabApp.UseVisualStyleBackColor = True
+        '
+        'trvApps
+        '
+        resources.ApplyResources(Me.trvApps, "trvApps")
+        Me.trvApps.HideSelection = False
+        Me.trvApps.ImageList = Me.imgFolders
+        Me.trvApps.Name = "trvApps"
+        Me.trvApps.PathSeparator = "/"
+        Me.trvApps.ShowRootLines = False
+        '
+        'ftabAMDevice
+        '
+        Me.ftabAMDevice.Controls.Add(Me.rtbAMDevice)
+        resources.ApplyResources(Me.ftabAMDevice, "ftabAMDevice")
+        Me.ftabAMDevice.Name = "ftabAMDevice"
+        Me.ftabAMDevice.UseVisualStyleBackColor = True
+        '
+        'rtbAMDevice
+        '
+        resources.ApplyResources(Me.rtbAMDevice, "rtbAMDevice")
+        Me.rtbAMDevice.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.rtbAMDevice.Name = "rtbAMDevice"
         '
         'splFiles
         '
@@ -380,7 +418,7 @@ Partial Class frmMain
         '
         'menuRightClickFiles
         '
-        Me.menuRightClickFiles.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.menuRightSaveAs, Me.ToolStripSeparator2, Me.menuRightBackupFile, Me.menuRightRestoreFile, Me.menuRightDeleteBackupedFile, Me.ToolStripSeparator1, Me.cmdRenameFile, Me.menuRightReplaceFile, Me.menuRightDeleteFile})
+        Me.menuRightClickFiles.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.menuRightSaveAs, Me.ToolStripSeparator2, Me.menuRightBackupFile, Me.menuRightRestoreFile, Me.menuRightDeleteBackupedFile, Me.ToolStripSeparator1, Me.cmdRenameFile, Me.menuRightReplaceFile, Me.menuRightDeleteFile, Me.menuDeleteFileWithoutSaving})
         Me.menuRightClickFiles.Name = "menuRightClickFiles"
         resources.ApplyResources(Me.menuRightClickFiles, "menuRightClickFiles")
         '
@@ -435,6 +473,11 @@ Partial Class frmMain
         Me.menuRightDeleteFile.Name = "menuRightDeleteFile"
         resources.ApplyResources(Me.menuRightDeleteFile, "menuRightDeleteFile")
         '
+        'menuDeleteFileWithoutSaving
+        '
+        Me.menuDeleteFileWithoutSaving.Name = "menuDeleteFileWithoutSaving"
+        resources.ApplyResources(Me.menuDeleteFileWithoutSaving, "menuDeleteFileWithoutSaving")
+        '
         'imgFilesLargeNew
         '
         Me.imgFilesLargeNew.ImageStream = CType(resources.GetObject("imgFilesLargeNew.ImageStream"), System.Windows.Forms.ImageListStreamer)
@@ -486,10 +529,10 @@ Partial Class frmMain
         'pnlQt
         '
         resources.ApplyResources(Me.pnlQt, "pnlQt")
-        Me.pnlQt.BottomHeight = 50
+        Me.pnlQt.BottomHeight = 29
         Me.pnlQt.FileName = ""
         Me.pnlQt.ImageLocation = Nothing
-        Me.pnlQt.LeftWidth = 120
+        Me.pnlQt.LeftWidth = 25
         Me.pnlQt.Lyric = ""
         Me.pnlQt.LyricVisible = True
         Me.pnlQt.MovieInfo = ""
@@ -839,7 +882,7 @@ Partial Class frmMain
         '
         Me.tsmITunesMusic.Name = "tsmITunesMusic"
         resources.ApplyResources(Me.tsmITunesMusic, "tsmITunesMusic")
-        Me.tsmITunesMusic.Tag = "/var/mobile/Media/iTunes_Control/Music"
+        Me.tsmITunesMusic.Tag = "/private/var/mobile/Media/iTunes_Control/Music"
         '
         'toolStripGoTo4
         '
@@ -941,73 +984,73 @@ Partial Class frmMain
         '
         Me.tsmCustomizeFiles.Name = "tsmCustomizeFiles"
         resources.ApplyResources(Me.tsmCustomizeFiles, "tsmCustomizeFiles")
-        Me.tsmCustomizeFiles.Tag = "/var/mobile/Library/Customize"
+        Me.tsmCustomizeFiles.Tag = "/private/var/mobile/Library/Customize"
         '
         'tsmDockSwapDocks
         '
         Me.tsmDockSwapDocks.Name = "tsmDockSwapDocks"
         resources.ApplyResources(Me.tsmDockSwapDocks, "tsmDockSwapDocks")
-        Me.tsmDockSwapDocks.Tag = "/var/mobile/Library/DockSwap"
+        Me.tsmDockSwapDocks.Tag = "/private/var/mobile/Library/DockSwap"
         '
         'IComicToolStripMenuItem
         '
         Me.IComicToolStripMenuItem.Name = "IComicToolStripMenuItem"
         resources.ApplyResources(Me.IComicToolStripMenuItem, "IComicToolStripMenuItem")
-        Me.IComicToolStripMenuItem.Tag = "/var/mobile/Media/Comic/"
+        Me.IComicToolStripMenuItem.Tag = "/private/var/mobile/Media/Comic/"
         '
         'tsmEBooks
         '
         Me.tsmEBooks.Name = "tsmEBooks"
         resources.ApplyResources(Me.tsmEBooks, "tsmEBooks")
-        Me.tsmEBooks.Tag = "/var/mobile/Media/EBooks"
+        Me.tsmEBooks.Tag = "/private/var/mobile/Media/EBooks"
         '
         'tsmFrotzGames
         '
         Me.tsmFrotzGames.Name = "tsmFrotzGames"
         resources.ApplyResources(Me.tsmFrotzGames, "tsmFrotzGames")
-        Me.tsmFrotzGames.Tag = "/var/mobile/Media/Frotz/Games"
+        Me.tsmFrotzGames.Tag = "/private/var/mobile/Media/Frotz/Games"
         '
         'tsmGBAROMs
         '
         Me.tsmGBAROMs.Name = "tsmGBAROMs"
         resources.ApplyResources(Me.tsmGBAROMs, "tsmGBAROMs")
-        Me.tsmGBAROMs.Tag = "/var/mobile/Media/ROMs/GBA"
+        Me.tsmGBAROMs.Tag = "/private/var/mobile/Media/ROMs/GBA"
         '
         'tsmIFlashCards
         '
         Me.tsmIFlashCards.Name = "tsmIFlashCards"
         resources.ApplyResources(Me.tsmIFlashCards, "tsmIFlashCards")
-        Me.tsmIFlashCards.Tag = "/var/mobile/Library/iFlashCards"
+        Me.tsmIFlashCards.Tag = "/private/var/mobile/Library/iFlashCards"
         '
         'tsmInstallerPackageSources
         '
         Me.tsmInstallerPackageSources.Name = "tsmInstallerPackageSources"
         resources.ApplyResources(Me.tsmInstallerPackageSources, "tsmInstallerPackageSources")
-        Me.tsmInstallerPackageSources.Tag = "/var/mobile/Library/Installer"
+        Me.tsmInstallerPackageSources.Tag = "/private/var/mobile/Library/Installer"
         '
         'tsmISwitcherThemes
         '
         Me.tsmISwitcherThemes.Name = "tsmISwitcherThemes"
         resources.ApplyResources(Me.tsmISwitcherThemes, "tsmISwitcherThemes")
-        Me.tsmISwitcherThemes.Tag = "/var/mobile/Media/Themes"
+        Me.tsmISwitcherThemes.Tag = "/private/var/mobile/Media/Themes"
         '
         'tsmNESROMS
         '
         Me.tsmNESROMS.Name = "tsmNESROMS"
         resources.ApplyResources(Me.tsmNESROMS, "tsmNESROMS")
-        Me.tsmNESROMS.Tag = "/var/mobile/Media/ROMs/NES"
+        Me.tsmNESROMS.Tag = "/private/var/mobile/Media/ROMs/NES"
         '
         'tsmTTR
         '
         Me.tsmTTR.Name = "tsmTTR"
         resources.ApplyResources(Me.tsmTTR, "tsmTTR")
-        Me.tsmTTR.Tag = "/var/mobile/Media/TTR"
+        Me.tsmTTR.Tag = "/private/var/mobile/Media/TTR"
         '
         'tsmWeDictDictionaries
         '
         Me.tsmWeDictDictionaries.Name = "tsmWeDictDictionaries"
         resources.ApplyResources(Me.tsmWeDictDictionaries, "tsmWeDictDictionaries")
-        Me.tsmWeDictDictionaries.Tag = "/var/mobile/Libary/weDict"
+        Me.tsmWeDictDictionaries.Tag = "/private/var/mobile/Libary/weDict"
         '
         'ToolStripSeparator6
         '
@@ -1018,7 +1061,7 @@ Partial Class frmMain
         '
         Me.tsmCameraRoll.Name = "tsmCameraRoll"
         resources.ApplyResources(Me.tsmCameraRoll, "tsmCameraRoll")
-        Me.tsmCameraRoll.Tag = "/var/root/Media/DCIM"
+        Me.tsmCameraRoll.Tag = "/private/var/mobile/Media/DCIM"
         '
         'toolStripGoTo19
         '
@@ -1214,7 +1257,7 @@ Partial Class frmMain
         '
         'menuRightClickFolders
         '
-        Me.menuRightClickFolders.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItemNewFolder, Me.ToolStripSeparator9, Me.tsmBackupFolder, Me.tsmSaveFolderIn, Me.cmdRenameFolder, Me.ToolStripSeparator10, Me.ToolStripMenuItemDeleteFolder})
+        Me.menuRightClickFolders.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItemNewFolder, Me.ToolStripSeparator9, Me.tsmBackupFolder, Me.tsmSaveFolderIn, Me.cmdRenameFolder, Me.ToolStripSeparator10, Me.menuDeleteFolder, Me.menuDeleteFolderWithoutSaving, Me.ToolStripSeparator12, Me.menuProperty})
         Me.menuRightClickFolders.Name = "menuRightClickFolders"
         resources.ApplyResources(Me.menuRightClickFolders, "menuRightClickFolders")
         '
@@ -1248,10 +1291,25 @@ Partial Class frmMain
         Me.ToolStripSeparator10.Name = "ToolStripSeparator10"
         resources.ApplyResources(Me.ToolStripSeparator10, "ToolStripSeparator10")
         '
-        'ToolStripMenuItemDeleteFolder
+        'menuDeleteFolder
         '
-        Me.ToolStripMenuItemDeleteFolder.Name = "ToolStripMenuItemDeleteFolder"
-        resources.ApplyResources(Me.ToolStripMenuItemDeleteFolder, "ToolStripMenuItemDeleteFolder")
+        Me.menuDeleteFolder.Name = "menuDeleteFolder"
+        resources.ApplyResources(Me.menuDeleteFolder, "menuDeleteFolder")
+        '
+        'menuDeleteFolderWithoutSaving
+        '
+        Me.menuDeleteFolderWithoutSaving.Name = "menuDeleteFolderWithoutSaving"
+        resources.ApplyResources(Me.menuDeleteFolderWithoutSaving, "menuDeleteFolderWithoutSaving")
+        '
+        'ToolStripSeparator12
+        '
+        Me.ToolStripSeparator12.Name = "ToolStripSeparator12"
+        resources.ApplyResources(Me.ToolStripSeparator12, "ToolStripSeparator12")
+        '
+        'menuProperty
+        '
+        Me.menuProperty.Name = "menuProperty"
+        resources.ApplyResources(Me.menuProperty, "menuProperty")
         '
         'folderBrowserDialog
         '
@@ -1261,19 +1319,6 @@ Partial Class frmMain
         'Timer1
         '
         Me.Timer1.Interval = 350
-        '
-        'TabPage5
-        '
-        Me.TabPage5.Controls.Add(Me.rtbAMDevice)
-        resources.ApplyResources(Me.TabPage5, "TabPage5")
-        Me.TabPage5.Name = "TabPage5"
-        Me.TabPage5.UseVisualStyleBackColor = True
-        '
-        'rtbAMDevice
-        '
-        resources.ApplyResources(Me.rtbAMDevice, "rtbAMDevice")
-        Me.rtbAMDevice.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.rtbAMDevice.Name = "rtbAMDevice"
         '
         'frmMain
         '
@@ -1289,8 +1334,10 @@ Partial Class frmMain
         Me.splMain.ResumeLayout(False)
         Me.grpFolders.ResumeLayout(False)
         Me.tabFolder.ResumeLayout(False)
-        Me.TabPage1.ResumeLayout(False)
-        Me.TabPage2.ResumeLayout(False)
+        Me.ftabFolder.ResumeLayout(False)
+        Me.ftabiTunes.ResumeLayout(False)
+        Me.ftabApp.ResumeLayout(False)
+        Me.ftabAMDevice.ResumeLayout(False)
         Me.splFiles.Panel1.ResumeLayout(False)
         Me.splFiles.Panel2.ResumeLayout(False)
         Me.splFiles.ResumeLayout(False)
@@ -1309,7 +1356,6 @@ Partial Class frmMain
         Me.toolStrip.ResumeLayout(False)
         Me.toolStrip.PerformLayout()
         Me.menuRightClickFolders.ResumeLayout(False)
-        Me.TabPage5.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1361,7 +1407,7 @@ Partial Class frmMain
     Friend WithEvents toolStripGoTo19 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents menuRightClickFolders As System.Windows.Forms.ContextMenuStrip
     Friend WithEvents ToolStripMenuItemNewFolder As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents ToolStripMenuItemDeleteFolder As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents menuDeleteFolder As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem2 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents mnuStdApps As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents toolStripGoTo4 As System.Windows.Forms.ToolStripMenuItem
@@ -1462,8 +1508,8 @@ Partial Class frmMain
     Friend WithEvents tsmQtMovieInfo As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents tsmQuickTimeInfo As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents tabFolder As System.Windows.Forms.TabControl
-    Friend WithEvents TabPage1 As System.Windows.Forms.TabPage
-    Friend WithEvents TabPage2 As System.Windows.Forms.TabPage
+    Friend WithEvents ftabFolder As System.Windows.Forms.TabPage
+    Friend WithEvents ftabiTunes As System.Windows.Forms.TabPage
     Friend WithEvents trvITunes As System.Windows.Forms.TreeView
     Friend WithEvents btnExport As System.Windows.Forms.Button
     Friend WithEvents cmbOutputDir As System.Windows.Forms.ComboBox
@@ -1478,7 +1524,13 @@ Partial Class frmMain
     Friend WithEvents tabViewType As System.Windows.Forms.TabControl
     Friend WithEvents TabPage3 As System.Windows.Forms.TabPage
     Friend WithEvents TabPage4 As System.Windows.Forms.TabPage
-    Friend WithEvents TabPage5 As System.Windows.Forms.TabPage
+    Friend WithEvents ftabAMDevice As System.Windows.Forms.TabPage
     Friend WithEvents rtbAMDevice As System.Windows.Forms.RichTextBox
+    Friend WithEvents menuDeleteFileWithoutSaving As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents menuDeleteFolderWithoutSaving As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ToolStripSeparator12 As System.Windows.Forms.ToolStripSeparator
+    Friend WithEvents ftabApp As System.Windows.Forms.TabPage
+    Friend WithEvents trvApps As System.Windows.Forms.TreeView
+    Friend WithEvents menuProperty As System.Windows.Forms.ToolStripMenuItem
 
 End Class

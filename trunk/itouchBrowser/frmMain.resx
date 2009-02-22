@@ -209,36 +209,36 @@
     <value>System.Windows.Forms.TreeView, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;trvFolders.Parent" xml:space="preserve">
-    <value>TabPage1</value>
+    <value>ftabFolder</value>
   </data>
   <data name="&gt;&gt;trvFolders.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="TabPage1.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="ftabFolder.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 21</value>
   </data>
-  <data name="TabPage1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="ftabFolder.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
   </data>
-  <data name="TabPage1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="ftabFolder.Size" type="System.Drawing.Size, System.Drawing">
     <value>226, 368</value>
   </data>
-  <data name="TabPage1.TabIndex" type="System.Int32, mscorlib">
+  <data name="ftabFolder.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="TabPage1.Text" xml:space="preserve">
+  <data name="ftabFolder.Text" xml:space="preserve">
     <value>Folder</value>
   </data>
-  <data name="&gt;&gt;TabPage1.Name" xml:space="preserve">
-    <value>TabPage1</value>
+  <data name="&gt;&gt;ftabFolder.Name" xml:space="preserve">
+    <value>ftabFolder</value>
   </data>
-  <data name="&gt;&gt;TabPage1.Type" xml:space="preserve">
+  <data name="&gt;&gt;ftabFolder.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;TabPage1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;ftabFolder.Parent" xml:space="preserve">
     <value>tabFolder</value>
   </data>
-  <data name="&gt;&gt;TabPage1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;ftabFolder.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="cmbOutputDir.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
@@ -269,7 +269,7 @@
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;cmbOutputDir.Parent" xml:space="preserve">
-    <value>TabPage2</value>
+    <value>ftabiTunes</value>
   </data>
   <data name="&gt;&gt;cmbOutputDir.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -299,7 +299,7 @@
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;btnExport.Parent" xml:space="preserve">
-    <value>TabPage2</value>
+    <value>ftabiTunes</value>
   </data>
   <data name="&gt;&gt;btnExport.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -323,37 +323,94 @@
     <value>System.Windows.Forms.TreeView, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;trvITunes.Parent" xml:space="preserve">
-    <value>TabPage2</value>
+    <value>ftabiTunes</value>
   </data>
   <data name="&gt;&gt;trvITunes.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="TabPage2.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="ftabiTunes.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 21</value>
   </data>
-  <data name="TabPage2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="ftabiTunes.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
   </data>
-  <data name="TabPage2.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="ftabiTunes.Size" type="System.Drawing.Size, System.Drawing">
     <value>226, 368</value>
   </data>
-  <data name="TabPage2.TabIndex" type="System.Int32, mscorlib">
+  <data name="ftabiTunes.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="TabPage2.Text" xml:space="preserve">
+  <data name="ftabiTunes.Text" xml:space="preserve">
     <value>iTunes</value>
   </data>
-  <data name="&gt;&gt;TabPage2.Name" xml:space="preserve">
-    <value>TabPage2</value>
+  <data name="&gt;&gt;ftabiTunes.Name" xml:space="preserve">
+    <value>ftabiTunes</value>
   </data>
-  <data name="&gt;&gt;TabPage2.Type" xml:space="preserve">
+  <data name="&gt;&gt;ftabiTunes.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;TabPage2.Parent" xml:space="preserve">
+  <data name="&gt;&gt;ftabiTunes.Parent" xml:space="preserve">
     <value>tabFolder</value>
   </data>
-  <data name="&gt;&gt;TabPage2.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;ftabiTunes.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="trvApps.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="trvApps.ImageIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="trvApps.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="trvApps.SelectedImageIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="trvApps.Size" type="System.Drawing.Size, System.Drawing">
+    <value>220, 362</value>
+  </data>
+  <data name="trvApps.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;trvApps.Name" xml:space="preserve">
+    <value>trvApps</value>
+  </data>
+  <data name="&gt;&gt;trvApps.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TreeView, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;trvApps.Parent" xml:space="preserve">
+    <value>ftabApp</value>
+  </data>
+  <data name="&gt;&gt;trvApps.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="ftabApp.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 21</value>
+  </data>
+  <data name="ftabApp.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="ftabApp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>226, 368</value>
+  </data>
+  <data name="ftabApp.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="ftabApp.Text" xml:space="preserve">
+    <value>App</value>
+  </data>
+  <data name="&gt;&gt;ftabApp.Name" xml:space="preserve">
+    <value>ftabApp</value>
+  </data>
+  <data name="&gt;&gt;ftabApp.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ftabApp.Parent" xml:space="preserve">
+    <value>tabFolder</value>
+  </data>
+  <data name="&gt;&gt;ftabApp.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="rtbAMDevice.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
@@ -377,34 +434,34 @@
     <value>System.Windows.Forms.RichTextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;rtbAMDevice.Parent" xml:space="preserve">
-    <value>TabPage5</value>
+    <value>ftabAMDevice</value>
   </data>
   <data name="&gt;&gt;rtbAMDevice.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="TabPage5.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="ftabAMDevice.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 21</value>
   </data>
-  <data name="TabPage5.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="ftabAMDevice.Size" type="System.Drawing.Size, System.Drawing">
     <value>226, 368</value>
   </data>
-  <data name="TabPage5.TabIndex" type="System.Int32, mscorlib">
+  <data name="ftabAMDevice.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="TabPage5.Text" xml:space="preserve">
+  <data name="ftabAMDevice.Text" xml:space="preserve">
     <value>AMDevice</value>
   </data>
-  <data name="&gt;&gt;TabPage5.Name" xml:space="preserve">
-    <value>TabPage5</value>
+  <data name="&gt;&gt;ftabAMDevice.Name" xml:space="preserve">
+    <value>ftabAMDevice</value>
   </data>
-  <data name="&gt;&gt;TabPage5.Type" xml:space="preserve">
+  <data name="&gt;&gt;ftabAMDevice.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;TabPage5.Parent" xml:space="preserve">
+  <data name="&gt;&gt;ftabAMDevice.Parent" xml:space="preserve">
     <value>tabFolder</value>
   </data>
-  <data name="&gt;&gt;TabPage5.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="&gt;&gt;ftabAMDevice.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="tabFolder.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -993,16 +1050,16 @@
     <value>254, 54</value>
   </metadata>
   <data name="menuRightSaveAs.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>201, 22</value>
   </data>
   <data name="menuRightSaveAs.Text" xml:space="preserve">
     <value>Save &amp;As...</value>
   </data>
   <data name="ToolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 6</value>
+    <value>198, 6</value>
   </data>
   <data name="menuRightBackupFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>201, 22</value>
   </data>
   <data name="menuRightBackupFile.Text" xml:space="preserve">
     <value>&amp;Backup File</value>
@@ -1017,7 +1074,7 @@
     <value>False</value>
   </data>
   <data name="menuRightRestoreFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>201, 22</value>
   </data>
   <data name="menuRightRestoreFile.Text" xml:space="preserve">
     <value>&amp;Restore File</value>
@@ -1026,34 +1083,40 @@
     <value>False</value>
   </data>
   <data name="menuRightDeleteBackupedFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>201, 22</value>
   </data>
   <data name="menuRightDeleteBackupedFile.Text" xml:space="preserve">
     <value>D&amp;elete Backuped File</value>
   </data>
   <data name="ToolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 6</value>
+    <value>198, 6</value>
   </data>
   <data name="cmdRenameFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>201, 22</value>
   </data>
   <data name="cmdRenameFile.Text" xml:space="preserve">
     <value>Rename File...</value>
   </data>
   <data name="menuRightReplaceFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>201, 22</value>
   </data>
   <data name="menuRightReplaceFile.Text" xml:space="preserve">
     <value>Re&amp;place File...</value>
   </data>
   <data name="menuRightDeleteFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>201, 22</value>
   </data>
   <data name="menuRightDeleteFile.Text" xml:space="preserve">
     <value>&amp;Delete File</value>
   </data>
+  <data name="menuDeleteFileWithoutSaving.Size" type="System.Drawing.Size, System.Drawing">
+    <value>201, 22</value>
+  </data>
+  <data name="menuDeleteFileWithoutSaving.Text" xml:space="preserve">
+    <value>Delete File wthout saving</value>
+  </data>
   <data name="menuRightClickFiles.Size" type="System.Drawing.Size, System.Drawing">
-    <value>181, 170</value>
+    <value>202, 192</value>
   </data>
   <data name="&gt;&gt;menuRightClickFiles.Name" xml:space="preserve">
     <value>menuRightClickFiles</value>
@@ -1699,7 +1762,7 @@
     <value>qtBuff</value>
   </data>
   <data name="&gt;&gt;qtBuff.Type" xml:space="preserve">
-    <value>iPhoneBrowser.itouchBrowser.QtWrapper, itouchBrowser, Version=1.8.1.22, Culture=neutral, PublicKeyToken=null</value>
+    <value>iPhoneBrowser.itouchBrowser.QtWrapper, itouchBrowser, Version=1.8.1.25, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;qtBuff.Parent" xml:space="preserve">
     <value>grpFiles</value>
@@ -1765,7 +1828,7 @@
     <value>pnlQt</value>
   </data>
   <data name="&gt;&gt;pnlQt.Type" xml:space="preserve">
-    <value>iPhoneBrowser.itouchBrowser.PlayPanel, itouchBrowser, Version=1.8.1.22, Culture=neutral, PublicKeyToken=null</value>
+    <value>iPhoneBrowser.itouchBrowser.PlayPanel, itouchBrowser, Version=1.8.1.25, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;pnlQt.Parent" xml:space="preserve">
     <value>grpDetails</value>
@@ -3055,43 +3118,58 @@
     <value>141, 91</value>
   </metadata>
   <data name="ToolStripMenuItemNewFolder.Size" type="System.Drawing.Size, System.Drawing">
-    <value>153, 22</value>
+    <value>217, 22</value>
   </data>
   <data name="ToolStripMenuItemNewFolder.Text" xml:space="preserve">
     <value>&amp;New Folder...</value>
   </data>
   <data name="ToolStripSeparator9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 6</value>
+    <value>214, 6</value>
   </data>
   <data name="tsmBackupFolder.Size" type="System.Drawing.Size, System.Drawing">
-    <value>153, 22</value>
+    <value>217, 22</value>
   </data>
   <data name="tsmBackupFolder.Text" xml:space="preserve">
     <value>Backup Folder</value>
   </data>
   <data name="tsmSaveFolderIn.Size" type="System.Drawing.Size, System.Drawing">
-    <value>153, 22</value>
+    <value>217, 22</value>
   </data>
   <data name="tsmSaveFolderIn.Text" xml:space="preserve">
     <value>Save Folder In...</value>
   </data>
   <data name="cmdRenameFolder.Size" type="System.Drawing.Size, System.Drawing">
-    <value>153, 22</value>
+    <value>217, 22</value>
   </data>
   <data name="cmdRenameFolder.Text" xml:space="preserve">
     <value>Rename Folder...</value>
   </data>
   <data name="ToolStripSeparator10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 6</value>
+    <value>214, 6</value>
   </data>
-  <data name="ToolStripMenuItemDeleteFolder.Size" type="System.Drawing.Size, System.Drawing">
-    <value>153, 22</value>
+  <data name="menuDeleteFolder.Size" type="System.Drawing.Size, System.Drawing">
+    <value>217, 22</value>
   </data>
-  <data name="ToolStripMenuItemDeleteFolder.Text" xml:space="preserve">
+  <data name="menuDeleteFolder.Text" xml:space="preserve">
     <value>&amp;Delete Folder</value>
   </data>
+  <data name="menuDeleteFolderWithoutSaving.Size" type="System.Drawing.Size, System.Drawing">
+    <value>217, 22</value>
+  </data>
+  <data name="menuDeleteFolderWithoutSaving.Text" xml:space="preserve">
+    <value>Delete Folder without saving</value>
+  </data>
+  <data name="ToolStripSeparator12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>214, 6</value>
+  </data>
+  <data name="menuProperty.Size" type="System.Drawing.Size, System.Drawing">
+    <value>217, 22</value>
+  </data>
+  <data name="menuProperty.Text" xml:space="preserve">
+    <value>&amp;Property</value>
+  </data>
   <data name="menuRightClickFolders.Size" type="System.Drawing.Size, System.Drawing">
-    <value>154, 126</value>
+    <value>218, 176</value>
   </data>
   <data name="&gt;&gt;menuRightClickFolders.Name" xml:space="preserve">
     <value>menuRightClickFolders</value>
@@ -3392,6 +3470,12 @@
     <value>menuRightDeleteFile</value>
   </data>
   <data name="&gt;&gt;menuRightDeleteFile.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;menuDeleteFileWithoutSaving.Name" xml:space="preserve">
+    <value>menuDeleteFileWithoutSaving</value>
+  </data>
+  <data name="&gt;&gt;menuDeleteFileWithoutSaving.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;imgFilesLargeNew.Name" xml:space="preserve">
@@ -4078,10 +4162,28 @@
   <data name="&gt;&gt;ToolStripSeparator10.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ToolStripMenuItemDeleteFolder.Name" xml:space="preserve">
-    <value>ToolStripMenuItemDeleteFolder</value>
+  <data name="&gt;&gt;menuDeleteFolder.Name" xml:space="preserve">
+    <value>menuDeleteFolder</value>
   </data>
-  <data name="&gt;&gt;ToolStripMenuItemDeleteFolder.Type" xml:space="preserve">
+  <data name="&gt;&gt;menuDeleteFolder.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;menuDeleteFolderWithoutSaving.Name" xml:space="preserve">
+    <value>menuDeleteFolderWithoutSaving</value>
+  </data>
+  <data name="&gt;&gt;menuDeleteFolderWithoutSaving.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ToolStripSeparator12.Name" xml:space="preserve">
+    <value>ToolStripSeparator12</value>
+  </data>
+  <data name="&gt;&gt;ToolStripSeparator12.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;menuProperty.Name" xml:space="preserve">
+    <value>menuProperty</value>
+  </data>
+  <data name="&gt;&gt;menuProperty.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;folderBrowserDialog.Name" xml:space="preserve">

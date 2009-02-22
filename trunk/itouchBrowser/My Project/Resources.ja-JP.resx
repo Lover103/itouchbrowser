@@ -136,10 +136,13 @@
     <value>itouchBrowser</value>
   </data>
   <data name="String15" xml:space="preserve">
-    <value>ロード中にエラーが起こりました。 エラーテキスト:</value>
+    <value>ロード中にエラーが起こりました。 エラーメッセージ:</value>
   </data>
   <data name="String16" xml:space="preserve">
-    <value>。  ごめんね。このプログラムは、直ちに終了します。</value>
+    <value>。
+
+iTunesのサービスが起動していない可能性があります。正常に導入されていることを確認してください。
+このプログラムは、直ちに終了します。</value>
   </data>
   <data name="String17" xml:space="preserve">
     <value>本当に '{0}' ファイルを削除してよろしいですか？ (削除するファイルは、自動的にバックアップされます)</value>

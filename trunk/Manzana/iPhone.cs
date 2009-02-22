@@ -57,8 +57,29 @@ namespace Manzana
         private bool wasAFC2 = false;
 		#endregion	// Locals
 
-		#region Constructors
-		/// <summary>
+        #region publics
+        /// <summary>
+        /// Directory structure
+        /// </summary>
+        public struct strDir
+        {
+            /// <summary>
+            /// directory name
+            /// </summary>
+            public string  Dir;
+            /// <summary>
+            /// is directory
+            /// </summary>
+            public bool    IsDir;
+            /// <summary>
+            /// is symbolic link
+            /// </summary>
+            public bool    IsSLink;
+        }
+        #endregion  //publics
+
+        #region Constructors
+        /// <summary>
 		/// Initializes a new iPhone object.
 		/// </summary>
 		private void doConstruction() {
@@ -284,6 +305,10 @@ namespace Manzana
             /// is directory
             /// </summary>
             public Boolean isDir;
+            /// <summary>
+            /// is symbolic link
+            /// </summary>
+            public bool isSLink;
         }
 
 		//// <summary>
@@ -330,9 +355,7 @@ namespace Manzana
         public List<strFileInfo> GetFilesInfo(string path)
         {
             IntPtr hAFCDir;
-            //string			buffer;
             Byte[] buffer;
-            //ArrayList paths;
             List<strFileInfo> paths = new List<strFileInfo>();
             string full_path;
             int len;
@@ -351,7 +374,6 @@ namespace Manzana
             }
 
             buffer = null;
-            //paths = new ArrayList();
 
             len = MobileDevice.AFCDirectoryRead(hAFC, hAFCDir, ref buffer);
 
@@ -359,17 +381,18 @@ namespace Manzana
 
             while (buffer != null)
             {
-                //if (!IsDirectory(FullPath(full_path, buffer))) {
-                bool is_dir;
+                bool isDir;
+                bool isSLink;
                 long size;
                 try
                 {
-                    this.GetFileInfo(full_path, buffer, len, out size, out is_dir);
-                    if (!is_dir)
+                    this.GetFileInfo(full_path, buffer, len, out size, out isDir, out isSLink);
+                    if (!isDir)
                     {
                         strFileInfo tmp;
                         tmp.name = buffer;
-                        tmp.isDir = is_dir;
+                        tmp.isDir = isDir;
+                        tmp.isSLink = isSLink;
                         tmp.size = size;
                         paths.Add(tmp);
                     }
@@ -379,7 +402,6 @@ namespace Manzana
                 }
             }
             MobileDevice.AFCDirectoryClose(hAFC, hAFCDir);
-            //return (string[])paths.ToArray(typeof(string));
             return paths;
         }
         /// <summary>
@@ -387,12 +409,12 @@ namespace Manzana
         /// </summary>
         /// <param name="path">The directory from which to retrieve the files.</param>
         /// <returns>A <c>String</c> array of file names in the specified directory. Names are relative to the provided directory</returns>
-        public string[] GetFiles(string path)
+        public strDir[] GetFiles(string path)
         {
             IntPtr hAFCDir;
             byte[] bbuffer;
-            string buffer;
-            List<string> paths;
+            strDir buffer;
+            List<strDir> paths;
             string full_path;
 
             if (!connected)
@@ -409,19 +431,22 @@ namespace Manzana
             }
 
             bbuffer = null;
-            paths = new List<string>();
+            paths = new List<strDir>();
             MobileDevice.AFCDirectoryRead(hAFC, hAFCDir, ref bbuffer);
-            buffer = byte2string(bbuffer);
+            buffer.Dir = byte2string(bbuffer).Normalize();
 
             while (bbuffer != null)
             {
-                if (!IsDirectory(FullPath(full_path, buffer)))
+                bool isLink;
+                if (!IsDirectory(FullPath(full_path, buffer.Dir), out isLink))
                 {
-                    paths.Add(buffer.Normalize());
+                    buffer.IsDir = false;
+                    buffer.IsSLink = isLink;
+                    paths.Add(buffer);
                 }
                 MobileDevice.AFCDirectoryRead(hAFC, hAFCDir, ref bbuffer);
                 if (bbuffer == null) break;
-                buffer = byte2string(bbuffer);
+                buffer.Dir = byte2string(bbuffer);
             }
             MobileDevice.AFCDirectoryClose(hAFC, hAFCDir);
             return paths.ToArray();
@@ -471,7 +496,8 @@ namespace Manzana
         /// <param name="len">file name.</param>
         /// <param name="size">Returns the size of the specified file or directory</param>
 		/// <param name="directory">Returns <c>true</c> if the given path describes a directory, false if it is a file.</param>
-        public void GetFileInfo(string path, byte[] fname, int len, out long size, out bool directory)
+        /// <param name="isSLink">is symbolic link</param>
+        public void GetFileInfo(string path, byte[] fname, int len, out long size, out bool directory, out bool isSLink)
         {
             IntPtr data;
             IntPtr current_data;
@@ -482,37 +508,19 @@ namespace Manzana
             string value;
             int ret;
             bool SLink = false;
-            //int i;
 
             data = IntPtr.Zero;
 
-            //Byte[] p = System.Text.Encoding.GetEncoding(0).GetBytes(path);
-            //IntPtr hPath = Marshal.AllocHGlobal(p.Length + len + 1);
-
-            //Marshal.Copy(p, 0, hPath, p.Length);
-            //for (i = 0; i < len; i++)
-            //{
-            //    Marshal.WriteByte(hPath, (p.Length + i) * Marshal.SizeOf(typeof(Byte)), fname[i]);
-            //    if (fname[i] == 0) break;
-            //}
-
             size = 0;
             directory = false;
-            //ret = MobileDevice.AFCGetFileInfo(hAFC, hPath, ref data, ref data_size);
-            //ret = MobileDevice.AFCGetFileInfo(hAFC, p, ref data, ref data_size);
-            //if (ret != 0)
-            //{
-                //path = Marshal.PtrToStringAnsi(hPath, p.Length + i);
-                ret = MobileDevice.AFCGetFileInfo(hAFC, string2bytes(path + byte2string(fname)), ref data, ref data_size);
-                if (ret != 0)
-                {
-                    // Free the unmanaged memory.
-                    //Marshal.FreeHGlobal(hPath);
-                    return;
-                }
-            //}
-            // Free the unmanaged memory.
-            //Marshal.FreeHGlobal(hPath);
+            isSLink = false;
+            path += byte2string(fname);
+
+            ret = MobileDevice.AFCGetFileInfo(hAFC, string2bytes(path), ref data, ref data_size);
+            if (ret != 0)
+            {
+                return;
+            }
 
             offset = 0;
             while (offset < data_size)
@@ -542,12 +550,16 @@ namespace Manzana
                     case "st_ifmt":
                         switch (value)
                         {
-                            case "S_IFDIR": directory = true; break;
-                            case "S_IFLNK": SLink = true; break;
+                            case "S_IFDIR": 
+                                directory = true; 
+                                break;
+                            case "S_IFLNK": 
+                                SLink = true; 
+                                break;
                         }
                         break;
                     default:
-                        SLink = false;
+                        //SLink = false;
                         break;
                 }
             }
@@ -558,6 +570,7 @@ namespace Manzana
                 if (directory = (MobileDevice.AFCDirectoryOpen(hAFC, string2bytes(path), ref hAFCDir) == 0))
                     MobileDevice.AFCDirectoryClose(hAFC, hAFCDir);
             }
+            isSLink = SLink;
         }
 
         /// <summary>
@@ -600,7 +613,9 @@ namespace Manzana
                 offset += (uint)value.Length + 1;
                 switch (name)
                 {
-                    case "st_size": size = System.Int64.Parse(value); break;
+                    case "st_size": 
+                        size = System.Int64.Parse(value);
+                        break;
                     case "st_blocks":
                         try
                         {
@@ -654,10 +669,11 @@ namespace Manzana
         /// <returns></returns>
         public long FileSize(string path, byte[] fname, int len)
         {
-			bool is_dir;
+			bool isDir;
+            bool isSLink;
 			long size;
 
-			this.GetFileInfo(path, fname, len, out size, out is_dir);
+			this.GetFileInfo(path, fname, len, out size, out isDir, out isSLink);
 			return size;
 		}
 
@@ -683,12 +699,13 @@ namespace Manzana
 		/// </summary>
 		/// <param name="path">The path for which an array of subdirectory names is returned.</param>
 		/// <returns>An array of type <c>String</c> containing the names of subdirectories in <c>path</c>.</returns>
-		public string[] GetDirectories(string path) {
+		public strDir[] GetDirectories(string path) {
 			IntPtr      hAFCDir;
 			byte[]      bbuffer;
-            string      buffer;
-			List<string>   paths;
+            strDir      buffer;
+			List<strDir>   paths;
 			string      full_path;
+            bool        isLink;
 
 			if (!connected) {
 				throw new Exception("Not connected to phone");
@@ -702,17 +719,25 @@ namespace Manzana
 			}
 
 			bbuffer = null;
-			paths = new List<string>();
+			paths = new List<strDir>();
 			MobileDevice.AFCDirectoryRead(hAFC, hAFCDir, ref bbuffer);
-            buffer = byte2string(bbuffer);
 
-			while (bbuffer!=null) {
-				if ((buffer != ".") && (buffer != "..") && IsDirectory(FullPath(full_path, buffer))) {
-					paths.Add(buffer);
+            buffer = new strDir();
+            while (bbuffer != null)
+            {
+                string dir = byte2string(bbuffer);
+                if ((dir != ".") && (dir != ".."))
+                {
+                    if (IsDirectory(FullPath(full_path, dir), out isLink)){
+                        buffer.Dir = dir;
+                        buffer.IsDir = true;
+                        buffer.IsSLink = isLink;
+		        	    paths.Add(buffer);
+                    }
 				}
 				MobileDevice.AFCDirectoryRead(hAFC, hAFCDir, ref bbuffer);
-                if (bbuffer == null) break;
-                buffer = byte2string(bbuffer);
+                //if (bbuffer == null) break;
+                //buffer = byte2string(bbuffer);
             }
 			MobileDevice.AFCDirectoryClose(hAFC, hAFCDir);
 			return paths.ToArray();
@@ -723,7 +748,7 @@ namespace Manzana
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
-        public string GetDirectory(string path)
+        public string Get1stDirectory(string path)
         {
             IntPtr hAFCDir;
             byte[] bbuffer;
@@ -748,19 +773,21 @@ namespace Manzana
             bbuffer = null;
             dirpath = "";
             MobileDevice.AFCDirectoryRead(hAFC, hAFCDir, ref bbuffer);
-            buffer = byte2string(bbuffer);
 
             while (bbuffer != null)
             {
-                if ((buffer != ".") && (buffer != "..") && IsDirectory(FullPath(full_path, buffer)))
+                buffer = byte2string(bbuffer);
+                if ((buffer != ".") && (buffer != ".."))
                 {
-                    dirpath = buffer;
-                    break;
+                    bool isLink;
+                    if (IsDirectory(FullPath(full_path, buffer), out isLink))
+                    {
+                        dirpath = buffer;
+                        break;
+                    }
                 }
                 MobileDevice.AFCDirectoryRead(hAFC, hAFCDir, ref bbuffer);
-                if (cnt++ > 20) break;
-                if (bbuffer == null) break;
-                buffer = byte2string(bbuffer);
+                if (cnt++ > 15) break;
             }
             MobileDevice.AFCDirectoryClose(hAFC, hAFCDir);
             return dirpath;
@@ -819,25 +846,76 @@ namespace Manzana
 		/// <param name="path">The path to test.</param>
         /// <param name="fname">file name</param>
         /// <param name="len">file name length.</param>
+        /// <param name="isSLink">return is symbolic link</param>
         /// <returns><c>true</c> if path refers to an existing directory, otherwise <c>false</c>.</returns>
-		public bool IsDirectory(string path, byte[] fname, int len) {
+		public bool IsDirectory(string path, byte[] fname, int len, out bool isSLink) {
 			bool is_dir;
-			long size;
+			is_dir = IsDirectory(path + byte2string(fname), out isSLink);
 
-			this.GetFileInfo(path, fname, len, out size, out is_dir);
-			return is_dir;
+            return is_dir;
 		}
         /// <summary>
         /// 
         /// </summary>
         /// <param name="path"></param>
+        /// <param name="isSLink">return is symbolic link</param>
         /// <returns></returns>
-        public bool IsDirectory(string path)
+        public bool IsDirectory(string path, out bool isSLink)
         {
-            bool is_dir;
-            long size;
+            IntPtr current_data;
+            uint data_size = 0;
+            string name;
+            string value;
+            int ret;
 
-            this.GetFileInfo(path, out size, out is_dir);
+            IntPtr data = IntPtr.Zero;
+            bool is_dir = false;
+            isSLink = false;
+
+            ret = MobileDevice.AFCGetFileInfo(hAFC, string2bytes(path), ref data, ref data_size);
+            if (ret != 0)
+            {
+                return is_dir;
+            }
+
+            //System.Diagnostics.Debug.Write(path + ", ");
+            uint offset = 0;
+            while (offset < data_size)
+            {
+                current_data = new IntPtr(data.ToInt32() + offset);
+                name = Marshal.PtrToStringAnsi(current_data);
+                offset += (uint)name.Length + 1;
+
+                current_data = new IntPtr(data.ToInt32() + offset);
+                value = Marshal.PtrToStringAnsi(current_data);
+                offset += (uint)value.Length + 1;
+                if (name == "st_ifmt")
+                {
+                    switch (value)
+                    {
+                        case "S_IFDIR":
+                            is_dir = true; 
+                            break;
+                        case "S_IFLNK":
+                            isSLink = true; 
+                            break;
+                    }
+                    break;
+                }
+            }
+            if (isSLink)
+            { // test for symbolic directory link
+                IntPtr hAFCDir = new IntPtr();
+
+                if (MobileDevice.AFCDirectoryOpen(hAFC, string2bytes(path), ref hAFCDir) == 0)
+                {
+                    MobileDevice.AFCDirectoryClose(hAFC, hAFCDir);
+                    is_dir = true;
+                }
+                else
+                    is_dir = false;
+            }
+
             return is_dir;
         }
 
@@ -849,7 +927,9 @@ namespace Manzana
 			string full_path;
 
 			full_path = FullPath(current_directory, path);
-			if (IsDirectory(full_path)) {
+            bool isSLink;
+            if (IsDirectory(full_path, out isSLink))
+            {
 				MobileDevice.AFCRemovePath(hAFC, string2bytes(full_path));
 			}
 		}
@@ -868,7 +948,9 @@ namespace Manzana
 			}
 
 			full_path = FullPath(current_directory, path);
-			if (IsDirectory(full_path)) {
+            bool isSLink;
+            if (IsDirectory(full_path, out isSLink))
+            {
 				InternalDeleteDirectory(path);
 			}
 				
@@ -903,7 +985,9 @@ namespace Manzana
 			string new_path;
 
 			new_path = FullPath(current_directory, path);
-			if (!IsDirectory(new_path)) {
+            bool isSLink;
+            if (!IsDirectory(new_path, out isSLink))
+            {
 				throw new Exception("Invalid directory specified");
 			}
 			current_directory = new_path;
@@ -912,15 +996,52 @@ namespace Manzana
         internal static byte[] string2bytes(string str)
         {
             byte[] byteArray = Encoding.UTF8.GetBytes(str);
+
+            //System.Diagnostics.Debug.Write(str + " ");
+            //for (int i = 0; i < byteArray.Length; i++)
+            //{
+            //    if (byteArray[i] == 0) break;
+            //    System.Diagnostics.Debug.Write(String.Format("{0:x},", byteArray[i]));
+            //}
+            //System.Diagnostics.Debug.WriteLine("");
+
             return byteArray;
         }
 
         internal static string byte2string(byte[] bstr)
         {
+            byte[] b = bstr;
+            int p = 0;
+
+            for (int i = 0; i < bstr.Length; i++)
+            {
+                if (bstr[i] == 0) break;
+                //System.Diagnostics.Debug.Write(String.Format("{0:x},", bstr[i]));
+                if (bstr[i] == 0xe3)
+                {
+                    if (bstr[i+1] == 0x82)
+                    {
+                        if (bstr[i+2] == 0x99)
+                        {
+                            bstr[p-1]++;
+                            i += 3;
+                        }
+                        else if (bstr[i + 2] == 0x9A)
+                        {
+                            bstr[p - 1] += 2;
+                            i += 3;
+                        }
+                    }
+                }
+                b[p++] = bstr[i];
+            }
+            b[p] = 0;
             // Encode the array of chars.
             string str = Encoding.UTF8.GetString(bstr);
-            int p = str.IndexOf('\0');
+            p = str.IndexOf('\0');
             str = str.Substring(0, p);
+
+            //System.Diagnostics.Debug.WriteLine(" " + str);
 
             return str;  //asciiString
         }
@@ -998,17 +1119,18 @@ namespace Manzana
 
 		private void InternalDeleteDirectory(string path) {
 			string full_path;
-			string[] contents;
+			strDir[] contents;
 
 			full_path = FullPath(current_directory, path);
-			contents = GetFiles(path);
-			for (int i = 0; i < contents.Length; i++) {
-				DeleteFile(full_path + "/" + contents[i]);
+            contents = GetFiles(path);
+            for (int i = 0; i < contents.Length; i++)
+            {
+                DeleteFile(full_path + "/" + contents[i].Dir);
 			}
 
 			contents = GetDirectories(path);
 			for (int i = 0; i < contents.Length; i++) {
-				InternalDeleteDirectory(full_path + "/" + contents[i]);
+				InternalDeleteDirectory(full_path + "/" + contents[i].Dir);
 			}
 
 			DeleteDirectory(path);

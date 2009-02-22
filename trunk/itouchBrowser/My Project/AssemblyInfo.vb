@@ -10,7 +10,7 @@ Imports System.Runtime.InteropServices
 
 <Assembly: AssemblyTitle("itouchBrowser")> 
 <Assembly: AssemblyDescription("File browser for your iPod touch")> 
-<Assembly: AssemblyCompany("Cranium Consulting and Custom Software")> 
+<Assembly: AssemblyCompany("")> 
 <Assembly: AssemblyProduct("itouchBrowser")> 
 <Assembly: AssemblyCopyright("Copyright ©  2007")> 
 <Assembly: AssemblyTrademark("")> 
@@ -31,5 +31,5 @@ Imports System.Runtime.InteropServices
 ' by using the '*' as shown below:
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("1.8.1.23")> 
-<Assembly: AssemblyFileVersion("1.8.1.23")> 
+<Assembly: AssemblyVersion("1.8.1.25")> 
+<Assembly: AssemblyFileVersion("1.8.1.25")> 

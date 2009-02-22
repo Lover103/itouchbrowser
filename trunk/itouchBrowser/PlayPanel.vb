@@ -20,6 +20,8 @@ Option Strict On
 
 Public Class PlayPanel
 
+    Private mvarLyricRatio As Single = 40.0
+
     Public Property ImageLocation() As String
         Get
             Return picArtistImage.ImageLocation
@@ -58,6 +60,8 @@ Public Class PlayPanel
             Me.txtLyric.Visible = value
             If value = False Then
                 Me.txtLyric.Text = ""
+            Else
+                QT.Height = Splitter1.Top
             End If
             '_resize()
         End Set
@@ -205,8 +209,16 @@ Public Class PlayPanel
             Dim h As Integer = 20
             Dim w As Integer = Me.Width - splBase.SplitterDistance - 4
 
-            If Me.LyricVisible = False Then
-                h = spcLeft.Height - 2
+            If mvarLyricVisible = False Then
+                h = spcLeft.Height - 4
+            Else
+                If qtPlugin.isMusic Then
+                    'h = spcLeft.Height - 20
+                    txtLyric.Height = spcLeft.Height - h - 4
+                Else
+                    txtLyric.Height = CInt(spcLeft.Height * mvarLyricRatio / 100)
+                    h = spcLeft.Height - txtLyric.Height - 4
+                End If
             End If
 
             qtPlugin.Size = New Size(w, h)
@@ -240,8 +252,8 @@ Public Class PlayPanel
         Me.PauseMovie()
         Me.Enabled = False
         Try
-            QT.ShowExportDialog()
-            QT.Movie.Play()
+            qtPlugin.ShowExportDialog()
+            qtPlugin.Movie.Play()
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Exclamation)
         Finally
@@ -252,11 +264,19 @@ Public Class PlayPanel
 
     Friend Sub PauseMovie()
         'if qt.Movie.
-        QT.Movie.Pause()
+        qtPlugin.Movie.Pause()
     End Sub
 
     Private Sub PlayPanel_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         ResumeLayout()
+    End Sub
+
+    Private Sub Splitter1_SplitterMoved(ByVal sender As System.Object, ByVal e As System.Windows.Forms.SplitterEventArgs) _
+        Handles Splitter1.SplitterMoved
+
+        qtPlugin.Height = Splitter1.Top
+        mvarLyricRatio = CSng(txtLyric.Height / spcLeft.Height * 100)
+
     End Sub
 
 End Class
