@@ -1,5 +1,22 @@
 Option Explicit On
 Option Strict On
+' =============================================================================
+' *
+' *  System      : itouchBrowser
+' *  Module name : BackupDirDialog.vb
+' *  Description : Backup directory dialog box
+' *
+' *    %Z% %I% %W% %G% %U% [ %H% %T% ]
+' *    $Header:  $
+' *
+' *  (c) Copyright . 2008. All rights reserved.
+' *
+' *  Modification history :
+' *    Date        Level  Author        Description
+' *    ----------  -----  ------------  -----------------------------------
+' *    2008/07/29  1.00   Sugi          Initial release
+' *
+' =============================================================================
 
 Imports System.Windows.Forms
 

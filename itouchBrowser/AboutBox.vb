@@ -9,7 +9,7 @@ Option Explicit On
 ' *    %Z% %I% %W% %G% %U% [ %H% %T% ]
 ' *    $Header:  $
 ' *
-' *  (c) Copyright . 2008. All rights reserved.
+' *  (c) Copyright sugi. 2008. All rights reserved.
 ' *
 ' *  Modification history :
 ' *    Date        Level  Author        Description

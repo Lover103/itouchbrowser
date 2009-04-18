@@ -38,6 +38,8 @@ Partial Class frmMain
         Me.grpFolders = New System.Windows.Forms.GroupBox
         Me.tabFolder = New System.Windows.Forms.TabControl
         Me.ftabFolder = New System.Windows.Forms.TabPage
+        Me.btnFind = New System.Windows.Forms.Button
+        Me.txtFind = New System.Windows.Forms.TextBox
         Me.trvFolders = New System.Windows.Forms.TreeView
         Me.imgFolders = New System.Windows.Forms.ImageList(Me.components)
         Me.ftabiTunes = New System.Windows.Forms.TabPage
@@ -69,7 +71,7 @@ Partial Class frmMain
         Me.menuRightReplaceFile = New System.Windows.Forms.ToolStripMenuItem
         Me.menuRightDeleteFile = New System.Windows.Forms.ToolStripMenuItem
         Me.menuDeleteFileWithoutSaving = New System.Windows.Forms.ToolStripMenuItem
-        Me.imgFilesLargeNew = New System.Windows.Forms.ImageList(Me.components)
+        Me.imgThumbnail = New System.Windows.Forms.ImageList(Me.components)
         Me.imgFilesSmallNew = New System.Windows.Forms.ImageList(Me.components)
         Me.qtBuff = New iPhoneBrowser.itouchBrowser.QtWrapper
         Me.grpDetails = New System.Windows.Forms.GroupBox
@@ -77,12 +79,13 @@ Partial Class frmMain
         Me.chkZoom = New System.Windows.Forms.CheckBox
         Me.chkPreviewEnabled = New System.Windows.Forms.CheckBox
         Me.btnPreview = New System.Windows.Forms.Button
-        Me.txtFileDetails = New System.Windows.Forms.TextBox
-        Me.WebBrws = New System.Windows.Forms.WebBrowser
-        Me.picFileDetails = New System.Windows.Forms.PictureBox
         Me.tabViewType = New System.Windows.Forms.TabControl
         Me.TabPage3 = New System.Windows.Forms.TabPage
         Me.TabPage4 = New System.Windows.Forms.TabPage
+        Me.picFileDetails = New System.Windows.Forms.PictureBox
+        Me.txtFileDetails = New System.Windows.Forms.TextBox
+        Me.WebBrws = New System.Windows.Forms.WebBrowser
+        Me.imgFilesLargeNew = New System.Windows.Forms.ImageList(Me.components)
         Me.menuRightClickQt = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.tsmQtFullscreen = New System.Windows.Forms.ToolStripMenuItem
         Me.tsmQtExportDialog = New System.Windows.Forms.ToolStripMenuItem
@@ -101,13 +104,6 @@ Partial Class frmMain
         Me.tsmRestructureDB = New System.Windows.Forms.ToolStripMenuItem
         Me.tsmCleanUpBackupFiles = New System.Windows.Forms.ToolStripMenuItem
         Me.ToolStripMenuItemViewBackups = New System.Windows.Forms.ToolStripMenuItem
-        Me.ToolStripSeparator7 = New System.Windows.Forms.ToolStripSeparator
-        Me.menuSaveSummerboardTheme = New System.Windows.Forms.ToolStripMenuItem
-        Me.tsmAsSummerboardFolder = New System.Windows.Forms.ToolStripMenuItem
-        Me.tsmAsPXLPackage = New System.Windows.Forms.ToolStripMenuItem
-        Me.ToolStripMenuItem4 = New System.Windows.Forms.ToolStripMenuItem
-        Me.tsmAsCustomizeFolders = New System.Windows.Forms.ToolStripMenuItem
-        Me.AsPXLPackageToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem
         Me.tssSeparator = New System.Windows.Forms.ToolStripSeparator
         Me.tsmQtExportDialog1 = New System.Windows.Forms.ToolStripMenuItem
         Me.tsmQtMovieInfo1 = New System.Windows.Forms.ToolStripMenuItem
@@ -186,23 +182,27 @@ Partial Class frmMain
         Me.ToolStripDropDownButton1 = New System.Windows.Forms.ToolStripDropDownButton
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.tsmHomePage = New System.Windows.Forms.ToolStripMenuItem
+        Me.tsmCheckALatestVersion = New System.Windows.Forms.ToolStripMenuItem
+        Me.tsmModificationHistory = New System.Windows.Forms.ToolStripMenuItem
         Me.ToolStripSeparator11 = New System.Windows.Forms.ToolStripSeparator
         Me.tslAddress = New System.Windows.Forms.ToolStripLabel
         Me.tstAddress = New System.Windows.Forms.ToolStripTextBox
         Me.tsbAddress = New System.Windows.Forms.ToolStripButton
+        Me.tsbZoom = New System.Windows.Forms.ToolStripButton
+        Me.tsbFullScreen = New System.Windows.Forms.ToolStripButton
         Me.fileSaveDialog = New System.Windows.Forms.SaveFileDialog
         Me.fileOpenDialog = New System.Windows.Forms.OpenFileDialog
         Me.menuRightClickFolders = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.ToolStripMenuItemNewFolder = New System.Windows.Forms.ToolStripMenuItem
+        Me.tsmNewFolder = New System.Windows.Forms.ToolStripMenuItem
         Me.ToolStripSeparator9 = New System.Windows.Forms.ToolStripSeparator
         Me.tsmBackupFolder = New System.Windows.Forms.ToolStripMenuItem
         Me.tsmSaveFolderIn = New System.Windows.Forms.ToolStripMenuItem
-        Me.cmdRenameFolder = New System.Windows.Forms.ToolStripMenuItem
+        Me.tsmRenameFolder = New System.Windows.Forms.ToolStripMenuItem
         Me.ToolStripSeparator10 = New System.Windows.Forms.ToolStripSeparator
         Me.menuDeleteFolder = New System.Windows.Forms.ToolStripMenuItem
         Me.menuDeleteFolderWithoutSaving = New System.Windows.Forms.ToolStripMenuItem
         Me.ToolStripSeparator12 = New System.Windows.Forms.ToolStripSeparator
-        Me.menuProperty = New System.Windows.Forms.ToolStripMenuItem
+        Me.tsmProperty = New System.Windows.Forms.ToolStripMenuItem
         Me.folderBrowserDialog = New System.Windows.Forms.FolderBrowserDialog
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.splMain.Panel1.SuspendLayout()
@@ -223,8 +223,8 @@ Partial Class frmMain
         Me.menuRightClickFiles.SuspendLayout()
         CType(Me.qtBuff, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.grpDetails.SuspendLayout()
-        CType(Me.picFileDetails, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tabViewType.SuspendLayout()
+        CType(Me.picFileDetails, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.menuRightClickQt.SuspendLayout()
         Me.tlbStatusStrip.SuspendLayout()
         Me.toolStrip.SuspendLayout()
@@ -234,6 +234,7 @@ Partial Class frmMain
         'splMain
         '
         Me.splMain.AllowDrop = True
+        Me.splMain.BackColor = System.Drawing.SystemColors.Control
         resources.ApplyResources(Me.splMain, "splMain")
         Me.splMain.MinimumSize = New System.Drawing.Size(100, 92)
         Me.splMain.Name = "splMain"
@@ -267,10 +268,23 @@ Partial Class frmMain
         '
         'ftabFolder
         '
+        Me.ftabFolder.Controls.Add(Me.btnFind)
+        Me.ftabFolder.Controls.Add(Me.txtFind)
         Me.ftabFolder.Controls.Add(Me.trvFolders)
         resources.ApplyResources(Me.ftabFolder, "ftabFolder")
         Me.ftabFolder.Name = "ftabFolder"
         Me.ftabFolder.UseVisualStyleBackColor = True
+        '
+        'btnFind
+        '
+        resources.ApplyResources(Me.btnFind, "btnFind")
+        Me.btnFind.Name = "btnFind"
+        Me.btnFind.UseVisualStyleBackColor = True
+        '
+        'txtFind
+        '
+        resources.ApplyResources(Me.txtFind, "txtFind")
+        Me.txtFind.Name = "txtFind"
         '
         'trvFolders
         '
@@ -287,8 +301,7 @@ Partial Class frmMain
         Me.imgFolders.TransparentColor = System.Drawing.Color.Transparent
         Me.imgFolders.Images.SetKeyName(0, "Folder.ico")
         Me.imgFolders.Images.SetKeyName(1, "folderopen.ico")
-        Me.imgFolders.Images.SetKeyName(2, "folder_closed.gif")
-        Me.imgFolders.Images.SetKeyName(3, "folder_open.gif")
+        Me.imgFolders.Images.SetKeyName(2, "folderopen.ico")
         '
         'ftabiTunes
         '
@@ -351,6 +364,7 @@ Partial Class frmMain
         '
         'splFiles
         '
+        Me.splFiles.BackColor = System.Drawing.SystemColors.Control
         resources.ApplyResources(Me.splFiles, "splFiles")
         Me.splFiles.MinimumSize = New System.Drawing.Size(100, 92)
         Me.splFiles.Name = "splFiles"
@@ -391,14 +405,16 @@ Partial Class frmMain
         '
         Me.lstFiles.AllowDrop = True
         resources.ApplyResources(Me.lstFiles, "lstFiles")
+        Me.lstFiles.BackColor = System.Drawing.Color.PowderBlue
         Me.lstFiles.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.cohFilename, Me.cohSize, Me.cohAttribute, Me.cohFiletype})
         Me.lstFiles.ContextMenuStrip = Me.menuRightClickFiles
-        Me.lstFiles.LargeImageList = Me.imgFilesLargeNew
+        Me.lstFiles.LargeImageList = Me.imgThumbnail
         Me.lstFiles.Name = "lstFiles"
         Me.lstFiles.ShowGroups = False
         Me.lstFiles.SmallImageList = Me.imgFilesSmallNew
         Me.lstFiles.UseCompatibleStateImageBehavior = False
         Me.lstFiles.View = System.Windows.Forms.View.Details
+        Me.lstFiles.VirtualListSize = 30
         '
         'cohFilename
         '
@@ -478,31 +494,17 @@ Partial Class frmMain
         Me.menuDeleteFileWithoutSaving.Name = "menuDeleteFileWithoutSaving"
         resources.ApplyResources(Me.menuDeleteFileWithoutSaving, "menuDeleteFileWithoutSaving")
         '
-        'imgFilesLargeNew
+        'imgThumbnail
         '
-        Me.imgFilesLargeNew.ImageStream = CType(resources.GetObject("imgFilesLargeNew.ImageStream"), System.Windows.Forms.ImageListStreamer)
-        Me.imgFilesLargeNew.TransparentColor = System.Drawing.Color.Transparent
-        Me.imgFilesLargeNew.Images.SetKeyName(0, "help.png")
-        Me.imgFilesLargeNew.Images.SetKeyName(1, "AudioCD.png")
-        Me.imgFilesLargeNew.Images.SetKeyName(2, "VideoCamera.png")
-        Me.imgFilesLargeNew.Images.SetKeyName(3, "copy.png")
-        Me.imgFilesLargeNew.Images.SetKeyName(4, "Camera.png")
-        Me.imgFilesLargeNew.Images.SetKeyName(5, "AudioFile.png")
-        Me.imgFilesLargeNew.Images.SetKeyName(6, "dbs.ico")
-        Me.imgFilesLargeNew.Images.SetKeyName(7, "Network_Internet.png")
+        Me.imgThumbnail.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit
+        resources.ApplyResources(Me.imgThumbnail, "imgThumbnail")
+        Me.imgThumbnail.TransparentColor = System.Drawing.Color.Transparent
         '
         'imgFilesSmallNew
         '
         Me.imgFilesSmallNew.ImageStream = CType(resources.GetObject("imgFilesSmallNew.ImageStream"), System.Windows.Forms.ImageListStreamer)
         Me.imgFilesSmallNew.TransparentColor = System.Drawing.Color.Transparent
         Me.imgFilesSmallNew.Images.SetKeyName(0, "help.png")
-        Me.imgFilesSmallNew.Images.SetKeyName(1, "AudioCD.png")
-        Me.imgFilesSmallNew.Images.SetKeyName(2, "VideoCamera.png")
-        Me.imgFilesSmallNew.Images.SetKeyName(3, "copy.png")
-        Me.imgFilesSmallNew.Images.SetKeyName(4, "Camera.png")
-        Me.imgFilesSmallNew.Images.SetKeyName(5, "AudioFile.png")
-        Me.imgFilesSmallNew.Images.SetKeyName(6, "dbs.ico")
-        Me.imgFilesSmallNew.Images.SetKeyName(7, "Network_Internet.png")
         '
         'qtBuff
         '
@@ -518,10 +520,10 @@ Partial Class frmMain
         Me.grpDetails.Controls.Add(Me.chkZoom)
         Me.grpDetails.Controls.Add(Me.chkPreviewEnabled)
         Me.grpDetails.Controls.Add(Me.btnPreview)
+        Me.grpDetails.Controls.Add(Me.tabViewType)
+        Me.grpDetails.Controls.Add(Me.picFileDetails)
         Me.grpDetails.Controls.Add(Me.txtFileDetails)
         Me.grpDetails.Controls.Add(Me.WebBrws)
-        Me.grpDetails.Controls.Add(Me.picFileDetails)
-        Me.grpDetails.Controls.Add(Me.tabViewType)
         resources.ApplyResources(Me.grpDetails, "grpDetails")
         Me.grpDetails.Name = "grpDetails"
         Me.grpDetails.TabStop = False
@@ -532,7 +534,7 @@ Partial Class frmMain
         Me.pnlQt.BottomHeight = 29
         Me.pnlQt.FileName = ""
         Me.pnlQt.ImageLocation = Nothing
-        Me.pnlQt.LeftWidth = 25
+        Me.pnlQt.LeftWidth = 152
         Me.pnlQt.Lyric = ""
         Me.pnlQt.LyricVisible = True
         Me.pnlQt.MovieInfo = ""
@@ -563,25 +565,6 @@ Partial Class frmMain
         Me.btnPreview.TabStop = False
         Me.btnPreview.UseVisualStyleBackColor = True
         '
-        'txtFileDetails
-        '
-        resources.ApplyResources(Me.txtFileDetails, "txtFileDetails")
-        Me.txtFileDetails.Name = "txtFileDetails"
-        Me.txtFileDetails.ReadOnly = True
-        '
-        'WebBrws
-        '
-        resources.ApplyResources(Me.WebBrws, "WebBrws")
-        Me.WebBrws.MinimumSize = New System.Drawing.Size(20, 20)
-        Me.WebBrws.Name = "WebBrws"
-        '
-        'picFileDetails
-        '
-        resources.ApplyResources(Me.picFileDetails, "picFileDetails")
-        Me.picFileDetails.BackColor = System.Drawing.SystemColors.Control
-        Me.picFileDetails.Name = "picFileDetails"
-        Me.picFileDetails.TabStop = False
-        '
         'tabViewType
         '
         resources.ApplyResources(Me.tabViewType, "tabViewType")
@@ -602,6 +585,31 @@ Partial Class frmMain
         resources.ApplyResources(Me.TabPage4, "TabPage4")
         Me.TabPage4.Name = "TabPage4"
         Me.TabPage4.UseVisualStyleBackColor = True
+        '
+        'picFileDetails
+        '
+        resources.ApplyResources(Me.picFileDetails, "picFileDetails")
+        Me.picFileDetails.BackColor = System.Drawing.SystemColors.Control
+        Me.picFileDetails.Name = "picFileDetails"
+        Me.picFileDetails.TabStop = False
+        '
+        'txtFileDetails
+        '
+        resources.ApplyResources(Me.txtFileDetails, "txtFileDetails")
+        Me.txtFileDetails.Name = "txtFileDetails"
+        Me.txtFileDetails.ReadOnly = True
+        '
+        'WebBrws
+        '
+        resources.ApplyResources(Me.WebBrws, "WebBrws")
+        Me.WebBrws.MinimumSize = New System.Drawing.Size(20, 20)
+        Me.WebBrws.Name = "WebBrws"
+        '
+        'imgFilesLargeNew
+        '
+        Me.imgFilesLargeNew.ImageStream = CType(resources.GetObject("imgFilesLargeNew.ImageStream"), System.Windows.Forms.ImageListStreamer)
+        Me.imgFilesLargeNew.TransparentColor = System.Drawing.Color.Transparent
+        Me.imgFilesLargeNew.Images.SetKeyName(0, "help.png")
         '
         'menuRightClickQt
         '
@@ -676,7 +684,7 @@ Partial Class frmMain
         '
         Me.tlbProgressBar.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
         resources.ApplyResources(Me.tlbProgressBar, "tlbProgressBar")
-        Me.tlbProgressBar.Margin = New System.Windows.Forms.Padding(0, 4, 10, 4)
+        Me.tlbProgressBar.Margin = New System.Windows.Forms.Padding(0, 4, 4, 4)
         Me.tlbProgressBar.MergeIndex = 0
         Me.tlbProgressBar.Name = "tlbProgressBar"
         Me.tlbProgressBar.Overflow = System.Windows.Forms.ToolStripItemOverflow.Always
@@ -686,13 +694,13 @@ Partial Class frmMain
         '
         resources.ApplyResources(Me.toolStrip, "toolStrip")
         Me.toolStrip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
-        Me.toolStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmFile, Me.mnuView, Me.mnuGoTo, Me.mnuFavorites, Me.ToolStripDropDownButton2, Me.ToolStripDropDownButton1, Me.ToolStripSeparator11, Me.tslAddress, Me.tstAddress, Me.tsbAddress})
+        Me.toolStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmFile, Me.mnuView, Me.mnuGoTo, Me.mnuFavorites, Me.ToolStripDropDownButton2, Me.ToolStripDropDownButton1, Me.ToolStripSeparator11, Me.tslAddress, Me.tstAddress, Me.tsbAddress, Me.tsbZoom, Me.tsbFullScreen})
         Me.toolStrip.Name = "toolStrip"
         '
         'tsmFile
         '
         Me.tsmFile.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
-        Me.tsmFile.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmCleanUp, Me.ToolStripMenuItemViewBackups, Me.ToolStripSeparator7, Me.menuSaveSummerboardTheme, Me.ToolStripMenuItem4, Me.tssSeparator, Me.tsmQtExportDialog1, Me.tsmQtMovieInfo1, Me.tsmQtInfo, Me.ToolStripSeparator3, Me.ToolStripMenuItemExit})
+        Me.tsmFile.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmCleanUp, Me.ToolStripMenuItemViewBackups, Me.tssSeparator, Me.tsmQtExportDialog1, Me.tsmQtMovieInfo1, Me.tsmQtInfo, Me.ToolStripSeparator3, Me.ToolStripMenuItemExit})
         resources.ApplyResources(Me.tsmFile, "tsmFile")
         Me.tsmFile.Name = "tsmFile"
         '
@@ -721,43 +729,6 @@ Partial Class frmMain
         '
         Me.ToolStripMenuItemViewBackups.Name = "ToolStripMenuItemViewBackups"
         resources.ApplyResources(Me.ToolStripMenuItemViewBackups, "ToolStripMenuItemViewBackups")
-        '
-        'ToolStripSeparator7
-        '
-        Me.ToolStripSeparator7.Name = "ToolStripSeparator7"
-        resources.ApplyResources(Me.ToolStripSeparator7, "ToolStripSeparator7")
-        '
-        'menuSaveSummerboardTheme
-        '
-        Me.menuSaveSummerboardTheme.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmAsSummerboardFolder, Me.tsmAsPXLPackage})
-        Me.menuSaveSummerboardTheme.Name = "menuSaveSummerboardTheme"
-        resources.ApplyResources(Me.menuSaveSummerboardTheme, "menuSaveSummerboardTheme")
-        '
-        'tsmAsSummerboardFolder
-        '
-        Me.tsmAsSummerboardFolder.Name = "tsmAsSummerboardFolder"
-        resources.ApplyResources(Me.tsmAsSummerboardFolder, "tsmAsSummerboardFolder")
-        '
-        'tsmAsPXLPackage
-        '
-        resources.ApplyResources(Me.tsmAsPXLPackage, "tsmAsPXLPackage")
-        Me.tsmAsPXLPackage.Name = "tsmAsPXLPackage"
-        '
-        'ToolStripMenuItem4
-        '
-        Me.ToolStripMenuItem4.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmAsCustomizeFolders, Me.AsPXLPackageToolStripMenuItem1})
-        Me.ToolStripMenuItem4.Name = "ToolStripMenuItem4"
-        resources.ApplyResources(Me.ToolStripMenuItem4, "ToolStripMenuItem4")
-        '
-        'tsmAsCustomizeFolders
-        '
-        Me.tsmAsCustomizeFolders.Name = "tsmAsCustomizeFolders"
-        resources.ApplyResources(Me.tsmAsCustomizeFolders, "tsmAsCustomizeFolders")
-        '
-        'AsPXLPackageToolStripMenuItem1
-        '
-        resources.ApplyResources(Me.AsPXLPackageToolStripMenuItem1, "AsPXLPackageToolStripMenuItem1")
-        Me.AsPXLPackageToolStripMenuItem1.Name = "AsPXLPackageToolStripMenuItem1"
         '
         'tssSeparator
         '
@@ -996,7 +967,7 @@ Partial Class frmMain
         '
         Me.IComicToolStripMenuItem.Name = "IComicToolStripMenuItem"
         resources.ApplyResources(Me.IComicToolStripMenuItem, "IComicToolStripMenuItem")
-        Me.IComicToolStripMenuItem.Tag = "/private/var/mobile/Media/Comic/"
+        Me.IComicToolStripMenuItem.Tag = "/private/var/mobile/Media/Comic"
         '
         'tsmEBooks
         '
@@ -1093,9 +1064,10 @@ Partial Class frmMain
         '
         'ToolStripDropDownButton2
         '
-        Me.ToolStripDropDownButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
-        Me.ToolStripDropDownButton2.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmConfirmDeletions, Me.tsmIgnoreThumbsdb, Me.tsmIgnoreDSStore, Me.tsmIgnoreCacheFile, Me.tsmBackupControl, Me.tsmConvertPNGs, Me.ToolStripSeparator8, Me.tsmDisplaySongTitle, Me.tsmShowPreviews, Me.tsmPictureBackground, Me.tsmBackupDirectory})
+        Me.ToolStripDropDownButton2.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
         resources.ApplyResources(Me.ToolStripDropDownButton2, "ToolStripDropDownButton2")
+        Me.ToolStripDropDownButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripDropDownButton2.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmConfirmDeletions, Me.tsmIgnoreThumbsdb, Me.tsmIgnoreDSStore, Me.tsmIgnoreCacheFile, Me.tsmBackupControl, Me.tsmConvertPNGs, Me.ToolStripSeparator8, Me.tsmDisplaySongTitle, Me.tsmShowPreviews, Me.tsmPictureBackground, Me.tsmBackupDirectory})
         Me.ToolStripDropDownButton2.Name = "ToolStripDropDownButton2"
         '
         'tsmConfirmDeletions
@@ -1216,7 +1188,7 @@ Partial Class frmMain
         'ToolStripDropDownButton1
         '
         Me.ToolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
-        Me.ToolStripDropDownButton1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AboutToolStripMenuItem, Me.tsmHomePage})
+        Me.ToolStripDropDownButton1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AboutToolStripMenuItem, Me.tsmHomePage, Me.tsmCheckALatestVersion, Me.tsmModificationHistory})
         resources.ApplyResources(Me.ToolStripDropDownButton1, "ToolStripDropDownButton1")
         Me.ToolStripDropDownButton1.Name = "ToolStripDropDownButton1"
         '
@@ -1229,6 +1201,16 @@ Partial Class frmMain
         '
         Me.tsmHomePage.Name = "tsmHomePage"
         resources.ApplyResources(Me.tsmHomePage, "tsmHomePage")
+        '
+        'tsmCheckALatestVersion
+        '
+        Me.tsmCheckALatestVersion.Name = "tsmCheckALatestVersion"
+        resources.ApplyResources(Me.tsmCheckALatestVersion, "tsmCheckALatestVersion")
+        '
+        'tsmModificationHistory
+        '
+        Me.tsmModificationHistory.Name = "tsmModificationHistory"
+        resources.ApplyResources(Me.tsmModificationHistory, "tsmModificationHistory")
         '
         'ToolStripSeparator11
         '
@@ -1251,20 +1233,37 @@ Partial Class frmMain
         resources.ApplyResources(Me.tsbAddress, "tsbAddress")
         Me.tsbAddress.Name = "tsbAddress"
         '
+        'tsbZoom
+        '
+        Me.tsbZoom.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
+        Me.tsbZoom.CheckOnClick = True
+        Me.tsbZoom.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        resources.ApplyResources(Me.tsbZoom, "tsbZoom")
+        Me.tsbZoom.Name = "tsbZoom"
+        '
+        'tsbFullScreen
+        '
+        Me.tsbFullScreen.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
+        Me.tsbFullScreen.CheckOnClick = True
+        Me.tsbFullScreen.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.tsbFullScreen.Image = Global.iPhoneBrowser.itouchBrowser.My.Resources.Resources.FullScreen
+        resources.ApplyResources(Me.tsbFullScreen, "tsbFullScreen")
+        Me.tsbFullScreen.Name = "tsbFullScreen"
+        '
         'fileSaveDialog
         '
         Me.fileSaveDialog.AddExtension = False
         '
         'menuRightClickFolders
         '
-        Me.menuRightClickFolders.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItemNewFolder, Me.ToolStripSeparator9, Me.tsmBackupFolder, Me.tsmSaveFolderIn, Me.cmdRenameFolder, Me.ToolStripSeparator10, Me.menuDeleteFolder, Me.menuDeleteFolderWithoutSaving, Me.ToolStripSeparator12, Me.menuProperty})
+        Me.menuRightClickFolders.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmNewFolder, Me.ToolStripSeparator9, Me.tsmBackupFolder, Me.tsmSaveFolderIn, Me.tsmRenameFolder, Me.ToolStripSeparator10, Me.menuDeleteFolder, Me.menuDeleteFolderWithoutSaving, Me.ToolStripSeparator12, Me.tsmProperty})
         Me.menuRightClickFolders.Name = "menuRightClickFolders"
         resources.ApplyResources(Me.menuRightClickFolders, "menuRightClickFolders")
         '
-        'ToolStripMenuItemNewFolder
+        'tsmNewFolder
         '
-        Me.ToolStripMenuItemNewFolder.Name = "ToolStripMenuItemNewFolder"
-        resources.ApplyResources(Me.ToolStripMenuItemNewFolder, "ToolStripMenuItemNewFolder")
+        Me.tsmNewFolder.Name = "tsmNewFolder"
+        resources.ApplyResources(Me.tsmNewFolder, "tsmNewFolder")
         '
         'ToolStripSeparator9
         '
@@ -1281,10 +1280,10 @@ Partial Class frmMain
         Me.tsmSaveFolderIn.Name = "tsmSaveFolderIn"
         resources.ApplyResources(Me.tsmSaveFolderIn, "tsmSaveFolderIn")
         '
-        'cmdRenameFolder
+        'tsmRenameFolder
         '
-        Me.cmdRenameFolder.Name = "cmdRenameFolder"
-        resources.ApplyResources(Me.cmdRenameFolder, "cmdRenameFolder")
+        Me.tsmRenameFolder.Name = "tsmRenameFolder"
+        resources.ApplyResources(Me.tsmRenameFolder, "tsmRenameFolder")
         '
         'ToolStripSeparator10
         '
@@ -1306,10 +1305,10 @@ Partial Class frmMain
         Me.ToolStripSeparator12.Name = "ToolStripSeparator12"
         resources.ApplyResources(Me.ToolStripSeparator12, "ToolStripSeparator12")
         '
-        'menuProperty
+        'tsmProperty
         '
-        Me.menuProperty.Name = "menuProperty"
-        resources.ApplyResources(Me.menuProperty, "menuProperty")
+        Me.tsmProperty.Name = "tsmProperty"
+        resources.ApplyResources(Me.tsmProperty, "tsmProperty")
         '
         'folderBrowserDialog
         '
@@ -1335,6 +1334,7 @@ Partial Class frmMain
         Me.grpFolders.ResumeLayout(False)
         Me.tabFolder.ResumeLayout(False)
         Me.ftabFolder.ResumeLayout(False)
+        Me.ftabFolder.PerformLayout()
         Me.ftabiTunes.ResumeLayout(False)
         Me.ftabApp.ResumeLayout(False)
         Me.ftabAMDevice.ResumeLayout(False)
@@ -1348,8 +1348,8 @@ Partial Class frmMain
         CType(Me.qtBuff, System.ComponentModel.ISupportInitialize).EndInit()
         Me.grpDetails.ResumeLayout(False)
         Me.grpDetails.PerformLayout()
-        CType(Me.picFileDetails, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tabViewType.ResumeLayout(False)
+        CType(Me.picFileDetails, System.ComponentModel.ISupportInitialize).EndInit()
         Me.menuRightClickQt.ResumeLayout(False)
         Me.tlbStatusStrip.ResumeLayout(False)
         Me.tlbStatusStrip.PerformLayout()
@@ -1406,7 +1406,7 @@ Partial Class frmMain
     Friend WithEvents ToolStripSeparator6 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents toolStripGoTo19 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents menuRightClickFolders As System.Windows.Forms.ContextMenuStrip
-    Friend WithEvents ToolStripMenuItemNewFolder As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents tsmNewFolder As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents menuDeleteFolder As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem2 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents mnuStdApps As System.Windows.Forms.ToolStripMenuItem
@@ -1441,13 +1441,6 @@ Partial Class frmMain
     Friend WithEvents BlackToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents GrayToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents WhiteToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents ToolStripSeparator7 As System.Windows.Forms.ToolStripSeparator
-    Friend WithEvents menuSaveSummerboardTheme As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents tsmAsSummerboardFolder As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents tsmAsPXLPackage As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents ToolStripMenuItem4 As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents tsmAsCustomizeFolders As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents AsPXLPackageToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents tsmCustomizeFiles As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents tsmIFlashCards As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents tsmIPhoneToPC As System.Windows.Forms.ToolStripMenuItem
@@ -1461,7 +1454,7 @@ Partial Class frmMain
     Friend WithEvents ToolStripSeparator10 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents tsmIgnoreThumbsdb As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents tsmIgnoreDSStore As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents cmdRenameFolder As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents tsmRenameFolder As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents cmdRenameFile As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents mnuFavorites As System.Windows.Forms.ToolStripDropDownButton
     Friend WithEvents AddToFavoritesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
@@ -1531,6 +1524,13 @@ Partial Class frmMain
     Friend WithEvents ToolStripSeparator12 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents ftabApp As System.Windows.Forms.TabPage
     Friend WithEvents trvApps As System.Windows.Forms.TreeView
-    Friend WithEvents menuProperty As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents tsmProperty As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents imgThumbnail As System.Windows.Forms.ImageList
+    Friend WithEvents tsmCheckALatestVersion As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents txtFind As System.Windows.Forms.TextBox
+    Friend WithEvents btnFind As System.Windows.Forms.Button
+    Friend WithEvents tsbZoom As System.Windows.Forms.ToolStripButton
+    Friend WithEvents tsmModificationHistory As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents tsbFullScreen As System.Windows.Forms.ToolStripButton
 
 End Class

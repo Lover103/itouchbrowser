@@ -1,4 +1,24 @@
-﻿Public NotInheritable Class frmSplashScreen
+﻿Option Explicit On
+Option Strict On
+' =============================================================================
+' *
+' *  System      : CommonClass
+' *  Module name : frmSplashScreen.vb
+' *  Description : Splash screen Class
+' *
+' *    %Z% %I% %W% %G% %U% [ %H% %T% ]
+' *    $Header:  $
+' *
+' *  (c) Copyright sugi. 2008. All rights reserved.
+' *
+' *  Modification history :
+' *    Date        Level  Author        Description
+' *    ----------  -----  ------------  -----------------------------------
+' *    2008/07/29  1.00   Sugi          Initial release
+' *
+' =============================================================================
+
+Public NotInheritable Class frmSplashScreen
 
     Friend Sub SetProgressMessage(ByVal msg As String)
         Me.lblMessage.Text = msg

@@ -75,8 +75,8 @@ Partial Class frmSplashScreen
         Me.DetailsLayoutPanel.BackColor = System.Drawing.Color.Transparent
         Me.DetailsLayoutPanel.ColumnCount = 1
         Me.DetailsLayoutPanel.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 247.0!))
-        Me.DetailsLayoutPanel.Controls.Add(Me.Version, 0, 0)
         Me.DetailsLayoutPanel.Controls.Add(Me.Copyright, 0, 1)
+        Me.DetailsLayoutPanel.Controls.Add(Me.Version, 0, 0)
         Me.DetailsLayoutPanel.Dock = System.Windows.Forms.DockStyle.Top
         Me.DetailsLayoutPanel.Location = New System.Drawing.Point(162, 125)
         Me.DetailsLayoutPanel.Name = "DetailsLayoutPanel"
@@ -87,17 +87,18 @@ Partial Class frmSplashScreen
         '
         'Version
         '
-        Me.Version.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.Version.Anchor = System.Windows.Forms.AnchorStyles.Left
         Me.Version.BackColor = System.Drawing.Color.Transparent
         Me.Version.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Version.Location = New System.Drawing.Point(3, 10)
+        Me.Version.Location = New System.Drawing.Point(3, 6)
         Me.Version.Name = "Version"
-        Me.Version.Size = New System.Drawing.Size(241, 20)
+        Me.Version.Size = New System.Drawing.Size(206, 28)
         Me.Version.TabIndex = 1
         Me.Version.Text = "Version {0}.{1}.{2}.{3}"
         '
         'Copyright
         '
+        Me.Copyright.Anchor = System.Windows.Forms.AnchorStyles.Left
         Me.Copyright.BackColor = System.Drawing.Color.Transparent
         Me.Copyright.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Copyright.Location = New System.Drawing.Point(15, 56)

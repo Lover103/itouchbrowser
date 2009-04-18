@@ -9,7 +9,7 @@ Option Strict On
 ' *    %Z% %I% %W% %G% %U% [ %H% %T% ]
 ' *    $Header:  $
 ' *
-' *  (c) Copyright . 2007, 2008. All rights reserved.
+' *  (c) Copyright sugi. 2007, 2008. All rights reserved.
 ' *
 ' *  Modification history :
 ' *    Date        Level  Author        Description
@@ -329,7 +329,7 @@ Imports System.Data.SQLite
     Public Function Find(ByVal subDir As String, ByVal key As String) As Integer
         Dim rc As Integer = 0
 
-        If mvarView Is Nothing Then
+        If mvarView Is Nothing OrElse mvarView.Count = 0 Then
             setDataView(True)
         End If
 

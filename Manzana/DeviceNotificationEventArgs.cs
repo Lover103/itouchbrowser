@@ -34,7 +34,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Manzana
+namespace itouchBrowser.Manzana
 {
 	/// <summary>
 	/// Provides data for the <see>DfuConnect</see>, <see>DfuDisconnect</see>, <see>RecoveryModeEnter</see> and <see>RecoveryModeLeave</see> events.
