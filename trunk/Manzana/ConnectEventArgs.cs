@@ -34,7 +34,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Manzana
+namespace itouchBrowser.Manzana
 {
 	/// <summary>
 	/// Provides data for the <see>Connected</see> and <see>Disconnected</see> events.

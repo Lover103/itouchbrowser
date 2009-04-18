@@ -37,7 +37,7 @@ using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace Manzana
+namespace itouchBrowser.Manzana
 {
 	/// <summary>
 	/// Exposes access to the Apple iPhone
@@ -346,6 +346,66 @@ namespace Manzana
         //    MobileDevice.AFCDirectoryClose(hAFC, hAFCDir);
         //    return paths.ToArray();
         //}
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        public List<strFileInfo> GetFolderInfo(string path)
+        {
+            IntPtr hAFCDir;
+            Byte[] buffer;
+            List<strFileInfo> paths = new List<strFileInfo>();
+            string full_path;
+            int len;
+
+            if (!connected)
+            {
+                throw new Exception("Not connected to phone");
+            }
+
+            hAFCDir = new IntPtr();
+            full_path = FullPath(current_directory, path);
+
+            if (MobileDevice.AFCDirectoryOpen(hAFC, string2bytes(full_path), ref hAFCDir) != 0)
+            {
+                throw new Exception("Path does not exist");
+            }
+
+            buffer = null;
+
+            len = MobileDevice.AFCDirectoryRead(hAFC, hAFCDir, ref buffer);
+
+            if (full_path.Length > 1) full_path += "/";
+
+            while (buffer != null)
+            {
+                bool isDir;
+                bool isSLink;
+                long size;
+                try
+                {
+                    this.GetFileInfo(full_path, buffer, len, out size, out isDir, out isSLink);
+                    if (!((buffer[0]=='.' && len==1) || (buffer[0]=='.' && buffer[1]=='.' && len==2)))
+                    {
+                        strFileInfo tmp;
+                        tmp.name = buffer;
+                        tmp.isDir = isDir;
+                        tmp.isSLink = isSLink;
+                        tmp.size = size;
+                        paths.Add(tmp);
+                    }
+                    len = MobileDevice.AFCDirectoryRead(hAFC, hAFCDir, ref buffer);
+                }
+                catch
+                {
+                    //Debug.WriteLinw(ex.Message);
+                }
+            }
+            MobileDevice.AFCDirectoryClose(hAFC, hAFCDir);
+            return paths;
+        }
 
         /// <summary>
         /// 

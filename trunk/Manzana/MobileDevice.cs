@@ -41,7 +41,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace Manzana
+namespace itouchBrowser.Manzana
 {
 	internal enum AppleMobileErrors
 	{

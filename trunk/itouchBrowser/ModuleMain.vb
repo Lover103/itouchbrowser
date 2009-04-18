@@ -5,8 +5,9 @@ Imports System.IO
 Imports System.Drawing.Imaging
 Imports System.Text
 Imports System.Threading
-Imports Manzana
+Imports itouchBrowser.Manzana
 Imports SCW_iPhonePNG
+Imports itouchBrowser
 
 Module ModuleMain
 
@@ -141,6 +142,7 @@ Module ModuleMain
         objMain.tslStatusLabel.Image = My.Resources.warning
         objMain.tslStatusLabel.Text = msg
         MessageBeep(MessageBeepType.Warning)
+        objMain.btnCancel.PerformClick()
     End Sub
 
     Friend Sub ResetStatus()
@@ -336,7 +338,6 @@ Module ModuleMain
     End Function
 
     Friend Function CopyQueueFromPhone(ByVal sourceOnPhone As String, ByRef destinationOnComputer As String) As Integer
-        'Dim sBuffer(8191) As Byte
         Dim sBuffer(65535) As Byte
         Dim iDataBytes As Integer
         Dim iPhoneFileInterface As iPhoneFile
@@ -451,7 +452,7 @@ Module ModuleMain
         If Config.bConvertToPNG AndAlso sPhone.ToLower.EndsWith(".png") Then
             Dim tmpOnPC As String = GetTempFilename(sPhone)
             Dim ans As Long = CopyFromPhone(sPhone, tmpOnPC)
-            If ans = 0 Then
+            If ans > 0 Then
                 Try
                     Dim cvtImage As Image = iPhonePNG.ImageFromFile(tmpOnPC)
                     cvtImage.Save(dComputer, ImageFormat.Png)
@@ -499,7 +500,6 @@ Module ModuleMain
         Dim iPhoneFileInterface As iPhoneFile
         Dim sPath As String, sFile As String
         Dim fileTemp As FileStream
-        'Dim sBuffer(8191) As Byte
         Dim sBuffer(32767) As Byte
         Dim iDataBytes As Integer
 
@@ -585,6 +585,7 @@ Module ModuleMain
             Else
                 bReturn = copy1ToPhoneAt(sourceOnComputer, destinationOnPhone)
             End If
+
         ElseIf Directory.Exists(sourceOnComputer) Then
             ' Create matching directory on phone
             If Not iPhoneInterface.Exists(destinationOnPhone) Then
@@ -608,6 +609,40 @@ Module ModuleMain
             ModuleMain.AddFoldersBeneath(objMain.trvFolders.SelectedNode)
 
             bReturn = True
+
+        ElseIf sourceOnComputer.StartsWith("http://") Then
+            ' Webから落としたとき。　Webからdownloadして転送する
+
+            Dim HttpWReq As Net.HttpWebRequest = _
+                CType(Net.WebRequest.Create(sourceOnComputer), Net.HttpWebRequest)
+            ' Turn off connection keep-alives.
+            HttpWReq.KeepAlive = False
+
+            Using HttpWResp As Net.HttpWebResponse = _
+                CType(HttpWReq.GetResponse(), Net.HttpWebResponse)
+
+                ' Open the stream using a StreamReader for easy access.
+                Dim reader As New BinaryReader(HttpWResp.GetResponseStream())
+
+                ' Read the content.
+                If HttpWResp.ContentLength < Integer.MaxValue AndAlso HttpWResp.ContentLength > 0 Then
+                    Dim responseFromServer As Byte() = reader.ReadBytes(CInt(HttpWResp.ContentLength))
+                    Dim tmpOnPC As String = GetTempFilename(sourceOnComputer)
+                    Using st As IO.FileStream = File.OpenWrite(tmpOnPC)
+                        st.Write(responseFromServer, 0, responseFromServer.Length)
+                        st.Close()
+                    End Using
+                    copyToPhoneAt(tmpOnPC, destinationOnPhone, fixPNG, aBackupTime)
+                Else
+
+                End If
+                reader.Close()
+
+                ' Get the HTTP protocol version number returned by the server.
+                'Dim ver As String = HttpWResp.ProtocolVersion.ToString()
+
+                HttpWResp.Close()
+            End Using
         End If
 
         Return bReturn
@@ -671,10 +706,6 @@ Module ModuleMain
 
     End Function
 
-    'Private Sub backupFileFromPhone(ByVal sSourcePath As String, ByVal sSourceFile As String)
-    '    backupFileFromPhoneAt(sSourcePath, sSourceFile)
-    'End Sub
-
     Friend Function BackupDirectory(ByVal sPath As String) As Integer
         Dim rc As Integer
 
@@ -703,7 +734,6 @@ Module ModuleMain
                 If IncrementStatus(0) Then
                     canceled = True
                 End If
-                Exit For
             Next
             EndStatus()
 
@@ -730,10 +760,6 @@ Module ModuleMain
 
         End Try
     End Function
-
-    'Private Sub BackupDirectory(ByVal sPath As String)
-    '    BackupDirectoryAt(sPath)
-    'End Sub
 
     Friend Function PhoneGetDirectoryName(ByVal phonePath As String) As String
         'Return Microsoft.VisualBasic.Left(phonePath, InStrRev(phonePath, "/") - 1)
@@ -976,7 +1002,6 @@ Module ModuleMain
     Friend Function FixPhoneFilename(ByVal aName As String) As String
         Dim ans As String = aName
         For Each c As Char In "%:/\*?<>|"""
-            'ans = Replace(ans, c, "%" & Hex(Asc(c)))
             ans = ans.Replace(c, "%" & Hex(Asc(c)))
         Next
 
@@ -1165,9 +1190,7 @@ Module ModuleMain
     End Sub
 
     Friend Function convertcd(ByVal str As String) As String
-        'Dim unicodeBytes As Byte() = str
 
-        'Return str.Normalize()
         Dim byteArray As Byte()
         'Code Page 932 = Shift_JISもどき
         'Code Page 65001 = UTF-8
@@ -1175,44 +1198,10 @@ Module ModuleMain
         'byteArray = Encoding.ASCII.GetBytes(str)
 
         ' Get different encodings.
-        'Dim u7 As Encoding = Encoding.UTF7
         Dim u8 As Encoding = Encoding.UTF8
-        'Dim u81 As Encoding = Encoding.GetEncoding(65001)
-        'Dim u16LE As Encoding = Encoding.Unicode
-        'Dim u16BE As Encoding = Encoding.BigEndianUnicode
-        'Dim u32 As Encoding = Encoding.UTF32
-
-        ' Encode the entire array, and print out the counts and the resulting bytes.
-        'str = PrintCountsAndBytes(myChars, u7)
-        'str = PrintCountsAndBytes(myChars, u8)
-        'str = PrintCountsAndBytes(myChars, u16LE)
-        'str = PrintCountsAndBytes(myChars, u16BE)
-        'str = PrintCountsAndBytes(myChars, u32)
 
         ' Encode the array of chars.
         str = u8.GetString(byteArray)
-        'Console.WriteLine(str)
-
-        '' Create two different encodings.
-        'Dim ascii As System.Text.Encoding = Encoding.GetEncoding(437)
-        'Dim [unicode] As Encoding = Encoding.GetEncoding(932)
-
-        '' Convert the string into a byte[].
-        'Dim unicodeBytes As Byte() = [unicode].GetBytes(unicodeString)
-
-        '' Perform the conversion from one encoding to the other.
-        'Dim asciiBytes As Byte() = Encoding.Convert([unicode], ascii, unicodeBytes)
-
-        '' Convert the new byte[] into a char[] and then into a string.
-        '' This is a slightly different approach to converting to illustrate
-        '' the use of GetCharCount/GetChars.
-        'Dim asciiChars(ascii.GetCharCount(asciiBytes, 0, asciiBytes.Length)) As Char
-        'ascii.GetChars(asciiBytes, 0, asciiBytes.Length, asciiChars, 0)
-        'Dim asciiString As New String(asciiChars)
-
-        '' Display the strings created before and after the conversion.
-        'Console.WriteLine("Original string: {0}", unicodeString)
-        'Console.WriteLine("Ascii converted string: {0}", asciiString)
 
         Return str  'asciiString
     End Function
@@ -1329,6 +1318,130 @@ Module ModuleMain
         End Try
 
         Return oDb
+
+    End Function
+
+    ' 幅w、高さhのImageオブジェクトを作成
+    Function createThumbnail(ByVal image As Image, ByVal w As Integer, ByVal h As Integer) As Image
+        Dim canvas As New Bitmap(w, h)
+
+        Dim g As Graphics = Graphics.FromImage(canvas)
+        g.FillRectangle(New SolidBrush(Color.PowderBlue), 0, 0, w, h)
+
+        Dim fw As Double = CDbl(w) / CDbl(image.Width)
+        Dim fh As Double = CDbl(h) / CDbl(image.Height)
+        Dim scale As Double = Math.Min(fw, fh)
+
+        Dim w2 As Integer = CInt(image.Width * scale)
+        Dim h2 As Integer = CInt(image.Height * scale)
+
+        If image.Size.Height > h OrElse image.Size.Width > w Then
+            w2 = CInt(image.Width * scale)
+            h2 = CInt(image.Height * scale)
+        Else
+            w2 = image.Width
+            h2 = image.Height
+        End If
+
+        g.DrawImage(image, (w - w2) \ 2, (h - h2) \ 2, w2, h2)
+        g.Dispose()
+
+        Return canvas
+    End Function
+
+    Friend Function getThumbnail(ByVal sFile As String, ByVal iPhonePath As String, ByVal localPath As String) As Image
+
+        Const w As Integer = 52
+        Const h As Integer = 52
+
+        Dim thumbnail As Image = Nothing
+        Dim sBuffer(65535) As Byte
+        Dim iDataBytes As Integer
+        Dim iPhoneFileInterface As iPhoneFile
+        Dim fileTemp As FileStream
+        Dim fsize As Long = 0
+
+        Dim tmpFile As String = My.Computer.FileSystem.SpecialDirectories.Temp & "\" & FixPhoneFilename(sFile)
+
+        Try
+            iPhoneFileInterface = iPhoneFile.OpenRead(iPhoneInterface, iPhonePath & "/" & sFile)
+            fileTemp = File.OpenWrite(tmpFile)
+            iDataBytes = iPhoneFileInterface.Read(sBuffer, 0, sBuffer.Length)
+
+            While iDataBytes > 0
+                fileTemp.Write(sBuffer, 0, iDataBytes)
+                fsize += iDataBytes
+                iDataBytes = iPhoneFileInterface.Read(sBuffer, 0, sBuffer.Length)
+            End While
+
+            iPhoneFileInterface.Close()
+            iPhoneFileInterface.Dispose()
+            fileTemp.Close()
+
+            Dim original As Image = iPhonePNG.ImageFromFile(tmpFile)
+            thumbnail = createThumbnail(original, w, h)
+            original.Dispose()
+
+            File.Delete(tmpFile)
+
+        Catch ex As Exception
+            thumbnail = objMain.imgFilesLargeNew.Images(7)
+            'Debug.WriteLine(ex.Message)
+        End Try
+
+        Return thumbnail
+
+    End Function
+
+    Friend Sub CreateImageList()
+
+        With objMain.imgFilesLargeNew.Images
+            .Clear()
+            .Add(createThumbnail(My.Resources.help, 52, 52))
+            .Add(createThumbnail(My.Resources.AudioCD, 52, 52))
+            .Add(createThumbnail(My.Resources.VideoCamera, 52, 52))
+            .Add(createThumbnail(My.Resources.copy, 52, 52))
+            .Add(createThumbnail(My.Resources.AudioFile, 52, 52))
+            .Add(createThumbnail(My.Resources.VPN, 52, 52))
+            .Add(createThumbnail(My.Resources.Network_Internet, 52, 52))
+            .Add(createThumbnail(My.Resources.Camera, 52, 52))
+        End With
+        With objMain.imgFilesSmallNew.Images
+            .Clear()
+            .Add(createThumbnail(My.Resources.help, 18, 18))
+            .Add(createThumbnail(My.Resources.AudioCD, 18, 18))
+            .Add(createThumbnail(My.Resources.VideoCamera, 18, 18))
+            .Add(createThumbnail(My.Resources.copy, 18, 18))
+            .Add(createThumbnail(My.Resources.AudioFile, 18, 18))
+            .Add(createThumbnail(My.Resources.VPN, 18, 18))
+            .Add(createThumbnail(My.Resources.Network_Internet, 18, 18))
+            .Add(createThumbnail(My.Resources.Camera, 18, 18))
+        End With
+
+    End Sub
+
+    Friend Function DecodePListFile(ByVal inFileStr As Byte()) As String
+        Dim plist As String = ""
+        Try
+            plist = CFPropertyList.PropertyListToXML(inFileStr)
+
+        Catch err As Exception
+            'plist = inFileStr
+        End Try
+
+        Return plist
+    End Function
+
+    Friend Function EncodePListFile(ByVal inFileStr As String) As Byte()
+        Dim plist As Byte()
+        Try
+            plist = CFPropertyList.PropertyListFromXML(inFileStr)
+
+        Catch err As Exception
+            plist = New Byte() {0}
+        End Try
+
+        Return plist
 
     End Function
 

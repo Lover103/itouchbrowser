@@ -5,7 +5,8 @@ Imports System.Threading
 Imports System.IO
 Imports System.Drawing
 Imports System.Drawing.Imaging
-Imports Manzana
+Imports System.Text
+Imports itouchBrowser.Manzana
 Imports SCW_iPhonePNG
 
 Public Class frmMain
@@ -17,11 +18,11 @@ Public Class frmMain
     Const IMAGE_FILE_MUSIC As Integer = 1
     Const IMAGE_FILE_MOVIE As Integer = 2
     Const IMAGE_FILE_TEXT As Integer = 3
-    Const IMAGE_FILE_IMAGE As Integer = 4
-    Const IMAGE_FILE_AUDIO As Integer = 5
-    Const IMAGE_FILE_DATABASE As Integer = 6
+    Const IMAGE_FILE_AUDIO As Integer = 4
+    Const IMAGE_FILE_DATABASE As Integer = 5
     'Const IMAGE_FILE_RINGTONE As Integer = 7
-    Const IMAGE_FILE_WEBBROWS As Integer = 7
+    Const IMAGE_FILE_WEBBROWS As Integer = 6
+    Const IMAGE_FILE_IMAGE As Integer = 7
 
     'Private backupPath As String = ""
 
@@ -48,6 +49,11 @@ Public Class frmMain
     Private iTunesRoot As String = ""
     Private mvarItunes As Data.DataTable = Nothing
     Private mvarSplashMsg As Label
+    Private mvarFullScreenMode As Boolean = False   ' フルスクリーン表示かどうかのフラグ
+    Private prevFormState As FormWindowState        ' フルスクリーン表示前のウィンドウの状態を保存する
+    Private prevFormStyle As FormBorderStyle        ' 通常表示時のフォームの境界線スタイルを保存する
+    Private prevFormSize As Size                    ' 通常表示時のウィンドウのサイズを保存する
+
 
     'CUSTOM  CREATED FUNCTIONS
 
@@ -83,7 +89,9 @@ Public Class frmMain
         My.Settings.QTLeftWidth = pnlQt.LeftWidth
         My.Settings.BackupControl = tsmBackupControl.Checked
         My.Settings.LastPath = ModuleMain.NodeiPhonePath(trvFolders.SelectedNode)
-        My.Settings.Position = Me.Left.ToString() & "," & Me.Top.ToString() & "," & Me.Width.ToString() & "," & Me.Height.ToString()
+        If mvarFullScreenMode = False Then
+            My.Settings.Position = Me.Left.ToString() & "," & Me.Top.ToString() & "," & Me.Width.ToString() & "," & Me.Height.ToString()
+        End If
         My.Settings.Save()
     End Sub
 
@@ -142,7 +150,7 @@ Public Class frmMain
             txtFileDetails.Enabled = bNowConnected
             mnuGoTo.Enabled = bNowConnected
             mnuFavorites.Enabled = bNowConnected
-            ToolStripMenuItemNewFolder.Enabled = bNowConnected
+            tsmNewFolder.Enabled = bNowConnected
             menuDeleteFolder.Enabled = bNowConnected
             tslAddress.Enabled = bNowConnected
             tstAddress.Enabled = bNowConnected
@@ -201,9 +209,9 @@ Public Class frmMain
         Dim visibled As Boolean = iPhoneInterface.IsJailbreak
 
         mnuGoTo.Visible = visibled
-        menuSaveSummerboardTheme.Visible = visibled
-        ToolStripMenuItem4.Visible = visibled
-        ToolStripSeparator7.Visible = visibled
+        'menuSaveSummerboardTheme.Visible = visibled
+        'ToolStripMenuItem4.Visible = visibled
+        'ToolStripSeparator7.Visible = visibled
 
     End Sub
 
@@ -270,6 +278,8 @@ Public Class frmMain
             btnCancel.Visible = False
             tslProgress.Visible = False
             ResetStatus()   'ProgressDepth = -1
+
+            ModuleMain.CreateImageList()
 
             Me.Show()
             Application.DoEvents()
@@ -354,6 +364,10 @@ Public Class frmMain
             'AddHandler iPhoneInterface.Connect, AddressOf iPhoneConnected_EventHandler
             'AddHandler iPhoneInterface.Disconnect, AddressOf iPhoneDisconnected_EventHandler
 
+            prevFormState = FormWindowState.Normal            ' フルスクリーン表示前のウィンドウの状態を保存する
+            prevFormStyle = FormBorderStyle.Sizable           ' 通常表示時のフォームの境界線スタイルを保存する
+            prevFormSize = New Size(Me.Width, Me.Height)      ' 通常表示時のウィンドウのサイズを保存する
+
             qtThread.Join()
 
         Catch ex As Exception
@@ -401,30 +415,37 @@ Public Class frmMain
             End If
 
             Try
-                StartStatus(rootNode.Nodes.Count, 0)
+                If rootNode.Nodes.Count < 20 Then
+                    StartStatus(rootNode.Nodes.Count, 0)
 
-                For Each tmpNode In rootNode.Nodes
-                    If IncrementStatus(0) Then Exit For
+                    For Each tmpNode In rootNode.Nodes
+                        If IncrementStatus(0) Then Exit For
 
-                    sWorkingPath = ModuleMain.NodeiPhonePath(tmpNode)
+                        sWorkingPath = ModuleMain.NodeiPhonePath(tmpNode)
 
-                    tmpNode.Nodes.Clear()
-                    'now add it (only if it is not the root)
-                    If sWorkingPath <> "/" Then
-                        Try
-                            ModuleMain.Add1stFolder(sWorkingPath, tmpNode)
-                        Catch
+                        tmpNode.Nodes.Clear()
+                        'now add it (only if it is not the root)
+                        If sWorkingPath <> "/" Then
                             Try
-                                'rootNode.Nodes(iTemp).Remove()
-                                tmpNode.Remove()        ' someone deleted the folder
-                            Catch ex As Exception
-                                StatusWarning(ex.Message)
+                                ModuleMain.Add1stFolder(sWorkingPath, tmpNode)
+                            Catch
+                                Try
+                                    'rootNode.Nodes(iTemp).Remove()
+                                    tmpNode.Remove()        ' someone deleted the folder
+                                Catch ex As Exception
+                                    StatusWarning(ex.Message)
+                                End Try
                             End Try
-                        End Try
-                    End If
-                Next
+                        End If
+                    Next
 
-                EndStatus()
+                    EndStatus()
+                Else
+                    For Each tmpNode In rootNode.Nodes
+                        tmpNode.Nodes.Add("dummy")
+                    Next
+                End If
+
                 StatusNormal("")
                 If ProgressEscapeFlg = False Then
                     rootNode.Tag = True
@@ -468,11 +489,13 @@ Public Class frmMain
         End If
     End Function
 
-    Structure SongTitleStruct
+    Private Structure ItemTitleStruct
         Dim index As Integer
         Dim fileName As String
         Dim subDir As String
     End Structure
+
+    Private escapeProcess As Boolean = True
 
     Friend Sub LoadFiles()
         Dim bFiles As List(Of iPhone.strFileInfo)
@@ -481,6 +504,7 @@ Public Class frmMain
         Dim row As Integer
 
         If Not bSupressFiles Then
+            escapeProcess = False
             'Dim sbpath As New System.Text.StringBuilder
             'loads the files into the list view based on the current directory
 
@@ -496,8 +520,10 @@ Public Class frmMain
                 bFiles = iPhoneInterface.GetFilesInfo(iPhonePath)
 
                 'now go one by one and add it
-                Dim songTitles(bFiles.Count) As SongTitleStruct
+                Dim songTitles(bFiles.Count) As ItemTitleStruct
                 Dim songCnt As Integer = 0
+                Dim thumbnails(bFiles.Count) As ItemTitleStruct
+                Dim thumbnailCnt As Integer = 0
                 Dim listRow As Integer = 0
                 Dim sFileExt As String = ""
 
@@ -526,7 +552,7 @@ Public Class frmMain
                         sFileExt = sFile
                         Dim ext As String = ""
                         If sFile.LastIndexOf(".") > -1 Then
-                            ext = sFile.Substring(sFile.LastIndexOf("."))
+                            ext = sFile.Substring(sFile.LastIndexOf(".")).ToLower()
                         End If
 
                         If Config.bShowSongTitle AndAlso _
@@ -545,7 +571,8 @@ Public Class frmMain
                                 songTitles(songCnt).subDir = subDirName
                                 songCnt += 1
                                 If Not mvarItunesMan.Loaded Then
-                                    If CopyFromPhonePNG(iTunesPath, My.Settings.DbPath & "\iTunesDB") <> 0 Then
+                                    ProgressEscapeFlg = False
+                                    If CopyFromPhone(iTunesPath, My.Settings.DbPath & "\iTunesDB") <> 0 Then
                                         Me.getArtists(My.Settings.DbPath, "All")
                                     End If
                                 End If
@@ -560,6 +587,19 @@ Public Class frmMain
 
                         If strFileInfo.isSLink Then
                             lstTemp.ForeColor = Color.Blue
+                        Else
+                            If ext = ".png" _
+                                OrElse ext = ".jpg" _
+                                OrElse ext = ".gif" _
+                                OrElse ext = ".jpeg" Then
+
+                                If strFileInfo.size > 0 Then
+                                    thumbnails(thumbnailCnt).index = listRow
+                                    thumbnails(thumbnailCnt).fileName = sFile
+                                    thumbnails(thumbnailCnt).subDir = subDirName
+                                    thumbnailCnt += 1
+                                End If
+                            End If
                         End If
 
                         ' add the file size
@@ -593,6 +633,33 @@ Public Class frmMain
                 Dim songTitle As String = ""
                 lstFiles.Tag = iPhonePath
 
+                Dim img As Image
+                Dim imgCnt As Integer = imgFilesLargeNew.Images.Count
+
+                imgThumbnail.Images.Clear()
+                imgFilesSmallNew.Images.Clear()
+                For row = 0 To imgCnt - 1
+                    imgThumbnail.Images.Add(imgFilesLargeNew.Images(row))
+                    imgFilesSmallNew.Images.Add(imgFilesLargeNew.Images(row))
+                Next
+                'If lstFiles.View <> View.Details Then
+                StartStatus(imgCnt, 0)
+                For row = 0 To thumbnailCnt - 1
+                    img = getThumbnail(thumbnails(row).fileName, iPhonePath, thumbnails(row).subDir)
+                    If img IsNot Nothing Then
+                        imgThumbnail.Images.Add(img)
+                        imgFilesSmallNew.Images.Add(createThumbnail(img, 18, 18))
+                        lstFiles.Items(thumbnails(row).index).ImageIndex = row + imgCnt
+                        If IncrementStatus(0) Then Exit For
+                        If escapeProcess Then
+                            ProgressEscapeFlg = True
+                            Exit For
+                        End If
+                    End If
+                Next
+                EndStatus()
+                'End If
+
                 StartStatus(songCnt, 0)
                 For row = 0 To songCnt - 1
                     'If mvarInProCount > 1 Then Exit For
@@ -616,11 +683,13 @@ Public Class frmMain
                     mvarInProCount = 0
                 End If
 
+                StatusNormal(lstFiles.Items.Count.ToString & " objects")
+
             Catch e As IOException
                 MsgBox(e.ToString, MsgBoxStyle.Exclamation)
 
             Catch ex As Exception
-                'MsgBox(ex.Message, MsgBoxStyle.Exclamation)
+                MsgBox(ex.Message & vbCrLf & ex.StackTrace, MsgBoxStyle.Exclamation)
                 If ex.Message = "Path does not exist" Then
                     StatusWarning(My.Resources.String35)
                     ResetiPhone()
@@ -628,9 +697,8 @@ Public Class frmMain
                     StatusWarning(ex.Message)
                 End If
 
-            Finally
-                StatusNormal(lstFiles.Items.Count.ToString & " objects")
             End Try
+            escapeProcess = True
 
         End If
     End Sub
@@ -690,9 +758,9 @@ Public Class frmMain
         Select Case sExt
             Case "png", "jpg", "jpeg", "gif"
                 iReturn = IMAGE_FILE_IMAGE
-            Case "strings", "conf", "txt", "script", "pl", "h", "awk", "tcl", "css", "m4", "c", "sh", "js"
+            Case "strings", "conf", "txt", "script", "pl", "h", "awk", "tcl", "css", "m4", "c", "sh", "js", "py", "el"
                 iReturn = IMAGE_FILE_TEXT
-            Case "db", "sqlite", "sqlitedb", "itdb"
+            Case "db", "sqlite", "sqlitedb", "itdb", "sqlite3", "zip"
                 iReturn = IMAGE_FILE_DATABASE
             Case "aiff", "amr", "aif", "caf", "wav"
                 iReturn = IMAGE_FILE_AUDIO
@@ -788,7 +856,11 @@ Public Class frmMain
 
     Private Function getSelectedFolder() As String
         If tabFolder.SelectedIndex = 0 Then
-            Return trvFolders.SelectedNode.FullPath.Substring(STRING_ROOT.Length)
+            If trvFolders.SelectedNode Is Nothing Then
+                Return ""
+            Else
+                Return trvFolders.SelectedNode.FullPath.Substring(STRING_ROOT.Length)
+            End If
         Else
             Return grpFiles.Text
         End If
@@ -1023,28 +1095,45 @@ Public Class frmMain
     Private Sub lstFiles_DragDrop(ByVal sender As Object, ByVal e As System.Windows.Forms.DragEventArgs) _
         Handles lstFiles.DragDrop
 
-        If e.Data.GetDataPresent(DataFormats.FileDrop) Then
-            Me.Cursor = Cursors.WaitCursor
+        Me.Cursor = Cursors.WaitCursor
+        Try
             Dim initFolder As String = getSelectedPath()
-            Dim drops() As String = CType(e.Data.GetData(DataFormats.FileDrop), String())
-            'StartStatus(drops.Length, 0)
-            For Each s As String In drops 'e.Data.GetData(DataFormats.FileDrop)
-                CopyToPhone(s, initFolder, Config.bConvertToiPhonePNG)
-                'If IncrementStatus(0) Then Exit For
-            Next
-            'EndStatus()
-            StatusNormal("")
+            If e.Data.GetDataPresent(DataFormats.FileDrop) Then
+                Dim drops() As String = CType(e.Data.GetData(DataFormats.FileDrop), String())
+                'StartStatus(drops.Length, 0)
+                For Each s As String In drops 'e.Data.GetData(DataFormats.FileDrop)
+                    CopyToPhone(s, initFolder, Config.bConvertToiPhonePNG)
+                    'If IncrementStatus(0) Then Exit For
+                Next
+                'EndStatus()
+                StatusNormal("")
 
-            Me.selectSpecificPath(initFolder) ' fix up tree view
-            LoadFiles() ' refresh the list view
+                Me.selectSpecificPath(initFolder) ' fix up tree view
+                LoadFiles() ' refresh the list view
+            End If
+
+            If e.Data.GetDataPresent(DataFormats.UnicodeText) Then
+                Dim url As String = CType(e.Data.GetData(DataFormats.UnicodeText), String)
+                ModuleMain.CopyToPhone(url, initFolder, Config.bConvertToiPhonePNG)
+
+                LoadFiles() ' refresh the list view
+            End If
+
+        Catch ex As Exception
+            MsgBox(ex.ToString, MsgBoxStyle.Exclamation)
+        Finally
             Me.Cursor = Cursors.Default
-        End If
+        End Try
+
     End Sub
 
     Private Sub lstFiles_DragEnter(ByVal sender As Object, ByVal e As System.Windows.Forms.DragEventArgs) _
         Handles lstFiles.DragEnter
 
         If e.Data.GetDataPresent(DataFormats.FileDrop) Then
+            e.Effect = DragDropEffects.All
+        End If
+        If e.Data.GetDataPresent(DataFormats.UnicodeText) Then
             e.Effect = DragDropEffects.All
         End If
     End Sub
@@ -1075,19 +1164,76 @@ Public Class frmMain
 
     End Sub
 
-    Private Sub showFileDetails(ByVal sFile As String, ByVal isSLink As Boolean)
-        Dim i As Long = 1
+    Private Sub showFileDetails(ByVal sFile As String, ByVal tmpPath As String, ByVal isSLink As Boolean)
+        Dim l As Long = 1
         Dim bo As Boolean
 
-        iPhoneInterface.GetFileInfo(sFile, i, bo)
+        iPhoneInterface.GetFileInfo(sFile, l, bo)
 
         txtFileDetails.Text = "Filename: " & Path.GetFileName(sFile) & vbCrLf _
                 & "Size: " & fileSizeAsString(sFile) _
-                & ",   " & i.ToString() & " Byte"
+                & ",   " & l.ToString() & " Byte"
+
         If isSLink Then
             txtFileDetails.AppendText(vbCrLf & "Symbolic link.")
+        Else
+            txtFileDetails.AppendText(vbCrLf & vbCrLf)
+
+            If tmpPath <> "" Then
+                Dim fs As FileStream
+                ' Open the stream and read it back.
+                fs = File.OpenRead(tmpPath)
+                Dim b(1023) As Byte
+                Dim temp As UTF8Encoding = New UTF8Encoding(True)
+
+                Do While fs.Read(b, 0, b.Length) > 0
+                    txtFileDetails.AppendText(temp.GetString(b).Replace(Chr(10), vbCrLf))
+                Loop
+                fs.Close()
+                txtFileDetails.AppendText(vbCrLf & vbCrLf)
+                txtFileDetails.SuspendLayout()
+                txtFileDetails.Visible = False
+
+                Dim i As Integer '= CInt(l)
+                Dim addr As Integer = 0
+                Dim c(15) As Byte
+                Dim val As New StringBuilder
+                Dim str As String
+
+                fs = File.OpenRead(tmpPath)
+                StartStatus(CInt(l \ 64), l)
+                Do While fs.Read(c, 0, c.Length) > 0
+                    Val.Append(addr.ToString("X4")).Append(" ")
+                    For i = 0 To c.Length - 1
+                        val.Append(c(i).ToString("X2")).Append(" ")
+                        If c(i) = 0 Then
+                            c(i) = Asc(".")
+                        End If
+                        If c(i) = 9 Then
+                            c(i) = Asc(" ")
+                        End If
+                    Next
+                    val.Append(" ").AppendLine(temp.GetString(c)) '.Replace(Chr(0), ".").Replace(Chr(9), " "))
+                    addr += 16
+                    If addr Mod 64 = 0 Then
+                        If IncrementStatus(addr) Then Exit Do
+                        str = val.ToString()
+                        txtFileDetails.AppendText(str)
+                        val.Length = 0
+                    End If
+                Loop
+                str = val.ToString().Replace(Chr(9), " ")
+                txtFileDetails.AppendText(str)
+
+                EndStatus()
+                fs.Close()
+            End If
+
         End If
+
+        txtFileDetails.ResumeLayout()
         txtFileDetails.Visible = True
+
     End Sub
 
     Private Sub showPreview(ByVal sFile As String, ByVal fromBtn As Boolean, ByVal fsize As Integer)
@@ -1098,8 +1244,6 @@ Public Class frmMain
         Dim tmpOnPC As String = GetTempFilename(sFile)
         Dim imageIdx As Integer = lstFiles.SelectedItems(0).ImageIndex
         Dim backupDir As String = lstFiles.SelectedItems(0).SubItems(2).Text
-
-        'If imageIdx = IMAGE_FILE_UNKNOWN OrElse CopyFromPhone(sFile, tmpOnPC) = 0 Then
         Dim copyRC As Integer = 0
 
         If Not fromBtn Then
@@ -1143,33 +1287,9 @@ Public Class frmMain
                         Case IMAGE_FILE_UNKNOWN ', IMAGE_FILE_RINGTONE
                             If fromBtn = True Then
                                 showText(tmpOnPC)
-                                'sr = My.Computer.FileSystem.OpenTextFileReader(tmpOnPC)
-                                'txtFileDetails.Text = sr.ReadToEnd().Replace(Chr(10), vbCrLf)
-                                'sr.Close()
                             Else
-                                showFileDetails(sFile, False)
+                                showFileDetails(sFile, tmpOnPC, False)
                                 btnPreview.Enabled = True
-                            End If
-
-                        Case IMAGE_FILE_IMAGE
-                            Try
-                                picOK = True
-                                picFileDetails.Image = iPhonePNG.ImageFromFile(tmpOnPC)
-                            Catch
-                                picOK = False
-                            End Try
-                            If picOK Then
-                                With picFileDetails
-                                    If Not .Image Is Nothing Then
-                                        If .Image.Width > .Width OrElse .Image.Height > .Height Then
-                                            .SizeMode = PictureBoxSizeMode.Zoom
-                                        Else
-                                            .SizeMode = PictureBoxSizeMode.CenterImage
-                                        End If
-                                    End If
-                                    .Visible = True
-                                    txtFileDetails.Visible = False
-                                End With
                             End If
 
                         Case IMAGE_FILE_AUDIO, IMAGE_FILE_MOVIE
@@ -1205,6 +1325,27 @@ Public Class frmMain
                                     'StatusNormal(WebBrws.StatusText)
                             End Select
 
+                        Case Else   'IMAGE_FILE_IMAGE
+                            Try
+                                picOK = True
+                                picFileDetails.Image = iPhonePNG.ImageFromFile(tmpOnPC)
+                            Catch
+                                picOK = False
+                            End Try
+                            If picOK Then
+                                With picFileDetails
+                                    If Not .Image Is Nothing Then
+                                        If .Image.Width > .Width OrElse .Image.Height > .Height Then
+                                            .SizeMode = PictureBoxSizeMode.Zoom
+                                        Else
+                                            .SizeMode = PictureBoxSizeMode.CenterImage
+                                        End If
+                                    End If
+                                    .Visible = True
+                                    txtFileDetails.Visible = False
+                                End With
+                            End If
+
                     End Select
 
                 Catch ex As Exception
@@ -1229,28 +1370,88 @@ Public Class frmMain
             WebBrws.Navigate(New Uri("file:///" & tmpfile))
             WebBrws.Visible = True
             StatusNormal(WebBrws.StatusText)
-        Else
-            'clean up the temp file
-            Dim sr As StreamReader = My.Computer.FileSystem.OpenTextFileReader(tmpfile)
-            Dim str As String = sr.ReadToEnd().Replace(Chr(10), vbCrLf)
-            sr.Close()
 
-            If str.StartsWith("<?xml version=") Then
-                WebBrws.ScriptErrorsSuppressed = False
-                WebBrws.Navigate(New Uri("file:///" & tmpfile))
-                WebBrws.Visible = True
-                StatusNormal(WebBrws.StatusText)
-            Else
-                txtFileDetails.Text = str
-                txtFileDetails.Visible = True
-            End If
+        Else
+                'clean up the temp file
+                Dim sr As StreamReader = My.Computer.FileSystem.OpenTextFileReader(tmpfile)
+                Dim str As String = sr.ReadToEnd().Replace(Chr(10), vbCrLf)
+                sr.Close()
+
+                If str.StartsWith("<?xml version=") Then
+                    WebBrws.ScriptErrorsSuppressed = False
+                    WebBrws.Navigate(New Uri("file:///" & tmpfile))
+                    WebBrws.Visible = True
+                    StatusNormal(WebBrws.StatusText)
+
+                    'txtFileDetails.Text = ModuleMain.EncodePListFile(str).ToString()
+                    'WebBrws.Visible = False
+
+                    'ElseIf str.StartsWith("bplist") Then
+                    '    Using fs As IO.FileStream = File.Open(tmpfile, FileMode.Open)
+                    '        Using bsr As New BinaryReader(fs)
+                    '            txtFileDetails.Text = ModuleMain.DecodePListFile(bsr.ReadBytes(CInt(fs.Length)))
+                    '        End Using
+                    '    End Using
+                    '    txtFileDetails.Visible = True
+
+                Else
+                    txtFileDetails.Text = str
+                    txtFileDetails.Visible = True
+                End If
         End If
     End Sub
 
     Private Sub ShowDbInfo(ByVal tmpfile As String)
-        Dim info As String = DbManager.GetDBInfo(tmpfile)
+        Dim info As String
+
+        If tmpfile.EndsWith(".zip") Then
+            Dim txt As New System.Text.StringBuilder
+
+            Dim fis As New java.io.FileInputStream(tmpfile)
+            Dim zis As New java.util.zip.ZipInputStream(fis)
+            Dim zs As List(Of java.util.zip.ZipEntry) = New List(Of java.util.zip.ZipEntry)
+            Dim maxlen As Integer = 12
+
+            'ZIP内のファイル情報を取得
+            Dim ze As java.util.zip.ZipEntry = zis.getNextEntry()
+            Do While (ze IsNot Nothing)
+                If Not ze.isDirectory() Then
+                    zs.Add(ze)
+                    Dim l As Integer = ze.getName().Length
+                    If maxlen < l Then
+                        maxlen = l
+                    End If
+                End If
+                ze = zis.getNextEntry()
+            Loop
+
+            txt.AppendLine(String.Format("{0," & maxlen.ToString() & "},{1}", " File Name", " Size     ,Comp Size , Date"))
+            txt.AppendLine("-----------------------------------------------------------------------")
+            For Each ze In zs
+                '情報を表示する
+                txt.Append(String.Format("{0," & maxlen.ToString() & "},{1,8} b,{2,8} b,", _
+                                         ze.getName(), _
+                                         ze.getSize(), ze.getCompressedSize()))
+                'txt.Append(String.Format("{0:X}, ", ze.getCrc()))
+                Dim [date] As New java.util.Date(ze.getTime())
+                txt.Append(String.Format(" {0}", [date].ToString()))
+                txt.AppendLine()
+            Next
+
+            '閉じる
+            zis.close()
+            fis.close()
+
+            info = txt.ToString()
+
+        Else
+            info = DbManager.GetDBInfo(tmpfile)
+        End If
+
         txtFileDetails.Text = info
+        txtFileDetails.ScrollBars = ScrollBars.Both
         txtFileDetails.Visible = True
+
     End Sub
 
     Private Function doFileSelectedPreview(ByVal anySize As Boolean, ByVal fromBtn As Boolean) As String
@@ -1260,25 +1461,17 @@ Public Class frmMain
         If lstFiles.SelectedItems.Count > 0 Then
             sFile = getSelectedFilename(isSL)
 
-            Dim p As Integer = sFile.IndexOf("(")
-            If p > 0 Then
-                sFile = sFile.Substring(0, p)
-            End If
-
             If prevSelectedFile = sFile Then ' make sure we changed selections (handles multi-select better)
                 Return sFile
             End If
             prevSelectedFile = sFile
 
-            'clearPreview()
-
             ' only if it is less than a big file size
             Dim sSize As String = lstFiles.SelectedItems(0).SubItems(1).Text
-            'If (sSize.EndsWith("KB") AndAlso Val(sSize) < 1000) OrElse sSize.EndsWith("B") OrElse anySize Then
             If sSize <> "0 B" AndAlso isSL = False Then
                 Me.showPreview(sFile, fromBtn, fileSizeAsInteger(sSize))
             Else
-                Me.showFileDetails(sFile, isSL)
+                Me.showFileDetails(sFile, "", isSL)
                 StatusNormal("The file " & sFile & " is 0 bytes in length")
                 btnPreview.Enabled = False
             End If
@@ -1306,7 +1499,7 @@ Public Class frmMain
 
             clearPreview()
 
-            showFileDetails(sFile, isSL)
+            showFileDetails(sFile, "", isSL)
         End If
     End Sub
 
@@ -1675,8 +1868,8 @@ Public Class frmMain
 
     End Sub
 
-    Private Sub ToolStripMenuItemNewFolder_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) _
-        Handles ToolStripMenuItemNewFolder.Click
+    Private Sub tsmNewFolder_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) _
+        Handles tsmNewFolder.Click
 
         Dim sPath As String, sNewFolder As String, bValid As Boolean = False
         Dim sNewPath As String
@@ -1707,7 +1900,9 @@ Public Class frmMain
             'lets create the directory
             If iPhoneInterface.CreateDirectory(sNewPath) Then
                 'it created successfully
+                Me.trvFolders.SelectedNode.Collapse()
                 ModuleMain.AddFoldersBeneath(trvFolders.SelectedNode)
+                Me.trvFolders.SelectedNode.Expand()
                 Me.selectSpecificPath(sPath)
             Else
                 'it failed
@@ -1716,7 +1911,7 @@ Public Class frmMain
         End If
     End Sub
 
-    Private Sub ToolStripMenuItemDeleteFolder_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) _
+    Private Sub menuDeleteFolder_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) _
         Handles menuDeleteFolder.Click
 
         Dim tNode As TreeNode
@@ -1946,95 +2141,95 @@ Public Class frmMain
         End If
     End Sub
 
-    Private Sub menuSaveSummerboardTheme_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) _
-        Handles tsmAsSummerboardFolder.Click
+    'Private Sub menuSaveSummerboardTheme_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) _
+    '    Handles tsmAsSummerboardFolder.Click
 
-        Dim dFolder As String, sSaveAsFilename As String, sFileFromPhone As String
-        Dim sPath As String, strFolders() As iPhone.strDir
+    '    Dim dFolder As String, sSaveAsFilename As String, sFileFromPhone As String
+    '    Dim sPath As String, strFolders() As iPhone.strDir
 
-        If My.Settings.SummerboardPath <> "" Then
-            folderBrowserDialog.SelectedPath = My.Settings.SummerboardPath
-        End If
-        folderBrowserDialog.Description = My.Resources.String45
+    '    If My.Settings.SummerboardPath <> "" Then
+    '        folderBrowserDialog.SelectedPath = My.Settings.SummerboardPath
+    '    End If
+    '    folderBrowserDialog.Description = My.Resources.String45
 
-        If folderBrowserDialog.ShowDialog() = Windows.Forms.DialogResult.OK Then
-            Me.Cursor = Cursors.WaitCursor
-            Application.DoEvents() ' update display
+    '    If folderBrowserDialog.ShowDialog() = Windows.Forms.DialogResult.OK Then
+    '        Me.Cursor = Cursors.WaitCursor
+    '        Application.DoEvents() ' update display
 
-            My.Settings.SummerboardPath = Path.GetDirectoryName(folderBrowserDialog.SelectedPath) ' save the parent
+    '        My.Settings.SummerboardPath = Path.GetDirectoryName(folderBrowserDialog.SelectedPath) ' save the parent
 
-            dFolder = folderBrowserDialog.SelectedPath & "\"
-            ' save wallpaper jpg as PNG (~/Library/LockBackground.jpg)
-            StatusNormal(My.Resources.String9)
-            CopyFromPhoneMakePNG(tildeDir + "/Library/LockBackground.jpg", dFolder & "Wallpaper.png")
+    '        dFolder = folderBrowserDialog.SelectedPath & "\"
+    '        ' save wallpaper jpg as PNG (~/Library/LockBackground.jpg)
+    '        StatusNormal(My.Resources.String9)
+    '        CopyFromPhoneMakePNG(tildeDir + "/Library/LockBackground.jpg", dFolder & "Wallpaper.png")
 
-            ' save Dock Background (SBDockBG2.png -> Dock.png)
-            StatusNormal(My.Resources.String10)
-            CopyFromPhonePNG("/System/Library/CoreServices/SpringBoard.app/SBDockBG2.png", dFolder & "Dock.png")
+    '        ' save Dock Background (SBDockBG2.png -> Dock.png)
+    '        StatusNormal(My.Resources.String10)
+    '        CopyFromPhonePNG("/System/Library/CoreServices/SpringBoard.app/SBDockBG2.png", dFolder & "Dock.png")
 
-            ' save Icons for applications
+    '        ' save Icons for applications
 
-            Dim appFolders() As String = {"MobileCal", "MobileMail", "MobileMusicPlayer", "MobileNotes", "MobilePhone", "MobileSafari", "MobileSMS", "MobileTimer", "Preferences"}
-            Dim appNames() As String = {"Calendar", "Mail", "iPod", "Notes", "Phone", "Safari", "Text", "Clock", "Settings"}
-            Dim newIconName As String
+    '        Dim appFolders() As String = {"MobileCal", "MobileMail", "MobileMusicPlayer", "MobileNotes", "MobilePhone", "MobileSafari", "MobileSMS", "MobileTimer", "Preferences"}
+    '        Dim appNames() As String = {"Calendar", "Mail", "iPod", "Notes", "Phone", "Safari", "Text", "Clock", "Settings"}
+    '        Dim newIconName As String
 
-            dFolder = dFolder & "Icons\"
-            Directory.CreateDirectory(dFolder)
-            sPath = "/Applications/"
-            strFolders = iPhoneInterface.GetDirectories(sPath)
-            For Each sFolder As iPhone.strDir In strFolders
-                If sFolder.Dir.EndsWith(".app") Then
-                    StatusNormal(My.Resources.String11 + sFolder.Dir)
-                    If sFolder.Dir = "MobileSlideShow.app" Then
-                        Dim iNames() As String = {"icon-Photos.png", "icon-Camera.png"}
-                        For Each sIcon As String In (iNames)
-                            sFileFromPhone = sPath & sFolder.Dir & "/" & sIcon
-                            sSaveAsFilename = dFolder & sIcon.Substring(5, 6) & ".png"
-                            CopyFromPhonePNG(sFileFromPhone, sSaveAsFilename)
-                        Next
-                    Else
-                        sFileFromPhone = sPath & sFolder.Dir & "/icon.png"
-                        newIconName = Microsoft.VisualBasic.Left(sFolder.Dir, sFolder.Dir.Length - 4)
-                        Dim nii As Integer = Array.IndexOf(appFolders, newIconName)
-                        If nii >= 0 Then
-                            newIconName = appNames(nii)
-                        End If
-                        sSaveAsFilename = dFolder & newIconName & ".png"
-                        CopyFromPhonePNG(sFileFromPhone, sSaveAsFilename)
-                    End If
-                End If
-            Next
-            StatusNormal("")
-            Me.Cursor = Cursors.Arrow
-        End If
-    End Sub
+    '        dFolder = dFolder & "Icons\"
+    '        Directory.CreateDirectory(dFolder)
+    '        sPath = "/Applications/"
+    '        strFolders = iPhoneInterface.GetDirectories(sPath)
+    '        For Each sFolder As iPhone.strDir In strFolders
+    '            If sFolder.Dir.EndsWith(".app") Then
+    '                StatusNormal(My.Resources.String11 + sFolder.Dir)
+    '                If sFolder.Dir = "MobileSlideShow.app" Then
+    '                    Dim iNames() As String = {"icon-Photos.png", "icon-Camera.png"}
+    '                    For Each sIcon As String In (iNames)
+    '                        sFileFromPhone = sPath & sFolder.Dir & "/" & sIcon
+    '                        sSaveAsFilename = dFolder & sIcon.Substring(5, 6) & ".png"
+    '                        CopyFromPhonePNG(sFileFromPhone, sSaveAsFilename)
+    '                    Next
+    '                Else
+    '                    sFileFromPhone = sPath & sFolder.Dir & "/icon.png"
+    '                    newIconName = Microsoft.VisualBasic.Left(sFolder.Dir, sFolder.Dir.Length - 4)
+    '                    Dim nii As Integer = Array.IndexOf(appFolders, newIconName)
+    '                    If nii >= 0 Then
+    '                        newIconName = appNames(nii)
+    '                    End If
+    '                    sSaveAsFilename = dFolder & newIconName & ".png"
+    '                    CopyFromPhonePNG(sFileFromPhone, sSaveAsFilename)
+    '                End If
+    '            End If
+    '        Next
+    '        StatusNormal("")
+    '        Me.Cursor = Cursors.Arrow
+    '    End If
+    'End Sub
 
-    Private Sub tsmAsCustomizeFolders_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) _
-        Handles tsmAsCustomizeFolders.Click
+    'Private Sub tsmAsCustomizeFolders_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) _
+    '    Handles tsmAsCustomizeFolders.Click
 
-        Dim frmOptions As frmCustomizeOptions = New frmCustomizeOptions()
-        If frmOptions.ShowDialog() = Windows.Forms.DialogResult.OK Then
-            If frmOptions.HasChecked() Then
-                folderBrowserDialog.SelectedPath = My.Settings.CustomizePath
-                If folderBrowserDialog.ShowDialog() = Windows.Forms.DialogResult.OK Then
-                    My.Settings.CustomizePath = folderBrowserDialog.SelectedPath
-                    Me.Cursor = Cursors.WaitCursor
-                    Application.DoEvents() ' show cursor
-                    SaveCustomizeToFolder(frmOptions, folderBrowserDialog.SelectedPath)
-                    Me.Cursor = Cursors.Arrow
-                End If
-            End If
-        End If
-        frmOptions.Dispose()
-    End Sub
+    '    Dim frmOptions As frmCustomizeOptions = New frmCustomizeOptions()
+    '    If frmOptions.ShowDialog() = Windows.Forms.DialogResult.OK Then
+    '        If frmOptions.HasChecked() Then
+    '            folderBrowserDialog.SelectedPath = My.Settings.CustomizePath
+    '            If folderBrowserDialog.ShowDialog() = Windows.Forms.DialogResult.OK Then
+    '                My.Settings.CustomizePath = folderBrowserDialog.SelectedPath
+    '                Me.Cursor = Cursors.WaitCursor
+    '                Application.DoEvents() ' show cursor
+    '                SaveCustomizeToFolder(frmOptions, folderBrowserDialog.SelectedPath)
+    '                Me.Cursor = Cursors.Arrow
+    '            End If
+    '        End If
+    '    End If
+    '    frmOptions.Dispose()
+    'End Sub
 
-    Private Sub IPhoneToPCToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) _
+    Private Sub tsmIPhoneToPC_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) _
         Handles tsmIPhoneToPC.Click
 
         Config.bConvertToPNG = tsmIPhoneToPC.Checked
     End Sub
 
-    Private Sub PCToIPhoneToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) _
+    Private Sub tsmPCToIPhone_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) _
         Handles tsmPCToIPhone.Click
 
         Config.bConvertToiPhonePNG = tsmPCToIPhone.Checked
@@ -2130,8 +2325,8 @@ Public Class frmMain
 
     End Sub
 
-    Private Sub cmdRenameFolder_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) _
-        Handles cmdRenameFolder.Click
+    Private Sub tsmRenameFolder_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) _
+        Handles tsmRenameFolder.Click
 
         Dim oldPath As String = getSelectedFolder(), newPath As String
         Dim newName As String = InputBox(My.Resources.String48, "Rename folder", Path.GetFileName(oldPath)) '"Enter new folder name:"
@@ -2168,7 +2363,7 @@ Public Class frmMain
 
         lstFiles.ShowGroups = Not lstFiles.ShowGroups
         cmdShowGroups.Checked = lstFiles.ShowGroups
-        If lstFiles.ShowGroups Then
+        If lstFiles.ShowGroups AndAlso bNowConnected Then
             LoadFiles()
         End If
     End Sub
@@ -2337,7 +2532,7 @@ Public Class frmMain
     Private Sub tsmFileList_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) _
         Handles tsmFileList.Click
 
-        Dim dg As frmBackupFiles = New frmBackupFiles
+        Dim dg As frmBackupFiles = New frmBackupFiles()
 
         Me.Refresh()
         ObjDb.ExportDB()
@@ -2434,15 +2629,66 @@ Public Class frmMain
         End Try
     End Sub
 
+    'Menu > Help > Check a latest version
+    Private Sub tsmCheckALatestVersion_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) _
+        Handles tsmCheckALatestVersion.Click
+
+        Try
+            Me.Cursor = Cursors.WaitCursor
+            WebBrws.ScriptErrorsSuppressed = False
+            WebBrws.Navigate(New Uri(My.Settings.DownloadURL))
+            WebBrws.Visible = True
+            WebBrws.IsWebBrowserContextMenuEnabled = False
+            txtFileDetails.Visible = False
+            pnlQt.Visible = False
+
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Exclamation)
+        Finally
+            Me.Cursor = Cursors.Default
+        End Try
+    End Sub
+
+    'Menu > Help > Modification history
+    Private Sub tsmModificationHistory_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) _
+        Handles tsmModificationHistory.Click
+
+        Try
+            Me.Cursor = Cursors.WaitCursor
+            WebBrws.ScriptErrorsSuppressed = False
+            WebBrws.Navigate(New Uri(My.Settings.ModHistoryURL))
+            WebBrws.Visible = True
+            WebBrws.IsWebBrowserContextMenuEnabled = False
+            txtFileDetails.Visible = False
+            pnlQt.Visible = False
+
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Exclamation)
+        Finally
+            Me.Cursor = Cursors.Default
+        End Try
+    End Sub
+
+    Private zoomflg As Boolean = True
     Private Sub chkZoom_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) _
-        Handles chkZoom.CheckedChanged
+        Handles chkZoom.CheckedChanged, tsbZoom.CheckedChanged
 
         Dim checked As Boolean
 
-        If chkZoom.Checked Then
-            checked = True
+        If sender.GetType() Is GetType(CheckBox) Then
+            If chkZoom.Checked Then
+                checked = True
+            Else
+                checked = False
+            End If
+            tsbZoom.Checked = checked
         Else
-            checked = False
+            If tsbZoom.Checked Then
+                checked = True
+            Else
+                checked = False
+            End If
+            chkZoom.Checked = checked
         End If
 
         pnlQt.SuspendLayout()
@@ -2452,8 +2698,66 @@ Public Class frmMain
 
     End Sub
 
-    Private Sub qtPlugin_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs)
+    Private Sub tsbFullScreen_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) _
+        Handles tsbFullScreen.Click
 
+        If mvarFullScreenMode = False Then
+            ' ＜フルスクリーン表示への切り替え処理＞
+
+            ' ウィンドウの状態を保存する
+            prevFormState = Me.WindowState
+            ' 境界線スタイルを保存する
+            prevFormStyle = Me.FormBorderStyle
+
+            ' 0. 「最大化表示」→「フルスクリーン表示」では
+            ' タスク・バーが消えないので、いったん「通常表示」を行う
+            If Me.WindowState = FormWindowState.Maximized Then
+                Me.WindowState = FormWindowState.Normal
+            End If
+
+            ' フォームのサイズを保存する
+            prevFormSize = New Size(Me.Width, Me.Height)
+
+            ' 1. フォームの境界線スタイルを「None」にする
+            Me.FormBorderStyle = FormBorderStyle.None
+            ' 2. フォームのウィンドウ状態を「最大化」する
+            Me.WindowState = FormWindowState.Maximized
+
+            ' ボタンの表示を変更する
+            'Me.tsbFullScreen.Text = "通常表示する"
+
+            ' フルスクリーン表示をONにする
+            mvarFullScreenMode = True
+
+        Else
+            ' ＜通常表示／最大化表示への切り替え処理＞
+
+            ' フォームのウィンドウのサイズを元に戻す
+            Me.Size = prevFormSize
+
+            ' 0. 最大化表示に戻す場合にはいったん通常表示を行う
+            ' （フルスクリーン表示の処理とのバランスと取るため）
+            If prevFormState = FormWindowState.Maximized Then
+                Me.WindowState = FormWindowState.Normal
+            End If
+
+            ' 1. フォームの境界線スタイルを元に戻す
+            Me.FormBorderStyle = prevFormStyle
+
+            ' 2. フォームのウィンドウ状態を元に戻す
+            Me.WindowState = prevFormState
+
+            ' ボタンの表示を変更する
+            'Me.tsbFullScreen.Text = "フルスクリーン表示する"
+
+            ' フルスクリーン表示をOFFにする
+            mvarFullScreenMode = False
+
+        End If
+
+    End Sub
+
+    Private Sub qtPlugin_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs)
 
         tsmQtFullscreen.Checked = False
         pnlQt.QT.FullScreen = False
@@ -2694,7 +2998,7 @@ Public Class frmMain
                         End If
 
                         If Not mvarItunesMan.Loaded AndAlso iTunesPath <> "" Then
-                            If CopyFromPhonePNG(iTunesPath, My.Settings.DbPath & "\iTunesDB") <> 0 Then
+                            If CopyFromPhone(iTunesPath, My.Settings.DbPath & "\iTunesDB") <> 0 Then
                                 Me.getArtists(My.Settings.DbPath, "All")
                             End If
                         End If
@@ -2787,7 +3091,9 @@ Public Class frmMain
     '    Next
     'End Sub
 
-    Private Sub btnExport_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnExport.Click
+    Private Sub btnExport_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) _
+        Handles btnExport.Click
+
         Dim sRootPath As String = ""
         Dim escaped As Boolean = False
         Dim dr As DialogResult
@@ -2964,13 +3270,15 @@ Public Class frmMain
         pnlQt.QT.ShowPropertyPages()
     End Sub
 
-    Private Sub QuickTimeInfoToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) _
+    Private Sub tsmQuickTimeInfo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) _
         Handles tsmQuickTimeInfo.Click, tsmQtInfo.Click
 
         pnlQt.QT.ShowAboutBox()
     End Sub
 
-    Private Sub tabViewType_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles tabViewType.SelectedIndexChanged
+    Private Sub tabViewType_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) _
+        Handles tabViewType.SelectedIndexChanged
+
         Static lastChecked As Boolean = False
 
         If tabViewType.SelectedIndex = 0 Then
@@ -3015,7 +3323,33 @@ Public Class frmMain
             rtbAMDevice.SelectionColor = Color.Blue
             rtbAMDevice.AppendText("Product ID: ")
             rtbAMDevice.SelectionColor = Color.Black
-            rtbAMDevice.AppendText(.product_id.ToString & vbCrLf)
+            rtbAMDevice.AppendText(.product_id.ToString)
+            Dim prodid As String
+            Select Case .product_id
+                Case &H1290
+                    prodid = "iPhone First Gen"
+                Case &H1291
+                    prodid = "iPod touch 1G"
+                Case &H1292
+                    prodid = "iPhone 3G"
+                Case &H1293
+                    prodid = "iPod touch 2G"
+                Case &H1294
+                    prodid = "iPhone 2.1"
+                Case &H1295
+                    prodid = "iProd 0.1"
+                Case &H1296
+                    prodid = "iPod 2.2"
+                Case &H1297
+                    prodid = "iPhone 3.1"
+                Case &H1298
+                    prodid = "iFPGA"
+                Case &H1299
+                    prodid = "iPod 3.1"
+                Case Else
+                    prodid = "Unknown"
+            End Select
+            rtbAMDevice.AppendText(" (" & prodid & ")" & vbCrLf)
             'dat.Append("Serial: ").Append(iPhoneInterface.Device.serial).Append(vbCrLf)
 
             rtbAMDevice.SelectionColor = Color.Blue
@@ -3075,18 +3409,21 @@ Public Class frmMain
         My.Settings.ExportDir = cmbOutputDir.Text
     End Sub
 
-    Private Sub menuProperty_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) _
-        Handles menuProperty.Click
+    Private Sub tsmProperty_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) _
+        Handles tsmProperty.Click
 
         Dim path As String = Me.getSelectedFolder()
         Dim frmFolderProp As New frmFolderProperty
+
         frmFolderProp.CurrentPath = path
         frmFolderProp.Show(Me)
         frmFolderProp.txtFolderName.Text = path.Substring(path.LastIndexOf("/") + 1)
 
     End Sub
 
-    Private Sub trvApps_AfterSelect(ByVal sender As Object, ByVal e As System.Windows.Forms.TreeViewEventArgs) Handles trvApps.AfterSelect
+    Private Sub trvApps_AfterSelect(ByVal sender As Object, ByVal e As System.Windows.Forms.TreeViewEventArgs) _
+        Handles trvApps.AfterSelect
+
         Dim selNode As TreeNode = e.Node
         Me.UseWaitCursor = True
 
@@ -3100,6 +3437,116 @@ Public Class frmMain
         End Try
 
     End Sub
+
+    Private Function findFile(ByVal sPath As String, ByVal fname As String) As String
+        Dim sbpath As String
+        Dim ret As String = ""
+
+        Try
+            'get the data from the phone
+            For Each strFiles As iPhone.strFileInfo In iPhoneInterface.GetFolderInfo(sPath)
+                Dim fileName As String = convertcd(strFiles.name)
+                If strFiles.isDir Then
+                    sbpath = sPath & "/" & fileName
+
+                    'If Not strFiles.isSLink Then
+                    StatusNormal(sbpath)
+                    ret = findFile(sbpath, fname)
+                    'End If
+                    If ret.Length > 0 Then
+                        Exit Try
+                    End If
+                Else
+                    If fileName.IndexOf(fname) > -1 Then
+                        ret = sPath & "/" & fileName
+                        Exit For
+                    End If
+                    Application.DoEvents()
+                End If
+                If ProgressEscapeFlg Then
+                    Exit For
+                End If
+            Next
+            'folderCount += 1
+            Thread.Sleep(1)
+
+        Catch ex As Exception
+            StatusWarning(My.Resources.String35)
+
+        End Try
+
+        Return ret
+
+    End Function
+
+    Private Sub txtFind_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) _
+        Handles txtFind.GotFocus
+
+        txtFind.SelectionStart = 0
+        txtFind.SelectionLength = txtFind.Text.Length
+
+    End Sub
+
+    Private Sub txtFind_TextChanged(ByVal sender As Object, ByVal e As System.EventArgs) _
+        Handles txtFind.TextChanged
+
+        If txtFind.Text.Length > 0 Then
+            btnFind.Enabled = True
+        Else
+            btnFind.Enabled = False
+        End If
+    End Sub
+
+    Private Sub btnFind_Click(ByVal sender As Object, ByVal e As System.EventArgs) _
+        Handles btnFind.Click
+
+        Dim spath As String
+        Dim f As String
+
+        Me.Cursor = Cursors.WaitCursor
+        Try
+            btnFind.Enabled = False
+            spath = Me.getSelectedFolder()
+
+            If spath = "" Then
+                Exit Sub
+            End If
+
+            tlbProgress0.Visible = True
+            tlbProgress0.Style = ProgressBarStyle.Marquee
+            btnCancel.Visible = True
+
+            f = Me.findFile(spath, txtFind.Text)
+
+            If f.Length > 0 Then
+                f = f.Substring(0, f.LastIndexOf("/"))
+                Me.openPath(f)
+            Else
+                StatusNormal("The file was not found.")
+            End If
+
+        Finally
+            btnCancel.Visible = False
+            tlbProgress0.Style = ProgressBarStyle.Blocks
+            tlbProgress0.Visible = False
+
+            btnFind.Enabled = True
+            Me.Cursor = Cursors.Default
+        End Try
+
+    End Sub
+
+    'Private Sub frmMain_Activated(ByVal sender As Object, ByVal e As System.EventArgs) _
+    '    Handles Me.Activated
+
+    '    Me.Opacity = 1.0
+    'End Sub
+
+    'Private Sub frmMain_Deactivate(ByVal sender As Object, ByVal e As System.EventArgs) _
+    '    Handles Me.Deactivate
+
+    '    Me.Opacity = 0.5
+    'End Sub
 
 End Class
 

@@ -1,8 +1,25 @@
 Option Strict On
 Option Explicit On
+' =============================================================================
+' *
+' *  System      : itouchBrowser
+' *  Module name : BackupDirDialog.vb
+' *  Description : Backup directory dialog box
+' *
+' *    %Z% %I% %W% %G% %U% [ %H% %T% ]
+' *    $Header:  $
+' *
+' *  (c) Copyright sugi. 2008. All rights reserved.
+' *
+' *  Modification history :
+' *    Date        Level  Author        Description
+' *    ----------  -----  ------------  -----------------------------------
+' *    2009/01/31  1.00   Sugi          Initial release
+' *
+' =============================================================================
 
 Imports System.Threading
-Imports Manzana
+Imports itouchBrowser.Manzana
 
 Public Class frmFolderProperty
 
@@ -76,27 +93,37 @@ Public Class frmFolderProperty
     End Sub
 
     Private Sub findFiles(ByVal sPath As String)
-        Dim sbpath As String
-        Dim sFolders As iPhone.strDir()
+        'Dim sbpath As String
+        'Dim sFolders As iPhone.strDir()
 
         Try
             'get the data from the phone
-            sFolders = iPhoneInterface.GetDirectories(sPath)
+            'sFolders = iPhoneInterface.GetDirectories(sPath)
 
-            For Each strFolder As iPhone.strDir In sFolders
-                sbpath = sPath & "/" & strFolder.Dir
+            'For Each strFolder As iPhone.strDir In sFolders
+            '    sbpath = sPath & "/" & strFolder.Dir
 
-                If Not strFolder.IsSLink Then
-                    findFiles(sbpath)
-                End If
-                If suspend Then
-                    Exit Try
-                End If
-            Next
-            For Each strFiles As iPhone.strFileInfo In iPhoneInterface.GetFilesInfo(sPath)
-                If Not strFiles.isSLink Then
-                    allSize += strFiles.size
-                    fileCount += 1
+            '    If Not strFolder.IsSLink Then
+            '        findFiles(sbpath)
+            '    End If
+            '    If suspend Then
+            '        Exit Try
+            '    End If
+            'Next
+            For Each strFiles As iPhone.strFileInfo In iPhoneInterface.GetFolderInfo(sPath)
+                If strFiles.isDir Then
+                    If Not strFiles.isSLink Then
+                        Dim fileName As String = convertcd(strFiles.name)
+                        findFiles(sPath & "/" & fileName)
+                    End If
+                    If suspend Then
+                        Exit Try
+                    End If
+                Else
+                    If Not strFiles.isSLink Then
+                        allSize += strFiles.size
+                        fileCount += 1
+                    End If
                 End If
             Next
             folderCount += 1

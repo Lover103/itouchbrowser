@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.50727</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{2184372E-AFEE-4E2E-8AA9-8FF6385E9875}</ProjectGuid>
     <OutputType>WinExe</OutputType>
@@ -17,6 +17,12 @@
     <SignManifests>false</SignManifests>
     <IsWebBootstrapper>true</IsWebBootstrapper>
     <ApplicationIcon>Resources\iPhoneBrowser.ico</ApplicationIcon>
+    <TargetZone>LocalIntranet</TargetZone>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
     <PublishUrl>publish/</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Web</InstallFrom>
@@ -32,9 +38,11 @@
     <SupportUrl>http://code.google.com/p/iphonebrowser/wiki/Usage</SupportUrl>
     <ProductName>iPhoneBrowser</ProductName>
     <PublisherName>Kevin Hightower</PublisherName>
+    <ApplicationRevision>4</ApplicationRevision>
     <ApplicationVersion>1.3.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <TargetZone>LocalIntranet</TargetZone>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -90,6 +98,7 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.XML" />
+    <Reference Include="vjslib" />
   </ItemGroup>
   <ItemGroup>
     <Import Include="AxQTOControlLib" />
@@ -293,10 +302,30 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
       <Visible>False</Visible>
-      <ProductName>.NET Framework 2.0</ProductName>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
       <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
@@ -305,15 +334,21 @@
     <None Include="Resources\AudioFile.png" />
     <None Include="Resources\Camera.png" />
     <Content Include="Resources\cancel.gif" />
+    <None Include="Resources\dbs.ico" />
+    <None Include="Resources\CopyHS.png" />
+    <None Include="Resources\copy.png" />
     <Content Include="Resources\Folder.ico" />
     <Content Include="Resources\folderopen.ico" />
     <None Include="Resources\help.png" />
+    <None Include="Resources\FullScreen.PNG" />
     <Content Include="Resources\iPhoneBrowser.ico" />
     <BaseApplicationManifest Include="My Project\app.manifest" />
     <None Include="Resources\StringResources.txt" />
     <None Include="Resources\Network_Internet.png" />
+    <None Include="Resources\Monitor.png" />
     <Content Include="Resources\RingToneLarge.gif" />
     <Content Include="Resources\RingToneSmall.gif" />
+    <None Include="Resources\VPN.png" />
     <None Include="Resources\VideoCamera.png" />
     <None Include="Resources\Zoom.bmp" />
     <None Include="app.config" />

@@ -15,6 +15,18 @@
     {
         "Entry"
         {
+        "MsmKey" = "8:_005F3C3BB3DAA7422B7FD1369F9EACAC"
+        "OwnerKey" = "8:_255C6DADE1A000CEECF3ECEF3F0F6375"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_005F3C3BB3DAA7422B7FD1369F9EACAC"
+        "OwnerKey" = "8:_C4DED4A8B72C42AE9732E65EF7EDD0A9"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_0FB5ACFC2A56627B9CDC9DB78AB369F6"
         "OwnerKey" = "8:_564A80200E84786EE43385BABAB86CF5"
         "MsmSig" = "8:_UNDEFINED"
@@ -27,13 +39,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_1D6D598C5200D2736AA984D9C34EA5A8"
-        "OwnerKey" = "8:_C4DED4A8B72C42AE9732E65EF7EDD0A9"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_36B7390355EE532E6B9639C54C5DB5C6"
+        "MsmKey" = "8:_255C6DADE1A000CEECF3ECEF3F0F6375"
         "OwnerKey" = "8:_C4DED4A8B72C42AE9732E65EF7EDD0A9"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -52,7 +58,7 @@
         "Entry"
         {
         "MsmKey" = "8:_564A80200E84786EE43385BABAB86CF5"
-        "OwnerKey" = "8:_9519CE353612FA7E89F59CEF16AB3D9B"
+        "OwnerKey" = "8:_005F3C3BB3DAA7422B7FD1369F9EACAC"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -64,7 +70,7 @@
         "Entry"
         {
         "MsmKey" = "8:_564A80200E84786EE43385BABAB86CF5"
-        "OwnerKey" = "8:_F68E117A1B906703B88666BC6ED3ADD7"
+        "OwnerKey" = "8:_255C6DADE1A000CEECF3ECEF3F0F6375"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -75,19 +81,13 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_7E42AF52B4B0710692B9D69EBBF78582"
+        "MsmKey" = "8:_6D440F68F4541DABF0A736676A2C4A13"
         "OwnerKey" = "8:_C4DED4A8B72C42AE9732E65EF7EDD0A9"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_9519CE353612FA7E89F59CEF16AB3D9B"
-        "OwnerKey" = "8:_F68E117A1B906703B88666BC6ED3ADD7"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_9519CE353612FA7E89F59CEF16AB3D9B"
+        "MsmKey" = "8:_7D352CAB179484F7446E3C62992D1280"
         "OwnerKey" = "8:_C4DED4A8B72C42AE9732E65EF7EDD0A9"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -100,7 +100,7 @@
         "Entry"
         {
         "MsmKey" = "8:_DEC0E3EC32BE773D21223D772E83ECB1"
-        "OwnerKey" = "8:_9519CE353612FA7E89F59CEF16AB3D9B"
+        "OwnerKey" = "8:_005F3C3BB3DAA7422B7FD1369F9EACAC"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -111,7 +111,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_F68E117A1B906703B88666BC6ED3ADD7"
+        "MsmKey" = "8:_F46AF4684BDC1BFDFE74E604DD75E98A"
         "OwnerKey" = "8:_C4DED4A8B72C42AE9732E65EF7EDD0A9"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -119,12 +119,6 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_C4DED4A8B72C42AE9732E65EF7EDD0A9"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_36B7390355EE532E6B9639C54C5DB5C6"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -142,25 +136,31 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_1D6D598C5200D2736AA984D9C34EA5A8"
+        "OwnerKey" = "8:_7D352CAB179484F7446E3C62992D1280"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_7E42AF52B4B0710692B9D69EBBF78582"
+        "OwnerKey" = "8:_6D440F68F4541DABF0A736676A2C4A13"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_F68E117A1B906703B88666BC6ED3ADD7"
+        "OwnerKey" = "8:_F46AF4684BDC1BFDFE74E604DD75E98A"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_9519CE353612FA7E89F59CEF16AB3D9B"
+        "OwnerKey" = "8:_255C6DADE1A000CEECF3ECEF3F0F6375"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_005F3C3BB3DAA7422B7FD1369F9EACAC"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -291,6 +291,37 @@
         }
         "File"
         {
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_005F3C3BB3DAA7422B7FD1369F9EACAC"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Interop.QTOControlLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_005F3C3BB3DAA7422B7FD1369F9EACAC"
+                    {
+                    "Name" = "8:Interop.QTOControlLib.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:Interop.QTOControlLib.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_254997F48F3C4AB3A9D32B0C40755247"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0FB5ACFC2A56627B9CDC9DB78AB369F6"
             {
             "SourcePath" = "8:QTOLibrary.dll"
@@ -331,51 +362,20 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_1D6D598C5200D2736AA984D9C34EA5A8"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_255C6DADE1A000CEECF3ECEF3F0F6375"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:System.IPod, Version=1.0.0.2, Culture=neutral, PublicKeyToken=650d91782f71d69c, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:AxInterop.QTOControlLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_1D6D598C5200D2736AA984D9C34EA5A8"
+                    "_255C6DADE1A000CEECF3ECEF3F0F6375"
                     {
-                    "Name" = "8:System.IPod.dll"
+                    "Name" = "8:AxInterop.QTOControlLib.dll"
                     "Attributes" = "3:512"
                     }
                 }
-            "SourcePath" = "8:System.IPod.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_9AC704E1AFFA41E8A14681C5E720476C"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_36B7390355EE532E6B9639C54C5DB5C6"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:itouchBrowser.Manzana, Version=1.1.2.2, Culture=neutral, processorArchitecture=x86"
-                "ScatterAssemblies"
-                {
-                    "_36B7390355EE532E6B9639C54C5DB5C6"
-                    {
-                    "Name" = "8:itouchBrowser.Manzana.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:itouchBrowser.Manzana.dll"
+            "SourcePath" = "8:AxInterop.QTOControlLib.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_254997F48F3C4AB3A9D32B0C40755247"
@@ -495,14 +495,14 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_7E42AF52B4B0710692B9D69EBBF78582"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_6D440F68F4541DABF0A736676A2C4A13"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:SCW_iPhonePNG, Version=1.7.1.16, Culture=neutral, processorArchitecture=x86"
                 "ScatterAssemblies"
                 {
-                    "_7E42AF52B4B0710692B9D69EBBF78582"
+                    "_6D440F68F4541DABF0A736676A2C4A13"
                     {
                     "Name" = "8:SCW_iPhonePNG.dll"
                     "Attributes" = "3:512"
@@ -526,23 +526,23 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_9519CE353612FA7E89F59CEF16AB3D9B"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_7D352CAB179484F7446E3C62992D1280"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Interop.QTOControlLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:System.IPod, Version=1.0.0.2, Culture=neutral, PublicKeyToken=650d91782f71d69c, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_9519CE353612FA7E89F59CEF16AB3D9B"
+                    "_7D352CAB179484F7446E3C62992D1280"
                     {
-                    "Name" = "8:Interop.QTOControlLib.dll"
+                    "Name" = "8:System.IPod.dll"
                     "Attributes" = "3:512"
                     }
                 }
-            "SourcePath" = "8:Interop.QTOControlLib.dll"
+            "SourcePath" = "8:System.IPod.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
-            "Folder" = "8:_254997F48F3C4AB3A9D32B0C40755247"
+            "Folder" = "8:_9AC704E1AFFA41E8A14681C5E720476C"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -581,7 +581,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:itouchBrowser.resources, Version=1.8.1.24, Culture=ja-JP, processorArchitecture=x86"
+            "AssemblyAsmDisplayName" = "8:itouchBrowser.resources, Version=1.8.2.28, Culture=ja-JP, processorArchitecture=x86"
                 "ScatterAssemblies"
                 {
                     "_E3CB1248FFEC427A82F997AF69E82C16"
@@ -608,20 +608,20 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_F68E117A1B906703B88666BC6ED3ADD7"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_F46AF4684BDC1BFDFE74E604DD75E98A"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:AxInterop.QTOControlLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:itouchBrowser.Manzana, Version=1.1.2.2, Culture=neutral, processorArchitecture=x86"
                 "ScatterAssemblies"
                 {
-                    "_F68E117A1B906703B88666BC6ED3ADD7"
+                    "_F46AF4684BDC1BFDFE74E604DD75E98A"
                     {
-                    "Name" = "8:AxInterop.QTOControlLib.dll"
+                    "Name" = "8:itouchBrowser.Manzana.dll"
                     "Attributes" = "3:512"
                     }
                 }
-            "SourcePath" = "8:AxInterop.QTOControlLib.dll"
+            "SourcePath" = "8:itouchBrowser.Manzana.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_254997F48F3C4AB3A9D32B0C40755247"
@@ -722,29 +722,30 @@
         "MsiBootstrapper"
         {
         "LangId" = "3:0"
+        "RequiresElevation" = "11:FALSE"
         }
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:itouchBrowser"
-        "ProductCode" = "8:{AF588697-BF0F-42D1-82F9-A4E40104E680}"
-        "PackageCode" = "8:{713EA8D1-6DBA-41AC-8752-C3AF806B358B}"
+        "ProductCode" = "8:{3533DAF1-73B9-46A9-9AE6-46A5F1D3DC2C}"
+        "PackageCode" = "8:{CFC0D147-D49D-41C8-BEBA-8508DF607C26}"
         "UpgradeCode" = "8:{6DF8F65F-1CD9-45F2-B007-22872A42E544}"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.8.7"
-        "Manufacturer" = "8:Cranium Consulting and Custom Software"
+        "ProductVersion" = "8:1.8.11"
+        "Manufacturer" = "8:sugi's Lab."
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:http://code.google.com/p/itouchbrowser/"
         "Title" = "8:Setup itouchBrowser"
         "Subject" = "8:"
         "ARPCONTACT" = "8:Kevin Hightower, Pete Wilson and Sugi"
         "Keywords" = "8:"
-        "ARPCOMMENTS" = "8:Install touchBrowser"
-        "ARPURLINFOABOUT" = "8:http://scw.us"
-        "ARPPRODUCTICON" = "8:"
+        "ARPCOMMENTS" = "8:Install itouchBrowser"
+        "ARPURLINFOABOUT" = "8:"
+        "ARPPRODUCTICON" = "8:_15097BF16B6749019ECF55A610EA7557"
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
@@ -1302,9 +1303,6 @@
                 {
                 }
             }
-        }
-        "VJSharpPlugin"
-        {
         }
     }
 }
