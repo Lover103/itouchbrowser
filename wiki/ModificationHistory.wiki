@@ -1,4 +1,11 @@
 #summary Modification History 変更履歴
+#labels Phase-Design
+
+次回予告：v1.83
+  * USBとSSHで同時アクセス。
+  * ファイル属性表示。
+  * ファイルアクセス権限の変更が可能。
+  * SSHコマンドライン機能を追加。
 
 v1.82.30 4/17/2009 =sugi=
   * *１つのファイルにまとめた* テストバージョン。
