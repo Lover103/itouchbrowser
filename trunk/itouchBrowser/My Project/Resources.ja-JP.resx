@@ -291,6 +291,12 @@ iTunesのサービスが起動していない可能性があります。正常�
   <data name="String60" xml:space="preserve">
     <value>書き出し先のディレクトリを選択してください。</value>
   </data>
+  <data name="String61" xml:space="preserve">
+    <value>SSH秘密鍵と公開鍵の保存ディレクトリを選択してください。</value>
+  </data>
+  <data name="String62" xml:space="preserve">
+    <value>{0}フォルダーのバックアップ...</value>
+  </data>
   <data name="String7" xml:space="preserve">
     <value>この機能は、すべてのバックアップファイルを詳細に調べ、重複ファイルを削除し、ディスク使用量を節約します。</value>
   </data>

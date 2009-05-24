@@ -646,6 +646,7 @@
 本アプリケーションは、iPhoneBrowserを日本環境にあわせtouch用にカスタマイズしたものです。
 本家より多くの改善を行い、多くの処理を書き換えています。
 
+・SSH接続のサポート
 ・日本語表示 - 日本語ファイル名の対応
 ・ファイル転送速度の高速化
 ・処理速度の高速化
@@ -657,12 +658,14 @@
 ・iTunes 8対応
 
 ◎Jailbreak環境では。
-バックアップ機能に関しては、USB経由でのファイルのタイムスタンプと属性（アクセス権限）が取得できません。
-よって、一般的なバックアップ機能としては、不十分な機能しかありません。
+バックアップ機能に関しては、USB経由でのファイルのタイムスタンプと属性（アクセス権限）が取得できるようになりました。
+USBで転送後、SSH接続で権限設定を行ってください。
 ファイル転送機能としては、極限まで効率アップしていますので十分使えると思います。
-転送後WinSCPなどを使って権限設定を行ってください。
 
-2009/03/16    by =sugi=
+2009/04/24    by =sugi=
+
+SSH Connection:
+This product includes software developed by Routrek Networks, Inc.
 </value>
   </data>
   <data name="OKButton.Location" type="System.Drawing.Point, System.Drawing">

@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manzana", "Manzana\Manzana.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "System.IPod", "System\IPod\System.IPod.csproj", "{754F63F5-C1E9-4496-ABE2-4FB9A30DFAF2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "granados", "..\SSH\granados200.tar\src\granados.csproj", "{9780D85D-2E12-4747-9E08-DEDB95A71FC3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -126,6 +128,24 @@ Global
 		{754F63F5-C1E9-4496-ABE2-4FB9A30DFAF2}.Setup|Mixed Platforms.Build.0 = Release|Any CPU
 		{754F63F5-C1E9-4496-ABE2-4FB9A30DFAF2}.Setup|Win32.ActiveCfg = Release|Any CPU
 		{754F63F5-C1E9-4496-ABE2-4FB9A30DFAF2}.Setup|x86.ActiveCfg = Release|Any CPU
+		{9780D85D-2E12-4747-9E08-DEDB95A71FC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9780D85D-2E12-4747-9E08-DEDB95A71FC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9780D85D-2E12-4747-9E08-DEDB95A71FC3}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{9780D85D-2E12-4747-9E08-DEDB95A71FC3}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{9780D85D-2E12-4747-9E08-DEDB95A71FC3}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{9780D85D-2E12-4747-9E08-DEDB95A71FC3}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{9780D85D-2E12-4747-9E08-DEDB95A71FC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9780D85D-2E12-4747-9E08-DEDB95A71FC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9780D85D-2E12-4747-9E08-DEDB95A71FC3}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{9780D85D-2E12-4747-9E08-DEDB95A71FC3}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{9780D85D-2E12-4747-9E08-DEDB95A71FC3}.Release|Win32.ActiveCfg = Release|Any CPU
+		{9780D85D-2E12-4747-9E08-DEDB95A71FC3}.Release|x86.ActiveCfg = Release|Any CPU
+		{9780D85D-2E12-4747-9E08-DEDB95A71FC3}.Setup|Any CPU.ActiveCfg = Release|Any CPU
+		{9780D85D-2E12-4747-9E08-DEDB95A71FC3}.Setup|Any CPU.Build.0 = Release|Any CPU
+		{9780D85D-2E12-4747-9E08-DEDB95A71FC3}.Setup|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{9780D85D-2E12-4747-9E08-DEDB95A71FC3}.Setup|Mixed Platforms.Build.0 = Release|Any CPU
+		{9780D85D-2E12-4747-9E08-DEDB95A71FC3}.Setup|Win32.ActiveCfg = Release|Any CPU
+		{9780D85D-2E12-4747-9E08-DEDB95A71FC3}.Setup|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
