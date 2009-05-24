@@ -1,16 +1,33 @@
 Option Explicit On
 Option Strict On
-
+' =============================================================================
+' *
+' *  System      : itouchBrowser
+' *  Module name : ModuleMain.vb
+' *  Description : main module of static function
+' *
+' *    %Z% %I% %W% %G% %U% [ %H% %T% ]
+' *    $Header:  $
+' *
+' *  (c) Copyright sugi. 2009. All rights reserved.
+' *
+' *  Modification history :
+' *    Date        Level  Author        Description
+' *    ----------  -----  ------------  -----------------------------------
+' *    2009/04/24  1.00   Sugi          Initial release
+' *
+' =============================================================================
 Imports System.IO
 Imports System.Drawing.Imaging
 Imports System.Text
 Imports System.Threading
+Imports itouchBrowser
 Imports itouchBrowser.Manzana
 Imports SCW_iPhonePNG
-Imports itouchBrowser
 
 Module ModuleMain
 
+    Friend Const THUMBNAIL_LARGE_SIZE As Integer = 56
     Friend Const STRING_ROOT As String = "[root]"
     Friend Const STRING_APPL As String = "[Applications]"
     Friend Const MAX_PROG_DEPTH As Integer = 1
@@ -25,6 +42,7 @@ Module ModuleMain
     Friend ProgressEscapeFlg As Boolean = False
     Friend ProgressFullSize As Long = 0
     Friend ProgressSize As Long = 0
+    Friend SSHMan As SSHManager = Nothing
 
     Public Structure structConfig
         Friend bShowPreview As Boolean
@@ -119,7 +137,6 @@ Module ModuleMain
                 ObjDb.ExportDB()
             End If
 
-            Exit Sub
 
         Catch ex As Exception
             message = ex.Message
@@ -762,7 +779,6 @@ Module ModuleMain
     End Function
 
     Friend Function PhoneGetDirectoryName(ByVal phonePath As String) As String
-        'Return Microsoft.VisualBasic.Left(phonePath, InStrRev(phonePath, "/") - 1)
         Return phonePath.Substring(0, phonePath.LastIndexOf("/"))
     End Function
 
@@ -812,149 +828,148 @@ Module ModuleMain
         Next
     End Sub
 
-    Friend Sub SaveCustomizeToFolder(ByVal frmOptions As frmCustomizeOptions, ByVal destPath As String)
-        Dim sb As String = "/System/Library/CoreServices/SpringBoard.app/"
-        With frmOptions
-            Dim themeName As String = "\" & .txtThemeName.Text
-            Dim catName As String = "\" & .txtCategory.Text
-            needDir(destPath)
-            destPath = destPath & "\"
-            If .chkDock.Checked Then
-                Dim destDock As String = destPath & "DockSwap" & catName
-                needDir(destDock)
-                CopyFromPhonePNG(sb & "SBDockBG2.png", destDock & themeName & ".png")
-            End If
+    'Friend Sub _SaveCustomizeToFolder(ByVal frmOptions As frmCustomizeOptions, ByVal destPath As String)
+    '    Dim sb As String = "/System/Library/CoreServices/SpringBoard.app/"
+    '    With frmOptions
+    '        Dim themeName As String = "\" & .txtThemeName.Text
+    '        Dim catName As String = "\" & .txtCategory.Text
+    '        needDir(destPath)
+    '        destPath = destPath & "\"
+    '        If .chkDock.Checked Then
+    '            Dim destDock As String = destPath & "DockSwap" & catName
+    '            needDir(destDock)
+    '            CopyFromPhonePNG(sb & "SBDockBG2.png", destDock & themeName & ".png")
+    '        End If
 
-            destPath = destPath & "Customize"
-            needDir(destPath)
-            destPath = destPath & "\"
+    '        destPath = destPath & "Customize"
+    '        needDir(destPath)
+    '        destPath = destPath & "\"
 
-            If .chkCarrier.Checked Then
-                Dim destCarrier As String = destPath & "CarrierImages" & catName
-                needDir(destCarrier)
-                Dim curCarrier As String = "_CARRIER_" & .cbCarriers.SelectedItem.ToString & ".png"
+    '        If .chkCarrier.Checked Then
+    '            Dim destCarrier As String = destPath & "CarrierImages" & catName
+    '            needDir(destCarrier)
+    '            Dim curCarrier As String = "_CARRIER_" & .cbCarriers.SelectedItem.ToString & ".png"
 
-                CopyFromPhonePNG(sb & "FSO" & curCarrier, destCarrier & themeName & ".png")
-                CopyFromPhonePNG(sb & "Default" & curCarrier, destCarrier & themeName & "-1.png")
-            End If
+    '            CopyFromPhonePNG(sb & "FSO" & curCarrier, destCarrier & themeName & ".png")
+    '            CopyFromPhonePNG(sb & "Default" & curCarrier, destCarrier & themeName & "-1.png")
+    '        End If
 
-            Dim sTypes() As String = {"FSO_", "Default_"}
+    '        Dim sTypes() As String = {"FSO_", "Default_"}
 
-            If .chkBars.Checked Then
-                Dim destBars As String = destPath & "BarsImages" & catName
-                needDir(destBars)
-                destBars = destBars & themeName
+    '        If .chkBars.Checked Then
+    '            Dim destBars As String = destPath & "BarsImages" & catName
+    '            needDir(destBars)
+    '            destBars = destBars & themeName
 
-                ' Default_[0-5]_Bars.png -> ThemeName.png - ThemeName-4.png
-                ' FSO_[0-5]_Bars.png -> themeName-5.png - themeName-11.png
-                For j2 As Integer = 0 To 1
-                    For j1 As Integer = 0 To 5
-                        Dim destNum As String = ".png"
-                        If j1 <> 0 OrElse j2 <> 0 Then
-                            destNum = "-" & (j1 + 6 * j2).ToString() & destNum
-                        End If
-                        CopyFromPhonePNG(sb & sTypes(j2) & j1.ToString() & "_Bars.png", destBars & destNum)
-                    Next
-                Next
-            End If
+    '            ' Default_[0-5]_Bars.png -> ThemeName.png - ThemeName-4.png
+    '            ' FSO_[0-5]_Bars.png -> themeName-5.png - themeName-11.png
+    '            For j2 As Integer = 0 To 1
+    '                For j1 As Integer = 0 To 5
+    '                    Dim destNum As String = ".png"
+    '                    If j1 <> 0 OrElse j2 <> 0 Then
+    '                        destNum = "-" & (j1 + 6 * j2).ToString() & destNum
+    '                    End If
+    '                    CopyFromPhonePNG(sb & sTypes(j2) & j1.ToString() & "_Bars.png", destBars & destNum)
+    '                Next
+    '            Next
+    '        End If
 
-            If .chkWiFi.Checked Then
-                Dim destBars As String = destPath & "WiFiImages" & catName
-                needDir(destBars)
-                destBars = destBars & themeName
+    '        If .chkWiFi.Checked Then
+    '            Dim destBars As String = destPath & "WiFiImages" & catName
+    '            needDir(destBars)
+    '            destBars = destBars & themeName
 
-                ' Default_[0-5]_Bars.png -> ThemeName.png - ThemeName-4.png
-                ' FSO_[0-5]_Bars.png -> themeName-5.png - themeName-11.png
-                For j2 As Integer = 0 To 1
-                    For j1 As Integer = 0 To 3
-                        Dim destNum As String = ".png"
-                        If j1 <> 0 OrElse j2 <> 0 Then
-                            destNum = "-" & (j1 + 6 * j2).ToString() & destNum
-                        End If
-                        CopyFromPhonePNG(sb & sTypes(j2) & j1.ToString() & "_AirPort.png", destBars & destNum)
-                    Next
-                Next
-            End If
+    '            ' Default_[0-5]_Bars.png -> ThemeName.png - ThemeName-4.png
+    '            ' FSO_[0-5]_Bars.png -> themeName-5.png - themeName-11.png
+    '            For j2 As Integer = 0 To 1
+    '                For j1 As Integer = 0 To 3
+    '                    Dim destNum As String = ".png"
+    '                    If j1 <> 0 OrElse j2 <> 0 Then
+    '                        destNum = "-" & (j1 + 6 * j2).ToString() & destNum
+    '                    End If
+    '                    CopyFromPhonePNG(sb & sTypes(j2) & j1.ToString() & "_AirPort.png", destBars & destNum)
+    '                Next
+    '            Next
+    '        End If
 
-            If .chkBadge.Checked Then
-                Dim dest As String = destPath & "BadgeImages" & catName
-                needDir(dest)
-                CopyFromPhonePNG(sb & "SBBadgeBG.png", dest & themeName & ".png")
-            End If
+    '        If .chkBadge.Checked Then
+    '            Dim dest As String = destPath & "BadgeImages" & catName
+    '            needDir(dest)
+    '            CopyFromPhonePNG(sb & "SBBadgeBG.png", dest & themeName & ".png")
+    '        End If
 
-            If .chkBattery.Checked Then
-                Dim dest As String = destPath & "BatteryImages" & catName
-                needDir(dest)
-                ' 17 is used as default
-                CopyFromPhonePNG(sb & "BatteryBG_17.png", dest & themeName & ".png")
+    '        If .chkBattery.Checked Then
+    '            Dim dest As String = destPath & "BatteryImages" & catName
+    '            needDir(dest)
+    '            ' 17 is used as default
+    '            CopyFromPhonePNG(sb & "BatteryBG_17.png", dest & themeName & ".png")
 
-                For j1 As Integer = 1 To 16
-                    CopyFromPhonePNG(sb & "BatteryBG_" & j1.ToString() & ".png", dest & themeName & "-" & j1.ToString() & ".png")
-                Next
-            End If
+    '            For j1 As Integer = 1 To 16
+    '                CopyFromPhonePNG(sb & "BatteryBG_" & j1.ToString() & ".png", dest & themeName & "-" & j1.ToString() & ".png")
+    '            Next
+    '        End If
 
-            If .chkSound.Checked Then
-                Dim dest As String = destPath & "SoundImages" & catName
-                needDir(dest)
-                CopyFromPhonePNG(sb & "ring.png", dest & themeName & ".png")
-                CopyFromPhonePNG(sb & "mute.png", dest & themeName & "-1.png")
-                CopyFromPhonePNG(sb & "silent.png", dest & themeName & "-2.png")
-                CopyFromPhonePNG(sb & "speaker.png", dest & themeName & "-3.png")
-            End If
+    '        If .chkSound.Checked Then
+    '            Dim dest As String = destPath & "SoundImages" & catName
+    '            needDir(dest)
+    '            CopyFromPhonePNG(sb & "ring.png", dest & themeName & ".png")
+    '            CopyFromPhonePNG(sb & "mute.png", dest & themeName & "-1.png")
+    '            CopyFromPhonePNG(sb & "silent.png", dest & themeName & "-2.png")
+    '            CopyFromPhonePNG(sb & "speaker.png", dest & themeName & "-3.png")
+    '        End If
 
-            If .chkBalloons.Checked Then
-                Dim dest As String = destPath & "Chat1Images" & catName
-                needDir(dest)
-                CopyFromPhonePNG("/Applications/MobileSMS.app/Balloon_1.png", dest & themeName & ".png")
+    '        If .chkBalloons.Checked Then
+    '            Dim dest As String = destPath & "Chat1Images" & catName
+    '            needDir(dest)
+    '            CopyFromPhonePNG("/Applications/MobileSMS.app/Balloon_1.png", dest & themeName & ".png")
 
-                dest = destPath & "Chat2Images" & catName
-                needDir(dest)
-                CopyFromPhonePNG("/Applications/MobileSMS.app/Balloon_2.png", dest & themeName & ".png")
-            End If
-            If .chkKeypad.Checked Then
-                Dim dest As String = destPath & "DialerImages" & catName
-                needDir(dest)
-                CopyFromPhonePNG("/Applications/MobilePhone.app/BarDialer_Sel.png", dest & themeName & ".png")
-            End If
+    '            dest = destPath & "Chat2Images" & catName
+    '            needDir(dest)
+    '            CopyFromPhonePNG("/Applications/MobileSMS.app/Balloon_2.png", dest & themeName & ".png")
+    '        End If
+    '        If .chkKeypad.Checked Then
+    '            Dim dest As String = destPath & "DialerImages" & catName
+    '            needDir(dest)
+    '            CopyFromPhonePNG("/Applications/MobilePhone.app/BarDialer_Sel.png", dest & themeName & ".png")
+    '        End If
 
-            If .chkMainSlider.Checked Then
-                Dim dest As String = destPath & "MainSliderImages" & catName
-                needDir(dest)
-                CopyFromPhonePNG("/System/Library/Frameworks/TelephonyUI.Framework/bottombarknobgrey.png", dest & themeName & ".png")
-            End If
-            If .chkPowerSlider.Checked Then
-                Dim dest As String = destPath & "PowerSliderImages" & catName
-                needDir(dest)
-                CopyFromPhonePNG("/System/Library/Frameworks/TelephonyUI.Framework/bottombarknobred.png", dest & themeName & ".png")
-            End If
-            If .chkCallSlider.Checked Then
-                Dim dest As String = destPath & "CallSliderImages" & catName
-                needDir(dest)
-                CopyFromPhonePNG("/System/Library/Frameworks/TelephonyUI.Framework/bottombarknobgreen.png", dest & themeName & ".png")
-            End If
-            If .chkHiMask.Checked Then
-                Dim dest As String = destPath & "MaskSliderImages" & catName
-                needDir(dest)
-                CopyFromPhonePNG("/System/Library/Frameworks/TelephonyUI.Framework/bottombarlocktextmask.png", dest & themeName & ".png")
-            End If
+    '        If .chkMainSlider.Checked Then
+    '            Dim dest As String = destPath & "MainSliderImages" & catName
+    '            needDir(dest)
+    '            CopyFromPhonePNG("/System/Library/Frameworks/TelephonyUI.Framework/bottombarknobgrey.png", dest & themeName & ".png")
+    '        End If
+    '        If .chkPowerSlider.Checked Then
+    '            Dim dest As String = destPath & "PowerSliderImages" & catName
+    '            needDir(dest)
+    '            CopyFromPhonePNG("/System/Library/Frameworks/TelephonyUI.Framework/bottombarknobred.png", dest & themeName & ".png")
+    '        End If
+    '        If .chkCallSlider.Checked Then
+    '            Dim dest As String = destPath & "CallSliderImages" & catName
+    '            needDir(dest)
+    '            CopyFromPhonePNG("/System/Library/Frameworks/TelephonyUI.Framework/bottombarknobgreen.png", dest & themeName & ".png")
+    '        End If
+    '        If .chkHiMask.Checked Then
+    '            Dim dest As String = destPath & "MaskSliderImages" & catName
+    '            needDir(dest)
+    '            CopyFromPhonePNG("/System/Library/Frameworks/TelephonyUI.Framework/bottombarlocktextmask.png", dest & themeName & ".png")
+    '        End If
 
-            If .cbSounds.CheckedItems.Count > 0 Then
-                Dim dest As String = destPath & "AudioFiles" & catName
-                needDir(dest)
+    '        If .cbSounds.CheckedItems.Count > 0 Then
+    '            Dim dest As String = destPath & "AudioFiles" & catName
+    '            needDir(dest)
 
-                Dim sndNameArray() As String = {"Unlock", "Lock", "Received", "Sent", "Voicemail", "Alarm", _
-                    "BeepBeep", "LowPower", "Mail", "NewMail", "Photo", "SMSReceived"}
-                Dim sndArray() As String = {"unlock", "lock", "ReceivedMessage", "SentMessage", "Voicemail", "alarm", _
-                    "beep-beep", "low_power", "mail-sent", "New-mail", "photoShutter", "sms-received"}
+    '            Dim sndNameArray() As String = {"Unlock", "Lock", "Received", "Sent", "Voicemail", "Alarm", _
+    '                "BeepBeep", "LowPower", "Mail", "NewMail", "Photo", "SMSReceived"}
+    '            Dim sndArray() As String = {"unlock", "lock", "ReceivedMessage", "SentMessage", "Voicemail", "alarm", _
+    '                "beep-beep", "low_power", "mail-sent", "New-mail", "photoShutter", "sms-received"}
 
-                For Each cb As String In .cbSounds.CheckedItems
-                    Dim j1 As Integer = Array.IndexOf(sndNameArray, cb.Substring(0, cb.Length - 6))
-                    CopyFromPhonePNG("/System/Library/Audio/UISounds/" & sndArray(j1) & ".caf", dest & themeName & "_" & sndNameArray(j1) & ".aif")
-                Next
-            End If
-        End With
-    End Sub
-
+    '            For Each cb As String In .cbSounds.CheckedItems
+    '                Dim j1 As Integer = Array.IndexOf(sndNameArray, cb.Substring(0, cb.Length - 6))
+    '                CopyFromPhonePNG("/System/Library/Audio/UISounds/" & sndArray(j1) & ".caf", dest & themeName & "_" & sndNameArray(j1) & ".aif")
+    '            Next
+    '        End If
+    '    End With
+    'End Sub
 
     Private Function fileCompare(ByVal fileName1 As String, ByVal fileName2 As String) As Boolean
         ' This method accepts two strings that represent two files to compare.
@@ -997,6 +1012,7 @@ Module ModuleMain
         ' equal to "file2byte" at this point only if the files are 
         ' the same.
         Return (file1byte = file2byte)
+
     End Function
 
     Friend Function FixPhoneFilename(ByVal aName As String) As String
@@ -1349,10 +1365,37 @@ Module ModuleMain
         Return canvas
     End Function
 
-    Friend Function getThumbnail(ByVal sFile As String, ByVal iPhonePath As String, ByVal localPath As String) As Image
+    Function createThumbnail(ByVal image As Icon, ByVal w As Integer, ByVal h As Integer) As Image
+        Dim canvas As New Bitmap(w, h)
 
-        Const w As Integer = 52
-        Const h As Integer = 52
+        Dim g As Graphics = Graphics.FromImage(canvas)
+        g.FillRectangle(New SolidBrush(Color.PowderBlue), 0, 0, w, h)
+
+        Dim fw As Double = CDbl(w) / CDbl(image.Width)
+        Dim fh As Double = CDbl(h) / CDbl(image.Height)
+        Dim scale As Double = Math.Min(fw, fh)
+
+        Dim w2 As Integer = CInt(image.Width * scale)
+        Dim h2 As Integer = CInt(image.Height * scale)
+
+        'If image.Size.Height > h OrElse image.Size.Width > w Then
+        w2 = CInt(image.Width * scale)
+        h2 = CInt(image.Height * scale)
+        'Else
+        '   w2 = image.Width
+        '   h2 = image.Height
+        'End If
+
+        g.DrawImage(image.ToBitmap(), (w - w2) \ 2, (h - h2) \ 2, w2, h2)
+        g.Dispose()
+
+        Return canvas
+    End Function
+
+    Friend Function GetThumbnail(ByVal sFile As String, ByVal iPhonePath As String, ByVal localPath As String) As Image
+
+        Const w As Integer = THUMBNAIL_LARGE_SIZE
+        Const h As Integer = THUMBNAIL_LARGE_SIZE
 
         Dim thumbnail As Image = Nothing
         Dim sBuffer(65535) As Byte
@@ -1397,25 +1440,27 @@ Module ModuleMain
 
         With objMain.imgFilesLargeNew.Images
             .Clear()
-            .Add(createThumbnail(My.Resources.help, 52, 52))
-            .Add(createThumbnail(My.Resources.AudioCD, 52, 52))
-            .Add(createThumbnail(My.Resources.VideoCamera, 52, 52))
-            .Add(createThumbnail(My.Resources.copy, 52, 52))
-            .Add(createThumbnail(My.Resources.AudioFile, 52, 52))
-            .Add(createThumbnail(My.Resources.VPN, 52, 52))
-            .Add(createThumbnail(My.Resources.Network_Internet, 52, 52))
-            .Add(createThumbnail(My.Resources.Camera, 52, 52))
+            .Add(createThumbnail(My.Resources.help, THUMBNAIL_LARGE_SIZE, THUMBNAIL_LARGE_SIZE))
+            .Add(createThumbnail(My.Resources.AudioCD, THUMBNAIL_LARGE_SIZE, THUMBNAIL_LARGE_SIZE))
+            .Add(createThumbnail(My.Resources.VideoCamera, THUMBNAIL_LARGE_SIZE, THUMBNAIL_LARGE_SIZE))
+            .Add(createThumbnail(My.Resources.copy, THUMBNAIL_LARGE_SIZE, THUMBNAIL_LARGE_SIZE))
+            .Add(createThumbnail(My.Resources.AudioFile, THUMBNAIL_LARGE_SIZE, THUMBNAIL_LARGE_SIZE))
+            .Add(createThumbnail(My.Resources.VPN, THUMBNAIL_LARGE_SIZE, THUMBNAIL_LARGE_SIZE))
+            .Add(createThumbnail(My.Resources.Network_Internet, THUMBNAIL_LARGE_SIZE, THUMBNAIL_LARGE_SIZE))
+            .Add(createThumbnail(My.Resources.Camera, THUMBNAIL_LARGE_SIZE, THUMBNAIL_LARGE_SIZE))
+            .Add(createThumbnail(My.Resources.Folder_Back, THUMBNAIL_LARGE_SIZE, THUMBNAIL_LARGE_SIZE))
         End With
         With objMain.imgFilesSmallNew.Images
             .Clear()
-            .Add(createThumbnail(My.Resources.help, 18, 18))
-            .Add(createThumbnail(My.Resources.AudioCD, 18, 18))
-            .Add(createThumbnail(My.Resources.VideoCamera, 18, 18))
-            .Add(createThumbnail(My.Resources.copy, 18, 18))
-            .Add(createThumbnail(My.Resources.AudioFile, 18, 18))
-            .Add(createThumbnail(My.Resources.VPN, 18, 18))
-            .Add(createThumbnail(My.Resources.Network_Internet, 18, 18))
-            .Add(createThumbnail(My.Resources.Camera, 18, 18))
+            .Add(createThumbnail(My.Resources.help, 16, 16))
+            .Add(createThumbnail(My.Resources.AudioCD, 16, 16))
+            .Add(createThumbnail(My.Resources.VideoCamera, 16, 16))
+            .Add(createThumbnail(My.Resources.copy, 16, 16))
+            .Add(createThumbnail(My.Resources.AudioFile, 16, 16))
+            .Add(createThumbnail(My.Resources.VPN, 16, 16))
+            .Add(createThumbnail(My.Resources.Network_Internet, 16, 16))
+            .Add(createThumbnail(My.Resources.Camera, 16, 16))
+            .Add(My.Resources.CLSDFOLD)
         End With
 
     End Sub
@@ -1442,6 +1487,24 @@ Module ModuleMain
         End Try
 
         Return plist
+
+    End Function
+
+    Friend Function GetSSHAddress() As String
+        Dim sFile As String = "/private/var/preferences/SystemConfiguration/com.apple.network.identification.plist"
+        Dim tmpOnPC As String = GetTempFilename(sFile)
+        Dim copyRC As Integer = ModuleMain.CopyQueueFromPhone(sFile, tmpOnPC)
+        Dim addr As String = ""
+
+        If copyRC = 0 Then
+            addr = SSHManager.GetIPAddress(tmpOnPC)
+
+            File.Delete(tmpOnPC)
+        Else
+            addr = ""
+        End If
+
+        Return addr
 
     End Function
 

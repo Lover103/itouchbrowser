@@ -156,12 +156,12 @@ Partial Class PlayPanel
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents txtMovieName As System.Windows.Forms.TextBox
     Protected Friend WithEvents qtPlugin As iPhoneBrowser.itouchBrowser.QtWrapper
-    Friend WithEvents picArtistImage As System.Windows.Forms.PictureBox
-    Friend WithEvents spcLeft As System.Windows.Forms.SplitContainer
-    Friend WithEvents splBase As System.Windows.Forms.SplitContainer
-    Protected Friend WithEvents txtLyric As System.Windows.Forms.TextBox
-    Friend WithEvents Splitter1 As System.Windows.Forms.Splitter
+    Private WithEvents splBase As System.Windows.Forms.SplitContainer
+    Private WithEvents txtMovieName As System.Windows.Forms.TextBox
+    Private WithEvents picArtistImage As System.Windows.Forms.PictureBox
+    Private WithEvents spcLeft As System.Windows.Forms.SplitContainer
+    Private WithEvents Splitter1 As System.Windows.Forms.Splitter
+    Private WithEvents txtLyric As System.Windows.Forms.TextBox
 
 End Class

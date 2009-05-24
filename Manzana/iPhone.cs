@@ -447,7 +447,7 @@ namespace itouchBrowser.Manzana
                 try
                 {
                     this.GetFileInfo(full_path, buffer, len, out size, out isDir, out isSLink);
-                    if (!isDir)
+                    //if (!isDir)
                     {
                         strFileInfo tmp;
                         tmp.name = buffer;

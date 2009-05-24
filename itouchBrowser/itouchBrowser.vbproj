@@ -127,6 +127,18 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DbManager.vb" />
+    <Compile Include="frmCommandWindow.Designer.vb">
+      <DependentUpon>frmCommandWindow.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmCommandWindow.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFileAttributes.Designer.vb">
+      <DependentUpon>frmFileAttributes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmFileAttributes.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmAddFavorite.Designer.vb">
       <DependentUpon>frmAddFavorite.vb</DependentUpon>
     </Compile>
@@ -168,6 +180,18 @@
       <DependentUpon>frmSplashScreen.vb</DependentUpon>
     </Compile>
     <Compile Include="frmSplashScreen.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSSHConfig.Designer.vb">
+      <DependentUpon>frmSSHConfig.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmSSHConfig.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSSHInformation.Designer.vb">
+      <DependentUpon>frmSSHInformation.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmSSHInformation.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="iTunesManager.vb" />
@@ -223,6 +247,18 @@
       <SubType>Designer</SubType>
       <DependentUpon>BackupDirDialog.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmCommandWindow.ja-JP.resx">
+      <DependentUpon>frmCommandWindow.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCommandWindow.resx">
+      <DependentUpon>frmCommandWindow.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFileAttributes.ja-JP.resx">
+      <DependentUpon>frmFileAttributes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFileAttributes.resx">
+      <DependentUpon>frmFileAttributes.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmAddFavorite.ja-JP.resx">
       <SubType>Designer</SubType>
       <DependentUpon>frmAddFavorite.vb</DependentUpon>
@@ -275,6 +311,18 @@
       <SubType>Designer</SubType>
       <DependentUpon>frmSplashScreen.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmSSHConfig.ja-JP.resx">
+      <DependentUpon>frmSSHConfig.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSSHConfig.resx">
+      <DependentUpon>frmSSHConfig.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSSHInformation.ja-JP.resx">
+      <DependentUpon>frmSSHInformation.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSSHInformation.resx">
+      <DependentUpon>frmSSHInformation.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.ja-JP.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -290,7 +338,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="iPhoneBrowser_TemporaryKey.pfx" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -333,21 +380,39 @@
     <None Include="Resources\AudioCD.png" />
     <None Include="Resources\AudioFile.png" />
     <None Include="Resources\Camera.png" />
+    <None Include="Resources\AddOnIcon.png" />
+    <None Include="Resources\BuilderDialog_movedown.bmp" />
     <Content Include="Resources\cancel.gif" />
     <None Include="Resources\dbs.ico" />
     <None Include="Resources\CopyHS.png" />
     <None Include="Resources\copy.png" />
+    <None Include="Resources\CommandButton_XP.png" />
+    <None Include="Resources\cmd.ico" />
+    <None Include="Resources\cmd.png" />
+    <None Include="Resources\CLSDFOLD.BMP" />
+    <None Include="Resources\delete.png" />
     <Content Include="Resources\Folder.ico" />
     <Content Include="Resources\folderopen.ico" />
     <None Include="Resources\help.png" />
     <None Include="Resources\FullScreen.PNG" />
+    <None Include="Resources\Folder_Closed.png" />
+    <None Include="Resources\Folder_Back.png" />
     <Content Include="Resources\iPhoneBrowser.ico" />
     <BaseApplicationManifest Include="My Project\app.manifest" />
     <None Include="Resources\StringResources.txt" />
     <None Include="Resources\Network_Internet.png" />
     <None Include="Resources\Monitor.png" />
+    <None Include="Resources\OPENFOLD.BMP" />
+    <None Include="Resources\PrimaryKeyHS.png" />
+    <None Include="Resources\PageUpHS.png" />
+    <None Include="Resources\NewMessageHS.png" />
     <Content Include="Resources\RingToneLarge.gif" />
     <Content Include="Resources\RingToneSmall.gif" />
+    <None Include="Resources\XPfolder_Open.bmp" />
+    <None Include="Resources\XPfolder_closed.bmp" />
+    <None Include="Resources\window.bmp" />
+    <None Include="Resources\SecurityLock.png" />
+    <None Include="Resources\SecurityLock.ico" />
     <None Include="Resources\VPN.png" />
     <None Include="Resources\VideoCamera.png" />
     <None Include="Resources\Zoom.bmp" />

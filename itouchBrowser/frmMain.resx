@@ -193,14 +193,14 @@
     <value>0</value>
   </data>
   <metadata name="imgFolders.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>336, 17</value>
+    <value>397, 17</value>
   </metadata>
   <data name="imgFolders.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj0yLjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
-        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACO
-        CQAAAk1TRnQBSQFMAgEBAwEAAQQBAAEEAQABEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAD6
+        CAAAAk1TRnQBSQFMAgEBAgEAAQQBAAEEAQABEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAARADAAEBAQABCAYAAQQYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -228,26 +228,24 @@
         AcwBAAH/AZkB/wEAAf8BzAIAAf8BzAEzAQAB/wHMAWYBAAH/AcwBmQEAAf8CzAEAAf8BzAH/AQAC/wEz
         AQABzAH/AWYBAAL/AZkBAAL/AcwBAAJmAf8BAAFmAf8BZgEAAWYC/wEAAf8CZgEAAf8BZgH/AQAC/wFm
         AQABIQEAAaUBAANfAQADdwEAA4YBAAOWAQADywEAA7IBAAPXAQAD3QEAA+MBAAPqAQAD8QEAA/gBAAHw
-        AfsB/wEAAaQCoAEAA4ADAAH/AgAB/wMAAv8BAAH/AwAB/wEAAf8BAAL/AgAD/4EAAewB6wFtAeoBEwEV
-        AREBDwcOAwAKSwYACksUAAHsAZoBegFYBVIBUQFLASoCSwEPAgALUgFLBAALUgFLEwAB7AGgApoEegFZ
-        AVMCUgExAUsBEQEAAlIBoAl6AVIBKgIAAlIBoAl6AVIBKhIAAewBGgGgApoDegJZAVMCUgEqAUMBAAJS
-        AXoBoAh6AVgBKgIAAlIBegGgCHoBWAEqEgAB7QHDAqACmgN6AlkBUwFSATEBFAEAAlIBWAigAZoBWQEq
-        AgACUgFYCKABmgFZASoSAAHtAcMCoAKaBHoCWQFSATEBEgEAAVIBWAFSCaACeQEqAQABUgFYAVIJoAJ5
-        ASoRAAEcA8MBoAKaBHoBWQFSATEB6gEAAVIBegFSCaABegGgASoBAAFSAXoBUgmgAXoBoAEqEQABHAPD
-        AqACmgR6AVkBUgHrAQABUgGaAVIBeQL/AfYF/wGaAf8BKgEAAVIBmgFSAXkC/wH2Bf8BmgH/ASoRAAEc
-        BcMCoAKaBHoB6wEAAVIBoAFYC1IBKgEAAVIBoAFYC1IBKhEAChwE7QHsAQABUgagBf8BUgFLAgABUgag
-        Bf8BUgFLEgABHAEaAsMBoAGaARwBoQgAAVIB/wSgAf8GUgMAAVIB/wSgAf8GUhMAAacFHAGhCgABUgT/
-        AVIKAAFSBP8BUisABFIMAARSWgABQgFNAT4HAAE+AwABKAMAAUADAAEQAwABAQEAAQEFAAGAFwAD/wEA
-        Bv8CAAb/AwABAQHAAQ8BwAEPAwABAQGAAQcBgAEHAwABAQEAAQMBAAEDAwABAQEAAQMBAAEDAwABAQEA
-        AQMBAAEDAwABAQEAAQEBAAEBAwABAQEAAQEBAAEBAwABAQEAAQEBAAEBAwABAQEAAQEBAAEBAwABAQEA
-        AQMBAAEDAwAB/wEAAQcBAAEHAgABAQH/AYEB/wGBAf8CAAL/AcMB/wHDAf8CAAb/AgAL
+        AfsB/wEAAaQCoAEAA4ADAAH/AgAB/wMAAv8BAAH/AwAB/wEAAf8BAAL/AgAD/wEAAYAB8QG8CwcBvAKA
+        AfEBvAoHAbwB8QGAIAAB3gHwAZIL7AGSAbYB3gHwAZIK7AGSAfAB3iAAAfIBdAFRC0sBbQGSAfIBdAtL
+        AesBkgHyIAABmQJSAXkJUgFYAUoB7AF5ATEBeQpSAUsB7AHwIAABUgF6AVIBoAh6AVIBoAEqAW0CUgGg
+        CXoBUgEqAW0BByAAAVIBegFSAaAIegFSAaABKgFtAlIBegGgCHoBWAFRAW0B7yAAAVIBegFSCaABWAGg
+        ASoBbQJSAVgJoAFZAVIBbQHsIAABUgF6AVIJoAF6AaABKgFtAVIBWAFSCaACeQEqAesgAAFSAXoBUgmg
+        AXoBoAEqAW0BUgF6AVIJoAF6AaABKgHrIAABUgF6AVIJ9gF6AfYBKgHsAVIBegFSAXkI9gF6AfYBSwHs
+        IAABUgGaAXoJeQFSAXkBKgEHAVIBmgFYAVIIeQFYAXkBUQHvIAABUgKgBHkFmQFMAXMBdAHnAVIBoAF6
+        BHkFmQJSAXQB8SAAAVIBwwSgAcMFGgEqAe8B8gEAAVIBwwSgAcMFGgFSAXQB8AHYIAABbwEaBMMBGgFS
+        AXQEbwG2Ad4BAAFvARsEwwEaAVIBWARvAbYB3iIAAVIE9gFSAbwB3ggAAVIE9gFSAbwB3ikABFIB8QH0
+        CgAEUgHxAfQoAAFCAU0BPgcAAT4DAAEoAwABQAMAARADAAEBAQABAQUAAYAXAAP/YgABAQcAAQEBAAEB
+        BAABgAF/AYABfwQAAcAB/wHAAf8EAAs=
 </value>
   </data>
   <data name="trvFolders.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
   </data>
   <data name="trvFolders.SelectedImageIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="trvFolders.Size" type="System.Drawing.Size, System.Drawing">
     <value>210, 360</value>
@@ -418,7 +416,7 @@
     <value>3, 3</value>
   </data>
   <data name="trvApps.SelectedImageIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="trvApps.Size" type="System.Drawing.Size, System.Drawing">
     <value>210, 385</value>
@@ -593,6 +591,156 @@
   </data>
   <data name="splFiles.Orientation" type="System.Windows.Forms.Orientation, System.Windows.Forms">
     <value>Horizontal</value>
+  </data>
+  <data name="txtSSLPasswd.Location" type="System.Drawing.Point, System.Drawing">
+    <value>406, 3</value>
+  </data>
+  <data name="txtSSLPasswd.PasswordChar" type="System.Char, mscorlib" xml:space="preserve">
+    <value>*</value>
+  </data>
+  <data name="txtSSLPasswd.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 19</value>
+  </data>
+  <data name="txtSSLPasswd.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="txtSSLPasswd.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;txtSSLPasswd.Name" xml:space="preserve">
+    <value>txtSSLPasswd</value>
+  </data>
+  <data name="&gt;&gt;txtSSLPasswd.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtSSLPasswd.Parent" xml:space="preserve">
+    <value>pnlSSL</value>
+  </data>
+  <data name="&gt;&gt;txtSSLPasswd.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="tsSSH.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>0, 0</value>
+  </metadata>
+  <data name="tsbSSH.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 22</value>
+  </data>
+  <data name="tsbSSH.Text" xml:space="preserve">
+    <value>SSH</value>
+  </data>
+  <data name="tsbSSH.ToolTipText" xml:space="preserve">
+    <value>SSH Connection</value>
+  </data>
+  <data name="tsbSSHCmd.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="tsbSSHCmd.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="tsbSSHCmd.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="tsbSSHCmd.Text" xml:space="preserve">
+    <value>Command line</value>
+  </data>
+  <data name="tslIPAddr.Size" type="System.Drawing.Size, System.Drawing">
+    <value>67, 22</value>
+  </data>
+  <data name="tslIPAddr.Text" xml:space="preserve">
+    <value> IP Address:</value>
+  </data>
+  <data name="tstIPAddress.Size" type="System.Drawing.Size, System.Drawing">
+    <value>110, 25</value>
+  </data>
+  <data name="tslUser.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 22</value>
+  </data>
+  <data name="tslUser.Text" xml:space="preserve">
+    <value> User:</value>
+  </data>
+  <data name="tslUser.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="tstUserid.Size" type="System.Drawing.Size, System.Drawing">
+    <value>51, 25</value>
+  </data>
+  <data name="tstUserid.Text" xml:space="preserve">
+    <value>root</value>
+  </data>
+  <data name="tstUserid.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="tslPasswd.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 22</value>
+  </data>
+  <data name="tslPasswd.Text" xml:space="preserve">
+    <value> Password:</value>
+  </data>
+  <data name="tslPasswd.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="tstPasswd.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 25</value>
+  </data>
+  <data name="tstPasswd.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="tsbSSHConfig.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="tsbSSHConfig.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="tsbSSHConfig.Text" xml:space="preserve">
+    <value>ToolStripButton1</value>
+  </data>
+  <data name="tsSSH.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="tsSSH.Size" type="System.Drawing.Size, System.Drawing">
+    <value>540, 25</value>
+  </data>
+  <data name="tsSSH.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;tsSSH.Name" xml:space="preserve">
+    <value>tsSSH</value>
+  </data>
+  <data name="&gt;&gt;tsSSH.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tsSSH.Parent" xml:space="preserve">
+    <value>pnlSSL</value>
+  </data>
+  <data name="&gt;&gt;tsSSH.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="pnlSSL.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="pnlSSL.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="pnlSSL.Size" type="System.Drawing.Size, System.Drawing">
+    <value>540, 30</value>
+  </data>
+  <data name="pnlSSL.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;pnlSSL.Name" xml:space="preserve">
+    <value>pnlSSL</value>
+  </data>
+  <data name="&gt;&gt;pnlSSL.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pnlSSL.Parent" xml:space="preserve">
+    <value>splFiles.Panel1</value>
+  </data>
+  <data name="&gt;&gt;pnlSSL.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="grpFiles.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
   </data>
   <data name="picDelete.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1097,10 +1245,10 @@
     <value>File Type</value>
   </data>
   <data name="cohFiletype.Width" type="System.Int32, mscorlib">
-    <value>140</value>
+    <value>230</value>
   </data>
   <metadata name="menuRightClickFiles.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>160, 54</value>
+    <value>281, 54</value>
   </metadata>
   <data name="menuRightSaveAs.Size" type="System.Drawing.Size, System.Drawing">
     <value>201, 22</value>
@@ -1168,8 +1316,17 @@
   <data name="menuDeleteFileWithoutSaving.Text" xml:space="preserve">
     <value>Delete File wthout saving</value>
   </data>
+  <data name="tsmFileProperty.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="tsmFileProperty.Size" type="System.Drawing.Size, System.Drawing">
+    <value>201, 22</value>
+  </data>
+  <data name="tsmFileProperty.Text" xml:space="preserve">
+    <value>&amp;Property</value>
+  </data>
   <data name="menuRightClickFiles.Size" type="System.Drawing.Size, System.Drawing">
-    <value>202, 192</value>
+    <value>202, 214</value>
   </data>
   <data name="&gt;&gt;menuRightClickFiles.Name" xml:space="preserve">
     <value>menuRightClickFiles</value>
@@ -1178,7 +1335,7 @@
     <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <metadata name="imgThumbnail.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>586, 17</value>
+    <value>17, 54</value>
   </metadata>
   <data name="imgThumbnail.ImageSize" type="System.Drawing.Size, System.Drawing">
     <value>52, 52</value>
@@ -1187,55 +1344,13 @@
     <value>3, 25</value>
   </data>
   <data name="lstFiles.Size" type="System.Drawing.Size, System.Drawing">
-    <value>534, 241</value>
+    <value>534, 208</value>
   </data>
-  <metadata name="imgFilesSmallNew.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 54</value>
+  <metadata name="imgThumbnailSmall.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>161, 17</value>
   </metadata>
-  <data name="imgFilesSmallNew.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
-    <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj0yLjAuMC4w
-        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
-        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAC0
-        CAAAAk1TRnQBSQFMAwEBAAEEAQABBAEAARIBAAESAQAE/wEJAQAI/wFCAU0BNgEEBgABNgEEAgABKAMA
-        AUgDAAESAwABAQEAAQgFAAEQAQUYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
-        AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
-        AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
-        AWYDAAGZAwABzAIAATMDAAIzAgABMwFmAgABMwGZAgABMwHMAgABMwH/AgABZgMAAWYBMwIAAmYCAAFm
-        AZkCAAFmAcwCAAFmAf8CAAGZAwABmQEzAgABmQFmAgACmQIAAZkBzAIAAZkB/wIAAcwDAAHMATMCAAHM
-        AWYCAAHMAZkCAALMAgABzAH/AgAB/wFmAgAB/wGZAgAB/wHMAQABMwH/AgAB/wEAATMBAAEzAQABZgEA
-        ATMBAAGZAQABMwEAAcwBAAEzAQAB/wEAAf8BMwIAAzMBAAIzAWYBAAIzAZkBAAIzAcwBAAIzAf8BAAEz
-        AWYCAAEzAWYBMwEAATMCZgEAATMBZgGZAQABMwFmAcwBAAEzAWYB/wEAATMBmQIAATMBmQEzAQABMwGZ
-        AWYBAAEzApkBAAEzAZkBzAEAATMBmQH/AQABMwHMAgABMwHMATMBAAEzAcwBZgEAATMBzAGZAQABMwLM
-        AQABMwHMAf8BAAEzAf8BMwEAATMB/wFmAQABMwH/AZkBAAEzAf8BzAEAATMC/wEAAWYDAAFmAQABMwEA
-        AWYBAAFmAQABZgEAAZkBAAFmAQABzAEAAWYBAAH/AQABZgEzAgABZgIzAQABZgEzAWYBAAFmATMBmQEA
-        AWYBMwHMAQABZgEzAf8BAAJmAgACZgEzAQADZgEAAmYBmQEAAmYBzAEAAWYBmQIAAWYBmQEzAQABZgGZ
-        AWYBAAFmApkBAAFmAZkBzAEAAWYBmQH/AQABZgHMAgABZgHMATMBAAFmAcwBmQEAAWYCzAEAAWYBzAH/
-        AQABZgH/AgABZgH/ATMBAAFmAf8BmQEAAWYB/wHMAQABzAEAAf8BAAH/AQABzAEAApkCAAGZATMBmQEA
-        AZkBAAGZAQABmQEAAcwBAAGZAwABmQIzAQABmQEAAWYBAAGZATMBzAEAAZkBAAH/AQABmQFmAgABmQFm
-        ATMBAAGZATMBZgEAAZkBZgGZAQABmQFmAcwBAAGZATMB/wEAApkBMwEAApkBZgEAA5kBAAKZAcwBAAKZ
-        Af8BAAGZAcwCAAGZAcwBMwEAAWYBzAFmAQABmQHMAZkBAAGZAswBAAGZAcwB/wEAAZkB/wIAAZkB/wEz
-        AQABmQHMAWYBAAGZAf8BmQEAAZkB/wHMAQABmQL/AQABzAMAAZkBAAEzAQABzAEAAWYBAAHMAQABmQEA
-        AcwBAAHMAQABmQEzAgABzAIzAQABzAEzAWYBAAHMATMBmQEAAcwBMwHMAQABzAEzAf8BAAHMAWYCAAHM
-        AWYBMwEAAZkCZgEAAcwBZgGZAQABzAFmAcwBAAGZAWYB/wEAAcwBmQIAAcwBmQEzAQABzAGZAWYBAAHM
-        ApkBAAHMAZkBzAEAAcwBmQH/AQACzAIAAswBMwEAAswBZgEAAswBmQEAA8wBAALMAf8BAAHMAf8CAAHM
-        Af8BMwEAAZkB/wFmAQABzAH/AZkBAAHMAf8BzAEAAcwC/wEAAcwBAAEzAQAB/wEAAWYBAAH/AQABmQEA
-        AcwBMwIAAf8CMwEAAf8BMwFmAQAB/wEzAZkBAAH/ATMBzAEAAf8BMwH/AQAB/wFmAgAB/wFmATMBAAHM
-        AmYBAAH/AWYBmQEAAf8BZgHMAQABzAFmAf8BAAH/AZkCAAH/AZkBMwEAAf8BmQFmAQAB/wKZAQAB/wGZ
-        AcwBAAH/AZkB/wEAAf8BzAIAAf8BzAEzAQAB/wHMAWYBAAH/AcwBmQEAAf8CzAEAAf8BzAH/AQAC/wEz
-        AQABzAH/AWYBAAL/AZkBAAL/AcwBAAJmAf8BAAFmAf8BZgEAAWYC/wEAAf8CZgEAAf8BZgH/AQAC/wFm
-        AQABIQEAAaUBAANfAQADdwEAA4YBAAOWAQADywEAA7IBAAPXAQAD3QEAA+MBAAPqAQAD8QEAA/gBAAHw
-        AfsB/wEAAaQCoAEAA4ADAAH/AgAB/wMAAv8BAAH/AwAB/wEAAf8BAAL/AgAD/wYAA6EDhQOhPgABoQGG
-        AfcB8QHwAfEBvAHsAYYBhQGhPAABhgHxAesCiwOtAYsB8AHsAYUBoToAAacB8QFmAoYBiwG1AYsDrQGu
-        Ae8BhQGhOAABpwHwAWYCpgGGAgcB8AStAewB6wGhOAABtQFmA6YBhgG1AQcBtQWtAfIBhgGhNgABoQG8
-        AYYDpgKGA4sErQGLAewBoTYAAYYB7QGtAYYDpgG1AbwHiwHvAaE2AAHrAa4CrQGGAqYBiwIHAoYEiwHw
-        AaE2AAHrAc8ErQGGAaYBtAHvAbwFhgG8AaE2AAGuAbQGrQGGAbUB8AHxBIYBBwGhNgABpwEHBK0BiwOt
-        AfQB/wSGAfcBoTcAAfABtAOtAf8B8QG8Av8B9AOLAewBhjgAAa4BvAOtBf8BtAGtAosB8gGhOQACtQmt
-        AYsB8gGnOgABoQG1AbwB1QatAa4B8QGnPQABrgHwAQcBtQHPAbQBtQHwAe8Bp0AAAacBrgLrAYYBoTwA
-        AUIBTQE+BwABPgMAASgDAAFIAwABEgMAAQEBAAEBBQAB2BcAA/8BAAH4AQMBwAkAAfABAQHACQAB4AEA
-        AcAJAAHAAQABQAkAAYABAAFACQABgFMAAYABAAFACQABgAEAAUAJAAHAAQABwAkAAcABAQHACQAB8AED
-        AcAJAAH8AQ8BwAkACw==
-</value>
+  <data name="imgThumbnailSmall.ImageSize" type="System.Drawing.Size, System.Drawing">
+    <value>16, 16</value>
   </data>
   <data name="lstFiles.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1280,7 +1395,7 @@
     <value>qtBuff</value>
   </data>
   <data name="&gt;&gt;qtBuff.Type" xml:space="preserve">
-    <value>iPhoneBrowser.itouchBrowser.QtWrapper, itouchBrowser, Version=1.8.2.29, Culture=neutral, PublicKeyToken=null</value>
+    <value>iPhoneBrowser.itouchBrowser.QtWrapper, itouchBrowser, Version=1.8.3.31, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;qtBuff.Parent" xml:space="preserve">
     <value>grpFiles</value>
@@ -1288,14 +1403,11 @@
   <data name="&gt;&gt;qtBuff.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="grpFiles.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
   <data name="grpFiles.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
+    <value>0, 33</value>
   </data>
   <data name="grpFiles.Size" type="System.Drawing.Size, System.Drawing">
-    <value>540, 272</value>
+    <value>540, 239</value>
   </data>
   <data name="grpFiles.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -1313,7 +1425,7 @@
     <value>splFiles.Panel1</value>
   </data>
   <data name="&gt;&gt;grpFiles.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="&gt;&gt;splFiles.Panel1.Name" xml:space="preserve">
     <value>splFiles.Panel1</value>
@@ -1346,7 +1458,7 @@
     <value>pnlQt</value>
   </data>
   <data name="&gt;&gt;pnlQt.Type" xml:space="preserve">
-    <value>iPhoneBrowser.itouchBrowser.PlayPanel, itouchBrowser, Version=1.8.2.29, Culture=neutral, PublicKeyToken=null</value>
+    <value>iPhoneBrowser.itouchBrowser.PlayPanel, itouchBrowser, Version=1.8.3.31, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;pnlQt.Parent" xml:space="preserve">
     <value>grpDetails</value>
@@ -1776,8 +1888,55 @@
   <data name="&gt;&gt;splMain.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <metadata name="imgFilesSmallNew.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>138, 54</value>
+  </metadata>
+  <data name="imgFilesSmallNew.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj0yLjAuMC4w
+        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
+        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAABu
+        CAAAAk1TRnQBSQFMAwEBAAEEAQABBAEAARABAAEQAQAE/wEJAQAI/wFCAU0BNgEEBgABNgEEAgABKAMA
+        AUADAAEQAwABAQEAAQgGAAEEGAABgAIAAYADAAKAAQABgAMAAYABAAGAAQACgAIAA8ABAAHAAdwBwAEA
+        AfABygGmAQABMwUAATMBAAEzAQABMwEAAjMCAAMWAQADHAEAAyIBAAMpAQADVQEAA00BAANCAQADOQEA
+        AYABfAH/AQACUAH/AQABkwEAAdYBAAH/AewBzAEAAcYB1gHvAQAB1gLnAQABkAGpAa0CAAH/ATMDAAFm
+        AwABmQMAAcwCAAEzAwACMwIAATMBZgIAATMBmQIAATMBzAIAATMB/wIAAWYDAAFmATMCAAJmAgABZgGZ
+        AgABZgHMAgABZgH/AgABmQMAAZkBMwIAAZkBZgIAApkCAAGZAcwCAAGZAf8CAAHMAwABzAEzAgABzAFm
+        AgABzAGZAgACzAIAAcwB/wIAAf8BZgIAAf8BmQIAAf8BzAEAATMB/wIAAf8BAAEzAQABMwEAAWYBAAEz
+        AQABmQEAATMBAAHMAQABMwEAAf8BAAH/ATMCAAMzAQACMwFmAQACMwGZAQACMwHMAQACMwH/AQABMwFm
+        AgABMwFmATMBAAEzAmYBAAEzAWYBmQEAATMBZgHMAQABMwFmAf8BAAEzAZkCAAEzAZkBMwEAATMBmQFm
+        AQABMwKZAQABMwGZAcwBAAEzAZkB/wEAATMBzAIAATMBzAEzAQABMwHMAWYBAAEzAcwBmQEAATMCzAEA
+        ATMBzAH/AQABMwH/ATMBAAEzAf8BZgEAATMB/wGZAQABMwH/AcwBAAEzAv8BAAFmAwABZgEAATMBAAFm
+        AQABZgEAAWYBAAGZAQABZgEAAcwBAAFmAQAB/wEAAWYBMwIAAWYCMwEAAWYBMwFmAQABZgEzAZkBAAFm
+        ATMBzAEAAWYBMwH/AQACZgIAAmYBMwEAA2YBAAJmAZkBAAJmAcwBAAFmAZkCAAFmAZkBMwEAAWYBmQFm
+        AQABZgKZAQABZgGZAcwBAAFmAZkB/wEAAWYBzAIAAWYBzAEzAQABZgHMAZkBAAFmAswBAAFmAcwB/wEA
+        AWYB/wIAAWYB/wEzAQABZgH/AZkBAAFmAf8BzAEAAcwBAAH/AQAB/wEAAcwBAAKZAgABmQEzAZkBAAGZ
+        AQABmQEAAZkBAAHMAQABmQMAAZkCMwEAAZkBAAFmAQABmQEzAcwBAAGZAQAB/wEAAZkBZgIAAZkBZgEz
+        AQABmQEzAWYBAAGZAWYBmQEAAZkBZgHMAQABmQEzAf8BAAKZATMBAAKZAWYBAAOZAQACmQHMAQACmQH/
+        AQABmQHMAgABmQHMATMBAAFmAcwBZgEAAZkBzAGZAQABmQLMAQABmQHMAf8BAAGZAf8CAAGZAf8BMwEA
+        AZkBzAFmAQABmQH/AZkBAAGZAf8BzAEAAZkC/wEAAcwDAAGZAQABMwEAAcwBAAFmAQABzAEAAZkBAAHM
+        AQABzAEAAZkBMwIAAcwCMwEAAcwBMwFmAQABzAEzAZkBAAHMATMBzAEAAcwBMwH/AQABzAFmAgABzAFm
+        ATMBAAGZAmYBAAHMAWYBmQEAAcwBZgHMAQABmQFmAf8BAAHMAZkCAAHMAZkBMwEAAcwBmQFmAQABzAKZ
+        AQABzAGZAcwBAAHMAZkB/wEAAswCAALMATMBAALMAWYBAALMAZkBAAPMAQACzAH/AQABzAH/AgABzAH/
+        ATMBAAGZAf8BZgEAAcwB/wGZAQABzAH/AcwBAAHMAv8BAAHMAQABMwEAAf8BAAFmAQAB/wEAAZkBAAHM
+        ATMCAAH/AjMBAAH/ATMBZgEAAf8BMwGZAQAB/wEzAcwBAAH/ATMB/wEAAf8BZgIAAf8BZgEzAQABzAJm
+        AQAB/wFmAZkBAAH/AWYBzAEAAcwBZgH/AQAB/wGZAgAB/wGZATMBAAH/AZkBZgEAAf8CmQEAAf8BmQHM
+        AQAB/wGZAf8BAAH/AcwCAAH/AcwBMwEAAf8BzAFmAQAB/wHMAZkBAAH/AswBAAH/AcwB/wEAAv8BMwEA
+        AcwB/wFmAQAC/wGZAQAC/wHMAQACZgH/AQABZgH/AWYBAAFmAv8BAAH/AmYBAAH/AWYB/wEAAv8BZgEA
+        ASEBAAGlAQADXwEAA3cBAAOGAQADlgEAA8sBAAOyAQAD1wEAA90BAAPjAQAD6gEAA/EBAAP4AQAB8AH7
+        Af8BAAGkAqABAAOAAwAB/wIAAf8DAAL/AQAB/wMAAf8BAAH/AQAC/wIAA/8EAAOhAacDhgShNAABoQKn
+        Aa4B7wG7AQkBtQGuAYYBhQKhMgABoQGnAbUB7AKLAc8DrQG1Aa4BpwKhMQABpwG1Aa4ChgGuArUDrQGR
+        Aa4CoTEAAc8BrgKmAYYBtQIHBK0B9wGnAaEwAAGhAe8BhgKmAoYBrgKLBK0BrgGhMAABhgGSAa0BhgKm
+        Ac8BBwaLAfcBoTAAAesBrgKtAYYBpgGLAe8BBwKGA4sBBwGnMAAB6wHPA60BpwGmAbQB7wEHBIYB7wGn
+        MAABrgG0Ba0BhgG1AfEBBwOGAfcBoTAAAacBBwOtA7QBtQH0AfADhgGuAaExAAK1Aq0BCQH0AfIC/wG1
+        AosB7QGnAaExAAGnAbUBzwGtAbQDtQG0Aq0BtAG1AacBoTEAAaEBpwK1Bq0BtAG1AacBoTIAAqEBpwG1
+        AQcBtQHPAbQBtQEHAbUBpwGhNwABpwGuAusBhgGhNQABQgFNAT4HAAE+AwABKAMAAUADAAEQAwABAQEA
+        AQEFAAGAFwAD/wEAAeABAwYAAcABAQYAAYAHAAGABwABgDcAAYAHAAGABwABgAEBBgABgAEDBgAB+AEf
+        BgAL
+</value>
+  </data>
   <metadata name="imgFilesLargeNew.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>442, 17</value>
+    <value>504, 17</value>
   </metadata>
   <data name="imgFilesLargeNew.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
@@ -2160,6 +2319,18 @@
   </data>
   <data name="toolStripGoTo3.Text" xml:space="preserve">
     <value>&amp;Springboard Images and Settings</value>
+  </data>
+  <data name="tsmThemes.Size" type="System.Drawing.Size, System.Drawing">
+    <value>238, 22</value>
+  </data>
+  <data name="tsmThemes.Text" xml:space="preserve">
+    <value>Themes</value>
+  </data>
+  <data name="tsmWallpaper.Size" type="System.Drawing.Size, System.Drawing">
+    <value>238, 22</value>
+  </data>
+  <data name="tsmWallpaper.Text" xml:space="preserve">
+    <value>Wallpaper</value>
   </data>
   <data name="ToolStripMenuItem2.Size" type="System.Drawing.Size, System.Drawing">
     <value>238, 22</value>
@@ -2750,13 +2921,13 @@
     <value>4</value>
   </data>
   <metadata name="fileSaveDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>315, 54</value>
+    <value>436, 54</value>
   </metadata>
   <metadata name="fileOpenDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>438, 54</value>
+    <value>559, 54</value>
   </metadata>
   <metadata name="menuRightClickFolders.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>563, 54</value>
+    <value>17, 91</value>
   </metadata>
   <data name="tsmNewFolder.Size" type="System.Drawing.Size, System.Drawing">
     <value>217, 22</value>
@@ -2819,13 +2990,13 @@
     <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <metadata name="folderBrowserDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 91</value>
+    <value>186, 91</value>
   </metadata>
   <data name="folderBrowserDialog.Description" xml:space="preserve">
     <value>Select the destination folder for saving</value>
   </data>
   <metadata name="Timer1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>250, 17</value>
+    <value>310, 17</value>
   </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -3029,6 +3200,60 @@
   <data name="&gt;&gt;imgFolders.Type" xml:space="preserve">
     <value>System.Windows.Forms.ImageList, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;tsbSSH.Name" xml:space="preserve">
+    <value>tsbSSH</value>
+  </data>
+  <data name="&gt;&gt;tsbSSH.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tsbSSHCmd.Name" xml:space="preserve">
+    <value>tsbSSHCmd</value>
+  </data>
+  <data name="&gt;&gt;tsbSSHCmd.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tslIPAddr.Name" xml:space="preserve">
+    <value>tslIPAddr</value>
+  </data>
+  <data name="&gt;&gt;tslIPAddr.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripLabel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tstIPAddress.Name" xml:space="preserve">
+    <value>tstIPAddress</value>
+  </data>
+  <data name="&gt;&gt;tstIPAddress.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripTextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tslUser.Name" xml:space="preserve">
+    <value>tslUser</value>
+  </data>
+  <data name="&gt;&gt;tslUser.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripLabel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tstUserid.Name" xml:space="preserve">
+    <value>tstUserid</value>
+  </data>
+  <data name="&gt;&gt;tstUserid.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripTextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tslPasswd.Name" xml:space="preserve">
+    <value>tslPasswd</value>
+  </data>
+  <data name="&gt;&gt;tslPasswd.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripLabel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tstPasswd.Name" xml:space="preserve">
+    <value>tstPasswd</value>
+  </data>
+  <data name="&gt;&gt;tstPasswd.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripTextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tsbSSHConfig.Name" xml:space="preserve">
+    <value>tsbSSHConfig</value>
+  </data>
+  <data name="&gt;&gt;tsbSSHConfig.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;cohFilename.Name" xml:space="preserve">
     <value>cohFilename</value>
   </data>
@@ -3119,10 +3344,22 @@
   <data name="&gt;&gt;menuDeleteFileWithoutSaving.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;tsmFileProperty.Name" xml:space="preserve">
+    <value>tsmFileProperty</value>
+  </data>
+  <data name="&gt;&gt;tsmFileProperty.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;imgThumbnail.Name" xml:space="preserve">
     <value>imgThumbnail</value>
   </data>
   <data name="&gt;&gt;imgThumbnail.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ImageList, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;imgThumbnailSmall.Name" xml:space="preserve">
+    <value>imgThumbnailSmall</value>
+  </data>
+  <data name="&gt;&gt;imgThumbnailSmall.Type" xml:space="preserve">
     <value>System.Windows.Forms.ImageList, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;imgFilesSmallNew.Name" xml:space="preserve">
@@ -3333,6 +3570,18 @@
     <value>toolStripGoTo3</value>
   </data>
   <data name="&gt;&gt;toolStripGoTo3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tsmThemes.Name" xml:space="preserve">
+    <value>tsmThemes</value>
+  </data>
+  <data name="&gt;&gt;tsmThemes.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tsmWallpaper.Name" xml:space="preserve">
+    <value>tsmWallpaper</value>
+  </data>
+  <data name="&gt;&gt;tsmWallpaper.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;ToolStripMenuItem2.Name" xml:space="preserve">

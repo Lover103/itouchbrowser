@@ -6,6 +6,7 @@ Imports System.IO
 Imports System.Drawing
 Imports System.Drawing.Imaging
 Imports System.Text
+Imports itouchBrowser
 Imports itouchBrowser.Manzana
 Imports SCW_iPhonePNG
 
@@ -23,6 +24,7 @@ Public Class frmMain
     'Const IMAGE_FILE_RINGTONE As Integer = 7
     Const IMAGE_FILE_WEBBROWS As Integer = 6
     Const IMAGE_FILE_IMAGE As Integer = 7
+    Const IMAGE_FILE_FOLDER As Integer = 8
 
     'Private backupPath As String = ""
 
@@ -53,6 +55,7 @@ Public Class frmMain
     Private prevFormState As FormWindowState        ' フルスクリーン表示前のウィンドウの状態を保存する
     Private prevFormStyle As FormBorderStyle        ' 通常表示時のフォームの境界線スタイルを保存する
     Private prevFormSize As Size                    ' 通常表示時のウィンドウのサイズを保存する
+    Private mvarSSHman As SSHManager = Nothing      ' SSH接続コンポーネント
 
 
     'CUSTOM  CREATED FUNCTIONS
@@ -108,6 +111,7 @@ Public Class frmMain
             Else
                 Me.delayedConnectionChange()
             End If
+
         End If
     End Sub
 
@@ -118,6 +122,9 @@ Public Class frmMain
                 Me.Invoke(New NoParmDel(AddressOf delayedConnectionChange))
             Else
                 Me.delayedConnectionChange()
+            End If
+            If mvarSSHman IsNot Nothing Then
+                mvarSSHman.Close()
             End If
         End If
     End Sub
@@ -143,66 +150,172 @@ Public Class frmMain
     Private Sub connectionChange()
 
         If bConnectionChanged Then
-            bConnectionChanged = False
+            Try
+                bConnectionChanged = False
 
-            trvFolders.Enabled = bNowConnected
-            lstFiles.Enabled = bNowConnected
-            txtFileDetails.Enabled = bNowConnected
-            mnuGoTo.Enabled = bNowConnected
-            mnuFavorites.Enabled = bNowConnected
-            tsmNewFolder.Enabled = bNowConnected
-            menuDeleteFolder.Enabled = bNowConnected
-            tslAddress.Enabled = bNowConnected
-            tstAddress.Enabled = bNowConnected
-            tsbAddress.Enabled = bNowConnected
-            setJailbreakMenuVisibled()
+                trvFolders.Enabled = bNowConnected
+                lstFiles.Enabled = bNowConnected
+                txtFileDetails.Enabled = bNowConnected
+                mnuGoTo.Enabled = bNowConnected
+                mnuFavorites.Enabled = bNowConnected
+                tsmNewFolder.Enabled = bNowConnected
+                menuDeleteFolder.Enabled = bNowConnected
+                tslAddress.Enabled = bNowConnected
+                tstAddress.Enabled = bNowConnected
+                tsbAddress.Enabled = bNowConnected
+                setJailbreakMenuVisibled()
 
-            If mvarLnError Then
-                mvarLnError = False
-            ElseIf bNowConnected Then
-                Me.Opacity = 75
-                'the phone was just recognized as connected
-                Me.refreshFolders()
-                trvFolders.Focus()
+                If mvarLnError Then
+                    mvarLnError = False
+                ElseIf bNowConnected Then
+                    'the phone was just recognized as connected
 
-                If iPhoneInterface.IsJailbreak Then
-                    ' "iPhone is connected and jailbroken"
-                    StatusNormal(My.Resources.String3)
-                    iTunesPath = "/var/mobile/Media/iTunes_Control/iTunes/iTunesDB"
-                    If iPhoneInterface.Exists("/var/root/Media/DCIM") Then
-                        tildeDir = "/var/root"
-                        iTunesPath = "/var/root/Media/iTunes_Control/iTunes/iTunesDB"
+                    If iPhoneInterface.IsJailbreak Then
+                        ' "iPhone is connected and jailbroken"
+                        StatusNormal(My.Resources.String3)
+                        iTunesPath = "/var/mobile/Media/iTunes_Control/iTunes/iTunesDB"
+                        If iPhoneInterface.Exists("/var/root/Media/DCIM") Then
+                            tildeDir = "/var/root"
+                            iTunesPath = "/var/root/Media/iTunes_Control/iTunes/iTunesDB"
+                        End If
+
+                        Me.pnlSSL.Visible = True
+                        If My.Settings.SSHAddrAutoset Then
+                            tstIPAddress.Text = ModuleMain.GetSSHAddress()
+                        End If
+
+                    Else
+                        ' "iPhone is connected, not jailbroken"
+                        StatusWarning(My.Resources.String1)
+                        iTunesPath = "/iTunes_Control/iTunes/iTunesDB"
+
+                        Me.pnlSSL.Visible = False
                     End If
-                Else
-                    ' "iPhone is connected, not jailbroken"
-                    StatusWarning(My.Resources.String1)
-                    iTunesPath = "/iTunes_Control/iTunes/iTunesDB"
-                End If
-                iTunesRoot = iTunesPath.Substring(0, iTunesPath.IndexOf("/iTunes_Control/"))
+                    iTunesRoot = iTunesPath.Substring(0, iTunesPath.IndexOf("/iTunes_Control/"))
 
-                'Set last path
-                If My.Settings.LastPath <> "" _
-                    AndAlso My.Settings.LastJailbroken = iPhoneInterface.IsJailbreak Then
-                    Me.openPath(My.Settings.LastPath)
-                End If
-                My.Settings.LastJailbroken = iPhoneInterface.IsJailbreak
+                    'Set last path
+                    If My.Settings.LastPath <> "" _
+                        AndAlso My.Settings.LastJailbroken = iPhoneInterface.IsJailbreak Then
 
-                setAMDeviceData()
+                        Dim rootNode As TreeNode = New TreeNode(STRING_ROOT)
+                        rootNode.ContextMenuStrip = menuRightClickFolders
+                        rootNode.Name = "/"
 
-            Else
-                ' "iPhone is NOT connected, please check your connections!"
-                StatusWarning(My.Resources.String2)
+                        trvFolders.Nodes.Clear()
+                        trvFolders.Nodes.Add(rootNode)
 
-                trvITunes.Nodes.Clear()
-                trvApps.Nodes.Clear()
-                rtbAMDevice.Clear()
-                My.Settings.LastPath = ModuleMain.NodeiPhonePath(trvFolders.SelectedNode)
-                mvarItunesMan.Clear()
-                tabFolder.SelectedIndex = 0
-                'mvarItunesMan.Dispose()
-            End If
+                        ModuleMain.AddFolders(rootNode, 0)
+
+                        rootNode.Expand()
+
+                        Me.openPath(My.Settings.LastPath)
+                    Else
+                        Me.refreshFolders()
+                    End If
+                    My.Settings.LastJailbroken = iPhoneInterface.IsJailbreak
+
+                    setAMDeviceData()
+                    trvFolders.Focus()
+
+                    Else
+                        ' "iPhone is NOT connected, please check your connections!"
+                        StatusWarning(My.Resources.String2)
+
+                        trvITunes.Nodes.Clear()
+                        trvApps.Nodes.Clear()
+                        rtbAMDevice.Clear()
+                        My.Settings.LastPath = ModuleMain.NodeiPhonePath(trvFolders.SelectedNode)
+                        mvarItunesMan.Clear()
+                        tabFolder.SelectedIndex = 0
+                        'mvarItunesMan.Dispose()
+                        Me.pnlSSL.Visible = False
+                    End If
+
+            Catch ex As Exception
+                MsgBox(ex.Message, MsgBoxStyle.Exclamation)
+            End Try
 
         End If
+
+    End Sub
+
+    'Private Function getSSHAddress() As Boolean
+    '    Dim sFile As String = "/private/var/preferences/SystemConfiguration/com.apple.network.identification.plist"
+    '    Dim tmpOnPC As String = GetTempFilename(sFile)
+    '    Dim copyRC As Integer = ModuleMain.CopyQueueFromPhone(sFile, tmpOnPC)
+
+    '    If copyRC = 0 Then
+    '        tstIPAddress.Text = mvarSSHman.GetIPAddress(tmpOnPC)
+
+    '        File.Delete(tmpOnPC)
+    '    Else
+    '        Return False
+    '    End If
+
+    '    Return True
+
+    'End Function
+
+    Private Function connectBySSH(ByVal connect As Boolean) As Boolean
+
+        tsmFileProperty.Enabled = False
+        tsbSSHCmd.Enabled = False
+
+        If connect Then
+
+            Try
+                If tstIPAddress.Text <> "" Then
+                    Dim authtype As SSHManager.AuthType = SSHManager.AuthType.Password
+
+                    If My.Settings.SSHAuthType = 1 Then
+                        authtype = SSHManager.AuthType.PublicKey
+                    End If
+
+                    If mvarSSHman.Open(tstIPAddress.Text, _
+                                       tstUserid.Text, _
+                                       txtSSLPasswd.Text, _
+                                       authtype, _
+                                       My.Settings.SSHKeyPath & "\id_rsa") Then
+
+                        Dim str As String = mvarSSHman.Transmit("ls -l")
+                        Debug.WriteLine(str)
+                        StatusNormal("SSH Connected.")
+                        tsmFileProperty.Enabled = True
+                        tsbSSHCmd.Enabled = True
+
+                    Else
+                        Return False
+                    End If
+                Else
+                    Return False
+                End If
+
+            Catch ex As Exception
+                MsgBox(ex.Message, MsgBoxStyle.Exclamation, "SSH Connection error")
+                Return False
+            End Try
+        Else
+            mvarSSHman.Close()
+            StatusNormal("SSH Closed.")
+        End If
+
+        Return True
+
+    End Function
+
+    Private Sub tsbSSL_CheckedChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles tsbSSH.CheckedChanged
+
+        If Me.connectBySSH(tsbSSH.Checked) = False Then
+            tsbSSH.CheckState = CheckState.Unchecked
+            StatusWarning("SSH Rejected.")
+        Else
+            Me.LoadFiles()
+            If mvarSSHman.Connected Then
+                My.Settings.SSHUser = tstUserid.Text
+                My.Settings.SSHPasswd = txtSSLPasswd.Text
+            End If
+        End If
+
     End Sub
 
     Private Sub setJailbreakMenuVisibled()
@@ -278,6 +391,8 @@ Public Class frmMain
             btnCancel.Visible = False
             tslProgress.Visible = False
             ResetStatus()   'ProgressDepth = -1
+            mvarSSHman = New SSHManager()
+            pnlSSL.Visible = False
 
             ModuleMain.CreateImageList()
 
@@ -334,6 +449,9 @@ Public Class frmMain
             End If
             picBusy.Dock = DockStyle.Fill
             picDelete.Dock = DockStyle.Fill
+            tstUserid.Text = My.Settings.SSHUser
+            txtSSLPasswd.Text = My.Settings.SSHPasswd
+            Me.imgThumbnail.ImageSize = New Size(ModuleMain.THUMBNAIL_LARGE_SIZE, ModuleMain.THUMBNAIL_LARGE_SIZE)
 
             mvarSplashMsg.Text = "Initialize the QuickTime object."
             Dim qtThread As New Thread(New ThreadStart(AddressOf Me.qtInitialize))
@@ -415,7 +533,7 @@ Public Class frmMain
             End If
 
             Try
-                If rootNode.Nodes.Count < 20 Then
+                If rootNode.Nodes.Count < 24 Then
                     StartStatus(rootNode.Nodes.Count, 0)
 
                     For Each tmpNode In rootNode.Nodes
@@ -533,6 +651,12 @@ Public Class frmMain
                 lstFilesSortOrder = SortOrder.None
 
                 Try
+                    Dim sshData As List(Of String)
+
+                    If mvarSSHman.Connected Then
+                        sshData = mvarSSHman.GetFiles(iPhonePath)
+                    End If
+
                     'For Each sFile As String In sFiles
                     For listRow = 0 To bFiles.Count - 1
                         Dim strFileInfo As iPhone.strFileInfo = bFiles(listRow)
@@ -581,6 +705,9 @@ Public Class frmMain
 
                         lstTemp = New ListViewItem(sFileExt)
                         lstTemp.ImageIndex = getImageIndexForFile(sFile)
+                        If strFileInfo.isDir Then
+                            lstTemp.ImageIndex = IMAGE_FILE_FOLDER
+                        End If
                         If lstFiles.ShowGroups Then
                             lstTemp.Group = lstFiles.Groups(lstTemp.ImageIndex)
                         End If
@@ -617,7 +744,13 @@ Public Class frmMain
                         End If
 
                         ' add the file type
-                        lstTemp.SubItems.Add(getFiletype(lstTemp.ImageIndex))
+                        Dim ftype As String = getFiletype(lstTemp.ImageIndex)
+                        If mvarSSHman.Connected Then
+                            If sshData.Count > listRow Then
+                                lstTemp.SubItems.Add(sshData(listRow))
+                            End If
+                        End If
+                        lstTemp.SubItems.Add(ftype)
 
                         'finally add it to the view
                         lstFiles.Items.Add(lstTemp)
@@ -630,6 +763,8 @@ Public Class frmMain
                     lstFiles.Refresh()
                 End Try
 
+                StatusNormal(lstFiles.Items.Count.ToString & " objects")
+
                 Dim songTitle As String = ""
                 lstFiles.Tag = iPhonePath
 
@@ -637,18 +772,22 @@ Public Class frmMain
                 Dim imgCnt As Integer = imgFilesLargeNew.Images.Count
 
                 imgThumbnail.Images.Clear()
-                imgFilesSmallNew.Images.Clear()
-                For row = 0 To imgCnt - 1
+                imgThumbnailSmall.Images.Clear()
+                For row = 0 To 8
                     imgThumbnail.Images.Add(imgFilesLargeNew.Images(row))
-                    imgFilesSmallNew.Images.Add(imgFilesLargeNew.Images(row))
+                    imgThumbnailSmall.Images.Add(imgFilesSmallNew.Images(row))
+                Next
+                For row = 9 To imgCnt - 1
+                    imgThumbnail.Images.Add(imgFilesLargeNew.Images(row))
+                    imgThumbnailSmall.Images.Add(imgFilesLargeNew.Images(row))
                 Next
                 'If lstFiles.View <> View.Details Then
                 StartStatus(imgCnt, 0)
                 For row = 0 To thumbnailCnt - 1
-                    img = getThumbnail(thumbnails(row).fileName, iPhonePath, thumbnails(row).subDir)
+                    img = ModuleMain.GetThumbnail(thumbnails(row).fileName, iPhonePath, thumbnails(row).subDir)
                     If img IsNot Nothing Then
                         imgThumbnail.Images.Add(img)
-                        imgFilesSmallNew.Images.Add(createThumbnail(img, 18, 18))
+                        imgThumbnailSmall.Images.Add(createThumbnail(img, 16, 16))
                         lstFiles.Items(thumbnails(row).index).ImageIndex = row + imgCnt
                         If IncrementStatus(0) Then Exit For
                         If escapeProcess Then
@@ -682,8 +821,6 @@ Public Class frmMain
                 Else
                     mvarInProCount = 0
                 End If
-
-                StatusNormal(lstFiles.Items.Count.ToString & " objects")
 
             Catch e As IOException
                 MsgBox(e.ToString, MsgBoxStyle.Exclamation)
@@ -801,6 +938,8 @@ Public Class frmMain
                 sReturn = "Image File"
             Case IMAGE_FILE_WEBBROWS
                 sReturn = "Html File"
+            Case IMAGE_FILE_FOLDER
+                sReturn = "Folder"
             Case IMAGE_FILE_UNKNOWN
                 sReturn = "Unknown File Type"
             Case Else
@@ -836,7 +975,7 @@ Public Class frmMain
         EndStatus()
     End Sub
 
-    Private Function getSelectedFilename(ByRef isSLink As Boolean) As String
+    Private Function getSelectedFilename(ByRef isSLink As Boolean, ByRef isFolder As Boolean) As String
         'returns the currently selected filename
         Dim fn As String = lstFiles.SelectedItems(0).Text
         Dim inx As Integer = fn.IndexOf("(")
@@ -849,6 +988,7 @@ Public Class frmMain
         Else
             isSLink = False
         End If
+        isFolder = (lstFiles.SelectedItems(0).ImageIndex = IMAGE_FILE_FOLDER)
 
         Return getSelectedPath() & fn
 
@@ -912,6 +1052,15 @@ Public Class frmMain
                 Try
                     'select the root first
                     tn = trvFolders.Nodes.Find("/", True)
+                    'If tn.Length = 0 Then
+                    '    Dim rootNode As TreeNode = New TreeNode(STRING_ROOT)
+                    '    rootNode.ContextMenuStrip = menuRightClickFolders
+                    '    rootNode.Name = "/"
+                    '    trvFolders.Nodes.Add(rootNode)
+                    '    ModuleMain.AddFolders(rootNode, 0)
+                    '    tn = trvFolders.Nodes.Find("/", True)
+                    '    'refreshChildFolders(trvFolders.Nodes(0), False)
+                    'End If
 
                     'go through and load each node
                     If sPathOnPhone.Length = 0 Then
@@ -1063,17 +1212,18 @@ Public Class frmMain
         Handles trvFolders.AfterSelect
 
         Dim selNode As TreeNode = e.Node
-        'Me.UseWaitCursor = True
+        Dim lastCur As Cursor = Me.Cursor
+        Me.Cursor = Cursors.WaitCursor
 
         If selNode.Level > 0 AndAlso CBool(selNode.Tag) = False Then
             'Folderの展開でキャンセルしたとき
             ModuleMain.AddFolders(selNode, 1)
-            'ModuleMain.Add1stFolder(ModuleMain.NodeiPhonePath(selNode), selNode)
         End If
 
         Me.LoadFiles()
 
-        'Me.UseWaitCursor = False
+        Me.Cursor = lastCur
+
     End Sub
 
     Private Sub trvFolders_KeyUp(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs) _
@@ -1092,6 +1242,32 @@ Public Class frmMain
         End If
     End Sub
 
+    Private Sub lstFiles_DoubleClick(ByVal sender As Object, ByVal e As System.EventArgs) _
+        Handles lstFiles.DoubleClick
+
+        Try
+            If lstFiles.SelectedItems(0).ImageIndex = IMAGE_FILE_FOLDER Then
+                If lstFiles.SelectedItems(0).Text = ".." Then
+                    trvFolders.SelectedNode = trvFolders.SelectedNode.Parent
+                Else
+                    For Each nd As TreeNode In trvFolders.SelectedNode.Nodes
+                        If nd.Text = lstFiles.SelectedItems(0).Text Then
+                            trvFolders.SelectedNode = nd
+                            Exit For
+                        End If
+                    Next
+                End If
+
+            ElseIf mvarSSHman.Connected Then
+                tsmFileProperty.PerformClick()
+            End If
+
+        Catch ex As Exception
+            MsgBox(ex.ToString, MsgBoxStyle.Exclamation)
+        End Try
+
+    End Sub
+
     Private Sub lstFiles_DragDrop(ByVal sender As Object, ByVal e As System.Windows.Forms.DragEventArgs) _
         Handles lstFiles.DragDrop
 
@@ -1102,7 +1278,7 @@ Public Class frmMain
                 Dim drops() As String = CType(e.Data.GetData(DataFormats.FileDrop), String())
                 'StartStatus(drops.Length, 0)
                 For Each s As String In drops 'e.Data.GetData(DataFormats.FileDrop)
-                    CopyToPhone(s, initFolder, Config.bConvertToiPhonePNG)
+                    ModuleMain.CopyToPhone(s, initFolder, Config.bConvertToiPhonePNG)
                     'If IncrementStatus(0) Then Exit For
                 Next
                 'EndStatus()
@@ -1372,32 +1548,32 @@ Public Class frmMain
             StatusNormal(WebBrws.StatusText)
 
         Else
-                'clean up the temp file
-                Dim sr As StreamReader = My.Computer.FileSystem.OpenTextFileReader(tmpfile)
-                Dim str As String = sr.ReadToEnd().Replace(Chr(10), vbCrLf)
-                sr.Close()
+            'clean up the temp file
+            Dim sr As StreamReader = My.Computer.FileSystem.OpenTextFileReader(tmpfile)
+            Dim str As String = sr.ReadToEnd().Replace(Chr(10), vbCrLf)
+            sr.Close()
 
-                If str.StartsWith("<?xml version=") Then
-                    WebBrws.ScriptErrorsSuppressed = False
-                    WebBrws.Navigate(New Uri("file:///" & tmpfile))
-                    WebBrws.Visible = True
-                    StatusNormal(WebBrws.StatusText)
+            If str.StartsWith("<?xml version=") Then
+                WebBrws.ScriptErrorsSuppressed = False
+                WebBrws.Navigate(New Uri("file:///" & tmpfile))
+                WebBrws.Visible = True
+                StatusNormal(WebBrws.StatusText)
 
-                    'txtFileDetails.Text = ModuleMain.EncodePListFile(str).ToString()
-                    'WebBrws.Visible = False
+                'txtFileDetails.Text = ModuleMain.EncodePListFile(str).ToString()
+                'WebBrws.Visible = False
 
-                    'ElseIf str.StartsWith("bplist") Then
-                    '    Using fs As IO.FileStream = File.Open(tmpfile, FileMode.Open)
-                    '        Using bsr As New BinaryReader(fs)
-                    '            txtFileDetails.Text = ModuleMain.DecodePListFile(bsr.ReadBytes(CInt(fs.Length)))
-                    '        End Using
-                    '    End Using
-                    '    txtFileDetails.Visible = True
+                'ElseIf str.StartsWith("bplist") Then
+                '    Using fs As IO.FileStream = File.Open(tmpfile, FileMode.Open)
+                '        Using bsr As New BinaryReader(fs)
+                '            txtFileDetails.Text = ModuleMain.DecodePListFile(bsr.ReadBytes(CInt(fs.Length)))
+                '        End Using
+                '    End Using
+                '    txtFileDetails.Visible = True
 
-                Else
-                    txtFileDetails.Text = str
-                    txtFileDetails.Visible = True
-                End If
+            Else
+                txtFileDetails.Text = str
+                txtFileDetails.Visible = True
+            End If
         End If
     End Sub
 
@@ -1456,12 +1632,16 @@ Public Class frmMain
 
     Private Function doFileSelectedPreview(ByVal anySize As Boolean, ByVal fromBtn As Boolean) As String
         Dim sFile As String = ""
-        Dim isSL As Boolean
+        Dim isSL As Boolean         ' Symbolic link
+        Dim isFolder As Boolean     ' Folder
 
         If lstFiles.SelectedItems.Count > 0 Then
-            sFile = getSelectedFilename(isSL)
+            sFile = getSelectedFilename(isSL, isFolder)
 
             If prevSelectedFile = sFile Then ' make sure we changed selections (handles multi-select better)
+                Return sFile
+            End If
+            If isFolder Then
                 Return sFile
             End If
             prevSelectedFile = sFile
@@ -1490,7 +1670,8 @@ Public Class frmMain
     Private Sub showSelectedFileDetails()
         If lstFiles.SelectedItems.Count > 0 Then
             Dim isSL As Boolean
-            Dim sFile As String = getSelectedFilename(isSL)
+            Dim isFolder As Boolean
+            Dim sFile As String = getSelectedFilename(isSL, isFolder)
 
             If prevSelectedFile = sFile Then ' make sure we changed selections (handles multi-selecte better)
                 Exit Sub
@@ -1671,9 +1852,12 @@ Public Class frmMain
                 sSourceFilename = fileOpenDialog.FileName
                 'replace the selected file with the source one
                 Dim isSL As Boolean
-                sFileToPhone = getSelectedFilename(isSL)
+                Dim isFolder As Boolean
+                sFileToPhone = getSelectedFilename(isSL, isFolder)
                 If isSL Then
                     MsgBox("This file is Symbolic Link. Therefore it cannot replace.")
+                ElseIf isFolder Then
+                    MsgBox("This is folder. Therefore it cannot replace.")
                 Else
                     'this function also makes a backup
                     ModuleMain.CopyToPhone(sSourceFilename, sFileToPhone, Config.bConvertToiPhonePNG)
@@ -1819,7 +2003,8 @@ Public Class frmMain
         toolStripGoTo10.Click, ToolStripMenuItem2.Click, tsmITunesMusic.Click, tsmTTR.Click, _
         tsmNESROMS.Click, tsmISwitcherThemes.Click, tsmInstallerPackageSources.Click, _
         tsmFrotzGames.Click, tsmEBooks.Click, tsmDockSwapDocks.Click, _
-        tsmCustomizeFiles.Click, tsmIFlashCards.Click, tsmGBAROMs.Click, tsmCameraRoll.Click
+        tsmCustomizeFiles.Click, tsmIFlashCards.Click, tsmGBAROMs.Click, tsmCameraRoll.Click, _
+        tsmThemes.Click, tsmWallpaper.Click
 
         Dim sPath As String
         Dim ts As ToolStripMenuItem
@@ -2309,7 +2494,8 @@ Public Class frmMain
         Handles cmdRenameFile.Click
 
         Dim isSL As Boolean
-        Dim oldPath As String = getSelectedFilename(isSL)
+        Dim isFolder As Boolean
+        Dim oldPath As String = getSelectedFilename(isSL, isFolder)
         Dim newPath As String
         Dim newName As String = InputBox("Enter new folder name:", "Rename file ", Path.GetFileName(oldPath))
         If newName <> "" Then
@@ -2966,7 +3152,7 @@ Public Class frmMain
                 Select Case tabFolder.SelectedIndex
                     Case 0      ' Folder
                         .Columns(2).Text = My.Resources.String49    'Backup path
-                        .Columns(3).Width = 110
+                        .Columns(3).Width = 230
                         .Columns.RemoveByKey("Album")
                         .Columns.RemoveByKey("TrackNumber")
                         .Columns.RemoveByKey("Genre")
@@ -3078,18 +3264,6 @@ Public Class frmMain
         End Try
 
     End Function
-
-    'Private Sub btnClear_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-    '    For Each node As TreeNode In trvITunes.Nodes
-    '        node.Checked = False
-    '    Next
-    'End Sub
-
-    'Private Sub btnCheck_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-    '    For Each node As TreeNode In trvITunes.Nodes
-    '        node.Checked = True
-    '    Next
-    'End Sub
 
     Private Sub btnExport_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) _
         Handles btnExport.Click
@@ -3547,6 +3721,74 @@ Public Class frmMain
 
     '    Me.Opacity = 0.5
     'End Sub
+
+    Private Sub tstIPAddress_TextChanged(ByVal sender As Object, ByVal e As System.EventArgs) _
+        Handles tstIPAddress.TextChanged
+
+        If tstIPAddress.Text.Length > 0 Then
+            tsbSSH.Enabled = True
+        Else
+            tsbSSH.Enabled = False
+        End If
+
+    End Sub
+
+    Private Sub tsmFileProperty_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) _
+        Handles tsmFileProperty.Click
+
+        Dim dlg As frmFileAttributes = New frmFileAttributes()
+        Dim isSL As Boolean
+        Dim isFolder As Boolean
+        Dim fullpath As String = getSelectedFilename(isSL, isFolder)
+        Dim attr As String = lstFiles.SelectedItems(0).SubItems(3).Text
+
+        dlg.FileName = Path.GetFileName(fullpath)
+        dlg.Atributes = attr
+        dlg.ObjSSL = mvarSSHman
+        dlg.ShowDialog(Me)
+        dlg.Dispose()
+
+        Me.LoadFiles()
+
+    End Sub
+
+    Private Sub pnlSSL_VisibleChanged(ByVal sender As Object, ByVal e As System.EventArgs) _
+        Handles pnlSSL.VisibleChanged
+
+        If pnlSSL.Visible Then
+            grpFiles.Top = 33
+            grpFiles.Height -= 33
+        Else
+            grpFiles.Top = 0
+            grpFiles.Height += 33
+        End If
+
+    End Sub
+
+    Private Sub tsbSSHCmd_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tsbSSHCmd.Click
+        Dim dlg As New frmCommandWindow()
+
+        dlg.mvarObjSSH = mvarSSHman
+        dlg.Show(Me)
+        'dlg.Dispose()
+        'dlg = Nothing
+
+    End Sub
+
+    Private Sub tsbSSHConfig_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) _
+        Handles tsbSSHConfig.Click
+
+        Dim dlg As New frmSSHConfig
+
+        If dlg.ShowDialog() = DialogResult.OK Then
+            tstUserid.Text = My.Settings.SSHUser
+            txtSSLPasswd.Text = My.Settings.SSHPasswd
+            tsbSSH.PerformClick()
+        End If
+
+        dlg.Dispose()
+
+    End Sub
 
 End Class
 
