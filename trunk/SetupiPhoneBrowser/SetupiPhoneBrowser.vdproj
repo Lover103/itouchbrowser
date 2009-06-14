@@ -828,7 +828,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:itouchBrowser.resources, Version=1.8.3.32, Culture=ja-JP, processorArchitecture=x86"
+            "AssemblyAsmDisplayName" = "8:itouchBrowser.resources, Version=1.9.0.33, Culture=ja-JP, processorArchitecture=x86"
                 "ScatterAssemblies"
                 {
                     "_E3CB1248FFEC427A82F997AF69E82C16"
@@ -859,7 +859,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:itouchBrowser.Manzana, Version=1.1.2.2, Culture=neutral, processorArchitecture=x86"
+            "AssemblyAsmDisplayName" = "8:itouchBrowser.Manzana, Version=1.9.0.3, Culture=neutral, processorArchitecture=x86"
                 "ScatterAssemblies"
                 {
                     "_F46AF4684BDC1BFDFE74E604DD75E98A"
@@ -975,14 +975,14 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:itouchBrowser"
-        "ProductCode" = "8:{77CC8013-67B5-4D0C-91F4-04A8EA0C5B35}"
-        "PackageCode" = "8:{095AB0E0-BB73-4DFA-901E-681346A7CF8C}"
+        "ProductCode" = "8:{7AF7EF81-F9ED-494A-ACBD-6FA1F5146C8A}"
+        "PackageCode" = "8:{A449795B-0B73-40A3-9882-1802F524051F}"
         "UpgradeCode" = "8:{6DF8F65F-1CD9-45F2-B007-22872A42E544}"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.8.12"
+        "ProductVersion" = "8:1.9.13"
         "Manufacturer" = "8:sugi's Lab."
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:http://code.google.com/p/itouchbrowser/"

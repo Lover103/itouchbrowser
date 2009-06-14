@@ -311,42 +311,6 @@ namespace itouchBrowser.Manzana
             public bool isSLink;
         }
 
-		//// <summary>
-		//// Returns the names of files in a specified directory
-		//// </summary>
-		//// <param name="path">The directory from which to retrieve the files.</param>
-		//// <returns>A <c>String</c> array of file names in the specified directory. Names are relative to the provided directory</returns>
-        //public string[] GetFiles(string path) {
-        //    IntPtr		hAFCDir;
-        //    string		buffer;
-        //    List<string>   paths;
-        //    string		full_path;
-
-        //    if (!connected) {
-        //        throw new Exception("Not connected to phone");
-        //    }
-
-        //    hAFCDir = new IntPtr();
-        //    full_path = FullPath(current_directory, path);
-
-        //    if (MobileDevice.AFCDirectoryOpen(hAFC, string2bytes(full_path), ref hAFCDir) != 0) {
-        //        throw new Exception("Path does not exist");
-        //    }
-
-        //    buffer = null;
-        //    paths = new List<string>();
-        //    MobileDevice.AFCDirectoryRead(hAFC, hAFCDir, ref buffer);
-
-        //    while (buffer!=null) {
-        //        if (!IsDirectory(FullPath(full_path, buffer))) {
-        //            paths.Add(buffer);
-        //        }
-        //        MobileDevice.AFCDirectoryRead(hAFC, hAFCDir, ref buffer);
-        //    }
-        //    MobileDevice.AFCDirectoryClose(hAFC, hAFCDir);
-        //    return paths.ToArray();
-        //}
-
         /// <summary>
         /// 
         /// </summary>
@@ -464,6 +428,7 @@ namespace itouchBrowser.Manzana
             MobileDevice.AFCDirectoryClose(hAFC, hAFCDir);
             return paths;
         }
+
         /// <summary>
         /// Returns the names of files in a specified directory
         /// </summary>
@@ -518,9 +483,9 @@ namespace itouchBrowser.Manzana
         /// <param name="path">The file or directory for which to retrieve information.</param>
         public Dictionary<string,string> GetFileInfo(string path) {
             IntPtr data;
-            IntPtr current_data;
-            uint data_size;
-            uint offset;
+            //IntPtr current_data;
+            //uint data_size = 0;
+            //uint offset;
             string name;
             string value;
             int ret;
@@ -528,21 +493,28 @@ namespace itouchBrowser.Manzana
 
             data = IntPtr.Zero;
 
-            ret = MobileDevice.AFCFileInfoOpen(hAFC, string2bytes(path), ref data, out data_size);
-            if (ret != 0) {
+            ret = MobileDevice.AFCFileInfoOpen(hAFC, string2bytes(path), ref data);
+            if (ret != 0)
+            {
                 return null;
             }
 
-            offset = 0;
-            while (offset < data_size) {
-                current_data = new IntPtr(data.ToInt32() + offset);
-                name = Marshal.PtrToStringAnsi(current_data);
-                offset += (uint)name.Length + 1;
+            try
+            {
+                while (MobileDevice.AFCKeyValueRead(data, out name, out value) == 0 
+                    && name != null && value != null)
+                {
+                    ans.Add(name, value);
+                }
 
-                current_data = new IntPtr(data.ToInt32() + offset);
-                value = Marshal.PtrToStringAnsi(current_data);
-                offset += (uint)value.Length + 1;
-                ans.Add(name, value);
+            }
+            catch (Exception)
+            {
+                //int a = 0;
+            }
+            finally
+            {
+                MobileDevice.AFCKeyValueClose(data);
             }
 
             return ans;
@@ -560,12 +532,9 @@ namespace itouchBrowser.Manzana
         public void GetFileInfo(string path, byte[] fname, int len, out long size, out bool directory, out bool isSLink)
         {
             IntPtr data;
-            IntPtr current_data;
-            uint data_size = 0;
-            uint offset;
             int blocks = 0;
-            string name;
-            string value;
+            string name = "";
+            string value = "";
             int ret;
             bool SLink = false;
 
@@ -576,53 +545,60 @@ namespace itouchBrowser.Manzana
             isSLink = false;
             path += byte2string(fname);
 
-            ret = MobileDevice.AFCGetFileInfo(hAFC, string2bytes(path), ref data, ref data_size);
+            ret = MobileDevice.AFCFileInfoOpen(hAFC, string2bytes(path), ref data);
             if (ret != 0)
             {
                 return;
             }
 
-            offset = 0;
-            while (offset < data_size)
+            try
             {
-                current_data = new IntPtr(data.ToInt32() + offset);
-                name = Marshal.PtrToStringAnsi(current_data);
-                offset += (uint)name.Length + 1;
-
-                current_data = new IntPtr(data.ToInt32() + offset);
-                value = Marshal.PtrToStringAnsi(current_data);
-                offset += (uint)value.Length + 1;
-                switch (name)
+                while (MobileDevice.AFCKeyValueRead(data, out name, out value) == 0 
+                    && name != null && value != null)
                 {
-                    case "st_size":
-                        size = System.Int64.Parse(value);
-                        break;
-                    case "st_blocks":
-                        try
-                        {
-                            blocks = Int32.Parse(value);
-                        }
-                        catch
-                        {
-                            blocks = 0;
-                        }
-                        break;
-                    case "st_ifmt":
-                        switch (value)
-                        {
-                            case "S_IFDIR": 
-                                directory = true; 
-                                break;
-                            case "S_IFLNK": 
-                                SLink = true; 
-                                break;
-                        }
-                        break;
-                    default:
-                        //SLink = false;
-                        break;
+                    switch (name)
+                    {
+                        case "st_size":
+                            size = Int64.Parse(value);
+                            break;
+                        case "st_blocks":
+                            try
+                            {
+                                blocks = Int32.Parse(value);
+                            }
+                            catch
+                            {
+                                blocks = 0;
+                            }
+                            break;
+                        case "st_ifmt":
+                            switch (value)
+                            {
+                                case "S_IFDIR":
+                                    directory = true;
+                                    break;
+                                case "S_IFLNK":
+                                    SLink = true;
+                                    break;
+                            }
+                            break;
+                        default:
+                            //SLink = false;
+                            break;
+                    }
+
                 }
+
             }
+            catch (Exception)
+            {
+                //int a = 0;
+            }
+            finally
+            {
+                MobileDevice.AFCKeyValueClose(data);
+            }
+
             if (SLink)
             { // test for symbolic directory link
                 IntPtr hAFCDir = new IntPtr();
@@ -642,9 +618,6 @@ namespace itouchBrowser.Manzana
         public void GetFileInfo(string path, out long size, out bool directory)
         {
             IntPtr data;
-            IntPtr current_data;
-            uint data_size = 0;
-            uint offset;
             int blocks = 0;
             string name;
             string value;
@@ -655,49 +628,55 @@ namespace itouchBrowser.Manzana
 
             size = 0;
             directory = false;
-            ret = MobileDevice.AFCGetFileInfo(hAFC, string2bytes(path), ref data, ref data_size);
+            ret = MobileDevice.AFCFileInfoOpen(hAFC, string2bytes(path), ref data);
             if (ret != 0)
             {
                 return;
             }
 
-            offset = 0;
-            while (offset < data_size)
+            try
             {
-                current_data = new IntPtr(data.ToInt32() + offset);
-                name = Marshal.PtrToStringAnsi(current_data);
-                offset += (uint)name.Length + 1;
-
-                current_data = new IntPtr(data.ToInt32() + offset);
-                value = Marshal.PtrToStringAnsi(current_data);
-                offset += (uint)value.Length + 1;
-                switch (name)
+                while (MobileDevice.AFCKeyValueRead(data, out name, out value) == 0 
+                    && name != null && value != null)
                 {
-                    case "st_size": 
-                        size = System.Int64.Parse(value);
-                        break;
-                    case "st_blocks":
-                        try
-                        {
-                            blocks = Int32.Parse(value);
-                        }
-                        catch
-                        {
-                            blocks = 0;
-                        }
-                        break;
-                    case "st_ifmt":
-                        switch (value)
-                        {
-                            case "S_IFDIR": directory = true; break;
-                            case "S_IFLNK": SLink = true; break;
-                        }
-                        break;
-                    default:
-                        SLink = false;
-                        break;
+                    switch (name)
+                    {
+                        case "st_size":
+                            size = Int64.Parse(value);
+                            break;
+                        case "st_blocks":
+                            try
+                            {
+                                blocks = Int32.Parse(value);
+                            }
+                            catch
+                            {
+                                blocks = 0;
+                            }
+                            break;
+                        case "st_ifmt":
+                            switch (value)
+                            {
+                                case "S_IFDIR": directory = true; break;
+                                case "S_IFLNK": SLink = true; break;
+                            }
+                            break;
+                        default:
+                            SLink = false;
+                            break;
+                    }
                 }
+
             }
+            catch (Exception)
+            {
+                //int a = 0;
+            }
+            finally
+            {
+                MobileDevice.AFCKeyValueClose(data);
+            }
+
             if (SLink)
             { // test for symbolic directory link
                 IntPtr hAFCDir = new IntPtr();
@@ -796,8 +775,6 @@ namespace itouchBrowser.Manzana
                     }
 				}
 				MobileDevice.AFCDirectoryRead(hAFC, hAFCDir, ref bbuffer);
-                //if (bbuffer == null) break;
-                //buffer = byte2string(bbuffer);
             }
 			MobileDevice.AFCDirectoryClose(hAFC, hAFCDir);
 			return paths.ToArray();
@@ -887,17 +864,13 @@ namespace itouchBrowser.Manzana
 		/// <param name="path">The path to test.</param>
 		/// <returns><c>true</c> if path refers to an existing file or directory, otherwise <c>false</c>.</returns>
 		public bool Exists(string path) {
-			uint	data_size = 0;
-			IntPtr	data;
+			IntPtr	data = IntPtr.Zero;
 
-			data = IntPtr.Zero;
+            int ret = MobileDevice.AFCFileInfoOpen(hAFC, string2bytes(path), ref data);
+            if (ret == 0)
+                MobileDevice.AFCKeyValueClose(data);
 
-			//if (MobileDevice.AFCGetFileInfo(hAFC, path, ref data, out data_size) != 0) {
-			if (MobileDevice.AFCGetFileInfo(hAFC, string2bytes(path), ref data, ref data_size) != 0) {
-				return false;
-			}
-
-			return true;
+            return (ret == 0);
 		}
 
 		/// <summary>
@@ -922,8 +895,6 @@ namespace itouchBrowser.Manzana
         /// <returns></returns>
         public bool IsDirectory(string path, out bool isSLink)
         {
-            IntPtr current_data;
-            uint data_size = 0;
             string name;
             string value;
             int ret;
@@ -932,37 +903,41 @@ namespace itouchBrowser.Manzana
             bool is_dir = false;
             isSLink = false;
 
-            ret = MobileDevice.AFCGetFileInfo(hAFC, string2bytes(path), ref data, ref data_size);
+            ret = MobileDevice.AFCFileInfoOpen(hAFC, string2bytes(path), ref data);
             if (ret != 0)
             {
                 return is_dir;
             }
 
-            //System.Diagnostics.Debug.Write(path + ", ");
-            uint offset = 0;
-            while (offset < data_size)
+            try
             {
-                current_data = new IntPtr(data.ToInt32() + offset);
-                name = Marshal.PtrToStringAnsi(current_data);
-                offset += (uint)name.Length + 1;
-
-                current_data = new IntPtr(data.ToInt32() + offset);
-                value = Marshal.PtrToStringAnsi(current_data);
-                offset += (uint)value.Length + 1;
-                if (name == "st_ifmt")
+                while (MobileDevice.AFCKeyValueRead(data, out name, out value) == 0 && name != null && value != null)
                 {
-                    switch (value)
+                    if (name == "st_ifmt")
                     {
-                        case "S_IFDIR":
-                            is_dir = true; 
-                            break;
-                        case "S_IFLNK":
-                            isSLink = true; 
-                            break;
+                        switch (value)
+                        {
+                            case "S_IFDIR":
+                                is_dir = true;
+                                break;
+                            case "S_IFLNK":
+                                isSLink = true;
+                                break;
+                        }
+                        break;
                     }
-                    break;
                 }
+
             }
+            catch (Exception)
+            {
+                //int a = 0;
+            }
+            finally
+            {
+                MobileDevice.AFCKeyValueClose(data);
+            }
+
             if (isSLink)
             { // test for symbolic directory link
                 IntPtr hAFCDir = new IntPtr();
@@ -1056,15 +1031,6 @@ namespace itouchBrowser.Manzana
         internal static byte[] string2bytes(string str)
         {
             byte[] byteArray = Encoding.UTF8.GetBytes(str);
-
-            //System.Diagnostics.Debug.Write(str + " ");
-            //for (int i = 0; i < byteArray.Length; i++)
-            //{
-            //    if (byteArray[i] == 0) break;
-            //    System.Diagnostics.Debug.Write(String.Format("{0:x},", byteArray[i]));
-            //}
-            //System.Diagnostics.Debug.WriteLine("");
-
             return byteArray;
         }
 

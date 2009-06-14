@@ -6,6 +6,14 @@ Future Versions	??/??/2008	Pete Wilson
   * convert binary plists to text and back
   * edit plists
 
+v1.90.33 6/13/2009 =sugi=
+  * Improved compatiblity with iTunes 8.2
+  * フォルダーアイコンの変更
+  * サムネイル表示の質の向上
+  * Appタブで全アプリを表示した。/Applicationsフォルダーアプリは、青色表示。
+  * Jailbreakでプレビュー画面の拡大・標準を繰り返したときにフォルダービューが小さくなる現象を修正した。
+  * SSH設定を完了後再起動しないと反映されなかったが、すぐに接続するように修正した。
+
 v1.83.32 5/24/2009 =sugi=
   * 秘密鍵と公開鍵を使ったSSH接続を可能にした。
   * SSHの秘密鍵と公開鍵の生成および自動配置の機能を追加した。

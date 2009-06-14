@@ -94,6 +94,7 @@ Public Class frmSSHConfig
             My.Settings.SSHPasswd = txtPassphrase.Text
         End If
 
+        Me.DialogResult = Windows.Forms.DialogResult.OK
         Me.Close()
 
     End Sub

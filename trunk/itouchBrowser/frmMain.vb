@@ -56,7 +56,8 @@ Public Class frmMain
     Private prevFormStyle As FormBorderStyle        ' 通常表示時のフォームの境界線スタイルを保存する
     Private prevFormSize As Size                    ' 通常表示時のウィンドウのサイズを保存する
     Private mvarSSHman As SSHManager = Nothing      ' SSH接続コンポーネント
-
+    Private mvarSSHUserID As String = "root"        ' SSH接続ユーザーID初期値
+    Private mvarSSHPasswd As String = "alpine"      ' rootのパスワード初期値
 
     'CUSTOM  CREATED FUNCTIONS
 
@@ -272,8 +273,8 @@ Public Class frmMain
                     End If
 
                     If mvarSSHman.Open(tstIPAddress.Text, _
-                                       tstUserid.Text, _
-                                       txtSSLPasswd.Text, _
+                                       mvarSSHUserID, _
+                                       mvarSSHPasswd, _
                                        authtype, _
                                        My.Settings.SSHKeyPath & "\id_rsa") Then
 
@@ -302,21 +303,6 @@ Public Class frmMain
         Return True
 
     End Function
-
-    Private Sub tsbSSL_CheckedChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles tsbSSH.CheckedChanged
-
-        If Me.connectBySSH(tsbSSH.Checked) = False Then
-            tsbSSH.CheckState = CheckState.Unchecked
-            StatusWarning("SSH Rejected.")
-        Else
-            Me.LoadFiles()
-            If mvarSSHman.Connected Then
-                My.Settings.SSHUser = tstUserid.Text
-                My.Settings.SSHPasswd = txtSSLPasswd.Text
-            End If
-        End If
-
-    End Sub
 
     Private Sub setJailbreakMenuVisibled()
         Dim visibled As Boolean = iPhoneInterface.IsJailbreak
@@ -449,8 +435,8 @@ Public Class frmMain
             End If
             picBusy.Dock = DockStyle.Fill
             picDelete.Dock = DockStyle.Fill
-            tstUserid.Text = My.Settings.SSHUser
-            txtSSLPasswd.Text = My.Settings.SSHPasswd
+            mvarSSHUserID = My.Settings.SSHUser
+            mvarSSHPasswd = My.Settings.SSHPasswd
             Me.imgThumbnail.ImageSize = New Size(ModuleMain.THUMBNAIL_LARGE_SIZE, ModuleMain.THUMBNAIL_LARGE_SIZE)
 
             mvarSplashMsg.Text = "Initialize the QuickTime object."
@@ -1341,8 +1327,8 @@ Public Class frmMain
     End Sub
 
     Private Sub showFileDetails(ByVal sFile As String, ByVal tmpPath As String, ByVal isSLink As Boolean)
-        Dim l As Long = 1
-        Dim bo As Boolean
+        Dim l As Long = 1   'size
+        Dim bo As Boolean   'is folder
 
         iPhoneInterface.GetFileInfo(sFile, l, bo)
 
@@ -3254,6 +3240,23 @@ Public Class frmMain
                 IncrementStatus(listRow)
                 listRow += 1
             Next
+            EndStatus()
+
+            dir = "/Applications/"
+            sFolders = iPhoneInterface.GetDirectories(dir)
+            listRow = 0
+
+            StartStatus(sFolders.Length, sFolders.Length)
+            For Each item As iPhone.strDir In sFolders
+                If item.IsDir AndAlso item.Dir.EndsWith(".app") Then
+                    appNode = tn.Nodes.Add(item.Dir)
+                    appNode.Tag = dir & item.Dir
+                    appNode.ForeColor = Color.Blue
+                End If
+                IncrementStatus(listRow)
+                listRow += 1
+            Next
+
             trvApps.Sort()
             rootNode.Expand()
 
@@ -3757,11 +3760,26 @@ Public Class frmMain
 
         If pnlSSL.Visible Then
             grpFiles.Top = 33
-            grpFiles.Height -= 33
+            grpFiles.Height = splFiles.Panel1.Height - 36
         Else
             grpFiles.Top = 0
-            grpFiles.Height += 33
+            grpFiles.Height = splFiles.Panel1.Height - 3
         End If
+        'grpFiles.Width = splFiles.Width
+
+    End Sub
+
+    Private Sub splFiles_SplitterMoved(ByVal sender As Object, ByVal e As System.Windows.Forms.SplitterEventArgs) _
+        Handles splFiles.SplitterMoved
+
+        If pnlSSL.Visible Then
+            grpFiles.Top = 33
+            grpFiles.Height = splFiles.Panel1.Height - 36
+        Else
+            grpFiles.Top = 0
+            grpFiles.Height = splFiles.Panel1.Height - 3
+        End If
+        grpFiles.Width = splFiles.Width
 
     End Sub
 
@@ -3781,12 +3799,28 @@ Public Class frmMain
         Dim dlg As New frmSSHConfig
 
         If dlg.ShowDialog() = DialogResult.OK Then
-            tstUserid.Text = My.Settings.SSHUser
-            txtSSLPasswd.Text = My.Settings.SSHPasswd
+            mvarSSHUserID = My.Settings.SSHUser
+            mvarSSHPasswd = My.Settings.SSHPasswd
             tsbSSH.PerformClick()
         End If
 
         dlg.Dispose()
+
+    End Sub
+
+    Private Sub tsbSSH_CheckedChanged(ByVal sender As Object, ByVal e As System.EventArgs) _
+        Handles tsbSSH.CheckedChanged
+
+        If Me.connectBySSH(tsbSSH.Checked) = False Then
+            tsbSSH.CheckState = CheckState.Unchecked
+            StatusWarning("SSH Rejected.")
+        Else
+            Me.LoadFiles()
+            If mvarSSHman.Connected Then
+                My.Settings.SSHUser = mvarSSHUserID
+                My.Settings.SSHPasswd = mvarSSHPasswd
+            End If
+        End If
 
     End Sub
 
