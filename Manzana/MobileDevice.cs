@@ -170,6 +170,11 @@ namespace itouchBrowser.Manzana
 		uint context;           /* 40 */
 	};
 
+    [StructLayout(LayoutKind.Sequential, CharSet=CharSet.Ansi, Pack=1)]
+	internal struct afc_dictionary {
+		[MarshalAs(UnmanagedType.ByValArray, SizeConst=0)]
+		byte[] unknown;   /* size unknown */
+	};
 
 	[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 	internal delegate void DeviceNotificationCallback(ref AMDeviceNotificationCallbackInfo callback_info);
@@ -334,17 +339,20 @@ namespace itouchBrowser.Manzana
 		[DllImport(DLLPath, EntryPoint="AMDeviceCopyValue", CallingConvention=CallingConvention.Cdecl)]
 		public extern static IntPtr AMDeviceCopyValue_Int(ref AMDevice device, uint unknown, byte[] cfstring);
 
-		//[DllImport(DLLPath, CallingConvention=CallingConvention.Cdecl)]
-		//public extern static int AFCGetFileInfo(IntPtr conn, IntPtr path, ref IntPtr buffer, ref uint length);
         //[DllImport(DLLPath, CallingConvention = CallingConvention.Cdecl)]
-        //public extern static int AFCGetFileInfo(IntPtr conn, string path, ref IntPtr buffer, ref uint length);
-        [DllImport(DLLPath, CallingConvention = CallingConvention.Cdecl)]
-        public extern static int AFCGetFileInfo(IntPtr conn, byte[] path, ref IntPtr buffer, ref uint length);
+        //public extern static int AFCGetFileInfo(IntPtr conn, byte[] path, ref IntPtr buffer, ref uint length);
 
         //[DllImport(DLLPath, CallingConvention = CallingConvention.Cdecl)]
-        //public extern static int AFCFileInfoOpen(IntPtr conn, string path, ref IntPtr buffer, out uint length);
+        //public extern static int AFCFileInfoOpen(IntPtr conn, byte[] path, ref IntPtr buffer, ref uint length);
+
         [DllImport(DLLPath, CallingConvention = CallingConvention.Cdecl)]
-        public extern static int AFCFileInfoOpen(IntPtr conn, byte[] path, ref IntPtr buffer, out uint length);
+        public extern static int AFCFileInfoOpen(IntPtr conn, byte[] path, ref IntPtr buffer);
+
+        [DllImport(DLLPath, CallingConvention = CallingConvention.Cdecl)]
+        public extern static int AFCKeyValueRead(IntPtr dict, out string key, out string val);
+
+        [DllImport(DLLPath, CallingConvention = CallingConvention.Cdecl)]
+        public extern static int AFCKeyValueClose(IntPtr dict);
 
         //[DllImport(DLLPath, CallingConvention = CallingConvention.Cdecl)]
 		//public extern static int AFCRemovePath(IntPtr conn, string path);

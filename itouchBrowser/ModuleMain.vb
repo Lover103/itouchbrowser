@@ -1460,7 +1460,7 @@ Module ModuleMain
             .Add(createThumbnail(My.Resources.VPN, 16, 16))
             .Add(createThumbnail(My.Resources.Network_Internet, 16, 16))
             .Add(createThumbnail(My.Resources.Camera, 16, 16))
-            .Add(My.Resources.CLSDFOLD)
+            .Add(My.Resources.XPfolder_closed)
         End With
 
     End Sub

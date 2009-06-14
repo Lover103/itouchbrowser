@@ -391,6 +391,7 @@
     <None Include="Resources\cmd.png" />
     <None Include="Resources\CLSDFOLD.BMP" />
     <None Include="Resources\delete.png" />
+    <None Include="Resources\document.bmp" />
     <Content Include="Resources\Folder.ico" />
     <Content Include="Resources\folderopen.ico" />
     <None Include="Resources\help.png" />

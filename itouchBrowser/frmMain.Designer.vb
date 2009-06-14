@@ -52,16 +52,11 @@ Partial Class frmMain
         Me.rtbAMDevice = New System.Windows.Forms.RichTextBox
         Me.splFiles = New System.Windows.Forms.SplitContainer
         Me.pnlSSL = New System.Windows.Forms.Panel
-        Me.txtSSLPasswd = New System.Windows.Forms.TextBox
         Me.tsSSH = New System.Windows.Forms.ToolStrip
         Me.tsbSSH = New System.Windows.Forms.ToolStripButton
         Me.tsbSSHCmd = New System.Windows.Forms.ToolStripButton
         Me.tslIPAddr = New System.Windows.Forms.ToolStripLabel
         Me.tstIPAddress = New System.Windows.Forms.ToolStripTextBox
-        Me.tslUser = New System.Windows.Forms.ToolStripLabel
-        Me.tstUserid = New System.Windows.Forms.ToolStripTextBox
-        Me.tslPasswd = New System.Windows.Forms.ToolStripLabel
-        Me.tstPasswd = New System.Windows.Forms.ToolStripTextBox
         Me.tsbSSHConfig = New System.Windows.Forms.ToolStripButton
         Me.grpFiles = New System.Windows.Forms.GroupBox
         Me.picDelete = New System.Windows.Forms.PictureBox
@@ -309,6 +304,7 @@ Partial Class frmMain
         resources.ApplyResources(Me.trvFolders, "trvFolders")
         Me.trvFolders.HideSelection = False
         Me.trvFolders.ImageList = Me.imgFolders
+        Me.trvFolders.ItemHeight = 16
         Me.trvFolders.Name = "trvFolders"
         Me.trvFolders.PathSeparator = "/"
         Me.trvFolders.ShowRootLines = False
@@ -316,7 +312,7 @@ Partial Class frmMain
         'imgFolders
         '
         Me.imgFolders.ImageStream = CType(resources.GetObject("imgFolders.ImageStream"), System.Windows.Forms.ImageListStreamer)
-        Me.imgFolders.TransparentColor = System.Drawing.Color.Magenta
+        Me.imgFolders.TransparentColor = System.Drawing.Color.Empty
         Me.imgFolders.Images.SetKeyName(0, "XPfolder_closed.bmp")
         Me.imgFolders.Images.SetKeyName(1, "XPfolder_Open.bmp")
         '
@@ -362,6 +358,7 @@ Partial Class frmMain
         resources.ApplyResources(Me.trvApps, "trvApps")
         Me.trvApps.HideSelection = False
         Me.trvApps.ImageList = Me.imgFolders
+        Me.trvApps.ItemHeight = 16
         Me.trvApps.Name = "trvApps"
         Me.trvApps.PathSeparator = "/"
         Me.trvApps.ShowRootLines = False
@@ -397,19 +394,13 @@ Partial Class frmMain
         '
         'pnlSSL
         '
-        Me.pnlSSL.Controls.Add(Me.txtSSLPasswd)
         Me.pnlSSL.Controls.Add(Me.tsSSH)
         resources.ApplyResources(Me.pnlSSL, "pnlSSL")
         Me.pnlSSL.Name = "pnlSSL"
         '
-        'txtSSLPasswd
-        '
-        resources.ApplyResources(Me.txtSSLPasswd, "txtSSLPasswd")
-        Me.txtSSLPasswd.Name = "txtSSLPasswd"
-        '
         'tsSSH
         '
-        Me.tsSSH.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsbSSH, Me.tsbSSHCmd, Me.tslIPAddr, Me.tstIPAddress, Me.tslUser, Me.tstUserid, Me.tslPasswd, Me.tstPasswd, Me.tsbSSHConfig})
+        Me.tsSSH.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsbSSH, Me.tsbSSHCmd, Me.tslIPAddr, Me.tstIPAddress, Me.tsbSSHConfig})
         resources.ApplyResources(Me.tsSSH, "tsSSH")
         Me.tsSSH.Name = "tsSSH"
         '
@@ -437,30 +428,6 @@ Partial Class frmMain
         Me.tstIPAddress.CausesValidation = False
         Me.tstIPAddress.Name = "tstIPAddress"
         resources.ApplyResources(Me.tstIPAddress, "tstIPAddress")
-        '
-        'tslUser
-        '
-        Me.tslUser.Name = "tslUser"
-        resources.ApplyResources(Me.tslUser, "tslUser")
-        '
-        'tstUserid
-        '
-        Me.tstUserid.CausesValidation = False
-        Me.tstUserid.Name = "tstUserid"
-        resources.ApplyResources(Me.tstUserid, "tstUserid")
-        '
-        'tslPasswd
-        '
-        Me.tslPasswd.Name = "tslPasswd"
-        resources.ApplyResources(Me.tslPasswd, "tslPasswd")
-        '
-        'tstPasswd
-        '
-        Me.tstPasswd.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.tstPasswd.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.tstPasswd.CausesValidation = False
-        Me.tstPasswd.Name = "tstPasswd"
-        resources.ApplyResources(Me.tstPasswd, "tstPasswd")
         '
         'tsbSSHConfig
         '
@@ -594,13 +561,13 @@ Partial Class frmMain
         '
         'imgThumbnail
         '
-        Me.imgThumbnail.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit
+        Me.imgThumbnail.ColorDepth = System.Windows.Forms.ColorDepth.Depth24Bit
         resources.ApplyResources(Me.imgThumbnail, "imgThumbnail")
         Me.imgThumbnail.TransparentColor = System.Drawing.Color.PowderBlue
         '
         'imgThumbnailSmall
         '
-        Me.imgThumbnailSmall.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit
+        Me.imgThumbnailSmall.ColorDepth = System.Windows.Forms.ColorDepth.Depth24Bit
         resources.ApplyResources(Me.imgThumbnailSmall, "imgThumbnailSmall")
         Me.imgThumbnailSmall.TransparentColor = System.Drawing.Color.White
         '
@@ -632,7 +599,7 @@ Partial Class frmMain
         Me.pnlQt.BottomHeight = 29
         Me.pnlQt.FileName = ""
         Me.pnlQt.ImageLocation = Nothing
-        Me.pnlQt.LeftWidth = 143
+        Me.pnlQt.LeftWidth = 115
         Me.pnlQt.Lyric = ""
         Me.pnlQt.LyricVisible = True
         Me.pnlQt.MovieInfo = ""
@@ -1361,8 +1328,8 @@ Partial Class frmMain
         Me.tsbFullScreen.CheckOnClick = True
         Me.tsbFullScreen.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
         Me.tsbFullScreen.Image = Global.iPhoneBrowser.itouchBrowser.My.Resources.Resources.FullScreen
-        resources.ApplyResources(Me.tsbFullScreen, "tsbFullScreen")
         Me.tsbFullScreen.Name = "tsbFullScreen"
+        resources.ApplyResources(Me.tsbFullScreen, "tsbFullScreen")
         '
         'fileSaveDialog
         '
@@ -1648,9 +1615,6 @@ Partial Class frmMain
     Private WithEvents btnFind As System.Windows.Forms.Button
     Private WithEvents tslIPAddr As System.Windows.Forms.ToolStripLabel
     Private WithEvents tstIPAddress As System.Windows.Forms.ToolStripTextBox
-    Private WithEvents tslUser As System.Windows.Forms.ToolStripLabel
-    Private WithEvents tstUserid As System.Windows.Forms.ToolStripTextBox
-    Private WithEvents tslPasswd As System.Windows.Forms.ToolStripLabel
     Private WithEvents pnlSSL As System.Windows.Forms.Panel
     Private WithEvents imgThumbnailSmall As System.Windows.Forms.ImageList
     Friend WithEvents tslStatusLabel As System.Windows.Forms.ToolStripStatusLabel
@@ -1663,8 +1627,6 @@ Partial Class frmMain
     Friend WithEvents tslProgress As System.Windows.Forms.ToolStripStatusLabel
     Friend WithEvents trvFolders As System.Windows.Forms.TreeView
     Friend WithEvents btnCancel As System.Windows.Forms.ToolStripDropDownButton
-    Friend WithEvents txtSSLPasswd As System.Windows.Forms.TextBox
     Private WithEvents tsbSSHConfig As System.Windows.Forms.ToolStripButton
-    Private WithEvents tstPasswd As System.Windows.Forms.ToolStripTextBox
 
 End Class

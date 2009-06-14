@@ -309,20 +309,29 @@ Imports System.Data.SQLite
     End Function
 
     Private Function setDataView(ByVal update As Boolean) As Integer
+        Dim rc As Integer = 0
 
         If mvarView IsNot Nothing Then
             mvarView.Dispose()
         End If
 
-        mvarView = New DataView()
-        With mvarView
-            .Table = mvarDataSet.Tables(0)
-            .AllowDelete = update
-            .AllowEdit = update
-            .AllowNew = update
-            .RowStateFilter = DataViewRowState.CurrentRows
-            .Sort = mvarSort    '.Table.PrimaryKey(0).Caption
-        End With
+        Try
+            mvarView = New DataView()
+            With mvarView
+                .Table = mvarDataSet.Tables(0)
+                .AllowDelete = update
+                .AllowEdit = update
+                .AllowNew = update
+                .RowStateFilter = DataViewRowState.CurrentRows
+                .Sort = mvarSort    '.Table.PrimaryKey(0).Caption
+            End With
+
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Exclamation)
+            rc = -1
+        End Try
+
+        Return rc
 
     End Function
 
