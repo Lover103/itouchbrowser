@@ -316,6 +316,23 @@ namespace itouchBrowser.Manzana
 		[DllImport(DLLPath, CallingConvention=CallingConvention.Cdecl)]
 		public extern static int AFCConnectionOpen(IntPtr handle, uint io_timeout, ref IntPtr conn);
 
+        public static int AFCDeviceInfoOpen(IntPtr conn, ref afc_dictionary info)
+        {
+            IntPtr ptr;
+            int ret;
+
+            ptr = IntPtr.Zero;
+            ret = AFCDeviceInfoOpen(conn, ref ptr);
+            if ((ret == 0) && (ptr != IntPtr.Zero))
+            {
+                info = (afc_dictionary)Marshal.PtrToStructure(ptr, info.GetType());
+            }
+            return ret;
+        }
+        /* Pass in a pointer to an afc_device_info structure. It will be filled. */
+		[DllImport(DLLPath, CallingConvention=CallingConvention.Cdecl)]
+        public extern static int AFCDeviceInfoOpen(IntPtr conn, ref IntPtr info/*struct afc_dictionary **info*/);
+
 		public static string AMDeviceCopyValue(ref AMDevice device, uint unknown, string name) {
 			IntPtr	result;
 			byte[]	cfstring;

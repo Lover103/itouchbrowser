@@ -756,6 +756,29 @@ Imports System.Data.SQLite
         Return rc
     End Function
 
+    Public Shared Function SelectSQL(ByVal dsn As String, ByVal sql As String) As DataSet
+        Dim ds As New DataSet("SelectedData")
+
+        Using cnn As SQLiteConnection = New SQLiteConnection("Data Source=" & dsn)
+            Using cmd As SQLiteCommand = cnn.CreateCommand
+
+                cnn.Open()
+                cmd.CommandText = sql
+
+                Using reader As SQLiteDataReader = cmd.ExecuteReader
+                    ds.Load(reader, LoadOption.Upsert, "SelectedData")
+                End Using
+            End Using
+        End Using
+
+        Return ds
+    End Function
+
+    Public Shared Function CvtData(ByVal val As String) As String
+        Dim ret() As String = val.split("'"c)
+        Return String.Join("''", ret)
+    End Function
+
     Public Shared Function GetDBInfo(ByVal dsn As String) As String
 
         Dim info As New System.Text.StringBuilder

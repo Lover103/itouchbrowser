@@ -88,9 +88,9 @@
     <OutputPath>bin\x86\Setup\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Interop.QTOLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="AxInterop.QTOControlLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\sourcev1.2\iPhoneBrowser\bin\Debug\Interop.QTOLibrary.dll</HintPath>
+      <HintPath>bin\Debug\AxInterop.QTOControlLib.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -101,7 +101,6 @@
     <Reference Include="vjslib" />
   </ItemGroup>
   <ItemGroup>
-    <Import Include="AxQTOControlLib" />
     <Import Include="Microsoft.VisualBasic" />
     <Import Include="System" />
     <Import Include="System.Collections" />
@@ -421,16 +420,6 @@
     <None Include="Resources\warning.ico" />
   </ItemGroup>
   <ItemGroup>
-    <COMReference Include="AxQTOControlLib">
-      <Guid>{7B92F833-027D-402B-BFF9-A67697366F4E}</Guid>
-      <VersionMajor>1</VersionMajor>
-      <VersionMinor>0</VersionMinor>
-      <Lcid>0</Lcid>
-      <WrapperTool>aximp</WrapperTool>
-      <Isolated>False</Isolated>
-    </COMReference>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Manzana\Manzana.csproj">
       <Project>{8C260F85-65AC-40A6-85BF-D89C49052F64}</Project>
       <Name>Manzana</Name>
@@ -444,6 +433,24 @@
       <Name>System.IPod</Name>
       <Private>True</Private>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="QTOControlLib">
+      <Guid>{7B92F833-027D-402B-BFF9-A67697366F4E}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="QTOLibrary">
+      <Guid>{29866AED-1E14-417D-BA0F-1A2BE6F5A19E}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

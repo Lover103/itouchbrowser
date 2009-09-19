@@ -47,8 +47,8 @@ Public Class frmMain
     Private mvarLnError As Boolean = False
     Private mvarCurrAnnotation As String = ""
     Private mvarItunesMan As New iTunesManager
-    Private iTunesPath As String = ""
-    Private iTunesRoot As String = ""
+    Private mvarITunesPath As String = ""
+    Private mvarITunesRoot As String = ""
     Private mvarItunes As Data.DataTable = Nothing
     Private mvarSplashMsg As Label
     Private mvarFullScreenMode As Boolean = False   ' フルスクリーン表示かどうかのフラグ
@@ -174,11 +174,11 @@ Public Class frmMain
                     If iPhoneInterface.IsJailbreak Then
                         ' "iPhone is connected and jailbroken"
                         StatusNormal(My.Resources.String3)
-                        iTunesPath = "/var/mobile/Media/iTunes_Control/iTunes/iTunesDB"
-                        If iPhoneInterface.Exists("/var/root/Media/DCIM") Then
-                            tildeDir = "/var/root"
-                            iTunesPath = "/var/root/Media/iTunes_Control/iTunes/iTunesDB"
-                        End If
+                        mvarITunesPath = "/var/mobile/Media/iTunes_Control/iTunes/iTunesDB"
+                        'If iPhoneInterface.Exists("/var/root/Media/DCIM") Then
+                        '    tildeDir = "/var/root"
+                        '    mvarITunesPath = "/var/root/Media/iTunes_Control/iTunes/iTunesDB"
+                        'End If
 
                         Me.pnlSSL.Visible = True
                         If My.Settings.SSHAddrAutoset Then
@@ -188,11 +188,12 @@ Public Class frmMain
                     Else
                         ' "iPhone is connected, not jailbroken"
                         StatusWarning(My.Resources.String1)
-                        iTunesPath = "/iTunes_Control/iTunes/iTunesDB"
+                        mvarITunesPath = "/iTunes_Control/iTunes/iTunesDB"
 
                         Me.pnlSSL.Visible = False
                     End If
-                    iTunesRoot = iTunesPath.Substring(0, iTunesPath.IndexOf("/iTunes_Control/"))
+                    mvarITunesRoot = mvarITunesPath.Substring(0, mvarITunesPath.IndexOf("/iTunes_Control/"))
+                    getITunes()
 
                     'Set last path
                     If My.Settings.LastPath <> "" _
@@ -218,19 +219,19 @@ Public Class frmMain
                     setAMDeviceData()
                     trvFolders.Focus()
 
-                    Else
-                        ' "iPhone is NOT connected, please check your connections!"
-                        StatusWarning(My.Resources.String2)
+                Else
+                    ' "iPhone is NOT connected, please check your connections!"
+                    StatusWarning(My.Resources.String2)
 
-                        trvITunes.Nodes.Clear()
-                        trvApps.Nodes.Clear()
-                        rtbAMDevice.Clear()
-                        My.Settings.LastPath = ModuleMain.NodeiPhonePath(trvFolders.SelectedNode)
-                        mvarItunesMan.Clear()
-                        tabFolder.SelectedIndex = 0
-                        'mvarItunesMan.Dispose()
-                        Me.pnlSSL.Visible = False
-                    End If
+                    trvITunes.Nodes.Clear()
+                    trvApps.Nodes.Clear()
+                    rtbAMDevice.Clear()
+                    My.Settings.LastPath = ModuleMain.NodeiPhonePath(trvFolders.SelectedNode)
+                    mvarItunesMan.Clear()
+                    tabFolder.SelectedIndex = 0
+                    'mvarItunesMan.Dispose()
+                    Me.pnlSSL.Visible = False
+                End If
 
             Catch ex As Exception
                 MsgBox(ex.Message, MsgBoxStyle.Exclamation)
@@ -680,12 +681,12 @@ Public Class frmMain
                                 songTitles(songCnt).fileName = sFile
                                 songTitles(songCnt).subDir = subDirName
                                 songCnt += 1
-                                If Not mvarItunesMan.Loaded Then
-                                    ProgressEscapeFlg = False
-                                    If CopyFromPhone(iTunesPath, My.Settings.DbPath & "\iTunesDB") <> 0 Then
-                                        Me.getArtists(My.Settings.DbPath, "All")
-                                    End If
-                                End If
+                                'If Not mvarItunesMan.Loaded Then
+                                '    ProgressEscapeFlg = False
+                                '    If CopyFromPhone(mvarITunesPath, My.Settings.DbPath & "\iTunesDB") <> 0 Then
+                                '        Me.getArtists(My.Settings.DbPath, "All")
+                                '    End If
+                                'End If
                             End If
                         End If
 
@@ -1635,7 +1636,11 @@ Public Class frmMain
             ' only if it is less than a big file size
             Dim sSize As String = lstFiles.SelectedItems(0).SubItems(1).Text
             If sSize <> "0 B" AndAlso isSL = False Then
-                Me.showPreview(sFile, fromBtn, fileSizeAsInteger(sSize))
+                If sSize.EndsWith("sec") Then
+                    Me.showPreview(sFile, fromBtn, 100)
+                Else
+                    Me.showPreview(sFile, fromBtn, fileSizeAsInteger(sSize))
+                End If
             Else
                 Me.showFileDetails(sFile, "", isSL)
                 StatusNormal("The file " & sFile & " is 0 bytes in length")
@@ -3063,32 +3068,36 @@ Public Class frmMain
         Dim lstTemp As ListViewItem
         Dim selNode As TreeNode = e.Node
         Dim listRow As Integer = 0
-        Dim files As IPod.Music.TrackItem()
+        Dim files() As Data.DataRow
 
         Try
             If selNode.Text = NO_NAME_LABEL Then
-                files = mvarItunesMan.GetSongs("")
+                files = mvarItunesMan.GetSongsByArt("")
             Else
-                files = mvarItunesMan.GetSongs(selNode.Text)
+                files = mvarItunesMan.GetSongsByArt(selNode.Text)
             End If
             lstFiles.BeginUpdate()
             lstFiles.Items.Clear()
             For listRow = 0 To files.Length - 1
-                Dim item As IPod.Music.TrackItem = files(listRow)
-                lstTemp = New ListViewItem(item.Location.Replace("\", "/"))
-                lstTemp.ImageIndex = getImageIndexForFile(item.Location)
+                Dim item As Data.DataRow = files(listRow)
+                lstTemp = New ListViewItem(item("Location").ToString().Replace("\", "/"))
+                lstTemp.ImageIndex = getImageIndexForFile(item("Location").ToString())
                 With lstTemp.SubItems
-                    .Add(Me.fileSizeAsString(item.FileSize))
-                    .Add(item.Title)
+                    If Not item("FileSize").ToString().EndsWith("sec") Then
+                        .Add(Me.fileSizeAsString(CLng(item("FileSize"))))
+                    Else
+                        .Add(item("FileSize").ToString())
+                    End If
+                    .Add(item("Title").ToString())
                     .Add(getFiletype(lstTemp.ImageIndex))
-                    .Add(item.Album)
-                    .Add(item.TrackNumber.ToString)
-                    .Add(item.Genre)
-                    .Add(item.FileType)
-                    .Add(item.Commnet)
+                    .Add(item("Album").ToString())
+                    .Add(item("TrackNumber").ToString())
+                    .Add(item("Genre").ToString())
+                    .Add(item("FileType").ToString())
+                    .Add(item("Comment").ToString())
                 End With
-                If item.Album = "" Then
-                    If item.Artist = e.Node.Parent.Text Then
+                If item("Album").ToString() = "" Then
+                    If item("Artist").ToString() = e.Node.Parent.Text Then
                         lstFiles.Items.Add(lstTemp)
                     End If
                 Else
@@ -3097,14 +3106,14 @@ Public Class frmMain
             Next
 
             StatusNormal(files.Length.ToString & " files found")
-            Dim ind As Integer = iTunesPath.IndexOf("/iTunes_Control/")
+            Dim ind As Integer = mvarITunesPath.IndexOf("/iTunes_Control/")
             If ind = -1 Then
-                ind = iTunesPath.IndexOf("\iPod_Control\")
+                ind = mvarITunesPath.IndexOf("\iPod_Control\")
                 If ind > -1 Then
-                    grpFiles.Text = iTunesPath.Substring(0, ind)
+                    grpFiles.Text = mvarITunesPath.Substring(0, ind)
                 End If
             Else
-                grpFiles.Text = iTunesRoot
+                grpFiles.Text = mvarITunesRoot
             End If
 
             Me.getAlbums(selNode, selNode.Text)
@@ -3156,37 +3165,42 @@ Public Class frmMain
                             .Columns.Add("Comment", My.Resources.String55, 160)
                         End If
 
-                        If bNowConnected = False AndAlso trvITunes.Nodes.Count = 0 Then
-                            iTunesRoot = ITunesDb.GetIPodRoot()
+                        'If bNowConnected = False AndAlso trvITunes.Nodes.Count = 0 Then
+                        '    mvarITunesRoot = ITunesDb.GetIPodRoot()
 
-                            If iTunesRoot <> "" Then
-                                Dim dr As New DriveInfo(iTunesRoot)
-                                Me.getArtists(iTunesRoot & "iPod_Control\iTunes", dr.VolumeLabel)
-                                iTunesPath = iTunesRoot & "iPod_Control\iTunes"
-                            Else
-                                Me.btnExport.Enabled = False
-                                Me.cmbOutputDir.Enabled = False
-                            End If
-                        End If
+                        '    If mvarITunesRoot <> "" Then
+                        '        Dim dr As New DriveInfo(mvarITunesRoot)
+                        '        Me.getArtists(mvarITunesRoot & "iPod_Control\iTunes", dr.VolumeLabel)
+                        '        mvarITunesPath = mvarITunesRoot & "iPod_Control\iTunes"
+                        '    Else
+                        '        Me.btnExport.Enabled = False
+                        '        Me.cmbOutputDir.Enabled = False
+                        '    End If
+                        'End If
 
-                        If Not mvarItunesMan.Loaded AndAlso iTunesPath <> "" Then
-                            If CopyFromPhone(iTunesPath, My.Settings.DbPath & "\iTunesDB") <> 0 Then
-                                Me.getArtists(My.Settings.DbPath, "All")
-                            End If
-                        End If
+                        'If Not mvarItunesMan.Loaded AndAlso mvarITunesPath <> "" Then
+                        '    If CopyFromPhone(mvarITunesPath, My.Settings.DbPath & "\iTunesDB") <> 0 Then
+                        '        If iPhoneInterface.Exists(mvarITunesRoot & "/iTunes_Control/iTunes/iTunes Library.itlp/Library.itdb") Then
+                        '            CopyFromPhone(mvarITunesRoot & "/iTunes_Control/iTunes/iTunes Library.itlp/Library.itdb", My.Settings.DbPath & "\Library.itdb")
+                        '            CopyFromPhone(mvarITunesRoot & "/iTunes_Control/iTunes/iTunes Library.itlp/Locations.itdb", My.Settings.DbPath & "\Locations.itdb")
+                        '        End If
+                        '        Me.getArtists(My.Settings.DbPath, "All")
+                        '    End If
+                        'End If
+                        getITunes()
 
                     Case 2      ' App
-                        .Columns(2).Text = My.Resources.String49    'Backup path
-                        .Columns(3).Width = 110
-                        .Columns.RemoveByKey("Album")
-                        .Columns.RemoveByKey("TrackNumber")
-                        .Columns.RemoveByKey("Genre")
-                        .Columns.RemoveByKey("Type")
-                        .Columns.RemoveByKey("Comment")
+                            .Columns(2).Text = My.Resources.String49    'Backup path
+                            .Columns(3).Width = 110
+                            .Columns.RemoveByKey("Album")
+                            .Columns.RemoveByKey("TrackNumber")
+                            .Columns.RemoveByKey("Genre")
+                            .Columns.RemoveByKey("Type")
+                            .Columns.RemoveByKey("Comment")
 
-                        If bNowConnected = True AndAlso trvApps.Nodes.Count = 0 Then
-                            Me.setApps("/private/var/mobile/Applications")
-                        End If
+                            If bNowConnected = True AndAlso trvApps.Nodes.Count = 0 Then
+                                Me.setApps("/private/var/mobile/Applications")
+                            End If
 
                     Case 3      ' AMDevice
 
@@ -3199,6 +3213,25 @@ Public Class frmMain
             MsgBox(ex.Message, MsgBoxStyle.Exclamation)
         End Try
 
+    End Sub
+
+    Private Sub getITunes()
+        If Not mvarItunesMan.Loaded AndAlso mvarITunesPath <> "" Then
+            If CopyFromPhone(mvarITunesPath, My.Settings.DbPath & "\iTunesDB") <> 0 Then
+                If iPhoneInterface.Exists(mvarITunesRoot & "/iTunes_Control/iTunes/iTunes Library.itlp/Library.itdb") Then
+                    CopyFromPhone(mvarITunesRoot & "/iTunes_Control/iTunes/iTunes Library.itlp/Library.itdb", My.Settings.DbPath & "\Library.itdb")
+                    CopyFromPhone(mvarITunesRoot & "/iTunes_Control/iTunes/iTunes Library.itlp/Locations.itdb", My.Settings.DbPath & "\Locations.itdb")
+                Else
+                    If File.Exists(My.Settings.DbPath & "\Library.itdb") Then
+                        File.Delete(My.Settings.DbPath & "\Library.itdb")
+                    End If
+                    If File.Exists(My.Settings.DbPath & "\Locations.itdb") Then
+                        File.Delete(My.Settings.DbPath & "\Locations.itdb")
+                    End If
+                End If
+                Me.getArtists(My.Settings.DbPath, "All")
+            End If
+        End If
     End Sub
 
     Private Function setApps(ByVal dir As String) As Boolean
@@ -3330,8 +3363,8 @@ Public Class frmMain
 
         StatusNormal(node.Text)
         Dim listRow As Integer = 0
-        Dim files As IPod.Music.TrackItem() = mvarItunesMan.GetSongs(node.Text)
-        Dim sSourcePath As String = iTunesRoot & "/"
+        Dim files() As Data.DataRow = mvarItunesMan.GetSongsByArt(node.Text)
+        Dim sSourcePath As String = mvarITunesRoot & "/"
         Dim sDestinationPath As String = ""
         Dim artist As String = node.Text
 
@@ -3345,22 +3378,22 @@ Public Class frmMain
         StartStatus(files.Length, files.Length)
         Try
             For listRow = 0 To files.Length - 1
-                Dim item As IPod.Music.TrackItem = files(listRow)
-                If artist = item.Artist Then
-                    StatusNormal(item.Artist & " - " & item.Album & " - " & item.Title)
+                Dim item As Data.DataRow = files(listRow)
+                If artist = item("Artist").ToString() Then
+                    StatusNormal(item("Artist").ToString() & " - " & item("Album").ToString() & " - " & item("Title").ToString())
 
-                    Dim sSourceFile As String = item.Location.Replace("\", "/")
+                    Dim sSourceFile As String = item("Location").ToString() '.Replace("\", "/")
                     Dim ext As String = sSourceFile.Substring(sSourceFile.LastIndexOf("."))
-                    Dim subPath As String = sDestinationPath & item.Album.Replace("/", "_") & "\"
-                    Dim destFileName As String = subPath & item.TrackNumber.ToString("00.") _
-                                & FixPhoneFilename(item.Title.Replace(" ", "_")) & ext
+                    Dim subPath As String = sDestinationPath & item("Album").ToString().Replace("/", "_") & "\"
+                    Dim destFileName As String = subPath & CInt(item("TrackNumber")).ToString("00.") _
+                                & FixPhoneFilename(item("Title").ToString().Replace(" ", "_")) & ext
                     Dim rc As Long = 0
 
                     ModuleMain.needDir(subPath)
                     If bNowConnected Then
                         rc = ModuleMain.CopyFromPhone(sSourcePath & sSourceFile, destFileName)
                     Else
-                        File.Copy((iTunesRoot & sSourceFile).Replace("/", "\"), destFileName, True)
+                        File.Copy((mvarITunesRoot & sSourceFile).Replace("/", "\"), destFileName, True)
                     End If
 
                     If rc = -2 Then
@@ -3395,29 +3428,29 @@ Public Class frmMain
             Select Case m.WParam.ToInt32()
                 Case DBT_DEVNODES_CHANGED
                     Debug.WriteLine("any devnode changed occur")
-                    iTunesRoot = ITunesDb.GetIPodRoot()
-                    If iTunesRoot = "" Then
+                    mvarITunesRoot = ITunesDb.GetIPodRoot()
+                    If mvarITunesRoot = "" Then
                         trvITunes.Nodes.Clear()
                         Me.btnExport.Enabled = False
                         Me.cmbOutputDir.Enabled = False
                     End If
                 Case DBT_DEVICEARRIVAL
                     Debug.WriteLine("system detected a new device")
-                    iTunesRoot = ITunesDb.GetIPodRoot()
+                    mvarITunesRoot = ITunesDb.GetIPodRoot()
 
-                    If iTunesRoot <> "" Then
+                    If mvarITunesRoot <> "" Then
                         tabFolder.SelectedIndex = 1
-                        Dim dr As New DriveInfo(iTunesRoot)
-                        Me.getArtists(iTunesRoot & "iPod_Control\iTunes", dr.VolumeLabel)
-                        iTunesPath = iTunesRoot & "iPod_Control\iTunes"
+                        Dim dr As New DriveInfo(mvarITunesRoot)
+                        Me.getArtists(mvarITunesRoot & "iPod_Control\iTunes", dr.VolumeLabel)
+                        mvarITunesPath = mvarITunesRoot & "iPod_Control\iTunes"
                     Else
                         Me.btnExport.Enabled = False
                         Me.cmbOutputDir.Enabled = False
                     End If
                 Case DBT_DEVICEREMOVECOMPLETE
                     Debug.WriteLine("device is gone")
-                    iTunesRoot = ITunesDb.GetIPodRoot()
-                    If iTunesRoot = "" Then
+                    mvarITunesRoot = ITunesDb.GetIPodRoot()
+                    If mvarITunesRoot = "" Then
                         trvITunes.Nodes.Clear()
                         Me.btnExport.Enabled = False
                         Me.cmbOutputDir.Enabled = False
@@ -3484,9 +3517,15 @@ Public Class frmMain
         Dim i As Integer
 
         Dim st As String = iPhoneInterface.ActivationState
+        'Dim stbuf As iPhone.strStatVfs
+
+        rtbAMDevice.Text = ""
+        'If iPhoneInterface.GetStatFs(stbuf) Then
+        '    rtbAMDevice.AppendText("Total disk size: " & (stbuf.Btotal / 1024).ToString("#,##0MBytes") & vbCrLf)
+        '    rtbAMDevice.AppendText("Free disk size : " & (stbuf.Bfree / 1024).ToString("#,##0MBytes") & vbCrLf)
+        'End If
 
         With iPhoneInterface.Device
-            rtbAMDevice.Text = ""
             rtbAMDevice.SelectionColor = Color.Blue
             rtbAMDevice.AppendText("Activation State: " & st & vbCrLf)
             'dat.Append("Device ID: ").Append(.device_id).Append(vbCrLf)

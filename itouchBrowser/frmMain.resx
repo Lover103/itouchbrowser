@@ -1327,7 +1327,7 @@
     <value>qtBuff</value>
   </data>
   <data name="&gt;&gt;qtBuff.Type" xml:space="preserve">
-    <value>iPhoneBrowser.itouchBrowser.QtWrapper, itouchBrowser, Version=1.8.3.32, Culture=neutral, PublicKeyToken=null</value>
+    <value>iPhoneBrowser.itouchBrowser.QtWrapper, itouchBrowser, Version=1.9.0.33, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;qtBuff.Parent" xml:space="preserve">
     <value>grpFiles</value>
@@ -1390,7 +1390,7 @@
     <value>pnlQt</value>
   </data>
   <data name="&gt;&gt;pnlQt.Type" xml:space="preserve">
-    <value>iPhoneBrowser.itouchBrowser.PlayPanel, itouchBrowser, Version=1.8.3.32, Culture=neutral, PublicKeyToken=null</value>
+    <value>iPhoneBrowser.itouchBrowser.PlayPanel, itouchBrowser, Version=1.9.0.33, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;pnlQt.Parent" xml:space="preserve">
     <value>grpDetails</value>
