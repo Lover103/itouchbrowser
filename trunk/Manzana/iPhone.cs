@@ -311,6 +311,64 @@ namespace itouchBrowser.Manzana
             public bool isSLink;
         }
 
+        public struct strStatVfs
+        {
+            public int Namemax;
+            public int Bsize;
+            public float Btotal;
+            public float Bfree;
+        }
+        public bool GetStatFs(ref strStatVfs stbuf)
+        {
+            string name;
+            string value;
+
+            //memset(stbuf, 0, sizeof(struct statvfs));
+            //afc_dictionary info;
+            IntPtr info = new IntPtr();
+
+            int ret = MobileDevice.AFCDeviceInfoOpen(hAFC, ref info);
+            if (ret != 0)
+            {
+                //cerr << "AFCDeviceInfoOpen: " << ret << endl;
+                return false;
+            }
+            Dictionary<string, string> info_map = new Dictionary<string, string>();
+            while (MobileDevice.AFCKeyValueRead(info, out name, out value) == 0
+                && name != null && value != null)
+            {
+                info_map.Add(name, value);
+            }
+
+            MobileDevice.AFCKeyValueClose(info);
+
+            if (info_map["FSTotalBytes"] == null)
+            {
+                //cerr << "AFCDeviceInfoOpen: Missing FSTotalBytes";
+                return false;
+            }
+            if (info_map["FSBlockSize"] == null)
+            {
+                //cerr << "AFCDeviceInfoOpen: Missing FSBlockSize";
+                return false;
+            }
+            if (info_map["Model"] == null)
+            {
+                //cerr << "AFCDeviceInfoOpen: Missing Model";
+                return false;
+            }
+
+            int blockSize = int.Parse(info_map["FSBlockSize"].ToString());
+            ulong totalBytes = ulong.Parse(info_map["FSTotalBytes"].ToString());
+            ulong freeBytes = ulong.Parse(info_map["FSFreeBytes"].ToString());
+            stbuf.Namemax = 255;
+            stbuf.Bsize = blockSize;
+            stbuf.Btotal = (float)totalBytes /blockSize;
+            stbuf.Bfree = (float)freeBytes/ blockSize;
+
+            return true;
+        }
+
         /// <summary>
         /// 
         /// </summary>
@@ -388,7 +446,7 @@ namespace itouchBrowser.Manzana
             {
                 throw new Exception("Not connected to phone");
             }
-
+            
             hAFCDir = new IntPtr();
             full_path = FullPath(current_directory, path);
 

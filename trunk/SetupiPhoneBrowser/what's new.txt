@@ -6,6 +6,9 @@ Future Versions	??/??/2008	Pete Wilson
   * convert binary plists to text and back
   * edit plists
 
+v1.91.34 9/13/2009 =sugi=
+  * iTunes8.2のiTunesDBに対応のつもり
+
 v1.90.33 6/13/2009 =sugi=
   * Improved compatiblity with iTunes 8.2
   * フォルダーアイコンの変更
