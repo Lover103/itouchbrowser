@@ -3,7 +3,7 @@ Partial Class frmMain
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    '<System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()> _
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         With My.Settings
             .ConfirmDeletions = tsmConfirmDeletions.Checked
@@ -30,7 +30,7 @@ Partial Class frmMain
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    '<System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
@@ -48,8 +48,6 @@ Partial Class frmMain
         Me.trvITunes = New System.Windows.Forms.TreeView
         Me.ftabApp = New System.Windows.Forms.TabPage
         Me.trvApps = New System.Windows.Forms.TreeView
-        Me.ftabAMDevice = New System.Windows.Forms.TabPage
-        Me.rtbAMDevice = New System.Windows.Forms.RichTextBox
         Me.splFiles = New System.Windows.Forms.SplitContainer
         Me.pnlSSL = New System.Windows.Forms.Panel
         Me.tsSSH = New System.Windows.Forms.ToolStrip
@@ -224,7 +222,6 @@ Partial Class frmMain
         Me.ftabFolder.SuspendLayout()
         Me.ftabiTunes.SuspendLayout()
         Me.ftabApp.SuspendLayout()
-        Me.ftabAMDevice.SuspendLayout()
         Me.splFiles.Panel1.SuspendLayout()
         Me.splFiles.Panel2.SuspendLayout()
         Me.splFiles.SuspendLayout()
@@ -274,7 +271,6 @@ Partial Class frmMain
         Me.tabFolder.Controls.Add(Me.ftabFolder)
         Me.tabFolder.Controls.Add(Me.ftabiTunes)
         Me.tabFolder.Controls.Add(Me.ftabApp)
-        Me.tabFolder.Controls.Add(Me.ftabAMDevice)
         resources.ApplyResources(Me.tabFolder, "tabFolder")
         Me.tabFolder.Name = "tabFolder"
         Me.tabFolder.SelectedIndex = 0
@@ -362,19 +358,6 @@ Partial Class frmMain
         Me.trvApps.Name = "trvApps"
         Me.trvApps.PathSeparator = "/"
         Me.trvApps.ShowRootLines = False
-        '
-        'ftabAMDevice
-        '
-        Me.ftabAMDevice.Controls.Add(Me.rtbAMDevice)
-        resources.ApplyResources(Me.ftabAMDevice, "ftabAMDevice")
-        Me.ftabAMDevice.Name = "ftabAMDevice"
-        Me.ftabAMDevice.UseVisualStyleBackColor = True
-        '
-        'rtbAMDevice
-        '
-        resources.ApplyResources(Me.rtbAMDevice, "rtbAMDevice")
-        Me.rtbAMDevice.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.rtbAMDevice.Name = "rtbAMDevice"
         '
         'splFiles
         '
@@ -1418,7 +1401,6 @@ Partial Class frmMain
         Me.ftabFolder.PerformLayout()
         Me.ftabiTunes.ResumeLayout(False)
         Me.ftabApp.ResumeLayout(False)
-        Me.ftabAMDevice.ResumeLayout(False)
         Me.splFiles.Panel1.ResumeLayout(False)
         Me.splFiles.Panel2.ResumeLayout(False)
         Me.splFiles.ResumeLayout(False)
@@ -1569,8 +1551,6 @@ Partial Class frmMain
     Friend WithEvents tsmQtInfo As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents TabPage3 As System.Windows.Forms.TabPage
     Friend WithEvents TabPage4 As System.Windows.Forms.TabPage
-    Friend WithEvents ftabAMDevice As System.Windows.Forms.TabPage
-    Friend WithEvents rtbAMDevice As System.Windows.Forms.RichTextBox
     Friend WithEvents menuDeleteFileWithoutSaving As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents menuDeleteFolderWithoutSaving As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripSeparator12 As System.Windows.Forms.ToolStripSeparator

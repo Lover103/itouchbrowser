@@ -19,11 +19,11 @@ Option Explicit On
 ' =============================================================================
 
 Imports System.Threading
-Imports itouchBrowser.Manzana
+Imports Manzana
 
 Public Class frmFolderProperty
 
-    Private allSize As Long = 0
+    Private allSize As ULong = 0
     Private fileCount As Long = 0
     Private folderCount As Integer = 0
     Private pathThread As Thread = Nothing

@@ -34,16 +34,16 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace itouchBrowser.Manzana
+namespace Manzana
 {
 	/// <summary>
 	/// Provides data for the <see>Connected</see> and <see>Disconnected</see> events.
 	/// </summary>
 	public class ConnectEventArgs : EventArgs{
 		private NotificationMessage	message;
-		private AMDevice					device;
+		unsafe private void* device;
  
-		internal ConnectEventArgs(AMDeviceNotificationCallbackInfo cbi) {
+		unsafe internal ConnectEventArgs(AMDeviceNotificationCallbackInfo cbi) {
 			message = cbi.msg;
 			device = cbi.dev;
 		}
@@ -51,7 +51,7 @@ namespace itouchBrowser.Manzana
 		/// <summary>
 		/// Returns the information for the device that was connected or disconnected.
 		/// </summary>
-		public AMDevice Device {
+		unsafe public void* Device {
 			get { return device; }
 		}
 

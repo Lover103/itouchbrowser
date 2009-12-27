@@ -22,7 +22,7 @@ Imports System.Drawing.Imaging
 Imports System.Text
 Imports System.Threading
 Imports itouchBrowser
-Imports itouchBrowser.Manzana
+Imports Manzana
 Imports SCW_iPhonePNG
 
 Module ModuleMain
@@ -35,7 +35,7 @@ Module ModuleMain
     Friend FILE_TEMPORARY_VIEWER As String = "iPhone.temp"
 
     Friend objMain As frmMain
-    Friend iPhoneInterface As iPhone
+    Friend WithEvents iPhoneInterface As iPhone
     Friend ProgressDepth As Integer
     Friend ProgressBars(MAX_PROG_DEPTH) As ToolStripProgressBar
     Friend ProgressValue(MAX_PROG_DEPTH) As Integer
@@ -82,7 +82,7 @@ Module ModuleMain
             Application.EnableVisualStyles()
 
             Dim objSplash As New frmSplashScreen
-            objSplash.Show()
+            'objSplash.Show()
             objSplash.SetProgressMessage("Initializing...")
             Application.DoEvents()
 
@@ -148,6 +148,14 @@ Module ModuleMain
 
     Private Sub dbInitialize()
         ObjDb = ModuleMain.GetBackupList()
+    End Sub
+
+    Private Sub oniPhoneConnected(ByVal sender As Object, ByVal args As ConnectEventArgs) Handles iPhoneInterface.Connect
+        objMain.oniPhoneConnected()
+    End Sub
+
+    Private Sub oniPhoneDisconnected(ByVal sender As Object, ByVal args As ConnectEventArgs) Handles iPhoneInterface.Disconnect
+        objMain.oniPhoneDisconnected()
     End Sub
 
     Friend Sub StatusNormal(ByVal msg As String)
@@ -281,7 +289,7 @@ Module ModuleMain
 
         'make sure the source file exists
         If iPhoneInterface.Exists(sourceOnPhone) Then
-            Dim fSize As Long = iPhoneInterface.FileSize(sourceOnPhone)
+            Dim fSize As Long = CLng(iPhoneInterface.FileSize(sourceOnPhone))
 
             'open a connection to the file and read it
             Try
@@ -306,7 +314,7 @@ Module ModuleMain
                 ReDim sBuffer(buffSize - 1)
             End If
 
-            Dim depth As Integer = StartStatus(cnt, fSize) 'show our progress bar
+            Dim depth As Integer = StartStatus(cnt, CLng(fSize)) 'show our progress bar
 
             Try
                 Dim curSize As Long = 0
@@ -330,7 +338,7 @@ Module ModuleMain
                     File.Delete(destinationOnComputer)
                 End If
 
-                bReturn = fSize
+                bReturn = CLng(fSize)
 
             Catch exio As IOException
                 StatusWarning(exio.Message)
@@ -396,7 +404,7 @@ Module ModuleMain
 
             'show our progress bar
             Dim buffSize As Integer = sBuffer.Length
-            Dim fSize As Long = iPhoneInterface.FileSize(sourceOnPhone)
+            Dim fSize As Long = CLng(iPhoneInterface.FileSize(sourceOnPhone))
             Dim cnt As Integer = CInt(fSize / buffSize)
             If cnt > 100 Then
                 buffSize *= 2
@@ -1465,30 +1473,30 @@ Module ModuleMain
 
     End Sub
 
-    Friend Function DecodePListFile(ByVal inFileStr As Byte()) As String
-        Dim plist As String = ""
-        Try
-            plist = CFPropertyList.PropertyListToXML(inFileStr)
+    'Friend Function DecodePListFile(ByVal inFileStr As Byte()) As String
+    '    Dim plist As String = ""
+    '    Try
+    '        plist = CFPropertyList.PropertyListToXML(inFileStr)
 
-        Catch err As Exception
-            'plist = inFileStr
-        End Try
+    '    Catch err As Exception
+    '        'plist = inFileStr
+    '    End Try
 
-        Return plist
-    End Function
+    '    Return plist
+    'End Function
 
-    Friend Function EncodePListFile(ByVal inFileStr As String) As Byte()
-        Dim plist As Byte()
-        Try
-            plist = CFPropertyList.PropertyListFromXML(inFileStr)
+    'Friend Function EncodePListFile(ByVal inFileStr As String) As Byte()
+    '    Dim plist As Byte()
+    '    Try
+    '        plist = CFPropertyList.PropertyListFromXML(inFileStr)
 
-        Catch err As Exception
-            plist = New Byte() {0}
-        End Try
+    '    Catch err As Exception
+    '        plist = New Byte() {0}
+    '    End Try
 
-        Return plist
+    '    Return plist
 
-    End Function
+    'End Function
 
     Friend Function GetSSHAddress() As String
         Dim sFile As String = "/private/var/preferences/SystemConfiguration/com.apple.network.identification.plist"

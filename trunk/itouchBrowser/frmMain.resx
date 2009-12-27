@@ -455,57 +455,6 @@
   <data name="&gt;&gt;ftabApp.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="rtbAMDevice.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
-  </data>
-  <data name="rtbAMDevice.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
-  </data>
-  <data name="rtbAMDevice.Size" type="System.Drawing.Size, System.Drawing">
-    <value>210, 385</value>
-  </data>
-  <data name="rtbAMDevice.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="rtbAMDevice.Text" xml:space="preserve">
-    <value />
-  </data>
-  <data name="&gt;&gt;rtbAMDevice.Name" xml:space="preserve">
-    <value>rtbAMDevice</value>
-  </data>
-  <data name="&gt;&gt;rtbAMDevice.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RichTextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;rtbAMDevice.Parent" xml:space="preserve">
-    <value>ftabAMDevice</value>
-  </data>
-  <data name="&gt;&gt;rtbAMDevice.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="ftabAMDevice.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 21</value>
-  </data>
-  <data name="ftabAMDevice.Size" type="System.Drawing.Size, System.Drawing">
-    <value>216, 391</value>
-  </data>
-  <data name="ftabAMDevice.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="ftabAMDevice.Text" xml:space="preserve">
-    <value>AMDevice</value>
-  </data>
-  <data name="&gt;&gt;ftabAMDevice.Name" xml:space="preserve">
-    <value>ftabAMDevice</value>
-  </data>
-  <data name="&gt;&gt;ftabAMDevice.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ftabAMDevice.Parent" xml:space="preserve">
-    <value>tabFolder</value>
-  </data>
-  <data name="&gt;&gt;ftabAMDevice.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
   <data name="tabFolder.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -1327,7 +1276,7 @@
     <value>qtBuff</value>
   </data>
   <data name="&gt;&gt;qtBuff.Type" xml:space="preserve">
-    <value>iPhoneBrowser.itouchBrowser.QtWrapper, itouchBrowser, Version=1.9.0.33, Culture=neutral, PublicKeyToken=null</value>
+    <value>iPhoneBrowser.itouchBrowser.QtWrapper, itouchBrowser, Version=1.9.2.35, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;qtBuff.Parent" xml:space="preserve">
     <value>grpFiles</value>
@@ -1390,7 +1339,7 @@
     <value>pnlQt</value>
   </data>
   <data name="&gt;&gt;pnlQt.Type" xml:space="preserve">
-    <value>iPhoneBrowser.itouchBrowser.PlayPanel, itouchBrowser, Version=1.9.0.33, Culture=neutral, PublicKeyToken=null</value>
+    <value>iPhoneBrowser.itouchBrowser.PlayPanel, itouchBrowser, Version=1.9.2.35, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;pnlQt.Parent" xml:space="preserve">
     <value>grpDetails</value>
@@ -1407,8 +1356,8 @@
   <data name="chkZoom.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAAlwSFlzAAALEwAA
-        CxMBAJqcGAAAAkNJREFUOE+d0l1IU2EYB/AZXSR0GV10bRclXWRdRB8kk5TIMV3iFgWC1FhgZbNlBNY2
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAAlwSFlzAAALDQAA
+        Cw0B7QfALAAAAkNJREFUOE+d0l1IU2EYB/AZXSR0GV10bRclXWRdRB8kk5TIMV3iFgWC1FhgZbNlBNY2
         KqEwzbkMwpVzKyoWeswuXNOWy8yZ8zPXyMlcbbbvj+NZ24x/74JC7BjSgQfOxfv+zv95zpMFgKN60LW+
         KH9X0ez8At/1xb8tGqc3B4KRjRuysz/lbM1rquBtpzirPRmg941Nrm6nxrpMQwmj9SOMU07cowZwsUkP
         geRaoPxM/YnMObbilElubGnWdL43DY7/8NEMPEwSzhiDUR8Nauor5JoeFB6vTR0S1eSwAiaLTaPr7Iu7
@@ -1493,8 +1442,8 @@
   <data name="btnPreview.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAAlwSFlzAAALEwAA
-        CxMBAJqcGAAAAfZJREFUOE+l099Lk1EYwPH6D/onoqsuoqwIbyIoEy2k5ZzphU1cxCQoVOhmN1qBmq2h
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAAlwSFlzAAALDQAA
+        Cw0B7QfALAAAAfZJREFUOE+l099Lk1EYwPH6D/onoqsuoqwIbyIoEy2k5ZzphU1cxCQoVOhmN1qBmq2h
         W1Kr1SJNeot3/XBWLjetBUUFi2lQQqibLLUonG5z33beWOz13UsXHXguzsN5Pufh4ZyNwIb/WgKQg5Os
         D2k0wqD/HV7faxGd4lyxUJKiWG9dHXrBzvJGXUQB7gc+6gK9Xj8jE5E80rW+CwUYevpBF3DcfKIU56Mo
         cOfxGw2QTi0zNjGG87qH9m47F+y9lFaaxTnVLJTNLTmsAlZWlpGHh3kWHCeW+MbXeAKvJGO2tlBvPbup

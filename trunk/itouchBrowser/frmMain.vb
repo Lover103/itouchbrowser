@@ -7,7 +7,7 @@ Imports System.Drawing
 Imports System.Drawing.Imaging
 Imports System.Text
 Imports itouchBrowser
-Imports itouchBrowser.Manzana
+Imports Manzana
 Imports SCW_iPhonePNG
 
 Public Class frmMain
@@ -30,7 +30,7 @@ Public Class frmMain
 
     Private bNowConnected As Boolean = False
     Private bConnectionChanged As Boolean = False
-    Private txtSerial As String
+    'Private txtSerial As String
     Private bUpdateInProgress As Boolean = False
     Private bSupressFiles As Boolean = False
     Private wasQTpreview As Boolean = False
@@ -89,6 +89,14 @@ Public Class frmMain
     Public Event iPhoneConnected()
     Public Event iPhoneDisconnected()
 
+    Friend Sub oniPhoneConnected()
+        RaiseEvent iPhoneConnected()
+    End Sub
+
+    Friend Sub oniPhoneDisconnected()
+        RaiseEvent iPhoneDisconnected()
+    End Sub
+
     Private Sub frmMain_Disposed(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Disposed
         My.Settings.QTLeftWidth = pnlQt.LeftWidth
         My.Settings.BackupControl = tsmBackupControl.Checked
@@ -106,7 +114,7 @@ Public Class frmMain
 
     Public Sub iPhoneConnected_Details() Handles Me.iPhoneConnected
         If Not bNowConnected Then
-            txtSerial = iPhoneInterface.Device.serial
+            'txtSerial = iPhoneInterface.Device.serial
             If Me.InvokeRequired Then
                 Me.Invoke(New NoParmDel(AddressOf delayedConnectionChange))
             Else
@@ -118,7 +126,7 @@ Public Class frmMain
 
     Public Sub iPhoneDisconnected_Details() Handles Me.iPhoneDisconnected
         If bNowConnected Then
-            txtSerial = ""
+            'txtSerial = ""
             If Me.InvokeRequired Then
                 Me.Invoke(New NoParmDel(AddressOf delayedConnectionChange))
             Else
@@ -128,14 +136,6 @@ Public Class frmMain
                 mvarSSHman.Close()
             End If
         End If
-    End Sub
-
-    Private Sub iPhoneConnected_EventHandler(ByVal sender As Object, ByVal args As ConnectEventArgs)
-        RaiseEvent iPhoneConnected()
-    End Sub
-
-    Private Sub iPhoneDisconnected_EventHandler(ByVal sender As Object, ByVal args As ConnectEventArgs)
-        RaiseEvent iPhoneDisconnected()
     End Sub
 
     Public Sub iPhoneConnect(ByVal lnError As Boolean)
@@ -216,7 +216,7 @@ Public Class frmMain
                     End If
                     My.Settings.LastJailbroken = iPhoneInterface.IsJailbreak
 
-                    setAMDeviceData()
+                    'setAMDeviceData()
                     trvFolders.Focus()
 
                 Else
@@ -225,7 +225,6 @@ Public Class frmMain
 
                     trvITunes.Nodes.Clear()
                     trvApps.Nodes.Clear()
-                    rtbAMDevice.Clear()
                     My.Settings.LastPath = ModuleMain.NodeiPhonePath(trvFolders.SelectedNode)
                     mvarItunesMan.Clear()
                     tabFolder.SelectedIndex = 0
@@ -330,6 +329,9 @@ Public Class frmMain
 
             mvarItunes = mvarItunesMan.GetRecSet()
 
+        Catch ex As Exception
+            MsgBox(ex.ToString(), MsgBoxStyle.Exclamation)
+
         Finally
             trvITunes.EndUpdate()
         End Try
@@ -362,6 +364,8 @@ Public Class frmMain
         Handles MyBase.Load
 
         Try
+            iPhoneInterface = New iPhone()
+
             Dim pos As String = My.Settings.Position
             If pos.IndexOf(",") > 0 Then
                 Dim position As String() = pos.Split(","c)
@@ -442,7 +446,7 @@ Public Class frmMain
 
             mvarSplashMsg.Text = "Initialize the QuickTime object."
             Dim qtThread As New Thread(New ThreadStart(AddressOf Me.qtInitialize))
-            qtThread.Start()
+            '2009/11/15 qtThread.Start()
 
             LoadFavoritesMenu()
 
@@ -461,19 +465,14 @@ Public Class frmMain
 
             tildeDir = "/var/mobile"
 
-            iPhoneInterface = New iPhone( _
-                    AddressOf iPhoneConnected_EventHandler, _
-                    AddressOf iPhoneDisconnected_EventHandler)
-
-            'setup the event handlers
-            'AddHandler iPhoneInterface.Connect, AddressOf iPhoneConnected_EventHandler
-            'AddHandler iPhoneInterface.Disconnect, AddressOf iPhoneDisconnected_EventHandler
-
             prevFormState = FormWindowState.Normal            ' フルスクリーン表示前のウィンドウの状態を保存する
             prevFormStyle = FormBorderStyle.Sizable           ' 通常表示時のフォームの境界線スタイルを保存する
             prevFormSize = New Size(Me.Width, Me.Height)      ' 通常表示時のウィンドウのサイズを保存する
 
-            qtThread.Join()
+            '2009/11/15 qtThread.Join()
+            Application.DoEvents()
+
+            'iPhoneInterface = New iPhone()
 
         Catch ex As Exception
             MsgBox(My.Resources.String15 & ex.Message & My.Resources.String16, MsgBoxStyle.Critical, "Error!")
@@ -571,7 +570,7 @@ Public Class frmMain
     End Sub
 
     Private Function fileSizeAsString(ByVal sFilePath As String) As String
-        Dim iFileSize As Long = iPhoneInterface.FileSize(sFilePath)
+        Dim iFileSize As Long = CLng(iPhoneInterface.FileSize(sFilePath))
         'make it look pretty
         If iFileSize > 10240000 Then
             Return String.Format("{0:0.##} MB", iFileSize / 1024000)
@@ -582,8 +581,8 @@ Public Class frmMain
         End If
     End Function
 
-    Private Function fileSizeAsString(ByVal size As Long) As String
-        Dim iFileSize As Long = size
+    Private Function fileSizeAsString(ByVal size As ULong) As String
+        Dim iFileSize As ULong = size
         'make it look pretty
         If iFileSize > 10240000 Then
             Return String.Format("{0:0.##} MB", iFileSize / 1024000)
@@ -1328,10 +1327,11 @@ Public Class frmMain
     End Sub
 
     Private Sub showFileDetails(ByVal sFile As String, ByVal tmpPath As String, ByVal isSLink As Boolean)
-        Dim l As Long = 1   'size
+        Dim ul As ULong = 1   'size
         Dim bo As Boolean   'is folder
 
-        iPhoneInterface.GetFileInfo(sFile, l, bo)
+        iPhoneInterface.GetFileInfo(sFile, ul, bo)
+        Dim l As Long = CLng(ul)
 
         txtFileDetails.Text = "Filename: " & Path.GetFileName(sFile) & vbCrLf _
                 & "Size: " & fileSizeAsString(sFile) _
@@ -3057,7 +3057,7 @@ Public Class frmMain
             End If
 
         Catch ex As Exception
-            MsgBox(ex.Message)
+            MsgBox(ex.ToString(), MsgBoxStyle.Exclamation)
         End Try
 
     End Sub
@@ -3084,7 +3084,7 @@ Public Class frmMain
                 lstTemp.ImageIndex = getImageIndexForFile(item("Location").ToString())
                 With lstTemp.SubItems
                     If Not item("FileSize").ToString().EndsWith("sec") Then
-                        .Add(Me.fileSizeAsString(CLng(item("FileSize"))))
+                        .Add(Me.fileSizeAsString(CULng(item("FileSize"))))
                     Else
                         .Add(item("FileSize").ToString())
                     End If
@@ -3119,7 +3119,7 @@ Public Class frmMain
             Me.getAlbums(selNode, selNode.Text)
 
         Catch ex As Exception
-            MsgBox(ex.Message)
+            MsgBox(ex.ToString())
         Finally
             lstFiles.EndUpdate()
         End Try
@@ -3217,20 +3217,19 @@ Public Class frmMain
 
     Private Sub getITunes()
         If Not mvarItunesMan.Loaded AndAlso mvarITunesPath <> "" Then
-            If CopyFromPhone(mvarITunesPath, My.Settings.DbPath & "\iTunesDB") <> 0 Then
-                If iPhoneInterface.Exists(mvarITunesRoot & "/iTunes_Control/iTunes/iTunes Library.itlp/Library.itdb") Then
-                    CopyFromPhone(mvarITunesRoot & "/iTunes_Control/iTunes/iTunes Library.itlp/Library.itdb", My.Settings.DbPath & "\Library.itdb")
-                    CopyFromPhone(mvarITunesRoot & "/iTunes_Control/iTunes/iTunes Library.itlp/Locations.itdb", My.Settings.DbPath & "\Locations.itdb")
-                Else
-                    If File.Exists(My.Settings.DbPath & "\Library.itdb") Then
-                        File.Delete(My.Settings.DbPath & "\Library.itdb")
-                    End If
-                    If File.Exists(My.Settings.DbPath & "\Locations.itdb") Then
-                        File.Delete(My.Settings.DbPath & "\Locations.itdb")
-                    End If
+            CopyFromPhone(mvarITunesPath, My.Settings.DbPath & "\iTunesDB")
+            If iPhoneInterface.Exists(mvarITunesRoot & "/iTunes_Control/iTunes/iTunes Library.itlp/Library.itdb") Then
+                CopyFromPhone(mvarITunesRoot & "/iTunes_Control/iTunes/iTunes Library.itlp/Library.itdb", My.Settings.DbPath & "\Library.itdb")
+                CopyFromPhone(mvarITunesRoot & "/iTunes_Control/iTunes/iTunes Library.itlp/Locations.itdb", My.Settings.DbPath & "\Locations.itdb")
+            Else
+                If File.Exists(My.Settings.DbPath & "\Library.itdb") Then
+                    File.Delete(My.Settings.DbPath & "\Library.itdb")
                 End If
-                Me.getArtists(My.Settings.DbPath, "All")
+                If File.Exists(My.Settings.DbPath & "\Locations.itdb") Then
+                    File.Delete(My.Settings.DbPath & "\Locations.itdb")
+                End If
             End If
+            Me.getArtists(My.Settings.DbPath, "All")
         End If
     End Sub
 
@@ -3512,112 +3511,110 @@ Public Class frmMain
         End If
     End Sub
 
-    Private Sub setAMDeviceData()
-        Dim dat As New System.Text.StringBuilder()
-        Dim i As Integer
+    'Private Sub setAMDeviceData()
+    '    Dim dat As New System.Text.StringBuilder()
+    '    Dim i As Integer
 
-        Dim st As String = iPhoneInterface.ActivationState
-        'Dim stbuf As iPhone.strStatVfs
+    '    Dim st As String = iPhoneInterface.ActivationState
+    'Dim stbuf As iPhone.strStatVfs
 
-        rtbAMDevice.Text = ""
-        'If iPhoneInterface.GetStatFs(stbuf) Then
-        '    rtbAMDevice.AppendText("Total disk size: " & (stbuf.Btotal / 1024).ToString("#,##0MBytes") & vbCrLf)
-        '    rtbAMDevice.AppendText("Free disk size : " & (stbuf.Bfree / 1024).ToString("#,##0MBytes") & vbCrLf)
-        'End If
+    'rtbAMDevice.Text = ""
+    'If iPhoneInterface.GetStatFs(stbuf) Then
+    '    rtbAMDevice.AppendText("Total disk size: " & (stbuf.Btotal / 1024).ToString("#,##0MBytes") & vbCrLf)
+    '    rtbAMDevice.AppendText("Free disk size : " & (stbuf.Bfree / 1024).ToString("#,##0MBytes") & vbCrLf)
+    'End If
 
-        With iPhoneInterface.Device
-            rtbAMDevice.SelectionColor = Color.Blue
-            rtbAMDevice.AppendText("Activation State: " & st & vbCrLf)
-            'dat.Append("Device ID: ").Append(.device_id).Append(vbCrLf)
+    'With iPhoneInterface.Device
+    '    rtbAMDevice.SelectionColor = Color.Blue
+    '    rtbAMDevice.AppendText("Activation State: " & st & vbCrLf)
+    '    'dat.Append("Device ID: ").Append(.device_id).Append(vbCrLf)
 
-            rtbAMDevice.SelectionColor = Color.Blue
-            rtbAMDevice.AppendText("Device ID: ")
-            rtbAMDevice.SelectionColor = Color.Black
-            rtbAMDevice.AppendText(.device_id.ToString & vbCrLf)
-            'dat.Append("Product ID: ").Append(.product_id).Append(vbCrLf)
+    '    rtbAMDevice.SelectionColor = Color.Blue
+    '    rtbAMDevice.AppendText("Device ID: ")
+    '    rtbAMDevice.SelectionColor = Color.Black
+    '    rtbAMDevice.AppendText(.device_id.ToString & vbCrLf)
+    '    'dat.Append("Product ID: ").Append(.product_id).Append(vbCrLf)
 
-            rtbAMDevice.SelectionColor = Color.Blue
-            rtbAMDevice.AppendText("Product ID: ")
-            rtbAMDevice.SelectionColor = Color.Black
-            rtbAMDevice.AppendText(.product_id.ToString)
-            Dim prodid As String
-            Select Case .product_id
-                Case &H1290
-                    prodid = "iPhone First Gen"
-                Case &H1291
-                    prodid = "iPod touch 1G"
-                Case &H1292
-                    prodid = "iPhone 3G"
-                Case &H1293
-                    prodid = "iPod touch 2G"
-                Case &H1294
-                    prodid = "iPhone 2.1"
-                Case &H1295
-                    prodid = "iProd 0.1"
-                Case &H1296
-                    prodid = "iPod 2.2"
-                Case &H1297
-                    prodid = "iPhone 3.1"
-                Case &H1298
-                    prodid = "iFPGA"
-                Case &H1299
-                    prodid = "iPod 3.1"
-                Case Else
-                    prodid = "Unknown"
-            End Select
-            rtbAMDevice.AppendText(" (" & prodid & ")" & vbCrLf)
-            'dat.Append("Serial: ").Append(iPhoneInterface.Device.serial).Append(vbCrLf)
+    '    rtbAMDevice.SelectionColor = Color.Blue
+    '    rtbAMDevice.AppendText("Product ID: ")
+    '    rtbAMDevice.SelectionColor = Color.Black
+    '    rtbAMDevice.AppendText(.product_id.ToString)
+    '    Dim prodid As String
+    '    Select Case .product_id
+    '        Case &H1290
+    '            prodid = "iPhone First Gen"
+    '        Case &H1291
+    '            prodid = "iPod touch 1G"
+    '        Case &H1292
+    '            prodid = "iPhone 3G"
+    '        Case &H1293
+    '            prodid = "iPod touch 2G"
+    '        Case &H1294
+    '            prodid = "iPhone 2.1"
+    '        Case &H1295
+    '            prodid = "iProd 0.1"
+    '        Case &H1296
+    '            prodid = "iPod 2.2"
+    '        Case &H1297
+    '            prodid = "iPhone 3.1"
+    '        Case &H1298
+    '            prodid = "iFPGA"
+    '        Case &H1299
+    '            prodid = "iPod 3.1"
+    '        Case Else
+    '            prodid = "Unknown"
+    '    End Select
+    '    rtbAMDevice.AppendText(" (" & prodid & ")" & vbCrLf)
+    '    'dat.Append("Serial: ").Append(iPhoneInterface.Device.serial).Append(vbCrLf)
 
-            rtbAMDevice.SelectionColor = Color.Blue
-            rtbAMDevice.AppendText("Serial: ")
-            rtbAMDevice.SelectionColor = Color.Black
-            rtbAMDevice.AppendText(.serial & vbCrLf)
+    '    rtbAMDevice.SelectionColor = Color.Blue
+    '    rtbAMDevice.AppendText("Serial: ")
+    '    rtbAMDevice.SelectionColor = Color.Black
+    '    rtbAMDevice.AppendText(.serial & vbCrLf)
 
-            rtbAMDevice.SelectionColor = Color.Blue
-            rtbAMDevice.AppendText("unknown1: ")
-            rtbAMDevice.SelectionColor = Color.Black
-            rtbAMDevice.AppendText(.unknown1 & vbCrLf)
+    '    rtbAMDevice.SelectionColor = Color.Blue
+    '    rtbAMDevice.AppendText("unknown1: ")
+    '    rtbAMDevice.SelectionColor = Color.Black
+    '    rtbAMDevice.AppendText(.unknown1 & vbCrLf)
 
-            rtbAMDevice.SelectionColor = Color.Blue
-            rtbAMDevice.AppendText("unknown2: ")
-            rtbAMDevice.SelectionColor = Color.Black
-            For i = 0 To .unknown2.Length - 1
-                dat.Append(.unknown2(i)).Append(" ")
-            Next
-            dat.Append(vbCrLf)
-            rtbAMDevice.AppendText(dat.ToString)
+    '    rtbAMDevice.SelectionColor = Color.Blue
+    '    rtbAMDevice.AppendText("unknown2: ")
+    '    rtbAMDevice.SelectionColor = Color.Black
+    '    For i = 0 To .unknown2.Length - 1
+    '        dat.Append(.unknown2(i)).Append(" ")
+    '    Next
+    '    dat.Append(vbCrLf)
+    '    rtbAMDevice.AppendText(dat.ToString)
 
-            rtbAMDevice.SelectionColor = Color.Blue
-            rtbAMDevice.AppendText("lockdown_conn: ")
-            rtbAMDevice.SelectionColor = Color.Black
-            rtbAMDevice.AppendText(.lockdown_conn & vbCrLf)
+    '    rtbAMDevice.SelectionColor = Color.Blue
+    '    rtbAMDevice.AppendText("lockdown_conn: ")
+    '    rtbAMDevice.SelectionColor = Color.Black
+    '    rtbAMDevice.AppendText(.lockdown_conn & vbCrLf)
 
-            rtbAMDevice.SelectionColor = Color.Blue
-            rtbAMDevice.AppendText("unknown3: " & vbCrLf)
-            rtbAMDevice.SelectionColor = Color.Black
+    '    rtbAMDevice.SelectionColor = Color.Blue
+    '    rtbAMDevice.AppendText("unknown3: " & vbCrLf)
+    '    rtbAMDevice.SelectionColor = Color.Black
 
-            dat.Length = 0
-            For i = 0 To .unknown3.Length - 1
-                dat.Append(" [").Append(i).Append("] ").Append(Conversion.Hex(.unknown3(i))).Append("H ").Append(.unknown3(i)).Append(" ").Append(vbCrLf)  '.Append(Chr(.unknown2(i))).Append(vbCrLf)
-            Next
-            dat.Append("unknown4: ").Append(vbCrLf)
-            For i = 0 To .unknown4.Length - 1
-                dat.Append(" [").Append(i).Append("] ").Append(Conversion.Hex(.unknown4(i))).Append("H ").Append(.unknown4(i)).Append(" ").Append(vbCrLf)  '.Append(Chr(.unknown4(i))).Append(vbCrLf)
-            Next
-            dat.Append("unknown5: ").Append(vbCrLf)
-            For i = 0 To .unknown5.Length - 1
-                dat.Append(" [").Append(i).Append("] ").Append(Conversion.Hex(.unknown5(i))).Append("H ").Append(.unknown5(i)).Append(" ").Append(vbCrLf)  '.Append(Chr(.unknown2(i))).Append(vbCrLf)
-            Next
-        End With
+    '    dat.Length = 0
+    '    For i = 0 To .unknown3.Length - 1
+    '        dat.Append(" [").Append(i).Append("] ").Append(Conversion.Hex(.unknown3(i))).Append("H ").Append(.unknown3(i)).Append(" ").Append(vbCrLf)  '.Append(Chr(.unknown2(i))).Append(vbCrLf)
+    '    Next
+    '    dat.Append("unknown4: ").Append(vbCrLf)
+    '    For i = 0 To .unknown4.Length - 1
+    '        dat.Append(" [").Append(i).Append("] ").Append(Conversion.Hex(.unknown4(i))).Append("H ").Append(.unknown4(i)).Append(" ").Append(vbCrLf)  '.Append(Chr(.unknown4(i))).Append(vbCrLf)
+    '    Next
+    '    dat.Append("unknown5: ").Append(vbCrLf)
+    '    For i = 0 To .unknown5.Length - 1
+    '        dat.Append(" [").Append(i).Append("] ").Append(Conversion.Hex(.unknown5(i))).Append("H ").Append(.unknown5(i)).Append(" ").Append(vbCrLf)  '.Append(Chr(.unknown2(i))).Append(vbCrLf)
+    '    Next
+    'End With
 
-        rtbAMDevice.AppendText(dat.ToString)
-    End Sub
+    'rtbAMDevice.AppendText(dat.ToString)
+    'End Sub
 
-    Private Sub rtbAMDevice_DoubleClick(ByVal sender As Object, ByVal e As System.EventArgs) _
-        Handles rtbAMDevice.DoubleClick
-
-        setAMDeviceData()
-    End Sub
+    'Private Sub rtbAMDevice_DoubleClick(ByVal sender As Object, ByVal e As System.EventArgs)
+    '    setAMDeviceData()
+    'End Sub
 
     Private Sub cmbOutputDir_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) _
         Handles cmbOutputDir.SelectedIndexChanged
