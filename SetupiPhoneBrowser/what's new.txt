@@ -6,6 +6,9 @@ Future Versions	??/??/2008	Pete Wilson
   * convert binary plists to text and back
   * edit plists
 
+v1.92.35 11/23/2009 =sugi=
+  * F/W 3.0‘Î‰ž
+
 v1.91.34 9/13/2009 =sugi=
   * iTunes8.2‚ÌiTunesDB‚É‘Î‰ž‚Ì‚Â‚à‚è
 

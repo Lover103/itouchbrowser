@@ -34,7 +34,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace itouchBrowser.Manzana
+namespace Manzana
 {
 	/// <summary>
 	/// Represents the method that will handle the <see>Connected</see> and <see>Disconnected</see> event.

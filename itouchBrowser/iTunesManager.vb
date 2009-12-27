@@ -59,13 +59,8 @@ Public Class iTunesManager
     Friend Function GetArtists(ByVal dbPath As String) As String()
         Try
             mvarDBPath = dbPath
-            If mvarItDb.Loaded = False Then
-                mvarItDb.Load(dbPath & "\iTunesDB")
-            End If
-            mvarArts = mvarItDb.GetArtists()
-            If mvarArts.Length > 0 Then
-                Array.Sort(mvarArts)
-            Else
+
+            If FileSystem.FileLen(dbPath & "\iTunesDB") = 0 Then
                 Dim i As Integer = 0
                 Dim sql As String = "select distinct artist from item"
                 Dim ds As Data.DataSet = DbManager.SelectSQL(dbPath & "\Library.itdb", sql)
@@ -76,6 +71,15 @@ Public Class iTunesManager
                 Next
                 ds.Dispose()
                 mvarDBVer = 3.0
+
+            Else
+                If mvarItDb.Loaded = False Then
+                    mvarItDb.Load(dbPath & "\iTunesDB")
+                End If
+                mvarArts = mvarItDb.GetArtists()
+            End If
+            If mvarArts.Length > 0 Then
+                Array.Sort(mvarArts)
             End If
 
         Catch ex As Exception
@@ -137,9 +141,11 @@ Public Class iTunesManager
     Friend Function GetSongsByArt(ByVal artist As String) As Data.DataRow()
         Dim songs() As Data.DataRow = Nothing
         Try
-            songs = mvarItunes.Select("Artist='" & DbManager.CvtData(artist) & "'")
-            If songs.Length = 0 Then
-                songs = mvarItunes.Select("Album='" & DbManager.CvtData(artist) & "'")
+            If mvarItunes IsNot Nothing Then
+                songs = mvarItunes.Select("Artist='" & DbManager.CvtData(artist) & "'")
+                If songs.Length = 0 Then
+                    songs = mvarItunes.Select("Album='" & DbManager.CvtData(artist) & "'")
+                End If
             End If
 
         Catch ex As Exception
@@ -153,7 +159,7 @@ Public Class iTunesManager
     Friend Function GetRecSet() As Data.DataTable
         Dim dt As New Data.DataTable
 
-        If mvarItDb.Loaded = False Then
+        If mvarItDb.Loaded = False AndAlso mvarDBVer < 3.0 Then
             Return Nothing
         End If
 
@@ -250,7 +256,7 @@ Public Class iTunesManager
             End If
 
         Catch ex As Exception
-            MsgBox(ex.Message, MsgBoxStyle.Exclamation)
+            MsgBox(ex.ToString(), MsgBoxStyle.Exclamation)
         Finally
             dt.EndInit()
             mvarItunes = dt
