@@ -19,7 +19,7 @@ Option Explicit On
 ' =============================================================================
 
 Imports System.Threading
-Imports Manzana
+Imports itouchBrowser.Manzana
 
 Public Class frmFolderProperty
 

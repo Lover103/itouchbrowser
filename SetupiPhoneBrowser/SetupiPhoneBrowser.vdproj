@@ -51,6 +51,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_36B7390355EE532E6B9639C54C5DB5C6"
+        "OwnerKey" = "8:_C4DED4A8B72C42AE9732E65EF7EDD0A9"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_42AD1D2B0A3245E19C928733AF22CE9D"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -129,6 +135,18 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_B13B5EF4C18C7317BC45F2710614EAD2"
+        "OwnerKey" = "8:_36B7390355EE532E6B9639C54C5DB5C6"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_B13B5EF4C18C7317BC45F2710614EAD2"
+        "OwnerKey" = "8:_C4DED4A8B72C42AE9732E65EF7EDD0A9"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_C4DED4A8B72C42AE9732E65EF7EDD0A9"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -197,6 +215,18 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_7E42AF52B4B0710692B9D69EBBF78582"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_36B7390355EE532E6B9639C54C5DB5C6"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_B13B5EF4C18C7317BC45F2710614EAD2"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -508,6 +538,37 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_36B7390355EE532E6B9639C54C5DB5C6"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:itouchBrowser.Manzana, Version=1.9.0.3, Culture=neutral, processorArchitecture=x86"
+                "ScatterAssemblies"
+                {
+                    "_36B7390355EE532E6B9639C54C5DB5C6"
+                    {
+                    "Name" = "8:itouchBrowser.Manzana.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:itouchBrowser.Manzana.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_254997F48F3C4AB3A9D32B0C40755247"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_42AD1D2B0A3245E19C928733AF22CE9D"
             {
             "SourcePath" = "8:License.txt"
@@ -737,6 +798,37 @@
                     }
                 }
             "SourcePath" = "8:Interop.QTOLibrary.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_254997F48F3C4AB3A9D32B0C40755247"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_B13B5EF4C18C7317BC45F2710614EAD2"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Routrek.Granados, Version=2.0.0.0, Culture=neutral, PublicKeyToken=c37bff9de7e9d6d5, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_B13B5EF4C18C7317BC45F2710614EAD2"
+                    {
+                    "Name" = "8:Routrek.Granados.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:Routrek.Granados.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_254997F48F3C4AB3A9D32B0C40755247"
@@ -987,14 +1079,14 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:itouchBrowser"
-        "ProductCode" = "8:{E0D7E140-F03B-4F54-B311-055FA7FB1501}"
-        "PackageCode" = "8:{6EC5675D-C4B8-4A47-A1BD-A289D90D38C0}"
+        "ProductCode" = "8:{8A96138A-73BE-490E-B6CE-8A07340E014B}"
+        "PackageCode" = "8:{BBBBDC69-F149-4DD6-B6B0-F2435D4AEF64}"
         "UpgradeCode" = "8:{6DF8F65F-1CD9-45F2-B007-22872A42E544}"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.9.15"
+        "ProductVersion" = "8:1.9.16"
         "Manufacturer" = "8:sugi's Lab."
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:http://code.google.com/p/itouchbrowser/"
@@ -1536,7 +1628,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_C4DED4A8B72C42AE9732E65EF7EDD0A9"
             {
-            "SourcePath" = "8:..\\itouchBrowser\\obj\\x86\\Release\\itouchBrowser.exe"
+            "SourcePath" = "8:..\\itouchBrowser\\obj\\x86\\Debug\\itouchBrowser.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_254997F48F3C4AB3A9D32B0C40755247"

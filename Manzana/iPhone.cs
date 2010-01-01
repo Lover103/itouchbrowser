@@ -37,7 +37,7 @@ using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace Manzana
+namespace itouchBrowser.Manzana
 {
     /// <summary>
     /// Exposes access to the Apple iPhone

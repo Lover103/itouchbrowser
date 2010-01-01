@@ -22,7 +22,7 @@ Imports System.Drawing.Imaging
 Imports System.Text
 Imports System.Threading
 Imports itouchBrowser
-Imports Manzana
+Imports itouchBrowser.Manzana
 Imports SCW_iPhonePNG
 
 Module ModuleMain
@@ -82,7 +82,7 @@ Module ModuleMain
             Application.EnableVisualStyles()
 
             Dim objSplash As New frmSplashScreen
-            'objSplash.Show()
+            objSplash.Show()
             objSplash.SetProgressMessage("Initializing...")
             Application.DoEvents()
 
@@ -751,10 +751,10 @@ Module ModuleMain
 
             StartStatus(tmp.Length, 0)
             For Each sFile As iPhone.strDir In tmp
-                If BackupFileFromPhone(sPath, sFile.Dir) < 0 Then
-                    'ResetiPhone()
-                    'Exit For
-                    ProgressEscapeFlg = False
+                If Not sFile.IsSLink Then
+                    If BackupFileFromPhone(sPath, sFile.Dir) < 0 Then
+                        ProgressEscapeFlg = False
+                    End If
                 End If
                 If IncrementStatus(0) Then
                     canceled = True

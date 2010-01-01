@@ -138,13 +138,15 @@ Public Class iTunesManager
 
     End Function
 
-    Friend Function GetSongsByArt(ByVal artist As String) As Data.DataRow()
+    Friend Function GetSongsByArt(ByVal artist As String, ByVal album As String) As Data.DataRow()
         Dim songs() As Data.DataRow = Nothing
         Try
             If mvarItunes IsNot Nothing Then
-                songs = mvarItunes.Select("Artist='" & DbManager.CvtData(artist) & "'")
-                If songs.Length = 0 Then
-                    songs = mvarItunes.Select("Album='" & DbManager.CvtData(artist) & "'")
+                If artist = "All" Then
+                    songs = mvarItunes.Select("Artist='" & DbManager.CvtData(album) & "'")
+                End If
+                If songs Is Nothing OrElse songs.Length = 0 Then
+                    songs = mvarItunes.Select("Artist='" & DbManager.CvtData(artist) & "' and Album='" & DbManager.CvtData(album) & "'")
                 End If
             End If
 
