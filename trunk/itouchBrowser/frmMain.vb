@@ -7,7 +7,7 @@ Imports System.Drawing
 Imports System.Drawing.Imaging
 Imports System.Text
 Imports itouchBrowser
-Imports Manzana
+Imports itouchBrowser.Manzana
 Imports SCW_iPhonePNG
 
 Public Class frmMain
@@ -1213,7 +1213,7 @@ Public Class frmMain
     End Sub
 
     Private Sub trvFolders_KeyUp(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs) _
-    Handles trvFolders.KeyUp
+        Handles trvFolders.KeyUp
 
         If e.KeyCode = Keys.F5 Then
             Me.Cursor = Cursors.WaitCursor
@@ -1222,6 +1222,21 @@ Public Class frmMain
                 .SuspendLayout()
                 ModuleMain.AddFoldersBeneath(.SelectedNode)
                 .SelectedNode.Expand()
+                .ResumeLayout()
+            End With
+            Me.Cursor = Cursors.Default
+        End If
+    End Sub
+
+    Private Sub trvApps_KeyUp(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs) _
+        Handles trvApps.KeyUp
+
+        If e.KeyCode = Keys.F5 Then
+            Me.Cursor = Cursors.WaitCursor
+            With Me.trvApps
+                .SuspendLayout()
+                .Nodes.Clear()
+                Me.setApps("/private/var/mobile/Applications")
                 .ResumeLayout()
             End With
             Me.Cursor = Cursors.Default
@@ -1623,7 +1638,7 @@ Public Class frmMain
         Dim isFolder As Boolean     ' Folder
 
         If lstFiles.SelectedItems.Count > 0 Then
-            sFile = getSelectedFilename(isSL, isFolder)
+            sFile = Me.getSelectedFilename(isSL, isFolder)
 
             If prevSelectedFile = sFile Then ' make sure we changed selections (handles multi-select better)
                 Return sFile
@@ -1785,10 +1800,12 @@ Public Class frmMain
         Dim sSourcePath As String
 
         If lstFiles.SelectedItems.Count > 0 Then
-            sSourcePath = getSelectedPath()
+            sSourcePath = Me.getSelectedPath()
 
             For Each sItem As ListViewItem In lstFiles.SelectedItems
-                ModuleMain.BackupFileFromPhone(sSourcePath, sItem.Text)
+                If sItem.ForeColor <> Color.Blue Then
+                    ModuleMain.BackupFileFromPhone(sSourcePath, sItem.Text)
+                End If
             Next
             ' redraw list
             Me.LoadFiles()
@@ -2160,27 +2177,17 @@ Public Class frmMain
 
         If lstFiles.Items.Count > 0 OrElse tNode.Nodes.Count > 0 Then
             If tsmConfirmDeletions.Checked Then
-                If MsgBox(String.Format(My.Resources.String19, sPath) & vbCrLf & vbCrLf _
-                        & My.Resources.String20, MsgBoxStyle.YesNo, _
+                If MsgBox(String.Format(My.Resources.String19, sPath) & vbCrLf _
+                        , MsgBoxStyle.YesNo, _
                         "Confirm Folder Deletion") = MsgBoxResult.No Then
                     Exit Sub
                 End If
             End If
         End If
 
-        If tNode.Nodes.Count > 0 Then ' always ask for folders with sub-folders
-            If MsgBox("Are you absolutely sure you wish to delete this folder (" & sPath & ")?" & vbCrLf & vbCrLf _
-                    & "This cannot be (easily) undone." & vbCrLf & vbCrLf _
-                    & My.Resources.String20, MsgBoxStyle.YesNo, _
-                    "Are you Sure?") = MsgBoxResult.No Then
-                Exit Sub
-            End If
-        End If
-
         Try
             Me.Cursor = Cursors.WaitCursor
 
-            'If ModuleMain.BackupDirectory(sPath) = 0 Then
             iPhoneInterface.DeleteDirectory(sPath, True)
 
             findNode = trvFolders.Nodes.Find(sPath, True)
@@ -2197,7 +2204,6 @@ Public Class frmMain
 
                 Me.selectSpecificPath(sNewFolder)
             End If
-            'End If
 
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Exclamation)
@@ -3072,9 +3078,9 @@ Public Class frmMain
 
         Try
             If selNode.Text = NO_NAME_LABEL Then
-                files = mvarItunesMan.GetSongsByArt("")
+                files = mvarItunesMan.GetSongsByArt("", "")
             Else
-                files = mvarItunesMan.GetSongsByArt(selNode.Text)
+                files = mvarItunesMan.GetSongsByArt(selNode.Parent.Text, selNode.Text)
             End If
             lstFiles.BeginUpdate()
             lstFiles.Items.Clear()
@@ -3123,6 +3129,20 @@ Public Class frmMain
         Finally
             lstFiles.EndUpdate()
         End Try
+
+    End Sub
+
+    Private Sub tabFolder_KeyUp(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) _
+        Handles tabFolder.KeyUp
+
+        Select Case tabFolder.SelectedIndex
+            Case 0      ' Folder
+                trvFolders_KeyUp(sender, e)
+            Case 1      ' iTunes
+                Me.getITunes()
+            Case 2      ' App
+                trvApps_KeyUp(sender, e)
+        End Select
 
     End Sub
 
@@ -3187,20 +3207,22 @@ Public Class frmMain
                         '        Me.getArtists(My.Settings.DbPath, "All")
                         '    End If
                         'End If
-                        getITunes()
+                        If bNowConnected = True AndAlso trvITunes.Nodes.Count = 0 Then
+                            Me.getITunes()
+                        End If
 
                     Case 2      ' App
-                            .Columns(2).Text = My.Resources.String49    'Backup path
-                            .Columns(3).Width = 110
-                            .Columns.RemoveByKey("Album")
-                            .Columns.RemoveByKey("TrackNumber")
-                            .Columns.RemoveByKey("Genre")
-                            .Columns.RemoveByKey("Type")
-                            .Columns.RemoveByKey("Comment")
+                        .Columns(2).Text = My.Resources.String49    'Backup path
+                        .Columns(3).Width = 110
+                        .Columns.RemoveByKey("Album")
+                        .Columns.RemoveByKey("TrackNumber")
+                        .Columns.RemoveByKey("Genre")
+                        .Columns.RemoveByKey("Type")
+                        .Columns.RemoveByKey("Comment")
 
-                            If bNowConnected = True AndAlso trvApps.Nodes.Count = 0 Then
-                                Me.setApps("/private/var/mobile/Applications")
-                            End If
+                        If bNowConnected = True AndAlso trvApps.Nodes.Count = 0 Then
+                            Me.setApps("/private/var/mobile/Applications")
+                        End If
 
                     Case 3      ' AMDevice
 
@@ -3217,19 +3239,21 @@ Public Class frmMain
 
     Private Sub getITunes()
         If Not mvarItunesMan.Loaded AndAlso mvarITunesPath <> "" Then
-            CopyFromPhone(mvarITunesPath, My.Settings.DbPath & "\iTunesDB")
+            Dim dbpath As String = IO.Path.GetTempPath()
+            dbpath = dbpath.Substring(0, dbpath.Length - 1)
+            CopyFromPhone(mvarITunesPath, dbpath & "\iTunesDB")
             If iPhoneInterface.Exists(mvarITunesRoot & "/iTunes_Control/iTunes/iTunes Library.itlp/Library.itdb") Then
-                CopyFromPhone(mvarITunesRoot & "/iTunes_Control/iTunes/iTunes Library.itlp/Library.itdb", My.Settings.DbPath & "\Library.itdb")
-                CopyFromPhone(mvarITunesRoot & "/iTunes_Control/iTunes/iTunes Library.itlp/Locations.itdb", My.Settings.DbPath & "\Locations.itdb")
+                CopyFromPhone(mvarITunesRoot & "/iTunes_Control/iTunes/iTunes Library.itlp/Library.itdb", dbpath & "\Library.itdb")
+                CopyFromPhone(mvarITunesRoot & "/iTunes_Control/iTunes/iTunes Library.itlp/Locations.itdb", dbpath & "\Locations.itdb")
             Else
-                If File.Exists(My.Settings.DbPath & "\Library.itdb") Then
-                    File.Delete(My.Settings.DbPath & "\Library.itdb")
+                If File.Exists(dbpath & "\Library.itdb") Then
+                    File.Delete(dbpath & "\Library.itdb")
                 End If
-                If File.Exists(My.Settings.DbPath & "\Locations.itdb") Then
-                    File.Delete(My.Settings.DbPath & "\Locations.itdb")
+                If File.Exists(dbpath & "\Locations.itdb") Then
+                    File.Delete(dbpath & "\Locations.itdb")
                 End If
             End If
-            Me.getArtists(My.Settings.DbPath, "All")
+            Me.getArtists(dbpath, "All")
         End If
     End Sub
 
@@ -3362,7 +3386,7 @@ Public Class frmMain
 
         StatusNormal(node.Text)
         Dim listRow As Integer = 0
-        Dim files() As Data.DataRow = mvarItunesMan.GetSongsByArt(node.Text)
+        Dim files() As Data.DataRow = mvarItunesMan.GetSongsByArt(node.Parent.Text, node.Text)
         Dim sSourcePath As String = mvarITunesRoot & "/"
         Dim sDestinationPath As String = ""
         Dim artist As String = node.Text
@@ -3638,7 +3662,7 @@ Public Class frmMain
         Handles trvApps.AfterSelect
 
         Dim selNode As TreeNode = e.Node
-        Me.UseWaitCursor = True
+        Me.Cursor = Cursors.WaitCursor
 
         Try
             If selNode.Tag IsNot Nothing Then
@@ -3646,7 +3670,7 @@ Public Class frmMain
                 Me.openPath(selNode.Tag.ToString)
             End If
         Finally
-            Me.UseWaitCursor = False
+            Me.Cursor = Cursors.Default
         End Try
 
     End Sub

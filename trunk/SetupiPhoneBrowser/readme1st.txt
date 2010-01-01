@@ -1,10 +1,10 @@
 itouchBrowser　　　　　　　　　　　　　　　　　　　　2009/4/29
 
-バージョン：1.8.3
+バージョン：1.9.2
 対象OS：Windows XP 日本語または英語
 前提ソフトウエア：
 	Microsoft .NET Framework 2.0
-	iTunes 7 or 8   http://www.apple.com/jp/itunes/download/
+	iTunes 9   http://www.apple.com/jp/itunes/download/
 
 説明：
 本アプリケーションは、iPhone又はiPod touch(jailbreak済み)のファイルシステムにUSB経由でアクセスし、
@@ -12,7 +12,7 @@ PCとtouch間でファイルのコピー・追加・削除・再生などを実現するものです。
 音楽ファイルの曲名を容易に参照できます。
 動画ファイルの取り込みも可能です。
 バックアップした大量のファイルを容易に管理できます。
-iTunes 7と8の両方で同様に使用できます。
+iTunes 9で使用できます。
 iPod touch 2Gでの稼動も確認済みです。
 iPod nanoでの稼動も確認済みです。
 再生、吸出しなどの一部の機能は、nanoでも使用可能となりました。その他のiPodでも使えると思います。
@@ -68,4 +68,5 @@ ipodtouchBrowserもNew BSD Licenseとします。
 
 作者への連絡先：
 http://code.google.com/p/itouchbrowser/		最新情報もこちらです。
+twitter:@sugi98521
 ekj98521@gmail.com  =sugi=
