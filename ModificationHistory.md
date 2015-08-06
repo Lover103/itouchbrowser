@@ -1,0 +1,273 @@
+v1.92.36 12/30/2009 =sugi=
+  * バックアップディレクトリが指定されていないときに、「テーブル０が見つかりません」のエラーが出る不具合を修正した。
+  * iTunes, AppタブをF5で更新できるようにした。
+  * Appを選択したとき、マウスポインターの形状が戻らない問題を修正した。
+  * フォルダー削除が正常に完了しなかった問題を修正した。
+  * アーティストデータの吸出し機能を修正した。
+
+v1.92.35 11/23/2009 =sugi=
+  * **F/W 3.0** 対応
+  * Improved compatibility with **iTunes 9.0**
+
+v1.91.34 9/13/2009 =sugi=
+  * iTunes8.2のiTunesDBに対応のつもり
+
+v1.90.33 6/13/2009 =sugi=
+  * Improved compatiblity with **iTunes 8.2**
+  * フォルダーアイコンの変更
+  * サムネイル表示の質の向上
+  * Appタブで全アプリを表示した。/Applicationsフォルダーアプリは、青色表示。
+  * Jailbreakでプレビュー画面の拡大・標準を繰り返したときにフォルダービューが小さくなる現象を修正した。
+  * SSH設定を完了後再起動しないと反映されなかったが、すぐに接続するように修正した。
+
+v1.83.32 5/24/2009 =sugi=
+  * **秘密鍵と公開鍵** を使ったSSH接続を可能にした。
+  * SSHの秘密鍵と公開鍵の **生成および自動配置** の機能を追加した。
+  * ファイル属性も含めるために **tarを使ったフォルダーのバックアップ機能** を追加した。(圧縮後、PCへ自動転送)
+  * SSHコマンドラインに履歴参照機能を追加した。(上下矢印キーで過去を参照可能)
+  * ファイルビューにフォルダーも表示するように変更した。
+  * デバイス接続時の処理を最適化した。
+  * フォルダー選択時のアイコンを変更した。
+  * メニューに壁紙とテーマを追加した。
+  * 英語環境で全画面アイコンを表示しなかった不具合を修正した。
+
+v1.83.31 4/29/2009 =sugi=
+  * Jailbreak環境で、USBと同時に **SSH接続** が出来るようにした。
+  * ファイルプロパティーのダイアログを追加した。
+  * ファイル属性(アクセス権限)の変更を可能にした。
+  * **SSHコマンドライン** 機能を追加。
+
+v1.82.30 4/17/2009 =sugi=
+  * **１つのファイルにまとめた** テストバージョン。
+> iTunesと.NET Framework 2.0だけで動くはずのバージョンです。
+> 残念ながらメニューなどが日本語にはなりません。
+  * **Webの画像** を直接ファイルリストにドロップすれば、iPhone, touch に取り込めるようにした。
+  * **Zipファイル内のファイル一覧** を表示できるようにした。
+  * バイナリーファイルの内容を16進数で表示出来るようにした。
+  * バックアップコントロールが有効でバックアップファイルのリスト表示を行った後、フォルダーを選択してもファイル一覧が表示できなかった問題を修正した。
+  * AMDeviceのProduct IDを判別するようにした。
+
+v1.82.29 4/4/2009 =sugi=
+v1.82.28 4/3/2009 =sugi=
+  * iPhoneでファイルが表示できない問題のテストバージョン
+
+v1.82.27 3/22/2009 =sugi=
+  * **ファイルの検索機能** を追加した。
+  * フォルダの作成時の表示不良を修正した。Bug fix
+  * 「名前を指定して保存」の機能が使えなかった不具合を修正した。Bug fix
+  * オプションメニューを右側にアイコン化した。
+  * 詳細ペインの拡大ボタンをメニューバーの右側にも追加した。
+  * 変更履歴をメニューから参照できる機能を追加。
+  * 全画面表示モードを追加した。（右上のアイコンクリック）
+  * SummerBoardとCustomizeのメニューを廃止。(1.1.4までの遺産)
+  * コンパイラをVS2008に変更。
+
+v1.81.26 3/2/2009 =sugi=
+  * pythonとemacsのファイル表示を可能とした。
+  * イメージファイルの **サムネイル表示** を可能にした。
+  * アイコン表示を修正した。
+  * ファイル一覧の背景色を変更した。
+  * フォルダー表示をさらに高速化。
+  * フォルダーでバックアップが出来なかったのを修正。Bug fix m()m
+
+v1.81.25 2/21/2009 =sugi=
+  * **濁点つき日本語ファイル名** を取り扱えるように修正した。
+  * バックアップしないでファイル削除する機能を追加した。
+  * App タブを追加しアプリケーション名からフォルダーに移動できるようにした。(2.? Jailbreak)
+  * FW 2.? でSymbolic Linkが表示できていなかったのを表示するようにした。
+  * Symbolic Linkを青色表示するようにした。
+  * フォルダーファイルのファイル数・使用量・フォルダー数のプロパティーに表示するようにした。
+  * フォルダーのダブルクリックで展開するようにした。
+  * Symbolic Link判定で遅くなったので、再度フォルダー操作の最適化を行った。
+
+v1.81.24 1/27/2009 =sugi=
+  * iTunesタブでアーティスト名の下にアルバム名の階層を追加した。
+  * アルバム名が設定されていないファイルがiTunesタブで表示されなかった問題を修正した。
+  * アーティスト名を厳密に比較するように変更した。
+  * SQLDBの内容をさらに詳細に表示できるように変更した。
+  * 歌詞付き動画ファイルで、 **動画と歌詞の両方を表示** できるように修正した。
+  * 起動処理を若干修正した。
+  * 歌詞表示の幅を次回起動時に復元するようにした。
+
+v1.81.23 1/1/2009 =sugi=
+  * **日本語フォルダー名・ファイル名に対応** した。（濁点は、未対応です）
+  * フォルダータブにAMDeviceタブを追加した。（USBの通信情報の参照用です）
+  * バックアップ管理機能オフのときiTunesリストに曲名表示しなかった問題を修正。
+  * 動画の再生を最適化する。
+  * アドレスバーにURLを入れるとインターネットページが開くようにする。
+  * 複数のiPodを繋ぎ変えたときにエラーになるのを修正。
+  * 英語モードでタイトルをitouchBrowserに変更した。
+> > To an English environment. I'm sorry that you confuse this and iPhoneBrowser.
+  * 起動シーケンスを変更し高速化した。
+  * 細かな部分を修正。
+
+v1.81.22 12/17/2008 =sugi=
+  * 演奏中の曲に埋め込まれた情報を表示する。
+  * 演奏中の **アートワークを表示** する。
+  * 動画の最大化が無効になっていたのを修正。
+  * Movie Exportの時に、再生を一時停止するように変更した。
+  * ファイルの種類のアイコンを変更した。
+  * 未脱獄のiPodを接続したとき、Jailbreakのメニューを隠す。
+  * 曲の演奏中にlast.fmの情報を参照できるようにする。
+
+v1.81.21 11/30/2008 =sugi=
+  * 演奏中の曲に埋め込まれた歌詞が見つかれば、それを表示する。
+  * 巨大ファイルの **バックアップ速度を高速化** 。
+  * 巨大ファイルのバックアップ中のフリーズを改善した。
+  * ビューが変わっても動画再生が停止しない現象を修正した。
+  * 自動表示オフの時に曲ファイル選択するとエラーで終了するトラブルを修正した。
+  * iTunesモードでファイルソート中の異常終了を修正。
+  * ２つ目の進捗バー表示が出来なかったのを修正。
+
+v1.81.20 11/09/2008 =sugi=
+  * 拡張子の無いファイルが表示できなかったトラブルを修正。
+  * 100文字以上のファイル名が表示できなかったトラブルを修正。
+  * **ファイルを曲名で書き出す機能** を追加。
+  * **動画のフォーマット変換機能** を追加。（演奏中、右クリックでメニュー表示）
+  * 音楽、動画の **情報表示の強化** 。
+  * Manzanaを最適化し高速化。日本語対応。
+  * フォルダーの展開を高速化。
+  * **iPod nanoの吸出し** に対応。
+
+v1.81.19 11/01/2008 =sugi=
+  * **日本語のファイル名を表示** できるようになる。但し、操作不可。
+  * TABにてiTunesの情報を取得・表示する。
+  * 歌手、曲名、アルバム名の表示を高速化。
+
+v1.80.18 10/13/2008 =sugi=
+  * ファイル削除とフォルダー削除でトラップした問題を修正。
+  * PC《＝》touch間 転送速度の高速化(サイズ連動最適化)
+  * ファイル転送時の転送サイズ表示
+  * バックアップファイルリスト表示のパフォーマンスアップ。
+  * バックアップファイルリスト右クリックによるファイル削除機能を追加。
+
+v1.80.17 10/5/2008 =sugi=
+  * バックアップファイルの管理データベースを記録するディレクトリを指定できるようにする。
+  * バックアップの管理機能を使わないモードを追加する。
+  * 指定したバックアップファイルの削除機能を追加する。
+  * キャッシュファイルをバックアップしないフラグを追加する。
+  * 音楽ファイル一覧で曲名一覧表示を可能にする。
+  * Manzanaを最新にアップデート。
+  * It corrected that the English message was not able to be setup.
+  * added handling for >2GB file sizes
+  * Try /var/mobile first, then /var/root
+  * another change to work with iTunes 8.x (iTunes 8.0.1 + touch 2G 稼動確認済み)
+
+v1.71.16 8/24/2008 =sugi=
+  * SQLiteのファイルを選択したとき、データベース内のデータを表示する。
+  * 音楽・動画ファイルの演奏時にタイトルを表示する。
+  * 音楽・動画ファイルが既にバックアップ済みで1MB以上ならPCのファイルを再生する。
+  * 前回の終了時のフォルダーを接続時に再現する。
+  * ファイル名にWindowsで取り扱えない文字があった場合に表示できない問題の対応。
+  * 動画の画面拡大を可能にする。
+  * バックアップフォルダー中にSymbolic Linkのファイルが有った場合、バックアップ処理が中断される問題を修正。
+
+v1.70.15 8/10/2008 =sugi=
+  * ファイルリストにバックアップしているディレクトリを表示する。
+  * バックアップファイルをデータベース化し、一覧表示を可能にする。
+  * 重複ファイルを一覧する。
+  * 重複ファイルの一括削除機能を追加する。（ファイル内容を比較し、異なるものは削除しない）
+> > (purge BACKUPS folders of duplicate files)
+  * ヘルプからサポートWebページを表示可能にする。
+
+> 使用上問題があれば、Issuesのタブに状況を追加してください。
+
+v1.60.14 7/25/2008 =sugi=
+  * バックアップディレクトリが存在しないときに、ディレクトリの設定ダイアログを出す。
+  * 表示ファイルの種類を拡張する。
+  * 動画再生しながら次のファイルを読み込めるように対応する。
+  * (属性フィールドを追加するが、未表示)
+
+v1.60.13 7/7/2008 =sugi=
+  * 不明なファイルも表示ボタンでテキスト表示可能にする。
+
+v1.60.12 7/5/2008 =sugi=
+  * 日本語対応の拡張
+  * バックアップファイルの保存ディレクトリをメニューから変更可能にする
+  * ファイル転送の中断機能を追加する
+
+v1.60.10 6/28/2008 =sugi=
+  * 日本語対応
+  * 処理を最適化し高速化
+  * 表示機能の強化
+  * 多くの異常終了を削減
+
+v1.60   2/19/2008 Pete Wilson
+  * fixed Location menu to try both /var/root and /var/mobile
+  * modified Theme creation to use home dir based on /var/mobile/Media existance
+  * fixed Delete Folder to work when afc2 not setup
+  * modified startup to detect connected iPhone better
+
+v1.52   1/14/2008 Pete Wilson
+  * fixed Camera Roll Goto Location menu option
+  * moved temp preview files to Windows temp folder
+
+v1.51   1/9/2008 Pete Wilson
+  * fixed bug in JIT load of folder tree for folders with one child
+  * added two level progress bars to better show operations
+  * fixed bug in Goto Location not loading child folders
+  * fixed bug to only ask create directory question if directory is not on iPhone
+
+v1.50	1/7/2008 Pete Wilson
+  * Confirm deletion option disables confirmation for folders without sub-folders as well as files
+  * added option to ignore .DS\_Store files
+  * fixed some file list synch bugs
+  * moved backup folders to custom UserAppDataPath (Local Settings\Application Data\Cranium\iPhoneBrowser)
+  * moved temp files to custom UserAppDataPath
+  * now only creates one backup folder per run unless a filename conflict occurs
+  * improved many display refresh issues - collapsing nodes should work correctly now
+  * added options to rename files and folders
+  * added conversion of illegal Windows filenames in both directions
+  * added grouping to file list view
+  * added better control over auto preview and limited auto preview to 100kb
+  * improved event handling when right-clicking file
+  * added user settable bookmarks
+  * improved performance of file copies from/to iphone for large files
+  * reduced tree icons to 16x16 to decrease tree space for deep hierarchies
+  * improved progress bar update/display process for copying files
+  * added F5 to refresh current tree node and children manually
+  * improved search for iTunesMobileDevice.DLL to use US location if localized location doesn't work
+
+v1.40	10/03/2007	Pete Wilson
+  * Re-arranged locations and added new locations for Third-Party Applications and SummerBoard
+  * File right-click menu handles multiple selections
+  * Added option for delete confirmation
+  * Added option to set preview background color (not remembered)
+  * Handles deletion of multiple files and folders with contents - all backed up
+  * Preview iPhone PNGs and convert from iPhone PNGs to stock
+  * NOTE: conversion does not recompute CRCs or compute correct Zlib checksums
+  * NOTE: conversion does not remove premultiplied alpha if present
+  * Added command to save SpringBoard view as a SummerBoard theme folder
+  * Added some more third party app folder locations
+  * Added commands to Save or Backup Folders
+  * Changed backup scheme to use BACKUPS.date.time to make restores easier
+  * added option to ignore Thumbs.db files
+
+v1.31	9/14/2007	Pete Wilson
+  * Correct major bug when drag/drop multiple directories
+
+v1.3	9/13/2007	Pete Wilson
+  * Fixed Audio Preview of second file, Fixed minimize/resize of window
+  * improved image preview to shrink if too large
+  * improved TreeView/File Details to eliminate flashing
+  * improved file preview to eliminate flashing
+  * added .aif as Audio File, changed m4a to Music File
+  * added Hourglass cursor when busy
+  * improved event handling
+  * added sorting to files view
+  * improved context menu handling
+  * replaced some alerts with status updates
+  * added warning icon and beep to status warnings
+  * added drag and drop of directories to the iPhone   **add eBooks and apps easily**
+
+V1.2	8/19/2007	Kevin Hightower
+-Added 'Go To Location' feature that automatically selects common locations
+-Added preview of audio files using quicktime plugin
+-Added creation and deletion of folders (empty ones only)
+-Corrected and optimized UI for speed and clarity
+
+V1.1	8/7/2007 	Kevin Hightower
+  * Added some loggin during startup and extra support for older machines
+
+V1.0 	8/5/2007 	Kevin Hightower
+  * Initial release
